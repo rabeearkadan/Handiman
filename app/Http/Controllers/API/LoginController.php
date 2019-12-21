@@ -1,10 +1,12 @@
 <?php
 
-namespace App\Http\Controllers\Auth;
+namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
+use Illuminate\Http\Request;
+use Illuminate\Support\Str;
 
 class LoginController extends Controller
 {
@@ -37,5 +39,23 @@ class LoginController extends Controller
     {
         $this->middleware('guest')->except('logout');
     }
+
+    public function login(Request $request){
+        $this->validateLogin($request);
+
+
+        if ($this->attemptLogin($request)) {
+            $token = Str::random(300);
+            $request->user()->forceFill([
+               'api_token'=>$token
+            ]);
+            return response()->json([
+                'status'=> 'success',
+                'user'=> $request->user(),
+                'token'=>$token
+            ]);
+        }
+        return $this->sendFailedLoginResponse($request);
+}
 
 }

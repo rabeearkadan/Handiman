@@ -33,7 +33,7 @@ class User extends Eloquent implements
      * @var array
      */
     protected $hidden = [
-        'password', 'remember_token',
+        'password', 'remember_token','api_token'
     ];
 
     /**
