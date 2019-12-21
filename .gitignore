@@ -10,3 +10,13 @@ Homestead.json
 Homestead.yaml
 npm-debug.log
 yarn-error.log
+.idea/vcs.xml
+.idea/Handiman.iml
+.idea/misc.xml
+.idea/modules.xml
+.idea/php.xml
+composer.lock
+composer.lock
+composer.lock
+*.lock
+composer.lock
