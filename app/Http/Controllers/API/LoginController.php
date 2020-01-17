@@ -46,11 +46,11 @@ class LoginController extends Controller
 
 
         if ($this->attemptLogin($request)) {
-            Auth::login($request->user());
+
             $token = Str::random(300);
             $request->user()->forceFill([
                'api_token'=>$token
-            ]);
+            ])->save();
             return response()->json([
                 'status'=> 'success',
                 'user'=> $request->user(),
