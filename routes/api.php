@@ -18,3 +18,11 @@ Route::post('register','API\RegisterController@register');
 
 
 
+
+Route::middleware('auth:api')->group( function () {
+    Route::post('device-token','API\UserController@setDeviceToken');
+
+});
+
+
+

@@ -53,6 +53,7 @@ class LoginController extends Controller
                 'status'=> 'success',
                 'user'=> $request->user(),
                 'token'=>$token
+
             ]);
         }
         return $this->sendFailedLoginResponse($request);
