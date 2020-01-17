@@ -81,13 +81,11 @@ class RegisterController extends Controller
 
         event(new Registered($user = $this->create($request->all())));
 
-        Auth::login($user);
-
         if( $this->guard()->check()){
             $token = Str::random(300);
             $user->forceFill([
                 'api_token'=>$token
-            ]);
+            ])->save();
             return response()->json([
                 'status'=> 'success',
                 'user'=> $user,
