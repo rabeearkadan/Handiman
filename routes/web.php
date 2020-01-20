@@ -16,4 +16,4 @@ Route::get('/home', function () {
 });
 Auth::routes();
 
-Route::get("contact-us",'FRONT\HomeController@contact');
+//Route::get("contact-us",'FRONT\HomeController@contact');
