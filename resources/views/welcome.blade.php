@@ -90,7 +90,7 @@
                     <a href="https://blog.laravel.com">Blog</a>
                     <a href="https://nova.laravel.com">Nova</a>
                     <a href="https://forge.laravel.com">About Us</a>
-                    <a href="https://github.com/laravel/laravel">Contact Us</a>
+                    <a href="{{ route('contact-us') }}">Contact us</a>
                 </div>
             </div>
         </div>
