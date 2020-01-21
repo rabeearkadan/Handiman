@@ -1,6 +1,7 @@
 <?php
 
 namespace App;
+
 use Illuminate\Auth\Authenticatable;
 use Illuminate\Auth\Passwords\CanResetPassword;
 use Illuminate\Contracts\Auth\Access\Authorizable as AuthorizableContract;
@@ -24,7 +25,7 @@ class User extends Eloquent implements
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password','api_token'
+        'name', 'email', 'password', 'api_token'
     ];
 
     /**
@@ -33,7 +34,7 @@ class User extends Eloquent implements
      * @var array
      */
     protected $hidden = [
-        'password', 'remember_token','api_token'
+        'password', 'remember_token', 'api_token'
     ];
 
     /**
@@ -44,4 +45,22 @@ class User extends Eloquent implements
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public function isClient()
+    {
+        return $this->role == 'user' || $this
+                ->role == 'user_employee';
+    }
+
+    public function isHandyman()
+    {
+        return $this->role == 'employee' || $this
+                ->role == 'user_employee';
+    }
+
+    public function isAdmin()
+    {
+        return $this->role == 'admin';
+    }
+
 }
