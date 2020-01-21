@@ -13,16 +13,13 @@ use Illuminate\Http\Request;
 |
 */
 
-Route::post('login','API\LoginController@login');
-Route::post('register','API\RegisterController@register');
+Route::post('login', 'API\LoginController@login');
+Route::post('register', 'API\RegisterController@register');
 
 
-
-
-
-Route::middleware('auth:api')->group( function () {
-    Route::post('device-token','API\UserController@setDeviceToken');
- Route::put('update-profile','API\HandymanController@updateProfile');
+Route::middleware('auth:api')->group(function () {
+    Route::post('device-token', 'API\UserController@setDeviceToken');
+    Route::put('update-profile', 'API\HandymanController@updateProfile');
 
 });
 
