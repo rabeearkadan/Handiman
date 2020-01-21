@@ -17,12 +17,12 @@ Route::post('login','API\LoginController@login');
 Route::post('register','API\RegisterController@register');
 
 
-Route::put('update-profile','API\UserController@updateProfile');
 
 
 
 Route::middleware('auth:api')->group( function () {
     Route::post('device-token','API\UserController@setDeviceToken');
+ Route::put('update-profile','API\HandymanController@updateProfile');
 
 });
 

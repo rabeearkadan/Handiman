@@ -26,23 +26,7 @@ class UserController extends Controller
 
     }
 
-    public function updateProfile(Request $request){
-        $user =Auth::user();
-        $params = $this->validate( $request, ['profile_pic'=>'required','phone'=> 'required','location'=>'required','gender'=>'required'
-        ,'birth_date'=>'required','time-preferences'=>'required'
-        ]);
 
 
-        // convert  string (pp) to url of image
-        $image = base64_encode(params['profile_pic']);
-        $user-> profile_picture=$image;
 
-        $user->phone=$params['phone'];
-        $user->location=$params['gender'];
-
-        //to be continued
-        $user->save();
-
-        return response()->json(['status'=>'success']);
-    }
 }
