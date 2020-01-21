@@ -37,10 +37,13 @@ class UserController extends Controller
             $params = $this->validate($request, ['profile_picture' => 'required', 'phone' => 'required', 'location' => 'required',
                 'birth_date' => 'required', 'gender' => 'required', 'time_preferences' => 'required']);
 
+
+            //  uri
             $user->profile_picture = $params['profile_picture'];
+            // index
+            $user->location = $params['location'];
 
             $user->phone = $params['phone'];
-            $user->location = $params['location'];
             $user->birth_date = $params['birth_date'];
             $user->gender = $params['gender'];
             $user->time_preferences = $params['time_preferences'];
