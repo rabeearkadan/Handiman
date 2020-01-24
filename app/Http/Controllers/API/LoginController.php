@@ -41,7 +41,8 @@ class LoginController extends Controller
         $this->middleware('guest')->except('logout');
     }
 
-    public function login(Request $request){
+    public function login(Request $request)
+    {
         $this->validateLogin($request);
 
 
@@ -49,16 +50,18 @@ class LoginController extends Controller
 
             $token = Str::random(300);
             $request->user()->forceFill([
-               'api_token'=>$token
+                'api_token' => $token
             ])->save();
             return response()->json([
-                'status'=> 'success',
-                'user'=> $request->user(),
-                'token'=>$token
+                'status' => 'success',
+                'user' => $request->user(),
+                'token' => $token
 
             ]);
         }
         return $this->sendFailedLoginResponse($request);
-}
+    }
+
+
 
 }

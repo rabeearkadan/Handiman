@@ -33,20 +33,70 @@ class UserController extends Controller
         $user = Auth::user();
         if ($user->isClient()) {
 
-        } else if ($user->isHandyman()) {
             $params = $this->validate($request, ['profile_picture' => 'required', 'phone' => 'required', 'location' => 'required',
-                'birth_date' => 'required', 'gender' => 'required', 'time_preferences' => 'required']);
+                'birth_date' => 'required', 'gender' => 'required', 'time_preferences_start' => 'required', 'time_preferences_end' => 'required', 'payment_method' => 'required',
+                'apartment_details' => 'required']);
 
+            $user->profile_picture = base64_encode($params['profile_picture']);
 
-            //  uri
-            $user->profile_picture = $params['profile_picture'];
             // index
             $user->location = $params['location'];
 
             $user->phone = $params['phone'];
             $user->birth_date = $params['birth_date'];
             $user->gender = $params['gender'];
-            $user->time_preferences = $params['time_preferences'];
+            $user->time_preferences_start = $params['time_preferences_start'];
+            $user->time_preferences_end = $params['time_preferences_end'];
+
+            $user->save();
+
+            return response()->json(['status' => 'success', 'user' => $user]);
+
+
+        } else if ($user->isHandyman()) {
+
+            $params = $this->validate($request, ['profile_picture' => 'required', 'phone' => 'required',
+                'location' => 'required',
+                'birth_date' => 'required', 'gender' => 'required', 'services' => 'required', 'available_time_begin' => 'required'
+                , 'available_time_end' => 'required', 'price' => 'required', 'cv' => 'required', 'criminal_record' => 'required', 'bank_account' => 'required']);
+
+
+
+
+
+
+
+
+
+            $user->profile_picture = base64_encode($params['profile_picture']);
+
+            // index
+            $user->location = $params['location'];
+
+            $user->phone = $params['phone'];
+            // date form
+            $user->birth_date = $params['birth_date'];
+
+            $user->gender = $params['gender'];
+
+            //array of services
+            $user->services = $params['services'];
+            // time format
+            $user->available_time_begin = $params['available_time_begin'];
+
+            $user->available_time_end = $params['available_time_end'];
+            $user->price = $params['price'];
+
+            //array of certificates
+            $user->certificates = $params['certificates'];
+
+            //pdf
+            $user->cv = $params['cv'];
+
+            //pdf
+            $user->criminal_record = $params['criminal_record'];
+
+            $user->bank_account = $params['bank_account'];
 
             $user->save();
 
@@ -59,5 +109,31 @@ class UserController extends Controller
 
     }
 
+    public function logout(Request $request)
+    {
+        auth::logout();
 
+       //Todo
+        // auth::logoutOtherDevices(request('password'));
+        return response()->json(['status' => 'success', 'message'=>'logged out']);
+    }
+    public function uploadAny($file, $folder){
+        $file = base64_decode($file);
+        $file_name = str_random(25).'.png'; //generating unique file name;
+        if (!Storage::disk('public')->exists($folder))
+        {
+            Storage::disk('public')->makeDirectory($folder);
+        }
+        $result = false;
+        if($file!=""){ // storing image in storage/app/public Folder
+            $result = Storage::disk('public')->put($folder.'/'.$file_name,$file);
+
+        }
+        if ( $result )
+            return $folder.'/'.$file_name;
+        else
+            return null;
+    }
+/*
+ */
 }
