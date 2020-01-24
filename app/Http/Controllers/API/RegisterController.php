@@ -91,8 +91,10 @@ class RegisterController extends Controller
                 'user'=> $user,
                 'token'=>$token
             ]);
+        }else{
+            return response()->json(['status'=>'error','message'=>'registration failed']);
+
         }
-        return response()->json(['status'=>'error','message'=>'registration failed']);
 
     }
 }
