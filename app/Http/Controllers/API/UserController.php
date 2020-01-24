@@ -62,13 +62,10 @@ class UserController extends Controller
 
 
 
+                    $file_name = $this->uploadAny($params['profile_picture'], 'uploads');
+                    $user->profile_picture = $file_name;
 
 
-
-
-
-
-            $user->profile_picture = base64_encode($params['profile_picture']);
 
             // index
             $user->location = $params['location'];
@@ -113,27 +110,28 @@ class UserController extends Controller
     {
         auth::logout();
 
-       //Todo
+        //Todo
         // auth::logoutOtherDevices(request('password'));
-        return response()->json(['status' => 'success', 'message'=>'logged out']);
+        return response()->json(['status' => 'success', 'message' => 'logged out']);
     }
-    public function uploadAny($file, $folder){
+
+    public function uploadAny($file, $folder)
+    {
         $file = base64_decode($file);
-        $file_name = str_random(25).'.png'; //generating unique file name;
-        if (!Storage::disk('public')->exists($folder))
-        {
+        $file_name = str_random(25) . '.png'; //generating unique file name;
+        if (!Storage::disk('public')->exists($folder)) {
             Storage::disk('public')->makeDirectory($folder);
         }
         $result = false;
-        if($file!=""){ // storing image in storage/app/public Folder
-            $result = Storage::disk('public')->put($folder.'/'.$file_name,$file);
+        if ($file != "") { // storing image in storage/app/public Folder
+            $result = Storage::disk('public')->put($folder . '/' . $file_name, $file);
 
         }
-        if ( $result )
-            return $folder.'/'.$file_name;
+        if ($result)
+            return $folder . '/' . $file_name;
         else
             return null;
     }
-/*
- */
+    /*
+     */
 }

@@ -48,7 +48,7 @@ class RegisterController extends Controller
     /**
      * Get a validator for an incoming registration request.
      *
-     * @param  array  $data
+     * @param array $data
      * @return \Illuminate\Contracts\Validation\Validator
      */
     protected function validator(array $data)
@@ -63,7 +63,7 @@ class RegisterController extends Controller
     /**
      * Create a new user instance after a valid registration.
      *
-     * @param  array  $data
+     * @param array $data
      * @return \App\User
      */
     protected function create(array $data)
@@ -74,25 +74,26 @@ class RegisterController extends Controller
             'password' => Hash::make($data['password']),
         ]);
     }
+
     public function register(Request $request)
     {
         $this->validator($request->all())->validate();
 
 
         event(new Registered($user = $this->create($request->all())));
-
-        if( $this->guard()->check()){
+        auth::login($user);
+        if ($this->guard()->check()) {
             $token = Str::random(300);
             $user->forceFill([
-                'api_token'=>$token
+                'api_token' => $token
             ])->save();
             return response()->json([
-                'status'=> 'success',
-                'user'=> $user,
-                'token'=>$token
+                'status' => 'success',
+                'user' => $user,
+                'token' => $token
             ]);
-        }else{
-            return response()->json(['status'=>'error','message'=>'registration failed']);
+        } else {
+            return response()->json(['status' => 'error', 'message' => 'registration failed']);
 
         }
 
