@@ -27,9 +27,16 @@ class UserController extends Controller
 
     }
 
+    public function getProfile()
+    {
+        $user = auth::user();
+        $user = User::query()->where('id', $user->id)->get();
+        return response()->json(['status' => 'success', 'profile' => $user]);
+
+    }
+
     function updateProfile(Request $request)
     {
-
         $user = Auth::user();
         if ($user->isClient()) {
 
@@ -61,10 +68,8 @@ class UserController extends Controller
                 , 'available_time_end' => 'required', 'price' => 'required', 'cv' => 'required', 'criminal_record' => 'required', 'bank_account' => 'required']);
 
 
-
-                    $file_name = $this->uploadAny($params['profile_picture'], 'uploads');
-                    $user->profile_picture = $file_name;
-
+            $file_name = $this->uploadAny($params['profile_picture'], 'uploads');
+            $user->profile_picture = $file_name;
 
 
             // index
