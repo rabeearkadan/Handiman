@@ -26,7 +26,7 @@ Route::middleware('auth:api')->group(function () {
     Route::put('profile/edit', 'API\UserController@editProfile');
 
     Route::get('profile/edit', 'API\UserController@getProfile');
-    
+
     Route::get('logout', 'API\UserController@logout');
 
 });
