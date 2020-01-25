@@ -18,14 +18,14 @@ Route::post('register', 'API\RegisterController@register');
 
 
 Route::get('getHandymanList', 'API\HandymanController@getHandyman');
-
+Route::get('profile/edit', 'API\UserController@getProfile');
 Route::middleware('auth:api')->group(function () {
     Route::post('device-token', 'API\UserController@setDeviceToken');
 
 
     Route::put('profile/edit', 'API\UserController@editProfile');
 
-    Route::get('profile/edit', 'API\UserController@getProfile');
+//    Route::get('profile/edit', 'API\UserController@getProfile');
 
     Route::get('logout', 'API\UserController@logout');
 
