@@ -30,9 +30,8 @@ class UserController extends Controller
     public function getProfile()
     {
         $user = auth::user();
-        $email=$user->email;
-        $user = User::query()->where('email', $email)->get();
-        return response()->json(['status' => 'success', 'profile' => $user]);
+        $user = User::query()->where('email', "try@hotmail.com")->get();
+        return response()->json(['status' => 'success', 'user' => $user]);
 
     }
 
