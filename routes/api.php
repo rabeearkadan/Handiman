@@ -20,7 +20,7 @@ Route::post('register', 'API\RegisterController@register');
 //Route::get('getHandymanList', 'API\HandymanController@getHandyman');
 Route::middleware('auth:api')->group(function () {
     Route::post('device-token', 'API\UserController@setDeviceToken');
-    Route::get('profile/edit', 'API\UserController@getProfile');
+    Route::get('profile-edit', 'API\UserController@getProfile');
 
     // Route::put('profile/edit', 'API\UserController@editProfile');
     //Route::get('profile/edit', 'API\UserController@getProfile');
