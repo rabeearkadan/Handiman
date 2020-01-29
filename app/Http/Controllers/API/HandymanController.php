@@ -19,12 +19,14 @@ class HandymanController extends Controller
         return response()->json(['status' => 'success', 'HandymanList' => $handymanList]);
     }
 
-    public function getHandymanByName($name)
+
+
+    public function getHandymanById($id)
     {
 
         $handyman = User::whereHas('roles', function ($query) {
             $query->where('role', 'employee');
-        })->where('name', 'LIKE', $name)
+        })->where('name', 'LIKE', $id)
             ->get();
         return response()->json(['status' => 'success', 'HandymanList' => $handyman]);
     }

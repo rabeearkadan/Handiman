@@ -31,27 +31,35 @@ class UserController extends Controller
     public function getProfile()
     {
         $user = Auth::user();
-        $profile = User::query()->where('email', $user->email)->get();
-        return response()->json(['status' => 'success', 'profile' => $profile]);
+
+        return response()->json(['status' => 'success', 'profile' => $user]);
 
     }
-
+//public function
     function updateProfile(Request $request)
     {
         $user = Auth::user();
         if ($user->isClient()) {
 
-            $params = $this->validate($request, ['profile_picture' => 'required', 'phone' => 'required', 'location' => 'required',
-                'birth_date' => 'required', 'gender' => 'required', 'time_preferences_start' => 'required', 'time_preferences_end' => 'required', 'payment_method' => 'required',
+            $params = $this->validate($request, [
+                'profile_picture' => 'required',
+                'phone' => 'required',
+                'location' => 'required',
+                'birth_date' => 'required',
+                'gender' => 'required',
+                'time_preferences_start' => 'required',
+                'time_preferences_end' => 'required',
+                'payment_method' => 'required',
                 'apartment_details' => 'required']);
 
             $user->profile_picture = base64_encode($params['profile_picture']);
 
-            // index
-            $user->location = $params['location'];
+            // 2d index
+            $user->location =explode(',', $params['location']);
 
             $user->phone = $params['phone'];
-            $user->birth_date = $params['birth_date'];
+
+            $user->birth_date =    $params['birth_date'];
             $user->gender = $params['gender'];
             $user->time_preferences_start = $params['time_preferences_start'];
             $user->time_preferences_end = $params['time_preferences_end'];
@@ -116,8 +124,6 @@ class UserController extends Controller
     {
         auth::logout();
 
-        //Todo
-        // auth::logoutOtherDevices(request('password'));
         return response()->json(['status' => 'success', 'message' => 'logged out']);
     }
 
