@@ -15,6 +15,7 @@ use Illuminate\Http\Request;
 
 Route::post('login', 'API\LoginController@login');
 Route::post('register', 'API\RegisterController@register');
+Route::post('test-notification', 'API\HandymanController@test');
 
 
 //Route::get('getHandymanList', 'API\HandymanController@getHandyman');

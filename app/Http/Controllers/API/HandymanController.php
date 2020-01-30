@@ -2,14 +2,28 @@
 
 namespace App\Http\Controllers\API;
 
+use App\Events\NotificationSenderEvent;
 use App\Http\Controllers\Controller;
 use App\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use phpDocumentor\Reflection\Types\Integer;
 
 class HandymanController extends Controller
 {
     //
+
+    public function test(){
+        $notification = array();
+
+        $notification['to'] = 'all';
+        $notification['user']= Auth::user();
+        $notification['message'] ="test";
+        $notification['type'] = 'comment';
+        $notification['object'] = [];
+
+        event( new NotificationSenderEvent($notification));
+    }
 
     public function getHandyman()
     {
