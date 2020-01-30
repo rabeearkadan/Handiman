@@ -366,6 +366,8 @@ Testimonials Section
             </div>
             <div class="col-md-3">
                 <div class="profile">
+                    <div class="pic"><img src="../../public/img/client-2.jpg.jpg" alt=""></div>
+
                     <h4>Sara Wilsson</h4>
                     <span>Odeo Inc</span>
                 </div>
@@ -529,7 +531,7 @@ Footer
         <div class="row">
             <div class="col-md-12">
                 <div class="copyright">
-                    &copy; Copyright <strong>Imperial Theme</strong>. All Rights Reserved
+                    &copy; Copyright <strong>Genie Team</strong>. All Rights Reserved
                 </div>
                 <div class="credits">
                     <!--
@@ -538,7 +540,6 @@ Footer
                       Licensing information: https://bootstrapmade.com/license/
                       Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/buy/?theme=Imperial
                     -->
-                    Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a>
                 </div>
             </div>
         </div>
