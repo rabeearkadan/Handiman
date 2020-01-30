@@ -17,7 +17,7 @@ class HandymanController extends Controller
         $notification = array();
 
         $notification['to'] = 'd4PngEqIj-I:APA91bEq7B9CIzTERYwqwPb-Kn0uUNeLbCl17VllZAmomklcbOmd2kX9jv1R9uWJu9jvPrcAhJ-J5uSaGbgemLe651eUQARGYi5gc03KuBlOwg0NXt8vHpYD5_kkCPStIzeEHQuwQA_S';
-        $notification['user']= Auth::user();
+        $notification['user']= "admin";
         $notification['message'] ="test";
         $notification['type'] = 'comment';
         $notification['object'] = [];
