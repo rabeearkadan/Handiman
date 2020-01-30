@@ -30,14 +30,14 @@
         rel="stylesheet">
 
     <!-- Bootstrap CSS File -->
-    <link href="lib/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="../../public/lib/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
     <!-- Libraries CSS Files -->
-    <link href="lib/font-awesome/css/font-awesome.min.css" rel="stylesheet">
-    <link href="lib/animate-css/animate.min.css" rel="stylesheet">
+    <link href="../../public/lib/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+    <link href="../../public/lib/animate-css/animate.min.css" rel="stylesheet">
 
     <!-- Main Stylesheet File -->
-    <link href="css/style.css" rel="stylesheet">
+    <link href="../../public/css/style.css" rel="stylesheet">
 
     <!-- =======================================================
       Theme Name: Imperial
@@ -57,7 +57,7 @@ Hero Section
     <div class="hero-container">
         <div class="wow fadeIn">
             <div class="hero-logo">
-                <img class="" src="img/logo.png" alt="Imperial">
+                <img class="" src="../../public/img/logo.png" alt="Imperial">
             </div>
 
             <h1>Welcome to Imperial studios</h1>
@@ -78,7 +78,7 @@ Header Section
     <div class="container">
 
         <div id="logo" class="pull-left">
-            <a href="#hero"><img src="img/logo.png" alt="" title=""/></a>
+            <a href="#hero"><img src="../../public/img/logo.png" alt="" title=""/></a>
             <!-- Uncomment below if you prefer to use a text image -->
             <!--<h1><a href="#hero">Header 1</a></h1>-->
         </div>
@@ -134,7 +134,7 @@ About Section
         <div class="row">
 
             <div class="col-lg-6 about-img">
-                <img src="img/about-img.jpg" alt="">
+                <img src="../../public/img/about-img.jpg" alt="">
             </div>
 
             <div class="col-md-6 about-content">
@@ -366,7 +366,6 @@ Testimonials Section
             </div>
             <div class="col-md-3">
                 <div class="profile">
-                    <div class="pic"><img src="img/client-2.jpg" alt=""></div>
                     <h4>Sara Wilsson</h4>
                     <span>Odeo Inc</span>
                 </div>
