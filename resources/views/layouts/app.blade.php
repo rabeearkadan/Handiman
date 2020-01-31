@@ -128,13 +128,8 @@
     <script src="../../public/lib/superfish/hoverIntent.js"></script>
     <script src="../../public/lib/superfish/superfish.min.js"></script>
     <script src="../../public/lib/morphext/morphext.min.js"></script>
-    <script src="../../public/lib/wow/wow.min.js"></script>
+
     <script src="../../public/lib/stickyjs/sticky.js"></script>
     <script src="../../public/lib/easing/easing.js"></script>
-
-    <!-- Template Specisifc Custom Javascript File -->
-    <script src="../../public/js/custom.js"></script>
-
-    <script src="../../public/contactform/contactform.js"></script>
 </body>
 </html>
