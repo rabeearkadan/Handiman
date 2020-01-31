@@ -1,8 +1,8 @@
 @extends('layouts.app')
 
 @section('head')
-{{--    <meta content="" name="keywords">--}}
-{{--    <meta content="" name="description">--}}
+    <meta content="" name="keywords">
+    <meta content="" name="description">
 
     <!-- Facebook Opengraph integration: https://developers.facebook.com/docs/sharing/opengraph -->
     <meta property="og:title" content="">

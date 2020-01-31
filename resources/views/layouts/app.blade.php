@@ -17,7 +17,6 @@
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet" type="text/css">
 
 
-
     <!-- Main Stylesheet File -->
     <link href="../../public/css/style.css" rel="stylesheet">
 
