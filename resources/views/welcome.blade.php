@@ -473,7 +473,7 @@
 
 @endsection
 
-@push('scripts')
+@section('scripts')
     <!-- Required JavaScript Libraries -->
     <script src="../../public/lib/bootstrap/js/bootstrap.min.js"></script>
     <script src="../../public/lib/superfish/hoverIntent.js"></script>
@@ -488,4 +488,4 @@
     <script src="../../public/lib/jquery/jquery.min.js"></script>
     <script src="../../public/js/custom.js"></script>
     <script src="../../public/contactform/contactform.js"></script>
-@endpush
+@endsection

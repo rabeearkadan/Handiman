@@ -24,7 +24,7 @@
 
 </head>
 <body>
-    
+
 {{--        <nav class="navbar navbar-expand-md navbar-light navbar-laravel">--}}
 {{--            <div class="container">--}}
 {{--                <a class="navbar-brand" href="{{ url('/') }}">--}}
@@ -120,7 +120,7 @@
         <a href="#" class="back-to-top"><i class="fa fa-chevron-up"></i></a>
 
 
-@stack('scripts')
+@yield('scripts')
     <script src="../../public/lib/jquery/jquery.min.js"></script>
     <script src="../../public/js/custom.js"></script>
 </body>
