@@ -24,7 +24,7 @@
 
 </head>
 <body>
-    <div id="app">
+    
 {{--        <nav class="navbar navbar-expand-md navbar-light navbar-laravel">--}}
 {{--            <div class="container">--}}
 {{--                <a class="navbar-brand" href="{{ url('/') }}">--}}
@@ -93,7 +93,7 @@
 
 
 
-      
+
             @yield('content')
 
         <!--==========================Footer============================-->
@@ -119,7 +119,7 @@
         <!-- #footer -->
         <a href="#" class="back-to-top"><i class="fa fa-chevron-up"></i></a>
 
-    </div>
+
 @stack('scripts')
     <script src="../../public/lib/jquery/jquery.min.js"></script>
     <script src="../../public/js/custom.js"></script>
