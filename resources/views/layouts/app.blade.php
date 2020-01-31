@@ -16,7 +16,7 @@
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet" type="text/css">
 
-    <link href="../../public/css/app.css" rel="stylesheet">
+{{--    <link href="../../public/css/app.css" rel="stylesheet">--}}
 
 
     <!-- Main Stylesheet File -->
