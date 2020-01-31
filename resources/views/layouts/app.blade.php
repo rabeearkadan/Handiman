@@ -17,15 +17,11 @@
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet" type="text/css">
 
     <!-- Styles -->
-{{--    <link href="../../public/lib/bootstrap/css/bootstrap.min.css" rel="stylesheet">--}}
-{{--    <link href="../../public/css/style.css" rel="stylesheet">--}}
     <link href="../../public/css/app.css" rel="stylesheet">
 {{--    <link href="{{ asset('css/app.css') }}" rel="stylesheet">--}}
 
 
-    <!-- Libraries CSS Files -->
-{{--    <link href="../../public/lib/font-awesome/css/font-awesome.min.css" rel="stylesheet">--}}
-{{--    <link href="../../public/lib/animate-css/animate.min.css" rel="stylesheet">--}}
+
 
 </head>
 <body>
@@ -83,13 +79,15 @@
 {{--                </div>--}}
 {{--            </div>--}}
 {{--        </nav>--}}
-        <header id="header">
-            <nav id="nav-menu-container">
-                <ul class="nav-menu">
-                    @yield('navContent')
-                </ul>
-            </nav>
-        </header>
+
+
+{{--        <header id="header">--}}
+{{--            <nav id="nav-menu-container">--}}
+{{--                <ul class="nav-menu">--}}
+{{--                    @yield('navContent')--}}
+{{--                </ul>--}}
+{{--            </nav>--}}
+{{--        </header>--}}
 
 
 
