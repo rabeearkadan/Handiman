@@ -20,16 +20,20 @@
 {{--    <link href="../../public/lib/bootstrap/css/bootstrap.min.css" rel="stylesheet">--}}
 {{--    <link href="../../public/css/style.css" rel="stylesheet">--}}
     <link href="../../public/css/app.css" rel="stylesheet">
-{{--    <link href="{{ asset('css/app.css') }}" rel="stylesheet">--}}
-
+    
+    <!-- Bootstrap CSS File -->
+    <link href="../../public/lib/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
     <!-- Libraries CSS Files -->
     <link href="../../public/lib/font-awesome/css/font-awesome.min.css" rel="stylesheet">
     <link href="../../public/lib/animate-css/animate.min.css" rel="stylesheet">
 
+    <!-- Main Stylesheet File -->
+    <link href="../../public/css/style.css" rel="stylesheet">
+
 </head>
 <body>
-    <div id="app">
+{{--    <div id="app">--}}
 {{--        <nav class="navbar navbar-expand-md navbar-light navbar-laravel">--}}
 {{--            <div class="container">--}}
 {{--                <a class="navbar-brand" href="{{ url('/') }}">--}}
