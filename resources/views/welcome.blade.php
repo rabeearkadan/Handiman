@@ -486,6 +486,7 @@
 
     <!-- Template Specisifc Custom Javascript File -->
 {{--    <script src="../../public/js/custom.js"></script>--}}
-
+    <script src="../../public/lib/jquery/jquery.min.js"></script>
+    <script src="../../public/js/custom.js"></script>
     <script src="../../public/contactform/contactform.js"></script>
 @endpush
