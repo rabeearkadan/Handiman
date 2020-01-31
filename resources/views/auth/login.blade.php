@@ -1,6 +1,6 @@
 @extends('layouts.app')
 @section('navContent')
-    <li> Home</li>
+    <li><a href="#">Home</a></li>
 @endsection
 @section('content')
 <div class="container">

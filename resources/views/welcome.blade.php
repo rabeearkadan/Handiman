@@ -1,11 +1,8 @@
-<!DOCTYPE html>
-<html lang="en">
+@extends('layouts.app')
 
-<head>
-    <meta charset="utf-8">
-    <meta content="width=device-width, initial-scale=1.0" name="viewport">
-    <meta content="" name="keywords">
-    <meta content="" name="description">
+@section('head')
+{{--    <meta content="" name="keywords">--}}
+{{--    <meta content="" name="description">--}}
 
     <!-- Facebook Opengraph integration: https://developers.facebook.com/docs/sharing/opengraph -->
     <meta property="og:title" content="">
@@ -36,8 +33,8 @@
     <link href="../../public/lib/font-awesome/css/font-awesome.min.css" rel="stylesheet">
     <link href="../../public/lib/animate-css/animate.min.css" rel="stylesheet">
 
-    <!-- Main Stylesheet File -->
-    <link href="../../public/css/style.css" rel="stylesheet">
+{{--    <!-- Main Stylesheet File -->--}}
+{{--    <link href="../../public/css/style.css" rel="stylesheet">--}}
 
     <!-- =======================================================
       Theme Name: Imperial
@@ -45,11 +42,9 @@
       Author: BootstrapMade.com
       Author URL: https://bootstrapmade.com
     ======================================================= -->
-</head>
+@endsection
 
-<body>
-<div id="preloader"></div>
-
+@section('beforeHeader')
 <!--========================== Hero Section ============================-->
 <section id="hero">
     <div class="hero-container">
@@ -68,19 +63,10 @@
         </div>
     </div>
 </section>
+@endsection
 
-<!--========================== Header Section ============================-->
-<header id="header">
-    <div class="container">
+@section('navContent')
 
-        <div id="logo" class="pull-left">
-            <a href="#hero"><img src="../../public/img/logo.png" alt="" title=""/></a>
-            <!-- Uncomment below if you prefer to use a text image -->
-            <!--<h1><a href="#hero">Header 1</a></h1>-->
-        </div>
-
-        <nav id="nav-menu-container">
-            <ul class="nav-menu">
                 <li class="menu-active"><a href="#hero">Home</a></li>
                 <li><a href="#about">About Us</a></li>
                 <li><a href="#services">Services</a></li>
@@ -90,16 +76,10 @@
                 <li><a href="#contact">Contact Us</a></li>
                 <li><a href="{{ route('login') }}">Login</a></li>
                 <li><a href="{{ route('register') }}">Register</a></li>
-            </ul>
-        </nav>
-        <!-- #nav-menu-container -->
-    </div>
-</header>
-<!-- #header -->
+@endsection
 
-<!--==========================
-About Section
-============================-->
+@section('content')
+<!--==========================About Section============================-->
 <section id="about">
     <div class="container wow fadeInUp">
         <div class="row">
@@ -142,9 +122,7 @@ About Section
     </div>
 </section>
 
-<!--==========================
-Services Section
-============================-->
+<!--==========================Services Section============================-->
 <section id="services">
     <div class="container wow fadeInUp">
         <div class="row">
@@ -197,9 +175,7 @@ Services Section
     </div>
 </section>
 
-<!--==========================
-Subscrbe Section
-============================-->
+<!--==========================Subscrbe Section============================-->
 <section id="subscribe">
     <div class="container wow fadeInUp">
         <div class="row">
@@ -215,9 +191,7 @@ Subscrbe Section
     </div>
 </section>
 
-<!--==========================
-Porfolio Section
-============================-->
+<!--==========================Porfolio Section============================-->
 <section id="portfolio">
     <div class="container wow fadeInUp">
         <div class="row">
@@ -306,9 +280,7 @@ Porfolio Section
     </div>
 </section>
 
-<!--==========================
-Testimonials Section
-============================-->
+<!--==========================Testimonials Section============================-->
 <section id="testimonials">
     <div class="container wow fadeInUp">
         <div class="row">
@@ -358,9 +330,7 @@ Testimonials Section
     </div>
 </section>
 
-<!--==========================
-Team Section
-============================-->
+<!--==========================Team Section============================-->
 <section id="team">
     <div class="container wow fadeInUp">
         <div class="row">
@@ -433,9 +403,7 @@ Team Section
     </div>
 </section>
 
-<!--==========================
-Contact Section
-============================-->
+<!--==========================Contact Section============================-->
 <section id="contact">
     <div class="container wow fadeInUp">
         <div class="row">
@@ -504,48 +472,21 @@ Contact Section
     </div>
 </section>
 
-<!--==========================
-Footer
-============================-->
-<footer id="footer">
-    <div class="container">
-        <div class="row">
-            <div class="col-md-12">
-                <div class="copyright">
-                    &copy; Copyright <strong>Genie Team</strong>. All Rights Reserved
-                </div>
-                <div class="credits">
-                    <!--
-                      All the links in the footer should remain intact.
-                      You can delete the links only if you purchased the pro version.
-                      Licensing information: https://bootstrapmade.com/license/
-                      Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/buy/?theme=Imperial
-                    -->
-                </div>
-            </div>
-        </div>
-    </div>
-</footer>
-<!-- #footer -->
+@endsection
 
-<a href="#" class="back-to-top"><i class="fa fa-chevron-up"></i></a>
+@section('script')
+    <!-- Required JavaScript Libraries -->
+    <script src="../../public/lib/jquery/jquery.min.js"></script>
+    <script src="../../public/lib/bootstrap/js/bootstrap.min.js"></script>
+    <script src="../../public/lib/superfish/hoverIntent.js"></script>
+    <script src="../../public/lib/superfish/superfish.min.js"></script>
+    <script src="../../public/lib/morphext/morphext.min.js"></script>
+    <script src="../../public/lib/wow/wow.min.js"></script>
+    <script src="../../public/lib/stickyjs/sticky.js"></script>
+    <script src="../../public/lib/easing/easing.js"></script>
 
-<!-- Required JavaScript Libraries -->
-<script src="../../public/lib/jquery/jquery.min.js"></script>
-<script src="../../public/lib/bootstrap/js/bootstrap.min.js"></script>
-<script src="../../public/lib/superfish/hoverIntent.js"></script>
-<script src="../../public/lib/superfish/superfish.min.js"></script>
-<script src="../../public/lib/morphext/morphext.min.js"></script>
-<script src="../../public/lib/wow/wow.min.js"></script>
-<script src="../../public/lib/stickyjs/sticky.js"></script>
-<script src="../../public/lib/easing/easing.js"></script>
+    <!-- Template Specisifc Custom Javascript File -->
+    <script src="../../public/js/custom.js"></script>
 
-<!-- Template Specisifc Custom Javascript File -->
-<script src="../../public/js/custom.js"></script>
-
-<script src="../../public/contactform/contactform.js"></script>
-
-
-</body>
-
-</html>
+    <script src="../../public/contactform/contactform.js"></script>
+@endsection
