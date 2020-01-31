@@ -123,8 +123,8 @@
 
     </div>
 @yield('script')
-    <script src="../../public/lib/jquery/jquery.min.js"></script>
-
+{{--    <script src="../../public/lib/jquery/jquery.min.js"></script>--}}
     
+    <script src="../../public/js/custom.js"></script>
 </body>
 </html>
