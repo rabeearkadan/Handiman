@@ -17,7 +17,7 @@
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet" type="text/css">
 
     <!-- Styles -->
-    <link href="../../public/lib/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+{{--    <link href="../../public/lib/bootstrap/css/bootstrap.min.css" rel="stylesheet">--}}
     <link href="../../public/css/style.css" rel="stylesheet">
     <link href="../../public/css/app.css" rel="stylesheet">
 {{--    <link href="{{ asset('css/app.css') }}" rel="stylesheet">--}}
