@@ -33,8 +33,8 @@
     <link href="../../public/lib/font-awesome/css/font-awesome.min.css" rel="stylesheet">
     <link href="../../public/lib/animate-css/animate.min.css" rel="stylesheet">
 
-{{--    <!-- Main Stylesheet File -->--}}
-{{--    <link href="../../public/css/style.css" rel="stylesheet">--}}
+    <!-- Main Stylesheet File -->
+    <link href="../../public/css/style.css" rel="stylesheet">
 
     <!-- =======================================================
       Theme Name: Imperial
@@ -66,7 +66,6 @@
 @endsection
 
 @section('navContent')
-
                 <li class="menu-active"><a href="#hero">Home</a></li>
                 <li><a href="#about">About Us</a></li>
                 <li><a href="#services">Services</a></li>
