@@ -1,43 +1,35 @@
 <!DOCTYPE html>
-<html lang="en">
-{{--{{ str_replace('_', '-', app()->getLocale()) }}--}}
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 <head>
     <meta charset="utf-8">
-    <meta content="width=device-width, initial-scale=1.0" name="viewport">
-
-
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <!-- CSRF Token -->
-{{--    <meta name="csrf-token" content="{{ csrf_token() }}">--}}
+    <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <title>{{ config('app.name', 'Laravel') }}</title>
-    <link href="../../public/css/style.css" rel="stylesheet">
-    <link
-        href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,700,700i|Raleway:300,400,500,700,800"
-        rel="stylesheet">
 
-    <!-- Bootstrap CSS File -->
-    <link href="../../public/lib/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-
-    <!-- Libraries CSS Files -->
-    <link href="../../public/lib/font-awesome/css/font-awesome.min.css" rel="stylesheet">
-    <link href="../../public/lib/animate-css/animate.min.css" rel="stylesheet">
     <!-- Scripts -->
-{{--    <script src="{{ asset('js/app.js') }}" defer></script>--}}
+    <script src="{{ asset('js/app.js') }}" defer></script>
 
     <!-- Fonts -->
-{{--    <link rel="dns-prefetch" href="//fonts.gstatic.com">--}}
-{{--    <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet" type="text/css">--}}
+    <link rel="dns-prefetch" href="//fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet" type="text/css">
 
-
-    <!-- Main Stylesheet File -->
+    <!-- Styles -->
+{{--    <link href="../../public/lib/bootstrap/css/bootstrap.min.css" rel="stylesheet">--}}
 {{--    <link href="../../public/css/style.css" rel="stylesheet">--}}
+    <link href="../../public/css/app.css" rel="stylesheet">
+{{--    <link href="{{ asset('css/app.css') }}" rel="stylesheet">--}}
 
-    @yield('head')
+
+    <!-- Libraries CSS Files -->
+{{--    <link href="../../public/lib/font-awesome/css/font-awesome.min.css" rel="stylesheet">--}}
+{{--    <link href="../../public/lib/animate-css/animate.min.css" rel="stylesheet">--}}
 
 </head>
 <body>
-
+    <div id="app">
 {{--        <nav class="navbar navbar-expand-md navbar-light navbar-laravel">--}}
 {{--            <div class="container">--}}
 {{--                <a class="navbar-brand" href="{{ url('/') }}">--}}
@@ -91,12 +83,7 @@
 {{--                </div>--}}
 {{--            </div>--}}
 {{--        </nav>--}}
-<div id="preloader"></div>
-@yield('beforeHeader')
         <header id="header">
-            <div id="logo" class="pull-left">
-                <a href="#hero"><img src="../../public/img/logo.png" alt="" title=""/></a>
-            </div>
             <nav id="nav-menu-container">
                 <ul class="nav-menu">
                     @yield('navContent')
@@ -106,35 +93,9 @@
 
 
 
-
+        <main class="py-4">
             @yield('content')
-
-        <!--==========================Footer============================-->
-        <footer id="footer">
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-12">
-                        <div class="copyright">
-                            &copy; Copyright <strong>Genie Team</strong>. All Rights Reserved
-                        </div>
-                        <div class="credits">
-                            <!--
-                              All the links in the footer should remain intact.
-                              You can delete the links only if you purchased the pro version.
-                              Licensing information: https://bootstrapmade.com/license/
-                              Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/buy/?theme=Imperial
-                            -->
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </footer>
-        <!-- #footer -->
-        <a href="#" class="back-to-top"><i class="fa fa-chevron-up"></i></a>
-
-
-@yield('scripts')
-{{--    <script src="../../public/lib/jquery/jquery.min.js"></script>--}}
-{{--    <script src="../../public/js/custom.js"></script>--}}
+        </main>
+    </div>
 </body>
 </html>
