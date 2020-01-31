@@ -123,13 +123,6 @@
 
     </div>
 @yield('script')
-    <script src="../../public/lib/jquery/jquery.min.js"></script>
-    <script src="../../public/lib/bootstrap/js/bootstrap.min.js"></script>
-    <script src="../../public/lib/superfish/hoverIntent.js"></script>
-    <script src="../../public/lib/superfish/superfish.min.js"></script>
-    <script src="../../public/lib/morphext/morphext.min.js"></script>
-
-    <script src="../../public/lib/stickyjs/sticky.js"></script>
     <script src="../../public/lib/easing/easing.js"></script>
     <script src="../../public/js/custom.js"></script>
 </body>
