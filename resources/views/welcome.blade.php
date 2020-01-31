@@ -71,7 +71,7 @@
     <div class="container">
 
         <div id="logo" class="pull-left">
-            <a href="#hero"><img src="img/logo.png" alt="" title="" /></img></a>
+            <a href="#hero"><img src="../../public/img/logo.png" alt="" title="" /></a>
             <!-- Uncomment below if you prefer to use a text image -->
             <!--<h1><a href="#hero">Header 1</a></h1>-->
         </div>
