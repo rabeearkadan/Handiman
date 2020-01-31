@@ -35,8 +35,9 @@ class UserController extends Controller
         return response()->json(['status' => 'success', 'profile' => $user]);
 
     }
+
 //public function
-    function updateProfile(Request $request)
+    function editProfile(Request $request)
     {
         $user = Auth::user();
         if ($user->isClient()) {
@@ -55,11 +56,11 @@ class UserController extends Controller
             $user->profile_picture = base64_encode($params['profile_picture']);
 
             // 2d index
-            $user->location =explode(',', $params['location']);
+            $user->location = explode(',', $params['location']);
 
             $user->phone = $params['phone'];
 
-            $user->birth_date =    $params['birth_date'];
+            $user->birth_date = $params['birth_date'];
             $user->gender = $params['gender'];
             $user->time_preferences_start = $params['time_preferences_start'];
             $user->time_preferences_end = $params['time_preferences_end'];
@@ -71,44 +72,56 @@ class UserController extends Controller
 
         } else if ($user->isHandyman()) {
 
-            $params = $this->validate($request, ['profile_picture' => 'required', 'phone' => 'required',
-                'location' => 'required',
-                'birth_date' => 'required', 'gender' => 'required', 'services' => 'required', 'available_time_begin' => 'required'
-                , 'available_time_end' => 'required', 'price' => 'required', 'cv' => 'required', 'criminal_record' => 'required', 'bank_account' => 'required']);
+            $params = $this->validate(
+                $request, [
+                //   'profile_picture' => 'required',
+                'phone' => 'required',
+                'email' => 'required'
+                //'location' => 'required',
+                //'birth_date' => 'required',
+                //'gender' => 'required',
+                //'services' => 'required',
+                //'available_time_begin' => 'required'
+                //, 'available_time_end' => 'required',
+                //'price' => 'required',
+                //'cv' => 'required',
+                //'criminal_record' => 'required',
+                //'bank_account' => 'required'
+            ]);
 
 
-            $file_name = $this->uploadAny($params['profile_picture'], 'uploads');
-            $user->profile_picture = $file_name;
-
-
-            // index
-            $user->location = $params['location'];
+//            $file_name = $this->uploadAny($params['profile_picture'], 'uploads');
+//            $user->profile_picture = $file_name;
+//
+//
+//            // index
+//            $user->location = $params['location'];
 
             $user->phone = $params['phone'];
             // date form
-            $user->birth_date = $params['birth_date'];
-
-            $user->gender = $params['gender'];
-
-            //array of services
-            $user->services = $params['services'];
-            // time format
-            $user->available_time_begin = $params['available_time_begin'];
-
-            $user->available_time_end = $params['available_time_end'];
-            $user->price = $params['price'];
-
-            //array of certificates
-            $user->certificates = $params['certificates'];
-
-            //pdf
-            $user->cv = $params['cv'];
-
-            //pdf
-            $user->criminal_record = $params['criminal_record'];
-
-            $user->bank_account = $params['bank_account'];
-
+//            $user->birth_date = $params['birth_date'];
+//
+//            $user->gender = $params['gender'];
+//
+//            //array of services
+//            $user->services = $params['services'];
+//            // time format
+//            $user->available_time_begin = $params['available_time_begin'];
+//
+//            $user->available_time_end = $params['available_time_end'];
+//            $user->price = $params['price'];
+//
+//            //array of certificates
+//            $user->certificates = $params['certificates'];
+//
+//            //pdf
+//            $user->cv = $params['cv'];
+//
+//            //pdf
+//            $user->criminal_record = $params['criminal_record'];
+//
+//            $user->bank_account = $params['bank_account'];
+            $user->email = $params['email'];
             $user->save();
 
             return response()->json(['status' => 'success', 'user' => $user]);
