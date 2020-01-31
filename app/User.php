@@ -48,14 +48,12 @@ class User extends Eloquent implements
 
     public function isClient()
     {
-        return $this->role == 'user' || $this
-                ->role == 'user_employee';
+        return $this->role == 'client' ;
     }
 
     public function isHandyman()
     {
-        return $this->role == 'employee' || $this
-                ->role == 'user_employee';
+        return $this->role == 'handyman';
     }
 
     public function isAdmin()
