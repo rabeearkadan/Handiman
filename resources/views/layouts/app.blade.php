@@ -21,6 +21,12 @@
 {{--    <link href="../../public/css/style.css" rel="stylesheet">--}}
     <link href="../../public/css/app.css" rel="stylesheet">
 {{--    <link href="{{ asset('css/app.css') }}" rel="stylesheet">--}}
+
+
+    <!-- Libraries CSS Files -->
+    <link href="../../public/lib/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+    <link href="../../public/lib/animate-css/animate.min.css" rel="stylesheet">
+
 </head>
 <body>
     <div id="app">
@@ -78,23 +84,14 @@
 {{--            </div>--}}
 {{--        </nav>--}}
         <header id="header">
-          @yield('image')
-
-                <nav id="nav-menu-container">
-                    <ul class="nav-menu">
-                        <li class="menu-active"><a href="#hero">Home</a></li>
-                        <li><a href="#about">About Us</a></li>
-                        <li><a href="#services">Services</a></li>
-                        <li><a href="#portfolio">Portfolio</a></li>
-                        <li><a href="#testimonials">Testimonials</a></li>
-                        <li><a href="#team">Team</a></li>
-                        <li><a href="#contact">Contact Us</a></li>
-                        <li><a href="{{ route('login') }}">Login</a></li>
-                        <li><a href="{{ route('register') }}">Register</a></li>
-                    </ul>
-                </nav>
-                <!-- #nav-menu-container -->
+            <div id="logo" class="pull-left">
+                <a href="#hero"><img src="../../public/img/logo.png" alt="" title=""/></a>
             </div>
+            <nav id="nav-menu-container">
+                <ul class="nav-menu">
+                    @yield('navContent')
+                </ul>
+            </nav>
         </header>
 
 
