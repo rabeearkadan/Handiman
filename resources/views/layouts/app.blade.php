@@ -16,7 +16,6 @@
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet" type="text/css">
 
-{{--    <link href="../../public/css/app.css" rel="stylesheet">--}}
 
 
     <!-- Main Stylesheet File -->
@@ -122,7 +121,7 @@
         <a href="#" class="back-to-top"><i class="fa fa-chevron-up"></i></a>
 
     </div>
-@yield('script')
+@stack('scripts')
     <script src="../../public/lib/jquery/jquery.min.js"></script>
     <script src="../../public/js/custom.js"></script>
 </body>
