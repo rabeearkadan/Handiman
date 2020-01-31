@@ -1,8 +1,12 @@
-@extends('layouts.app')
+<!DOCTYPE html>
+<html lang="en">
 
-@section('head')
-{{--    <meta content="" name="keywords">--}}
-{{--    <meta content="" name="description">--}}
+<head>
+    <meta charset="utf-8">
+    <title>Imperial Boootstrap Template</title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta content="" name="keywords">
+    <meta content="" name="description">
 
     <!-- Facebook Opengraph integration: https://developers.facebook.com/docs/sharing/opengraph -->
     <meta property="og:title" content="">
@@ -33,8 +37,8 @@
     <link href="../../public/lib/font-awesome/css/font-awesome.min.css" rel="stylesheet">
     <link href="../../public/lib/animate-css/animate.min.css" rel="stylesheet">
 
-{{--    <!-- Main Stylesheet File -->--}}
-{{--    <link href="../../public/css/style.css" rel="stylesheet">--}}
+    <!-- Main Stylesheet File -->
+    <link href="../../public/css/style.css" rel="stylesheet">
 
     <!-- =======================================================
       Theme Name: Imperial
@@ -42,10 +46,9 @@
       Author: BootstrapMade.com
       Author URL: https://bootstrapmade.com
     ======================================================= -->
-@endsection
+</head>
 
-@section('beforeHeader')
-<!--========================== Hero Section ============================-->
+<body>
 <section id="hero">
     <div class="hero-container">
         <div class="wow fadeIn">
@@ -63,9 +66,7 @@
         </div>
     </div>
 </section>
-@endsection
 
-@section('navContent')
 
                 <li class="menu-active"><a href="#hero">Home</a></li>
                 <li><a href="#about">About Us</a></li>
