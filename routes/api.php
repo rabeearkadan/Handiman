@@ -17,8 +17,8 @@ Route::post('login', 'API\LoginController@login');
 Route::post('register', 'API\RegisterController@register');
 Route::post('test-notification', 'API\HandymanController@test');
 
+Route::get('getHandymanList', 'API\HandymanController@getHandyman');
 
-//Route::get('getHandymanList', 'API\HandymanController@getHandyman');
 Route::middleware('auth:api')->group(function () {
     Route::post('device-token', 'API\UserController@setDeviceToken');
     Route::get('profile-edit', 'API\UserController@getProfile');

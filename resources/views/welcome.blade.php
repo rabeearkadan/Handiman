@@ -55,6 +55,8 @@
 </head>
 
 <body>
+<div id="preloader"></div>
+
 <section id="hero">
     <div class="hero-container">
         <div class="wow fadeIn">
