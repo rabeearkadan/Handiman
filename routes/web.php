@@ -17,5 +17,7 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get("contact-us",'FRONT\HomeController@contact');
+
 Route::get("login",'Auth\LoginController@showLoginForm')->name('login');
 Route::get("register",'Auth\RegisterController@showRegistrationForm')->name('register');
+

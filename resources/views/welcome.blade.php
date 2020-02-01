@@ -37,8 +37,14 @@
     <link href="../../public/lib/font-awesome/css/font-awesome.min.css" rel="stylesheet">
     <link href="../../public/lib/animate-css/animate.min.css" rel="stylesheet">
 
+    <link href="../../public/css/style.css" rel="stylesheet">
+{{--    <!-- Main Stylesheet File -->--}}
+{{--    <link href="../../public/css/style.css" rel="stylesheet">--}}
+
+
     <!-- Main Stylesheet File -->
     <link href="../../public/css/style.css" rel="stylesheet">
+
 
     <!-- =======================================================
       Theme Name: Imperial
