@@ -48,9 +48,5 @@ class HandymanController extends Controller
         return response()->json(['status' => 'success', 'HandymanList' => $handyman]);
     }
 
-    public function addPost(Request $request)
-    {
-
-    }
 
 }
