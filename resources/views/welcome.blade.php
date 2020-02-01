@@ -1,6 +1,10 @@
-@extends('layouts.app')
+<!DOCTYPE html>
+<html lang="en">
 
-@section('head')
+<head>
+    <meta charset="utf-8">
+    <title>Imperial Boootstrap Template</title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
     <meta content="" name="keywords">
     <meta content="" name="description">
 
@@ -32,9 +36,15 @@
     <!-- Libraries CSS Files -->
     <link href="../../public/lib/font-awesome/css/font-awesome.min.css" rel="stylesheet">
     <link href="../../public/lib/animate-css/animate.min.css" rel="stylesheet">
+
     <link href="../../public/css/style.css" rel="stylesheet">
 {{--    <!-- Main Stylesheet File -->--}}
 {{--    <link href="../../public/css/style.css" rel="stylesheet">--}}
+
+
+    <!-- Main Stylesheet File -->
+    <link href="../../public/css/style.css" rel="stylesheet">
+
 
     <!-- =======================================================
       Theme Name: Imperial
@@ -42,10 +52,9 @@
       Author: BootstrapMade.com
       Author URL: https://bootstrapmade.com
     ======================================================= -->
-@endsection
+</head>
 
-@section('beforeHeader')
-<!--========================== Hero Section ============================-->
+<body>
 <section id="hero">
     <div class="hero-container">
         <div class="wow fadeIn">
@@ -63,23 +72,55 @@
         </div>
     </div>
 </section>
-@endsection
 
-@section('navContent')
+<header id="header">
+    <div class="container">
 
+        <div id="logo" class="pull-left">
+            <a href="#hero"><img src="../../public/img/logo.png" alt="" title="" /></a>
+            <!-- Uncomment below if you prefer to use a text image -->
+            <!--<h1><a href="#hero">Header 1</a></h1>-->
+        </div>
+
+        <nav id="nav-menu-container">
+            <ul class="nav-menu">
                 <li class="menu-active"><a href="#hero">Home</a></li>
                 <li><a href="#about">About Us</a></li>
                 <li><a href="#services">Services</a></li>
                 <li><a href="#portfolio">Portfolio</a></li>
                 <li><a href="#testimonials">Testimonials</a></li>
                 <li><a href="#team">Team</a></li>
-                <li><a href="#contact">Contact Us</a></li>
+                <li class="menu-has-children"><a href="">Drop Down</a>
+                    <ul>
+                        <li><a href="#">Drop Down 1</a></li>
+                        <li class="menu-has-children"><a href="#">Drop Down 2</a>
+                            <ul>
+                                <li><a href="#">Deep Drop Down 1</a></li>
+                                <li><a href="#">Deep Drop Down 2</a></li>
+                                <li><a href="#">Deep Drop Down 3</a></li>
+                                <li><a href="#">Deep Drop Down 4</a></li>
+                                <li><a href="#">Deep Drop Down 5</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="#">Drop Down 3</a></li>
+                        <li><a href="#">Drop Down 4</a></li>
+                        <li><a href="#">Drop Down 5</a></li>
+                    </ul>
+                </li>
                 <li><a href="{{ route('login') }}">Login</a></li>
                 <li><a href="{{ route('register') }}">Register</a></li>
-@endsection
+            </ul>
+        </nav>
+        <!-- #nav-menu-container -->
+    </div>
+</header>
+<!-- #header -->
 
-@section('content')
-<!--==========================About Section============================-->
+
+
+<!--==========================
+About Section
+============================-->
 <section id="about">
     <div class="container wow fadeInUp">
         <div class="row">
@@ -122,7 +163,9 @@
     </div>
 </section>
 
-<!--==========================Services Section============================-->
+<!--==========================
+Services Section
+============================-->
 <section id="services">
     <div class="container wow fadeInUp">
         <div class="row">
@@ -175,7 +218,9 @@
     </div>
 </section>
 
-<!--==========================Subscrbe Section============================-->
+<!--==========================
+Subscrbe Section
+============================-->
 <section id="subscribe">
     <div class="container wow fadeInUp">
         <div class="row">
@@ -191,7 +236,9 @@
     </div>
 </section>
 
-<!--==========================Porfolio Section============================-->
+<!--==========================
+Porfolio Section
+============================-->
 <section id="portfolio">
     <div class="container wow fadeInUp">
         <div class="row">
@@ -280,7 +327,9 @@
     </div>
 </section>
 
-<!--==========================Testimonials Section============================-->
+<!--==========================
+Testimonials Section
+============================-->
 <section id="testimonials">
     <div class="container wow fadeInUp">
         <div class="row">
@@ -330,7 +379,9 @@
     </div>
 </section>
 
-<!--==========================Team Section============================-->
+<!--==========================
+Team Section
+============================-->
 <section id="team">
     <div class="container wow fadeInUp">
         <div class="row">
@@ -403,7 +454,9 @@
     </div>
 </section>
 
-<!--==========================Contact Section============================-->
+<!--==========================
+Contact Section
+============================-->
 <section id="contact">
     <div class="container wow fadeInUp">
         <div class="row">
@@ -472,21 +525,48 @@
     </div>
 </section>
 
-@endsection
+<!--==========================
+Footer
+============================-->
+<footer id="footer">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="copyright">
+                    &copy; Copyright <strong>Genie Team</strong>. All Rights Reserved
+                </div>
+                <div class="credits">
+                    <!--
+                      All the links in the footer should remain intact.
+                      You can delete the links only if you purchased the pro version.
+                      Licensing information: https://bootstrapmade.com/license/
+                      Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/buy/?theme=Imperial
+                    -->
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+<!-- #footer -->
 
-@push('scripts')
-    <!-- Required JavaScript Libraries -->
-    <script src="../../public/lib/bootstrap/js/bootstrap.min.js"></script>
-    <script src="../../public/lib/superfish/hoverIntent.js"></script>
-    <script src="../../public/lib/superfish/superfish.min.js"></script>
-    <script src="../../public/lib/morphext/morphext.min.js"></script>
-    <script src="../../public/lib/wow/wow.min.js"></script>
-    <script src="../../public/lib/stickyjs/sticky.js"></script>
-    <script src="../../public/lib/easing/easing.js"></script>
+<a href="#" class="back-to-top"><i class="fa fa-chevron-up"></i></a>
 
-    <!-- Template Specisifc Custom Javascript File -->
-{{--    <script src="../../public/js/custom.js"></script>--}}
-    <script src="../../public/lib/jquery/jquery.min.js"></script>
-    <script src="../../public/js/custom.js"></script>
-    <script src="../../public/contactform/contactform.js"></script>
-@endpush
+<!-- Required JavaScript Libraries -->
+<script src="../../public/lib/jquery/jquery.min.js"></script>
+<script src="../../public/lib/bootstrap/js/bootstrap.min.js"></script>
+<script src="../../public/lib/superfish/hoverIntent.js"></script>
+<script src="../../public/lib/superfish/superfish.min.js"></script>
+<script src="../../public/lib/morphext/morphext.min.js"></script>
+<script src="../../public/lib/wow/wow.min.js"></script>
+<script src="../../public/lib/stickyjs/sticky.js"></script>
+<script src="../../public/lib/easing/easing.js"></script>
+
+<!-- Template Specisifc Custom Javascript File -->
+<script src="../../public/js/custom.js"></script>
+
+<script src="../../public/contactform/contactform.js"></script>
+
+
+</body>
+
+</html>
