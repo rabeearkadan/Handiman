@@ -49,6 +49,11 @@
 </head>
 
 <body>
+<div id="preloader"></div>
+
+<!--==========================
+Hero Section
+============================-->
 <section id="hero">
     <div class="hero-container">
         <div class="wow fadeIn">
