@@ -46,11 +46,11 @@ class SendNotification
 
         $notificationData = $event->notification;
 
-//        $notification = new Notification();
-//        foreach ( $notificationData as $k => $v){
-//            $notification->{$k}= $v;
-//        }
-//        $notification->save();
+        $notification = new Notification();
+        foreach ( $notificationData as $k => $v){
+            $notification->{$k}= $v;
+        }
+        $notification->save();
 
         try {
             $optionBuiler = new OptionsBuilder();
