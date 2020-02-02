@@ -1,12 +1,21 @@
 <?php
 
-namespace App\Http\Controllers;
 
+namespace App\Http\Controllers\API;
+
+
+use App\Http\Controllers\Controller;
+
+
+
+use App\Events\NotificationSenderEvent;
+use App\User;
 use Illuminate\Http\Request;
-
-class PostController extends Controller
+use Illuminate\Support\Facades\Auth;
+use phpDocumentor\Reflection\Types\Integer;
+class PostController extends  Controller
 {
-    //
+
     private static function getID($collection)
     {
 
