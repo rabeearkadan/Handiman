@@ -7,6 +7,7 @@ use App\Models\Post;
 use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
 use phpDocumentor\Reflection\Types\Integer;
 use Illuminate\Support\Str;
 
@@ -49,7 +50,9 @@ class PostController extends Controller
 
     public function uploadAny($file, $folder)
     {
+        /** @var TYPE_NAME $file */
         $file = base64_decode($file);
+        /** @var TYPE_NAME $file_name */
         $file_name = str_random(25) . '.png'; //generating unique file name;
         if (!Storage::disk('public')->exists($folder)) {
             Storage::disk('public')->makeDirectory($folder);
