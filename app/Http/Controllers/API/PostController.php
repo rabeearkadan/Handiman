@@ -14,7 +14,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use phpDocumentor\Reflection\Types\Integer;
 
-class PostsController extends  Controller
+class PostController extends  Controller
 {
 
     public static function getID($collection)
