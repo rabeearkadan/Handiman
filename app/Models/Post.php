@@ -2,11 +2,11 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Model;
+use Jenssegers\Mongodb\Eloquent\Model as Eloquent;
 
-class Post extends Model
+class Post extends Eloquent
 {
     //
     protected $table = "posts";
-   
+
 }

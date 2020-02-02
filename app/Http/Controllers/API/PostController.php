@@ -21,9 +21,9 @@ class PostController extends Controller
     public function addPost(Request $request)
     {
         $post = new Post();
-        $post->post_text = ['post_text'];
+        $post->post_text = $request->input('post_text');
         $post->user_id = Auth::user()->_id;
-        $post->request_id = $request->get('request_id'); // it maye be null
+        $post->request_id = $request->input('request_id'); // it maye be null
         $post->save();
 
         return response()->json(['status' => 'success', 'post' => $post]);
