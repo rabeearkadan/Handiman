@@ -13,10 +13,11 @@ use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use phpDocumentor\Reflection\Types\Integer;
-class PostController extends  Controller
+
+class PostsController extends  Controller
 {
 
-    private static function getID($collection)
+    public static function getID($collection)
     {
 
         $seq = \DB::getCollection('posts')->findOneAndUpdate(
@@ -27,7 +28,11 @@ class PostController extends  Controller
         return $seq->seq;
     }
 
-    public function addPost(Request $request)
+    /**
+     * @param Request $request
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public static function addPost(Request $request)
     {
         $post = new Post();
         $post->_id = self::getID(posts);
