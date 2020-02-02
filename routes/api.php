@@ -25,8 +25,9 @@ Route::middleware('auth:api')->group(function () {
     Route::put('profile-edit', 'API\UserController@editProfile');
 
     Route::post('post', 'API\PostController@addPost');
-    Route::delete('post/{post_id}', 'API\PostController@deletePost');
-    Route::put('post/{post_id}', 'API\PostController@editPost');
+
+    Route::delete('post/{id}', 'API\PostController@deletePost');
+    Route::put('post/{id}', 'API\PostController@editPost');
     Route::get('post', 'API\PostController@getPosts');
 
 
