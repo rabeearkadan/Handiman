@@ -27,7 +27,7 @@ class PostController extends  Controller
         return $seq->seq;
     }
 
-    private function addPost(Request $request)
+    public function addPost(Request $request)
     {
         $post = new Post();
         $post->_id = self::getID(posts);
