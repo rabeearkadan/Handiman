@@ -8,4 +8,9 @@ use Illuminate\Http\Request;
 class HomeController extends Controller
 {
     //
+    public function showAdminHomePage()
+    {
+        return view('adminDashboard.index');
+    }
+
 }
