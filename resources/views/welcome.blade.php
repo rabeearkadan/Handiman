@@ -1,10 +1,6 @@
-<!DOCTYPE html>
-<html lang="en">
+@extends('layouts.app')
 
-<head>
-    <meta charset="utf-8">
-    <title>Imperial Boootstrap Template</title>
-    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    @section('head')
     <meta content="" name="keywords">
     <meta content="" name="description">
 
@@ -24,7 +20,7 @@
 
     <!-- Place your favicon.ico and apple-touch-icon.png in the template root directory -->
     <link href="favicon.ico" rel="shortcut icon">
-
+   @endsection
 
 
     @push('css')
@@ -55,11 +51,11 @@
       Author: BootstrapMade.com
       Author URL: https://bootstrapmade.com
     ======================================================= -->
-</head>
+
 
 <body>
 
-
+@section('contents')
 <section id="hero">
     <div class="hero-container">
         <div class="wow fadeIn">
@@ -556,6 +552,8 @@ Footer
 <!-- #footer -->
 
 <a href="#" class="back-to-top"><i class="fa fa-chevron-up"></i></a>
+@endsection
+
 @push('script')
 <!-- Required JavaScript Libraries -->
 <script src="../../public/lib/jquery/jquery.min.js"></script>
@@ -573,6 +571,4 @@ Footer
 <script src="../../public/contactform/contactform.js"></script>
 @endpush
 
-</body>
 
-</html>
