@@ -42,4 +42,14 @@ class LoginController extends Controller
         return view('auth.login');
     }
 
+    public function doLogin($request)
+    {
+        $request->validate([
+            "email" => ['required','email'],
+            "password" => ['required']
+        ]);
+
+
+    }
+
 }
