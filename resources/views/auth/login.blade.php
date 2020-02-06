@@ -1,18 +1,26 @@
-@extends('layouts.app')
+{{--@extends('layouts.app')--}}
 {{--@section('head')--}}
 {{--    <link href="../../public/css/app.css" rel="stylesheet">--}}
 {{--@endsection--}}
-@push('css')
-        <link href="../../public/css/app.css" rel="stylesheet">
-@endpush
-@section('nav-content')
-    <li><a href="#">Home</a></li>
-@endsection
+{{--@push('css')--}}
+{{--        <link href="../../public/css/app.css" rel="stylesheet">--}}
+{{--@endpush--}}
+{{--@section('nav-content')--}}
+{{--    <li><a href="#">Home</a></li>--}}
+{{--@endsection--}}
+{{--@section('content')--}}
+{{--<div class="container">--}}
+{{--    <div class="row justify-content-center">--}}
+{{--        <div class="col-md-8">--}}
+
+@extends('layouts.app')
+
 @section('content')
-<div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-8">
+                <div class="card">
+
                 <div class="card-header">{{ __('Login') }}</div>
 
                 <div class="card-body">
