@@ -25,28 +25,31 @@
     <!-- Place your favicon.ico and apple-touch-icon.png in the template root directory -->
     <link href="favicon.ico" rel="shortcut icon">
 
+
+
+@push('css')
     <!-- Google Fonts -->
-    <link
-        href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,700,700i|Raleway:300,400,500,700,800"
-        rel="stylesheet">
+        <link
+            href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,700,700i|Raleway:300,400,500,700,800"
+            rel="stylesheet">
 
-    <!-- Bootstrap CSS File -->
-    <link href="../../public/lib/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+        <!-- Bootstrap CSS File -->
+        <link href="../../public/lib/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
-    <!-- Libraries CSS Files -->
-    <link href="../../public/lib/font-awesome/css/font-awesome.min.css" rel="stylesheet">
-    <link href="../../public/lib/animate-css/animate.min.css" rel="stylesheet">
+        <!-- Libraries CSS Files -->
+        <link href="../../public/lib/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+        <link href="../../public/lib/animate-css/animate.min.css" rel="stylesheet">
 
-    <link href="../../public/css/style.css" rel="stylesheet">
-{{--    <!-- Main Stylesheet File -->--}}
-{{--    <link href="../../public/css/style.css" rel="stylesheet">--}}
+        <link href="../../public/css/style.css" rel="stylesheet">
+    {{--    <!-- Main Stylesheet File -->--}}
+    {{--    <link href="../../public/css/style.css" rel="stylesheet">--}}
 
 
     <!-- Main Stylesheet File -->
-    <link href="../../public/css/style.css" rel="stylesheet">
+        <link href="../../public/css/style.css" rel="stylesheet">
+@endpush
 
-
-    <!-- =======================================================
+<!-- =======================================================
       Theme Name: Imperial
       Theme URL: https://bootstrapmade.com/imperial-free-onepage-bootstrap-theme/
       Author: BootstrapMade.com
@@ -55,7 +58,7 @@
 </head>
 
 <body>
-<div id="preloader"></div>
+
 
 <section id="hero">
     <div class="hero-container">
@@ -553,22 +556,22 @@ Footer
 <!-- #footer -->
 
 <a href="#" class="back-to-top"><i class="fa fa-chevron-up"></i></a>
+@push('script')
+    <!-- Required JavaScript Libraries -->
+    <script src="../../public/lib/jquery/jquery.min.js"></script>
+    <script src="../../public/lib/bootstrap/js/bootstrap.min.js"></script>
+    <script src="../../public/lib/superfish/hoverIntent.js"></script>
+    <script src="../../public/lib/superfish/superfish.min.js"></script>
+    <script src="../../public/lib/morphext/morphext.min.js"></script>
+    <script src="../../public/lib/wow/wow.min.js"></script>
+    <script src="../../public/lib/stickyjs/sticky.js"></script>
+    <script src="../../public/lib/easing/easing.js"></script>
 
-<!-- Required JavaScript Libraries -->
-<script src="../../public/lib/jquery/jquery.min.js"></script>
-<script src="../../public/lib/bootstrap/js/bootstrap.min.js"></script>
-<script src="../../public/lib/superfish/hoverIntent.js"></script>
-<script src="../../public/lib/superfish/superfish.min.js"></script>
-<script src="../../public/lib/morphext/morphext.min.js"></script>
-<script src="../../public/lib/wow/wow.min.js"></script>
-<script src="../../public/lib/stickyjs/sticky.js"></script>
-<script src="../../public/lib/easing/easing.js"></script>
+    <!-- Template Specisifc Custom Javascript File -->
+    <script src="../../public/js/custom.js"></script>
 
-<!-- Template Specisifc Custom Javascript File -->
-<script src="../../public/js/custom.js"></script>
-
-<script src="../../public/contactform/contactform.js"></script>
-
+    <script src="../../public/contactform/contactform.js"></script>
+@endpush
 
 </body>
 
