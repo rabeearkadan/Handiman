@@ -1,11 +1,4 @@
-@extends('layouts.app')
-{{--@section('head')--}}
-{{--    <link href="../../public/css/app.css" rel="stylesheet">--}}
-{{--@endsection--}}
-@section('navContent')
-    <li><a href="#">Home</a></li>
-@endsection
-@section('content')
+
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
@@ -75,4 +68,3 @@
         </div>
     </div>
 </div>
-@endsection
