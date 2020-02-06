@@ -88,7 +88,7 @@
             <ul class="nav-menu">
                 <li class="menu-active"><a href="#hero">Home</a></li>
                 <li><a href="#about">About Us</a></li>
-            
+
                 <li><a href="#team">Team</a></li>
                 <li class="menu-has-children"><a href="">Drop Down</a>
                     <ul>
@@ -369,7 +369,7 @@ Testimonials Section
             </div>
             <div class="col-md-3">
                 <div class="profile">
-                    <div class="pic"><img src="../../public/img/client-2.jpg.jpg" alt=""></div>
+                    <div class="pic"><img src="../../public/img/client-2.jpg" alt=""></div>
 
                     <h4>Sara Wilsson</h4>
                     <span>Odeo Inc</span>
@@ -551,7 +551,7 @@ Footer
 <!-- #footer -->
 
 <a href="#" class="back-to-top"><i class="fa fa-chevron-up"></i></a>
-@push('script')
+
     <!-- Required JavaScript Libraries -->
     <script src="../../public/lib/jquery/jquery.min.js"></script>
     <script src="../../public/lib/bootstrap/js/bootstrap.min.js"></script>
@@ -566,7 +566,7 @@ Footer
     <script src="../../public/js/custom.js"></script>
 
     <script src="../../public/contactform/contactform.js"></script>
-@endpush
+
 
 </body>
 
