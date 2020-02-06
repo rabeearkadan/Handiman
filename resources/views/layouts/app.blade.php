@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-     @yield('head')
+
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
@@ -16,38 +16,16 @@
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet" type="text/css">
 
-
-
-    <!-- Google Fonts -->
-    <link
-        href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,700,700i|Raleway:300,400,500,700,800"
-        rel="stylesheet">
-
-    <!-- Bootstrap CSS File -->
-    <link href="../../public/lib/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-
-    <!-- Libraries CSS Files -->
-    <link href="../../public/lib/font-awesome/css/font-awesome.min.css" rel="stylesheet">
-    <link href="../../public/lib/animate-css/animate.min.css" rel="stylesheet">
-
-    <link href="../../public/css/style.css" rel="stylesheet">
-{{--    <!-- Main Stylesheet File -->--}}
-{{--    <link href="../../public/css/style.css" rel="stylesheet">--}}
-
-
-<!-- Main Stylesheet File -->
-    <link href="../../public/css/style.css" rel="stylesheet">
-
     <!-- Styles -->
-{{--    <link href="../../public/css/app.css" rel="stylesheet">--}}
+    <link href="../../public/css/app.css" rel="stylesheet">
 {{--    <link href="{{ asset('css/app.css') }}" rel="stylesheet">--}}
-    @stack('css')
+
 
 
 
 </head>
 <body>
-
+    <div id="app">
 {{--        <nav class="navbar navbar-expand-md navbar-light navbar-laravel">--}}
 {{--            <div class="container">--}}
 {{--                <a class="navbar-brand" href="{{ url('/') }}">--}}
@@ -113,38 +91,9 @@
 
 
 
-{{--        <main class="py-4">--}}
-            <div id="preloader"></div>
-           @yield('pre-header')
-<header id="header">
-    <div class="container">
-
-        <div id="logo" class="pull-left">
-            <a href="#hero"><img src="../../public/img/logo.png" alt="" title="" /></a>
-            <!-- Uncomment below if you prefer to use a text image -->
-            <!--<h1><a href="#hero">Header 1</a></h1>-->
-        </div>
-
-        <nav id="nav-menu-container">
-            <ul class="nav-menu">
-                @yield('nav-content')
-                    </ul>
-                </li>
-                <li><a href="{{ route('login') }}">Login</a></li>
-                <li><a href="{{ route('register') }}">Register</a></li>
-                <li><a href="{{route('admin')}}">Admin</a> </li>
-            </ul>
-        </nav>
-        <!-- #nav-menu-container -->
-    </div>
-</header>
-<!-- #header -->
-
+        <main class="py-4">
             @yield('content')
-{{--        </main>--}}
-
-    @stack('script')
-<script src="../../public/lib/jquery/jquery.min.js"></script>
-<script src="../../public/js/custom.js"></script>
+        </main>
+    </div>
 </body>
 </html>
