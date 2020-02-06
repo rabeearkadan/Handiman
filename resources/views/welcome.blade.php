@@ -27,7 +27,7 @@
 
 
 
-
+@push('css')
     <!-- Google Fonts -->
         <link
             href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,700,700i|Raleway:300,400,500,700,800"
@@ -47,6 +47,7 @@
 
     <!-- Main Stylesheet File -->
         <link href="../../public/css/style.css" rel="stylesheet">
+@endpush
 
 <!-- =======================================================
       Theme Name: Imperial
@@ -57,7 +58,7 @@
 </head>
 
 <body>
-<div id="preloader"></div>
+
 
 <section id="hero">
     <div class="hero-container">
@@ -555,7 +556,7 @@ Footer
 <!-- #footer -->
 
 <a href="#" class="back-to-top"><i class="fa fa-chevron-up"></i></a>
-
+@push('script')
     <!-- Required JavaScript Libraries -->
     <script src="../../public/lib/jquery/jquery.min.js"></script>
     <script src="../../public/lib/bootstrap/js/bootstrap.min.js"></script>
@@ -570,7 +571,7 @@ Footer
     <script src="../../public/js/custom.js"></script>
 
     <script src="../../public/contactform/contactform.js"></script>
-
+@endpush
 
 </body>
 
