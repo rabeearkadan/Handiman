@@ -55,7 +55,7 @@
 </head>
 
 <body>
-
+<div id="preloader"></div>
 
 <section id="hero">
     <div class="hero-container">
@@ -74,7 +74,6 @@
         </div>
     </div>
 </section>
-
 <header id="header">
     <div class="container">
 
