@@ -76,7 +76,29 @@
 @endsection
 
 
-
+@section('nav-content')
+    <li class="menu-active"><a href="#hero">Home</a></li>
+    <li><a href="#about">About Us</a></li>
+    <li><a href="#services">Services</a></li>
+    <li><a href="#portfolio">Portfolio</a></li>
+    <li><a href="#testimonials">Testimonials</a></li>
+    <li><a href="#team">Team</a></li>
+    <li class="menu-has-children"><a href="">Drop Down</a>
+        <ul>
+            <li><a href="#">Drop Down 1</a></li>
+            <li class="menu-has-children"><a href="#">Drop Down 2</a>
+                <ul>
+                    <li><a href="#">Deep Drop Down 1</a></li>
+                    <li><a href="#">Deep Drop Down 2</a></li>
+                    <li><a href="#">Deep Drop Down 3</a></li>
+                    <li><a href="#">Deep Drop Down 4</a></li>
+                    <li><a href="#">Deep Drop Down 5</a></li>
+                </ul>
+            </li>
+            <li><a href="#">Drop Down 3</a></li>
+            <li><a href="#">Drop Down 4</a></li>
+            <li><a href="#">Drop Down 5</a></li>
+    @endsection
 
 
 @section('content')
@@ -516,7 +538,7 @@ Footer
 
 @push('script')
 <!-- Required JavaScript Libraries -->
-<script src="../../public/lib/jquery/jquery.min.js"></script>
+{{--<script src="../../public/lib/jquery/jquery.min.js"></script>--}}
 <script src="../../public/lib/bootstrap/js/bootstrap.min.js"></script>
 <script src="../../public/lib/superfish/hoverIntent.js"></script>
 <script src="../../public/lib/superfish/superfish.min.js"></script>
@@ -526,7 +548,7 @@ Footer
 <script src="../../public/lib/easing/easing.js"></script>
 
 <!-- Template Specisifc Custom Javascript File -->
-<script src="../../public/js/custom.js"></script>
+{{--<script src="../../public/js/custom.js"></script>--}}
 
 <script src="../../public/contactform/contactform.js"></script>
 @endpush

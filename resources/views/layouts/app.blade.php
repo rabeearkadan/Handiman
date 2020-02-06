@@ -16,6 +16,28 @@
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet" type="text/css">
 
+
+
+    <!-- Google Fonts -->
+    <link
+        href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,700,700i|Raleway:300,400,500,700,800"
+        rel="stylesheet">
+
+    <!-- Bootstrap CSS File -->
+    <link href="../../public/lib/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Libraries CSS Files -->
+    <link href="../../public/lib/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+    <link href="../../public/lib/animate-css/animate.min.css" rel="stylesheet">
+
+    <link href="../../public/css/style.css" rel="stylesheet">
+{{--    <!-- Main Stylesheet File -->--}}
+{{--    <link href="../../public/css/style.css" rel="stylesheet">--}}
+
+
+<!-- Main Stylesheet File -->
+    <link href="../../public/css/style.css" rel="stylesheet">
+
     <!-- Styles -->
 {{--    <link href="../../public/css/app.css" rel="stylesheet">--}}
 {{--    <link href="{{ asset('css/app.css') }}" rel="stylesheet">--}}
@@ -105,27 +127,7 @@
 
         <nav id="nav-menu-container">
             <ul class="nav-menu">
-                <li class="menu-active"><a href="#hero">Home</a></li>
-                <li><a href="#about">About Us</a></li>
-                <li><a href="#services">Services</a></li>
-                <li><a href="#portfolio">Portfolio</a></li>
-                <li><a href="#testimonials">Testimonials</a></li>
-                <li><a href="#team">Team</a></li>
-                <li class="menu-has-children"><a href="">Drop Down</a>
-                    <ul>
-                        <li><a href="#">Drop Down 1</a></li>
-                        <li class="menu-has-children"><a href="#">Drop Down 2</a>
-                            <ul>
-                                <li><a href="#">Deep Drop Down 1</a></li>
-                                <li><a href="#">Deep Drop Down 2</a></li>
-                                <li><a href="#">Deep Drop Down 3</a></li>
-                                <li><a href="#">Deep Drop Down 4</a></li>
-                                <li><a href="#">Deep Drop Down 5</a></li>
-                            </ul>
-                        </li>
-                        <li><a href="#">Drop Down 3</a></li>
-                        <li><a href="#">Drop Down 4</a></li>
-                        <li><a href="#">Drop Down 5</a></li>
+                @yield('nav-content')
                     </ul>
                 </li>
                 <li><a href="{{ route('login') }}">Login</a></li>
@@ -142,5 +144,7 @@
 {{--        </main>--}}
 
     @stack('script')
+<script src="../../public/lib/jquery/jquery.min.js"></script>
+<script src="../../public/js/custom.js"></script>
 </body>
 </html>

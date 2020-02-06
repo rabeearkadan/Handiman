@@ -5,7 +5,7 @@
 @push('css')
         <link href="../../public/css/app.css" rel="stylesheet">
 @endpush
-@section('navContent')
+@section('nav-content')
     <li><a href="#">Home</a></li>
 @endsection
 @section('content')
