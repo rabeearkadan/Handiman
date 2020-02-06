@@ -2,6 +2,9 @@
 {{--@section('head')--}}
 {{--    <link href="../../public/css/app.css" rel="stylesheet">--}}
 {{--@endsection--}}
+@push('css')
+        <link href="../../public/css/app.css" rel="stylesheet">
+@endpush
 @section('navContent')
     <li><a href="#">Home</a></li>
 @endsection
