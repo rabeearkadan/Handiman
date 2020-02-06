@@ -44,6 +44,8 @@ class HandymanController extends Controller
         $notification['object'] = [];
 
         event(new NotificationSenderEvent($notification));
+
+        return response()->json(['status' => 'success', 'notification' => $notification]);
     }
 
     public function getHandyman()
