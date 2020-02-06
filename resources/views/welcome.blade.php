@@ -27,8 +27,6 @@
 
 
 
-@push('css')
-    <!-- Google Fonts -->
         <link
             href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,700,700i|Raleway:300,400,500,700,800"
             rel="stylesheet">
@@ -47,7 +45,6 @@
 
     <!-- Main Stylesheet File -->
         <link href="../../public/css/style.css" rel="stylesheet">
-@endpush
 
 <!-- =======================================================
       Theme Name: Imperial
@@ -91,9 +88,7 @@
             <ul class="nav-menu">
                 <li class="menu-active"><a href="#hero">Home</a></li>
                 <li><a href="#about">About Us</a></li>
-                <li><a href="#services">Services</a></li>
-                <li><a href="#portfolio">Portfolio</a></li>
-                <li><a href="#testimonials">Testimonials</a></li>
+            
                 <li><a href="#team">Team</a></li>
                 <li class="menu-has-children"><a href="">Drop Down</a>
                     <ul>
