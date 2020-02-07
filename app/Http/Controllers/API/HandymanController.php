@@ -33,14 +33,17 @@ class HandymanController extends Controller
 
         return response()->json(['status' => 'success', 'post' => $post]);
     }
+
     public function test()
     {
         $notification = array();
 
-        $notification['to'] = 'd4PngEqIj-I:APA91bEq7B9CIzTERYwqwPb-Kn0uUNeLbCl17VllZAmomklcbOmd2kX9jv1R9uWJu9jvPrcAhJ-J5uSaGbgemLe651eUQARGYi5gc03KuBlOwg0NXt8vHpYD5_kkCPStIzeEHQuwQA_S';
+
+        $notification['to'] = 'dT5Brv8QrJo:APA91bHAPBYNHJUSUbY_X9yzVmTIjbazslmJ831oc4mgvlnX5F1tJDzsuJT8ISOE4u6VVz752q1pHxzXvdOq9PbKRTtFaoLN_C6MDGXMyJIpUCE1Ay5tQ3eXsEewzNMIhDzJl0z-Xd5L';
+
         $notification['user'] = "admin";
         $notification['message'] = "test";
-        $notification['type'] = 'comment';
+        $notification['type'] = 'comment';// maybe "notification", "comment(message)", "request","message"
         $notification['object'] = [];
 
         event(new NotificationSenderEvent($notification));
