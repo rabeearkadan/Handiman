@@ -26,6 +26,7 @@ class PostController extends Controller
     {
         Post::query()->find()->delete($id);
 
+        return response()->json(['status' => 'success']);
     }
 
     public function addPost(Request $request)
