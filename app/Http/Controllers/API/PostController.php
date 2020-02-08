@@ -22,8 +22,9 @@ class PostController extends Controller
     }
 
     public function deletePost($id)
+
     {
-       Post.$this->deletePost($id);
+        Post::query()->find()->delete($id);
 
     }
 
