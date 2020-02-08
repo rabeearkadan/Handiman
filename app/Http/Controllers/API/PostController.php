@@ -21,6 +21,12 @@ class PostController extends Controller
         return response()->json(['status' => 'success', 'post' => $post]);
     }
 
+    public function deletePost($id)
+    {
+       Post.$this->deletePost($id);
+
+    }
+
     public function addPost(Request $request)
     {
         $params = $this->validate($request, [
@@ -54,7 +60,7 @@ class PostController extends Controller
         /** @var TYPE_NAME $file */
         $file = base64_decode($file);
         /** @var TYPE_NAME $file_name */
-        $file_name =   Str::random(25) . '.png'; //generating unique file name;
+        $file_name = Str::random(25) . '.png'; //generating unique file name;
         if (!Storage::disk('public')->exists($folder)) {
             Storage::disk('public')->makeDirectory($folder);
         }
