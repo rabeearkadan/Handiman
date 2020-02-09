@@ -72,8 +72,7 @@
                         </li>
                         <li class="btn-group nav-item">
                             <a href="javascript:void(0);" class="nav-link">
-<!--                                <i class="nav-link-icon fa fa-edit"></i>-->
-                                <i class="fa fa-arrow-right"></i>
+                                <i class="nav-link-icon fa fa-edit"></i>
                                 Projects
                             </a>
                         </li>
@@ -435,7 +434,7 @@
                             <ul class="vertical-nav-menu">
                                 <li class="app-sidebar__heading">Dashboards</li>
                                 <li>
-                                    <a href="index.html" class="mm-active">
+                                    <a href="index.php" class="mm-active">
                                         <i class="metismenu-icon pe-7s-rocket"></i>
                                         Dashboard Example 1
                                     </a>
