@@ -9,10 +9,7 @@ use Illuminate\Http\Request;
 class ServiceController extends Controller
 {
     //
-    public function showAdminHomePage()
-    {
-        return view('adminDashboard.index');
-    }
+
 
     public function addService($request)
     {
@@ -21,7 +18,7 @@ class ServiceController extends Controller
         $service->service = $request->input('service');
         $service->save();
         return response()->json(['status' => 'success']);
-        //  return view('auth.login');
+
 
     }
 
@@ -30,7 +27,7 @@ class ServiceController extends Controller
         $services = Service::query()->get();
         return response()->json(['status' => 'success', 'services' => $services]);
 
-
     }
+
 
 }

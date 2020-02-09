@@ -74,53 +74,65 @@ class UserController extends Controller
 
             $params = $this->validate(
                 $request, [
-                //   'profile_picture' => 'required',
+                'profile_picture' => 'required',
                 'phone' => 'required',
-                'email' => 'required'
-                //'location' => 'required',
-                //'birth_date' => 'required',
-                //'gender' => 'required',
-                //'services' => 'required',
-                //'available_time_begin' => 'required'
-                //, 'available_time_end' => 'required',
-                //'price' => 'required',
-                //'cv' => 'required',
-                //'criminal_record' => 'required',
-                //'bank_account' => 'required'
+                'email' => 'required',
+                'location' => 'required',
+                'birth_date' => 'required',
+                'gender' => 'required',
+                'services' => 'required',
+                'available_time_begin' => 'required'
+                , 'available_time_end' => 'required',
+                'price' => 'required',
+                'cv' => 'required',
+                'criminal_record' => 'required',
+                'bank_account' => 'required'
             ]);
 
 
-//            $file_name = $this->uploadAny($params['profile_picture'], 'uploads');
-//            $user->profile_picture = $file_name;
-//
-//
-//            // index
-//            $user->location = $params['location'];
+            $file_name = $this->uploadAny($params['profile_picture'], 'uploads');
+            $user->profile_picture = $file_name;
 
+
+            $user->monday[0] = $params['monday_start'];
+            $user->monday[1] = $params['monday_end'];
+            $user->tuesday[0] = $params['tuesday_start'];
+            $user->tuesday[1] = $params['tuesday_end'];
+            $user->wednesday[0] = $params['wednesday_start'];
+            $user->wednesday[1] = $params['wednesday_end'];
+            $user->thursday[0] = $params['thursday_start'];
+            $user->thursday[1] = $params['thursday_end'];
+            $user->friday[0] = $params['friday_start'];
+            $user->friday[1] = $params['friday_end'];
+            $user->saturday[0] = $params['saturday_start'];
+            $user->saturday[1] = $params['saturday_end'];
+            $user->sunday[0] = $params['sunday_start'];
+            $user->sunday[1] = $params['sunday_end'];
+
+            // index
+            $user->location[0] = $params['location_longitude'];
+            $user->location[1] = $params['location_latitude'];
+
+            $user->biography = $params['biography'];
             $user->phone = $params['phone'];
-            // date form
-//            $user->birth_date = $params['birth_date'];
-//
-//            $user->gender = $params['gender'];
-//
-//            //array of services
-//            $user->services = $params['services'];
-//            // time format
-//            $user->available_time_begin = $params['available_time_begin'];
-//
-//            $user->available_time_end = $params['available_time_end'];
-//            $user->price = $params['price'];
-//
-//            //array of certificates
-//            $user->certificates = $params['certificates'];
-//
-//            //pdf
-//            $user->cv = $params['cv'];
-//
-//            //pdf
-//            $user->criminal_record = $params['criminal_record'];
-//
-//            $user->bank_account = $params['bank_account'];
+//             date form
+            $user->birth_date = $params['birth_date'];
+
+            $user->gender = $params['gender'];
+
+            $user->service = $params['service'];
+
+            $user->available_time_begin = $params['available_time_begin'];
+            $user->available_time_end = $params['available_time_end'];
+            $user->price = $params['price'];
+
+            $user->certificates = $params['certificates'];
+            $user->cv = $params['cv'];
+
+            //pdf
+            $user->criminal_record = $params['criminal_record'];
+
+            $user->bank_account = $params['bank_account'];
             $user->email = $params['email'];
             $user->save();
 
