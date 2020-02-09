@@ -57,12 +57,12 @@ class PostController extends Controller
 
     }
 
-    public function uploadAny($file, $folder)
+    public function uploadAny($file, $folder, $ext = 'png')
     {
         /** @var TYPE_NAME $file */
         $file = base64_decode($file);
         /** @var TYPE_NAME $file_name */
-        $file_name = Str::random(25) . '.png'; //generating unique file name;
+        $file_name = Str::random(25) . '.'.$ext; //generating unique file name;
         if (!Storage::disk('public')->exists($folder)) {
             Storage::disk('public')->makeDirectory($folder);
         }
