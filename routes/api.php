@@ -18,6 +18,10 @@ Route::post('register', 'API\RegisterController@register');
 Route::post('test-notification', 'API\HandymanController@test');
 
 Route::get('getHandymanList', 'API\HandymanController@getHandyman');
+Route::get('getHandymenByService','API\HandymanController@getHandymenByService');
+Route::get('getHandymanSortedByLocation','API\HandymanController@getHandymanOrderedByLocation');
+Route::get('getHandymanSortedByPrice','API\HnaydmanController@getHandymanOrderedByPrice');
+
 
 Route::middleware('auth:api')->group(function () {
     Route::post('device-token', 'API\UserController@setDeviceToken');

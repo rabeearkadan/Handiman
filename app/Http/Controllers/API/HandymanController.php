@@ -62,6 +62,35 @@ class HandymanController extends Controller
         return response()->json(['status' => 'success', 'HandymanList' => $handymanList]);
     }
 
+    public function getHandymenByService($service)
+    {
+        $handymanList = User::query()->where('service', $service)->get();
+        return response()->json(['status' => 'success', 'HandymanList' => $handymanList]);
+    }
+
+    public function getHandymanByLocation($longitude, $latitude)
+    {
+        $handymanList = User::where('location', 'near', [
+            '$geometry' => [
+                'type' => 'Point',
+                'coordinates' => [
+                    $longitude, // longitude
+                    $latitude, // latitude
+                ],
+            ],
+        ])->get();
+        return response()->json(['status' => 'success', 'HandymanList' => $handymanList]);
+    }
+
+    public function getHandymanOrderedByPrice()
+    {
+        $handymanList = User::query()
+            ->where('role', 'handyman')
+            ->where('isApproved', true)
+            ->orderBy('price', 'desc')
+            ->get();
+    }
+
 
     public function getHandymanById($id)
     {

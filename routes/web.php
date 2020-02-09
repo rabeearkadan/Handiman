@@ -27,3 +27,6 @@ Route::get("register", 'Auth\RegisterController@showRegistrationForm')->name('re
 
 Route::get("admin", 'CMS\HomeController@showAdminHomePage')->name('admin');
 
+
+Route::post('addService', 'CMS\ServiceController@addService');
+Route::get('getServices', 'CMS\ServiceController@getServices');

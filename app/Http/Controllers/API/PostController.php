@@ -61,6 +61,7 @@ class PostController extends Controller
     {
         /** @var TYPE_NAME $file */
         $file = base64_decode($file);
+
         /** @var TYPE_NAME $file_name */
         $file_name = Str::random(25) . '.'.$ext; //generating unique file name;
         if (!Storage::disk('public')->exists($folder)) {
