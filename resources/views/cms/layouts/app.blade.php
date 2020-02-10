@@ -16,6 +16,8 @@
     @stack('css')
 </head>
 <body>
+<div class="app-container app-theme-white body-tabs-shadow fixed-sidebar fixed-header">
+
 @include('cms.layouts.header')
 
 @include('cms.layouts.sidebar')
@@ -29,7 +31,7 @@
         @include('cms.layouts.footer')
     </div>
 </div>
-
+</div>
 <script type="text/javascript" src="{{asset('scripts/main.js')}}"></script>
 
 @stack('js')
