@@ -18,15 +18,10 @@
 <body>
 @include('cms.layouts.header')
 
-@include('cms.layouts.sidebar')
-
-<div class="app-container app-theme-white body-tabs-shadow fixed-sidebar fixed-header">
+{{--@include('cms.layouts.sidebar')--}}
 
 <div class="app-main">
     @include('cms.layouts.sidebar')
-
-    <div class="app-container app-theme-white body-tabs-shadow fixed-sidebar fixed-header">
-
     <div class="app-main__outer">
         <div class="app-main__inner">
             @yield('content')
@@ -34,7 +29,7 @@
         @include('cms.layouts.footer')
     </div>
 </div>
-</div></div>
+</div>
 <script type="text/javascript" src="{{asset('scripts/main.js')}}"></script>
 
 @stack('js')
