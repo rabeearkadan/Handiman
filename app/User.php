@@ -61,4 +61,11 @@ class User extends Eloquent implements
         return $this->role == 'admin';
     }
 
+    /**
+     * @param string $dateFormat
+     */
+    public function setDateFormat(string $dateFormat): void
+    {
+        $this->dateFormat = $dateFormat;
+    }
 }

@@ -127,10 +127,13 @@ class UserController extends Controller
             $user->price = $params['price'];
 
             $user->certificates = $params['certificates'];
-            $user->cv = $params['cv'];
 
-            //pdf
-            $user->criminal_record = $params['criminal_record'];
+
+            $file_name2 = $this->uploadAny($params['criminal_record'], 'uploads');
+            $user->criminal_record = $file_name2;
+
+            $file_name3 = $this->uploadAny($params['cv'], 'uploads');
+            $user->cv = $file_name3;
 
             $user->bank_account = $params['bank_account'];
             $user->email = $params['email'];
