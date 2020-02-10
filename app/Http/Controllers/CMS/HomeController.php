@@ -10,7 +10,8 @@ class HomeController extends Controller
     //
     public function showAdminHomePage()
     {
-        return view('adminDashboard.index');
+        return view('cms.dashboard.index');
     }
+    //try it now
 
 }

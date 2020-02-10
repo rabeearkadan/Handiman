@@ -92,8 +92,10 @@ class UserController extends Controller
 
             $file_name = $this->uploadAny($params['profile_picture'], 'uploads');
             $user->profile_picture = $file_name;
-
-
+            $timeline = [
+                //wod7et
+              '1'=>[$params['monday_start'],$params['monday_end']]
+            ];
             $user->monday[0] = $params['monday_start'];
             $user->monday[1] = $params['monday_end'];
             $user->tuesday[0] = $params['tuesday_start'];
@@ -110,8 +112,9 @@ class UserController extends Controller
             $user->sunday[1] = $params['sunday_end'];
 
             // index
-            $user->location[0] = $params['location_longitude'];
-            $user->location[1] = $params['location_latitude'];
+            // is this functional?
+            //try to simpl okay fe sha8le
+            $user->location= [$params['lat'],$params['lng']];
 
             $user->biography = $params['biography'];
             $user->phone = $params['phone'];
