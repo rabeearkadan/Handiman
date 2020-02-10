@@ -249,7 +249,7 @@
                     </li>
                     <li class="app-sidebar__heading">Charts</li>
                     <li>
-                        <a href="charts-chartjs.html">
+                        <a href="charts.blade.php">
                             <i class="metismenu-icon pe-7s-graph2">
                             </i>ChartJS
                         </a>
