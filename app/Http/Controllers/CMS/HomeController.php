@@ -12,6 +12,10 @@ class HomeController extends Controller
     {
         return view('cms.dashboard.index');
     }
+    public function showChartsPage()
+    {
+        return view('cms.layouts.charts');
+    }
     //try it now
 
 }
