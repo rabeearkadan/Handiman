@@ -67,6 +67,7 @@
                         <li class="nav-item">
                             <a href="javascript:void(0);" class="nav-link">
                                 <i class="nav-link-icon fa fa-database"> </i>
+                                <i class="fa-linkedin"></i>
                                 Statistics
                             </a>
                         </li>
@@ -516,16 +517,6 @@
                                         <i class="metismenu-state-icon pe-7s-angle-down caret-left"></i>
                                     </a>
                                     <ul
-
-
-
-
-
-
-
-
-
-
 
                                     >
                                         <li>
