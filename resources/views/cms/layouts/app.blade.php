@@ -20,8 +20,17 @@
 
 @include('cms.layouts.sidebar')
 
+<div class="app-main">
+    <div class="app-main__outer">
+        <div class="app-main__inner">
+
+            @include('cms.layouts.sidebar')
+            @yield('content')
+        </div>
         @include('cms.layouts.footer')
-   
+    </div>
+</div>
+</div>
 <script type="text/javascript" src="{{asset('scripts/main.js')}}"></script>
 
 @stack('js')
