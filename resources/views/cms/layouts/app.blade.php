@@ -21,10 +21,9 @@
 @include('cms.layouts.sidebar')
 
 <div class="app-main">
+    @include('cms.layouts.sidebar')
     <div class="app-main__outer">
         <div class="app-main__inner">
-
-            @include('cms.layouts.sidebar')
             @yield('content')
         </div>
         @include('cms.layouts.footer')
