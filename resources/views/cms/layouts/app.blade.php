@@ -20,16 +20,14 @@
 
 @include('cms.layouts.sidebar')
 
-<div class="app-main">
-    @include('cms.layouts.sidebar')
-    <div class="app-main__outer">
-        <div class="app-main__inner">
-            @yield('content')
-        </div>
+{{--<div class="app-main">--}}
+{{--    @include('cms.layouts.sidebar')--}}
+{{--    <div class="app-main__outer">--}}
+{{--        <div class="app-main__inner">--}}
+{{--            @yield('content')--}}
+{{--        </div>--}}
         @include('cms.layouts.footer')
-    </div>
-</div>
-</div>
+{{--    </div>--}}
 <script type="text/javascript" src="{{asset('scripts/main.js')}}"></script>
 
 @stack('js')
