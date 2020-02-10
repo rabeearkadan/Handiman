@@ -68,7 +68,7 @@
                         <li class="nav-item">
                             <a href="javascript:void(0);" class="nav-link">
                                 <i class="nav-link-icon fa fa-database"> </i>
-                                <i class="fa fa-facebook"></i>
+                                <i class="fa-facebook-official></i>
                                 Statistics
                             </a>
                         </li>
