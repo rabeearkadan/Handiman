@@ -15,7 +15,7 @@ class ServiceController extends Controller
     public function index()
     {
         //
-        return view('cms.services.index');
+        return view('cms.index');
     }
 
     /**

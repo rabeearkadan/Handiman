@@ -12,9 +12,16 @@ class HomeController extends Controller
     {
         return view('cms.dashboard.index');
     }
+
     public function showChartsPage()
     {
         return view('cms.layouts.charts');
+    }
+
+    public function showUsers()
+    {
+        return view('cms.layouts.users', ['users' => User::all()]);
+
     }
     //try it now
 

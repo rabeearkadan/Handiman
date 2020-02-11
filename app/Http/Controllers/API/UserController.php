@@ -53,7 +53,7 @@ class UserController extends Controller
                 'payment_method' => 'required',
                 'apartment_details' => 'required']);
 
-            $user->profile_picture = base64_encode($params['profile_picture']);
+            $user->profile_picture = uploa($params['profile_picture']);
 
             // 2d index
             $user->location = explode(',', $params['location']);
