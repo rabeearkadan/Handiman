@@ -142,6 +142,7 @@ return [
         Illuminate\Auth\AuthServiceProvider::class,
         Illuminate\Broadcasting\BroadcastServiceProvider::class,
         Illuminate\Bus\BusServiceProvider::class,
+
         Illuminate\Cache\CacheServiceProvider::class,
         Illuminate\Foundation\Providers\ConsoleSupportServiceProvider::class,
         Illuminate\Cookie\CookieServiceProvider::class,
@@ -176,7 +177,7 @@ return [
         App\Providers\RouteServiceProvider::class,
         Jenssegers\Mongodb\MongodbServiceProvider::class,
         LaravelFCM\FCMServiceProvider::class,
-
+        Yajra\DataTables\DataTablesServiceProvider::class,
     ],
 
     /*
@@ -229,7 +230,7 @@ return [
         'View' => Illuminate\Support\Facades\View::class,
         'FCM'      => LaravelFCM\Facades\FCM::class,
         'FCMGroup' => LaravelFCM\Facades\FCMGroup::class, // Optional
-
+        'DataTables' => Yajra\DataTables\Facades\DataTables::class,
     ],
 
 ];

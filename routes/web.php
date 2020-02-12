@@ -26,15 +26,6 @@ Route::put("login", 'Auth\LoginController@doLogin')->name('login');
 Route::get("register", 'Auth\RegisterController@showRegistrationForm')->name('register');
 
 
-Route::get("charts", 'CMS\HomeController@showChartsPage')->name('charts');
-
-Route::post('addService', 'CMS\ServiceController@addService');
-Route::get('getServices', 'CMS\ServiceController@getServices');
-
 
 // admin page route
-Route::get("admin", 'CMS\HomeController@showAdminHomePage')->name('admin');
-Route::get("getUsers", 'CMS\UsersController@showUsers');
-Route::get("getHandyman", 'CMS\UserController@showHandymanList');
-Route::post("addService/{service}", 'CMS\ServiceController@addService');
-Route::get("getServices", 'CMS\ServiceController@getServices');
+

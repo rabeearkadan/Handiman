@@ -46,6 +46,8 @@ class RouteServiceProvider extends ServiceProvider
 
         $this->mapWebRoutes();
 
+        $this->cmsWebRoutes();
+
         //
     }
 
@@ -61,6 +63,14 @@ class RouteServiceProvider extends ServiceProvider
         Route::middleware('web')
              ->namespace($this->namespace)
              ->group(base_path('routes/web.php'));
+    }
+
+    protected function cmsWebRoutes()
+    {
+        Route::middleware(['web'])
+            ->namespace($this->namespace.'\CMS')
+            ->prefix('admin')
+            ->group(base_path('routes/cms.php'));
     }
 
     /**
