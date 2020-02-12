@@ -17,7 +17,7 @@
                         <tbody>
                        @foreach($services as $service)
                            <tr>
-                               <th scope="row">{{$loop->iterator}}</th>
+                               <th scope="row">{{$loop->index +1 }}</th>
                                <td>{{$service->name}}</td>
                                <td>{{$service->users()->count()}}</td>
                                <td>action to be added</td>
