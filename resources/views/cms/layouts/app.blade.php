@@ -19,8 +19,6 @@
 <div class="app-container app-theme-white body-tabs-shadow fixed-sidebar fixed-header">
 @include('cms.layouts.header')
 
-@include('cms.layouts.sidebar')
-
 <div class="app-main">
     @include('cms.layouts.sidebar')
     <div class="app-main__outer">
