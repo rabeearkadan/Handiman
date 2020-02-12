@@ -61,5 +61,5 @@ class User extends Eloquent implements
         return $this->role == 'admin';
     }
 
-    
+
 }
