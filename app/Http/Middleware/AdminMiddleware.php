@@ -16,7 +16,8 @@ class AdminMiddleware
      */
     public function handle($request, Closure $next)
     {
-        dd('message vhjvjh');
+        if ( !Auth::check())
+            return route("login");
 
         $user = Auth::user();
         if ( $user->role = 'admin' ){

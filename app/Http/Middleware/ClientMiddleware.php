@@ -16,6 +16,9 @@ class ClientMiddleware
      */
     public function handle($request, Closure $next)
     {
+        if ( !Auth::check())
+            return route("login");
+
         $user = Auth::user();
         if ( $user->role = 'user' || $user->role == "user_employee"){
             return $next($request);
