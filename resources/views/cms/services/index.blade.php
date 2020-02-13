@@ -24,7 +24,7 @@
                                <td>
                                    <a href="{{route('service.edit', $service->id)}}"><i class="pe-7s-pen"> </i></a>
                                    <a href="{{route('service.show', $service->id)}}"><i class="pe-7s-display"> </i></a>
-                                   // modal as popup delete to be added
+{{--                                   // modal as popup delete to be added--}}
                                    <i class="pe-7s-trash"> </i>
                                </td>
                            </tr>

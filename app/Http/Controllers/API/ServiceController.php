@@ -21,11 +21,6 @@ class ServiceController extends Controller
 
 
     }
-    // hayde 3amela la raje3 live data eza bdak
-
-
-    //sorry again  ik 3ashen json :p // so hyde l function not for cms its for api
-    // rabee ana keteba as a json la jareba bas heye fe3leyan lal admin w bda traje view ma3 data
 
     public function getServices()
     {

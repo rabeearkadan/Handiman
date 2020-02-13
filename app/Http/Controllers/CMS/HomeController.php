@@ -23,6 +23,5 @@ class HomeController extends Controller
         return view('cms.layouts.users', ['users' => User::all()]);
 
     }
-    //try it now
 
 }
