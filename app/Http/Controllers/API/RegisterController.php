@@ -57,7 +57,7 @@ class RegisterController extends Controller
             'name' => ['required', 'string', 'max:255'],
             'phone'=>['required','string','max:30','unique:users'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
-             'role'=>['required','string','max:255'],
+            'role'=>['required','string','max:255'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
         ]);
     }
