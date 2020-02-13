@@ -21,7 +21,7 @@ Route::get('getHandymanList', 'API\HandymanController@getHandyman');
 Route::get('getHandymenByService', 'API\HandymanController@getHandymenByService');
 Route::get('getHandymanSortedByLocation', 'API\HandymanController@getHandymanOrderedByLocation');
 Route::get('getHandymanSortedByPrice', 'API\HandymanController@getHandymanOrderedByPrice');
-
+Route::get('getServices','API\ServiceController@getServices');
 
 Route::middleware('auth:api')->group(function () {
     Route::post('device-token', 'API\UserController@setDeviceToken');
