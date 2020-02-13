@@ -49,7 +49,7 @@
                         </a>
                     </li>
                     <li>
-                        <a href="" class="mm-active">
+                        <a href="" class="mm">
                             <i class="metismenu-icon pe-7s-rocket"></i>
                             Employees
                         </a>

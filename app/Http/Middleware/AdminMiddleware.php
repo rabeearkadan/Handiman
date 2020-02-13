@@ -16,6 +16,8 @@ class AdminMiddleware
      */
     public function handle($request, Closure $next)
     {
+        dd('message vhjvjh');
+
         $user = Auth::user();
         if ( $user->role = 'admin' ){
             return $next($request);
