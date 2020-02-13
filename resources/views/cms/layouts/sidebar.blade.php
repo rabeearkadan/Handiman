@@ -43,13 +43,13 @@
                     </li>
                     <li class="app-sidebar__heading">Users</li>
                     <li>
-                        <a href="{{route('')}}" class="mm-active">
+                        <a href="" class="mm-active">
                             <i class="metismenu-icon pe-7s-rocket"></i>
                             Clients
                         </a>
                     </li>
                     <li>
-                        <a href="{{route('')}}" class="mm-active">
+                        <a href="" class="mm-active">
                             <i class="metismenu-icon pe-7s-rocket"></i>
                             Employees
                         </a>
