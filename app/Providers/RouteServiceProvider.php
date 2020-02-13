@@ -47,6 +47,8 @@ class RouteServiceProvider extends ServiceProvider
         $this->mapWebRoutes();
 
         $this->cmsWebRoutes();
+        $this->funWebRoutes();
+        $this->authWebRoutes();
 
         //
     }
@@ -58,16 +60,32 @@ class RouteServiceProvider extends ServiceProvider
      *
      * @return void
      */
+    // for general website ( aboutus , contact us , homepage .....)
     protected function mapWebRoutes()
     {
         Route::middleware('web')
              ->namespace($this->namespace)
              ->group(base_path('routes/web.php'));
     }
-
+    // for employee access
+    protected function funWebRoutes()
+    {
+        Route::middleware(['web','auth:employee'])
+            ->namespace($this->namespace.'\FRONT\Handyman')
+            ->prefix('employee')
+            ->group(base_path('routes/function.php'));
+    }
+    // for user access
+    protected function authWebRoutes()
+    {
+        Route::middleware(['web','auth:client'])
+            ->namespace($this->namespace.'\FRONT\Client')
+            ->group(base_path('routes/auth.php'));
+    }
+    // for admin access
     protected function cmsWebRoutes()
     {
-        Route::middleware(['web'])
+        Route::middleware(['web', 'auth:admin'])
             ->namespace($this->namespace.'\CMS')
             ->prefix('admin')
             ->group(base_path('routes/cms.php'));
@@ -84,7 +102,7 @@ class RouteServiceProvider extends ServiceProvider
     {
         Route::prefix('api')
              ->middleware('api')
-             ->namespace($this->namespace)
+             ->namespace($this->namespace.'\API')
              ->group(base_path('routes/api.php'));
     }
 }

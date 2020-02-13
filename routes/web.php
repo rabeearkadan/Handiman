@@ -25,6 +25,7 @@ Route::put("login", 'Auth\LoginController@doLogin')->name('login');
 
 Route::get("register", 'Auth\RegisterController@showRegistrationForm')->name('register');
 
+Route::get("home","FRONT\HomeController@getHomePage");
 
 
 // admin page route

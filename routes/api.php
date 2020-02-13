@@ -13,9 +13,9 @@ use Illuminate\Http\Request;
 |
 */
 
-Route::post('login', 'API\LoginController@login');
-Route::post('register', 'API\RegisterController@register');
-Route::post('test-notification', 'API\HandymanController@test');
+Route::post('login', 'LoginController@login');
+Route::post('register', 'RegisterController@register');
+Route::post('test-notification', 'HandymanController@test');
 
 Route::get('getHandymanList', 'API\HandymanController@getHandyman');
 Route::get('getHandymenByService', 'API\HandymanController@getHandymenByService');
@@ -23,21 +23,46 @@ Route::get('getHandymanSortedByLocation', 'API\HandymanController@getHandymanOrd
 Route::get('getHandymanSortedByPrice', 'API\HandymanController@getHandymanOrderedByPrice');
 Route::get('getServices','API\ServiceController@getServices');
 
-Route::middleware('auth:api')->group(function () {
-    Route::post('device-token', 'API\UserController@setDeviceToken');
-    Route::get('profile-edit', 'API\UserController@getProfile');
-    Route::put('profile-edit', 'API\UserController@editProfile');
-
-    Route::post('post', 'API\PostController@addPost');
-
-    Route::delete('post/{id}', 'API\PostController@deletePost');
-    Route::put('post/{id}', 'API\PostController@editPost');
-    Route::get('post', 'API\PostController@getPosts');
+Route::get('getHandymanList', 'HandymanController@getHandyman');
+Route::get('getHandymenByService', 'HandymanController@getHandymenByService');
+Route::get('getHandymanSortedByLocation', 'HandymanController@getHandymanOrderedByLocation');
+Route::get('getHandymanSortedByPrice', 'HandymanController@getHandymanOrderedByPrice');
 
 
-    // Route::put('profile/edit', 'API\UserController@editProfile');
-    //Route::get('profile/edit', 'API\UserController@getProfile');
-    ////Route::get('logout', 'API\UserController@logout');
+Route::middleware(['auth:api','employee'])->group(function () {
+    Route::post('device-token', 'UserController@setDeviceToken');
+    Route::get('profile-edit', 'UserController@getProfile');
+    Route::put('profile-edit', 'UserController@editProfile');
+
+    Route::post('post', 'PostController@addPost');
+
+    Route::delete('post/{id}', 'PostController@deletePost');
+    Route::put('post/{id}', 'PostController@editPost');
+    Route::get('post', 'PostController@getPosts');
+
+
+    // Route::put('profile/edit', 'UserController@editProfile');
+    //Route::get('profile/edit', 'UserController@getProfile');
+    ////Route::get('logout', 'UserController@logout');
+
+});
+
+
+Route::middleware(['auth:api','client'])->group(function () {
+    Route::post('device-token', 'UserController@setDeviceToken');
+    Route::get('profile-edit', 'UserController@getProfile');
+    Route::put('profile-edit', 'UserController@editProfile');
+
+    Route::post('post', 'PostController@addPost');
+
+    Route::delete('post/{id}', 'PostController@deletePost');
+    Route::put('post/{id}', 'PostController@editPost');
+    Route::get('post', 'PostController@getPosts');
+
+
+    // Route::put('profile/edit', 'UserController@editProfile');
+    //Route::get('profile/edit', 'UserController@getProfile');
+    ////Route::get('logout', 'UserController@logout');
 
 });
 

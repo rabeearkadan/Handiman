@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\FRONT;
+namespace App\Http\Controllers\FRONT\Client;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
@@ -10,6 +10,6 @@ class HomeController extends Controller
     //
 
     public function index( Request $request ){
-        return view ('front.handyman.home');
+        return view ('front.client.home');
     }
 }
