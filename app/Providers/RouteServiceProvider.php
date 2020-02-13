@@ -70,7 +70,7 @@ class RouteServiceProvider extends ServiceProvider
     // for employee access
     protected function funWebRoutes()
     {
-        Route::middleware(['web','auth:employee'])
+        Route::middleware(['web','auth','employee'])
             ->namespace($this->namespace.'\FRONT\Handyman')
             ->prefix('employee')
             ->group(base_path('routes/function.php'));
@@ -78,14 +78,14 @@ class RouteServiceProvider extends ServiceProvider
     // for user access
     protected function authWebRoutes()
     {
-        Route::middleware(['web','auth:client'])
+        Route::middleware(['web','auth','client'])
             ->namespace($this->namespace.'\FRONT\Client')
             ->group(base_path('routes/auth.php'));
     }
     // for admin access
     protected function cmsWebRoutes()
     {
-        Route::middleware(['web', 'auth:admin'])
+        Route::middleware(['web', 'auth','admin'])
             ->namespace($this->namespace.'\CMS')
             ->prefix('admin')
             ->group(base_path('routes/cms.php'));
