@@ -17,11 +17,12 @@ Route::post('login', 'LoginController@login');
 Route::post('register', 'RegisterController@register');
 Route::post('test-notification', 'HandymanController@test');
 
-Route::get('getHandymanList', 'API\HandymanController@getHandyman');
-Route::get('getHandymenByService', 'API\HandymanController@getHandymenByService');
-Route::get('getHandymanSortedByLocation', 'API\HandymanController@getHandymanOrderedByLocation');
-Route::get('getHandymanSortedByPrice', 'API\HandymanController@getHandymanOrderedByPrice');
-Route::get('getServices','API\ServiceController@getServices');
+Route::get('getHandymanList', 'HandymanController@getHandyman');
+Route::get('getHandymenByService', 'HandymanController@getHandymenByService');
+Route::get('getHandymanSortedByLocation', 'HandymanController@getHandymanOrderedByLocation');
+Route::get('getHandymanSortedByPrice', 'HandymanController@getHandymanOrderedByPrice');
+
+Route::get('getServices','ServiceController@getServices');
 
 Route::get('getHandymanList', 'HandymanController@getHandyman');
 Route::get('getHandymenByService', 'HandymanController@getHandymenByService');
