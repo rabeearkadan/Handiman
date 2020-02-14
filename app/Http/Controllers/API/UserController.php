@@ -75,7 +75,7 @@ class UserController extends Controller
 
             $params = $this->validate(
                 $request, [
-                'profile_picture' => 'required',
+
                 'phone' => 'required',
                 'email' => 'required',
 //                'location' => 'required',
@@ -90,9 +90,12 @@ class UserController extends Controller
 //                'bank_account' => 'required'
             ]);
 
-
-            $file_name = $this->uploadAny($params['profile_picture'], 'uploads');
+          $profile_picture=  $request->input('profile_picture');
+            $file_name = $this->uploadAny($profile_picture, 'uploads');
             $user->profile_picture = $file_name;
+
+            $user->email = $params['email'];
+            $user->phone = $params['phone'];
 //            $timeline = [
 //                //wod7et
 //              '1'=>[$params['monday_start'],$params['monday_end']]
@@ -118,7 +121,6 @@ class UserController extends Controller
 //        //    $user->location= [$params['lat'],$params['lng']];
 //
 //            $user->biography = $params['biography'];
-            $user->phone = $params['phone'];
 //             date form
            // $user->birth_date = $params['birth_date'];
 
@@ -140,7 +142,6 @@ class UserController extends Controller
             //$user->cv = $file_name3;
 
             //$user->bank_account = $params['bank_account'];
-            $user->email = $params['email'];
             $user->save();
 
             return response()->json(['status' => 'success', 'user' => $user]);
