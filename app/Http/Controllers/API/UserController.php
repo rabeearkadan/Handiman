@@ -93,31 +93,31 @@ class UserController extends Controller
 
             $file_name = $this->uploadAny($params['profile_picture'], 'uploads');
             $user->profile_picture = $file_name;
-            $timeline = [
-                //wod7et
-              '1'=>[$params['monday_start'],$params['monday_end']]
-            ];
-            $user->monday[0] = $params['monday_start'];
-            $user->monday[1] = $params['monday_end'];
-            $user->tuesday[0] = $params['tuesday_start'];
-            $user->tuesday[1] = $params['tuesday_end'];
-            $user->wednesday[0] = $params['wednesday_start'];
-            $user->wednesday[1] = $params['wednesday_end'];
-            $user->thursday[0] = $params['thursday_start'];
-            $user->thursday[1] = $params['thursday_end'];
-            $user->friday[0] = $params['friday_start'];
-            $user->friday[1] = $params['friday_end'];
-            $user->saturday[0] = $params['saturday_start'];
-            $user->saturday[1] = $params['saturday_end'];
-            $user->sunday[0] = $params['sunday_start'];
-            $user->sunday[1] = $params['sunday_end'];
-
-            // index
-            // is this functional?
-            //try to simpl okay fe sha8le
-        //    $user->location= [$params['lat'],$params['lng']];
-
-            $user->biography = $params['biography'];
+//            $timeline = [
+//                //wod7et
+//              '1'=>[$params['monday_start'],$params['monday_end']]
+//            ];
+//            $user->monday[0] = $params['monday_start'];
+//            $user->monday[1] = $params['monday_end'];
+//            $user->tuesday[0] = $params['tuesday_start'];
+//            $user->tuesday[1] = $params['tuesday_end'];
+//            $user->wednesday[0] = $params['wednesday_start'];
+//            $user->wednesday[1] = $params['wednesday_end'];
+//            $user->thursday[0] = $params['thursday_start'];
+//            $user->thursday[1] = $params['thursday_end'];
+//            $user->friday[0] = $params['friday_start'];
+//            $user->friday[1] = $params['friday_end'];
+//            $user->saturday[0] = $params['saturday_start'];
+//            $user->saturday[1] = $params['saturday_end'];
+//            $user->sunday[0] = $params['sunday_start'];
+//            $user->sunday[1] = $params['sunday_end'];
+//
+//            // index
+//            // is this functional?
+//            //try to simpl okay fe sha8le
+//        //    $user->location= [$params['lat'],$params['lng']];
+//
+//            $user->biography = $params['biography'];
             $user->phone = $params['phone'];
 //             date form
            // $user->birth_date = $params['birth_date'];
