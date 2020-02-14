@@ -79,6 +79,7 @@ class HandymanController extends Controller
                     $longitude, // longitude
                     $latitude, // latitude
                 ],
+                //max distance 50km
             ],
         ])->get();
         return response()->json(['status' => 'success', 'HandymanList' => $handymanList]);

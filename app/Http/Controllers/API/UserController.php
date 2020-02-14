@@ -40,7 +40,8 @@ class UserController extends Controller
     function editProfile(Request $request)
     {
         $user = Auth::user();
-        if ($user->isClient()) {
+     $role=   $request->input('post_text');
+        if ($role=="client") {
 
             $params = $this->validate($request, [
                 'profile_picture' => 'required',
@@ -53,7 +54,7 @@ class UserController extends Controller
                 'payment_method' => 'required',
                 'apartment_details' => 'required']);
 
-            $user->profile_picture = uploa($params['profile_picture']);
+            $user->profile_picture = upload($params['profile_picture']);
 
             // 2d index
             $user->location = explode(',', $params['location']);
@@ -70,7 +71,7 @@ class UserController extends Controller
             return response()->json(['status' => 'success', 'user' => $user]);
 
 
-        } else if ($user->isHandyman()) {
+        } else if ($role=="handyman") {
 
             $params = $this->validate(
                 $request, [
