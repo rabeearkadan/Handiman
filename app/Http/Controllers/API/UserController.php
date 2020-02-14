@@ -6,6 +6,8 @@ use App\Http\Controllers\Controller;
 use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Str;
 use phpDocumentor\Reflection\DocBlock\Tags\Return_;
 
 class UserController extends Controller
@@ -160,10 +162,14 @@ class UserController extends Controller
         return response()->json(['status' => 'success', 'message' => 'logged out']);
     }
 
-    public function uploadAny($file, $folder)
+
+    public function uploadAny($file, $folder, $ext = 'png')
     {
+        /** @var TYPE_NAME $file */
         $file = base64_decode($file);
-        $file_name = str_random(25) . '.png'; //generating unique file name;
+
+        /** @var TYPE_NAME $file_name */
+        $file_name = Str::random(25) . '.'.$ext; //generating unique file name;
         if (!Storage::disk('public')->exists($folder)) {
             Storage::disk('public')->makeDirectory($folder);
         }
