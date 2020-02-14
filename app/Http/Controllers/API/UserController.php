@@ -40,7 +40,7 @@ class UserController extends Controller
     function editProfile(Request $request)
     {
         $user = Auth::user();
-     $role=   $request->input('post_text');
+     $role=   $request->input('role');
         if ($role=="client") {
 
             $params = $this->validate($request, [
