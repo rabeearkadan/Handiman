@@ -77,16 +77,16 @@ class UserController extends Controller
                 'profile_picture' => 'required',
                 'phone' => 'required',
                 'email' => 'required',
-                'location' => 'required',
-                'birth_date' => 'required',
-                'gender' => 'required',
-                'services' => 'required',
-                'available_time_begin' => 'required'
-                , 'available_time_end' => 'required',
-                'price' => 'required',
-                'cv' => 'required',
-                'criminal_record' => 'required',
-                'bank_account' => 'required'
+//                'location' => 'required',
+//                'birth_date' => 'required',
+//                'gender' => 'required',
+//                'services' => 'required',
+//                'available_time_begin' => 'required'
+//                , 'available_time_end' => 'required',
+//                'price' => 'required',
+//                'cv' => 'required',
+//                'criminal_record' => 'required',
+//                'bank_account' => 'required'
             ]);
 
 
@@ -114,31 +114,31 @@ class UserController extends Controller
             // index
             // is this functional?
             //try to simpl okay fe sha8le
-            $user->location= [$params['lat'],$params['lng']];
+        //    $user->location= [$params['lat'],$params['lng']];
 
             $user->biography = $params['biography'];
             $user->phone = $params['phone'];
 //             date form
-            $user->birth_date = $params['birth_date'];
+           // $user->birth_date = $params['birth_date'];
 
-            $user->gender = $params['gender'];
+            //$user->gender = $params['gender'];
 
-            $user->service = $params['service'];
+            //$user->service = $params['service'];
 
-            $user->available_time_begin = $params['available_time_begin'];
-            $user->available_time_end = $params['available_time_end'];
-            $user->price = $params['price'];
+            //$user->available_time_begin = $params['available_time_begin'];
+            //$user->available_time_end = $params['available_time_end'];
+            //$user->price = $params['price'];
 
-            $user->certificates = $params['certificates'];
+            //$user->certificates = $params['certificates'];
 
 
-            $file_name2 = $this->uploadAny($params['criminal_record'], 'uploads');
-            $user->criminal_record = $file_name2;
+            //$file_name2 = $this->uploadAny($params['criminal_record'], 'uploads');
+            //$user->criminal_record = $file_name2;
 
-            $file_name3 = $this->uploadAny($params['cv'], 'uploads');
-            $user->cv = $file_name3;
+            //$file_name3 = $this->uploadAny($params['cv'], 'uploads');
+            //$user->cv = $file_name3;
 
-            $user->bank_account = $params['bank_account'];
+            //$user->bank_account = $params['bank_account'];
             $user->email = $params['email'];
             $user->save();
 

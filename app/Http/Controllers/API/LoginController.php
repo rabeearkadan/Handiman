@@ -48,6 +48,8 @@ class LoginController extends Controller
 
         if ($this->attemptLogin($request)) {
 
+            // check
+
             $token = Str::random(300);
             $request->user()->forceFill([
                 'api_token' => $token
