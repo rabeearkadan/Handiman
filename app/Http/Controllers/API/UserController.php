@@ -71,7 +71,7 @@ class UserController extends Controller
             return response()->json(['status' => 'success', 'user' => $user]);
 
 
-        } else if ($role.equalTo("handyman")) {
+        } else if ($role=="handyman") {
 
             $params = $this->validate(
                 $request, [
