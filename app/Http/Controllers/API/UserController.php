@@ -5,10 +5,13 @@ namespace App\Http\Controllers\API;
 use App\Http\Controllers\Controller;
 use App\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
+use mysql_xdevapi\Exception;
 use phpDocumentor\Reflection\DocBlock\Tags\Return_;
+use phpDocumentor\Reflection\Types\Integer;
 
 class UserController extends Controller
 {
@@ -17,8 +20,6 @@ class UserController extends Controller
     public function setDeviceToken(Request $request)
     {
         $user = Auth::user();
-
-        //validate request
 
         $params = $this->validate($request, ['device_token' => 'required', 'device_platform' => 'required']);
 
@@ -42,116 +43,87 @@ class UserController extends Controller
     function editProfile(Request $request)
     {
         $user = Auth::user();
-     $role=   $request->input('role');
-        if ($role=="client") {
 
-            $params = $this->validate($request, [
-                'profile_picture' => 'required',
-                'phone' => 'required',
-                'location' => 'required',
-                'birth_date' => 'required',
-                'gender' => 'required',
-                'time_preferences_start' => 'required',
-                'time_preferences_end' => 'required',
-                'payment_method' => 'required',
-                'apartment_details' => 'required']);
+        $params = $this->validate($request, [
+// common info
+            'profile_picture' => 'optional',
+            'location' => 'optional',
+            'birth_date' => 'optional',
+            'gender' => 'optional',
+            'bank_account' => 'optional',
+// user extra info
+            'time_preferences_start' => 'optional',
+            'time_preferences_end' => 'optional',
+            'payment_method' => 'optional',
+            'apartment_details' => 'optional',
+// employee extra info
+            'cv' => 'optional',
+            'certificates' => 'optional',
+            'timeline' => 'optional',
+            'criminal_record' => 'optional',
+            'service' => 'optional',
+            'biography' => 'optional'
 
-            $user->profile_picture = upload($params['profile_picture']);
 
-            // 2d index
+        ]);
+
+        if (Arr::has($params, 'profile_picture'))
+            $user->profile_picture = $this->uploadAny($params['profile_picture'], 'uploads');
+
+        if (Arr::has($params, 'birth_date'))
+            $user->birth_date = $params['birth_date'];
+
+        if (Arr::has($params, 'location'))
             $user->location = explode(',', $params['location']);
 
-            $user->phone = $params['phone'];
-
-            $user->birth_date = $params['birth_date'];
+        if (Arr::has($params, 'gender'))
             $user->gender = $params['gender'];
+        if (Arr::has($params, ['time_preferences_start', 'time_preferences_end'])) {
             $user->time_preferences_start = $params['time_preferences_start'];
             $user->time_preferences_end = $params['time_preferences_end'];
 
-            $user->save();
+        }
+        if (Arr::has($params, 'payment_method'))
+            $user->payment_method = $params['payment_method'];
+        if (Arr::has($params, 'apartment_details'))
+            $user->apartment_details = $params['apartment_details'];
+        /*
+         *
+                   'timeline' => 'optional',
+                   'criminal_record' => 'optional',
+                   'service' => 'optional',
+                   'biography' => 'optional'
+         */
+        if (Arr::has($params, 'cv'))
+            $user->cv = $this->uploadAny('cv', $params['cv'], '.pdf');
+        if (Arr::has($params, 'certificates')) {
+            $certificates[] = $params['certificates'];
+            $index = 0;
+            foreach ($certificates as $certificate) {
+                $index++;
+                try {
+                    $user->certificates = [
+                        $index => $this->uploadAny('certificates', $certificate, '.pdf')
+                    ];
+                } catch (\Exception $e) {
+                    return response()->json(['status' => 'error', 'message' => "error uploading certificate"]);
+                }
 
-            return response()->json(['status' => 'success', 'user' => $user]);
-
-
-        } else if ($role=="handyman") {
-
-            $params = $this->validate(
-                $request, [
-
-                'phone' => 'required',
-                'email' => 'required',
-//                'location' => 'required',
-//                'birth_date' => 'required',
-//                'gender' => 'required',
-//                'services' => 'required',
-//                'available_time_begin' => 'required'
-//                , 'available_time_end' => 'required',
-//                'price' => 'required',
-//                'cv' => 'required',
-//                'criminal_record' => 'required',
-//                'bank_account' => 'required'
-            ]);
-
-          $profile_picture=  $request->input('profile_picture');
-            $file_name = $this->uploadAny($profile_picture, 'uploads');
-            $user->profile_picture = $file_name;
-
-            $user->email = $params['email'];
-            $user->phone = $params['phone'];
-//            $timeline = [
-//                //wod7et
-//              '1'=>[$params['monday_start'],$params['monday_end']]
-//            ];
-//            $user->monday[0] = $params['monday_start'];
-//            $user->monday[1] = $params['monday_end'];
-//            $user->tuesday[0] = $params['tuesday_start'];
-//            $user->tuesday[1] = $params['tuesday_end'];
-//            $user->wednesday[0] = $params['wednesday_start'];
-//            $user->wednesday[1] = $params['wednesday_end'];
-//            $user->thursday[0] = $params['thursday_start'];
-//            $user->thursday[1] = $params['thursday_end'];
-//            $user->friday[0] = $params['friday_start'];
-//            $user->friday[1] = $params['friday_end'];
-//            $user->saturday[0] = $params['saturday_start'];
-//            $user->saturday[1] = $params['saturday_end'];
-//            $user->sunday[0] = $params['sunday_start'];
-//            $user->sunday[1] = $params['sunday_end'];
-//
-//            // index
-//            // is this functional?
-//            //try to simpl okay fe sha8le
-//        //    $user->location= [$params['lat'],$params['lng']];
-//
-//            $user->biography = $params['biography'];
-//             date form
-           // $user->birth_date = $params['birth_date'];
-
-            //$user->gender = $params['gender'];
-
-            //$user->service = $params['service'];
-
-            //$user->available_time_begin = $params['available_time_begin'];
-            //$user->available_time_end = $params['available_time_end'];
-            //$user->price = $params['price'];
-
-            //$user->certificates = $params['certificates'];
+            }
+        }
+        if (Arr::has($params, 'timeline')) {
+            $user->timeline = [
+// to be continued
+                '1' => [$params['monday_start'], $params['monday_end']],
+                '2' => [$params['tuesday_start']]
 
 
-            //$file_name2 = $this->uploadAny($params['criminal_record'], 'uploads');
-            //$user->criminal_record = $file_name2;
-
-            //$file_name3 = $this->uploadAny($params['cv'], 'uploads');
-            //$user->cv = $file_name3;
-
-            //$user->bank_account = $params['bank_account'];
-            $user->save();
-
-            return response()->json(['status' => 'success', 'user' => $user]);
-
-        } else if ($user->isAdmin()) {
-
+            ];
         }
 
+            $user->save();
+
+        return response()->json(['status' => 'success', 'user' => $user]);
 
     }
 
@@ -169,7 +141,7 @@ class UserController extends Controller
         $file = base64_decode($file);
 
         /** @var TYPE_NAME $file_name */
-        $file_name = Str::random(25) . '.'.$ext; //generating unique file name;
+        $file_name = Str::random(25) . '.' . $ext; //generating unique file name;
         if (!Storage::disk('public')->exists($folder)) {
             Storage::disk('public')->makeDirectory($folder);
         }

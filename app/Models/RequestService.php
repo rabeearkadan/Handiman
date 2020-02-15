@@ -5,7 +5,7 @@ namespace App\Models;
 use Jenssegers\Mongodb\Eloquent\Model as Eloquent;
 use Illuminate\Database\Eloquent\Model;
 
-class Request extends Model
+class RequestService extends Model
 {
     //
     protected $table='requests';

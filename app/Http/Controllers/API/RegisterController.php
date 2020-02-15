@@ -82,7 +82,7 @@ class RegisterController extends Controller
         $user->save();
         return $user;
     }
-
+    //on new users ? or on update users ?Update
     public function register(Request $request)
     {
         $this->validator($request->all())->validate();
