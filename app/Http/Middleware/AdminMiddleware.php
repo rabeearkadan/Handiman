@@ -20,7 +20,7 @@ class AdminMiddleware
             return route("login");
 
         $user = Auth::user();
-        if ( $user->role = 'admin' ){
+        if ( $user->user_role = 'admin' ){
             return $next($request);
         }else{
             abort(403);
