@@ -44,7 +44,7 @@ class UserController extends Controller
     {
         $user = Auth::user();
 
-        $params = $this->validate($request, [
+        $params = $request->validate($request, [
 // common info
             'profile_picture' => 'optional',
             'location' => 'optional',
