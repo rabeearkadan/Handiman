@@ -9,6 +9,9 @@ use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
+use mysql_xdevapi\Exception;
+use phpDocumentor\Reflection\DocBlock\Tags\Return_;
+use phpDocumentor\Reflection\Types\Integer;
 
 class UserController extends Controller
 {
@@ -39,31 +42,31 @@ class UserController extends Controller
 //public function
     public function editProfile(Request $request)
     {
-        $user = User::query()->find(Auth::id());
+        $user = Auth::user();
 
-        $params = $request->only([
+        $params = $this->validate($request, [
 // common info
-            'profile_picture',
-            'location' ,
-            'birth_date' ,
-            'gender' ,
-            'bank_account' ,
+            'profile_picture' => 'optional',
+            'location' => 'optional',
+            'birth_date' => 'optional',
+            'gender' => 'optional',
+            'bank_account' => 'optional',
 // user extra info
-            'time_preferences_start' ,
-            'time_preferences_end' ,
-            'payment_method' ,
-            'apartment_details' ,
+            'time_preferences_start' => 'optional',
+            'time_preferences_end' => 'optional',
+            'payment_method' => 'optional',
+            'apartment_details' => 'optional',
 // employee extra info
-            'cv' ,
-            'certificates' ,
-            'timeline' ,
-            'criminal_record' ,
-            'service' ,
-            'biography'
+            'cv' => 'optional',
+            'certificates' => 'optional',
+            'timeline' => 'optional',
+            'criminal_record' => 'optional',
+            'service' => 'optional',
+            'biography' => 'optional'
 
 
         ]);
-        dd($params);
+
         if (Arr::has($params, 'profile_picture'))
             $user->profile_picture = $this->uploadAny($params['profile_picture'], 'uploads');
 
