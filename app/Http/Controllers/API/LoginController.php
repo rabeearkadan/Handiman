@@ -53,14 +53,14 @@ class LoginController extends Controller
             // check
 
             $token = Str::random(300);
-//            $request->user()->forceFill([
-//                'api_token' => $token
-//            ])->save();
+            $request->user()->forceFill([
+                'api_token' => $token
+            ])->save();
             Log::info($request->user());
             return response()->json([
                 'status' => 'success',
                 'user' => $request->user()
-                //, 'token' => $token
+                , 'token' => $token
 
             ]);
         }
