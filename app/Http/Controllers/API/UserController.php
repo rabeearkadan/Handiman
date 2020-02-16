@@ -66,6 +66,7 @@ class UserController extends Controller
 
 
         ]);
+        dd($params);
         if (Arr::has($params, 'profile_picture'))
             $user->profile_picture = $this->uploadAny($params['profile_picture'], 'uploads');
 
