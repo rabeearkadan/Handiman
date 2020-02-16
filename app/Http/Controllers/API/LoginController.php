@@ -44,10 +44,8 @@ class LoginController extends Controller
 
     public function login(Request $request)
     {
-        $this->validateLogin($request);
-
-        Log::info($request->all());
-
+        $res = $this->validateLogin($request);
+        Log::info($res);
         if ($this->attemptLogin($request)) {
 
             // check
@@ -56,7 +54,6 @@ class LoginController extends Controller
             $request->user()->forceFill([
                 'api_token' => $token
             ])->save();
-            Log::info($request->user());
             return response()->json([
                 'status' => 'success',
                 'user' => $request->user()
