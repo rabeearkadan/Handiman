@@ -7,6 +7,7 @@ use App\Providers\RouteServiceProvider;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Str;
 
 class LoginController extends Controller
@@ -45,19 +46,21 @@ class LoginController extends Controller
     {
         $this->validateLogin($request);
 
+        Log::info($request->all());
 
         if ($this->attemptLogin($request)) {
 
             // check
 
             $token = Str::random(300);
-            $request->user()->forceFill([
-                'api_token' => $token
-            ])->save();
+//            $request->user()->forceFill([
+//                'api_token' => $token
+//            ])->save();
+            Log::info($request->user());
             return response()->json([
                 'status' => 'success',
-                'user' => $request->user(),
-                'token' => $token
+                'user' => $request->user()
+                //, 'token' => $token
 
             ]);
         }
