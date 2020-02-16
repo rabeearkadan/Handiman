@@ -2,4 +2,4 @@
 // users
 
 
-Route::get('/','HomeController@index')->name('client.home');
+Route::get('/home','HomeController@index')->name('client.home');
