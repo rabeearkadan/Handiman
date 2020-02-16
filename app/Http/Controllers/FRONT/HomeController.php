@@ -10,6 +10,6 @@ class HomeController extends Controller
     //
 
     public function index( Request $request ){
-        return view ('front.handyman.home');
+        return view ('front.home');
     }
 }
