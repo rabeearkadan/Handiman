@@ -56,8 +56,9 @@ class HandymanController extends Controller
 
         $handymanList =
             User::query()->
-            where('role', 'handyman')->
-            where('isApproved', true)->get();
+            where('user_role', 'employee')
+                ->orWhere('user_role', 'user_employee')
+                ->where('isApproved', true)->get();
 
         return response()->json(['status' => 'success', 'HandymanList' => $handymanList]);
     }
