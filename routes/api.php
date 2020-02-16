@@ -54,7 +54,7 @@ Route::middleware(['auth:api'])->group(function () {
     //all routes related to user and handyman
     Route::post('device-token', 'UserController@setDeviceToken');
     Route::get('profile-edit', 'UserController@getProfile');
-    Route::put('profile-edit', 'UserController@editProfile');
+    Route::post('profile-edit', 'UserController@editProfile');
 
 
     // Route::put('profile/edit', 'UserController@editProfile');
