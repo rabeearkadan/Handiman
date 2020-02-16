@@ -44,25 +44,25 @@ class UserController extends Controller
     {
         $user = Auth::user();
 
-        $params = $request->validate($request, [
+        $params = $request->only( [
 // common info
-            'profile_picture' => 'optional',
-            'location' => 'optional',
-            'birth_date' => 'optional',
-            'gender' => 'optional',
-            'bank_account' => 'optional',
+            'profile_picture',
+            'location' ,
+            'birth_date' ,
+            'gender' ,
+            'bank_account' ,
 // user extra info
-            'time_preferences_start' => 'optional',
-            'time_preferences_end' => 'optional',
-            'payment_method' => 'optional',
-            'apartment_details' => 'optional',
+            'time_preferences_start' ,
+            'time_preferences_end' ,
+            'payment_method' ,
+            'apartment_details' ,
 // employee extra info
-            'cv' => 'optional',
-            'certificates' => 'optional',
-            'timeline' => 'optional',
-            'criminal_record' => 'optional',
-            'service' => 'optional',
-            'biography' => 'optional'
+            'cv' ,
+            'certificates' ,
+            'timeline' ,
+            'criminal_record' ,
+            'service' ,
+            'biography'
 
 
         ]);
