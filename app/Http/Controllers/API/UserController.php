@@ -9,9 +9,6 @@ use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
-use mysql_xdevapi\Exception;
-use phpDocumentor\Reflection\DocBlock\Tags\Return_;
-use phpDocumentor\Reflection\Types\Integer;
 
 class UserController extends Controller
 {
@@ -40,7 +37,7 @@ class UserController extends Controller
     }
 
 //public function
-    function editProfile(Request $request)
+    public function editProfile(Request $request)
     {
         $user = User::query()->find(Auth::id());
 
