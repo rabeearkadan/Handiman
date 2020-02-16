@@ -30,11 +30,8 @@ Route::get('getHandymanSortedByLocation', 'HandymanController@getHandymanOrdered
 Route::get('getHandymanSortedByPrice', 'HandymanController@getHandymanOrderedByPrice');
 
 
-Route::middleware(['auth:api','employee'])->group(function () {
-    Route::post('device-token', 'UserController@setDeviceToken');
-    Route::get('profile-edit', 'UserController@getProfile');
-    Route::put('profile-edit', 'UserController@editProfile');
-
+Route::middleware(['auth:api','employee'])->prefix('employee')->group(function () {
+    // all routes related to handy man
     Route::post('post', 'PostController@addPost');
 
     Route::delete('post/{id}', 'PostController@deletePost');
@@ -42,30 +39,25 @@ Route::middleware(['auth:api','employee'])->group(function () {
     Route::get('post', 'PostController@getPosts');
 
 
-    // Route::put('profile/edit', 'UserController@editProfile');
-    //Route::get('profile/edit', 'UserController@getProfile');
-    ////Route::get('logout', 'UserController@logout');
+});
+
+
+Route::middleware(['auth:api','client'])->prefix('user')->group(function () {
+    //all route related to  user
 
 });
 
 
-Route::middleware(['auth:api','client'])->group(function () {
+
+
+Route::middleware(['auth:api'])->group(function () {
+    //all routes related to user and handyman
     Route::post('device-token', 'UserController@setDeviceToken');
     Route::get('profile-edit', 'UserController@getProfile');
     Route::put('profile-edit', 'UserController@editProfile');
 
-    Route::post('post', 'PostController@addPost');
-
-    Route::delete('post/{id}', 'PostController@deletePost');
-    Route::put('post/{id}', 'PostController@editPost');
-    Route::get('post', 'PostController@getPosts');
-
 
     // Route::put('profile/edit', 'UserController@editProfile');
     //Route::get('profile/edit', 'UserController@getProfile');
     ////Route::get('logout', 'UserController@logout');
-
 });
-
-
-
