@@ -25,7 +25,7 @@ class User extends Eloquent implements
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password', 'phone', 'api_token' ,'user_role'
+        'name', 'email', 'password', 'phone', 'api_token' ,'role'
     ];
 
     /**
