@@ -42,7 +42,7 @@ class UserController extends Controller
 //public function
     function editProfile(Request $request)
     {
-        $user = Auth::user();
+        $user = User::query()->find(Auth::id());
 
         $params = $this->validate($request, [
 // common info
