@@ -16,9 +16,6 @@ class AdminMiddleware
      */
     public function handle($request, Closure $next)
     {
-        if ( !Auth::check())
-            return route("login");
-
         $user = Auth::user();
         if ( $user->user_role = 'admin' ){
             return $next($request);
