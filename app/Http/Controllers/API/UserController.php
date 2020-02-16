@@ -97,31 +97,105 @@ class UserController extends Controller
         if (Arr::has($params, 'cv'))
             $user->cv = $this->uploadAny('cv', $params['cv'], '.pdf');
         if (Arr::has($params, 'certificates')) {
-            $certificates[] = $params['certificates'];
-            $index = 0;
-            foreach ($certificates as $certificate) {
-                $index++;
+            $certificates= [];
+            foreach ($params['certificates'] as $certificate) {
                 try {
-                    $user->certificates = [
-                        $index => $this->uploadAny('certificates', $certificate, '.pdf')
-                    ];
+
+                    $certificates[]= $this->uploadAny('certificates', $certificate, '.pdf');
                 } catch (\Exception $e) {
                     return response()->json(['status' => 'error', 'message' => "error uploading certificate"]);
                 }
 
             }
+            $user->certificates = $certificates;
         }
+        /*
+         * $params['timeline']=[
+         * 0=>[0=>['from'=>'09:00','to'=>'13:00'],1=>['from'=>'14:00','to'=>'18:00']],
+         * 1=>...
+         *
+         */
         if (Arr::has($params, 'timeline')) {
-            $user->timeline = [
-// to be continued
-                '1' => [$params['monday_start'], $params['monday_end']],
-                '2' => [$params['tuesday_start']]
+            $timeline = [];
+            for ($i = 0; $i <= 23; $i++) {
+                // 00:00 01:00 .....23:00
+                $hour = str_pad($i,
+                        2, 0, STR_PAD_LEFT) . ":00";
+                foreach ($params['timeline'][0] as $option) {
+                    $timeline[0][$hour] =
+                        $hour >= $params['timeline'][0][$option]['from']
+                        && $hour <= $params['timeline'][0][$option]['to'];
+
+                }
+
+                foreach ($params['timeline'][1] as $option) {
+                    $timeline[1][$hour] =
+                        $hour >= $params['timeline'][1][$option]['from']
+                        && $hour <= $params['timeline'][1][$option]['to'];
+
+                }
+
+                foreach ($params['timeline'][2] as $option) {
+                    $timeline[2][$hour] =
+                        $hour >= $params['timeline'][2][$option]['from']
+                        && $hour <= $params['timeline'][2][$option]['to'];
+
+                }
+
+                foreach ($params['timeline'][3] as $option) {
+                    $timeline[3][$hour] =
+                        $hour >= $params['timeline'][3][$option]['from']
+                        && $hour <= $params['timeline'][3][$option]['to'];
+
+                }
+
+                foreach ($params['timeline'][4] as $option) {
+                    $timeline[4][$hour] =
+                        $hour >= $params['timeline'][4][$option]['from']
+                        && $hour <= $params['timeline'][4][$option]['to'];
+
+                }
+
+                foreach ($params['timeline'][5] as $option) {
+                    $timeline[5][$hour] =
+                        $hour >= $params['timeline'][5][$option]['from']
+                        && $hour <= $params['timeline'][5][$option]['to'];
+
+                }
+
+                foreach ($params['timeline'][6] as $option) {
+                    $timeline[6][$hour] =
+                        $hour >= $params['timeline'][6][$option]['from']
+                        && $hour <= $params['timeline'][6][$option]['to'];
+
+                }
 
 
-            ];
+            }
+            $user->timeline = $timeline;
+
+            /*
+             * 0  0   1         0
+             * 1  1   0
+             * 2  0   0
+             * 3  1   1
+             * 4  0   1
+             * 5  1   0
+             * 6
+             *  00:00 01:00 ... 23:00
+             */
         }
 
-            $user->save();
+        $user->save();
+        //09:00 Tues (1)
+        $user = User::query()->where('role', 'employee')
+            ->where('location','..')
+            ->where('blabla','111')
+            ->where('translations.'.session()->get('locale','en').'.name','111')
+            ->where('timeline.1.09:00',false)->first();
+
+        //users m-m timeline  m-m timelineDetails
+        // leftjoin lefion query
 
         return response()->json(['status' => 'success', 'user' => $user]);
 
