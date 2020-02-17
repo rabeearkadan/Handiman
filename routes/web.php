@@ -20,8 +20,7 @@ Auth::routes();
 
 Route::get("contact-us", 'FRONT\HomeController@contact');
 
-Route::get("login", 'Auth\LoginController@showLoginForm')->name('login');
-Route::put("login", 'Auth\LoginController@doLogin')->name('login');
+
 
 Route::get("register", 'Auth\RegisterController@showRegistrationForm')->name('register');
 
