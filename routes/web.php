@@ -1,8 +1,6 @@
 <?php
 
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Route;
 
 /*
 |--------------------------------------------------------------------------
@@ -18,11 +16,14 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+//Auth::routes();
 
 Route::get("contact-us", 'FRONT\HomeController@contact');
-Route::get("register", 'Auth\RegisterController@showRegistrationForm')->name('register');
 
-Auth::routes();
+Route::get("login", 'Auth\LoginController@showLoginForm')->name('login');
+Route::post("login", 'Auth\LoginController@doLogin')->name('login');
+
+Route::get("register", 'Auth\RegisterController@showRegistrationForm')->name('register');
 
 //Route::get("home","FRONT\HomeController@getHomePage");
 
