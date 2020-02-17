@@ -52,4 +52,20 @@ class LoginController extends Controller
 
     }
 
+    /**
+     * @return string
+     */
+    public function getRedirectTo(): string
+    {
+        if ( auth()->user()->role == 'admin' ){
+            return  route('admin.home');
+        }elseif ( auth()->user()->role == 'user_employee' || auth()->user()->role == 'employee'  ){
+            return  route('employee.home');
+        }
+        else{
+            return route('client.home');
+        }
+
+    }
+
 }
