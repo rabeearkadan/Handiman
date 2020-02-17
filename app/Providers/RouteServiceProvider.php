@@ -71,6 +71,7 @@ class RouteServiceProvider extends ServiceProvider
     protected function funWebRoutes()
     {
         Route::middleware(['web','auth','employee'])
+            ->prefix('employee')
             ->namespace($this->namespace.'\FRONT\Handyman')
             ->group(base_path('routes/employee.php'));
     }
