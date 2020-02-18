@@ -59,7 +59,7 @@ class LoginController extends Controller
         if ( auth()->user()->role == 'admin' ){
             return  route('admin.home');
         }elseif ( auth()->user()->role == 'user_employee' || auth()->user()->role == 'employee'  ){
-            dd('here');
+           
             return  route('employee.home');
         }
         else{
