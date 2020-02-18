@@ -108,7 +108,7 @@
                 </li>
                 <li><a href="{{ route('login') }}">Login</a></li>
                 <li><a href="{{ route('register') }}">Register</a></li>
-                <li><a href="{{route('dashboard')}}">Admin</a> </li>
+                <li><a href="{{route('admin.home')}}">Admin</a> </li>
             </ul>
         </nav>
         <!-- #nav-menu-container -->
