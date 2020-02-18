@@ -10,8 +10,6 @@ class Service extends Eloquent
     //
     protected $table = "services";
 
-
-
     public function users(){
         return $this->belongsToMany(User::class);
     }
