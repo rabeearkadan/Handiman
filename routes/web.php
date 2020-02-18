@@ -16,12 +16,12 @@ use Illuminate\Http\Request;
 Route::get('/', function () {
     return view('welcome');
 });
-//Auth::routes();
+Auth::routes();
 
 Route::get("contact-us", 'FRONT\HomeController@contact');
 
-Route::get("login", 'Auth\LoginController@showLoginForm')->name('login');
-Route::post("login", 'Auth\LoginController@doLogin')->name('login');
+//Route::get("login", 'Auth\LoginController@showLoginForm')->name('login');
+//Route::post("login", 'Auth\LoginController@doLogin')->name('login');
 
 Route::get("register", 'Auth\RegisterController@showRegistrationForm')->name('register');
 
