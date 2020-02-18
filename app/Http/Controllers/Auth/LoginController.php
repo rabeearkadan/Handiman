@@ -43,20 +43,18 @@ class LoginController extends Controller
         return view('auth.login');
     }
 
-    public function doLogin(Request $request)
-    {
-        $request->validate([
-            "email" => ['required','email'],
-            "password" => ['required']
-        ]);
+//    public function doLogin(Request $request)
+//    {
+//        $request->validate([
+//            "email" => ['required','email'],
+//            "password" => ['required']
+//        ]);
+//
+//
+//    }
 
 
-    }
-
-    /**
-     * @return string
-     */
-    public function getRedirectTo(): string
+    public function redirectPath()
     {
         if ( auth()->user()->role == 'admin' ){
             return  route('admin.home');
@@ -66,6 +64,11 @@ class LoginController extends Controller
         else{
             return route('client.home');
         }
+    }
+
+    public function getRedirectTo()
+    {
+
 
     }
 
