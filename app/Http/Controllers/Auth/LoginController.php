@@ -54,7 +54,6 @@ class LoginController extends Controller
         }
     }
     public function getRedirectTo(){
-        dd('here');
         if ( auth()->user()->role == 'admin' ){
             return  route('admin.home');
         }elseif ( auth()->user()->role == 'user_employee' || auth()->user()->role == 'employee'  ){
