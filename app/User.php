@@ -63,7 +63,7 @@ class User extends Eloquent implements
     }
 
     public function service(){
-        return $this->belongsTo(Service::class);
+        return $this->belongsToMany(Service::class);
     }
 
 }
