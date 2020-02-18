@@ -25,7 +25,7 @@ Route::get('getHandymanSortedByPrice', 'HandymanController@getHandymanOrderedByP
 Route::get('getServices','ServiceController@getServices');
 
 Route::get('getHandymanList', 'HandymanController@getHandyman');
-Route::get('getHandymenByService{id}', 'HandymanController@getHandymenByService');
+Route::get('getHandymenByService/{id}', 'HandymanController@getHandymenByService');
 Route::get('getHandymanSortedByLocation', 'HandymanController@getHandymanOrderedByLocation');
 Route::get('getHandymanSortedByPrice', 'HandymanController@getHandymanOrderedByPrice');
 
