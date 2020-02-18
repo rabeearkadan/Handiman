@@ -79,6 +79,7 @@ class RouteServiceProvider extends ServiceProvider
     protected function authWebRoutes()
     {
         Route::middleware(['web','auth','client'])
+            ->prefix('client')
             ->namespace($this->namespace.'\FRONT\Client')
             ->group(base_path('routes/client.php'));
     }
