@@ -70,7 +70,7 @@ class HandymanController extends Controller
 //       $service =Service::query()->find($id);
         $x = Service::findOrFail($id);
         $service = $x->users;
-        return response()->json(['status' => 'success', 'HandymanList' => $service->users]);
+        return response()->json(['status' => 'success', 'HandymanList' => "hi"]);
 
     }
 
