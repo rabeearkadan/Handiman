@@ -49,6 +49,13 @@ class LoginController extends Controller
         if ($this->attemptLogin($request)) {
 
             // check
+            $user = Auth::user();
+            if (($user->role == 'user' && ($request->input('role') == 'employee'))
+                || ($user->role == 'employee' && ($request->input('role') == 'user'))
+            ) {
+                $user->role = 'user_employee';
+                $user->save();
+            }
 
             $token = Str::random(300);
             $request->user()->forceFill([
@@ -63,7 +70,6 @@ class LoginController extends Controller
         }
         return $this->sendFailedLoginResponse($request);
     }
-
 
 
 }

@@ -2,6 +2,7 @@
 
 namespace App;
 
+use App\Models\Service;
 use Illuminate\Auth\Authenticatable;
 use Illuminate\Auth\Passwords\CanResetPassword;
 use Illuminate\Contracts\Auth\Access\Authorizable as AuthorizableContract;
@@ -61,5 +62,8 @@ class User extends Eloquent implements
         return $this->role == 'admin';
     }
 
+    public function service(){
+        return $this->belongsTo(Service::class);
+    }
 
 }
