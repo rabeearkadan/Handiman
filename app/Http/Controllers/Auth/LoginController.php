@@ -46,11 +46,11 @@ class LoginController extends Controller
 
     public function login(Request $request)
     {
-        dd('here');
-        $request->validate([
-            "email" => ['email'],
-            "password" => ['required']
-        ]);
+        $credentials = $request->only('email', 'password');
+
+        if (Auth::attempt($credentials)) {
+           $this->getRedirectTo();
+        }
     }
     public function getRedirectTo(){
         if ( auth()->user()->role == 'admin' ){
