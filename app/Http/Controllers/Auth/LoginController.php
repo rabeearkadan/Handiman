@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Auth;
 use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
+use Illuminate\Http\Request;
 
 class LoginController extends Controller
 {
@@ -42,22 +43,21 @@ class LoginController extends Controller
         return view('auth.login');
     }
 
-    public function doLogin($request)
+//    public function doLogin(Request $request)
+//    {
+//        $request->validate([
+//            "email" => ['required','email'],
+//            "password" => ['required']
+//        ]);
+//
+//
+//    }
+
+
+
+    public function getRedirectTo()
     {
-        $request->validate([
-            "email" => ['required','email'],
-            "password" => ['required']
-        ]);
-
-
-    }
-
-    /**
-     * @return string
-     */
-    public function getRedirectTo(): string
-    {
-        dd("here");
+        dd('here');
         if ( auth()->user()->role == 'admin' ){
             return  route('admin.home');
         }elseif ( auth()->user()->role == 'user_employee' || auth()->user()->role == 'employee'  ){
