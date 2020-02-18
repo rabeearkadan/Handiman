@@ -55,7 +55,7 @@ class LoginController extends Controller
 
 
 
-    public function getRedirectTo()
+    public function login()
     {
         dd('here');
         if ( auth()->user()->role == 'admin' ){
