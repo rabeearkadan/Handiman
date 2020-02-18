@@ -105,6 +105,8 @@ class HandymanController extends Controller
             ->get();
         return response()->json(['status' => 'success', 'HandymanList' => $handyman]);
     }
+public function  getPlumbers(){
 
+}
 
 }

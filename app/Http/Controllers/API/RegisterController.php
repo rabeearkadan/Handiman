@@ -55,9 +55,9 @@ class RegisterController extends Controller
     {
         return Validator::make($data, [
             'name' => ['required', 'string', 'max:255'],
-            'phone'=>['required','string','max:30','unique:users'],
+            'phone' => ['required', 'string', 'max:30', 'unique:users'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
-            'role'=>['required','string','max:255'],
+            'role' => ['required', 'string', 'max:255'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
         ]);
     }
@@ -72,24 +72,31 @@ class RegisterController extends Controller
     {
 
 
-        $user =  new  User();
+        $user = new  User();
         $user->name = $data['name'];
         $user->email = $data['email'];
         $user->phone = $data['phone'];
-        $user->role= $data['role'];
-        $user->isApproved=false;
+        $user->role = $data['role'];
+        $user->isApproved = false;
         $user->password = Hash::make($data['password']);
         $user->save();
         return $user;
     }
+
     //on new users ? or on update users ?Update
     public function register(Request $request)
     {
         $this->validator($request->all())->validate();
-
-
         event(new Registered($user = $this->create($request->all())));
         auth::login($user);
+        $user = Auth::user();
+        if ($request->input('role') == 'employee') {
+            $user->role = 'employee';
+            $user->save();
+        } elseif ($request->input('role') == 'user') {
+            $user->role = 'user';
+            $user->save();
+        }
         if ($this->guard()->check()) {
             $token = Str::random(300);
             $user->forceFill([

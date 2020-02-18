@@ -33,7 +33,6 @@ Route::get('getHandymanSortedByPrice', 'HandymanController@getHandymanOrderedByP
 Route::middleware(['auth:api','employee'])->prefix('employee')->group(function () {
     // all routes related to handy man
     Route::post('post', 'PostController@addPost');
-
     Route::delete('post/{id}', 'PostController@deletePost');
     Route::put('post/{id}', 'PostController@editPost');
     Route::get('post', 'PostController@getPosts');

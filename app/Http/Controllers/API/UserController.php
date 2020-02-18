@@ -187,12 +187,6 @@ class UserController extends Controller
         }
 
         $user->save();
-        //09:00 Tues (1)
-//        $user = User::query()->where('role', 'employee')
-//            ->where('location','..')
-//            ->where('blabla','111')
-//            ->where('translations.'.session()->get('locale','en').'.name','111')
-//            ->where('timeline.1.09:00',false)->first();
 
         //users m-m timeline  m-m timelineDetails
         // leftjoin lefion query
