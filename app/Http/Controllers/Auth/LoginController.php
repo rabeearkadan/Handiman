@@ -50,11 +50,12 @@ class LoginController extends Controller
         $credentials = $request->only('email', 'password');
 
         if (Auth::attempt($credentials)) {
+            return auth()->user();
            $this->getRedirectTo();
         }
     }
     public function getRedirectTo(){
-        return auth()->user();
+
         if ( auth()->user()->role == 'admin' ){
             return  route('admin.home');
         }elseif ( auth()->user()->role == 'user_employee' || auth()->user()->role == 'employee'  ){
