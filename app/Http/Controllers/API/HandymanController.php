@@ -4,6 +4,7 @@ namespace App\Http\Controllers\API;
 
 use App\Events\NotificationSenderEvent;
 use App\Http\Controllers\Controller;
+use App\Models\Service;
 use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -63,10 +64,12 @@ class HandymanController extends Controller
         return response()->json(['status' => 'success', 'HandymanList' => $handymanList]);
     }
 
-    public function getHandymenByService($service)
+    public function getHandymenByService($id)
     {
-        $handymanList = User::query()->where('service', $service)->get();
-        return response()->json(['status' => 'success', 'HandymanList' => $handymanList]);
+        
+       $service =Service::query()->find($id);
+        return response()->json(['status' => 'success', 'HandymanList' => $service->users]);
+
     }
 
     public function getHandymanByLocation($longitude, $latitude)
