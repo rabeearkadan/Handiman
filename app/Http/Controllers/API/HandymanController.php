@@ -69,10 +69,14 @@ class HandymanController extends Controller
 
 //       $service =Service::query()->find($id);
 
-       // $x = Service::findOrFail($id);
-        //$service = $x->users;
-        return response()->json(['status' => 'success', 'HandymanList' => $id]);
-        
+
+
+
+       $x = Service::findOrFail($id);
+        $service = $x->users;
+        return response()->json(['status' => 'success', 'HandymanList' => $service]);
+
+
     }
 
     public function getHandymanByLocation($longitude, $latitude)
