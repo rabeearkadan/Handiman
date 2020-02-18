@@ -51,13 +51,12 @@ class LoginController extends Controller
 
         if (Auth::attempt($credentials)) {
             if ( auth()->user()->role == 'admin' ){
-                return  route('admin.home');
+                return redirect()->route('admin.home');
             }elseif ( auth()->user()->role == 'user_employee' || auth()->user()->role == 'employee'  ){
-
-                return  route('employee.home');
+                return redirect()-> route('employee.home');
             }
             else{
-                return route('client.home');
+                return redirect()->route('client.home');
             }
         }
         return 'failed';
