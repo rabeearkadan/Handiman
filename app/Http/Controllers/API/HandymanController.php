@@ -68,7 +68,8 @@ class HandymanController extends Controller
     {
 
 //       $service =Service::query()->find($id);
-        $service = Service::class->users;
+        $x = Service::find($id);
+        $service = $x->users;
         return response()->json(['status' => 'success', 'HandymanList' => $service->users]);
 
     }
