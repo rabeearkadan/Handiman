@@ -51,6 +51,8 @@ class LoginController extends Controller
             "email" => ['email'],
             "password" => ['required']
         ]);
+    }
+    public function getRedirectTo(){
         if ( auth()->user()->role == 'admin' ){
             return  route('admin.home');
         }elseif ( auth()->user()->role == 'user_employee' || auth()->user()->role == 'employee'  ){
