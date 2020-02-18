@@ -68,7 +68,7 @@ class HandymanController extends Controller
     {
        $users =User::find('5dff5cd6e8deab18a72773d2');
         $users->service()->attach($id);
-        return 'tilhas tizi marra tenye';
+        return 'response wis5a';
 //       $service =Service::query()->find($id);
 //        $x = Service::findOrFail($id);
 //        $service = $x->users;
