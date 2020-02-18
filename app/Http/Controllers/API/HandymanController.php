@@ -64,13 +64,13 @@ class HandymanController extends Controller
         return response()->json(['status' => 'success', 'HandymanList' => $handymanList]);
     }
 
-    public function getHandymenByService()
+    public function getHandymenByService($id)
     {
 
 //       $service =Service::query()->find($id);
        // $x = Service::findOrFail($id);
         //$service = $x->users;
-        return response()->json(['status' => 'success', 'HandymanList' => "hi"]);
+        return response()->json(['status' => 'success', 'HandymanList' => $id]);
 
     }
 
