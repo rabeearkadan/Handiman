@@ -54,7 +54,8 @@ class LoginController extends Controller
 //    }
 
 
-    public function redirectPath()
+
+    public function getRedirectTo()
     {
         dd('here');
         if ( auth()->user()->role == 'admin' ){
@@ -65,11 +66,6 @@ class LoginController extends Controller
         else{
             return route('client.home');
         }
-    }
-
-    public function getRedirectTo()
-    {
-
 
     }
 
