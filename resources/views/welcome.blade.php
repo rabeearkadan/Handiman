@@ -60,9 +60,9 @@
 <section id="hero">
     <div class="hero-container">
         <div class="wow fadeIn">
-            <div class="hero-logo">
-                <img class="" src="../../public/img/logo.png" alt="Genie">
-            </div>
+{{--            <div class="hero-logo">--}}
+{{--                <img class="" src="../../public/img/logo.png" alt="Genie">--}}
+{{--            </div>--}}
 
             <h1>Welcome to Genie</h1>
             <h2>We create <span class="rotating">handyman Scheduling, services availability</span>
