@@ -65,7 +65,7 @@
 {{--            </div>--}}
 
             <h1>Welcome to Genie</h1>
-            <h2>We create <span class="rotating">handyman Scheduling, services availability</span>
+            <h2>We provide <span class="rotating">handyman Scheduling, services availability</span>
             </h2>
             <div class="actions">
                 <a href="#about" class="btn-get-started">Get Strated</a>
