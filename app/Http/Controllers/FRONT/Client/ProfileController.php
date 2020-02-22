@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\FRONT\Client;
 
 use App\Http\Controllers\Controller;
+use App\User;
 use Illuminate\Http\Request;
 
 class ProfileController extends Controller
@@ -20,7 +21,8 @@ class ProfileController extends Controller
     }
 
 
-    public function userProfile(){
-
+    public function userProfile($user_id){
+        $user = User::find($user_id);
+        return view('front.client.employee-profile',$user);
     }
 }
