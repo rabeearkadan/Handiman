@@ -8,8 +8,7 @@
 
     @endpush
     @push('style_links')
-        <link rel="stylesheet"
-              href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+        
         <link rel="stylesheet"
               href="https://rawgit.com/adrotec/knockout-file-bindings/master/knockout-file-bindings.css">
     @endpush
