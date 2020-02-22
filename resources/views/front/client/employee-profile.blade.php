@@ -1,10 +1,7 @@
-<!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>{{ config('app.name', 'Genie') }}</title>
+@extends('layouts.client.app')
 
+@section('content')
+@push('css')
     <link href="https://fonts.googleapis.com/css?family=Poppins:400,500,600,700%7CAllura" rel="stylesheet">
 
     <link href="{{asset('css/common-css/bootstrap.css')}}" rel="stylesheet">
@@ -12,9 +9,8 @@
     <link href="{{asset('css/common-css/fluidbox.min.css')}}" rel="stylesheet">
     <link href="{{asset('css/cv-portfolio/styles.css')}}" rel="stylesheet">
     <link href="{{asset('css/cv-portfolio/responsive.css')}}" rel="stylesheet">
-</head>>
-<body>
-<header style="margin-top: 20vh; ">
+@endpush
+<header>
     <div class="container">
         <div class="heading-wrapper">
             <div class="row">
@@ -351,7 +347,7 @@
 
 
 
-
+@push('js')
     <script src="/public/common-js/jquery-3.2.1.min.js"></script>
     <script src="/public/common-js/tether.min.js"></script>
     <script src="/public/common-js/bootstrap.js"></script>
@@ -360,6 +356,8 @@
     <script src="/public/common-js/progressbar.min.js"></script>
     <script src="/public/common-js/jquery.fluidbox.min.js"></script>
     <script src="/public/common-js/scripts.js"></script>
+@endpush
 
-</body>
-</html>
+
+
+@endsection

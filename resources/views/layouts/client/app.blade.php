@@ -10,7 +10,10 @@
     <link href="https://fonts.googleapis.com/css?family=DM+Sans:500,700&display=swap" rel="stylesheet">
 
     <!-- Styles -->
-   <link href="{{asset('css/client.css')}}" rel="stylesheet">
+    @if(request()->route()->getName() != "client.user-profile")
+        <link href="{{asset('css/client.css')}}" rel="stylesheet">
+    @endif
+
     @stack('css')
 </head>
 <body  class="preloader-site">
