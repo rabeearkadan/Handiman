@@ -31,6 +31,7 @@
             <div class="main-card mb-3 card">
                 <div class="card-body"><h5 class="card-title">Service</h5>
                     <form action="{{route('service.store')}}" method="post" enctype="multipart/form-data">
+                        @csrf
                         <div class="form-row">
                             <div class="col-md-6">
                                 <div class="position-relative form-group"><label for="exampleEmail11"
