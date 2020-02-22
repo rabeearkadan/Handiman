@@ -15,23 +15,23 @@
 
     <link href="{{asset('css/main.css')}}" rel="stylesheet">
     @stack('css')
+    @stack('links')
 </head>
 <body>
 <div class="app-container app-theme-white body-tabs-shadow fixed-sidebar fixed-header">
-@include('cms.layouts.header')
+    @include('cms.layouts.header')
 
-<div class="app-main">
-    @include('cms.layouts.sidebar')
-    <div class="app-main__outer">
-        <div class="app-main__inner">
-            @yield('content')
+    <div class="app-main">
+        @include('cms.layouts.sidebar')
+        <div class="app-main__outer">
+            <div class="app-main__inner">
+                @yield('content')
+            </div>
+            @include('cms.layouts.footer')
         </div>
-        @include('cms.layouts.footer')
+        <script type="text/javascript" src="{{asset('scripts/main.js')}}"></script>
     </div>
-<script type="text/javascript" src="{{asset('scripts/main.js')}}"></script>
-</div>
 @stack('js')
-
 
 
 </body>

@@ -1,7 +1,11 @@
 @extends('cms.layouts.app')
 
 @section('content')
-
+@push('links')
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/knockout/3.1.0/knockout-min.js">
+    <link href="https://rawgit.com/adrotec/knockout-file-bindings/master/knockout-file-bindings.js">
+@endpush
     <div class="page-title-heading">
         <div class="page-title-icon">
             <i class="pe-7s-graph text-success">
@@ -106,7 +110,7 @@
         </div>
     </div>
     @push('js')
-        <script>
+         <script>
 
             $(function () {
                 var viewModel = {};
