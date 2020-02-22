@@ -283,7 +283,7 @@
 </head>
 <body onload="services()">
 @include('preloader')
-@include('navbar')
+@include('front.client.navbar')
 
 <div class="content">
     @yield('content')
