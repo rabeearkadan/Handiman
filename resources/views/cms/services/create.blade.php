@@ -30,7 +30,7 @@
         <div class="tab-pane tabs-animation fade show active" id="tab-content-0" role="tabpanel">
             <div class="main-card mb-3 card">
                 <div class="card-body"><h5 class="card-title">Service</h5>
-                    <form action="{{route('add-service')}}" method="post" enctype="multipart/form-data">
+                    <form action="{{route('service.store')}}" method="post" enctype="multipart/form-data">
                         <div class="form-row">
                             <div class="col-md-6">
                                 <div class="position-relative form-group"><label for="exampleEmail11"
