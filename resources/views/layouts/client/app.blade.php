@@ -12,7 +12,7 @@
     <!-- Styles -->
    <link href="{{asset('css/client.css')}}" rel="stylesheet">
 </head>
-<body >
+<body  class="preloader-site">
 @include('front.client.partials.preloader')
 @include('front.client.partials.navbar')
 
@@ -25,14 +25,11 @@
 
 
 <script>
-    $(document).ready(function($) {
-        var Body = $('body');
-        Body.addClass('preloader-site');
-    });
+
     setInterval(function(){
         $('.preloader-wrapper').fadeOut();
         $('body').removeClass('preloader-site');
-    },3000);
+    },2000);
 </script>
 
 @stack('js')
