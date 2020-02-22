@@ -33,7 +33,7 @@
                         </div>
 
 
-                        <div class="container" style="">
+                        <div class="container" >
                             <div class="well" data-bind="fileDrag: fileData">
                                 <div class="form-group row">
                                     <div class="col-md-6">
@@ -69,10 +69,9 @@
 
 
 @push('js')
-    <link type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js">
-    <link type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/knockout/3.1.0/knockout-min.js">
-    <link type="text/javascript"
-          src="{{asset('js/file-uploader.js')}}">
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/knockout/3.1.0/knockout-min.js"></script>
+    <script type="text/javascript"  src="{{asset('js/file-uploader.js')}}"></script>
 
     <script>
 
