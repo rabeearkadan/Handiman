@@ -1,5 +1,5 @@
 <nav class="nav">
-    <a href="#" class="nav-item @if (  request()->is('/home'))) is-active @endif" active-color="orange">Home</a>
+    <a href="{{route('client.home')}}" class="nav-item @if (  request()->is('/home'))) is-active @endif" active-color="orange">Home</a>
     <a href="{{route('client.service')}}"  class="nav-item @if ( request()->is('/services')) is-active @endif" active-color="green">Services</a>
     <a href="#" class="nav-item" active-color="blue">Requests</a>
     <a href="#" class="nav-item" active-color="red">Profile</a>
