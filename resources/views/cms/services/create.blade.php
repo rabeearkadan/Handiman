@@ -1,6 +1,7 @@
 @extends('cms.layouts.app')
 
 @section('content')
+
     <div class="page-title-heading">
         <div class="page-title-icon">
             <i class="pe-7s-graph text-success">

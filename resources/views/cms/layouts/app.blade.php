@@ -11,6 +11,7 @@
           content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, shrink-to-fit=no"/>
     <meta name="description" content="Genie">
     <meta name="msapplication-tap-highlight" content="no">
+    <link rel="stylesheet" href="https://rawgit.com/adrotec/knockout-file-bindings/master/knockout-file-bindings.css">
 
     <link href="{{asset('css/main.css')}}" rel="stylesheet">
     @stack('css')
