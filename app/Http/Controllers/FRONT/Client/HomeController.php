@@ -12,4 +12,8 @@ class HomeController extends Controller
     public function index( Request $request ){
         return view ('front.client.home');
     }
+
+    public function service( Request $request ){
+        return view ('front.client.services');
+    }
 }
