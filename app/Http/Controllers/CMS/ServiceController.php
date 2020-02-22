@@ -44,6 +44,7 @@ class ServiceController extends Controller
         $service->servic_picture = $this->uploadAny($request->input('service_picture'), 'uploads');
         $service->name = $request->input('service_name');
         $service->save();
+        return $this->index();
     }
 
     public function uploadAny($file, $folder, $ext = 'png')
