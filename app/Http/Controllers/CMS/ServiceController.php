@@ -35,7 +35,21 @@ class ServiceController extends Controller
     public function store(Request $request)
     {
         $service = new Service();
-        $service->image = $this->uploadAny($request->input('service_picture'), 'services');
+//        $service->image = $this->uploadAny($request->file('service_picture'), 'services');
+        if ( $request->has('service_picture')){
+            $file = $request->file('service_picture');
+            $name = 'service_'. time().$file->extension();
+
+            if ( Storage::disk('public')->exists('services')){
+                Storage::disk('public')->makeDirectory('services');
+            }
+
+            if ( Storage::disk('public')->put('services/'.$name, $file) ){
+                $service->image = 'services/'.$name;
+            }else{
+                return redirect()->back();
+            }
+        }
         $service->name = $request->input('service_name');
         $service->save();
         return redirect()->route('service.index');
