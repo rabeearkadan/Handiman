@@ -31,19 +31,14 @@ class ServiceController extends Controller
         return view('cms.services.create');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param \Illuminate\Http\Request $request
-     * @return \Illuminate\Http\Response
-     */
+
     public function store(Request $request)
     {
         $service = new Service();
-        $service->servic_picture = $this->uploadAny($request->input('service_picture'), 'uploads');
+        $service->image = $this->uploadAny($request->input('service_picture'), 'services');
         $service->name = $request->input('service_name');
         $service->save();
-        return redirect()->back();
+        return redirect()->route('service.index');
     }
 
     public function uploadAny($file, $folder, $ext = 'png')
