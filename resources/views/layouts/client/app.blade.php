@@ -11,6 +11,7 @@
 
     <!-- Styles -->
    <link href="{{asset('css/client.css')}}" rel="stylesheet">
+    @stack('css')
 </head>
 <body  class="preloader-site">
 @include('front.client.partials.preloader')
