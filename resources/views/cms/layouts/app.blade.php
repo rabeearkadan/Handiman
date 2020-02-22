@@ -15,7 +15,8 @@
 
     <link href="{{asset('css/main.css')}}" rel="stylesheet">
     @stack('css')
-    @stack('links')
+    @stack('js_links')
+    @stack('style_links')
 </head>
 <body>
 <div class="app-container app-theme-white body-tabs-shadow fixed-sidebar fixed-header">
