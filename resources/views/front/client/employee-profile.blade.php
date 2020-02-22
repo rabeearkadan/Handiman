@@ -1,7 +1,10 @@
-@extends('layouts.client.app')
+<!DOCTYPE html>
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>{{ config('app.name', 'Genie') }}</title>
 
-@section('content')
-@push('css')
     <link href="https://fonts.googleapis.com/css?family=Poppins:400,500,600,700%7CAllura" rel="stylesheet">
 
     <link href="{{asset('css/common-css/bootstrap.css')}}" rel="stylesheet">
@@ -9,8 +12,9 @@
     <link href="{{asset('css/common-css/fluidbox.min.css')}}" rel="stylesheet">
     <link href="{{asset('css/cv-portfolio/styles.css')}}" rel="stylesheet">
     <link href="{{asset('css/cv-portfolio/responsive.css')}}" rel="stylesheet">
-@endpush
-<header>
+</head>>
+<body>
+<header style="margin-top: 20vh; ">
     <div class="container">
         <div class="heading-wrapper">
             <div class="row">
@@ -345,18 +349,9 @@
     </div><!-- container-->
 </section><!-- counter-section-->
 
-<footer>
-    <p class="copyright">
-        <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-        Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="ion-heart" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
-        <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-    </p>
 
 
-</footer>
 
-
-@push('js')
     <script src="/public/common-js/jquery-3.2.1.min.js"></script>
     <script src="/public/common-js/tether.min.js"></script>
     <script src="/public/common-js/bootstrap.js"></script>
@@ -365,8 +360,6 @@
     <script src="/public/common-js/progressbar.min.js"></script>
     <script src="/public/common-js/jquery.fluidbox.min.js"></script>
     <script src="/public/common-js/scripts.js"></script>
-@endpush
 
-
-
-@endsection
+</body>
+</html>
