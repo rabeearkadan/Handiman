@@ -23,7 +23,7 @@ class ProfileController extends Controller
     }
 
 
-    public function userProfile($user_id){
+    public function userProfile($id, $user_id){
         $user = User::find($user_id);
         return view('front.client.employee-profile', compact('user'));
     }
