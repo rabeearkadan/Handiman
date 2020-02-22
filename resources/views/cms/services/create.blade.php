@@ -30,7 +30,7 @@
                         </div>
 
 
-
+<div  class="container">
                         <div class="well" data-bind="fileDrag: fileData">
                             <div class="form-group row">
                                 <div class="col-md-6">
@@ -45,11 +45,12 @@
               buttonClass: 'btn btn-success',
               fileNameClass: 'disabled form-control',
               onClear: onClear,
-            }" accept="image/*">
+            }"
+                                           accept="image/*">
                                 </div>
                             </div>
                         </div>
-
+</div>
 
                         <button class="mt-2 btn btn-primary">Save Changes</button>
                         <button class="btn-danger">Discard</button>
