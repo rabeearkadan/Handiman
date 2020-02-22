@@ -1,6 +1,6 @@
 @extends('layout')
 
 @section('content')
-    @include('services')
+    @include('client.services')
 
 @endsection
