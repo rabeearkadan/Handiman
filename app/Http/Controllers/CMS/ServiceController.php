@@ -40,7 +40,7 @@ class ServiceController extends Controller
             $file = $request->file('service_picture');
             $name = 'service_'. time().$file->extension();
 
-            if ( Storage::disk('public')->exists('services')){
+            if ( !Storage::disk('public')->exists('services')){
                 Storage::disk('public')->makeDirectory('services');
             }
 
