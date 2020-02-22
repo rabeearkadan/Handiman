@@ -30,6 +30,9 @@
 <script type="text/javascript" src="{{asset('scripts/main.js')}}"></script>
 </div>
 @stack('js')
+
+
+
 </body>
 </html>
 
