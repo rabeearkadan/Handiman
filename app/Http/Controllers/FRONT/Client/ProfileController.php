@@ -15,7 +15,7 @@ class ProfileController extends Controller
 
     public function myProfile(){
         $user = Auth::user();
-        return view('front.client.myprofile', compact('user'));
+        return view('front.client.my-profile', compact('user'));
     }
 
     public function editProfile(){
@@ -23,7 +23,7 @@ class ProfileController extends Controller
     }
 
 
-    public function userProfile($user_id){
+    public function userProfile($id, $user_id){
         $user = User::find($user_id);
         return view('front.client.employee-profile', compact('user'));
     }
