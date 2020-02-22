@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="utf-8">
-    <title>Imperial Boootstrap Template</title>
+    <title>Genie Home</title>
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
     <meta content="" name="keywords">
     <meta content="" name="description">
@@ -60,12 +60,12 @@
 <section id="hero">
     <div class="hero-container">
         <div class="wow fadeIn">
-            <div class="hero-logo">
-                <img class="" src="../../public/img/logo.png" alt="Imperial">
-            </div>
+{{--            <div class="hero-logo">--}}
+{{--                <img class="" src="../../public/img/logo.png" alt="Genie">--}}
+{{--            </div>--}}
 
-            <h1>Welcome to Imperial studios</h1>
-            <h2>We create <span class="rotating">beautiful graphics, functional websites, working mobile apps</span>
+            <h1>Welcome to Genie</h1>
+            <h2>We provide <span class="rotating">handyman Scheduling, services availability</span>
             </h2>
             <div class="actions">
                 <a href="#about" class="btn-get-started">Get Strated</a>
