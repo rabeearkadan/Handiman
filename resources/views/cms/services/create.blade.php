@@ -3,14 +3,15 @@
 @section('content')
 
     @push('js_links')
-        <link href="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js">
-        <link href="https://cdnjs.cloudflare.com/ajax/libs/knockout/3.1.0/knockout-min.js">
-        <link href="https://rawgit.com/adrotec/knockout-file-bindings/master/knockout-file-bindings.js">
+        <link  type="text/javascript" href="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js">
+        <link  type="text/javascript" href="https://cdnjs.cloudflare.com/ajax/libs/knockout/3.1.0/knockout-min.js">
+        <link  type="text/javascript" href="https://rawgit.com/adrotec/knockout-file-bindings/master/knockout-file-bindings.js">
     @endpush
 
     @push('style_links')
         <link rel="stylesheet"
               href="https://rawgit.com/adrotec/knockout-file-bindings/master/knockout-file-bindings.css">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
     @endpush
     <div class="page-title-heading">
         <div class="page-title-icon">
