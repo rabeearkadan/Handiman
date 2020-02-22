@@ -3,18 +3,16 @@
 @section('content')
     <div class="container" id="services">
         <div class="row">
-            <div class="column">
-                <a href=""> <div class="card"> <img src="" > <label>Electricity </label> </div> </a>
-            </div>
-            <div class="column">
-                <a href=""> <div class="card"><img src=""> <label>Electricity </label> </div>  </a>
-            </div>
-            <div class="column">
-                <a href=""> <div class="card"> <img src=""> <label>Electricity </label> </div> </a>
-            </div>
-            <div class="column">
-                <a href="">  <div class="card"><img src=""> <label>Electricity </label></div> </a>
-            </div>
+            @foreach($services as $service)
+                @if ( $loop->index % 4 == 0 )
+                    </div>
+                    <div class = "row">
+                @endif
+                <div class="column">
+                    <a href="{{route('client.service', $service->id)}}"> <div class="card"> <img src="{{$service->service_picture}}" > <label> {{ $service->name }} </label> </div> </a>
+                </div>
+
+            @endforeach
         </div>
 
     </div>
