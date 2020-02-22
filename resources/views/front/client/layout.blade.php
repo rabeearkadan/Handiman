@@ -299,6 +299,15 @@
     }
 </script>
 <script>
+    $(document).ready(function($) {
+        var Body = $('body');
+        Body.addClass('preloader-site');
+    });
+    $(window).on('load',function() {
+        $('.preloader-wrapper').fadeOut();
+        $('body').removeClass('preloader-site');
+    });
+
     const indicator = document.querySelector('.nav-indicator');
     const items = document.querySelectorAll('.nav-item');
     function handleIndicator(el) {
