@@ -2,18 +2,7 @@
 
 @section('content')
 
-    @push('js_links')
-        <link type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js">
-        <link type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/knockout/3.1.0/knockout-min.js">
-        <link type="text/javascript"
-              src="https://rawgit.com/adrotec/knockout-file-bindings/master/knockout-file-bindings.js">
-    @endpush
 
-    @push('style_links')
-        <link rel="stylesheet"
-              src="https://rawgit.com/adrotec/knockout-file-bindings/master/knockout-file-bindings.css">
-        <link rel="stylesheet" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
-    @endpush
     <div class="page-title-heading">
         <div class="page-title-icon">
             <i class="pe-7s-graph text-success">
@@ -73,32 +62,46 @@
             </div>
         </div>
     </div>
-    @push('js')
-        <script>
-
-            $(function () {
-                var viewModel = {};
-                viewModel.fileData = ko.observable({
-                    dataURL: ko.observable(),
-                    // base64String: ko.observable(),
-                });
-                viewModel.multiFileData = ko.observable({
-                    dataURLArray: ko.observableArray(),
-                });
-                viewModel.onClear = function (fileData) {
-                    if (confirm('Are you sure?')) {
-                        fileData.clear && fileData.clear();
-                    }
-                };
-                viewModel.debug = function () {
-                    window.viewModel = viewModel;
-                    console.log(ko.toJSON(viewModel));
-                    debugger;
-                };
-                ko.applyBindings(viewModel);
-            });
-        </script>
-    @endpush
 
 
 @endsection
+
+
+
+@push('js')
+    <link type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js">
+    <link type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/knockout/3.1.0/knockout-min.js">
+    <link type="text/javascript"
+          src="{{asset('js/file-uploader.js')}}">
+
+    <script>
+
+        $(function () {
+            var viewModel = {};
+            viewModel.fileData = ko.observable({
+                dataURL: ko.observable(),
+                // base64String: ko.observable(),
+            });
+            viewModel.multiFileData = ko.observable({
+                dataURLArray: ko.observableArray(),
+            });
+            viewModel.onClear = function (fileData) {
+                if (confirm('Are you sure?')) {
+                    fileData.clear && fileData.clear();
+                }
+            };
+            viewModel.debug = function () {
+                window.viewModel = viewModel;
+                console.log(ko.toJSON(viewModel));
+                debugger;
+            };
+            ko.applyBindings(viewModel);
+        });
+    </script>
+@endpush
+
+@push('css')
+    <link rel="stylesheet"
+          src="{{asset('css/file-uploader.css')}}">
+    <link rel="stylesheet" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+@endpush
