@@ -6,6 +6,10 @@ use App\Http\Controllers\Controller;
 use App\Models\Service;
 use Illuminate\Http\Request;
 
+use Illuminate\Support\Facades\Storage;
+use phpDocumentor\Reflection\Types\Integer;
+use Illuminate\Support\Str;
+
 class ServiceController extends Controller
 {
 
@@ -30,18 +34,43 @@ class ServiceController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
     {
-        //
+        $service = new Service();
+        $request->input('post_text');
+        $service->servic_picture = $this->uploadAny($request->input('service_picture'), 'uploads');
+        $service->name = $request->input('service_name');
+        $service->save();
+    }
+
+    public function uploadAny($file, $folder, $ext = 'png')
+    {
+        /** @var TYPE_NAME $file */
+        $file = base64_decode($file);
+
+        /** @var TYPE_NAME $file_name */
+        $file_name = Str::random(25) . '.' . $ext; //generating unique file name;
+        if (!Storage::disk('public')->exists($folder)) {
+            Storage::disk('public')->makeDirectory($folder);
+        }
+        $result = false;
+        if ($file != "") { // storing image in storage/app/public Folder
+            $result = Storage::disk('public')->put($folder . '/' . $file_name, $file);
+
+        }
+        if ($result)
+            return $folder . '/' . $file_name;
+        else
+            return null;
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function show($id)
@@ -53,7 +82,7 @@ class ServiceController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
@@ -66,8 +95,8 @@ class ServiceController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param \Illuminate\Http\Request $request
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
@@ -78,7 +107,7 @@ class ServiceController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)

@@ -3,9 +3,10 @@
 @section('content')
 
     @push('js_links')
-        <link  type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js">
-        <link  type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/knockout/3.1.0/knockout-min.js">
-        <link  type="text/javascript" src="https://rawgit.com/adrotec/knockout-file-bindings/master/knockout-file-bindings.js">
+        <link type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js">
+        <link type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/knockout/3.1.0/knockout-min.js">
+        <link type="text/javascript"
+              src="https://rawgit.com/adrotec/knockout-file-bindings/master/knockout-file-bindings.js">
     @endpush
 
     @push('style_links')
@@ -29,7 +30,7 @@
         <div class="tab-pane tabs-animation fade show active" id="tab-content-0" role="tabpanel">
             <div class="main-card mb-3 card">
                 <div class="card-body"><h5 class="card-title">Service</h5>
-                    <form action="" method="post" enctype="multipart/form-data">
+                    <form action="{{route('add-service')}}" method="post" enctype="multipart/form-data">
                         <div class="form-row">
                             <div class="col-md-6">
                                 <div class="position-relative form-group"><label for="exampleEmail11"
@@ -53,7 +54,7 @@
                                         </div>
                                     </div>
                                     <div class="col-md-6">
-                                        <input type="file" data-bind="fileInput: fileData, customFileInput: {
+                                        <input  name="service_picture"  type="file" data-bind="fileInput: fileData, customFileInput: {
                                       buttonClass: 'btn btn-success',
                                       fileNameClass: 'disabled form-control',
                                       onClear: onClear,
