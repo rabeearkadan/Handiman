@@ -40,7 +40,6 @@ class ServiceController extends Controller
     public function store(Request $request)
     {
         $service = new Service();
-        $request->input('post_text');
         $service->servic_picture = $this->uploadAny($request->input('service_picture'), 'uploads');
         $service->name = $request->input('service_name');
         $service->save();
