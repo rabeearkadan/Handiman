@@ -282,7 +282,7 @@
     </style>
 </head>
 <body onload="services()">
-@include('preloader')
+@include('front.client.preloader')
 @include('front.client.navbar')
 
 <div class="content">
