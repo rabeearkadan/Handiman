@@ -8,7 +8,7 @@
             <div class="main-card mb-3 card">
                 <div class="card-body"><h5 class="card-title">Service Table</h5>
 
-                    <button class="mb-2 mr-2 btn btn-primary" onclick="location.href='{{route('service.test')}}'">Add
+                    <button class="mb-2 mr-2 btn btn-primary" onclick="location.href='{{route('service.create')}}'">Add
                         New Service
                     </button>
                     <button  class="mb-2 mr-2 btn btn-danger" onclick="location.href='{{route('service.test')}}'"> data tables</button>
