@@ -124,6 +124,6 @@ class ServiceController extends Controller
         } catch (\Exception $e) {
         }
 
-        return response()->json(['status' => 'success']);
+        return redirect()->route('service.index');
     }
 }
