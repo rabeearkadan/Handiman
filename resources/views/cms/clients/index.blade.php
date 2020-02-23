@@ -1,4 +1,4 @@
-<?php
+
 @extends('cms.layouts.app')
 
 @section('content')
