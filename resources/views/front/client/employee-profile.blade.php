@@ -89,8 +89,6 @@
                 <div class="portfolioFilter clearfix margin-b-80">
                     <a href="#" data-filter="*" class="current"><b>ALL</b></a>
                     <a href="#" data-filter=".web-design"><b>WEB DESIGN</b></a>
-                    <a href="#" data-filter=".branding"><b>BRANDING</b></a>
-                    <a href="#" data-filter=".graphic-design"><b>GRAPHIC DESIGN</b></a>
                 </div><!-- portfolioFilter -->
             </div><!-- col-sm-8 -->
         </div><!-- row -->
