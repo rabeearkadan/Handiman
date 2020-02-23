@@ -56,7 +56,7 @@
                             </div>
                         </div>
 
-                        <button type="button" class="btn btn-primary  btn-block">Submit Service</button>
+                        <button type="button" class="btn btn-primary center-block">Submit Service</button>
 
                     </form>
                 </div>
