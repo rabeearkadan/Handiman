@@ -18,16 +18,14 @@
     <div class="tab-content">
         <div class="tab-pane tabs-animation fade show active" id="tab-content-0" role="tabpanel">
             <div class="main-card mb-3 card">
-                <div class="text-center">
                 <div class="card-body"><h5 class="card-title">Service</h5>
-
                     <form action="{{route('service.store')}}" method="post" enctype="multipart/form-data">
                         @csrf
-                        <div class="container">
-                            <div class="col-md-12">
-                                <div class="position-relative form-group"><label for="exampleEmail11"
-                                                                                 class="">Service Name</label><input
-                                        name="service_name" placeholder="Example.." type="text"
+                        <div class="form-row">
+                            <div class="col-md-6">
+                                <div class="position-relative form-group">
+                                    <input
+                                        name="service_name" placeholder="Service Name.." type="text"
                                         class="form-control">
                                 </div>
                             </div>
@@ -58,9 +56,7 @@
                         </div>
 
                         <button class="mt-2 btn btn-primary">Submit Service</button>
-
                     </form>
-                </div>
                 </div>
             </div>
         </div>
