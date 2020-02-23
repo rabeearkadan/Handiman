@@ -31,7 +31,7 @@ class ServiceController extends Controller
                 ->make(true);
         }
 
-        return view('cms.services.show');
+        return view('cms.services.test');
     }
 
     public function index(Request $request)
