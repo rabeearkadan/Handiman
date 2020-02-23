@@ -19,6 +19,8 @@
         <div class="tab-pane tabs-animation fade show active" id="tab-content-0" role="tabpanel">
             <div class="main-card mb-3 card">
                 <div class="card-body"><h5 class="card-title">Service</h5>
+
+                    <div class="form-group">
                     <form action="{{route('service.store')}}" method="post" enctype="multipart/form-data">
                         @csrf
                         <div class="form-row">
@@ -57,8 +59,7 @@
                         </div>
 
                         <button type="button" class="btn btn-primary center-block">Submit Service</button>
-                        <div class="form-group">
-                            <label class="col-md-4 control-label" for="singlebutton"></label>
+
                             <div class="col-md-4 center-block">
                                 <button id="singlebutton" name="singlebutton" class="btn btn-primary center-block">
                                     Next Step!
