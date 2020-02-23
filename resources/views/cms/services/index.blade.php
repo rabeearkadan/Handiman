@@ -1,13 +1,11 @@
 @extends('cms.layouts.app')
 
 @section('content')
-@push('css')
 
-    <link rel="stylesheet" src="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
-    @endpush
 @push('js')
-    <script type="text/javascript" src="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script type="text/javascript" src="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
 
     <script type="text/javascript">
 
@@ -16,6 +14,10 @@
         $(e.currentTarget).find('input[name="bookId"]').val(bookId);
     });
 </script>
+@endpush
+@push('css')
+
+    <link rel="stylesheet" src="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
 @endpush
 
     <div class="row">
