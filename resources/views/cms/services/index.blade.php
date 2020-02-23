@@ -7,7 +7,13 @@
     @endpush
 @push('js')
     <script type="text/javascript" src="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+<script type="text/javascript">
 
+    $('#my_modal').on('show.bs.modal', function(e) {
+        var bookId = $(e.relatedTarget).data('book-id');
+        $(e.currentTarget).find('input[name="bookId"]').val(bookId);
+    });
+</script>
 @endpush
 
     <div class="row">
@@ -103,8 +109,5 @@
 
 <script>
 
-    $('#my_modal').on('show.bs.modal', function(e) {
-        var bookId = $(e.relatedTarget).data('book-id');
-        $(e.currentTarget).find('input[name="bookId"]').val(bookId);
-    });
+
 </script>
