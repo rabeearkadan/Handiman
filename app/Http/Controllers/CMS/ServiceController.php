@@ -120,7 +120,7 @@ class ServiceController extends Controller
     {
 
         try {
-            Service::query()->find()->delete($id);
+            Service::query()->find($id)->delete();
         } catch (\Exception $e) {
         }
 
