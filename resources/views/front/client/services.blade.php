@@ -11,7 +11,7 @@
                     <div class = "row">
                 @endif
                 <div class="column">
-                    <a href="{{route('client.service', $service->id)}}"> <div class="card"> <img src="{{'storage/app/public'.$service->image}}" > <label> {{ $service->name }} </label> </div> </a>
+                    <a href="{{route('client.service', $service->id)}}"> <div class="card"> <img src="{{'/storage/app/public/'.$service->image}}" > <label> {{ $service->name }} </label> </div> </a>
                 </div>
 
             @endforeach
