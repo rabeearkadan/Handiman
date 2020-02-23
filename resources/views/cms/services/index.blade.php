@@ -31,8 +31,7 @@
                                     {{--                                   // modal as popup delete to be added--}}
                                     {{--                                   <a  href="javascript:deleteService({{$service->id}})"><i class="pe-7s-trash"> </i></a>--}}
 
-                                    <a data-toggle="modal" data-id="ISBN564541" title="Add this item" class="open-AddBookDialog btn btn-primary" href="#addBookDialog">test</a>
-
+                                    <a href="#my_modal" data-toggle="modal" data-book-id="my_id_value">Open Modal</a>
 
 {{--                                    <button   type="button" class="btn mr-2 mb-2 btn-danger" data-toggle="modal"--}}
 {{--                                            data-target="#exampleModal">--}}
@@ -76,28 +75,28 @@
 
 
 
-
-<div class="modal hide" id="addBookDialog">
-    <div class="modal-header">
-        <button class="close" data-dismiss="modal">×</button>
-        <h3>Modal header</h3>
-    </div>
-    <div class="modal-body">
-        <p>some content</p>
-        <input type="text" name="bookId" id="bookId" value=""/>
+<div class="modal" id="my_modal">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                <h4 class="modal-title">Modal header</h4>
+            </div>
+            <div class="modal-body">
+                <p>some content</p>
+                <input type="text" name="bookId" value=""/>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+        </div>
     </div>
 </div>
 
 <script>
 
-    $(document).on("click", ".open-AddBookDialog", function () {
-
-        var myBookId = $(this).data('id');
-
-        alert(myBookId);
-        $(".modal-body #bookId").val( myBookId );
-        // As pointed out in comments,
-        // it is unnecessary to have to manually call the modal.
-        // $('#addBookDialog').modal('show');
+    $('#my_modal').on('show.bs.modal', function(e) {
+        var bookId = $(e.relatedTarget).data('book-id');
+        $(e.currentTarget).find('input[name="bookId"]').val(bookId);
     });
 </script>
