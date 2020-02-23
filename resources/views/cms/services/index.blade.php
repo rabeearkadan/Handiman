@@ -84,7 +84,7 @@
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-danger">Delete and Save Changes</button>
+                <button href="javascript:deleteService({{$service->id}}" type="button"  class="btn btn-danger">Delete and Save Changes</button>
             </div>
         </div>
     </div>
