@@ -37,7 +37,7 @@
         $(function () {
 
             var table = $('.data-table').DataTable({
-                processing: false,
+                processing: true,
                 serverSide: true,
                 ajax: "{{ route('service.test') }}",
                 columns: [
