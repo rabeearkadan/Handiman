@@ -2,7 +2,10 @@
 
 @section('content')
 
-    <?php $serviceId = '' ?>
+    <?php
+    $serviceId = '';
+    $service_name='';
+    ?>
     @push('js')
 
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
@@ -41,6 +44,12 @@
                         </thead>
                         <tbody>
                         @foreach($services as $service)
+                            <?php
+                            $service_id= ''?>{{$service->id}}
+
+                            <?php
+                            ?>
+
                             <tr id="row-{{$service->id}}">
                                 <th scope="row">{{$loop->index +1 }}</th>
                                 <td>{{$service->name}}</td>
@@ -52,7 +61,8 @@
                                     {{--                                   <a  href="javascript:deleteService({{$service->id}})"><i class="pe-7s-trash"> </i></a>--}}
 
 
-                                    <button href="#exampleModal" type="button" data-service-id="{{$service->id}}"
+                                    <button href="#exampleModal" type="button"
+                                             data-service-id="{{$service->id}}"
                                             class="btn mr-2 mb-2 btn-danger" data-toggle="modal"
                                     > Delete
                                     </button>
@@ -82,15 +92,15 @@
                 </button>
             </div>
             <div class="modal-body">
-                <p class="mb-0">Are you sure you want to delete </p>
-                <text name="serviceId"    value="" > Service ?</text>
+                <p class="mb-0">Are you sure you want to delete  <?php  echo  $serviceId  ?> </p>
+                <text name="serviceId" value=""> Service ?</text>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-{{--                <form class="delete" action="{{ route('service.destroy', serviceId) }}" method="delete">--}}
-                    @csrf
+                {{--                <form class="delete" action="{{ route('service.destroy', serviceId) }}" method="delete">--}}
+                @csrf
 
-                    <button type="button" class="btn btn-danger">Delete and Save Changes</button>
+                <button type="button" class="btn btn-danger">Delete and Save Changes</button>
                 </form>
 
 
