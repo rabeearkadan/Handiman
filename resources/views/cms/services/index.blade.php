@@ -23,8 +23,8 @@
                                <td>{{$service->name}}</td>
                                <td>{{$service->users()->count()}}</td>
                            <td>
-                                   <a href="{{route('service.edit', $service->id)}}"><i class="pe-7s-pen"> </i></a>
-                                   <a href="{{route('service.show', $service->id)}}"><i class="pe-7s-display"> </i></a>
+{{--                                   <a href="{{route('service.edit', $service->id)}}"><i class="pe-7s-pen"> </i></a>--}}
+{{--                                   <a href="{{route('service.show', $service->id)}}"><i class="pe-7s-display"> </i></a>--}}
 {{--                                   // modal as popup delete to be added--}}
                                    <a  href="javascript:deleteService({{$service->id}})"><i class="pe-7s-trash"> </i></a>
                                </td>
