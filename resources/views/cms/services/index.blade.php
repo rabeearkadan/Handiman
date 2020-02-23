@@ -52,7 +52,7 @@
                                     {{--                                   <a  href="javascript:deleteService({{$service->id}})"><i class="pe-7s-trash"> </i></a>--}}
 
 
-                                    <button href="#exampleModal" type="button"  <?php  s?>  data-service-id="{{$service->id}}"
+                                    <button href="#exampleModal" type="button"   data-service-id="{{$service->id}}"
                                             class="btn mr-2 mb-2 btn-danger" data-toggle="modal"
                                     > Delete
                                     </button>
