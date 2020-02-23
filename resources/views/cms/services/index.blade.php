@@ -87,7 +87,7 @@
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                <form class="delete" action="{{ route('service.destroy', serviceId) }}" method="delete">
+{{--                <form class="delete" action="{{ route('service.destroy', serviceId) }}" method="delete">--}}
                     @csrf
 
                     <button type="button" class="btn btn-danger">Delete and Save Changes</button>
