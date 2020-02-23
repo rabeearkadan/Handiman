@@ -91,7 +91,10 @@
 <script>
 
     $(document).on("click", ".open-AddBookDialog", function () {
+
         var myBookId = $(this).data('id');
+
+        alert(myBookId);
         $(".modal-body #bookId").val( myBookId );
         // As pointed out in comments,
         // it is unnecessary to have to manually call the modal.
