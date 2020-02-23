@@ -19,6 +19,7 @@ class ServiceController extends Controller
     {
         if ($request->ajax()) {
             $data = Service::all();
+
             return Datatables::of($data)
                 ->addIndexColumn()
                 ->addColumn('action', function ($row) {
