@@ -20,6 +20,8 @@
                             <th>Name</th>
                             <th># Users</th>
                             <th>Actions</th>
+                            <th>...</th>
+                            <th>...</th>
                         </tr>
                         </thead>
                         <tbody>
