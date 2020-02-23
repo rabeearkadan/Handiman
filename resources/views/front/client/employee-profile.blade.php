@@ -10,8 +10,8 @@
     <link href="{{asset('css/client/employee-profile/cv-portfolio/styles.css')}}" rel="stylesheet">
     <link href="{{asset('css/client/employee-profile/cv-portfolio/responsive.css')}}" rel="stylesheet">
     <style>
-        body,header{
-            margin-top: 15vh;
+        .nav{
+            margin-bottom: 10vh;
         }
     </style>
 @endpush
