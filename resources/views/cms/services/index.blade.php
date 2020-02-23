@@ -11,6 +11,8 @@
                     <button class="mb-2 mr-2 btn btn-primary" onclick="location.href='{{route('service.create')}}'">Add
                         New Service
                     </button>
+                    <button  class="mb-2 mr-2 btn btn-danger" onclick="location.href='{{route('service.show')}}'"> data tables</button>
+
                     <table class="mb-0 table">
                         <thead>
                         <tr>
