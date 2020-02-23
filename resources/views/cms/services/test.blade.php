@@ -48,7 +48,7 @@
                 ajax: "{{ route('service.test') }}",
                 columns: [
 
-                    {data: 'name', name: 'Service Name'},
+                    {data: 'name', name: 'name'},
                         {{--{data: '{{$service->users()->count()}}' , name:' number of employees enrolled '},--}}
                     {data: 'action', name: 'action', orderable: false, searchable: false},
                 ]
