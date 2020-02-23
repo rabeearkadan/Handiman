@@ -5,14 +5,34 @@ namespace App\Http\Controllers\CMS;
 use App\Http\Controllers\Controller;
 use App\Models\Service;
 use Illuminate\Http\Request;
-
+use Yajra\DataTables\Contracts\DataTable;
 use Illuminate\Support\Facades\Storage;
 use phpDocumentor\Reflection\Types\Boolean;
 use phpDocumentor\Reflection\Types\Integer;
 use Illuminate\Support\Str;
+use Yajra\DataTables\DataTables;
 
 class ServiceController extends Controller
 {
+
+    public function test(Request $request)
+    {
+        if ($request->ajax()) {
+            $data = Service::all();
+            return Datatables::of($data)
+                ->addIndexColumn()
+                ->addColumn('action', function ($row) {
+
+                    $btn = '<a href="javascript:void(0)" class="edit btn btn-primary btn-sm">View</a>';
+
+                    return $btn;
+                })
+                ->rawColumns(['action'])
+                ->make(true);
+        }
+
+        return view('cms.services.show');
+    }
 
     public function index(Request $request)
     {
