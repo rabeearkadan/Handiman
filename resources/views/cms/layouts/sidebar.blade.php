@@ -55,7 +55,8 @@
                         </a>
                     </li>
                     <li>
-                        <a href="" class="mm">
+
+                        <a href="{{route('employee.index')}}" class="mm">
                             <i class="metismenu-icon pe-7s-rocket"></i>
                             Employees
                         </a>
