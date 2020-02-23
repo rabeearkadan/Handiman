@@ -11,9 +11,9 @@
         <table class="table table-bordered data-table">
             <thead>
             <tr>
-                <th>No</th>
+
                 <th>Name</th>
-                <th>Email</th>
+{{--                <th>Email</th>--}}
                 <th width="100px">Action</th>
             </tr>
             </thead>
@@ -49,7 +49,7 @@
                 columns: [
 
                     {data: 'name', name: 'name'},
-                    { data:'{{$service->users()->count()}}' ,name:'{{$service->users()->count()}}'},
+
                         {{--{data: '{{$service->users()->count()}}' , name:' number of employees enrolled '},--}}
                     {data: 'action', name: 'action', orderable: false, searchable: false},
                 ]
