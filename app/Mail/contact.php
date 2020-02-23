@@ -26,8 +26,7 @@ class contact extends Mailable
      *
      * @return $this
      */
-    public function build()
-    {
+    public function build(){
         return $this->markdown('mail.contact');
     }
 }
