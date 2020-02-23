@@ -9,6 +9,11 @@
     <link href="{{asset('css/common-css/fluidbox.min.css')}}" rel="stylesheet">
     <link href="{{asset('css/cv-portfolio/styles.css')}}" rel="stylesheet">
     <link href="{{asset('css/cv-portfolio/responsive.css')}}" rel="stylesheet">
+    <style>
+        body,header{
+            margin-top: 15vh;
+        }
+    </style>
 @endpush
 <header>
     <div class="container">
