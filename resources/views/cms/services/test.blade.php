@@ -43,7 +43,7 @@
                 columns: [
                     {data: 'name', name: 'name'},
                     {data: 'users', name: '#users', render: function(data){
-                        return sizeof(data);
+                        return data.length;
                         }
                     },
 
