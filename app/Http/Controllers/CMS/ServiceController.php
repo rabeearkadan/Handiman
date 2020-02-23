@@ -7,6 +7,7 @@ use App\Models\Service;
 use Illuminate\Http\Request;
 
 use Illuminate\Support\Facades\Storage;
+use phpDocumentor\Reflection\Types\Boolean;
 use phpDocumentor\Reflection\Types\Integer;
 use Illuminate\Support\Str;
 
@@ -36,19 +37,18 @@ class ServiceController extends Controller
     {
         $service = new Service();
 //        $service->image = $this->uploadAny($request->file('service_picture'), 'services');
-        if ( $request->has('service_picture')){
+        if ($request->has('service_picture')) {
             $file = $request->file('service_picture');
-            $name = 'service_'. time().'.'.$file->getClientOriginalExtension();
+            $name = 'service_' . time() . '.' . $file->getClientOriginalExtension();
 
-            if ( !Storage::disk('public')->exists('services')){
+            if (!Storage::disk('public')->exists('services')) {
                 Storage::disk('public')->makeDirectory('services');
             }
 
 
-
-            if ( Storage::disk('public')->putFileAs('services', $file, $name) ){
-                $service->image = 'services/'.$name;
-            }else{
+            if (Storage::disk('public')->putFileAs('services', $file, $name)) {
+                $service->image = 'services/' . $name;
+            } else {
                 return redirect()->back();
             }
         }
@@ -115,15 +115,15 @@ class ServiceController extends Controller
         //
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param int $id
-     * @return \Illuminate\Http\Response
-     */
-    public function  destroy($id)
+
+    public function destroy($id)
     {
 
-       return  true;
+        try {
+            Service::query()->find()->delete($id);
+        } catch (\Exception $e) {
+        }
+
+        return response()->json(['status' => 'success']);
     }
 }

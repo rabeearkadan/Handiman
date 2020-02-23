@@ -43,6 +43,7 @@
 
     <script type="text/javascript">
         function deleteService(id) {
+            alert('successfully deleted service id: ' + id);
             $.ajax({
                 url: '/CMS/ServiceController/destroy?id=' + id,
                 type: 'delete',
