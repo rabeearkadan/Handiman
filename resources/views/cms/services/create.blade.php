@@ -33,13 +33,15 @@
                         </div>
 
 
-                        <div class="container">
+                        <div class="container" style="max-width: 750px;
+  padding: 15px;">
                             <div class="well" data-bind="fileDrag: fileData">
                                 <div class="form-group row">
                                     <div class="col-md-6">
                                         <img style="height: 125px;" class="img-rounded  thumb"
                                              data-bind="attr: { src: fileData().dataURL }, visible: fileData().dataURL">
                                         <div data-bind="ifnot: fileData().dataURL">
+                                            <label class="drag-label">Drag file here</label>
                                         </div>
                                     </div>
                                     <div class="col-md-6">
@@ -54,8 +56,7 @@
                             </div>
                         </div>
 
-                        <button class="mb-2 mr-2 btn btn-primary btn-block">Submit Service
-                        </button>
+                        <button class="mt-2 btn btn-primary" style="alignment: center">Save Changes</button>
 
                     </form>
                 </div>
