@@ -1,3 +1,4 @@
+<?php
 @extends('cms.layouts.app')
 
 @section('content')
@@ -5,12 +6,12 @@
     <div class="row">
         <div class="col-lg-12">
             <div class="main-card mb-3 card">
-                <div class="card-body"><h5 class="card-title">Service Table</h5>
+                <div class="card-body"><h5 class="card-title">Clients Table</h5>
 
-                    <button class="mb-2 mr-2 btn btn-primary" onclick="location.href='{{route('service.create')}}'">Add
-                        New Service
-                    </button>
-                    <button  class="mb-2 mr-2 btn btn-danger" onclick="location.href='{{route('service.test')}}'"> data tables</button>
+{{--                    <button class="mb-2 mr-2 btn btn-primary" onclick="location.href='{{route('service.create')}}'">Add--}}
+{{--                        New Service--}}
+{{--                    </button>--}}
+{{--                    <button  class="mb-2 mr-2 btn btn-danger" onclick="location.href='{{route('service.test')}}'"> data tables</button>--}}
 
                     <table class="mb-0 table">
                         <thead>
@@ -22,28 +23,24 @@
                         </tr>
                         </thead>
                         <tbody>
-                        @foreach($services as $service)
-                            <tr id="row-{{$service->id}}">
+                        @foreach($clients as $client)
+                            <tr id="row-{{$client->id}}">
                                 <th scope="row">{{$loop->index +1 }}</th>
-                                <td>{{$service->name}}</td>
-                                <td>{{$service->users()->count()}}</td>
+                                <td>{{$client->name}}</td>
+                                <td>{{$client->email}}</td>
                                 <td>
-                                    {{--                                   <a href="{{route('service.edit', $service->id)}}"><i class="pe-7s-pen"> </i></a>--}}
-                                    {{--                                   <a href="{{route('service.show', $service->id)}}"><i class="pe-7s-display"> </i></a>--}}
-                                    {{--                                   // modal as popup delete to be added--}}
-                                    {{--                                   <a  href="javascript:deleteService({{$service->id}})"><i class="pe-7s-trash"> </i></a>--}}
-                                    <button class="btn btn-danger waves-effect" type="button" onclick="deletePost('{{ $service->id }}')">
+                                    <button class="btn btn-danger waves-effect" type="button" onclick="deletePost('{{ $client->id }}')">
                                         <i class="material-icons">delete</i>
                                     </button>
-                                    <form id="delete-form-{{ $service->id }}" action="{{ route('service.destroy',$service->id) }}" method="POST" style="display: none;">
+                                    <form id="delete-form-{{ $client->id }}" action="{{ route('client.destroy',$client->id) }}" method="POST" style="display: none;">
                                         @csrf
                                         @method('DELETE')
                                     </form>
 
-{{--                                    <button href="#exampleModal" type="button"   data-service-id="{{$service->id}}" try--}}
-{{--                                            class="btn mr-2 mb-2 btn-danger" data-toggle="modal"--}}
-{{--                                    > Delete--}}
-{{--                                    </button>--}}
+                                    {{--                                    <button href="#exampleModal" type="button"   data-service-id="{{$service->id}}" try--}}
+                                    {{--                                            class="btn mr-2 mb-2 btn-danger" data-toggle="modal"--}}
+                                    {{--                                    > Delete--}}
+                                    {{--                                    </button>--}}
 
 
                                 </td>

@@ -34,16 +34,22 @@
         <div class="scrollbar-sidebar">
             <div class="app-sidebar__inner">
                 <ul class="vertical-nav-menu">
+
+{{--              block   1   --}}
                     <li class="app-sidebar__heading">System</li>
+
                     <li>
                         <a href="{{route('service.index')}}" class="mm-active">
                             <i class="metismenu-icon pe-7s-rocket"></i>
                             Service
                         </a>
                     </li>
+
+{{--              block  2    --}}
                     <li class="app-sidebar__heading">Users</li>
+
                     <li>
-                        <a href="" class="mm-active">
+                        <a href="{{route('client.index')}}" class="mm">
                             <i class="metismenu-icon pe-7s-rocket"></i>
                             Clients
                         </a>
