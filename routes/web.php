@@ -20,15 +20,9 @@ Route::get('/', function () {
 });
 Auth::routes();
 
-Route::get("contact-us", 'FRONT\HomeController@contact');
-
-//Route::get("login", 'Auth\LoginController@showLoginForm')->name('login');
-//Route::post("login", 'Auth\LoginController@doLogin')->name('login');
-
 Route::get("register", 'Auth\RegisterController@showRegistrationForm')->name('register');
-// ac
-//Route::get("home","FRONT\HomeController@getHomePage");
+Route::post('/contact','MailController@contact')->name('mail.contact');
 
 
-// admin page route
+
 
