@@ -19,16 +19,17 @@ class ServiceController extends Controller
     {
         if ($request->ajax()) {
             $data = Service::all();
+
             return Datatables::of($data)
                 ->addIndexColumn()
-                ->addColumn('action', function ($row) {
+                 ->addColumn('action', function ($row) {
 
-                    $btn = '<a href="javascript:void(0)" class="edit btn btn-primary btn-sm">View</a>';
+                     return '<a href="#edit-'.$row->id.'" class="btn btn-xs btn-primary"><i class="glyphicon glyphicon-edit"></i> Edit</a>';
 
-                    return $btn;
-                })
+                 })
                 ->rawColumns(['action'])
                 ->make(true);
+
         }
 
         return view('cms.services.test');
