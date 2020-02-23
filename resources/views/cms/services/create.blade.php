@@ -57,7 +57,14 @@
                         </div>
 
                         <button type="button" class="btn btn-primary center-block">Submit Service</button>
-
+                        <div class="form-group">
+                            <label class="col-md-4 control-label" for="singlebutton"></label>
+                            <div class="col-md-4 center-block">
+                                <button id="singlebutton" name="singlebutton" class="btn btn-primary center-block">
+                                    Next Step!
+                                </button>
+                            </div>
+                        </div>
                     </form>
                 </div>
             </div>
