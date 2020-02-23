@@ -31,7 +31,7 @@
                                     {{--                                   <a href="{{route('service.show', $service->id)}}"><i class="pe-7s-display"> </i></a>--}}
                                     {{--                                   // modal as popup delete to be added--}}
                                     {{--                                   <a  href="javascript:deleteService({{$service->id}})"><i class="pe-7s-trash"> </i></a>--}}
-                                    <button class="btn btn-danger waves-effect" type="button" onclick="deletePost({{ $service->id }})">
+                                    <button class="btn btn-danger waves-effect" type="button" onclick="deletePost('{{ $service->id }}')">
                                         <i class="material-icons">delete</i>
                                     </button>
                                     <form id="delete-form-{{ $service->id }}" action="{{ route('service.destroy',$service->id) }}" method="POST" style="display: none;">

@@ -26,7 +26,7 @@ Route::get("contact-us", 'FRONT\HomeController@contact');
 //Route::post("login", 'Auth\LoginController@doLogin')->name('login');
 
 Route::get("register", 'Auth\RegisterController@showRegistrationForm')->name('register');
-
+// ac
 //Route::get("home","FRONT\HomeController@getHomePage");
 
 
