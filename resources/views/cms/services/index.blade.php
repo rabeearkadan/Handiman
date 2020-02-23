@@ -1,6 +1,7 @@
 @extends('cms.layouts.app')
 
 @section('content')
+
     <div class="row">
         <div class="col-lg-12">
             <div class="main-card mb-3 card">
@@ -29,10 +30,16 @@
                                     {{--                                   <a href="{{route('service.show', $service->id)}}"><i class="pe-7s-display"> </i></a>--}}
                                     {{--                                   // modal as popup delete to be added--}}
                                     {{--                                   <a  href="javascript:deleteService({{$service->id}})"><i class="pe-7s-trash"> </i></a>--}}
-                                    <button type="button" class="btn mr-2 mb-2 btn-danger" data-toggle="modal"
-                                            data-target="#exampleModal">
-                                        Delete
-                                    </button>
+
+                                    <a data-toggle="modal" data-id="ISBN564541" title="Add this item" class="open-AddBookDialog btn btn-primary" href="#addBookDialog">test</a>
+
+
+{{--                                    <button   type="button" class="btn mr-2 mb-2 btn-danger" data-toggle="modal"--}}
+{{--                                            data-target="#exampleModal">--}}
+{{--                                        Delete--}}
+{{--                                    </button>--}}
+
+
                                 </td>
                             </tr>
                         @endforeach
@@ -45,30 +52,7 @@
     </div>
 
 @endsection
-@push('js')
 
-    <script type="text/javascript">
-        function deleteService(id) {
-            alert('successfully deleted service id: ' + id);
-            $.ajax({
-                url: '/CMS/ServiceController/destroy?id=' + id,
-                type: 'delete',
-                success: function (res) {
-                    if (res) {
-                        alert('successfully deleted service id: ' + id);
-                        $('#row-' + id).remove();
-                    } else {
-                        alert('failed');
-                    }
-                },
-                error: function () {
-                    alert('failed');
-                    console.error("something went wrong");
-                }
-            });
-        }
-    </script>
-@endpush
 <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
      aria-hidden="true">
     <div class="modal-dialog" role="document">
@@ -84,8 +68,33 @@
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                <button href="javascript:deleteService({{$service->id}}" type="button"  class="btn btn-danger">Delete and Save Changes</button>
+                <button     type="button"  class="btn btn-danger">Delete and Save Changes</button>
             </div>
         </div>
     </div>
 </div>
+
+
+
+
+<div class="modal hide" id="addBookDialog">
+    <div class="modal-header">
+        <button class="close" data-dismiss="modal">×</button>
+        <h3>Modal header</h3>
+    </div>
+    <div class="modal-body">
+        <p>some content</p>
+        <input type="text" name="bookId" id="bookId" value=""/>
+    </div>
+</div>
+
+<script>
+
+    $(document).on("click", ".open-AddBookDialog", function () {
+        var serviceId = $(this).data('id');
+        $(".modal-body #bookId").val( serviceId );
+        // As pointed out in comments,
+        // it is unnecessary to have to manually call the modal.
+        // $('#addBookDialog').modal('show');
+    });
+</script>
