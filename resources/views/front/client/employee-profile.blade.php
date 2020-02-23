@@ -4,11 +4,11 @@
 @push('css')
     <link href="https://fonts.googleapis.com/css?family=Poppins:400,500,600,700%7CAllura" rel="stylesheet">
 
-    <link href="{{asset('css/common-css/bootstrap.css')}}" rel="stylesheet">
-    <link href="{{asset('css/common-css/ionicons.css')}}" rel="stylesheet">
-    <link href="{{asset('css/common-css/fluidbox.min.css')}}" rel="stylesheet">
-    <link href="{{asset('css/cv-portfolio/styles.css')}}" rel="stylesheet">
-    <link href="{{asset('css/cv-portfolio/responsive.css')}}" rel="stylesheet">
+    <link href="{{asset('css/client/employee-profile/common-css/bootstrap.css')}}" rel="stylesheet">
+    <link href="{{asset('css/client/employee-profile/common-css/ionicons.css')}}" rel="stylesheet">
+    <link href="{{asset('css/client/employee-profile/common-css/fluidbox.min.css')}}" rel="stylesheet">
+    <link href="{{asset('css/client/employee-profile/cv-portfolio/styles.css')}}" rel="stylesheet">
+    <link href="{{asset('css/client/employee-profile/cv-portfolio/responsive.css')}}" rel="stylesheet">
     <style>
         body,header{
             margin-top: 15vh;

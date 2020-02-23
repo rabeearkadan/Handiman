@@ -1,5 +1,7 @@
 @extends('layouts.client.app')
-
+@push('css')
+    <link href="{{asset('css/client/cards.css')}}" rel="stylesheet">
+@endpush
 @section('content')
     <div class="container" id="services">
         <div class="row">
