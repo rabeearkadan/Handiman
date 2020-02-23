@@ -10,7 +10,7 @@
     <script type="text/javascript">
 
     $('#exampleModal').on('show.bs.modal', function(e) {
-        var service_id = $(e.relatedTarget).data('service-id-id');
+        var service_id = $(e.relatedTarget).data('service-id');
         $(e.currentTarget).find('input[name="serviceId"]').val(service_id);
     });
 </script>
