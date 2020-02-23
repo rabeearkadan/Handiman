@@ -18,15 +18,15 @@
                         </thead>
                         <tbody>
                        @foreach($services as $service)
-                           <tr>
+                           <tr id="row-{{$service->id}}" >
                                <th scope="row">{{$loop->index +1 }}</th>
                                <td>{{$service->name}}</td>
                                <td>{{$service->users()->count()}}</td>
-                               <td>
+                           <td>
                                    <a href="{{route('service.edit', $service->id)}}"><i class="pe-7s-pen"> </i></a>
                                    <a href="{{route('service.show', $service->id)}}"><i class="pe-7s-display"> </i></a>
 {{--                                   // modal as popup delete to be added--}}
-                                   <i class="pe-7s-trash"> </i>
+                                   <a  href="javascript:deleteService({{$service->id}})"><i class="pe-7s-trash"> </i></a>
                                </td>
                            </tr>
                        @endforeach
@@ -39,3 +39,26 @@
     </div>
 
   @endsection
+@push('js')
+
+    <script type="text/javascript">
+        function deleteService(id) {
+            $.ajax({
+                url: '/CMS/ServiceController/destroy?id=' + id,
+                type: 'delete',
+                success: function (res) {
+                    if (res) {
+                        alert('successfully deleted service id: ' + id);
+                        $('#row-' + id).remove();
+                    } else {
+                        alert('failed');
+                    }
+                },
+                error: function () {
+                    alert('failed');
+                    console.error("something went wrong");
+                }
+            });
+        }
+    </script>
+    @endpush
