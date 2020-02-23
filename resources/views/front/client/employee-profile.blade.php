@@ -11,7 +11,7 @@
     <link href="{{asset('css/client/employee-profile/cv-portfolio/responsive.css')}}" rel="stylesheet">
     <style>
         .nav{
-            margin-bottom: 10vh;
+            margin-bottom: 5vh;
         }
         header{
             margin-top: 10vh;
