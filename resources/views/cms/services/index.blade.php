@@ -9,9 +9,9 @@
 
     <script type="text/javascript">
 
-    $('#my_modal').on('show.bs.modal', function(e) {
-        var bookId = $(e.relatedTarget).data('book-id');
-        $(e.currentTarget).find('input[name="bookId"]').val(bookId);
+    $('#exampleModal').on('show.bs.modal', function(e) {
+        var service_id = $(e.relatedTarget).data('service-id-id');
+        $(e.currentTarget).find('input[name="serviceId"]').val(service_id);
     });
 </script>
 @endpush
@@ -51,10 +51,11 @@
 
                                     <a href="#my_modal" data-toggle="modal" data-book-id="my_id_value">Open Modal</a>
 
-{{--                                    <button   type="button" class="btn mr-2 mb-2 btn-danger" data-toggle="modal"--}}
+                                    <button  href="#exampleModal"  type="button" data-service-id="{{$service->id}}" class="btn mr-2 mb-2 btn-danger" data-toggle="modal"
 {{--                                            data-target="#exampleModal">--}}
-{{--                                        Delete--}}
-{{--                                    </button>--}}
+    >
+                                        Delete
+                                    </button>
 
 
                                 </td>
@@ -82,6 +83,7 @@
             </div>
             <div class="modal-body">
                 <p class="mb-0">Are you sure you want to delete this service?</p>
+                <input type="text" name="serviceId" value=""/>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -93,23 +95,23 @@
 
 
 
-<div class="modal" id="my_modal">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-                <h4 class="modal-title">Modal header</h4>
-            </div>
-            <div class="modal-body">
-                <p>some content</p>
-                <input type="text" name="bookId" value=""/>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-            </div>
-        </div>
-    </div>
-</div>
+{{--<div class="modal" id="my_modal">--}}
+{{--    <div class="modal-dialog">--}}
+{{--        <div class="modal-content">--}}
+{{--            <div class="modal-header">--}}
+{{--                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>--}}
+{{--                <h4 class="modal-title">Modal header</h4>--}}
+{{--            </div>--}}
+{{--            <div class="modal-body">--}}
+{{--                <p>some content</p>--}}
+{{--                <input type="text" name="bookId" value=""/>--}}
+{{--            </div>--}}
+{{--            <div class="modal-footer">--}}
+{{--                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>--}}
+{{--            </div>--}}
+{{--        </div>--}}
+{{--    </div>--}}
+{{--</div>--}}
 
 <script>
 
