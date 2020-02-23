@@ -13,6 +13,7 @@
             <tr>
                 <th>Name</th>
                 {{--                <th>Email</th>--}}
+                <th> #</th>
                 <th width="100px">Action</th>
             </tr>
             </thead>
