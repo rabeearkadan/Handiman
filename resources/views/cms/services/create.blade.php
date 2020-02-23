@@ -24,7 +24,7 @@
                     <form action="{{route('service.store')}}" method="post" enctype="multipart/form-data">
                         @csrf
                         <div class="container">
-                            <div class="col-md-6">
+                            <div class="col-md-12">
                                 <div class="position-relative form-group"><label for="exampleEmail11"
                                                                                  class="">Service Name</label><input
                                         name="service_name" placeholder="Example.." type="text"
