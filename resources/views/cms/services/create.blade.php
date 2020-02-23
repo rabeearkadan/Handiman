@@ -18,9 +18,9 @@
     <div class="tab-content">
         <div class="tab-pane tabs-animation fade show active" id="tab-content-0" role="tabpanel">
             <div class="main-card mb-3 card">
+                <div class="text-center">
                 <div class="card-body"><h5 class="card-title">Service</h5>
 
-                    <div class="form-group">
                     <form action="{{route('service.store')}}" method="post" enctype="multipart/form-data">
                         @csrf
                         <div class="form-row">
@@ -35,8 +35,7 @@
                         </div>
 
 
-                        <div class="container" style="max-width: 750px;
-  padding: 15px;">
+                        <div class="container" >
                             <div class="well" data-bind="fileDrag: fileData">
                                 <div class="form-group row">
                                     <div class="col-md-6">
@@ -47,7 +46,7 @@
                                         </div>
                                     </div>
                                     <div class="col-md-6">
-                                        <input name="service_picture" type="file" data-bind="fileInput: fileData, customFileInput: {
+                                        <input  name="service_picture"  type="file" data-bind="fileInput: fileData, customFileInput: {
                                       buttonClass: 'btn btn-success',
                                       fileNameClass: 'disabled form-control',
                                       onClear: onClear,
@@ -58,15 +57,10 @@
                             </div>
                         </div>
 
-                        <button type="button" class="btn btn-primary center-block">Submit Service</button>
+                        <button class="mt-2 btn btn-primary">Submit Service</button>
 
-                            <div class="col-md-4 center-block">
-                                <button id="singlebutton" name="singlebutton" class="btn btn-primary center-block">
-                                    Next Step!
-                                </button>
-                            </div>
-                        </div>
                     </form>
+                </div>
                 </div>
             </div>
         </div>
@@ -80,7 +74,7 @@
 @push('js')
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/knockout/3.1.0/knockout-min.js"></script>
-    <script type="text/javascript" src="{{asset('js/file-uploader.js')}}"></script>
+    <script type="text/javascript"  src="{{asset('js/file-uploader.js')}}"></script>
 
     <script>
 
