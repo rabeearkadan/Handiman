@@ -10,7 +10,7 @@ class HandymanController extends Controller
 {
     public function index()
     {
-        $clients = User::query()->where('role', 'employee')->orWhere('role', 'user_employee')->get();
+        $employees = User::query()->where('role', 'employee')->orWhere('role', 'user_employee')->get();
 
         //
         return view('cms.employees.index', compact('employees'));
