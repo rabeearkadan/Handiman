@@ -7,7 +7,7 @@
 
 
     <div class="container">
-        <h1>Laravel 5.8 Datatables Tutorial <br/> HDTuto.com</h1>
+        
         <table class="table table-bordered data-table">
             <thead>
             <tr>
