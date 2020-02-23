@@ -11,7 +11,6 @@
         <table class="table table-bordered data-table">
             <thead>
             <tr>
-                <th>ID</th>
                 <th>Name</th>
                 {{--                <th>Email</th>--}}
                 <th width="100px">Action</th>
