@@ -24,9 +24,10 @@ class ServiceController extends Controller
                 ->addIndexColumn()
                  ->addColumn('action', function ($row) {
 
-                     return '<a href="#edit-'.$row->id.'" class="btn btn-xs btn-primary"><i class="glyphicon glyphicon-edit"></i> Edit</a>';
+                    $btn = '<a href="javascript:void(0)" class="edit btn btn-primary btn-sm">View</a>';
 
-                 })
+                    return $btn;
+                })
                 ->rawColumns(['action'])
                 ->make(true);
 

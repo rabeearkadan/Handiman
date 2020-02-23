@@ -41,7 +41,6 @@
                 serverSide: true,
                 ajax: "{{ route('service.test') }}",
                 columns: [
-                    {data: 'id', name:'id'},
                     {data: 'name', name: 'name'},
 
 
