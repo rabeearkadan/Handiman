@@ -18,7 +18,7 @@ class ServiceController extends Controller
     public function test(Request $request)
     {
         if ($request->ajax()) {
-            $data = Service::query()->with('users');
+            $data = Service::query()->with('users')->get();
 
             return Datatables::of($data)
                 ->addIndexColumn()
