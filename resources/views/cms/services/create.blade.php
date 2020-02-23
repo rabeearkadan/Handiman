@@ -33,7 +33,7 @@
                         </div>
 
 
-                        <div class="container" >
+                        <div class="container">
                             <div class="well" data-bind="fileDrag: fileData">
                                 <div class="form-group row">
                                     <div class="col-md-6">
@@ -44,7 +44,7 @@
                                         </div>
                                     </div>
                                     <div class="col-md-6">
-                                        <input  name="service_picture"  type="file" data-bind="fileInput: fileData, customFileInput: {
+                                        <input name="service_picture" type="file" data-bind="fileInput: fileData, customFileInput: {
                                       buttonClass: 'btn btn-success',
                                       fileNameClass: 'disabled form-control',
                                       onClear: onClear,
@@ -55,8 +55,9 @@
                             </div>
                         </div>
 
-                        <button class="mt-2 btn btn-primary">Save Changes</button>
-                        <button class="btn-danger">Discard</button>
+                        <button class="mb-2 mr-2 btn btn-primary btn-block">Submit Service
+                        </button>
+                        1
                     </form>
                 </div>
             </div>
@@ -71,7 +72,7 @@
 @push('js')
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/knockout/3.1.0/knockout-min.js"></script>
-    <script type="text/javascript"  src="{{asset('js/file-uploader.js')}}"></script>
+    <script type="text/javascript" src="{{asset('js/file-uploader.js')}}"></script>
 
     <script>
 
