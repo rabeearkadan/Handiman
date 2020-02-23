@@ -40,7 +40,6 @@
                                         <img style="height: 125px;" class="img-rounded  thumb"
                                              data-bind="attr: { src: fileData().dataURL }, visible: fileData().dataURL">
                                         <div data-bind="ifnot: fileData().dataURL">
-                                            <label class="drag-label">Drag file here</label>
                                         </div>
                                     </div>
                                     <div class="col-md-6">
@@ -57,7 +56,7 @@
 
                         <button class="mb-2 mr-2 btn btn-primary btn-block">Submit Service
                         </button>
-                        1
+
                     </form>
                 </div>
             </div>
