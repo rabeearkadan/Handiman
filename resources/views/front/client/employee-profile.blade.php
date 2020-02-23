@@ -13,6 +13,9 @@
         .nav{
             margin-bottom: 10vh;
         }
+        header{
+            margin-top: 10vh;
+        }
     </style>
 @endpush
 <header>
