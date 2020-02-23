@@ -36,11 +36,15 @@
         $(function () {
 
             var table = $('.data-table').DataTable({
-                processing: true,
+                processing: false,
                 serverSide: true,
                 ajax: "{{ route('service.test') }}",
                 columns: [
                     {data: 'name', name: 'name'},
+                    {data: 'users', name: '#users', render: function(data){
+                        return sizeof(data);
+                        }
+                    },
 
 
                         {{--{data: '{{$service->users()->count()}}' , name:' number of employees enrolled '},--}}
