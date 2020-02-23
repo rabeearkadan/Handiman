@@ -3,20 +3,11 @@
 @section('content')
 @push('css')
     <link href="https://fonts.googleapis.com/css?family=Poppins:400,500,600,700%7CAllura" rel="stylesheet">
-
     <link href="{{asset('css/client/employee-profile/common-css/bootstrap.css')}}" rel="stylesheet">
     <link href="{{asset('css/client/employee-profile/common-css/ionicons.css')}}" rel="stylesheet">
     <link href="{{asset('css/client/employee-profile/common-css/fluidbox.min.css')}}" rel="stylesheet">
     <link href="{{asset('css/client/employee-profile/cv-portfolio/styles.css')}}" rel="stylesheet">
     <link href="{{asset('css/client/employee-profile/cv-portfolio/responsive.css')}}" rel="stylesheet">
-    <style>
-        .nav{
-            margin-bottom: 5vh;
-        }
-        header{
-            margin-top: 10vh;
-        }
-    </style>
 @endpush
 <header>
     <div class="container">
