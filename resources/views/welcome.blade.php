@@ -64,7 +64,7 @@
 {{--                <img class="" src="../../public/img/logo.png" alt="Genie">--}}
 {{--            </div>--}}
 
-            <h1>Welcome to Genie</h1>
+            <h1>Welcome missy :p</h1>
             <h2>We provide <span class="rotating">handyman Scheduling, services availability</span>
             </h2>
             <div class="actions">
