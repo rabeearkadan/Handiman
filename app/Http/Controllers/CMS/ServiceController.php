@@ -18,13 +18,13 @@ class ServiceController extends Controller
     public function test(Request $request)
     {
         if ($request->ajax()) {
-            $data = Service::all();
+            $data = Service::query()->with('users');
 
             return Datatables::of($data)
                 ->addIndexColumn()
                  ->addColumn('action', function ($row) {
 
-                    $btn = '<a href="javascript:void(0)" class="edit btn btn-primary btn-sm">View</a>';
+                    $btn = '<a href="'.route('service.edit',$row['id']).'" class="edit btn btn-primary btn-sm">View</a>';
 
                     return $btn;
                 })
