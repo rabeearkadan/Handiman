@@ -56,7 +56,7 @@
                             </div>
                         </div>
 
-                        <button class="mt-2 btn btn-primary" style="alignment: center">Save Changes</button>
+                        <button type="button" class="btn btn-primary  btn-block">Submit Service</button>
 
                     </form>
                 </div>
