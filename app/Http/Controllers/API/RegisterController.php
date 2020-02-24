@@ -79,6 +79,18 @@ class RegisterController extends Controller
         $user->role = $data['role'];
         $user->isApproved = false;
         $user->password = Hash::make($data['password']);
+
+
+            $user->timeline = [
+                0 => [0 => ['from' => '09:00', 'to' => '13:00'], 1 => ['from' => '14:00', 'to' => '18:00']],
+                1 => [],
+                2 => [],
+                3 => [],
+                4 => [],
+                5 => [],
+                6 => []];
+
+        
         $user->save();
         return $user;
     }
@@ -93,7 +105,7 @@ class RegisterController extends Controller
         if ($request->input('role') == 'employee') {
             $user->role = 'employee';
             // prepare timeline
-            $user->initTimline();
+
 
             $user->save();
         } elseif ($request->input('role') == 'user') {
