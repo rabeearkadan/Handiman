@@ -82,32 +82,18 @@ class RegisterController extends Controller
         $user->password = Hash::make($data['password']);
 
 
+        $timeline = [];
+        for ($i = 0; $i <= 23; $i++) {
+            $hour = str_pad($i,
+                    2, 0, STR_PAD_LEFT) . "00";
 
-            $timeline = [];
-            for ($i = 0; $i <= 23; $i++) {
-                $hour = str_pad($i,
-                        2, 0, STR_PAD_LEFT) . "00";
+            for ($j = 0; $j <= 6; $j++) {
+                $timeline[$j][$hour] = false;
+            }
 
+        }
 
-                    $timeline[0][$hour] =false;
-
-                }
-            $user->timline=$timeline;
-
-//
-//        $user->timeline = [
-//
-//            0 => ['0000' => false, '0100' => false , '0200' => false, '0300' =>false, '0400' =>false, '0500' =>false , '0600'=>false
-//            ,'0700' => false
-//            ],
-//            1 => ['from' => '14:00', 'to' => '18:00']],
-//                1 => [],
-//                2 => [],
-//                3 => [],
-//                4 => [],
-//                5 => [],
-//                6 => []];
-
+        $user->timline = $timeline;
 
         $user->save();
         return $user;
