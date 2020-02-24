@@ -88,7 +88,7 @@ class RegisterController extends Controller
                     2, 0, STR_PAD_LEFT) . "00";
 
             for ($j = 0; $j <= 6; $j++) {
-                $timeline[$j][$hour] = false;
+                $timeline[$j]['$hour'] = false;
             }
 
         }
