@@ -26,7 +26,7 @@ class User extends Eloquent implements
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password', 'phone', 'api_token' ,'role'
+        'name', 'email', 'password', 'phone', 'api_token', 'role'
     ];
 
     /**
@@ -35,7 +35,7 @@ class User extends Eloquent implements
      * @var array
      */
     protected $hidden = [
-        'password', 'remember_token', 'api_token','timeline','device_token','device_platform'
+        'password', 'remember_token', 'api_token', 'timeline', 'device_token', 'device_platform'
     ];
 
     /**
@@ -47,14 +47,27 @@ class User extends Eloquent implements
         'email_verified_at' => 'datetime',
     ];
 
+    public function initTimeline()
+    {
+        $this->timeline = [
+            0 => [0 => ['from' => '09:00', 'to' => '13:00'], 1 => ['from' => '14:00', 'to' => '18:00']],
+            1 => [],
+            2 => [],
+            3 => [],
+            4 => [],
+            5 => [],
+            6 => []];
+        $this->save();
+    }
+
     public function isClient()
     {
-        return $this->role == 'user' || $this->role =='user_employee' ;
+        return $this->role == 'user' || $this->role == 'user_employee';
     }
 
     public function isHandyman()
     {
-        return $this->role == 'employee' || $this->role =='user_employee' ;
+        return $this->role == 'employee' || $this->role == 'user_employee';
     }
 
     public function isAdmin()
@@ -62,7 +75,8 @@ class User extends Eloquent implements
         return $this->role == 'admin';
     }
 
-    public function service(){
+    public function service()
+    {
         return $this->belongsToMany(Service::class);
     }
 
