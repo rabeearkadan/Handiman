@@ -42,6 +42,22 @@ class LoginController extends Controller
         $this->middleware('guest')->except('logout');
     }
 
+    public function initTimeline()
+    {
+        $timeline = [];
+        for ($i = 0; $i <= 23; $i++) {
+            $hour = str_pad($i,
+                    2, 0, STR_PAD_LEFT) . "00";
+
+            for ($j = 0; $j <= 6; $j++) {
+                $timeline[$j][$hour] = false;
+            }
+
+        }
+
+        return $timeline;
+    }
+
     public function login(Request $request)
     {
         $res = $this->validateLogin($request);
@@ -53,8 +69,8 @@ class LoginController extends Controller
             if (($user->role == 'user' && ($request->input('role') == 'employee'))
                 || ($user->role == 'employee' && ($request->input('role') == 'user'))
             ) {
-                if($user->role=='user'){
-                    //prepare timeline()
+                if ($user->role == 'user') {
+                    $user->timline = $this->initTimeline();
                 }
 
                 $user->role = 'user_employee';

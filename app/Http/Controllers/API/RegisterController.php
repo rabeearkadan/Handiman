@@ -80,7 +80,6 @@ class RegisterController extends Controller
         $user->role = $data['role'];
         $user->isApproved = false;
         $user->password = Hash::make($data['password']);
-        $user->timline = $this->initTimeline();
 
         $user->save();
         return $user;
@@ -112,9 +111,9 @@ class RegisterController extends Controller
         auth::login($user);
         $user = Auth::user();
         if ($request->input('role') == 'employee') {
-            $user->role = 'employee';
-            // prepare timeline
 
+            $user->role = 'employee';
+            $user->timline = $this->initTimeline();
 
             $user->save();
         } elseif ($request->input('role') == 'user') {
