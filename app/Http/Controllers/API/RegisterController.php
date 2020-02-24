@@ -92,6 +92,7 @@ class RegisterController extends Controller
         $user = Auth::user();
         if ($request->input('role') == 'employee') {
             $user->role = 'employee';
+            // prepare timeline
             $user->save();
         } elseif ($request->input('role') == 'user') {
             $user->role = 'user';

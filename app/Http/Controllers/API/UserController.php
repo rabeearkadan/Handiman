@@ -42,26 +42,26 @@ class UserController extends Controller
 //public function
     public function editProfile(Request $request)
     {
-        $user =User::query()->find(Auth::id());
+        $user = User::query()->find(Auth::id());
 
-        $params = $request->only( [
+        $params = $request->only([
 // common info
             'profile_picture',
-            'location' ,
-            'birth_date' ,
-            'gender' ,
-            'bank_account' ,
+            'location',
+            'birth_date',
+            'gender',
+            'bank_account',
 // user extra info
-            'time_preferences_start' ,
-            'time_preferences_end' ,
-            'payment_method' ,
-            'apartment_details' ,
+            'time_preferences_start',
+            'time_preferences_end',
+            'payment_method',
+            'apartment_details',
 // employee extra info
-            'cv' ,
-            'certificates' ,
-            'timeline' ,
-            'criminal_record' ,
-            'service' ,
+            'cv',
+            'certificates',
+            'timeline',
+            'criminal_record',
+            'service',
             'biography'
 
 
@@ -97,11 +97,11 @@ class UserController extends Controller
         if (Arr::has($params, 'cv'))
             $user->cv = $this->uploadAny('cv', $params['cv'], '.pdf');
         if (Arr::has($params, 'certificates')) {
-            $certificates= [];
+            $certificates = [];
             foreach ($params['certificates'] as $certificate) {
                 try {
 
-                    $certificates[]= $this->uploadAny('certificates', $certificate, '.pdf');
+                    $certificates[] = $this->uploadAny('certificates', $certificate, '.pdf');
                 } catch (\Exception $e) {
                     return response()->json(['status' => 'error', 'message' => "error uploading certificate"]);
                 }
@@ -120,7 +120,8 @@ class UserController extends Controller
             for ($i = 0; $i <= 23; $i++) {
                 // 00:00 01:00 .....23:00
                 $hour = str_pad($i,
-                        2, 0, STR_PAD_LEFT) . ":00";
+                        2, 0, STR_PAD_LEFT) . "00";
+
                 foreach ($params['timeline'][0] as $option) {
                     $timeline[0][$hour] =
                         $hour >= $params['timeline'][0][$option]['from']

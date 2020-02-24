@@ -53,6 +53,10 @@ class LoginController extends Controller
             if (($user->role == 'user' && ($request->input('role') == 'employee'))
                 || ($user->role == 'employee' && ($request->input('role') == 'user'))
             ) {
+                if($user->role=='user'){
+                    //prepare timeline()
+                }
+
                 $user->role = 'user_employee';
                 $user->save();
             }

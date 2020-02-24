@@ -46,9 +46,6 @@
                         return data.length;
                         }
                     },
-
-
-                        {{--{data: '{{$service->users()->count()}}' , name:' number of employees enrolled '},--}}
                     {
                         data: 'action', name: 'action', orderable: false, searchable: false
                     },
