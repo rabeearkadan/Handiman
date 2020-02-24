@@ -47,18 +47,6 @@ class User extends Eloquent implements
         'email_verified_at' => 'datetime',
     ];
 
-    public function initTimeline()
-    {
-        $this->timeline = [
-            0 => [0 => ['from' => '09:00', 'to' => '13:00'], 1 => ['from' => '14:00', 'to' => '18:00']],
-            1 => [],
-            2 => [],
-            3 => [],
-            4 => [],
-            5 => [],
-            6 => []];
-        $this->save();
-    }
 
     public function isClient()
     {

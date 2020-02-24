@@ -8,6 +8,7 @@ use App\User;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Http\Request;
+use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
@@ -81,16 +82,33 @@ class RegisterController extends Controller
         $user->password = Hash::make($data['password']);
 
 
-            $user->timeline = [
-                0 => [0 => ['from' => '09:00', 'to' => '13:00'], 1 => ['from' => '14:00', 'to' => '18:00']],
-                1 => [],
-                2 => [],
-                3 => [],
-                4 => [],
-                5 => [],
-                6 => []];
 
-        
+            $timeline = [];
+            for ($i = 0; $i <= 23; $i++) {
+                $hour = str_pad($i,
+                        2, 0, STR_PAD_LEFT) . "00";
+
+
+                    $timeline[0][$hour] =false;
+
+                }
+            $user->timline=$timeline;
+
+//
+//        $user->timeline = [
+//
+//            0 => ['0000' => false, '0100' => false , '0200' => false, '0300' =>false, '0400' =>false, '0500' =>false , '0600'=>false
+//            ,'0700' => false
+//            ],
+//            1 => ['from' => '14:00', 'to' => '18:00']],
+//                1 => [],
+//                2 => [],
+//                3 => [],
+//                4 => [],
+//                5 => [],
+//                6 => []];
+
+
         $user->save();
         return $user;
     }
