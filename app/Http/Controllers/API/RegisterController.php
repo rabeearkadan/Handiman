@@ -80,8 +80,14 @@ class RegisterController extends Controller
         $user->role = $data['role'];
         $user->isApproved = false;
         $user->password = Hash::make($data['password']);
+        $user->timline = $this->initTimeline();
 
+        $user->save();
+        return $user;
+    }
 
+    public function initTimeline()
+    {
         $timeline = [];
         for ($i = 0; $i <= 23; $i++) {
             $hour = str_pad($i,
@@ -93,10 +99,9 @@ class RegisterController extends Controller
 
         }
 
-        $user->timline = $timeline;
+        return $timeline;
 
-        $user->save();
-        return $user;
+
     }
 
     //on new users ? or on update users ?Update
