@@ -163,23 +163,33 @@
                 ajax: {
                     url: "{{ route('service.index') }}",
                 },
+                // columns: [
+                //     {
+                //         data: 'name',
+                //         name: 'name',
+                //     },
+                //     {
+                //         data: 'users', name: '#users', render: function (data) {
+                //             return data.length;
+                //         }
+                //     },
+                //
+                //     {
+                //         data: 'action',
+                //         name: 'action',
+                //         orderable: false
+                //     }
+                // ]
                 columns: [
-                    {
-                        data: 'name',
-                        name: 'name',
-                    },
-                    {
-                        data: 'users', name: '#users', render: function (data) {
-                            return data.length;
-                        }
-                    },
-
-                    {
-                        data: 'action',
-                        name: 'action',
-                        orderable: false
-                    }
-                ]
+                            {data: 'name', name: 'name'},
+                            {data: 'users', name: '#users', render: function(data){
+                                return data.length;
+                                }
+                            },
+                            {
+                                data: 'action', name: 'action', orderable: false, searchable: false
+                            },
+                        ]
             });
 
             $('#create_record').click(function () {
