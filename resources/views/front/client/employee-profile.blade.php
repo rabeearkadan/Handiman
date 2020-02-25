@@ -165,7 +165,7 @@
                     <span class="card-title">Material Cards</span>
                 </div>
                 <div class="card-content">
-                    <p>Cards for display in portfolio style material design by Google.</p>
+                    <p>Cards for display in portfolio style material design by Google.tfolio style material design by Googtfolio style material design by Googtfolio style material design by Googtfolio style material design by Googtfolio style material design by Googtfolio style material design by Googtfolio style material design by Googtfolio style material design by Googtfolio style material design by Googtfolio style material design by Googtfolio style material design by Goog</p>
                 </div>
 
             </div>
