@@ -22,6 +22,7 @@ class ServiceController extends Controller
 
             return Datatables::of($data)
                 ->addIndexColumn()
+
                  ->addColumn('action', function ($row) {
 
                     $btn = '<a href="'.route('service.edit',$row['id']).'" class="edit btn btn-primary btn-sm">View</a>';

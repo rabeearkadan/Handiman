@@ -9,4 +9,5 @@ Route::resource('client', 'ClientController');
 Route::resource('employee', 'HandymanController');
 
 Route::get('service.test', ['uses' => 'ServiceController@test', 'as' => 'service.test']);
+
 //Route::post('add-service','ServiceController@store')->name('admin.services');
