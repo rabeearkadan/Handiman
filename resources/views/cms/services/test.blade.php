@@ -79,8 +79,9 @@
                 <table id="user_table" class="table table-bordered table-striped">
                     <thead>
                     <tr>
-                        <th width="35%">Service Name</th>
-                        <th width="35%"> #</th>
+                        <th >Service Name</th>
+                        <th > #</th>
+                        <th>  </th>
                         <th width="30%">Action</th>
                     </tr>
                     </thead>
@@ -163,23 +164,7 @@
                 ajax: {
                     url: "{{ route('service.index') }}",
                 },
-                // columns: [
-                //     {
-                //         data: 'name',
-                //         name: 'name',
-                //     },
-                //     {
-                //         data: 'users', name: '#users', render: function (data) {
-                //             return data.length;
-                //         }
-                //     },
-                //
-                //     {
-                //         data: 'action',
-                //         name: 'action',
-                //         orderable: false
-                //     }
-                // ]
+
                 columns: [
                             {data: 'name', name: 'name'},
                             {data: 'users', name: '#users', render: function(data){
