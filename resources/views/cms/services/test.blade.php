@@ -90,7 +90,6 @@
     <br />
     <br />
 </div>
-    @endsection
 <div id="formModal" class="modal fade" role="dialog">
     <div class="modal-dialog">
         <div class="modal-content">
@@ -144,6 +143,7 @@
     </div>
 </div>
 
+@endsection
 @push('js')
 <script>
     $(document).ready(function(){
