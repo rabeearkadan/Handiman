@@ -18,13 +18,13 @@
                         <thead>
                         <tr>
 
-                            <th width="10%">#</th>
-                            <th width="30%">Picture</th>
-                            <th width="30%">Name</th>
+                            <th>#</th>
+                            <th>Picture</th>
+                            <th>Name</th>
 
-                            <th width="10%"># Users</th>
-                            <th width="10%">Actions</th>
-                            <th width="10%">Edit</th>
+                            <th># Users</th>
+                            <th>Actions</th>
+                            <th>Edit</th>
 
                         </tr>
                         </thead>
@@ -32,8 +32,9 @@
                         @foreach($services as $service)
                             <tr id="row-{{$service->id}}">
                                 <th scope="row">{{$loop->index +1 }}</th>
-                                <th > <img style="display: block" width="50px" height="50px"
-                                        src="https://handiman.club/public/storage/uploads/dzYci2r374tKkI7NdBtNu3L5K.png"></th>
+                                <th><img style="display: block" width="50px" height="50px"
+                                         src="https://handiman.club/public/storage/{{$service->image}}">
+                                </th>
                                 <td>{{$service->name}}</td>
                                 <td>{{$service->users()->count()}}</td>
                                 <td>
