@@ -109,49 +109,6 @@
 
         </div><!-- p-item -->
 
-        <div class="p-item branding graphic-design">
-            <a href="/public/images/portfolio-7-600x800.jpg" data-fluidbox>
-                <img src="/public/images/portfolio-7-600x800.jpg" alt=""></a>
-        </div><!-- p-item -->
-
-        <div class="p-item web-design">
-            <a href="/public/images/portfolio-2-600x400.jpg" data-fluidbox>
-                <img src="/public/images/portfolio-2-600x400.jpg" alt=""></a>
-        </div><!-- p-item -->
-
-        <div class="p-item p-item-2 graphic-design">
-            <a class="img" href="/public/images/portfolio-8-300x400.jpg" data-fluidbox>
-                <img src="/public/images/portfolio-8-300x400.jpg" alt=""></a>
-            <a class="img" href="/public/images/portfolio-9-300x400.jpg" data-fluidbox>
-                <img src="/public/images/portfolio-9-300x400.jpg" alt=""></a>
-        </div><!-- p-item -->
-
-        <div class="p-item branding graphic-design">
-            <a href="/public/images/portfolio-3-600x400.jpg" data-fluidbox>
-                <img src="/public/images/portfolio-3-600x400.jpg" alt=""></a>
-        </div><!-- p-item -->
-
-        <div class="p-item graphic-design web-design">
-            <a href="/public/images/portfolio-4-600x400.jpg" data-fluidbox>
-                <img src="/public/images/portfolio-4-600x400.jpg" alt=""></a>
-        </div><!-- p-item -->
-
-        <div class="p-item  graphic-design branding">
-            <a href="/public/images/portfolio-5-600x800.jpg" data-fluidbox>
-                <img src="/public/images/portfolio-5-600x800.jpg" alt=""></a>
-        </div><!-- p-item -->
-
-        <div class="p-item web-design branding">
-            <a href="/public/images/portfolio-6-600x800.jpg" data-fluidbox>
-                <img src="/public/images/portfolio-6-600x800.jpg" alt=""></a>
-        </div><!-- p-item -->
-
-        <div class="p-item p-item-2 graphic-design">
-            <a class="img" href="/public/images/portfolio-10-300x400.jpg" data-fluidbox>
-                <img src="/public/images/portfolio-10-300x400.jpg" alt=""></a>
-            <a class="img" href="/public/images/portfolio-11-300x400.jpg" data-fluidbox>
-                <img src="/public/images/portfolio-11-300x400.jpg" alt=""></a>
-        </div><!-- p-item -->
 
     </div><!-- portfolioContainer -->
 
