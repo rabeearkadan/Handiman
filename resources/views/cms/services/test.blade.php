@@ -172,12 +172,12 @@
                     {
                         data: '_id', name: '_id'
                     }
-                    ,
-                    {
-                        data: 'users', name: '$users', render: function (data) {
-                            return data.length;
-                        }
-                    }
+                    // ,
+                    // {
+                    //     data: 'users', name: '$users', render: function (data) {
+                    //         return data.length;
+                    //     }
+                    // }
                     ,
                     {
                         data: 'action',
