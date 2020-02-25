@@ -48,8 +48,8 @@
 
 
                                 </td>
-                                <td></td>
-                                <td></td>
+                                <td>< ,/td>
+                                <td> view more</td>
                             </tr>
                         @endforeach
 
