@@ -10,4 +10,8 @@ Route::resource('employee', 'HandymanController');
 
 Route::get('service.test', ['uses' => 'ServiceController@test', 'as' => 'service.test']);
 
+
+Route::post('service/update', 'ServiceController@update')->name('service.update');
+
+Route::get('service/destroy/{id}', 'SeviceController@destroy');
 //Route::post('add-service','ServiceController@store')->name('admin.services');
