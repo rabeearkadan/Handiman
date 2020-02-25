@@ -32,7 +32,7 @@
                         @foreach($services as $service)
                             <tr id="row-{{$service->id}}">
                                 <th scope="row">{{$loop->index +1 }}</th>
-                                <th style="width: 50px; height: 150px;"> <img
+                                <th style="width: 20px; height: 40px;"> <img
                                         src="https://handiman.club/public/storage/uploads/dzYci2r374tKkI7NdBtNu3L5K.png"></th>
                                 <td>{{$service->name}}</td>
                                 <td>{{$service->users()->count()}}</td>
