@@ -21,15 +21,11 @@ class ServiceController extends Controller
             $data = Service::query()->with('users')->get();
 
             return Datatables::of($data)
-                ->addIndexColumn()
+                ->addIndexColumn() ->addColumn('action', function ($row) {
 
-                 ->addColumn('action', function ($data) {
+                    $btn = '<a href="'.route('service.edit',$row['id']).'" class="edit btn btn-primary btn-sm">View</a>';
 
-//                    $btn = '<a href="'.route('service.edit',$row['id']).'" class="edit btn btn-primary btn-sm">View</a>';
-                     $button = '<button type="button" name="edit" id="'.$data->id.'" class="edit btn btn-primary btn-sm">Edit</button>';
-                     $button .= '&nbsp;&nbsp;&nbsp;<button type="button" name="edit" id="'.$data->id.'" class="delete btn btn-danger btn-sm">Delete</button>';
-                     return $button;
-//                    return $btn;
+                    return $btn;
                 })
                 ->rawColumns(['action'])
                 ->make(true);
@@ -53,7 +49,6 @@ class ServiceController extends Controller
      */
     public function create()
     {
-
         //
         return view('cms.services.create');
     }
