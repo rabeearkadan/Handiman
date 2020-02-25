@@ -99,8 +99,7 @@
         <div class="p-item web-design">
             <div class="card">
                 <div class="card-image">
-                    <a class="img" href="https://unsplash.it/400/400" data-fluidbox>
-                        <img class="img-responsive" src="https://unsplash.it/400/400"></a>
+                        <img class="img-responsive" src="https://unsplash.it/400/400">
                     <span class="card-title">Material Cards</span>
                 </div>
                 <div class="card-content">
