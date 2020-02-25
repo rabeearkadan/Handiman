@@ -167,10 +167,10 @@
 
                 columns: [
                             {data: 'name', name: 'name'},
-                            {data: 'users', name: '#users', render: function(data){
-                                return data.length;
-                                }
-                            },
+                            // {data: 'users', name: '#users', render: function(data){
+                            //     return data.length;
+                            //     }
+                            // },
                             {
                                 data: 'action', name: 'action', orderable: false
                             },
