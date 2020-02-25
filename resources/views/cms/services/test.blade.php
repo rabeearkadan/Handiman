@@ -69,6 +69,7 @@
 
 
 @endsection
+
 <div class="container">
     <br />
     <h3 align="center">How to Delete or Remove Data From Mysql in Laravel 6 using Ajax</h3>
