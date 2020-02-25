@@ -66,9 +66,11 @@ class HandymanController extends Controller
 
     public function getHandymenByService($id)
     {
-//       $service =Service::query()->find($id);
-        $x = Service::findOrFail($id);
-        $service = $x->users;
+        $list = Service::query()->findOrFail($id)
+            ->where('role', 'employee')
+            ->orWhere('role', 'user_employee')
+            ->where('isApproved', true);
+        $service = $list->users;
         return response()->json(['status' => 'success', 'HandymanList' => $service]);
 
 
@@ -76,18 +78,20 @@ class HandymanController extends Controller
 
     public function getHandymanByLocation($longitude, $latitude)
     {
-
-        // ur thought?
-        $handymanList = User::query()->where('location', 'near', [
-            '$geometry' => [
-                'type' => 'Point',
-                'coordinates' => [
-                    $longitude, // longitude
-                    $latitude, // latitude
+        $handymanList = User::query()
+            ->where('role', 'employee')
+            ->orWhere('role', 'user_employee')
+            ->where('isApproved', true)
+            ->where('location', 'near', [
+                '$geometry' => [
+                    'type' => 'Point',
+                    'coordinates' => [
+                        $longitude,
+                        $latitude,
+                    ],
+                    '$maxDistance' => 50,
                 ],
-                //max distance 50km
-            ],
-        ])->get();
+            ])->get();
         return response()->json(['status' => 'success', 'HandymanList' => $handymanList]);
     }
 
@@ -104,14 +108,10 @@ class HandymanController extends Controller
     public function getHandymanById($id)
     {
 
-        $handyman = User::whereHas('roles', function ($query) {
-            $query->where('role', 'employee');
-        })->where('_id', 'LIKE', $id)
-            ->get();
+        $handyman = User::query()->findOrFail($id);
         return response()->json(['status' => 'success', 'HandymanList' => $handyman]);
     }
-public function  getPlumbers(){
 
-}
+
 
 }
