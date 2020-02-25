@@ -9,7 +9,7 @@
             <thead>
             <tr>
                 <th>Name</th>
-                                <th>Email</th>
+                <th>Email</th>
                 <th> #</th>
                 <th width="100px">Action</th>
             </tr>
@@ -34,11 +34,12 @@
             var table = $('.data-table').DataTable({
                 processing: true,
                 serverSide: true,
-                ajax: "{{ route('service.index') }}",
+                ajax: "{{ route('service.test') }}",
                 columns: [
                     {data: 'name', name: 'name'},
-                    {data: 'users', name: '#users', render: function(data){
-                        return data.length;
+                    {
+                        data: 'users', name: '#users', render: function (data) {
+                            return data.length;
                         }
                     },
                     {
@@ -145,7 +146,6 @@
 {{--    </div>--}}
 
 {{--@endsection--}}
-
 
 
 {{--@push('js')--}}
