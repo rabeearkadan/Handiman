@@ -10,21 +10,29 @@
                     <button class="mb-2 mr-2 btn btn-primary" onclick="location.href='{{route('service.create')}}'">Add
                         New Service
                     </button>
-                    <button  class="mb-2 mr-2 btn btn-danger" onclick="location.href='{{route('service.test')}}'"> data tables</button>
+                    <button class="mb-2 mr-2 btn btn-danger" onclick="location.href='{{route('service.test')}}'"> data
+                        tables
+                    </button>
 
                     <table class="mb-0 table">
                         <thead>
                         <tr>
+
                             <th>#</th>
+                            <th>Picture</th>
                             <th>Name</th>
+
                             <th># Users</th>
                             <th>Actions</th>
+                            <th>Edit</th>
+
                         </tr>
                         </thead>
                         <tbody>
                         @foreach($services as $service)
                             <tr id="row-{{$service->id}}">
                                 <th scope="row">{{$loop->index +1 }}</th>
+                                <th><img src="https://handiman.club/public/storage/uploads/dzYci2r374tKkI7NdBtNu3L5K.png"></th>
                                 <td>{{$service->name}}</td>
                                 <td>{{$service->users()->count()}}</td>
                                 <td>
@@ -32,18 +40,16 @@
                                     {{--                                   <a href="{{route('service.show', $service->id)}}"><i class="pe-7s-display"> </i></a>--}}
                                     {{--                                   // modal as popup delete to be added--}}
                                     {{--                                   <a  href="javascript:deleteService({{$service->id}})"><i class="pe-7s-trash"> </i></a>--}}
-                                    <button class="btn btn-danger waves-effect" type="button" onclick="deletePost('{{ $service->id }}')">
+                                    <button class="btn btn-danger waves-effect" type="button"
+                                            onclick="deletePost('{{ $service->id }}')">
                                         <i class="material-icons">delete</i>
                                     </button>
-                                    <form id="delete-form-{{ $service->id }}" action="{{ route('service.destroy',$service->id) }}" method="POST" style="display: none;">
+                                    <form id="delete-form-{{ $service->id }}"
+                                          action="{{ route('service.destroy',$service->id) }}" method="POST"
+                                          style="display: none;">
                                         @csrf
                                         @method('DELETE')
                                     </form>
-
-{{--                                    <button href="#exampleModal" type="button"   data-service-id="{{$service->id}}" try--}}
-{{--                                            class="btn mr-2 mb-2 btn-danger" data-toggle="modal"--}}
-{{--                                    > Delete--}}
-{{--                                    </button>--}}
 
 
                                 </td>
@@ -81,7 +87,7 @@
             }).then((result) => {
                 if (result.value) {
                     event.preventDefault();
-                    document.getElementById('delete-form-'+id).submit();
+                    document.getElementById('delete-form-' + id).submit();
                 } else if (
                     // Read more about handling dismissals
                     result.dismiss === swal.DismissReason.cancel
