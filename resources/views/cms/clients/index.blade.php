@@ -1,4 +1,3 @@
-
 @extends('cms.layouts.app')
 
 @section('content')
@@ -8,10 +7,10 @@
             <div class="main-card mb-3 card">
                 <div class="card-body"><h5 class="card-title">Clients Table</h5>
 
-{{--                    <button class="mb-2 mr-2 btn btn-primary" onclick="location.href='{{route('service.create')}}'">Add--}}
-{{--                        New Service--}}
-{{--                    </button>--}}
-{{--                    <button  class="mb-2 mr-2 btn btn-danger" onclick="location.href='{{route('service.test')}}'"> data tables</button>--}}
+                    {{--                    <button class="mb-2 mr-2 btn btn-primary" onclick="location.href='{{route('service.create')}}'">Add--}}
+                    {{--                        New Service--}}
+                    {{--                    </button>--}}
+                    {{--                    <button  class="mb-2 mr-2 btn btn-danger" onclick="location.href='{{route('service.test')}}'"> data tables</button>--}}
 
                     <table class="mb-0 table">
                         <thead>
@@ -31,10 +30,13 @@
                                 <td>{{$client->name}}</td>
                                 <td>{{$client->email}}</td>
                                 <td>
-                                    <button class="btn btn-danger waves-effect" type="button" onclick="deletePost('{{ $client->id }}')">
+                                    <button class="btn btn-danger waves-effect" type="button"
+                                            onclick="deletePost('{{ $client->id }}')">
                                         <i class="material-icons">delete</i>
                                     </button>
-                                    <form id="delete-form-{{ $client->id }}" action="{{ route('client.destroy',$client->id) }}" method="POST" style="display: none;">
+                                    <form id="delete-form-{{ $client->id }}"
+                                          action="{{ route('client.destroy',$client->id) }}" method="POST"
+                                          style="display: none;">
                                         @csrf
                                         @method('DELETE')
                                     </form>
@@ -46,6 +48,8 @@
 
 
                                 </td>
+                                <td></td>
+                                <td></td>
                             </tr>
                         @endforeach
 
@@ -80,7 +84,7 @@
             }).then((result) => {
                 if (result.value) {
                     event.preventDefault();
-                    document.getElementById('delete-form-'+id).submit();
+                    document.getElementById('delete-form-' + id).submit();
                 } else if (
                     // Read more about handling dismissals
                     result.dismiss === swal.DismissReason.cancel
