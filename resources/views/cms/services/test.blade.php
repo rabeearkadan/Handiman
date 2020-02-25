@@ -68,6 +68,7 @@
 @section('content')
 
 
+@endsection
 <div class="container">
     <br />
     <h3 align="center">How to Delete or Remove Data From Mysql in Laravel 6 using Ajax</h3>
@@ -92,7 +93,6 @@
     <br />
 </div>
 
-@endsection
 <div id="formModal" class="modal fade" role="dialog">
     <div class="modal-dialog">
         <div class="modal-content">
