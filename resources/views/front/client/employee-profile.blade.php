@@ -3,6 +3,7 @@
 @section('content')
 @push('css')
     <link href="https://fonts.googleapis.com/css?family=Poppins:400,500,600,700%7CAllura" rel="stylesheet">
+    <link href="{{asset('css/client/employee-profile/cards/cards.css')}}" rel="stylesheet">
     <link href="{{asset('css/client/employee-profile/common-css/bootstrap.css')}}" rel="stylesheet">
     <link href="{{asset('css/client/employee-profile/common-css/ionicons.css')}}" rel="stylesheet">
     <link href="{{asset('css/client/employee-profile/common-css/fluidbox.min.css')}}" rel="stylesheet">
@@ -97,8 +98,19 @@
     <div class="portfolioContainer">
 
         <div class="p-item web-design">
-            <a href="/public/images/portfolio-1-600x400.jpg" data-fluidbox>
-                <img src="/public/images/portfolio-1-600x400.jpg" alt=""></a>
+            <div class="card">
+                <div class="card-image">
+                    <img class="img-responsive" src="https://unsplash.it/400/400">
+                    <span class="card-title">Material Cards</span>
+                </div>
+                <div class="card-content">
+                    <p>Cards for display in portfolio style material design by Google.</p>
+                </div>
+                <div class="card-action">
+                    <a href="#" target="new_blank">Link</a>
+                    <a href="#" target="new_blank">Link</a>
+                </div>
+            </div>
         </div><!-- p-item -->
 
         <div class="p-item branding graphic-design">
