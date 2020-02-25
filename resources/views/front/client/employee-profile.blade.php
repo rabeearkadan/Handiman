@@ -96,88 +96,18 @@
     </div><!-- container -->
 
     <div class="portfolioContainer">
-
         <div class="p-item web-design">
             <div class="card">
                 <div class="card-image">
-                    <img class="img-responsive" src="https://unsplash.it/400/400">
+                    <a class="img" href="https://unsplash.it/400/400" data-fluidbox>
+                        <img class="img-responsive" src="https://unsplash.it/400/400"></a>
                     <span class="card-title">Material Cards</span>
                 </div>
                 <div class="card-content">
                     <p>Cards for display in portfolio style material design by Google.</p>
                 </div>
-
             </div>
         </div><!-- p-item -->
-
-        <div class="p-item branding graphic-design">
-            <div class="card">
-                <div class="card-image">
-                    <img class="img-responsive" src="https://unsplash.it/400/400">
-                    <span class="card-title">Material Cards</span>
-                </div>
-                <div class="card-content">
-                    <p>Cards for display in portfolio style material design by Google.</p>
-                </div>
-
-            </div>
-        </div><!-- p-item -->
-
-        <div class="p-item web-design">
-            <a href="/public/images/portfolio-2-600x400.jpg" data-fluidbox>
-                <img src="/public/images/portfolio-2-600x400.jpg" alt=""></a>
-        </div><!-- p-item -->
-
-        <div class="p-item p-item-2 graphic-design">
-            <a class="img" href="/public/images/portfolio-8-300x400.jpg" data-fluidbox>
-                <img src="/public/images/portfolio-8-300x400.jpg" alt=""></a>
-            <a class="img" href="/public/images/portfolio-9-300x400.jpg" data-fluidbox>
-                <img src="/public/images/portfolio-9-300x400.jpg" alt=""></a>
-        </div><!-- p-item -->
-
-        <div class="p-item branding graphic-design">
-            <div class="card">
-                <div class="card-image">
-                    <img class="img-responsive" src="https://unsplash.it/400/400">
-                    <span class="card-title">Material Cards</span>
-                </div>
-                <div class="card-content">
-                    <p>Cards for display in portfolio style material design by Google.</p>
-                </div>
-
-            </div>
-        </div><!-- p-item -->
-
-        <div class="p-item graphic-design web-design">
-            <a href="/public/images/portfolio-4-600x400.jpg" data-fluidbox>
-                <img src="/public/images/portfolio-4-600x400.jpg" alt=""></a>
-        </div><!-- p-item -->
-
-        <div class="p-item  graphic-design branding">
-            <a href="/public/images/portfolio-5-600x800.jpg" data-fluidbox>
-                <img src="/public/images/portfolio-5-600x800.jpg" alt=""></a>
-        </div><!-- p-item -->
-
-        <div class="p-item web-design branding">
-            <div class="card">
-                <div class="card-image">
-                    <img class="img-responsive" src="/public/images/portfolio-5-600x800.jpg">
-                    <span class="card-title">Material Cards</span>
-                </div>
-                <div class="card-content">
-                    <p>Cards for display in portfolio style material design by Google.tfolio style material design by Googtfolio style material design by Googtfolio style material design by Googtfolio style material design by Googtfolio style material design by Googtfolio style material design by Googtfolio style material design by Googtfolio style material design by Googtfolio style material design by Googtfolio style material design by Googtfolio style material design by Goog</p>
-                </div>
-
-            </div>
-        </div><!-- p-item -->
-
-        <div class="p-item p-item-2 graphic-design">
-            <a class="img" href="/public/images/portfolio-10-300x400.jpg" data-fluidbox>
-                <img src="/public/images/portfolio-10-300x400.jpg" alt=""></a>
-            <a class="img" href="/public/images/portfolio-11-300x400.jpg" data-fluidbox>
-                <img src="/public/images/portfolio-11-300x400.jpg" alt=""></a>
-        </div><!-- p-item -->
-
     </div><!-- portfolioContainer -->
 
 </section><!-- portfolio-section -->
