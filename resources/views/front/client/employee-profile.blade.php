@@ -97,8 +97,16 @@
     <div class="portfolioContainer">
 
         <div class="p-item web-design">
-            <a href="/public/images/portfolio-1-600x400.jpg" data-fluidbox>
-                <img src="/public/images/portfolio-1-600x400.jpg" alt=""></a>
+            <div class="card">
+                <div class="card-image">
+                        <img class="img-responsive" src="https://unsplash.it/400/400">
+                    <span class="card-title">Material Cards</span>
+                </div>
+                <div class="card-content">
+                    <p>Cards for display in portfolio style material design by Google.</p>
+                </div>
+            </div>
+
         </div><!-- p-item -->
 
         <div class="p-item branding graphic-design">
