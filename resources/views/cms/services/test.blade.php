@@ -167,15 +167,18 @@
                     {
                         data: 'name',
                         name: 'name',
-                    },
-
-                    {data: '_id', name: '_id'},
-                    // {
-                    //     data: 'users', name: '#users', render: function (data) {
-                    //         return data.length;
-                    //     }
-                    // },
-
+                    }
+                    ,
+                    {
+                        data: '_id', name: '_id'
+                    }
+                    ,
+                    {
+                        data: 'users', name: '$users', render: function (data) {
+                            return data.length;
+                        }
+                    }
+                    ,
                     {
                         data: 'action',
                         name: 'action',
