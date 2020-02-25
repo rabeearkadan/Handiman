@@ -158,7 +158,7 @@
         $(document).ready(function () {
 
             $('#user_table').DataTable({
-                processing: true,
+                processing: false,
                 serverSide: true,
                 ajax: {
                     url: "{{ route('service.index') }}",
