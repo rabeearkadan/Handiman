@@ -162,7 +162,7 @@ class ServiceController extends Controller
                 ->rawColumns(['action'])
                 ->make(true);
         }
-        return view('cms.services.test','$data');
+        return view('cms.services.test');
     }
 
 
