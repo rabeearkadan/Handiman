@@ -2,6 +2,7 @@
 
 namespace App;
 
+use App\Models\Post;
 use App\Models\Service;
 use Illuminate\Auth\Authenticatable;
 use Illuminate\Auth\Passwords\CanResetPassword;
@@ -66,6 +67,9 @@ class User extends Eloquent implements
     public function service()
     {
         return $this->belongsToMany(Service::class);
+    }
+    public function posts(){
+        return $this->belongsToMany(Post::class);
     }
 
 }
