@@ -15,12 +15,12 @@
                     <table class="table-responsive">
                         <thead>
                         <tr>
-                            <th>#</th>
-                            <th>Name</th>
-                            <th># Users</th>
-                            <th>Actions</th>
-                            <th>...</th>
-                            <th>...</th>
+                            <th width="20%">#</th>
+                            <th width="20%"> Name</th>
+                            <th width="20%"> # Users</th>
+                            <th width="20%">Actions</th>
+                            <th width="10%">...</th>
+                            <th width="10%">...</th>
                         </tr>
                         </thead>
                         <tbody>
