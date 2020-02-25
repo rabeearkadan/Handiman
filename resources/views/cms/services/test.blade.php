@@ -63,12 +63,13 @@
 {{--@endpush--}}
 
 
-{{--@extends('cms.layouts.app')--}}
+@extends('cms.layouts.app')
 
-{{--@section('content')--}}
+@section('content')
 
 
-
+<div
+    class="tab-content">
 <div class="container">
     <br />
     <h3 align="center">How to Delete or Remove Data From Mysql in Laravel 6 using Ajax</h3>
@@ -90,8 +91,8 @@
     </div>
 
 </div>
-
-{{--@endsection--}}
+</div>
+@endsection
 
 <div id="formModal" class="modal fade" role="dialog">
     <div class="modal-dialog">
