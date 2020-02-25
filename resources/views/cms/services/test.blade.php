@@ -63,9 +63,9 @@
 {{--@endpush--}}
 
 
-@extends('cms.layouts.app')
+{{--@extends('cms.layouts.app')--}}
 
-@section('content')
+{{--@section('content')--}}
 
 
 
@@ -91,7 +91,7 @@
 
 </div>
 
-@endsection
+{{--@endsection--}}
 
 <div id="formModal" class="modal fade" role="dialog">
     <div class="modal-dialog">
@@ -152,6 +152,7 @@
     <script src="https://cdn.datatables.net/1.10.12/js/jquery.dataTables.min.js"></script>
     <script src="https://cdn.datatables.net/1.10.12/js/dataTables.bootstrap.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+
 <script>
     $(document).ready(function(){
 
