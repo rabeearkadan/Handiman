@@ -1,6 +1,6 @@
-{{--@extends('cms.layouts.app')--}}
+@extends('cms.layouts.app')
 
-{{--@section('content')--}}
+@section('content')
 
 
 
@@ -21,7 +21,6 @@
 {{--            </tbody>--}}
 {{--        </table>--}}
 {{--    </div>--}}
-{{--@endsection--}}
 
 
 
@@ -148,7 +147,7 @@
         </div>
     </div>
 </div>
-
+@endsection
 
 @push('js')
 
