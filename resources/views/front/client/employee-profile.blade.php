@@ -109,8 +109,9 @@
                         <p> {{$post->content}} </p>
                     </div>
                 </div>
-         @endforeach
-        </div><!-- p-item -->
+            </div><!-- p-item -->
+        @endforeach
+
 
 
     </div><!-- portfolioContainer -->
