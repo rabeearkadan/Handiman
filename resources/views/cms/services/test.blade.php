@@ -176,8 +176,8 @@
                     }
                     ,
                     {
-                        data: 'users', name: '$users', render: function (data) {
-                            return data.length;
+                        data: 'users', name: '#users', render: function (data) {
+                            return data == null ? 0 : data.length;
                         }
                     }
                     ,
