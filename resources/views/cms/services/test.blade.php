@@ -88,7 +88,6 @@
         </table>
     </div>
 
-    @endsection
     <br />
     <br />
 </div>
@@ -145,6 +144,7 @@
     </div>
 </div>
 
+@endsection
 @push('js')
 <script>
     $(document).ready(function(){
