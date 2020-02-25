@@ -89,25 +89,27 @@
             <div class="col-sm-8">
                 <div class="portfolioFilter clearfix margin-b-80">
                     <a href="#" data-filter="*" class="current"><b>ALL</b></a>
-                    <a href="#" data-filter=".web-design"><b>WEB DESIGN</b></a>
+                    @foreach($user->post as $post)
+                        <a href="#" data-filter=".web-design"><b> {{}} </b></a>
+                    @endforeach
                 </div><!-- portfolioFilter -->
             </div><!-- col-sm-8 -->
         </div><!-- row -->
     </div><!-- container -->
 
     <div class="portfolioContainer">
-
-        <div class="p-item web-design">
-            <div class="card">
-                <div class="card-image">
-                        <img class="img-responsive" src="https://unsplash.it/400/400">
-                    <span class="card-title">Material Cards</span>
+        @foreach($user->posts as $post)
+            <div class="p-item web-design">
+                <div class="card">
+                    <div class="card-image">
+                            <img class="img-responsive" src="{{config('image.path').$post->image}}">
+                        <span class="card-title"> {{$post->title}} </span>
+                    </div>
+                    <div class="card-content">
+                        <p> {{$post->content}} </p>
+                    </div>
                 </div>
-                <div class="card-content">
-                    <p>Cards for display in portfolio style material design by Google.</p>
-                </div>
-            </div>
-
+         @endforeach
         </div><!-- p-item -->
 
 
