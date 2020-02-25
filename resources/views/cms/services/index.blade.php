@@ -37,10 +37,6 @@
                                 <td>{{$service->name}}</td>
                                 <td>{{$service->users()->count()}}</td>
                                 <td>
-                                    {{--                                   <a href="{{route('service.edit', $service->id)}}"><i class="pe-7s-pen"> </i></a>--}}
-                                    {{--                                   <a href="{{route('service.show', $service->id)}}"><i class="pe-7s-display"> </i></a>--}}
-                                    {{--                                   // modal as popup delete to be added--}}
-                                    {{--                                   <a  href="javascript:deleteService({{$service->id}})"><i class="pe-7s-trash"> </i></a>--}}
                                     <button class="btn btn-danger waves-effect" type="button"
                                             onclick="deletePost('{{ $service->id }}')">
                                         <i class="material-icons">Delete</i>
@@ -53,7 +49,7 @@
                                     </form>
 
 
-                                    <button  class="mb-2 mr-2 btn btn-primary" type="button"
+                                    <button  class="btn btn-primary waves-effect" type="button"
                                             onclick="deletePost('{{ $service->id }}')">
                                         <i class="material-icons">edit</i>
                                     </button>
