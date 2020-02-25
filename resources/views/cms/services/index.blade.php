@@ -34,8 +34,7 @@
                                 <th scope="row">{{$loop->index +1 }}</th>
                                 <th><img
                                         src="https://handiman.club/public/storage/uploads/dzYci2r374tKkI7NdBtNu3L5K.png"
-                                        style="width: 100%;
-  display: block;"></th>
+                                        style="display: block;"></th>
                                 <td>{{$service->name}}</td>
                                 <td>{{$service->users()->count()}}</td>
                                 <td>
