@@ -99,7 +99,7 @@
 
     <div class="portfolioContainer">
         @foreach($user->posts as $post)
-            <div class="p-item web-design">
+            <div class="p-item @foreach($post->tags as $tag) {{$tag->filter}} @endforeach">
                 <div class="card">
                     <div class="card-image">
                             <img class="img-responsive" src="{{config('image.path').$post->image}}">
