@@ -35,7 +35,8 @@
 {{--                processing: true,--}}
 {{--                serverSide: true,--}}
 {{--                ajax: "{{ route('service.index') }}",--}}
-{{--                columns: [--}}
+{{--                columns:
+[--}}
 {{--                    {data: 'name', name: 'name'},--}}
 {{--                    {data: 'users', name: '#users', render: function(data){--}}
 {{--                        return data.length;--}}
@@ -162,20 +163,24 @@
                 ajax: {
                     url: "{{ route('service.index') }}",
                 },
+
+
                 columns: [
                     {
                         data: 'name',
                         name: 'name',
                     },
-                    {data: 'users', name: '#users', render: function(data){
+                    {
+                        data: 'users', name: '#users', render: function (data) {
                             return data.length;
                         }
                     },
-                  
+
                     {
                         data: 'action',
                         name: 'action',
-                        orderable: false
+                        orderable: false,
+                        searchable: false
                     }
                 ]
             });
