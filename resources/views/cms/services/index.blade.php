@@ -24,7 +24,6 @@
 
                             <th># Users</th>
                             <th>Actions</th>
-                            <th>Edit</th>
 
                         </tr>
                         </thead>
@@ -44,13 +43,25 @@
                                     {{--                                   <a  href="javascript:deleteService({{$service->id}})"><i class="pe-7s-trash"> </i></a>--}}
                                     <button class="btn btn-danger waves-effect" type="button"
                                             onclick="deletePost('{{ $service->id }}')">
-                                        <i class="material-icons">delete</i>
+                                        <i class="material-icons">Delete</i>
                                     </button>
                                     <form id="delete-form-{{ $service->id }}"
                                           action="{{ route('service.destroy',$service->id) }}" method="POST"
                                           style="display: none;">
                                         @csrf
                                         @method('DELETE')
+                                    </form>
+
+
+                                    <button  class="mb-2 mr-2 btn btn-primary" type="button"
+                                            onclick="deletePost('{{ $service->id }}')">
+                                        <i class="material-icons">edit</i>
+                                    </button>
+                                    <form id="edit-form-{{ $service->id }}"
+                                          action="{{ route('service.edit',$service->id) }}" method="POST"
+                                          style="display: none;">
+                                        @csrf
+                                        @method('EDIT')
                                     </form>
 
 
