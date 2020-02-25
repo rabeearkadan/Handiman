@@ -2,11 +2,14 @@
 
 namespace App\Models;
 
+use App\User;
 use Jenssegers\Mongodb\Eloquent\Model as Eloquent;
 
 class Post extends Eloquent
 {
     //
-    protected $table = "posts";
+    public function users(){
+        return $this->belongsTo(User::class);
+    }
 
 }
