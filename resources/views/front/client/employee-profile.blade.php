@@ -3,6 +3,7 @@
 @section('content')
 @push('css')
     <link href="https://fonts.googleapis.com/css?family=Poppins:400,500,600,700%7CAllura" rel="stylesheet">
+    <link href="{{asset('css/client/employee-profile/cards/cards.css')}}" rel="stylesheet">
     <link href="{{asset('css/client/employee-profile/common-css/bootstrap.css')}}" rel="stylesheet">
     <link href="{{asset('css/client/employee-profile/common-css/ionicons.css')}}" rel="stylesheet">
     <link href="{{asset('css/client/employee-profile/common-css/fluidbox.min.css')}}" rel="stylesheet">
