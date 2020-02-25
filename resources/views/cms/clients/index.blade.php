@@ -12,7 +12,7 @@
                     {{--                    </button>--}}
                     {{--                    <button  class="mb-2 mr-2 btn btn-danger" onclick="location.href='{{route('service.test')}}'"> data tables</button>--}}
 
-                    <table class="mb-0 table">
+                    <table class="table-responsive">
                         <thead>
                         <tr>
                             <th>#</th>
