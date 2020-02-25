@@ -79,8 +79,9 @@
                 <table id="user_table" class="table table-bordered table-striped">
                     <thead>
                     <tr>
-                        <th width="35%">Service Name</th>
-                        <th width="35%"> #</th>
+                        <th width="20%">Service Name</th>
+                        <th width="20%"> #</th>
+                        <th width="20"></th>
                         <th width="30%">Action</th>
                     </tr>
                     </thead>
@@ -167,6 +168,8 @@
                         data: 'name',
                         name: 'name',
                     },
+
+                    {data: '_id', name: '_id'},
                     // {
                     //     data: 'users', name: '#users', render: function (data) {
                     //         return data.length;
