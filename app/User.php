@@ -68,8 +68,6 @@ class User extends Eloquent implements
     {
         return $this->belongsToMany(Service::class);
     }
-    public function posts(){
-        return $this->belongsToMany(Post::class);
-    }
+
 
 }
