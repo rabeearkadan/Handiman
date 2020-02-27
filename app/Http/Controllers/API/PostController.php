@@ -24,7 +24,7 @@ class PostController extends Controller
     public function getPosts()
     {
         $posts = Post::all();
-        return response()->json(['status' => 'success', 'HandymanList' => $posts]);
+        return response()->json(['status' => 'success', 'posts' => $posts]);
 
     }
 

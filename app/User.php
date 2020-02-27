@@ -18,7 +18,7 @@ use Jenssegers\Mongodb\Eloquent\Model as Eloquent;
 class User extends Eloquent implements
     AuthenticatableContract, AuthorizableContract, CanResetPasswordContract
 {
-
+    protected $table = "users";
     use Authenticatable, Authorizable, Notifiable, CanResetPassword;
 
     /**
