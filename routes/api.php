@@ -35,6 +35,7 @@ Route::middleware(['auth:api','employee'])->prefix('employee')->group(function (
     Route::delete('post/{id}', 'PostController@deletePost');
     Route::put('post/{id}', 'PostController@editPost');
     Route::get('post', 'PostController@getPosts');
+    Route::get('post-id/{id}','PostController@getPostById');
 
 
 });
@@ -42,6 +43,15 @@ Route::middleware(['auth:api','employee'])->prefix('employee')->group(function (
 
 Route::middleware(['auth:api','client'])->prefix('user')->group(function () {
     //all route related to  user
+    Route::post('request','ServiceController@requestHandyman');
+
+    Route::get('post', 'PostController@getPosts');
+    //TODO
+   // Route::get('ongoing-requests','RequestController@getOngoingRequests');
+    //Route::get('outgoing-requests','RequestController@getOutgoingRequests');
+   // Route::put('accept-request',Request)
+
+
 
 });
 

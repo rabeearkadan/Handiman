@@ -14,11 +14,18 @@ use Illuminate\Support\Str;
 class PostController extends Controller
 {
 
-    public function getPostId($id)
+    public function getPostById($id)
     {
         $post = Post::query()->find($id);
 
         return response()->json(['status' => 'success', 'post' => $post]);
+    }
+
+    public function getPosts()
+    {
+        $posts = Post::all();
+        return response()->json(['status' => 'success', 'HandymanList' => $posts]);
+
     }
 
     public function deletePost($id)
@@ -37,11 +44,11 @@ class PostController extends Controller
 
         $post = new Post();
 
-        $post->post_text = $request->input('post_text');
-        $post->user_id = Auth::user()->_id;
+        $post->title = $request->input('post_text');
+        $post->content = Auth::user()->_id;
 
-        $file_name = $this->uploadAny($params['post_picture'], 'uploads');
-        $post->post_picture = $file_name;
+        $file_name = $this->uploadAny($params['post_picture'], 'posts');
+        $post->image = $file_name;
 
         $post->request_id = $request->input('request_id'); // it maye be null
         $post->save();
@@ -53,17 +60,19 @@ class PostController extends Controller
     {
 
         $post = Post::query()->find($id);
-        $post->post_text = $request->input('post_text');
+
+        $post->title = $request->input('title');
+        $post->content =$request->input('content');
+        $post->save();
+        return response()->json(['status'=>'success']);
 
     }
 
     public function uploadAny($file, $folder, $ext = 'png')
     {
-        /** @var TYPE_NAME $file */
         $file = base64_decode($file);
 
-        /** @var TYPE_NAME $file_name */
-        $file_name = Str::random(25) . '.'.$ext; //generating unique file name;
+        $file_name = Str::random(25) . '.' . $ext; //generating unique file name;
         if (!Storage::disk('public')->exists($folder)) {
             Storage::disk('public')->makeDirectory($folder);
         }
