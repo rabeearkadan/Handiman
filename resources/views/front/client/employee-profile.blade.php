@@ -89,8 +89,8 @@
             <div class="col-sm-8">
                 <div class="portfolioFilter clearfix margin-b-80">
                     <a href="#" data-filter="*" class="current"><b>ALL</b></a>
-                    @foreach($user->post as $post)
-                        <a href="#" data-filter=".web-design"><b> {{}} </b></a>
+                    @foreach($user->services as $service)
+                        <a href="#" data-filter=".{{$service->name}}"><b> {{$service->name}} </b></a>
                     @endforeach
                 </div><!-- portfolioFilter -->
             </div><!-- col-sm-8 -->
@@ -99,7 +99,7 @@
 
     <div class="portfolioContainer">
         @foreach($user->posts as $post)
-            <div class="p-item @foreach($post->tags as $tag) {{$tag->filter }} @endforeach">
+            <div class="p-item @foreach($post->tags as $tag) {{$tag->name }} @endforeach">
                 <div class="card">
                     <div class="card-image">
                             <img class="img-responsive" src="{{config('image.path').$post->image}}">
