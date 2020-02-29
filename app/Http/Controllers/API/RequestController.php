@@ -32,6 +32,9 @@ class RequestController extends Controller
         $request = new RequestService();
         $request->employee_id = $req->input('employee_id');
         $request->client_id = $req->input('client_id');
+        $request->day = $params['day'];
+        $request->from = $params['from'];
+        $request->to = $params['to'];
         $time = [];
         $time[0] = $params[0];
         $time[0]['day'] = $params[0]['day'];

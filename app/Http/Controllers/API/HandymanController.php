@@ -24,16 +24,7 @@ class HandymanController extends Controller
         return $seq->seq;
     }
 
-    public function addPost(Request $request)
-    {
-        $post = new Post();
-        $post->_id = self::getID(posts);
 
-        $post->post_text = ['post_text'];
-        $post->save();
-
-        return response()->json(['status' => 'success', 'post' => $post]);
-    }
 
     public function test()
     {
@@ -66,8 +57,7 @@ class HandymanController extends Controller
 
     public function getHandymenByService($id)
     {
-        $list = Service::query()->findOrFail($id)
-            ->where('isApproved', true);
+        $list = Service::query()->where('isApproved', true)->findOrFail($id);
         $service = $list->users;
         return response()->json(['status' => 'success', 'HandymanList' => $service]);
 
