@@ -57,7 +57,9 @@ class HandymanController extends Controller
 
     public function getHandymenByService($id)
     {
-        $list = Service::query()->where('isApproved', true)->findOrFail($id);
+        $list = Service::query()->where('isApproved', true)->where('_id',$id )->first();
+        if ( $list == null )
+            return response()->json(['status' => 'error', 'message' => "no service found"]);
         $service = $list->users;
         return response()->json(['status' => 'success', 'HandymanList' => $service]);
 
