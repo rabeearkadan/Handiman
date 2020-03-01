@@ -5,8 +5,8 @@
     overflow: hidden;
     background-color: #fff;
     padding: 0 20px;
-    /*border-radius: 10px;*/
     box-shadow: 0 10px 40px rgba(159, 162, 177, .8);
+    margin-bottom: 3px;
 }
 .nav-item{
     color: #83818c;
