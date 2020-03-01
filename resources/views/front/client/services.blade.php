@@ -12,7 +12,6 @@
                 @endif
                 <div class="col-md-3 col-sm-6">
                     <div class="card card-block">
-                        <h4 class="card-title text-right"><i class="material-icons">settings</i></h4>
                         <a href="{{route('client.service', $service->id)}}">
                             <img src="{{config('image.path').$service->image}}" alt="later">
                         </a>
