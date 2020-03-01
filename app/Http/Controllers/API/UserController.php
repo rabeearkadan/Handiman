@@ -46,7 +46,7 @@ class UserController extends Controller
 
         $params = $request->only([
 // common info
-            'profile_picture',
+            'image',
             'location',
             'birth_date',
             'gender',
@@ -68,7 +68,7 @@ class UserController extends Controller
         ]);
 
         if (Arr::has($params, 'profile_picture'))
-            $user->profile_picture = $this->uploadAny($params['profile_picture'], 'uploads');
+            $user->image = $this->uploadAny($params['profile_picture'], 'profile');
 
         if (Arr::has($params, 'birth_date'))
             $user->birth_date = $params['birth_date'];
