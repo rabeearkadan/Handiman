@@ -67,8 +67,8 @@ class UserController extends Controller
 
         ]);
 
-        if (Arr::has($params, 'profile_picture'))
-            $user->image = $this->uploadAny($params['profile_picture'], 'profile');
+        if (Arr::has($params, 'image'))
+            $user->image = $this->uploadAny($params['image'], 'profile');
 
         if (Arr::has($params, 'birth_date'))
             $user->birth_date = $params['birth_date'];
