@@ -30,7 +30,8 @@ body {
     margin: 0; }
 
 .main-inner{
-    margin-top:5px;
+    background-color: #f7f8f9;
+    margin-top:7px;
 }
 
 audio,
