@@ -34,7 +34,7 @@
                         </div><!-- /.col-* -->
 
                         <div class="col-sm-8 col-lg-9">
-                            @include('')
+                            @include('front.client.partials.profile.edit-profile')
                         </div><!-- /.col-* -->
                     </div><!-- /.row -->
                 </div><!-- /.container -->
