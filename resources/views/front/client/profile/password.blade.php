@@ -1,5 +1,5 @@
 @extends('front.client.profile.my-profile')
-@section('content')
+@section('profile-content')
     <p>
         password
     </p>

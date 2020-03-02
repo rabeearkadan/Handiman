@@ -1,5 +1,5 @@
 @extends('front.client.profile.my-profile')
-@section('content')
+@section('profile-content')
     <div class="page-title">
         <h1>Edit Profile</h1>
     </div><!-- /.page-title -->

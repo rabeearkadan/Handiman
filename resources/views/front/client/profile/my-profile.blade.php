@@ -35,7 +35,7 @@
 
                         <div class="col-sm-8 col-lg-9">
                             <div class="content">
-                                @yield('content')
+                                @yield('profile-content')
                             </div>
                         </div><!-- /.col-* -->
                     </div><!-- /.row -->
