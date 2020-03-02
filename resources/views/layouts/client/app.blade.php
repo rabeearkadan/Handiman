@@ -37,7 +37,7 @@
 <script>
 
     function hideLoader() {
-        $('#loading').hide();
+        $('#preloader-wrapper').hide();
     }
 
     $(window).ready(hideLoader);
@@ -45,7 +45,7 @@
     // setTimeout(hideLoader, 10 * 1000);
 
     setInterval(function(){
-        $('#loading').hide();
+        $('#preloader-wrapper').hide();
     },5000);
 
 </script>
