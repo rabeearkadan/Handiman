@@ -40,10 +40,14 @@
         $('#loading').hide();
     }
 
- 
+    $(window).ready(hideLoader);
 
-    // Strongly recommended: Hide loader after 20 seconds, even if the page hasn't finished loading
-    setTimeout(hideLoader, 20 * 1000);
+    // setTimeout(hideLoader, 10 * 1000);
+
+    setInterval(function(){
+        $('#loading').hide();
+    },5000);
+
 </script>
 
 @stack('js')
