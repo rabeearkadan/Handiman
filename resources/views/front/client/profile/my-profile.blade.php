@@ -1,7 +1,7 @@
 @extends('layouts.client.app')
 @push('css')
     <link href="{{asset('css/client/my-profile.css')}}" rel="stylesheet">
-    <script src="https://use.fontawesome.com/11d2a830ea.js"></script>
+    <link href="{{asset('lib/font-awesome/css/font-awesome.css')}}" rel="stylesheet">
 @endpush
 @section('content')
     <div class="page-wrapper" id="profile">
@@ -26,7 +26,7 @@
                                     <ul class="menu-advanced">
                                         <li class="@if(request()->is('client/profile')) {{'active'}} @endif"><a href="{{route('client.profile')}}"><i class="fa fa-user"></i> Edit Profile</a></li>
                                         <li class="@if(request()->is('client/profile/password')) {{'active'}} @endif"><a href="{{route('client.password')}}"><i class="fa fa-key"></i> Password</a></li>
-                                        <li class="@if(request()->is('client/profile/payment')) {{'active'}} @endif"><a href="{{route('client.payment')}}"><i class="fas fa-wallet"></i> Payment</a></li>
+                                        <li class="@if(request()->is('client/profile/payment')) {{'active'}} @endif"><a href="{{route('client.payment')}}"><i class="fa fa-money"></i> Payment</a></li>
                                     </ul>
                                 </div><!-- /.widget -->
 
