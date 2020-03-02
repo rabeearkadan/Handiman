@@ -39,15 +39,12 @@
     function hideLoader() {
         $('#preloader-wrapper').hide();
     }
-
-    $(window).ready(hideLoader);
-
-    // setTimeout(hideLoader, 10 * 1000);
-
     setInterval(function(){
         $('#preloader-wrapper').hide();
     },5000);
 
+    // $(window).ready(hideLoader);
+    // setTimeout(hideLoader, 10 * 1000);
 </script>
 
 @stack('js')
