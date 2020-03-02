@@ -3,28 +3,33 @@
     <div class="page-title">
         <h1> Security </h1>
     </div><!-- /.page-title -->
-
-
     <div class="background-white p20 mb30">
         <h3 class="page-title">
-            Change Password
-        </h3><!-- /.page-title -->
+            Contact Information
+
+            <a href="#" class="btn btn-primary btn-xs pull-right">Save</a>
+        </h3>
+
         <div class="row">
             <div class="form-group col-sm-6">
-                    <label for="login-form-password">Password</label>
-                    <input type="password" class="form-control" name="password" id="login-form-password">
-                </div><!-- /.form-group -->
+                <label>Name</label>
+                <input type="text" class="form-control" value="John">
+            </div><!-- /.form-group -->
 
-                <div class="form-group col-sm-6">
-                    <label for="login-form-password-retype">Retype password</label>
-                    <input type="password" class="form-control" name="password" id="login-form-password-retype">
-                </div><!-- /.form-group -->
+            <div class="form-group col-sm-6">
+                <label>Surname</label>
+                <input type="text" class="form-control" value="Doe">
+            </div><!-- /.form-group -->
 
-                <button type="submit" class="btn btn-primary pull-right">Change</button>
+            <div class="form-group col-sm-6">
+                <label>E-mail</label>
+                <input type="text" class="form-control" value="sample@example.com">
+            </div><!-- /.form-group -->
 
-
-        </div>
+            <div class="form-group col-sm-6">
+                <label>Phone</label>
+                <input type="text" class="form-control" value="123-456-789">
+            </div><!-- /.form-group -->
+        </div><!-- /.row -->
     </div>
-
 @endsection
-
