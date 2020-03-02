@@ -1,8 +1,5 @@
 @extends('front.client.profile.my-profile')
 @section('profile-content')
-    <div class="content">
-        <div class="row">
-            <div class="col-sm-4 col-sm-offset-4">
                 <div class="page-title">
                     <h1>Change Password</h1>
                 </div><!-- /.page-title -->
@@ -19,9 +16,6 @@
 
                     <button type="submit" class="btn btn-primary pull-right">Change</button>
                 </form>
-            </div><!-- /.col-sm-4 -->
-        </div><!-- /.row -->
 
-    </div>
 @endsection
 
