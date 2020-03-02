@@ -171,3 +171,13 @@ div.spinner i:nth-child(8) {
         transform: rotate(360deg);
     }
 }
+
+#loading {
+    background: url('public/images/preloader.gif') no-repeat center center;
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    z-index: 9999999;
+}
