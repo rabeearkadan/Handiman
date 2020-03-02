@@ -3,6 +3,8 @@
                 <div class="page-title">
                     <h1>Change Password</h1>
                 </div><!-- /.page-title -->
+                <div class="row">
+                    <div class="form-group col-sm-6">
                 <form method="post" action="?">
                     <div class="form-group">
                         <label for="login-form-password">Password</label>
@@ -16,6 +18,8 @@
 
                     <button type="submit" class="btn btn-primary pull-right">Change</button>
                 </form>
+                    </div>
+                </div>
 
 @endsection
 
