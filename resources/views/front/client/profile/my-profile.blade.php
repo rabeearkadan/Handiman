@@ -1,6 +1,7 @@
 @extends('layouts.client.app')
 @push('css')
     <link href="{{asset('css/client/my-profile.css')}}" rel="stylesheet">
+    <link href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.3.0/css/font-awesome.css" rel="stylesheet"  type='text/css'>
 @endpush
 @section('content')
     <div class="page-wrapper" id="profile">
@@ -23,10 +24,9 @@
                                 <div class="widget">
 
                                     <ul class="menu-advanced">
-                                        <li><a href="listing-submit.html"><i class="fa fa-pencil"></i> Submit Listing</a></li>
-                                        <li class="active"><a href="#"><i class="fa fa-user"></i> Edit Profile</a></li>
-                                        <li><a href="#"><i class="fa fa-key"></i> Password</a></li>
-                                        <li><a href="#"><i class="fa fa-sign-out"></i> Logout</a></li>
+                                        <li class="@if(request()->is('client/profile')) {{'is-active'}} @endif"><a href="{{route('client.edit.profile')}}"><i class="fa fa-user"></i> Edit Profile</a></li>
+                                        <li class="@if(request()->is('client/profile/password')) {{'is-active'}} @endif"><a href="{{route('client.edit.password')}}"><i class="fa fa-key"></i> Password</a></li>
+                                        <li class="@if(request()->is('client/profile/payment')) {{'is-active'}} @endif"><a href="{{route('client.edit.payment')}}"><i class="fas fa-wallet"></i> Payment</a></li>
                                     </ul>
                                 </div><!-- /.widget -->
 
@@ -34,7 +34,9 @@
                         </div><!-- /.col-* -->
 
                         <div class="col-sm-8 col-lg-9">
-                            @include('front.client.partials.profile.edit-profile')
+                            <div class="content">
+                                @yield('content')
+                            </div>
                         </div><!-- /.col-* -->
                     </div><!-- /.row -->
                 </div><!-- /.container -->

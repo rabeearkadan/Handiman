@@ -10,12 +10,17 @@ use Illuminate\Support\Facades\Auth;
 class ProfileController extends Controller
 {
     //
-
-
-
     public function myProfile(){
         $user = Auth::user();
-        return view('front.client.my-profile', compact('user'));
+        return view('front.client.profile.edit-profile', compact('user'));
+    }
+    public function editPassword(){
+        $user = Auth::user();
+        return view('front.client.profile.password', compact('user'));
+    }
+    public function editPayment(){
+    $user = Auth::user();
+    return view('front.client.profile.payment', compact('user'));
     }
 
     public function editProfile(){

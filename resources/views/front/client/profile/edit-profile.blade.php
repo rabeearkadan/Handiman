@@ -1,5 +1,5 @@
-
-
+@extends('front.client.profile.my-profile')
+@section('content')
     <div class="page-title">
         <h1>Edit Profile</h1>
     </div><!-- /.page-title -->
@@ -116,4 +116,4 @@
 
         <textarea class="form-control" rows="7"></textarea><div class="textarea-resize"></div>
     </div>
-
+@endsection
