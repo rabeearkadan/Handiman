@@ -1,6 +1,12 @@
 @extends('layouts.client.app')
 @push('css')
     <link href="{{asset('css/client/cards.css')}}" rel="stylesheet">
+    <style>
+        img:before {
+            content: ' ';
+            background-image: url();
+        }
+    </style>
 @endpush
 @section('content')
     <div class="container mt-2" id="services">
