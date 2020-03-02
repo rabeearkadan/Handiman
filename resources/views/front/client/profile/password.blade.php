@@ -1,9 +1,14 @@
 @extends('front.client.profile.my-profile')
 @section('profile-content')
-    <h3 class="page-title">
-        Change Password
-    </h3><!-- /.page-title -->
+    <div class="page-title">
+        <h1> Security </h1>
+    </div><!-- /.page-title -->
+
+
     <div class="background-white p20 mb30">
+        <h3 class="page-title">
+            Change Password
+        </h3><!-- /.page-title -->
         <div class="row">
             <form method="post" action="?">
                 <div class="form-group col-sm-6">
