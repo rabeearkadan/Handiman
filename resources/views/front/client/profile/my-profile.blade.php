@@ -1,7 +1,7 @@
 @extends('layouts.client.app')
 @push('css')
     <link href="{{asset('css/client/my-profile.css')}}" rel="stylesheet">
-    <link href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.3.0/css/font-awesome.css" rel="stylesheet"  type='text/css'>
+    <script src="https://use.fontawesome.com/11d2a830ea.js"></script>
 @endpush
 @section('content')
     <div class="page-wrapper" id="profile">
