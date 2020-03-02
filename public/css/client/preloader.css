@@ -31,7 +31,7 @@ section.wrapper {
 
 
 #loading {
-    background: url('public/images/portfolio-1-600x400.jpg') no-repeat center center;
+    background: url('/public/images/preloader.gif') no-repeat center center;
     position: absolute;
     top: 0;
     left: 0;
