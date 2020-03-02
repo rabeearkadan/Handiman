@@ -22,7 +22,7 @@
 
     @stack('css')
 </head>
-<body  class="preloader-site">
+<body>
 @include('front.client.partials.preloader')
 @include('front.client.partials.navbar')
 

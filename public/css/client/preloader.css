@@ -1,6 +1,8 @@
 
 /*----------------------- Preloader -----------------------*/
+#wrapper{
 
+}
 #loading {
     background: url('/public/images/preloader.gif') no-repeat center center;
     position: absolute;
