@@ -4,6 +4,7 @@ namespace App\Http\Controllers\API;
 
 use App\Events\NotificationSenderEvent;
 use App\Http\Controllers\Controller;
+use App\User;
 use Illuminate\Http\Request;
 
 use App\Models\Notification;
@@ -12,13 +13,13 @@ class NotificationController extends Controller
 {
     //
 
-    public function test()
+    public function test($user_id)
     {
         $notification = array();
 
+        $user = User::query()->find($user_id);
 
-        $notification['to'] = 'dT5Brv8QrJo:APA91bHAPBYNHJUSUbY_X9yzVmTIjbazslmJ831oc4mgvlnX5F1tJDzsuJT8ISOE4u6VVz752q1pHxzXvdOq9PbKRTtFaoLN_C6MDGXMyJIpUCE1Ay5tQ3eXsEewzNMIhDzJl0z-Xd5L';
-
+        $notification['to'] = $user->device_token;
         $notification['user'] = "admin";
         $notification['message'] = "test";
         $notification['type'] = 'comment';// maybe "notification", "comment(message)", "request","message"
