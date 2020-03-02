@@ -10,8 +10,7 @@
             Change Password
         </h3><!-- /.page-title -->
         <div class="row">
-            <form method="post" action="?">
-                <div class="form-group col-sm-6">
+            <div class="form-group col-sm-6">
                     <label for="login-form-password">Password</label>
                     <input type="password" class="form-control" name="password" id="login-form-password">
                 </div><!-- /.form-group -->
@@ -22,7 +21,7 @@
                 </div><!-- /.form-group -->
 
                 <button type="submit" class="btn btn-primary pull-right">Change</button>
-            </form>
+
 
         </div>
     </div>
