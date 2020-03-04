@@ -43,7 +43,7 @@ class UserController extends Controller
     {
 
 
-        $timeline[] = User::query()->find($id)->value('timeline');
+        $timeline[] = User::query()->find($id)->value('role');
         return response()->json(['status' => 'success', 'timeline' => $timeline]);
     }
 
