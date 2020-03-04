@@ -35,7 +35,7 @@ class User extends Eloquent implements
      * @var array
      */
     protected $hidden = [
-        'password', 'remember_token', 'api_token', 'timeline', 'device_token', 'device_platform'
+        'password', 'remember_token', 'api_token', 'device_token', 'device_platform'
     ];
 
     /**
