@@ -70,7 +70,7 @@ class LoginController extends Controller
                 || ($user->role == 'employee' && ($request->input('role') == 'user'))
             ) {
                 if ($user->role == 'user') {
-                    $user->timline = $this->initTimeline();
+                    $user->timeline = $this->initTimeline();
                 }
 
                 $user->role = 'user_employee';

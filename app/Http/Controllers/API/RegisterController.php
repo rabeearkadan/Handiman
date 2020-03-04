@@ -109,7 +109,7 @@ class RegisterController extends Controller
         if ($request->input('role') == 'employee') {
 
             $user->role = 'employee';
-            $user->timline = $this->initTimeline();
+            $user->timeline = $this->initTimeline();
 
             $user->save();
         } elseif ($request->input('role') == 'user') {
