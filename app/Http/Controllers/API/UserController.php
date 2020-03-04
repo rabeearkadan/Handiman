@@ -43,7 +43,7 @@ class UserController extends Controller
     {
 
 
-        $user = User::query()->find($id);
+        $user = User::query()->find($id)->get();
         $timeline = $user->timeline;
 
 
