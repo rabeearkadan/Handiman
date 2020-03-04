@@ -42,8 +42,8 @@ class UserController extends Controller
     public function getTimeline($id)
     {
         $timeline[] = User::query()->find($id)->value('timeline');
-
-        return response()->json(['status' => 'success', 'timeline' => $timeline]);
+        $user = User::query()->find($id);
+        return response()->json(['status' => 'success', 'timeline' => $timeline, 'user' => $user]);
     }
 
 //public function
