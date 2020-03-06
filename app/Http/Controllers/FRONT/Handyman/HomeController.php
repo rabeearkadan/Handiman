@@ -17,7 +17,7 @@ class HomeController extends Controller
 
 
     public function reviews(Request $request){
-        return view('front.handyman.');
+        return view('front.handyman.reviews');
     }
 
 }

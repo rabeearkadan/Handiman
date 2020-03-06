@@ -5,10 +5,10 @@ use Illuminate\Support\Facades\Route;
 Route::get("/home", 'HomeController@index')->name('employee.home');
 
 //Requests
-Route::get("/requests", 'HomeController@requests')->name('employee.requests');
+Route::get("/requests", 'RequestController@index')->name('employee.requests');
 //Calendar
-Route::get("/jobs", 'HomeController@jobs')->name('employee.jobs');
-
+Route::get("/calendar", 'CalendarController@index')->name('employee.calendar');
+//Reviews
 Route::get("/reviews", 'HomeController@reviews')->name('employee.reviews');
 
 //Profile

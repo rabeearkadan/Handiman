@@ -1,7 +1,8 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\FRONT\Handyman;
 
+use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
 class ChatController extends Controller
@@ -9,11 +10,12 @@ class ChatController extends Controller
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
     public function index()
     {
         //
+        return view('front.handyman.chat');
     }
 
     /**

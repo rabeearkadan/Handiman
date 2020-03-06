@@ -16,8 +16,8 @@
 
 </head>
 <body>
-    @include('front.handyman.partials.preloader')
-    @include('front.handyman.partials.navbar')
+    @include('front.employee.partials.preloader')
+    @include('front.employee.partials.navbar')
 
     <div class="content">
         @yield('content')
