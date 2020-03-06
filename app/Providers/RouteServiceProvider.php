@@ -72,7 +72,7 @@ class RouteServiceProvider extends ServiceProvider
     {
         Route::middleware(['web','auth','employee'])
             ->prefix('employee')
-            ->namespace($this->namespace.'\FRONT\Handyman')
+            ->namespace($this->namespace.'\FRONT\Employee')
             ->group(base_path('routes/employee.php'));
     }
     // for user access
