@@ -8,7 +8,7 @@
     width: 100%;
 }
 #loading {
-    background: url('/public/images/preloader.gif') no-repeat center center;
+    background: url('/public/images/client/preloader.gif') no-repeat center center;
     position: absolute;
     top: 0;
     left: 0;

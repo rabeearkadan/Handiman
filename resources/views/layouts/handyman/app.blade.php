@@ -6,6 +6,8 @@
     <title>{{ config('app.name', 'Genie') }}</title>
     <!-- Fonts -->
 
+    <!-- Scripts -->
+    <script src="{{ asset('js/app.js') }}" defer></script>
     <!-- Styles -->
     <link href="{{asset('css/app.css')}}" rel="stylesheet">
     <link href="{{asset('css/handyman/navbar.css')}}" rel="stylesheet">
@@ -14,20 +16,14 @@
 
 </head>
 <body>
-@include('front.handyman.partials.preloader')
-@include('front.handyman.partials.navbar')
+    @include('front.handyman.partials.preloader')
+    @include('front.handyman.partials.navbar')
 
-<div class="content">
-    @yield('content')
-</div>
+    <div class="content">
+        @yield('content')
+    </div>
 
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-
-<script>
-
-</script>
-
-@stack('js')
+    @stack('js')
 
 </body>
 </html>

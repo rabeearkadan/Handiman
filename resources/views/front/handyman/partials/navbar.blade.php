@@ -37,5 +37,4 @@
             $(this).toggleClass('active');
         });
     </script>
-
 @endpush
