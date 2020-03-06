@@ -28,7 +28,7 @@ class User extends Eloquent implements
     protected $fillable = [
         'name', 'email', 'password', 'phone', 'api_token', 'role'
     ];
-
+   
     /**
      * The attributes that should be hidden for arrays.
      *
