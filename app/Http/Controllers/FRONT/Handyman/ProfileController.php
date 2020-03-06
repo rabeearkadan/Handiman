@@ -27,7 +27,7 @@ class ProfileController extends Controller
     }
 
 
-    public function clientProfile($id, $user_id){
+    public function clientProfile($id){
 
     }
 }

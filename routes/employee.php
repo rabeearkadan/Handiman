@@ -3,11 +3,20 @@
 use Illuminate\Support\Facades\Route;
 
 Route::get("/home", 'HomeController@index')->name('employee.home');
-Route::get("/requests", 'HomeController@index')->name('employee.requests');
-Route::get("/jobs", 'HomeController@index')->name('employee.home');
-Route::get("/messages", 'HomeController@index')->name('employee.messages');
-Route::get("/profile", 'ProfileCotroller@index')->name('employee.profile');
-Route::get("/reviews", 'HomeController@index')->name('employee.reviews');
 
+//Requests
+Route::get("/requests", 'HomeController@requests')->name('employee.requests');
+//Calendar
+Route::get("/jobs", 'HomeController@jobs')->name('employee.jobs');
 
+Route::get("/reviews", 'HomeController@reviews')->name('employee.reviews');
 
+//Profile
+Route::get('/sss','ProfileController@clientProfile')->name('employee.client-profile');
+Route::get('/profile','ProfileController@myProfile')->name('employee.profile');
+Route::get('/profile/password','ProfileController@editPassword')->name('employee.password');
+Route::get('/profile/payment','ProfileController@editPayment')->name('employee.payment');
+Route::put('/profile','ProfileController@editProfile')->name('employee.edit.profile');
+
+//chat
+Route::get("/chat", 'ChatController@index')->name('employee.chat');
