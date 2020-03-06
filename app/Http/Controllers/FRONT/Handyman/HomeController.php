@@ -9,15 +9,15 @@ class HomeController extends Controller
 {
     //
     public function index( Request $request ){
-        return view ('front.handyman.home');
+        return view ('front.employee.home');
     }
     public function requests(Request $request){
-        return view('front.handyman.');
+        return view('front.employee.');
     }
 
 
     public function reviews(Request $request){
-        return view('front.handyman.reviews');
+        return view('front.employee.reviews');
     }
 
 }

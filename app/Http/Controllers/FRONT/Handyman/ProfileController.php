@@ -19,7 +19,7 @@ class ProfileController extends Controller
     }
     public function editPayment(){
         $user = Auth::user();
-        return view('front.client.profile.payment', compact('user'));
+        return view('front.employee.profile.payment', compact('user'));
     }
 
     public function editProfile(){

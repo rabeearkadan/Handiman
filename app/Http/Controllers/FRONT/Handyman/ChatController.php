@@ -15,7 +15,7 @@ class ChatController extends Controller
     public function index()
     {
         //
-        return view('front.handyman.chat');
+        return view('front.employee.chat');
     }
 
     /**
