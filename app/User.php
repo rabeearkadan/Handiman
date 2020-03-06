@@ -9,6 +9,7 @@ use Illuminate\Auth\Passwords\CanResetPassword;
 use Illuminate\Contracts\Auth\Access\Authorizable as AuthorizableContract;
 use Illuminate\Contracts\Auth\Authenticatable as AuthenticatableContract;
 use Illuminate\Contracts\Auth\CanResetPassword as CanResetPasswordContract;
+use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\Access\Authorizable;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Support\Facades\Log;
@@ -28,7 +29,7 @@ class User extends Eloquent implements
     protected $fillable = [
         'name', 'email', 'password', 'phone', 'api_token', 'role'
     ];
-   
+
     /**
      * The attributes that should be hidden for arrays.
      *
@@ -72,5 +73,35 @@ class User extends Eloquent implements
     }
 
 
+    /**
+     * @inheritDoc
+     */
+    public function hasVerifiedEmail()
+    {
+        // TODO: Implement hasVerifiedEmail() method.
+    }
 
+    /**
+     * @inheritDoc
+     */
+    public function markEmailAsVerified()
+    {
+        // TODO: Implement markEmailAsVerified() method.
+    }
+
+    /**
+     * @inheritDoc
+     */
+    public function sendEmailVerificationNotification()
+    {
+        // TODO: Implement sendEmailVerificationNotification() method.
+    }
+
+    /**
+     * @inheritDoc
+     */
+    public function getEmailForVerification()
+    {
+        // TODO: Implement getEmailForVerification() method.
+    }
 }
