@@ -19,9 +19,10 @@ Route::get('/', function () {
     return view('welcome');
 });
 Auth::routes();
-
+Auth::routes(['verify' => true]);
 Route::get("register", 'Auth\RegisterController@showRegistrationForm')->name('register');
 Route::post('/contact','MailController@contact')->name('mail.contact');
+Route::get("/home", 'HomeController@index')->middleware('auth')->middleware('verified');
 
 
 
