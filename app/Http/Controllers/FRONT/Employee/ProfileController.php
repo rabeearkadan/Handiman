@@ -1,11 +1,9 @@
 <?php
 
-namespace App\Http\Controllers\FRONT\Client;
+namespace App\Http\Controllers\FRONT\Employee;
 
 use App\Http\Controllers\Controller;
-use App\User;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
 
 class ProfileController extends Controller
 {

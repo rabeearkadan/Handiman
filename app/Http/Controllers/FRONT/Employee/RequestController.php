@@ -1,21 +1,21 @@
 <?php
 
-namespace App\Http\Controllers\FRONT\Handyman;
+namespace App\Http\Controllers\FRONT\Employee;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
-class ChatController extends Controller
+class RequestController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     * @return \Illuminate\Http\Response
      */
     public function index()
     {
         //
-        return view('front.employee.chat');
+        return view('front.employee.');
     }
 
     /**

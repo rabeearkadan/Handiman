@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\FRONT\Handyman;
+namespace App\Http\Controllers\FRONT\Employee;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
