@@ -33,7 +33,7 @@
 
 @push('js')
     <script>
-        $('.navTrigger').click(function(){
+        $('.navTrigger').on( "click",function(){
             $(this).toggleClass('active');
         });
     </script>
