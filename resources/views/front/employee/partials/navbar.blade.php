@@ -9,22 +9,22 @@
     <div class="collapse navbar-collapse"  id="collapsibleNavbar">
         <ul class="navbar-nav"  >
             <li class="nav-item">
-                <a  href="#" class=""> Home </a>
+                <a  href="{{route('employee.home')}}" class="@if(request()->is('employee/home')) {{'active'}} @endif"> Home </a>
             </li>
             <li class="nav-item">
-                <a  href="#" class=""> Requests </a>
+                <a  href="{{route('employee.requests')}}" class="@if(request()->is('employee/requests')) {{'active'}} @endif"> Requests </a>
             </li>
             <li class="nav-item">
-                <a  href="#" class=""> Jobs </a>
+                <a  href="{{route('employee.calendar')}}" class="@if(request()->is('employee/calendar')) {{'active'}} @endif"> Calendar </a>
             </li>
             <li class="nav-item">
-                <a  href="#" class=""> Messages </a>
+                <a  href="{{route('employee.chat')}}" class="@if(request()->is('employee/chat')) {{'active'}} @endif"> Chat </a>
             </li>
             <li class="nav-item">
-                <a  href="#" class=""> Reviews</a>
+                <a  href="{{route('employee.reviews')}}" class="@if(request()->is('employee/reviews')) {{'active'}} @endif"> Reviews</a>
             </li>
             <li class="nav-item">
-                <a  href="#" class=""> Profile </a>
+                <a  href="{{route('employee.profile')}}" class="@if(request()->is('employee/profile*')) {{'active'}} @endif"> Profile </a>
             </li>
         </ul>
     </div>
