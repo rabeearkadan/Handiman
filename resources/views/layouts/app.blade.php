@@ -19,10 +19,38 @@
 
 </head>
 <body>
-<div id="app">
-    <div id="preloader"></div>
-    @yield('content')
-</div>
+    <div id="app">
+        <div id="preloader"></div>
+        @yield('content')
+    </div>
+    <nav class="navbar navbar-expand-md bg-dark navbar-dark">
+        <a class="navbar-brand" href="#">Navbar</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+            <div class="navTrigger">
+                <i></i><i></i><i></i>
+            </div>
+        </button>
+
+
+        <div class="collapse navbar-collapse" id="collapsibleNavbar">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Register</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Link</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Link</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
 @stack('script')
+<script>
+        $('.navTrigger').click(function(){
+            $(this).toggleClass('active');
+        });
+</script>
 </body>
 </html>
