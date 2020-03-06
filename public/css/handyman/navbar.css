@@ -199,5 +199,5 @@
     height:100vh;
 }
 .nav-item>a.active{
-    background:url('nav-item-active.png') no-repeat 50% 50%;
+    background:url('/public/images/handyman/nav-item-active.png') no-repeat 50% 50%;
 }
