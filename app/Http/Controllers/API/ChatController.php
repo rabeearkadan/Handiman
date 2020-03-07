@@ -22,7 +22,7 @@ class ChatController extends Controller
             'receiver_id' => 'required',
             'message' => 'required']);
 
-        $user = User::query()->find(Auth::id())->first();
+        $user = Auth::user();
         $obj[0] = $params['receiver_id'];
         $obj[$params['receiver_id']][0] = false;
 
