@@ -61,6 +61,7 @@ Route::middleware(['auth:api'])->group(function () {
     Route::get('profile-edit', 'UserController@getProfile');
     Route::post('profile-edit', 'UserController@editProfile');
     Route::get('timeline-view/{id}', 'UserController@getTimeline');
+    Route::post('request-chat', 'ChatController@requestToChat');
 
     // Route::put('profile/edit', 'UserController@editProfile');
     //Route::get('profile/edit', 'UserController@getProfile');
