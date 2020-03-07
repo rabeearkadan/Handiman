@@ -23,7 +23,7 @@ class ChatController extends Controller
             'message' => 'required']);
 
         $user = User::query()->find(Auth::id());
-        $messages[]=$user->message_requests;
+        $messages=[];
       //  array_push($messages, $params['receiver_id']);
         $messages[ $params['receiver_id']]=false;
         $user->message_requests=$messages;
