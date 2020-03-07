@@ -27,7 +27,8 @@ class ChatController extends Controller
         $obj[0] = $params['receiver_id'];
         $obj[$params['receiver_id']][0] = false;
         $array[] = $user->message_requests;
-        array_push($user->message_requests, $obj);
+        array_push($array, $obj);
+        $user->message_requests = $array;
 
         $user->save();
         return response()->json(['status' => 'success', 'user' => $user]);
