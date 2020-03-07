@@ -11,6 +11,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
 
+
 class ChatController extends Controller
 {
 
@@ -22,11 +23,10 @@ class ChatController extends Controller
             'receiver_id' => 'required',
             'message' => 'required']);
 
-        $user = Auth::user();
+        $user = User::query()->find(Auth::id());
         $obj[0] = $params['receiver_id'];
         $obj[$params['receiver_id']][0] = false;
-
-
+        $array[] = $user->message_requests;
         array_push($user->message_requests, $obj);
 
         $user->save();
