@@ -22,10 +22,9 @@ class ChatController extends Controller
             'receiver_id' => 'required',
             'message' => 'required']);
 
-        $message = new Message();
         $user = User::query()->find(Auth::id());
-        
-        array_push($user->message_requests, params['receiver_id']);
+        $messages[]=$user->message_requests;
+        array_push($messages, $params['receiver_id']);
 
         $user->save();
         return response()->json(['status' => 'success', 'user' => $user]);
