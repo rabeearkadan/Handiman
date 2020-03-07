@@ -23,7 +23,7 @@ class EventServiceProvider extends ServiceProvider
         NotificationSenderEvent::class => [
             SendNotification::class
         ],
-        
+
     ];
 
     /**
