@@ -6,7 +6,6 @@
             <div class="col-md-8">
                 <div class="card">
                     <div class="card-header">{{ __('Verify Your Email Address') }}</div>
-
                     <div class="card-body">
                         @if (session('resent'))
                             <div class="alert alert-success" role="alert">
@@ -15,8 +14,12 @@
                         @endif
 
                         {{ __('Before proceeding, please check your email for a verification link.') }}
-                        {{ __('If you did not receive the email') }}, <a
-                            href="{{ route('verification.resend') }}">{{ __('click here to request another') }}</a>.
+                        {{ __('If you did not receive the email') }},
+                        <form method="POST" action="{{ route('verification.resend') }}" id="resend_form">
+                            <a href="javascript:{}" onclick="document.getElementById('resend_form').submit()">
+                                {{ __('click here to request another') }}
+                            </a>
+                        </form>
                     </div>
                 </div>
             </div>
