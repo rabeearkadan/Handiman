@@ -25,7 +25,9 @@ class ChatController extends Controller
         $user = User::query()->find(Auth::id())->first();
         $obj[0] = $params['receiver_id'];
         $obj[$params['receiver_id']][0] = false;
-        array_push($user->message_requests, $obj);
+
+        $array[]=$user->message_requests;
+        array_push($array, $obj);
 
         $user->save();
         return response()->json(['status' => 'success', 'user' => $user]);
