@@ -24,7 +24,8 @@ class ChatController extends Controller
 
         $message = new Message();
         $user = User::query()->find(Auth::id());
-        $user->message_requests->push($params['receiver_id'], true);
+        
+        array_push($user->message_requests, params['receiver_id']);
 
         $user->save();
         return response()->json(['status' => 'success', 'user' => $user]);
