@@ -10,7 +10,7 @@
     <link href="{{asset('css/client/colorbox.css')}}" rel="stylesheet">
 @endpush
 @section('content')
-    <div class="page-wrapper" id="profile">
+    <div class="page-wrapper" id="profile" style="background-color: #f7f8f9;">
         <div class="main">
             <div class="main-inner">
                 <div class="container">
