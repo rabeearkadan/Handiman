@@ -5,11 +5,11 @@
     </div><!-- /.page-title -->
 
     <div class="background-white p20 mb30">
-        <h3 class="page-title">
+        <h4 class="page-title">
             Contact Information
 
             <a href="#" class="btn btn-primary btn-xs pull-right">Save</a>
-        </h3>
+        </h4>
 
         <div class="row">
             <div class="form-group col-sm-6">
@@ -35,11 +35,11 @@
     </div>
 
     <div class="background-white p20 mb30">
-        <h3 class="page-title">
+        <h4 class="page-title">
             Social Connections
 
             <a href="#" class="btn btn-primary btn-xs pull-right">Save</a>
-        </h3>
+        </h4>
 
         <div class="form-horizontal">
             <div class="form-group">
@@ -73,11 +73,11 @@
     </div><!-- /.background-white -->
 
     <div class="background-white p20 mb30">
-        <h3 class="page-title">
+        <h4 class="page-title">
             Address
 
             <a href="#" class="btn btn-primary btn-xs pull-right">Save</a>
-        </h3>
+        </h4>
 
         <div class="row">
             <div class="form-group col-sm-6">
@@ -108,11 +108,11 @@
     </div>
 
     <div class="background-white p20 mb30">
-        <h3 class="page-title">
+        <h4 class="page-title">
             Biography
 
             <a href="#" class="btn btn-primary btn-xs pull-right">Save</a>
-        </h3>
+        </h4>
 
         <textarea class="form-control" rows="7"></textarea><div class="textarea-resize"></div>
     </div>
