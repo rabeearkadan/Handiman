@@ -73,6 +73,14 @@ class User extends Eloquent implements
     }
 
 
+    public function simplifiedArray(){
+        return [
+            '_id'=>$this->_id,
+            'name'=>$this->name,
+            'image'=>$this->image,
+        ];
+    }
+
     /**
      * @inheritDoc
      */
