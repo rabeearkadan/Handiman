@@ -3,8 +3,6 @@
     <div class="page-title">
         <h1> Security </h1>
     </div><!-- /.page-title -->
-
-
     <div class="background-white p20 mb30">
         <h3 class="page-title">
             Change Password
@@ -20,12 +18,12 @@
                     <label for="login-form-password-retype">Retype password</label>
                     <input type="password" class="form-control" name="password" id="login-form-password-retype">
                 </div><!-- /.form-group -->
-
-                <button type="submit" class="btn btn-primary pull-right">Change</button>
+                <div class="center">
+                    <button type="submit" class="btn btn-primary pull-right">Change</button>
+                </div>
             </form>
 
         </div>
     </div>
-
 @endsection
 
