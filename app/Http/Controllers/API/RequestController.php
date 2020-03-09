@@ -2,10 +2,14 @@
 
 namespace App\Http\Controllers\API;
 
+use App\Events\NotificationSenderEvent;
 use App\Http\Controllers\Controller;
 use  App\Models\RequestService;
 
+use App\User;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
 
 
@@ -24,14 +28,18 @@ class RequestController extends Controller
     }
 
 
-    public function requestHandyman(Request $req)
+    public function requestHandyman(Request $request)
     {
-        $params = $req->only(['time']);
+        $params = $request->only(['time']);
 
-        $this->validator($req->all())->validate();
+        $this->validator($request->all())->validate();
         $request = new RequestService();
-        $request->employee_id = $req->input('employee_id');
-        $request->client_id = $req->input('client_id');
+
+        // will remove the employee id and the client id
+        // emplyee id for this function will be sent as parameter {id}
+        //client id will be the auth user
+        $request->employee_id = $request->input('employee_id');
+        $request->client_id = $request->input('client_id');
         $request->day = $params['day'];
         $request->from = $params['from'];
         $request->to = $params['to'];
@@ -46,6 +54,128 @@ class RequestController extends Controller
         return response()->json(['status' => 'success', 'request' => $request]);
 
     }
+
+    /*
+     *  Route::get('request/{id}', 'RequestController@getRequestById');
+    Route::post('accept-request/{id}', 'RequestController@acceptRequest');
+    Route::post('reject-request/{id}', 'RequestController@rejecttRequest');
+     */
+    public function acceptRequest(Request $req, $id)
+    {
+        $request = RequestService::query()->find($id);
+        $request->handyman_status = accept;
+        $request->estimate_time = $req->input('time_estimate');
+
+
+        // notify the client to respond to the estimated # hours
+        $request->save();
+        return response()->json(['status' => 'success']);
+    }
+
+    public function rejectRequest(Request $req, $id)
+    {
+        $request = RequestService::query()->find($id);
+        $request->handyman_status = reject;
+
+
+        // notify the client with the rejection
+        $request->save();
+        return response()->json(['status' => 'success']);
+    }
+
+    public function acceptEstimateHours(Request $req, $id)
+    {
+
+        $request = RequestService::query()->find($id);
+        $employee_id = $request->employe_id;
+        $employee = User::query()->find($employee_id);
+        $location[] = $request->location;
+        $day = $request->day;
+        $from = $request->from;
+        $to = $request->to;
+        $flag = true;
+
+        for ($i = $from; $i <= $to; $i++) {
+
+            $hour = str_pad($i,
+                    2, 0, STR_PAD_LEFT) . "00";
+            if ($employee->timeline[$day][$hour] == false) {
+                $flag = false;
+                break;
+            }
+
+
+        }
+        if ($flag) {
+            for ($i = $from; $i <= $to; $i++) {
+                $hour = str_pad($i,
+                        2, 0, STR_PAD_LEFT) . "00";
+
+                // $employee->timeline[$day][$hour]['id']=$request->id;
+                // we will save the id of the request at every hour
+            }
+
+        }
+        // the process is not done yet
+        // we need to check the location before and after so that we make sure that no two locations contradict with the time
+        // for that we will call a function that returns the time needed to cover the two distances
+        // (from{lat,long}) {employee location before the request}
+        //(to{from,long}) {the request location}
+
+        // we need then to check the location of the employee he needs to be in after the request so that is does not contradicts
+        $hour = str_pad($i,
+                2, 0, STR_PAD_LEFT) . "00";
+        if ($employee->timeline[$day][$to + $hour] == true) {
+            // then the employee has a free hour after the request is done
+        } else {
+            // the handyman has a request
+
+        }
+
+
+    }
+
+    public function rejectEstimateHours(Request $req, $id)
+    {
+
+        $request = RequestService::query()->find($id);
+
+
+    }
+
+    public function getRequestById($id)
+    {
+        $request = RequestService::query()->find($id);
+
+        return response()->json(['status' => 'success', 'request' => $request]);
+    }
+
+    public function geHandymanOngoingRequests()
+    {
+        $user = Auth::user();
+        $ongoing = RequestService::query()->where('employee_id', $user->id)->where('type', 'ongoing')->get();
+
+        return response()->json(['status' => 'success', 'OngoingRequests' => $ongoing]);
+    }
+
+    public function geHandymanOutgoingRequests()
+    {
+        $user = Auth::user();
+        $outgoing = RequestService::query()->where('employee_id', $user->id)->where('type', 'outgoing')->get();
+
+        return response()->json(['status' => 'success', 'OngoingRequests' => $outgoing]);
+    }
+
+    /*
+     *  $handymanList =
+           User::query()->
+           where('role', 'employee')
+               ->orWhere('role', 'user_employee')
+               ->where('isApproved', true)->get();
+
+       return response()->json(['status' => 'success', 'HandymanList' => $handymanList]);
+   }
+     */
 
     public function requestAny(Request $req)
     {
@@ -68,6 +198,35 @@ class RequestController extends Controller
 //            ->where('timeline.1.09:00',false)->first();
 
 
+    }
+
+
+    public function sendRequestMessage(Request $request, $id)
+    {
+
+        $requestService = RequestService::query()->find($id);
+
+        $messages = $requestService->messages;
+        $message = [
+            'message' => $request->input('message'),
+            'date' => Carbon::now()->toDateTimeString(),
+            'from' => Auth::user()->simplifiedArray()
+        ];
+        array_push($messages, $message);
+        $requestService->messages = $messages;
+        // send notification to the other user if the auth is 'from request ' the notification is sent to the to
+        // and vice cersa
+        $notification = $message;
+        $notification['request_id'] = $id;
+        if (auth()->id() == $requestService->client_id) {
+            $notification['to'] = User::query()->find($requestService->employee_id)->device_token;
+        } else {
+            $notification['to'] = User::query()->find($requestService->client_id)->device_token;
+        }
+        $notification['type'] = 'message';
+
+        event(new NotificationSenderEvent($notification));
+        $requestService->save();
     }
 
 

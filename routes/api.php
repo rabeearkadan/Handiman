@@ -37,15 +37,21 @@ Route::middleware(['auth:api', 'employee'])->prefix('employee')->group(function 
     Route::get('post', 'PostController@getPosts');
     Route::get('post-id/{id}', 'PostController@getPostById');
 
+    Route::get('request/{id}', 'RequestController@getRequestById');
+    Route::get('Ongoing-requests', 'RequestController@geHandymanOngoingRequests');
+    Route::get('Outgoing-requests', 'RequestController@geHandymanOutgoingRequests');
+    Route::post('accept-request/{id}', 'RequestController@acceptRequest');
+    Route::post('reject-request/{id}', 'RequestController@rejecttRequest');
+
 
 });
 
 
 Route::middleware(['auth:api', 'client'])->prefix('user')->group(function () {
     //all route related to  user
-    Route::post('request', 'ServiceController@requestHandyman');
-
+    Route::post('request', 'RequestController@requestHandyman');
     Route::get('post', 'PostController@getPosts');
+
     //TODO
     // Route::get('ongoing-requests','RequestController@getOngoingRequests');
     //Route::get('outgoing-requests','RequestController@getOutgoingRequests');
