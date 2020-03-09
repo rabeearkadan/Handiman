@@ -1,7 +1,11 @@
 @extends('layouts.client.app')
 @push('css')
-    <link href="{{asset('css/client/posts.css')}}" rel="stylesheet">
+    <link href="{{asset('lib/font-awesome/css/font-awesome.css')}}" rel="stylesheet">
+    <link href="{{asset('css/client/app.css')}}" rel="stylesheet">
     <link href="{{asset('css/client/pagination.css')}}" rel="stylesheet">
+    <link href="{{asset('css/client/posts.css')}}" rel="stylesheet">
+    <link href="{{asset('css/client/post-detail.css')}}" rel="stylesheet">
+    <link href="{{asset('css/client/common-classes.css')}}" rel="stylesheet">
 @endpush
 @section('content')
     <div class="page-wrapper">
@@ -33,7 +37,7 @@
                                             <div class="post-meta-more"><a href="">Read More <i class="fa fa-chevron-right"></i></a></div><!-- /.post-meta-more -->
                                         </div><!-- /.post-meta -->
                                     </div><!-- /.post -->
-                                </div>
+                                </div><!-- posts -->
                                 <div class="pager">
                                     <ul>
                                         <li><a href="#">Prev</a></li>
