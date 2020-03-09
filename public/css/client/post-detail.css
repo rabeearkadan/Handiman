@@ -1,0 +1,134 @@
+.post-detail img {
+    max-width: 100%;
+    height: auto;
+}
+
+.post-detail .post-content {
+    display: block;
+    margin-top: 20px;
+    text-align: justify;
+}
+
+.post-detail .post-content p {
+    margin-top: 15px;
+}
+
+.post-detail .post-content a {
+    border-bottom: 1px solid #e9e9e9;
+    transition: all .15s linear;
+}
+
+.post-detail .post-content a:hover {
+    border-bottom: transparent;
+}
+
+.post-detail .post-content-image {
+    max-width: 45%;
+    margin-bottom: 15px;
+    margin-top: 33px;
+}
+
+.post-detail .post-content-image.pull-left {
+    margin-right: 30px;
+}
+
+.post-detail .post-content-image.pull-right {
+    margin-left: 30px;
+}
+
+.post-detail h2 {
+    border-bottom: 1px solid #e9e9e9;
+    color: #363636;
+    font-weight: 300;
+    margin: 40px 0px 30px 0px;
+    padding-bottom: 20px;
+}
+
+.post-detail h3 {
+    margin-top: 30px;
+    margin-bottom: 25px;
+}
+
+.post-detail .drop-cap:first-letter {
+    color: #444;
+    float: left;
+    font-size: 46px;
+    line-height: 42px;
+    margin-top: 5px;
+    padding-right: 8px;
+    padding-left: 0px;
+}
+
+.post-detail .post-meta-tags {
+    background-color: #fff;
+    clear: both;
+    display: inline-block;
+    font-size: 13px;
+    margin: 30px 0px 0px 0px;
+    padding: 15px 20px;
+    width: 100%;
+}
+
+.post-detail .post-meta-tags ul {
+    display: inline;
+    padding-left: 0px;
+}
+
+.post-detail .post-meta-tags .tag {
+    background-color: #c6af5c;
+    border-radius: 3px;
+    color: #fff;
+    display: inline-block;
+    font-weight: 300;
+    margin-left: 20px;
+    padding: 2px 6px 2px 8px;
+    position: relative;
+    transition: all linear .15s;
+}
+
+.post-detail .post-meta-tags .tag a {
+    color: #fff;
+    position: relative;
+    z-index: 2;
+}
+
+.post-detail .post-meta-tags .tag a:hover {
+    color: #fff;
+    text-decoration: none;
+}
+
+.post-detail .post-meta-tags .tag:before {
+    background-color: #c6af5c;
+    border-radius: 3px;
+    content: "";
+    display: block;
+    height: 16px;
+    left: -7px;
+    position: absolute;
+    transform: rotate(45deg);
+    -webkit-transform: rotate(45deg);
+    transition: all linear .15s;
+    width: 17px;
+    margin-top: 1px;
+    z-index: 0;
+}
+
+.post-detail .post-meta-tags .tag:after {
+    background-color: #fff;
+    border-radius: 50%;
+    content: "";
+    display: block;
+    height: 5px;
+    left: -2px;
+    position: absolute;
+    top: 8px;
+    width: 5px;
+}
+
+.post-detail .post-meta-tags .tag:hover {
+    background-color: #b1983e;
+}
+
+.post-detail .post-meta-tags .tag:hover:before {
+    background-color: #b1983e;
+}

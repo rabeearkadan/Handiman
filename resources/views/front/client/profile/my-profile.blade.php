@@ -1,7 +1,12 @@
 @extends('layouts.client.app')
 @push('css')
-    <link href="{{asset('css/client/my-profile.css')}}" rel="stylesheet">
     <link href="{{asset('lib/font-awesome/css/font-awesome.css')}}" rel="stylesheet">
+    <link href="{{asset('css/client/buttons.css')}}" rel="stylesheet">
+    <link href="{{asset('css/client/common-classes.css')}}" rel="stylesheet">
+    <link href="{{asset('css/client/forms.css')}}" rel="stylesheet">
+    <link href="{{asset('css/client/widgets.css')}}" rel="stylesheet">
+    <link href="{{asset('css/client/user.css')}}" rel="stylesheet">
+    <link href="{{asset('css/client/colorbox.css')}}" rel="stylesheet">
 @endpush
 @section('content')
     <div class="page-wrapper" id="profile">
@@ -19,10 +24,7 @@
                                         </a>
                                     </div><!-- /.user-photo -->
                                 </div><!-- /.widget -->
-
-
                                 <div class="widget">
-
                                     <ul class="menu-advanced">
                                         <li class="@if(request()->is('client/profile')) {{'active'}} @endif"><a href="{{route('client.profile')}}"><i class="fa fa-user"></i> Edit Profile</a></li>
                                         <li class="@if(request()->is('client/profile/password')) {{'active'}} @endif"><a href="{{route('client.password')}}"><i class="fa fa-key"></i> Password</a></li>
@@ -42,9 +44,6 @@
                 </div><!-- /.container -->
             </div><!-- /.main-inner -->
         </div><!-- /.main -->
-
-
-
     </div><!-- /.page-wrapper -->
 @endsection
 

@@ -6,7 +6,6 @@
     <span class="nav-indicator"></span>
 </nav>
 
-
 @push('js')
     <script>
         const indicator = document.querySelector('.nav-indicator');
@@ -29,5 +28,4 @@
             item.classList.contains('is-active') && handleIndicator(item);
         });
     </script>
-
 @endpush
