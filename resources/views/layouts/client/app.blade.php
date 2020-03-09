@@ -14,7 +14,6 @@
         <link href="https://fonts.googleapis.com/css?family=DM+Sans:500,700&display=swap" rel="stylesheet">
     @endif
     @if(!request()->is('client/profile*'))
-        <link href="{{asset('css/app.css')}}" rel="stylesheet">
     @endif
     <link href="{{asset('css/client/navbar.css')}}" rel="stylesheet">
     <link href="{{asset('css/client/preloader.css')}}" rel="stylesheet">
