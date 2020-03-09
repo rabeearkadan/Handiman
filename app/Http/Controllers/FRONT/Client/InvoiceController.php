@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers\FRONT\Client;
 use App\Http\Controllers\Controller;
+use App\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class InvoiceController extends Controller
 {
@@ -14,6 +16,9 @@ class InvoiceController extends Controller
     public function index()
     {
         //
+        $user = Auth::user();
+        $invoices = $user->invoices;
+        dd($invoices);
         return view ('front.client.invoice.index', compact('invoices'));
     }
 
@@ -42,11 +47,12 @@ class InvoiceController extends Controller
      * Display the specified resource.
      *
      * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
     public function show($id)
     {
         //
+        return view ('front.client.invoice.show', compact('invoice'));
     }
 
     /**
