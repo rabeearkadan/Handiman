@@ -1,5 +1,6 @@
 @extends('layouts.client.app')
 @push('css')
+    <link href="{{asset('lib/font-awesome/css/font-awesome.css')}}" rel="stylesheet">
     <link href="{{asset('css/app.css')}}" rel="stylesheet">
     <link href="{{asset('css/client/invoice.css')}}" rel="stylesheet">
     <link href="{{asset('css/client/colorbox.css')}}" rel="stylesheet">
@@ -58,47 +59,47 @@
                                         </div>
                                     </div>
                                 </div><!-- /.invoice-info -->
+                                <div class="table-responsive">
+                                    <table class="invoice-table table">
+                                        <thead>
+                                        <tr>
+                                            <th>#ID</th>
+                                            <th>Item</th>
+                                            <th>Description</th>
+                                            <th>Quantity</th>
+                                            <th>Unit Cost</th>
+                                            <th>Total</th>
+                                        </tr>
+                                        </thead>
 
-                                <table class="invoice-table table">
-                                    <thead>
-                                    <tr>
-                                        <th>#ID</th>
-                                        <th>Item</th>
-                                        <th>Description</th>
-                                        <th>Quantity</th>
-                                        <th>Unit Cost</th>
-                                        <th>Total</th>
-                                    </tr>
-                                    </thead>
-
-                                    <tbody>
-                                    <tr>
-                                        <td>1</td>
-                                        <td>Software</td>
-                                        <td>LTS Versions</td>
-                                        <td>21</td>
-                                        <td>$321</td>
-                                        <td>$3452</td>
-                                    </tr>
-                                    <tr>
-                                        <td>1</td>
-                                        <td>Software</td>
-                                        <td>Support</td>
-                                        <td>234</td>
-                                        <td>$6356</td>
-                                        <td>$23423</td>
-                                    </tr>
-                                    <tr>
-                                        <td>1</td>
-                                        <td>Software</td>
-                                        <td>Sofware Collection</td>
-                                        <td>4534</td>
-                                        <td>$354</td>
-                                        <td>$23434</td>
-                                    </tr>
-                                    </tbody>
-                                </table>
-
+                                        <tbody>
+                                        <tr>
+                                            <td>1</td>
+                                            <td>Software</td>
+                                            <td>LTS Versions</td>
+                                            <td>21</td>
+                                            <td>$321</td>
+                                            <td>$3452</td>
+                                        </tr>
+                                        <tr>
+                                            <td>1</td>
+                                            <td>Software</td>
+                                            <td>Support</td>
+                                            <td>234</td>
+                                            <td>$6356</td>
+                                            <td>$23423</td>
+                                        </tr>
+                                        <tr>
+                                            <td>1</td>
+                                            <td>Software</td>
+                                            <td>Sofware Collection</td>
+                                            <td>4534</td>
+                                            <td>$354</td>
+                                            <td>$23434</td>
+                                        </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
                                 <div class="invoice-summary clearfix">
                                     <dl class="dl-horizontal pull-right">
                                         <dt>Sub - Total amount:</dt>
