@@ -1,7 +1,6 @@
 @extends('layouts.client.app')
 @push('css')
     <link href="{{asset('css/client/cards.css')}}" rel="stylesheet">
-    <link href="{{asset('css/app.css')}}" rel="stylesheet">
     <style>
         img:before {
             content: ' ';
