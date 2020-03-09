@@ -21,23 +21,23 @@
                                 <div class="posts">
                                     <div class="post">
                                         <div class="post-image">
-                                            <img src="" alt="Image">
-                                            <a class="read-more" href="">View</a>
+                                            <img src="assets/img/tmp/product-11.jpg" alt="A Clockwork Origin">
+                                            <a class="read-more" href="blog-detail-right-sidebar.html">View</a>
                                         </div><!-- /.post-image -->
                                         <div class="post-content">
-                                            <h2><a href=""> Title </a><a></a></h2><a>
-                                                <p> Content </p>
+                                            <h2><a href="blog-detail.html">A Clockwork Origin</a><a></a></h2><a>
+                                                <p>And from now on you're all named Bender Jr. The alien mothership is in orbit here. If we can hit that bullseye, the rest of the dominoes will fall like a house of cards. Checkmate. Now that the, uh, garbage ball is in space, Doctor, perh...</p>
                                             </a></div><!-- /.post-content -->
                                         <a> </a>
                                         <div class="post-meta clearfix"><a>
-                                            </a><div class="post-meta-author"><a>By </a><a href=""> User </a></div><!-- /.post-meta-author -->
+                                            </a><div class="post-meta-author"><a>By </a><a href="blog-detail.html">Eric Yorick</a></div><!-- /.post-meta-author -->
                                             <div class="post-meta-date">08/24/2015</div><!-- /.post-meta-date -->
-                                            <div class="post-meta-categories"><i class="fa fa-tags"></i> <a href="">Tags here</a></div><!-- /.post-meta-categories -->
-                                            <div class="post-meta-comments"><i class="fa fa-comments"></i> <a href="">3 comments</a></div><!-- /.post-meta-comments -->
+                                            <div class="post-meta-categories"><i class="fa fa-tags"></i> <a href="blog-detail.html">Restaurant</a></div><!-- /.post-meta-categories -->
+                                            <div class="post-meta-comments"><i class="fa fa-comments"></i> <a href="blog-detail.html">3 comments</a></div><!-- /.post-meta-comments -->
                                             <div class="post-meta-more"><a href="">Read More <i class="fa fa-chevron-right"></i></a></div><!-- /.post-meta-more -->
                                         </div><!-- /.post-meta -->
                                     </div><!-- /.post -->
-                                </div><!-- posts -->
+                                </div>
                                 <div class="pager">
                                     <ul>
                                         <li><a href="#">Prev</a></li>
