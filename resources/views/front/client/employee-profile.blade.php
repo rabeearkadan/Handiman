@@ -311,8 +311,6 @@
     </div><!-- container-->
 </section><!-- counter-section-->
 
-
-
 @push('js')
     <script src="/public/common-js/jquery-3.2.1.min.js"></script>
     <script src="/public/common-js/tether.min.js"></script>
