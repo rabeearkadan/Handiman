@@ -7,13 +7,14 @@
     <!-- Fonts -->
 
     <!-- Styles -->
+    @if(!request()->is('client/profile*'))
+        <link href="{{asset('css/app.css')}}" rel="stylesheet">
+    @endif
     @stack('css')
     @if(request()->route()->getName() != "client.user-profile")
         <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
         <link href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.5/css/bulma.css" rel="stylesheet">
         <link href="https://fonts.googleapis.com/css?family=DM+Sans:500,700&display=swap" rel="stylesheet">
-    @endif
-    @if(!request()->is('client/profile*'))
     @endif
     <link href="{{asset('css/client/navbar.css')}}" rel="stylesheet">
     <link href="{{asset('css/client/preloader.css')}}" rel="stylesheet">
