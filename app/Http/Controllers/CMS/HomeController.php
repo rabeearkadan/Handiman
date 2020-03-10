@@ -11,7 +11,7 @@ class HomeController extends Controller
     //
     public function index()
     {
-        Session::put('test', Auth::user()->name);
+        Session::put('name', Auth::user()->name);
         return view('cms.dashboard.index', ['admin' => Auth::user()]);
     }
 
