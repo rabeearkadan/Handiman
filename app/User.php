@@ -2,6 +2,7 @@
 
 namespace App;
 
+use App\Models\Invoice;
 use App\Models\Post;
 use App\Models\Service;
 use Illuminate\Auth\Authenticatable;
@@ -71,7 +72,9 @@ class User extends Eloquent implements
     public function posts(){
         return $this->belongsToMany(Post::class);
     }
-
+    public function invoices(){
+        return $this->belongsToMany(Invoice::class);
+    }
 
     public function simplifiedArray(){
         return [

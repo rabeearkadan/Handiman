@@ -10,8 +10,8 @@
     <script src="{{ asset('js/app.js') }}" defer></script>
     <!-- Styles -->
     <link href="{{asset('css/app.css')}}" rel="stylesheet">
-    <link href="{{asset('css/handyman/navbar.css')}}" rel="stylesheet">
-    <link href="{{asset('css/handyman/preloader.css')}}" rel="stylesheet">
+    <link href="{{asset('css/employee/navbar.css')}}" rel="stylesheet">
+    <link href="{{asset('css/employee/preloader.css')}}" rel="stylesheet">
     @stack('css')
 
 </head>
@@ -24,7 +24,6 @@
     </div>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-
     @stack('js')
 
 </body>
