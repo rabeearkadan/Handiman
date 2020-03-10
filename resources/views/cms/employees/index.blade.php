@@ -32,13 +32,12 @@
                                 <td>
                                     @if(($employee->isApproved)==true )
 
-                                        <button class="mb-2 mr-2 btn btn-success">Approved<span
-                                                class="badge badge-danger">flag</span></button>
+                                        <button class="mb-2 mr-2 btn btn-success">Approved
+                                        </button>
 
 
                                     @else
-                                        <button class="mb-2 mr-2 btn btn-danger">Not Approved<span
-                                                class="badge badge-success">Approve</span></button>
+                                        <button class="mb-2 mr-2 btn btn-danger">Not Approved</button>
 
                                     @endif
 

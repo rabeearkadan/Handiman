@@ -41,15 +41,10 @@
                                         @method('DELETE')
                                     </form>
 
-                                    {{--                                    <button href="#exampleModal" type="button"   data-service-id="{{$service->id}}" try--}}
-                                    {{--                                            class="btn mr-2 mb-2 btn-danger" data-toggle="modal"--}}
-                                    {{--                                    > Delete--}}
-                                    {{--                                    </button>--}}
-
 
                                 </td>
-                                <td>< ,/td>
-                                <td> view more</td>
+                                <td>
+                                <td><a href="#"></a> view more</td>
                             </tr>
                         @endforeach
 
