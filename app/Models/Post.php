@@ -8,7 +8,7 @@ use Jenssegers\Mongodb\Eloquent\Model as Eloquent;
 class Post extends Eloquent
 {
     public function users(){
-        return $this->belongsTo(User::class);
+        return $this->belongsToMany(User::class);
     }
     public function tags(){
         return $this->belongsToMany(Service::class);
