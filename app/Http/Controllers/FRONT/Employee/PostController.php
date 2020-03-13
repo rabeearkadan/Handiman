@@ -4,6 +4,7 @@ namespace App\Http\Controllers\FRONT\Employee;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class PostController extends Controller
 {
@@ -15,6 +16,8 @@ class PostController extends Controller
     public function index()
     {
         //
+        $user = Auth::user();
+        return view('front.employee.post.index',compact('user'));
     }
 
     /**
