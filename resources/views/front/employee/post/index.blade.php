@@ -17,7 +17,7 @@
                                     <h1>My Posts</h1>
                                 </div><!-- /.page-title -->
                                 <div class="posts">
-                                    @foreach($user->posts as $post)
+                                    @foreach($user->post as $post)
                                     <div class="post post-boxed">
                                         <div class="post-image">
                                             <img src="{{config('image.path').$post->image}}" alt="A Clockwork Origin">
