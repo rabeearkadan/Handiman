@@ -11,12 +11,13 @@ class PostController extends Controller
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
     public function index()
     {
         //
         $user = Auth::user();
+        dd($user->posts);
         return view('front.employee.post.index',compact('user'));
     }
 
