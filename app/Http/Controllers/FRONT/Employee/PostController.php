@@ -17,7 +17,7 @@ class PostController extends Controller
     {
         //
         $user = Auth::user();
-        dd($user->posts);
+        dd($user->post);
         return view('front.employee.post.index',compact('user'));
     }
 
