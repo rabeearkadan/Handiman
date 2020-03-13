@@ -20,3 +20,11 @@ Route::put('/profile','ProfileController@editProfile')->name('employee.edit.prof
 
 //chat
 Route::get("/chat", 'ChatController@index')->name('employee.chat');
+
+//posts
+Route::get('posts','')->name('employee.post.index');
+Route::get('post/create','')->name('employee.post.create');
+Route::post('post/create','')->name('employee.post.store');
+Route::get('post/edit/{id}','')->name('employee.post.edit');
+Route::put('post/edit/{id}','')->name('employee.post.update');
+Route::delete('post/destroy/{id}','')->name('employee.post.destroy');
