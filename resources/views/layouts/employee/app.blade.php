@@ -10,7 +10,6 @@
     <script src="{{ asset('js/app.js') }}" defer></script>
     <!-- Styles -->
     @stack('css')
-    <link href="{{asset('css/app.css')}}" rel="stylesheet">
     <link href="{{asset('css/employee/navbar.css')}}" rel="stylesheet">
     <link href="{{asset('css/employee/preloader.css')}}" rel="stylesheet">
 </head>
