@@ -6,7 +6,7 @@
     <link href="{{asset('css/employee/common-classes.css')}}" rel="stylesheet">
     <link href="{{asset('css/employee/forms.css')}}" rel="stylesheet">
     <link href="{{asset('css/employee/listing-detail.css')}}" rel="stylesheet">
-    <link href="{{asset('css/employee/colorbox.css')}}" rel="stylesheet">
+    <link href="{{asset('css/employee/color-box.css')}}" rel="stylesheet">
     <link href="{{asset('css/employee/fileinput.min.css')}}" rel="stylesheet">
     <link href="{{asset('css/employee/bootstrap-select.min.css')}}" rel="stylesheet">
     <link href="{{asset('css/employee/submit-button-post.css')}}" rel="stylesheet">
