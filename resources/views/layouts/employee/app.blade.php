@@ -7,7 +7,6 @@
     <!-- Fonts -->
 
     <!-- Scripts -->
-    <script src="{{ asset('js/app.js') }}" defer></script>
     <!-- Styles -->
     @stack('css')
     <link href="{{asset('css/employee/navbar.css')}}" rel="stylesheet">
