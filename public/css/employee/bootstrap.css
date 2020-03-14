@@ -1383,10 +1383,7 @@ th {
     box-sizing: border-box;
 }
 
-html {
-    font-size: 10px;
-    -webkit-tap-highlight-color: transparent;
-}
+
 
 body {
     font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
