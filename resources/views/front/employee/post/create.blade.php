@@ -1,14 +1,16 @@
 @extends('layouts.employee.app')
-<link href="{{asset('lib/font-awesome/css/font-awesome.css')}}" rel="stylesheet">
-<link href="{{asset('css/employee/bootstrap.css')}}" rel="stylesheet">
-<link href="{{asset('css/employee/buttons.css')}}" rel="stylesheet">
-<link href="{{asset('css/employee/common-classes.css')}}" rel="stylesheet">
-<link href="{{asset('css/employee/forms.css')}}" rel="stylesheet">
-<link href="{{asset('css/employee/listing-detail.css')}}" rel="stylesheet">
-<link href="{{asset('css/employee/colorbox.css')}}" rel="stylesheet">
-<link href="{{asset('css/employee/fileinput.min.css')}}" rel="stylesheet">
-<link href="{{asset('css/employee/bootstrap-select.min.css')}}" rel="stylesheet">
-<link href="{{asset('css/employee/submit-button-post.css')}}" rel="stylesheet">
+@push('css')
+    <link href="{{asset('lib/font-awesome/css/font-awesome.css')}}" rel="stylesheet">
+    <link href="{{asset('css/employee/bootstrap.css')}}" rel="stylesheet">
+    <link href="{{asset('css/employee/buttons.css')}}" rel="stylesheet">
+    <link href="{{asset('css/employee/common-classes.css')}}" rel="stylesheet">
+    <link href="{{asset('css/employee/forms.css')}}" rel="stylesheet">
+    <link href="{{asset('css/employee/listing-detail.css')}}" rel="stylesheet">
+    <link href="{{asset('css/employee/colorbox.css')}}" rel="stylesheet">
+    <link href="{{asset('css/employee/fileinput.min.css')}}" rel="stylesheet">
+    <link href="{{asset('css/employee/bootstrap-select.min.css')}}" rel="stylesheet">
+    <link href="{{asset('css/employee/submit-button-post.css')}}" rel="stylesheet">
+@endpush
 @section('content')
     <div class="page-wrapper">
         <div class="main">
