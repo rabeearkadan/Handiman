@@ -28,6 +28,7 @@ class PostController extends Controller
     public function create()
     {
         //
+        return view('front.employee.post.create');
     }
 
     /**
@@ -61,6 +62,7 @@ class PostController extends Controller
     public function edit($id)
     {
         //
+        return view('front.employee.post.edit');
     }
 
     /**
