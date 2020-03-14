@@ -21,7 +21,7 @@
                 <a  href="{{route('employee.chat')}}" class="@if(request()->is('employee/chat')) {{'active'}} @endif"> Chat </a>
             </li>
             <li class="nav-item">
-                <a  href="{{route('employee.post.index')}}" class="@if(request()->is('employee/post*')) {{'active'}} @endif"> Reviews</a>
+                <a  href="{{route('employee.post.index')}}" class="@if(request()->is('employee/post*')) {{'active'}} @endif"> Posts </a>
             </li>
             <li class="nav-item">
                 <a  href="{{route('employee.reviews')}}" class="@if(request()->is('employee/reviews')) {{'active'}} @endif"> Reviews</a>
