@@ -66,7 +66,6 @@
 .pager li a {
     border-color: #f7f8f9;
     color: rgba(54, 54, 54, 0.6);
-    padding: 6px 15px;
     transition: all .15s linear;
 }
 
