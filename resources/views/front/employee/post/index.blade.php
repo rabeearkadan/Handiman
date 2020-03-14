@@ -30,8 +30,12 @@
                                             <div class="post-content">
                                                 <h2><a href="blog-detail.html"> {{$post->title}} </a>
                                                     <div class="pull-right">
-                                                        <a href="#"> <i class="fa fa-edit"></i> </a>
-                                                        <a href="#"> <i class="fa fa-trash"></i> </a>
+                                                        <a href="{{route('employee.post.edit',$post->id)}}"> <i class="fa fa-edit"></i> </a>
+                                                        <a href="#" onclick="document.getElementById('{{$post->_id}}').submit();"> <i class="fa fa-trash"></i> </a>
+                                                        <form action="{{route('employee.post.destroy', $service->id)}}" method="post" id="{{$post->_id}}">
+                                                            @csrf
+                                                            @method('delete')
+                                                        </form>
                                                     </div>
                                                 </h2>
                                                 <p> {{$post->content}} </p>
@@ -68,19 +72,13 @@
                                     <h2 class="widgettitle">Categories</h2>
 
                                     <ul class="menu">
-                                        <li><a href="#">Automotive</a></li>
-                                        <li><a href="#">Jobs</a></li>
-                                        <li><a href="#">Nightlife</a></li>
-                                        <li><a href="#">Services</a></li>
-                                        <li><a href="#">Transportation</a></li>
-                                        <li><a href="#">Real Estate</a></li>
-                                        <li><a href="#">Restaurants</a></li>
+                                        @foreach($services as $service)
+                                            <li><a href="#"> {{$service->name}} </a></li>
+                                        @endforeach
                                     </ul><!-- /.menu -->
                                 </div><!-- /.wifget -->
                             </div><!-- /.sidebar -->
                         </div><!-- /.col-* -->
-
-
                     </div><!-- /.row -->
                 </div><!-- /.container -->
             </div><!-- /.main-inner -->

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\FRONT\Employee;
 
 use App\Http\Controllers\Controller;
+use App\Models\Service;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -17,7 +18,8 @@ class PostController extends Controller
     {
         //
         $user = Auth::user();
-        return view('front.employee.post.index',compact('user'));
+        $services = Service::all();
+        return view('front.employee.post.index',compact(['user','services']));
     }
 
     /**
