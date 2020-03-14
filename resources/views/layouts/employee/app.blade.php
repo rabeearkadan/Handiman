@@ -7,7 +7,6 @@
     <!-- Fonts -->
 
     <!-- Scripts -->
-    <script src="{{ asset('js/app.js') }}" defer></script>
     <!-- Styles -->
     @stack('css')
     <link href="{{asset('css/employee/navbar.css')}}" rel="stylesheet">
@@ -23,6 +22,6 @@
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     @stack('js')
-
+    <script src="{{ asset('js/app.js') }}" defer></script>
 </body>
 </html>
