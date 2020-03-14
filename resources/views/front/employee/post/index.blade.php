@@ -32,7 +32,7 @@
                                                     <div class="pull-right">
                                                         <a href="{{route('employee.post.edit',$post->id)}}"> <i class="fa fa-edit"></i> </a>
                                                         <a href="#" onclick="document.getElementById('{{$post->_id}}').submit();"> <i class="fa fa-trash"></i> </a>
-                                                        <form action="{{route('employee.post.destroy', $service->id)}}" method="post" id="{{$post->_id}}">
+                                                        <form action="{{route('employee.post.destroy', $post->id)}}" method="post" id="{{$post->_id}}">
                                                             @csrf
                                                             @method('delete')
                                                         </form>
