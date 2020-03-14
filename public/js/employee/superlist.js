@@ -1,4 +1,4 @@
-$(document).ready(function () {
+$(document).ready(function() {
     'use strict';
 
     /**
@@ -9,7 +9,7 @@ $(document).ready(function () {
     /**
      * Background image
      */
-    $('*[data-background-image]').each(function () {
+    $('*[data-background-image]').each(function() {
         $(this).css({
             'background-image': 'url(' + $(this).data('background-image') + ')'
         });
@@ -35,9 +35,9 @@ $(document).ready(function () {
         return Array(lat, lng);
     }
 
-    for (var i = 0; i < 50; i++) {
+    for (var i=0; i < 50; i++) {
         var position = get_gps_ranges(40.761077, -73.983307, 0.08, 0.60);
-        var icon = icons[Math.floor(Math.random() * icons.length)];
+        var icon = icons[Math.floor(Math.random()*icons.length)];
 
         markers.push({
             latitude: position[0],
@@ -114,7 +114,7 @@ $(document).ready(function () {
         });
     }
 
-    $('.detail-gallery-list-item a').on('click', function (e) {
+    $('.detail-gallery-list-item a').on('click', function(e) {
         e.preventDefault();
         var link = $(this).data('target');
         $('.detail-gallery-preview img').attr('src', link);
@@ -129,10 +129,10 @@ $(document).ready(function () {
 
         listing_detail_map.google_map({
             center: {
-                latitude: listing_detail_map.data('latitude'),
-                longitude: listing_detail_map.data('longitude')
+                latitude: listing_detail_map.data( 'latitude' ),
+                longitude: listing_detail_map.data( 'longitude' )
             },
-            zoom: listing_detail_map.data('zoom'),
+            zoom: listing_detail_map.data( 'zoom' ),
             transparentMarkerImage: listing_detail_map.data('transparent-marker-image'),
             transparentClusterImage: listing_detail_map.data('transparent-marker-image'),
             infowindow: {
@@ -143,9 +143,9 @@ $(document).ready(function () {
                 offsetY: -120
             },
             markers: [{
-                latitude: listing_detail_map.data('latitude'),
-                longitude: listing_detail_map.data('longitude'),
-                marker_content: '<div class="marker"><div class="marker-inner"><i class="' + listing_detail_map.data('icon') + '"></div></div>'
+                latitude: listing_detail_map.data( 'latitude' ),
+                longitude: listing_detail_map.data( 'longitude' ),
+                marker_content: '<div class="marker"><div class="marker-inner"><i class="' + listing_detail_map.data( 'icon' ) + '"></div></div>'
             }]
         });
     }
@@ -162,14 +162,14 @@ $(document).ready(function () {
 
             new google.maps.StreetViewPanorama(document.getElementById('listing-detail-street-view'), {
                     position: {
-                        lat: street_view.data('latitude'),
-                        lng: street_view.data('longitude')
+                        lat: street_view.data( 'latitude' ),
+                        lng: street_view.data( 'longitude' )
                     },
                     pov: {
-                        heading: street_view.data('heading'),
-                        pitch: street_view.data('pitch')
+                        heading: street_view.data( 'heading' ),
+                        pitch: street_view.data( 'pitch' )
                     },
-                    zoom: street_view.data('zoom'),
+                    zoom: street_view.data( 'zoom' ),
                     linksControl: false,
                     panControl: false,
                     visible: true
@@ -181,7 +181,7 @@ $(document).ready(function () {
     /**
      * Listing Detail Bookmark & Like
      */
-    $(".detail-banner-btn").click(function () {
+    $(".detail-banner-btn").click(function(){
         $(this).toggleClass("marked");
 
         var span = $(this).children("span");
@@ -199,13 +199,13 @@ $(document).ready(function () {
     /**
      * Rating form
      */
-    $(".input-rating label").hover(function () {
+    $(".input-rating label").hover(function(){
         $(this).siblings("label").toggleClass("hovered");
         $(this).toggleClass("filled");
         $(this).prevAll("label").toggleClass("filled");
     });
 
-    $(".input-rating input").change(function () {
+    $(".input-rating input").change(function(){
         $(this).siblings().removeClass("marked");
         $(this).prevAll("label").addClass("marked");
     });
@@ -218,9 +218,9 @@ $(document).ready(function () {
         var increase = Math.PI * 2 / 100;
 
         var fun1 = [];
-        for (i = 0; i <= 1; i += 0.015) {
+        for ( i = 0; i <= 1; i += 0.015 ) {
             var x = i;
-            var y = Math.sin(counter);
+            var y = Math.sin( counter );
             fun1.push([x, y]);
             counter += increase;
         }
@@ -229,14 +229,14 @@ $(document).ready(function () {
         var increase = Math.PI * 2 / 100;
 
         var fun2 = [];
-        for (i = 0; i <= 1; i += 0.015) {
+        for ( i = 0; i <= 1; i += 0.015 ) {
             var x = i;
-            var y = Math.cos(counter);
+            var y = Math.cos( counter );
             fun2.push([x, y]);
             counter += increase;
         }
 
-        var plot = $.plot($('#superlist-chart'), [
+        var plot = $.plot($('#superlist-chart'),[
                 {
                     color: '#ceb65f',
                     data: fun1
@@ -257,7 +257,7 @@ $(document).ready(function () {
                     lines: false,
                     shadowSize: 0
                 },
-                points: {show: true},
+                points: { show: true },
                 legend: false,
                 grid: {
                     borderColor: '#f1f1f1',
@@ -278,7 +278,9 @@ $(document).ready(function () {
      * Input file
      */
     $('#input-file').fileinput({
-        initialPreview: [],
+        initialPreview: [
+
+        ],
         overwriteInitial: true,
         initialCaption: ""
     });
