@@ -7,6 +7,9 @@ use Jenssegers\Mongodb\Eloquent\Model as Eloquent;
 
 class Post extends Eloquent
 {
+    protected $fillable = [
+        'title','body'
+    ];
     public function users(){
         return $this->belongsToMany(User::class);
     }
