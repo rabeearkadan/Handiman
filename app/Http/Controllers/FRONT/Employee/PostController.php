@@ -45,14 +45,12 @@ class PostController extends Controller
     {
         //
         $user = Auth::user();
-        $this->validatePost($request);
-        $post = Post::create([
-            'title' => $request->title,
-            'body' => $request->body,
-        ]);
+        $tags = $request->tags;
+        $request->request->remove('tags');
+        $post = Post::create( $this->validatePost($request));
         $post->users()->attach($user->_id);
         $user->posts()->attach($post->_id);
-        foreach ($request->tags as $tagId) {
+        foreach ($tags as $tagId) {
             $post->tags()->attach($tagId);
         }
         return redirect(route('employee.post.index'));
@@ -109,15 +107,12 @@ class PostController extends Controller
 
     public function validatePost(Request $request)
     {
-        $validation= $request->validate([
+        return $request->validate([
             'title' => 'required|min:3|max:255',
             'body' => ['required'],
             'tags' => 'required',
             //image
         ]);
-        if ($validation->fails()) {
-            dd('error');
-        }
     }
 
 
