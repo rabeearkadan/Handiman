@@ -22,7 +22,7 @@
                                 <div class="page-title">
                                     <h1>Add post</h1>
                                 </div>
-                                <form action="{{route('employee.post.store')}}" method="post">
+                                <form action="{{route('employee.post.store')}}" method="post" id="new_post">
                                     @csrf
                                     <div class="background-white p30 mb30">
                                         <h3 class="page-title">Description</h3>

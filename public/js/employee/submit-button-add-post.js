@@ -44,7 +44,7 @@ $(document).ready(function () {
                 });
             });
         });
-        var form = $('#post_form');
+        var form = $('#new_post');
         form.submit();
     });
 
