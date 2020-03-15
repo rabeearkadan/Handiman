@@ -44,6 +44,7 @@ class PostController extends Controller
     public function store(Request $request)
     {
         //
+        dd($request);
         $user = Auth::user();
         $post=Post::create($this->validatePost($request));
         $post->users()->attach($user->_id);
