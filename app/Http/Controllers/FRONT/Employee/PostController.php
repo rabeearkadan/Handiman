@@ -19,6 +19,7 @@ class PostController extends Controller
     {
         //
         $user = Auth::user();
+        dd($user->posts->latest->tags);
         $services = Service::all();
         return view('front.employee.post.index',compact(['user','services']));
     }
