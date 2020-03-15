@@ -109,12 +109,15 @@ class PostController extends Controller
 
     public function validatePost(Request $request)
     {
-         $request->validate([
+        $validation= $request->validate([
             'title' => 'required|min:3|max:255',
             'body' => ['required'],
             'tags' => 'required',
             //image
         ]);
+        if ($validation->fails()) {
+            dd('error');
+        }
     }
 
 
