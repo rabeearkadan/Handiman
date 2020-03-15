@@ -7,6 +7,7 @@
     <link href="{{asset('css/employee/post-detail.css')}}" rel="stylesheet">
     <link href="{{asset('css/employee/common-classes.css')}}" rel="stylesheet">
     <link href="{{asset('css/employee/widgets.css')}}" rel="stylesheet">
+    <link href="{{asset('css/employee/add-post-button.css')}}" rel="stylesheet">
 @endpush
 @section('content')
     <div class="page-wrapper">
@@ -18,6 +19,15 @@
                             <div class="content">
                                 <div class="page-title">
                                     <h1>My Posts</h1>
+                                    <div class="pull-right" style="width:50px;position: absolute;top:6px;left: 75%;">
+                                        <a href="{{route('employee.post.create')}}" class="header-action-inner">
+                                            <i class="fa fa-plus" style="margin-top:15px;"></i>
+                                        </a>
+                                        <div class="tooltip fade bottom"  style="margin-left:-6px;">
+                                            <div class="tooltip-arrow"></div>
+                                            <div class="tooltip-inner"> New Post</div>
+                                        </div>
+                                    </div>
                                 </div><!-- /.page-title -->
                                 <div class="posts">
                                     @foreach($user->posts as $post)
@@ -30,9 +40,13 @@
                                             <div class="post-content">
                                                 <h2><a href="blog-detail.html"> {{$post->title}} </a>
                                                     <div class="pull-right">
-                                                        <a href="{{route('employee.post.edit',$post->id)}}"> <i class="fa fa-edit"></i> </a>
-                                                        <a href="#" onclick="document.getElementById('{{$post->_id}}').submit();"> <i class="fa fa-trash"></i> </a>
-                                                        <form action="{{route('employee.post.destroy', $post->id)}}" method="post" id="{{$post->_id}}">
+                                                        <a href="{{route('employee.post.edit',$post->id)}}"> <i
+                                                                class="fa fa-edit"></i> </a>
+                                                        <a href="#"
+                                                           onclick="document.getElementById('{{$post->_id}}').submit();">
+                                                            <i class="fa fa-trash"></i> </a>
+                                                        <form action="{{route('employee.post.destroy', $post->id)}}"
+                                                              method="post" id="{{$post->_id}}">
                                                             @csrf
                                                             @method('delete')
                                                         </form>

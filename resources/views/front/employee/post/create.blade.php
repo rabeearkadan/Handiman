@@ -34,89 +34,6 @@
                                     </div><!-- /.form-group -->
                                 </div><!-- /.box -->
 
-                                <div class="background-white p30 mb30">
-                                    <h3 class="page-title">Attributes</h3>
-
-                                    <div class="row">
-                                        <div class="col-sm-6">
-                                            <div class="form-group">
-                                                <select name="property">
-                                                    <option>Property Type</option>
-                                                    <option>Apartment</option>
-                                                    <option>Condo</option>
-                                                    <option>House</option>
-                                                    <option>Villa</option>
-                                                </select>
-                                            </div><!-- /.form-group -->
-
-                                            <div class="form-group">
-                                                <select name="contract">
-                                                    <option>Contract</option>
-                                                    <option>Rent</option>
-                                                    <option>Sale</option>
-                                                </select>
-                                            </div><!-- /.form-group -->
-
-                                            <div class="form-group">
-                                                <select name="location">
-                                                    <option>Location</option>
-                                                    <option>Kensal</option>
-                                                    <option>Braymer</option>
-                                                    <option>Horton Bay</option>
-                                                    <option>Laurel Run</option>
-                                                    <option>Estherville</option>
-                                                    <option>Millhousen</option>
-                                                    <option>Allegan</option>
-                                                    <option>Florala</option>
-                                                    <option>Dundarrach</option>
-                                                    <option>Neligh</option>
-                                                    <option>Roseboro</option>
-                                                    <option>Mount Pleasant</option>
-                                                    <option>Moro</option>
-                                                    <option>Strathmoor Village</option>
-                                                    <option>Mabton</option>
-                                                    <option>Loup City</option>
-                                                    <option>Wolverine</option>
-                                                    <option>San Leandro</option>
-                                                    <option>Dunwoody</option>
-                                                    <option>Battle Ground</option>
-                                                    <option>Hanson</option>
-                                                    <option>Reedley</option>
-                                                    <option>Bayshore</option>
-                                                    <option>Tupelo</option>
-                                                    <option>Lone Pine</option>
-                                                </select>
-                                            </div><!-- /.form-group -->
-
-                                            <div class="input-group">
-                                                <span class="input-group-addon"><i class="fa fa-dollar"></i></span>
-                                                <input class="form-control" type="text" placeholder="Price">
-                                            </div><!-- /.form-group -->
-                                        </div><!-- /.col-* -->
-
-                                        <div class="col-sm-6">
-                                            <div class="input-group">
-                                                <span class="input-group-addon"><i class="fa fa-building-o"></i></span>
-                                                <input class="form-control" type="text" placeholder="Address">
-                                            </div><!-- /.form-group -->
-
-                                            <div class="input-group">
-                                                <span class="input-group-addon"><i class="fa fa-map-o"></i></span>
-                                                <input class="form-control" type="text" placeholder="City">
-                                            </div><!-- /.form-group -->
-
-                                            <div class="input-group">
-                                                <span class="input-group-addon"><i class="fa fa-phone"></i></span>
-                                                <input class="form-control" type="text" placeholder="Phone">
-                                            </div><!-- /.form-group -->
-
-                                            <div class="input-group">
-                                                <span class="input-group-addon"><i class="fa fa-at"></i></span>
-                                                <input class="form-control" type="text" placeholder="E-mail">
-                                            </div><!-- /.form-group -->
-                                        </div><!-- /.col-* -->
-                                    </div><!-- /.row -->
-                                </div><!-- /.box -->
 
                                 <div class="row">
 
@@ -130,29 +47,13 @@
                                 </div><!-- /.row -->
 
                                 <div class="background-white p30 mb30">
-                                    <h3 class="page-title">Amenities</h3>
+                                    <h3 class="page-title"> Tags </h3>
 
                                     <ul class="amenities">
-                                        <li class="checkbox"><input type="checkbox" id="amenity-1"> <label
-                                                for="amenity-1">Air conditioning</label></li>
-                                        <li class="checkbox"><input type="checkbox" id="amenity-2"> <label
-                                                for="amenity-2">Balcony</label></li>
-                                        <li class="checkbox"><input type="checkbox" id="amenity-3"> <label
-                                                for="amenity-3">Bedding</label></li>
-                                        <li class="checkbox"><input type="checkbox" id="amenity-4"> <label
-                                                for="amenity-4">Cable TV</label></li>
-                                        <li class="checkbox"><input type="checkbox" id="amenity-5"> <label
-                                                for="amenity-5">Cleaning after exit</label></li>
-                                        <li class="checkbox"><input type="checkbox" id="amenity-6"> <label
-                                                for="amenity-6">Cofee pot</label></li>
-                                        <li class="checkbox"><input type="checkbox" id="amenity-7"> <label
-                                                for="amenity-7">Computer</label></li>
-                                        <li class="checkbox"><input type="checkbox" id="amenity-8"> <label
-                                                for="amenity-8">Cot</label></li>
-                                        <li class="checkbox"><input type="checkbox" id="amenity-9"> <label
-                                                for="amenity-9">Dishwasher</label></li>
-
-
+                                        @foreach($user->services as $service)
+                                        <li class="checkbox"><input type="checkbox" id="{{$service->_id}}"> <label
+                                                for="{{$service->_id}}"> {{$service->name}} </label></li>
+                                        @endforeach
                                     </ul>
                                 </div>
 

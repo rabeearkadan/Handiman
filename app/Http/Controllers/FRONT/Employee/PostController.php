@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\FRONT\Employee;
 
 use App\Http\Controllers\Controller;
+use App\Models\Post;
 use App\Models\Service;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -30,18 +31,21 @@ class PostController extends Controller
     public function create()
     {
         //
-        return view('front.employee.post.create');
+        $user = Auth::user();
+        return view('front.employee.post.create',compact('user'));
     }
 
     /**
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
      */
     public function store(Request $request)
     {
         //
+        Post::create($this->validate($request));
+        return redirect(route('employee.post.index'));
     }
 
     /**
@@ -59,7 +63,7 @@ class PostController extends Controller
      * Show the form for editing the specified resource.
      *
      * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
     public function edit($id)
     {
@@ -72,11 +76,14 @@ class PostController extends Controller
      *
      * @param  \Illuminate\Http\Request  $request
      * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
     public function update(Request $request, $id)
     {
         //
+        $post = Post::find($id);
+        $post->update($this->validate($request));
+        return view('front.employee.post.index');
     }
 
     /**
@@ -89,4 +96,14 @@ class PostController extends Controller
     {
         //
     }
+
+    public function validate(Request $request): array
+    {
+        return $request->validate([
+            'title' => 'required|min:3|max:255',
+            'body' => ['required'],
+        ]);
+    }
+
+
 }

@@ -1,0 +1,73 @@
+ .header-action-inner{
+            background-color: #009f8b;
+            border-radius: 50%;
+            color: #fff;
+            cursor: pointer;
+            display: block;
+            font-size: 12px;
+            height: 40px;
+            line-height: 32px;
+            text-align: center;
+           
+         }
+         .tooltip.bottom{
+             margin-top: 3px;
+             padding: 5px 0;
+         }
+         
+         .tooltip{
+            position: absolute;
+            z-index: 1070;
+            font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+            font-style: normal;
+            font-weight: normal;
+            letter-spacing: normal;
+            line-break: auto;
+            line-height: 1.42857;
+            text-align: left;
+            text-align: start;
+            text-decoration: none;
+            text-shadow: none;
+            text-transform: none;
+            white-space: normal;
+            word-break: normal;
+            word-spacing: normal;
+            word-wrap: normal;
+            font-size: 12px;
+            opacity: 0;
+            transition: opacity 2s;
+         }
+         
+         
+         .tooltip.bottom .tooltip-arrow{
+         top: 0;
+left: 50%;
+margin-left: -5px;
+border-width: 0 5px 5px;
+border-bottom-color: #000;
+}
+         .tooltip > .tooltip-arrow {
+         border-bottom-color: #c6af5c !important;
+border-top-color: #c6af5c !important;
+         }
+         .tooltip-arrow{
+         position: absolute;
+width: 0;
+height: 0;
+border-color: transparent;
+border-style: solid;
+         }
+         
+         .header-action-inner:hover   +  .tooltip {
+             opacity:0.9;
+         }
+         
+    
+         .header-action-inner:hover  .fa {
+             color:white;
+    transition: 0.9s;
+-webkit-transform: rotate(90deg);
+    -moz-transform: rotate(90deg);
+    -ms-transform: rotate(90deg);
+    -o-transform: rotate(90deg);
+    transform: rotate(90deg);         }
