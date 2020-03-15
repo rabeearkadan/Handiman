@@ -65,7 +65,7 @@ class User extends Eloquent implements
         return $this->role == 'admin';
     }
 
-    public function service()
+    public function services()
     {
         return $this->belongsToMany(Service::class);
     }
