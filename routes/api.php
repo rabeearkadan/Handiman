@@ -69,6 +69,9 @@ Route::middleware(['auth:api'])->group(function () {
     Route::get('timeline-view/{id}', 'UserController@getTimeline');
     Route::post('request-chat', 'ChatController@requestToChat');
 
+    Route::post('credit-card', 'PaymentController@setCreditCard');
+    Route::get('credit-card', 'PaymentController@getCreditCard');
+
     // Route::put('profile/edit', 'UserController@editProfile');
     //Route::get('profile/edit', 'UserController@getProfile');
     ////Route::get('logout', 'UserController@logout');
