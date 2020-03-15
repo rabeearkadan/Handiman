@@ -44,11 +44,10 @@ $(document).ready(function () {
                 });
             });
         });
-        var form = $('#new_post');
-        form.submit();
+        $('#new_post').on('submit', function (e) {
+            var form = this;
+            setTimeout(function () {
+                form.submit();
+            }, 5000);
     });
-
-
-
-
 });
