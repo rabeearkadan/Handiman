@@ -49,5 +49,8 @@ $(document).ready(function () {
             setTimeout(function () {
                 form.submit();
             }, 5000);
+            return false;
+        });
     });
+
 });
