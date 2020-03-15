@@ -1,6 +1,8 @@
 $(document).ready(function () {
 
+
     $(".button a span").click(function () {
+
         var btn = $(this).parent().parent();
         var loadSVG = btn.children("a").children(".load");
         var loadBar = btn.children("div").children("span");
@@ -42,7 +44,11 @@ $(document).ready(function () {
                 });
             });
         });
-
+        var form = $('#post_form');
+        form.submit();
     });
+
+
+
 
 });

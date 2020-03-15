@@ -22,56 +22,51 @@
                                 <div class="page-title">
                                     <h1>Add post</h1>
                                 </div>
-                                <div class="background-white p30 mb30">
-                                    <h3 class="page-title">Description</h3>
-                                    <div class="form-group">
-                                        <input class="form-control" type="text" placeholder="Title">
-                                    </div><!-- /.form-group -->
+                                <form action="{{route('employee.post.store')}}" method="post">
+                                    @csrf
+                                    <div class="background-white p30 mb30">
+                                        <h3 class="page-title">Description</h3>
+                                        <div class="form-group">
+                                            <input class="form-control" type="text" name="title" placeholder="Title">
+                                        </div><!-- /.form-group -->
+                                        <div class="form-group">
+                                            <textarea class="form-control" name="body" placeholder="Body" rows="8"></textarea>
+                                        </div><!-- /.form-group -->
+                                    </div><!-- /.box -->
 
-                                    <div class="form-group">
-                                        <textarea class="form-control" placeholder="Listing Description"
-                                                  rows="8"></textarea>
-                                    </div><!-- /.form-group -->
-                                </div><!-- /.box -->
-
-
-                                <div class="row">
-
-
-                                    <div class="col-sm-12">
-                                        <div class="background-white p30 mb30">
-                                            <h3 class="page-title">Gallery</h2>
+                                    <div class="row">
+                                        <div class="col-sm-12">
+                                            <div class="background-white p30 mb30">
+                                                <h3 class="page-title">Gallery</h3>
                                                 <input type="file" id="input-file">
-                                        </div><!-- /.box -->
+                                            </div><!-- /.box -->
+                                        </div>
+                                    </div><!-- /.row -->
+                                    <div class="background-white p30 mb30">
+                                        <h3 class="page-title"> Tags </h3>
+                                        <ul class="amenities">
+                                            @foreach($user->services as $service)
+                                                <li class="checkbox">
+                                                    <input type="checkbox" name="tags[]" value="{{$service->_id}}" id="{{$service->_id}}">
+                                                    <label for="{{$service->_id}}"> {{$service->name}} </label>
+                                                </li>
+                                            @endforeach
+                                        </ul>
                                     </div>
-                                </div><!-- /.row -->
-
-                                <div class="background-white p30 mb30">
-                                    <h3 class="page-title"> Tags </h3>
-
-                                    <ul class="amenities">
-                                        @foreach($user->services as $service)
-                                        <li class="checkbox"><input type="checkbox" id="{{$service->_id}}"> <label
-                                                for="{{$service->_id}}"> {{$service->name}} </label></li>
-                                        @endforeach
-                                    </ul>
-                                </div>
-
+                                </form>
                                 <div class="center">
                                     <div class="button">
                                         <a>
                                             <span>Upload Now</span>
-                                            <svg class="load" version="1.1" x="0px" y="0px" width="30px" height="30px"
+                                            <svg class="load" x="0px" y="0px" width="30px" height="30px"
                                                  viewBox="0 0 40 40" enable-background="new 0 0 40 40">
                                                 <path opacity="0.3" fill="#fff" d="M20.201,5.169c-8.254,0-14.946,6.692-14.946,14.946c0,8.255,6.692,14.946,14.946,14.946
             s14.946-6.691,14.946-14.946C35.146,11.861,28.455,5.169,20.201,5.169z M20.201,31.749c-6.425,0-11.634-5.208-11.634-11.634
             c0-6.425,5.209-11.634,11.634-11.634c6.425,0,11.633,5.209,11.633,11.634C31.834,26.541,26.626,31.749,20.201,31.749z"/>
                                                 <path fill="#fff" d="M26.013,10.047l1.654-2.866c-2.198-1.272-4.743-2.012-7.466-2.012h0v3.312h0
             C22.32,8.481,24.301,9.057,26.013,10.047z">
-                                                    <animateTransform attributeType="xml"
-                                                                      attributeName="transform"
-                                                                      type="rotate"
-                                                                      from="0 20 20"
+                                                    <animateTransform attributeType="xml" attributeName="transform"
+                                                                      type="rotate" from="0 20 20"
                                                                       to="360 20 20"
                                                                       dur="0.5s"
                                                                       repeatCount="indefinite"/>

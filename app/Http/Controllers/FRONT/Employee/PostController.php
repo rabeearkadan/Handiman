@@ -44,7 +44,12 @@ class PostController extends Controller
     public function store(Request $request)
     {
         //
-        Post::create($this->validatePost($request));
+        $user = Auth::user();
+        $post=Post::create($this->validatePost($request));
+        $post->users()->associate($user);
+        $user->posts()->associate($post);
+        $post->save();
+        $user->save();
         return redirect(route('employee.post.index'));
     }
 
@@ -102,6 +107,8 @@ class PostController extends Controller
         return $request->validate([
             'title' => 'required|min:3|max:255',
             'body' => ['required'],
+            //image
+            //services=tags
         ]);
     }
 
