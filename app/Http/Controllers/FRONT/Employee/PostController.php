@@ -103,6 +103,9 @@ class PostController extends Controller
     public function destroy($id)
     {
         //
+        $post = Post::find($id);
+        $post->delete();
+        return redirect(route('employee.post.index'));
     }
 
     public function validatePost(Request $request)
@@ -110,7 +113,6 @@ class PostController extends Controller
         return $request->validate([
             'title' => 'required|min:3|max:255',
             'body' => ['required'],
-            //image
         ]);
     }
 
