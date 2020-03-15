@@ -110,7 +110,6 @@ class PostController extends Controller
         return $request->validate([
             'title' => 'required|min:3|max:255',
             'body' => ['required'],
-            'tags' => 'required',
             //image
         ]);
     }
