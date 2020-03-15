@@ -59,7 +59,7 @@
                                                 <div class="post-meta-categories">
                                                     <i class="fa fa-tags"></i>
                                                     @foreach($post->tags as $tag)
-                                                        <a href=""> {{$tag->name}} </a>
+                                                        <a href=""> {{$tag->name}} </a>,
                                                     @endforeach
                                                 </div>
                                                 <!-- /.post-meta-categories -->
