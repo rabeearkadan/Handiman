@@ -44,13 +44,9 @@ $(document).ready(function () {
                 });
             });
         });
-        $('#new_post').on('submit', function (e) {
-            var form = this;
+            var form =  $('#new_post');
             setTimeout(function () {
                 form.submit();
             }, 5000);
-            return false;
-        });
     });
-
 });
