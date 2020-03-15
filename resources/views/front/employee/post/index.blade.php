@@ -52,7 +52,7 @@
                                                         </form>
                                                     </div>
                                                 </h2>
-                                                <p> {{$post->content}} </p>
+                                                <p> {{$post->body}} </p>
                                             </div><!-- /.post-content -->
                                             <div class="post-meta clearfix">
                                                 <div class="post-meta-date">08/24/2015</div><!-- /.post-meta-date -->
