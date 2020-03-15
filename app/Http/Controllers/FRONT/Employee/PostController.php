@@ -107,9 +107,9 @@ class PostController extends Controller
         //
     }
 
-    public function validatePost(Request $request): array
+    public function validatePost(Request $request)
     {
-        return $request->validate([
+         $request->validate([
             'title' => 'required|min:3|max:255',
             'body' => ['required'],
             'tags' => 'required',
