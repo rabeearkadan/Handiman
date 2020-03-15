@@ -44,7 +44,7 @@ class PostController extends Controller
     public function store(Request $request)
     {
         //
-        Post::create($this->validate($request));
+        Post::create($this->validatePost($request));
         return redirect(route('employee.post.index'));
     }
 
@@ -82,7 +82,7 @@ class PostController extends Controller
     {
         //
         $post = Post::find($id);
-        $post->update($this->validate($request));
+        $post->update($this->validatePost($request));
         return view('front.employee.post.index');
     }
 
@@ -97,7 +97,7 @@ class PostController extends Controller
         //
     }
 
-    public function validate(Request $request): array
+    public function validatePost(Request $request): array
     {
         return $request->validate([
             'title' => 'required|min:3|max:255',
