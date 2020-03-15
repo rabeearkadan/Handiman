@@ -46,10 +46,8 @@ class PostController extends Controller
         //
         $user = Auth::user();
         $post=Post::create($this->validatePost($request));
-        $post->users()->associate($user);
-        $user->posts()->associate($post);
-        $post->save();
-        $user->save();
+        $post->users()->attach($user->_id);
+        $user->posts()->attach($post->_id);
         return redirect(route('employee.post.index'));
     }
 
