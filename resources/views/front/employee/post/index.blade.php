@@ -56,8 +56,12 @@
                                             </div><!-- /.post-content -->
                                             <div class="post-meta clearfix">
                                                 <div class="post-meta-date">08/24/2015</div><!-- /.post-meta-date -->
-                                                <div class="post-meta-categories"><i class="fa fa-tags"></i> <a
-                                                        href="blog-detail.html"> Put tags here </a></div>
+                                                <div class="post-meta-categories">
+                                                    <i class="fa fa-tags"></i>
+                                                    @foreach($post->tags as $tag)
+                                                        <a href=""> {{$tag->name}} </a>
+                                                    @endforeach
+                                                </div>
                                                 <!-- /.post-meta-categories -->
                                                 <div class="post-meta-comments"><i class="fa fa-comments"></i> <a
                                                         href="blog-detail.html">3 comments</a></div>
