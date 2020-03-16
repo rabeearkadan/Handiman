@@ -21,7 +21,7 @@
                                     @foreach($posts as $post)
                                     <div class="post">
                                         <div class="post-image">
-                                            <img src="{{config_path('image.path').$post->image}}" alt="A Clockwork Origin">
+                                            <img src="{{config('image.path').$post->image}}" alt="A Clockwork Origin">
                                         </div><!-- /.post-image -->
                                         <div class="post-content">
                                             <h2> {{$post->title}} </h2>
