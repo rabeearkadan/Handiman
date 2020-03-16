@@ -55,7 +55,9 @@
                                                 <p> {{$post->body}} </p>
                                             </div><!-- /.post-content -->
                                             <div class="post-meta clearfix">
-                                                <div class="post-meta-date">08/24/2015</div><!-- /.post-meta-date -->
+                                                <div class="post-meta-date">
+                                                    {{$post->created_at}}
+                                                </div><!-- /.post-meta-date -->
                                                 <div class="post-meta-categories">
                                                     <i class="fa fa-tags"></i>
                                                     @foreach($post->tags as $tag)
