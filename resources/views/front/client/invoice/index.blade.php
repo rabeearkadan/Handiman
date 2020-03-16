@@ -8,7 +8,7 @@
     <link href="{{asset('css/client/pagination.css')}}" rel="stylesheet">
     <link href="{{asset('css/client/posts.css')}}" rel="stylesheet">
     <link href="{{asset('css/client/post-detail.css')}}" rel="stylesheet">
-    <link href="{{asset('css/client/color-box.css')}}" rel="stylesheet">
+    <link href="{{asset('css/client/colorbox.css')}}" rel="stylesheet">
     <link href="{{asset('css/client/bootstrap-select.min.css')}}" rel="stylesheet">
 @endpush
 @section('content')
