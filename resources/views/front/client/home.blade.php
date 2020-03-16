@@ -30,7 +30,9 @@
                                         <div class="post-meta clearfix">
                                             <div class="post-meta-author">
                                                 <a>By </a>
-                                                <a href=""> {{$post->users->first()->name}} </a>
+                                                @foreach($post->users as $user)
+                                                    <a href=""> {{$user->name}} </a>
+                                                @endforeach
                                             </div><!-- /.post-meta-author -->
                                             <div class="post-meta-date"> {{$post->created_at}} </div><!-- /.post-meta-date -->
                                             <div class="post-meta-categories">
