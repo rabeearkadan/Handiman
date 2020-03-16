@@ -10,8 +10,8 @@ class Post extends Eloquent
     protected $fillable = [
         'title','body',
     ];
-    public function user(){
-        return $this->belongsTo(User::class);
+    public function users(){
+        return $this->belongsToMany(User::class);
     }
     public function tags(){
         return $this->belongsToMany(Service::class);
