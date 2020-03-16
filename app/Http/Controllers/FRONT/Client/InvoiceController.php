@@ -18,7 +18,6 @@ class InvoiceController extends Controller
         //
         $user = Auth::user();
         $invoices = $user->invoices;
-        dd($invoices);
         return view ('front.client.invoice.index', compact('invoices'));
     }
 
