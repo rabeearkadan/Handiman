@@ -89,7 +89,7 @@
             <div class="col-sm-8">
                 <div class="portfolioFilter clearfix margin-b-80">
                     <a href="#" data-filter="*" class="current"><b>ALL</b></a>
-                    @foreach($user->service as $service)
+                    @foreach($user->services as $service)
                         <a href="#" data-filter=".{{$service->name}}"><b> {{$service->name}} </b></a>
                     @endforeach
                 </div><!-- portfolioFilter -->
