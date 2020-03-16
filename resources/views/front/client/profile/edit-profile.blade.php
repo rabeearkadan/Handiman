@@ -94,6 +94,7 @@
     </div>
 @endsection
 @push('js')
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="/public/js/client/collapse.js" type="text/javascript"></script>
     <script src="/public/js/client/dropdown.js" type="text/javascript"></script>
     <script src="/public/js/client/jquery.colorbox-min.js" type="text/javascript"></script>
