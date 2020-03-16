@@ -1,31 +1,131 @@
 @extends('layouts.client.app')
 @push('css')
-    <link href="{{asset('css/app.css')}}" rel="stylesheet">
-    <link href="{{asset('css/client/cards.css')}}" rel="stylesheet">
+    <link href="{{asset('css/client/bootstrap.css')}}" rel="stylesheet">
+    <link href="{{asset('css/client/buttons.css')}}" rel="stylesheet">
+    <link href="{{asset('css/client/forms.css')}}" rel="stylesheet">
+    <link href="{{asset('css/client/fullscreen-classes.css')}}" rel="stylesheet">
+    <link href="{{asset('css/client/listing-cards.css')}}" rel="stylesheet">
+    <link href="{{asset('css/client/filter.css')}}" rel="stylesheet">
+    <link href="{{asset('css/client/color-box.css')}}" rel="stylesheet">
+    <link href="{{asset('css/client/bootstrap-select.min.css')}}" rel="stylesheet">
 @endpush
 @section('content')
-    <div class="container mt-2" id="services">
-        <div class="row">
-            @foreach($service->users as $user)
-                @if ( $loop->index % 4 == 0 )
-        </div>
-        <div class="row">
-            @endif
-            <div class="col-md-3 col-sm-6">
-                <div class="card card-block">
-                    <a href="{{route('client.user-profile',[$service->id,$user->id])}}">
-                        <img src="{{config('image.path').$user->image}}" alt="later">
-                    </a>
-                    <h5 class="card-title  mt-3 mb-3"> {{ $user->name }} </h5>
-                    <p class="card-text">Somethinggggggg</p>
-                </div>
-            </div>
-            @endforeach
-        </div>
-    </div>
+    <div class="page-wrapper">
+        <div class="main">
+            <div class="fullscreen-wrapper" style="padding:12px">
+                <form class="filter" method="post" action="?">
+                    <div class="row">
+                        <div class="col-sm-12 col-md-4">
+                            <div class="form-group">
+                                <input type="text" placeholder="Keyword" class="form-control">
+                            </div><!-- /.form-group -->
+                        </div><!-- /.col-* -->
+
+                        <div class="col-sm-12 col-md-4">
+                            <div class="form-group">
+                                <select class="form-control" title="Select Location">
+                                    <option> N</option>
+
+                                </select>
+                            </div><!-- /.form-group -->
+                        </div><!-- /.col-* -->
+
+                        <div class="col-sm-12 col-md-4">
+                            <div class="form-group">
+                                <select class="form-control" title="Select Category">
+                                    <option value=""> N</option>
+                                </select>
+                            </div><!-- /.form-group -->
+                        </div><!-- /.col-* -->
+                    </div><!-- /.row -->
+
+                    <hr>
+
+                    <div class="row">
+                        <div class="col-sm-8">
+                            <div class="filter-actions">
+                                <a href="#"><i class="fa fa-close"></i> Reset Filter</a>
+                                <a href="#"><i class="fa fa-save"></i> Save Search</a>
+                            </div><!-- /.filter-actions -->
+                        </div><!-- /.col-* -->
+
+                        <div class="col-sm-4">
+                            <button type="submit" class="btn btn-primary">Redefine Search Result</button>
+                        </div><!-- /.col-* -->
+                    </div><!-- /.row -->
+                </form>
+
+                <h2 class="page-title">
+                    N results matching your query
+                </h2><!-- /.page-title -->
+
+                <form method="get" action="?" class="filter-sort">
+                    <div class="form-group">
+                        <select title="Sort by">
+                            <option name="price">Price</option>
+                            <option name="rating">Rating</option>
+                        </select>
+                    </div><!-- /.form-group -->
+
+                    <div class="form-group">
+                        <select title="Order">
+                            <option name="ASC">Asc</option>
+                            <option name="DESC">Desc</option>
+                        </select>
+                    </div><!-- /.form-group -->
+                </form>
+
+                <div class="cards-row" style="margin-top:75px">
+                    @foreach($service->users as $user)
+                        <div class="card-row">
+                            <div class="card-row-inner">
+                                <div class="card-row-image" data-background-image="{{config('image.path').$user->image}}">
+                                    <div class="card-row-label">
+                                        <a href=""> {{$service->name}} </a></div><!-- /.card-row-label -->
+                                    <div class="card-row-price"> {{$user->price}} / hr</div><!-- -->
+                                </div><!-- /.card-row-image -->
+                                <div class="card-row-body">
+                                    <h2 class="card-row-title">
+                                        <a href=""> {{$user->ame}} </a>
+                                    </h2>
+                                    <div class="card-row-content">
+                                        <p> {{$user->biography}} </p>
+                                    </div><!-- /.card-row-content -->
+                                </div><!-- /.card-row-body -->
+                                <div class="card-row-properties">
+                                    <dl>
+                                        <dd>Price</dd>
+                                        <dt>$100 / hr</dt>
+                                        <dd>Category</dd>
+                                        <dt> Category</dt>
+                                        <dd>Location</dd>
+                                        <dt>Location</dt>
+                                        <dd>Rating</dd>
+                                        <dt>
+                                            <div class="card-row-rating">
+                                                <i class="fa fa-star"></i>
+                                                <i class="fa fa-star"></i>
+                                                <i class="fa fa-star"></i>
+                                                <i class="fa fa-star"></i>
+                                                <i class="fa fa-star"></i>
+                                            </div><!-- /.card-row-rating -->
+                                        </dt>
+                                    </dl>
+                                </div><!-- /.card-row-properties -->
+                            </div><!-- /.card-row-inner -->
+                        </div><!-- /.card-row -->
+                    @endforeach
+                </div><!-- /.cards-row -->
+            </div><!-- /.fullscreen-wrapper -->
+        </div><!-- /.main -->
+    </div><!-- /.page-wrapper -->
 @endsection
-
-
+@push('js')
+    <script src="/public/js/client/dropdown.js" type="text/javascript"></script>
+    <script src="/public/js/client/jquery.colorbox-min.js" type="text/javascript"></script>
+    <script src="/public/js/client/bootstrap-select.min.js" type="text/javascript"></script>
+    <script src="/public/js/client/superlist.js" type="text/javascript"></script>
+@endpush
 
 
 
