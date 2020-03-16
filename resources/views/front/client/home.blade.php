@@ -30,7 +30,7 @@
                                         <div class="post-meta clearfix">
                                             <div class="post-meta-author">
                                                 <a>By </a>
-                                                <a href=""> {{$post->users->first()->name}} </a>
+                                                <a href=""> {{$post->users->name}} </a>
                                             </div><!-- /.post-meta-author -->
                                             <div class="post-meta-date"> {{$post->created_at}} </div><!-- /.post-meta-date -->
                                             <div class="post-meta-categories">
