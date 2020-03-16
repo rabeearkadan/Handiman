@@ -3,6 +3,7 @@
 @section('content')
 @push('css')
     <link href="https://fonts.googleapis.com/css?family=Poppins:400,500,600,700%7CAllura" rel="stylesheet">
+    <link href="{{asset('lib/font-awesome/css/font-awesome.css')}}" rel="stylesheet">
     <link href="{{asset('css/client/employee-profile/cards/cards.css')}}" rel="stylesheet">
     <link href="{{asset('css/client/employee-profile/common-css/bootstrap.css')}}" rel="stylesheet">
     <link href="{{asset('css/client/employee-profile/common-css/ionicons.css')}}" rel="stylesheet">
@@ -28,7 +29,7 @@
                     <div class="info">
                         <i class="icon ion-ios-telephone-outline"></i>
                         <div class="right-area">
-                            <h5>337-4139538</h5>
+                            <h5> phone </h5>
                             <h6>MIN - FRI,8AM - 7PM</h6>
                         </div><!-- right-area -->
                     </div><!-- info -->
@@ -39,14 +40,14 @@
                         <i class="icon ion-ios-chatboxes-outline"></i>
                         <div class="right-area">
                             <h5>contact@colorlib.com</h5>
-                            <h6>REPLY IN 24 HOURS</h6>
+                            <h6> replies IN N HOURS</h6>
                         </div><!-- right-area -->
                     </div><!-- info -->
                 </div><!-- col-sm-4 -->
             </div><!-- row -->
         </div><!-- heading-wrapper -->
+        <a class="downlad-btn" href="#"> Request </a>
 
-        <a class="downlad-btn" href="#">Download CV</a>
     </div><!-- container -->
 </header>
 
@@ -82,8 +83,8 @@
         <div class="row">
             <div class="col-sm-4">
                 <div class="heading">
-                    <h3><b>Portfolio</b></h3>
-                    <h6 class="font-lite-black"><b>MY WORK</b></h6>
+                    <h3><b>Posts</b></h3>
+                    <h6 class="font-lite-black"><b> Most Recent </b></h6>
                 </div>
             </div><!-- col-sm-4 -->
             <div class="col-sm-8">
@@ -106,26 +107,20 @@
                         <span class="card-title"> {{$post->title}} </span>
                     </div>
                     <div class="card-content">
-                        <p> {{$post->content}} </p>
+                        <p> {{$post->body}} </p>
                     </div>
                 </div>
             </div><!-- p-item -->
         @endforeach
-
-
-
     </div><!-- portfolioContainer -->
-
 </section><!-- portfolio-section -->
-
-
 <section class="about-section section">
     <div class="container">
         <div class="row">
             <div class="col-sm-4">
                 <div class="heading">
                     <h3><b>About me</b></h3>
-                    <h6 class="font-lite-black"><b>PROFESSIONAL PATH</b></h6>
+                    <h6 class="font-lite-black"><b> Biography </b></h6>
                 </div>
             </div><!-- col-sm-4 -->
             <div class="col-sm-8">
@@ -289,7 +284,7 @@
             <div class="col-sm-6 col-md-6 col-lg-3">
                 <div class="counter margin-b-30">
                     <h1 class="title"><b><span class="counter-value" data-duration="1400" data-count="25">0</span></b></h1>
-                    <h5 class="desc"><b>Project Completed</b></h5>
+                    <h5 class="desc"><b>Nb of jobs</b></h5>
                 </div><!-- counter -->
             </div><!-- col-md-3-->
 
@@ -303,14 +298,14 @@
             <div class="col-sm-6 col-md-6 col-lg-3">
                 <div class="counter margin-b-30">
                     <h1 class="title"><b><span class="counter-value" data-duration="2000" data-count="732">0</span></b></h1>
-                    <h5 class="desc"><b>Finished Projects</b></h5>
+                    <h5 class="desc"><b>NNb of Requests</b></h5>
                 </div><!-- margin-b-30 -->
             </div><!-- col-md-3-->
 
         </div><!-- row-->
     </div><!-- container-->
 </section><!-- counter-section-->
-
+@endsection
 @push('js')
     <script src="/public/common-js/jquery-3.2.1.min.js"></script>
     <script src="/public/common-js/tether.min.js"></script>
@@ -324,4 +319,4 @@
 
 
 
-@endsection
+
