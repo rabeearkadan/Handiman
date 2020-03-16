@@ -86,7 +86,7 @@
                                 </div><!-- /.card-row-image -->
                                 <div class="card-row-body">
                                     <h2 class="card-row-title">
-                                        <a href=""> {{$user->ame}} </a>
+                                        <a href=""> {{$user->name}} </a>
                                     </h2>
                                     <div class="card-row-content">
                                         <p> {{$user->biography}} </p>
