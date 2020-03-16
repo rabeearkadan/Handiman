@@ -23,10 +23,10 @@ class PaymentController extends Controller
 
         $user = User::query()->find(Auth::id());
         $card = [];
-        $card[0] = $params['cname'];
-        $card[1] = $params['cnumber'];
-        $card[2] = $params['cdate'];
-        $card[3] = $params['ccv'];
+        $card['cname'] = $params['cname'];
+        $card['cnumber'] = $params['cnumber'];
+        $card['cdate'] = $params['cdate'];
+        $card['ccv'] = $params['ccv'];
         $user->card = $card;
         $user->save();
 
