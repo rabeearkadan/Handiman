@@ -11,7 +11,7 @@ class Post extends Eloquent
         'title','body',
     ];
     public function users(){
-        return $this->belongsToMany(User::class)->first();
+        return $this->belongsToMany(User::class);
     }
     public function tags(){
         return $this->belongsToMany(Service::class);
