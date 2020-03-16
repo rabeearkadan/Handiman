@@ -13,6 +13,7 @@ class HomeController extends Controller
 
     public function index( Request $request ){
         $posts = Post::orderBy('created_at','desc')->take(3)->get();
+        dd($posts);
         return view ('front.client.home',compact('posts'));
     }
 
