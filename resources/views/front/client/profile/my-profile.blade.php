@@ -7,7 +7,8 @@
     <link href="{{asset('css/client/forms.css')}}" rel="stylesheet">
     <link href="{{asset('css/client/widgets.css')}}" rel="stylesheet">
     <link href="{{asset('css/client/user.css')}}" rel="stylesheet">
-    <link href="{{asset('css/client/colorbox.css')}}" rel="stylesheet">
+    <link href="{{asset('css/client/color-box.css')}}" rel="stylesheet">
+    <link href="{{asset('css/client/bootstrap-select.min.css')}}" rel="stylesheet" type="text/css">
 @endpush
 @section('content')
     <div class="page-wrapper" id="profile" style="background-color: #f7f8f9;">
