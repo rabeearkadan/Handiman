@@ -1,6 +1,4 @@
 @extends('layouts.client.app')
-
-@section('content')
 @push('css')
     <link href="https://fonts.googleapis.com/css?family=Poppins:400,500,600,700%7CAllura" rel="stylesheet">
     <link href="{{asset('lib/font-awesome/css/font-awesome.css')}}" rel="stylesheet">
@@ -11,6 +9,7 @@
     <link href="{{asset('css/client/employee-profile/cv-portfolio/styles.css')}}" rel="stylesheet">
     <link href="{{asset('css/client/employee-profile/cv-portfolio/responsive.css')}}" rel="stylesheet">
 @endpush
+@section('content')
 <header>
     <div class="container">
         <div class="heading-wrapper">

@@ -20,3 +20,11 @@ Route::put('/profile','ProfileController@editProfile')->name('client.edit.profil
 Route::get('/invoice','InvoiceController@index')->name('client.invoice.index');
 Route::get('/invoice/{id}','InvoiceController@show')->name('client.invoice.show');
 
+//Requests
+Route::get('/requests','RequestController@index')->name('client.request.index');
+Route::get('/requests/{id}','RequestControlller@show')->name('client.request.show');
+Route::get('/requests/create/{user_id}','RequestController@create')->name('client.request.create');
+Route::post('/requests/create/{user_id}','RequestController@store')->name('client.request.store');
+Route::get('/requests/edit/{id}','RequestController@edit')->name('client.request.edit');
+Route::put('/requests/edit/{id}','RequestController@update')->name('client.request.update');
+Route::delete('/requests/destroy/{id}','RequestController@destroy')->name('client.request.destroy');
