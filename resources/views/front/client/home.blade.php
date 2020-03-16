@@ -2,7 +2,6 @@
 @push('css')
     <link href="{{asset('lib/font-awesome/css/font-awesome.css')}}" rel="stylesheet">
     <link href="{{asset('css/app.css')}}" rel="stylesheet">
-    <link href="{{asset('css/client/pagination.css')}}" rel="stylesheet">
     <link href="{{asset('css/client/posts.css')}}" rel="stylesheet">
     <link href="{{asset('css/client/post-detail.css')}}" rel="stylesheet">
     <link href="{{asset('css/client/common-classes.css')}}" rel="stylesheet">
@@ -19,34 +18,38 @@
                                     <h1>Title</h1>
                                 </div><!-- /.page-title -->
                                 <div class="posts">
+                                    @foreach($posts as $post)
                                     <div class="post">
                                         <div class="post-image">
-                                            <img src="assets/img/tmp/product-11.jpg" alt="A Clockwork Origin">
-                                            <a class="read-more" href="blog-detail-right-sidebar.html">View</a>
+                                            <img src="{{config_path('image.path').$post->image}}" alt="A Clockwork Origin">
                                         </div><!-- /.post-image -->
                                         <div class="post-content">
-                                            <h2><a href="blog-detail.html">A Clockwork Origin</a><a></a></h2><a>
-                                                <p>And from now on you're all named Bender Jr. The alien mothership is in orbit here. If we can hit that bullseye, the rest of the dominoes will fall like a house of cards. Checkmate. Now that the, uh, garbage ball is in space, Doctor, perh...</p>
-                                            </a></div><!-- /.post-content -->
-                                        <a> </a>
-                                        <div class="post-meta clearfix"><a>
-                                            </a><div class="post-meta-author"><a>By </a><a href="blog-detail.html">Eric Yorick</a></div><!-- /.post-meta-author -->
-                                            <div class="post-meta-date">08/24/2015</div><!-- /.post-meta-date -->
-                                            <div class="post-meta-categories"><i class="fa fa-tags"></i> <a href="blog-detail.html">Restaurant</a></div><!-- /.post-meta-categories -->
-                                            <div class="post-meta-comments"><i class="fa fa-comments"></i> <a href="blog-detail.html">3 comments</a></div><!-- /.post-meta-comments -->
-                                            <div class="post-meta-more"><a href="">Read More <i class="fa fa-chevron-right"></i></a></div><!-- /.post-meta-more -->
+                                            <h2> {{$post->title}} </h2>
+                                            <p> {{$post->body}} </p>
+                                        </div><!-- /.post-content -->
+                                        <div class="post-meta clearfix">
+                                            <div class="post-meta-author">
+                                                <a>By </a>
+                                                <a href=""> {{$post->users->name }} </a>
+                                            </div><!-- /.post-meta-author -->
+                                            <div class="post-meta-date"> {{$post->created_at}} </div><!-- /.post-meta-date -->
+                                            <div class="post-meta-categories">
+                                                <i class="fa fa-tags"></i>
+                                                @foreach($post->tags as $tag)
+                                                <a href=""> {{$tag->name}} </a>
+                                                @endforeach
+                                            </div><!-- /.post-meta-categories -->
+                                            <div class="post-meta-comments">
+                                                <i class="fa fa-comments"></i>
+                                                <a href="">3 comments</a>
+                                            </div><!-- /.post-meta-comments -->
+                                            <div class="post-meta-more">
+                                                <a href="">Read More <i class="fa fa-chevron-right"></i></a>
+                                            </div><!-- /.post-meta-more -->
                                         </div><!-- /.post-meta -->
                                     </div><!-- /.post -->
+                                    @endforeach
                                 </div>
-                                <div class="pager">
-                                    <ul>
-                                        <li><a href="#">Prev</a></li>
-                                        <li><a href="#">5</a></li>
-                                        <li class="active"><a>6</a></li>
-                                        <li><a href="#">7</a></li>
-                                        <li><a href="#">Next</a></li>
-                                    </ul>
-                                </div><!-- /.pagination -->
                             </div><!-- /.content -->
                         </div><!-- /.col-* -->
                     </div><!-- /.row -->
