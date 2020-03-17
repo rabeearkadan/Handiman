@@ -1,0 +1,25 @@
+.tablink {
+    background-color: #555;
+    color: black;
+    float: left;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    padding: 14px 16px;
+    font-size: 17px;
+    width: 50%;
+}
+.tablink:hover {
+    background-color: #777;
+}
+.tablink.active {
+    background-color: #f8fafc;
+}
+.tabcontent {
+    color: grey;
+    display: none;
+    padding: 100px 20px;
+}
+.tabcontent.active {
+    display: block;
+}
