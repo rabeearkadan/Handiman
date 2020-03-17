@@ -13,7 +13,6 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
 
 
-
 class RequestController extends Controller
 {
 
@@ -27,16 +26,16 @@ class RequestController extends Controller
 
     public function requestHandyman($id, Request $req)
     {
-    $user = User::query()->find(Auth::id());
+        $user = User::query()->find(Auth::id());
 
         $handyman = User::query()->find($id);
 
-      $this->validator($req->all())->validate();
+        $this->validator($req->all())->validate();
         $request = new RequestService();
 //
-      $request->employee_id = $id;
-     $request->client_id = $handyman->id;
-     $request->description=$req->input('description');
+        $request->employee_id = $id;
+        $request->client_id = $handyman->id;
+        //$request->description=$req->input('description');
 
 //        $request->description = $req->input('description');
 //        $request->location = $user->location;
@@ -44,11 +43,11 @@ class RequestController extends Controller
 //        $client_preferences['from'] = $user->from;
 //        $client_preferences['to'] = $user->to;
 
-     //   $request->client_preferences = $client_preferences;
-       // $this->notification($handyman->id, $user->device_token, 'You received a new request', 'message');
+        //   $request->client_preferences = $client_preferences;
+        // $this->notification($handyman->id, $user->device_token, 'You received a new request', 'message');
         $request->save();
 
-        return response()->json(['status' => 'success', 'request' => $request,'handyman'=>$handyman,'client'=>$user]);
+        return response()->json(['status' => 'success', 'request' => $request, 'handyman' => $handyman, 'client' => $user]);
 
     }
 
