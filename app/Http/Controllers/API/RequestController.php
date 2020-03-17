@@ -26,9 +26,9 @@ class RequestController extends Controller
 
     public function requestHandyman($id, Request $req)
     {
-        $user = User::query()->find(Auth::id());
-      
-        $handyman = User::query()->find($id);
+        $user = User::query()->find(Auth::id())->get();
+
+        $handyman = User::query()->find($id)->get();
 
         $this->validator($req->all())->validate();
         $request = new RequestService();
