@@ -36,6 +36,7 @@ class RequestController extends Controller
         $request->employee_id = $id;
         $request->client_id = auth()->id();
         $request->description = $request->input('description');
+        $request->location = $user->location;
         $client_preferences = [];
         $client_preferences['from'] = $user->from;
         $client_preferences['to'] = $user->to;
