@@ -30,12 +30,14 @@ class RequestController extends Controller
     $user = User::query()->find(Auth::id());
 
         $handyman = User::query()->find($id);
+
+      $this->validator($req->all())->validate();
+        $request = new RequestService();
 //
-//        $this->validator($req->all())->validate();
-//        $request = new RequestService();
-//
-//        $request->employee_id = $id;
-//        $request->client_id = auth()->id();
+      $request->employee_id = $id;
+     $request->client_id = $handyman->id;
+     $request->description=$req->input('description');
+
 //        $request->description = $req->input('description');
 //        $request->location = $user->location;
 //        $client_preferences = [];
@@ -44,9 +46,9 @@ class RequestController extends Controller
 
      //   $request->client_preferences = $client_preferences;
        // $this->notification($handyman->id, $user->device_token, 'You received a new request', 'message');
-        //$request->save();
+        $request->save();
 
-        return response()->json(['status' => 'success', 'request' => "reached",'handyman'=>$handyman,'client'=>$user]);
+        return response()->json(['status' => 'success', 'request' => $request,'handyman'=>$handyman,'client'=>$user]);
 
     }
 
