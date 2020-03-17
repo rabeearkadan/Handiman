@@ -17,5 +17,5 @@
 </div>
 @endsection
 @push('js')
-    <script src="public/js/client/tabs.js" type="text/javascript"></script>
+    <script src="/public/js/client/tabs.js" type="text/javascript"></script>
 @endpush
