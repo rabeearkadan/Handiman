@@ -28,7 +28,7 @@ class RequestController extends Controller
     {
         $user = User::query()->find(Auth::id());
 
-        $handyman = User::query()->find($id)->get();
+        $handyman = User::query()->find($id);
 
         $this->validator($req->all())->validate();
         $request = new RequestService();
