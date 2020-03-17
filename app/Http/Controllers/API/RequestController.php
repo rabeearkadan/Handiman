@@ -34,7 +34,7 @@ class RequestController extends Controller
         $request = new RequestService();
 //
         $request->employee_id = $id;
-        $request->client_id = $handyman->id;
+       // $request->client_id = $handyman->id;
         //$request->description=$req->input('description');
 
 //        $request->description = $req->input('description');
