@@ -28,3 +28,8 @@ Route::post('/requests/create/{user_id}','RequestController@store')->name('clien
 Route::get('/requests/edit/{id}','RequestController@edit')->name('client.request.edit');
 Route::put('/requests/edit/{id}','RequestController@update')->name('client.request.update');
 Route::delete('/requests/destroy/{id}','RequestController@destroy')->name('client.request.destroy');
+
+//Reviews (can be created and edited)
+//Route::get('/reviews','');
+//Route::post('','');
+//Route::put('','');
