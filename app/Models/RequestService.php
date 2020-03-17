@@ -4,20 +4,26 @@ namespace App\Models;
 
 use App\User;
 use Illuminate\Database\Eloquent\Model;
+use Jenssegers\Mongodb\Eloquent\Model as Eloquent;
 
 
-class RequestService extends Model
+class RequestService extends Eloquent
 {
 
+    protected $table = 'RequestService';
 
-//    public function users(){
-//        return $this->belongsToMany(User::class);
-//    }
-
-    public function employee(){
-        return $this->belongsTo(User::class , 'employee_id');
+    public function users()
+    {
+        return $this->belongsToMany(User::class);
     }
-    public function client(){
-        return $this->belongsTo(User::class , 'client_id');
+
+    public function employee()
+    {
+        return $this->belongsTo(User::class, 'employee_id');
+    }
+
+    public function client()
+    {
+        return $this->belongsTo(User::class, 'client_id');
     }
 }
