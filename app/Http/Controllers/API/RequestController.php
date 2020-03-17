@@ -43,7 +43,7 @@ class RequestController extends Controller
         $client_preferences['from'] = $user->from;
         $client_preferences['to'] = $user->to;
         $requestHandyman->client_preferences = $client_preferences;
-        $this->notification($handyman->id, $user->device_token, 'You received a new request', 'message');
+        $this->notification($handyman->device_token, $user->name, 'You received a new request', 'message');
 
 
         $requestHandyman->save();

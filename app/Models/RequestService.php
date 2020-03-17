@@ -3,14 +3,12 @@
 namespace App\Models;
 
 use App\User;
-use Illuminate\Database\Eloquent\Model;
 use Jenssegers\Mongodb\Eloquent\Model as Eloquent;
-
 
 class RequestService extends Eloquent
 {
-
-    protected $table = 'RequestService';
+    //
+    protected $table = 'requests';
 
     public function users()
     {
