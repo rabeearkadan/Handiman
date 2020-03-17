@@ -32,20 +32,19 @@ class RequestController extends Controller
 
         $this->validator($req->all())->validate();
         $requestHandyman = new RequestService();
-//
+
         $requestHandyman->employee_id = $id;
         $requestHandyman->client_id = $handyman->id;
-        //$request->description=$req->input('description');
+        $requestHandyman->description = $req->input('description');
 
-//        $request->description = $req->input('description');
-//        $request->location = $user->location;
-//        $client_preferences = [];
-//        $client_preferences['from'] = $user->from;
-//        $client_preferences['to'] = $user->to;
+        $requestHandyman->description = $req->input('description');
+        $requestHandyman->location = $user->location;
+        $client_preferences = [];
+        $client_preferences['from'] = $user->from;
+        $client_preferences['to'] = $user->to;
+        $requestHandyman->client_preferences = $client_preferences;
+        $this->notification($handyman->id, $user->device_token, 'You received a new request', 'message');
 
-        //   $request->client_preferences = $client_preferences;
-        // $this->notification($handyman->id, $user->device_token, 'You received a new request', 'message');
-      //  $request->save();
 
         $requestHandyman->save();
 
