@@ -10,9 +10,9 @@ class RequestService extends Model
 {
 
 
-    public function users(){
-        return $this->belongsToMany(User::class);
-    }
+//    public function users(){
+//        return $this->belongsToMany(User::class);
+//    }
 
     public function employee(){
         return $this->belongsTo(User::class , 'employee_id');
