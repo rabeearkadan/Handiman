@@ -19,38 +19,31 @@ class RequestController extends Controller
     protected function validator(array $data)
     {
         return Validator::make($data, [
-            'employee_id' => ['required', 'string', 'max:255'],
-            'user_id' => ['required', 'string', 'max:255'],
-            'time' => ['required', 'string', 'max:255'],
-
-            'description' => ['required', 'string', 'min:15'],
+            'description' => ['required', 'string', 'min:15']
         ]);
     }
 
 
-    public function requestHandyman(Request $request)
+    public function requestHandyman($id, Request $request)
     {
-        $params = $request->only(['time']);
+
+        $user = Auth::user();
+        $handyman = User::query()->find($id);
 
         $this->validator($request->all())->validate();
         $request = new RequestService();
 
-        // will remove the employee id and the client id
-        // emplyee id for this function will be sent as parameter {id}
-        //client id will be the auth user
-        $request->employee_id = $request->input('employee_id');
-        $request->client_id = $request->input('client_id');
-        $request->day = $params['day'];
-        $request->from = $params['from'];
-        $request->to = $params['to'];
-        $time = [];
-        $time[0] = $params[0];
-        $time[0]['day'] = $params[0]['day'];
-        $time[0]['from'] = $params[0]['from'];
-        $time[0]['to'] = $params[0]['to'];
+        $request->employee_id = $id;
+        $request->client_id = auth()->id();
+        $request->description = $request->input('description');
+        $client_preferences = [];
+        $client_preferences['from'] = $user->from;
+        $client_preferences['to'] = $user->to;
 
-        $request->time = $time;
+        $request->client_preferences = $client_preferences;
+        $this->notification($handyman->id, $user->device_token, 'You received a new request', 'message');
         $request->save();
+
         return response()->json(['status' => 'success', 'request' => $request]);
 
     }
@@ -229,5 +222,19 @@ class RequestController extends Controller
         $requestService->save();
     }
 
+    public function notification($to, $from, $message, $type)
+    {
+        $notification = array();
 
+
+        $notification['to'] = $to;
+        $notification['user'] = $from;
+        $notification['message'] = $message;
+        $notification['type'] = $type;// maybe "notification", "comment(message)", "request","message"
+        $notification['object'] = [];
+
+        event(new NotificationSenderEvent($notification));
+
+        return response()->json(['status' => 'success', 'notification' => $notification]);
+    }
 }
