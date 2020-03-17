@@ -4,6 +4,7 @@ namespace App;
 
 use App\Models\Invoice;
 use App\Models\Post;
+use App\Models\RequestService;
 use App\Models\Service;
 use Illuminate\Auth\Authenticatable;
 use Illuminate\Auth\Passwords\CanResetPassword;
@@ -18,7 +19,7 @@ use Jenssegers\Mongodb\Eloquent\Model as Eloquent;
 
 
 class User extends Eloquent implements
-    AuthenticatableContract, AuthorizableContract, CanResetPasswordContract,MustVerifyEmail
+    AuthenticatableContract, AuthorizableContract, CanResetPasswordContract, MustVerifyEmail
 {
     use Authenticatable, Authorizable, Notifiable, CanResetPassword;
 
@@ -69,18 +70,29 @@ class User extends Eloquent implements
     {
         return $this->belongsToMany(Service::class);
     }
-    public function posts(){
+
+    public function posts()
+    {
         return $this->belongsToMany(Post::class);
     }
-    public function invoices(){
+
+    public function invoices()
+    {
         return $this->belongsToMany(Invoice::class);
     }
 
-    public function simplifiedArray(){
+    public function requests()
+    {
+
+        return $this->belongsToMany(RequestService::class);
+    }
+
+    public function simplifiedArray()
+    {
         return [
-            '_id'=>$this->_id,
-            'name'=>$this->name,
-            'image'=>$this->image,
+            '_id' => $this->_id,
+            'name' => $this->name,
+            'image' => $this->image,
         ];
     }
 
