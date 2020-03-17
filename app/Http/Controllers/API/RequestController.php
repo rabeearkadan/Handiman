@@ -24,18 +24,18 @@ class RequestController extends Controller
     }
 
 
-    public function requestHandyman($id, Request $request)
+    public function requestHandyman($id, Request $req)
     {
 
         $user = Auth::user();
         $handyman = User::query()->find($id);
 
-        $this->validator($request->all())->validate();
+        $this->validator($req->all())->validate();
         $request = new RequestService();
 
         $request->employee_id = $id;
         $request->client_id = auth()->id();
-        $request->description = $request->input('description');
+        $request->description = $req->input('description');
         $request->location = $user->location;
         $client_preferences = [];
         $client_preferences['from'] = $user->from;
