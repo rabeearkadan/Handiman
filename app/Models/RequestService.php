@@ -8,8 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class RequestService extends Model
 {
-    //
-    protected $table='requests';
+
 
     public function users(){
         return $this->belongsToMany(User::class);
