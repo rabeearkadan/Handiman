@@ -27,9 +27,9 @@ class RequestController extends Controller
 
     public function requestHandyman($id, Request $req)
     {
-//        $user = User::query()->find(Auth::id());
-//
-//        $handyman = User::query()->find($id);
+    $user = User::query()->find(Auth::id());
+
+        $handyman = User::query()->find($id);
 //
 //        $this->validator($req->all())->validate();
 //        $request = new RequestService();
@@ -46,7 +46,7 @@ class RequestController extends Controller
        // $this->notification($handyman->id, $user->device_token, 'You received a new request', 'message');
         //$request->save();
 
-        return response()->json(['status' => 'success', 'request' => "reached"]);
+        return response()->json(['status' => 'success', 'request' => "reached",'handyman'=>$handyman,'client'=>$user]);
 
     }
 
