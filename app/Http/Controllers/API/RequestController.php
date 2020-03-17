@@ -36,12 +36,12 @@ class RequestController extends Controller
         $request->employee_id = $id;
         $request->client_id = auth()->id();
         $request->description = $req->input('description');
-        $request->location = $user->location;
-        $client_preferences = [];
-        $client_preferences['from'] = $user->from;
-        $client_preferences['to'] = $user->to;
+//        $request->location = $user->location;
+//        $client_preferences = [];
+//        $client_preferences['from'] = $user->from;
+//        $client_preferences['to'] = $user->to;
 
-        $request->client_preferences = $client_preferences;
+     //   $request->client_preferences = $client_preferences;
         $this->notification($handyman->id, $user->device_token, 'You received a new request', 'message');
         $request->save();
 
