@@ -45,7 +45,7 @@ class RequestController extends Controller
 
         //   $request->client_preferences = $client_preferences;
         // $this->notification($handyman->id, $user->device_token, 'You received a new request', 'message');
-        $request->save();
+      //  $request->save();
 
         return response()->json(['status' => 'success', 'request' => $request, 'handyman' => $handyman, 'client' => $user]);
 
