@@ -18,7 +18,9 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
-Auth::routes(['verify' => true]);
+//Auth::routes(['verify' => true]);
+Auth::routes();
+
 Route::get("register", 'Auth\RegisterController@showRegistrationForm')->name('register');
 Route::post('/contact','MailController@contact')->name('mail.contact');
 Route::get("/home", 'HomeController@index');

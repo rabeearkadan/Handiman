@@ -1,8 +1,10 @@
 <nav class="nav">
     <a href="{{route('client.home')}}" class="nav-item @if (  request()->is('client/home*'))) {{'is-active'}} @endif" active-color="orange">Home</a>
     <a href="{{route('client.service')}}"  class="nav-item @if ( request()->is('client/services*')) {{'is-active'}} @endif" active-color="green">Services</a>
+    <a href="{{route('client.reviews.index')}}" class="nav-item @if ( request()->is('client/reviews*')) {{'is-active'}} @endif" active-color="purple"> Chat </a>
     <a href="{{route('client.request.index')}}" class="nav-item  @if ( request()->is('client/requests*')) {{'is-active'}} @endif " active-color="blue">Requests</a>
     <a href="{{route('client.invoice.index')}}" class="nav-item @if ( request()->is('client/invoice*')) {{'is-active'}} @endif" active-color="purple"> Invoices </a>
+    <a href="{{route('client.reviews.index')}}" class="nav-item @if ( request()->is('client/reviews*')) {{'is-active'}} @endif" active-color="purple"> Reviews </a>
     <a href="{{route('client.profile')}}" class="nav-item @if ( request()->is('client/profile*')) {{'is-active'}} @endif" active-color="red">Profile</a>
     <span class="nav-indicator"></span>
 </nav>
