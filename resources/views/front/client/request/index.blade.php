@@ -21,12 +21,12 @@
 
                 <tr>
                     <td>
-                        <img src="" alt="" />
+                        <img src="{{config('image.path')}}" alt="" />
                         <p> Name </p>
                     </td>
                     <td> Service </td>
                     <td> Time </td>
-                    <td style="text-align:left"> Blanditiis, aliquid numquam iure voluptatibus ut maiores explicabo ducimus neque, nesciunt rerum perferendis, inventoreBlanditiis, aliquid numquam iure voluptatibus ut maiores explicabo ducimus neque, nesciunt rerum perferendis, inventoreBlanditiis, aliquid numquam iure voluptatibus ut maiores explicabo ducimus neque, nesciunt rerum perferendis, inventoreBlanditiis, aliquid numquam iure voluptatibus ut maiores explicabo ducimus neque, nesciunt rerumnumquam iure voluptatibus ut maiores explicabo ducimus neque, nesciunt rerumnumquam iure voluptatibus ut maiores explicabo ducimus neque, nesciunt rerumnumquam iure voluptatibus ut maiores explicabo ducimus neque, nesciunt rerumnumquam iure voluptatibus ut maiores explicabo ducimus neque, nesciunt rerumnumquam iure voluptatibus ut maiores explicabo ducimus neque, nesciunt rerum perferendis, inventore </td>
+                    <td style="text-align:left">  bbkkk </td>
                     <td> <a href="#/" class="view-button"> View </a> </td>
                 </tr>
             </table>
@@ -46,13 +46,13 @@
                 </tr>
                 <tr class="approved" >
                     <td>
-                        <img src="https://i.picsum.photos/id/1005/100/100.jpg" alt="" />
+                        <img src="{{config('image.path')}}" alt="" />
                         <p>Name </p>
                     </td>
                     <td> Service </td>
                     <td> Time </td>
                     <td style="text-align:left;"> </td>
-                    <td> <a href="#/" class="view-button approved"> View </a> </td>
+                    <td> <a href="#" class="view-button approved"> View </a> </td>
                 </tr>
             </table>
         </div>
