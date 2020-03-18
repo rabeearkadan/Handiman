@@ -52,15 +52,11 @@ class RequestController extends Controller
 
     }
 
-    /*
-     *  Route::get('request/{id}', 'RequestController@getRequestById');
-    Route::post('accept-request/{id}', 'RequestController@acceptRequest');
-    Route::post('reject-request/{id}', 'RequestController@rejecttRequest');
-     */
+
     public function acceptRequest(Request $req, $id)
     {
         $request = RequestService::query()->find($id);
-        $request->handyman_status = accept;
+        $request->handyman_status = 'accept';
         $request->estimate_time = $req->input('time_estimate');
 
 
@@ -72,7 +68,7 @@ class RequestController extends Controller
     public function rejectRequest(Request $req, $id)
     {
         $request = RequestService::query()->find($id);
-        $request->handyman_status = reject;
+        $request->handyman_status = 'reject';
 
 
         // notify the client with the rejection
@@ -176,25 +172,32 @@ class RequestController extends Controller
 
     public function requestAny(Request $req)
     {
+        $user = User::query()->find(Auth::id());
 
 
-//        $params = $this->validate($request, [
-//            'description' => 'required'
-//        ]);
-        //first we need to know if the request is for a specific handyman
-        // or if the user want the system suggestion
-//        $params = $this->validate($request, [
-//            'date' => 'required']);
+        $params = $this->validate($req, [
+            'description' => 'required'
+        ]);
+
+        $requestHandyman = new RequestService();
+        $requestHandyman->client_id = $user->id;
+
+//        first we need to know if the request is for a specific handyman
+//         or if the user want the system suggestion
 
 
-        //09:00 Tues (1)
-//        $user = User::query()->where('role', 'employee')
-//            ->where('location','..')
-//            ->where('blabla','111')
-//            ->where('translations.'.session()->get('locale','en').'.name','111')
-//            ->where('timeline.1.09:00',false)->first();
+        // 09:00 Tues(1)
+        $handyman = User::query()->where('role', 'employee')->orWhere('role', 'user_employee')
+            ->firstOrFail()->get();
+        //notify handyman
 
+//        ->
+//        where('location', '..')
+//            ->where('blabla', '111')
+//            ->where('translations.' . session()->get('locale', 'en') . '.name', '111')
+//            ->where('timeline.1.09:00', false)->first();
 
+        return response()->json(['status' => 'success', 'Handyman' => $requestHandyman]);
     }
 
 
