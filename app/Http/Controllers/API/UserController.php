@@ -42,7 +42,7 @@ class UserController extends Controller
     public function getTimeline($id)
     {
         $user = User::query()->find($id);
-        $timeline=$user->timeline;
+        $timeline = $user->timeline;
         return response()->json(['status' => 'success', 'timeline' => $timeline]);
     }
 
@@ -59,8 +59,8 @@ class UserController extends Controller
             'gender',
             'bank_account',
 // user extra info
-            'time_preferences_start',
-            'time_preferences_end',
+            'from',
+            'to',
             'payment_method',
             'apartment_details',
 // employee extra info
@@ -77,6 +77,9 @@ class UserController extends Controller
         if (Arr::has($params, 'image'))
             $user->image = $this->uploadAny($params['image'], 'profile');
 
+        if (Arr::has($params, 'biography'))
+            $user->biography = $params['biography'];
+
         if (Arr::has($params, 'birth_date'))
             $user->birth_date = $params['birth_date'];
 
@@ -85,13 +88,15 @@ class UserController extends Controller
 
         if (Arr::has($params, 'gender'))
             $user->gender = $params['gender'];
-        if (Arr::has($params, ['time_preferences_start', 'time_preferences_end'])) {
-            $user->time_preferences_start = $params['time_preferences_start'];
-            $user->time_preferences_end = $params['time_preferences_end'];
 
+        if (Arr::has($params, ['from', 'to'])) {
+            $user->time_preferences_start = $params['from'];
+            $user->time_preferences_end = $params['to'];
         }
+
         if (Arr::has($params, 'payment_method'))
             $user->payment_method = $params['payment_method'];
+
         if (Arr::has($params, 'apartment_details'))
             $user->apartment_details = $params['apartment_details'];
         /*
@@ -101,6 +106,7 @@ class UserController extends Controller
                    'service' => 'optional',
                    'biography' => 'optional'
          */
+
         if (Arr::has($params, 'cv'))
             $user->cv = $this->uploadAny('cv', $params['cv'], '.pdf');
         if (Arr::has($params, 'certificates')) {
@@ -116,12 +122,8 @@ class UserController extends Controller
             }
             $user->certificates = $certificates;
         }
-        /*
-         * $params['timeline']=[
-         * 0=>[0=>['from'=>'09:00','to'=>'13:00'],1=>['from'=>'14:00','to'=>'18:00']],
-         * 1=>...
-         *
-         */
+
+
         if (Arr::has($params, 'timeline')) {
             $timeline = [];
             for ($i = 0; $i <= 23; $i++) {
