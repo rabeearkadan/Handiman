@@ -2,7 +2,7 @@
 @push('css')
     <link href="{{asset('css/app.css')}}" rel="stylesheet">
     <link href="{{asset('css/client/tabs.css')}}" rel="stylesheet">
-    <link href="{{asset('css/client/tabs.css')}}" rel="stylesheet">
+    <link href="{{asset('css/client/requests-table.css')}}" rel="stylesheet">
 @endpush
 @section('content')
     <button class="tablink" onclick="openPage('Pending', this)" id="defaultOpen"> Pending</button>
