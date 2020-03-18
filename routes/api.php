@@ -47,14 +47,14 @@ Route::middleware(['auth:api', 'employee'])->prefix('employee')->group(function 
 });
 
 
-Route::middleware(['auth:api', 'client'])->prefix('user')->group(function () {
+Route::middleware(['auth:api', 'client'])->prefix('client')->group(function () {
     //all route related to  user
-    Route::post('request', 'RequestController@requestHandyman');
+    Route::post('request/{id}', 'RequestController@requestHandyman');
     Route::get('post', 'PostController@getPosts');
 
     //TODO
     // Route::get('ongoing-requests','RequestController@getOngoingRequests');
-    //Route::get('outgoing-requests','RequestController@getOutgoingRequests');
+    // Route::get('outgoing-requests','RequestController@getOutgoingRequests');
     // Route::put('accept-request',Request)
 
 
