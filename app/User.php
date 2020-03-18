@@ -19,7 +19,7 @@ use Jenssegers\Mongodb\Eloquent\Model as Eloquent;
 
 
 class User extends Eloquent implements
-    AuthenticatableContract, AuthorizableContract, CanResetPasswordContract, MustVerifyEmail
+    AuthenticatableContract, AuthorizableContract, CanResetPasswordContract
 {
     use Authenticatable, Authorizable, Notifiable, CanResetPassword;
 
