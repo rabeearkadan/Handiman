@@ -182,12 +182,29 @@ class RequestController extends Controller
         $requestHandyman = new RequestService();
         $requestHandyman->client_id = $user->id;
 
-//        first we need to know if the request is for a specific handyman
-//         or if the user want the system suggestion
+        $client_from = $user->from;
+        $client_to = $user->to;
 
-
+        $latitude = $user->location[0];
+        $longitude = $user->location[1];
         // 09:00 Tues(1)
-        $handyman = User::query()->where('role', 'employee')->orWhere('role', 'user_employee')
+
+        $handyman = User::query()
+            ->where('role', 'employee')
+            ->orWhere('role', 'user_employee')
+            ->where('isApproved', true)
+            ->where('timeline.0.' . $client_from, true)
+            ->where('timeline.0.' . $client_to, true)
+            ->where('location', 'near', [
+                '$geometry' => [
+                    'type' => 'Point',
+                    'coordinates' => [
+                        $latitude,
+                        $longitude,
+                    ],
+                ],
+                '$maxDistance' => 50,
+            ])
             ->firstOrFail()->get();
         //notify handyman
 
