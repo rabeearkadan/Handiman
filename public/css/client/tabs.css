@@ -1,6 +1,6 @@
 .tablink {
     background-color: #555;
-    color: black;
+    color: white;
     float: left;
     border: none;
     outline: none;
@@ -13,7 +13,10 @@
     background-color: #777;
 }
 .tablink.active {
-    background-color: #f8fafc;
+    background-color: #327a81;
+}
+.tablink.approved.active {
+    background-color: #219230;
 }
 .tabcontent {
     color: grey;
