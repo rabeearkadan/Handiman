@@ -26,9 +26,9 @@ Route::get('/invoice','InvoiceController@index')->name('client.invoice.index');
 Route::get('/invoice/{id}','InvoiceController@show')->name('client.invoice.show');
 
 //Reviews (can be created and edited)
-Route::get('/reviews','')->name('client.reviews.index');
-Route::post('/reviews/create/{invoice_id}','')->name('client.reviews.store');
-Route::put('/reviews/edit/{invoice_id}','')->name('client.reviews.update');
+Route::get('/reviews','ReviewsController@index')->name('client.reviews.index');
+Route::post('/reviews/create/{invoice_id}','ReviewsController@store')->name('client.reviews.store');
+Route::put('/reviews/edit/{invoice_id}','ReviewsController@update')->name('client.reviews.update');
 
 //Client Profile
 Route::get('/profile','ProfileController@myProfile')->name('client.profile');
