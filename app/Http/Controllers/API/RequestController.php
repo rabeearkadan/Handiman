@@ -36,6 +36,7 @@ class RequestController extends Controller
         $requestHandyman->employee_id = $id;
         $requestHandyman->client_id = $handyman->id;
         $requestHandyman->description = $req->input('description');
+        $requestHandyman->status = 'ongoing';
 
         $requestHandyman->description = $req->input('description');
         $requestHandyman->location = $user->location;
@@ -52,6 +53,50 @@ class RequestController extends Controller
 
     }
 
+    public function requestAny(Request $req)
+    {
+        $user = User::query()->find(Auth::id());
+
+
+        $params = $this->validate($req, [
+            'description' => 'required'
+        ]);
+
+        $requestHandyman = new RequestService();
+        $requestHandyman->client_id = $user->id;
+        $requestHandyman->description = $params['description'];
+        $requestHandyman->status = 'ongoing';
+        $client_from = $user->from;
+        $client_to = $user->to;
+
+        $latitude = $user->location[0];
+        $longitude = $user->location[1];
+
+        $handyman = User::query()
+            ->where('role', 'employee')
+            ->orWhere('role', 'user_employee')
+            ->where('isApproved', true)
+            ->where('timeline.0.' . $client_from, true)
+            ->where('timeline.0.' . $client_to, true)
+            ->where('location', 'near', [
+                '$geometry' => [
+                    'type' => 'Point',
+                    'coordinates' => [
+                        $latitude,
+                        $longitude,
+                    ],
+                ],
+                '$maxDistance' => 50,
+            ])
+            ->firstOrFail()->get();
+
+        $requestHandyman->employee_id = $handyman->id;
+
+        $this->notification($handyman->device_token, $user->name, 'You received a new request', 'message');
+
+
+        return response()->json(['status' => 'success', 'Handyman' => $requestHandyman]);
+    }
 
     public function acceptRequest(Request $req, $id)
     {
@@ -131,7 +176,9 @@ class RequestController extends Controller
     public function rejectEstimateHours(Request $req, $id)
     {
 
-        $request = RequestService::query()->find($id);
+        $request = RequestService::query()->find($id)->delete();
+        //notify the handyman
+        
 
 
     }
@@ -146,7 +193,7 @@ class RequestController extends Controller
     public function geHandymanOngoingRequests()
     {
         $user = Auth::user();
-        $ongoing = RequestService::query()->where('employee_id', $user->id)->where('type', 'ongoing')->get();
+        $ongoing = RequestService::query()->where('employee_id', $user->id)->where('status', 'ongoing')->get();
 
         return response()->json(['status' => 'success', 'OngoingRequests' => $ongoing]);
     }
@@ -154,50 +201,9 @@ class RequestController extends Controller
     public function geHandymanOutgoingRequests()
     {
         $user = Auth::user();
-        $outgoing = RequestService::query()->where('employee_id', $user->id)->where('type', 'outgoing')->get();
+        $outgoing = RequestService::query()->where('employee_id', $user->id)->where('status', 'outgoing')->get();
 
         return response()->json(['status' => 'success', 'OngoingRequests' => $outgoing]);
-    }
-
-    /*
-     *  $handymanList =
-           User::query()->
-           where('role', 'employee')
-               ->orWhere('role', 'user_employee')
-               ->where('isApproved', true)->get();
-
-       return response()->json(['status' => 'success', 'HandymanList' => $handymanList]);
-   }
-     */
-
-    public function requestAny(Request $req)
-    {
-        $user = User::query()->find(Auth::id());
-
-
-        $params = $this->validate($req, [
-            'description' => 'required'
-        ]);
-
-        $requestHandyman = new RequestService();
-        $requestHandyman->client_id = $user->id;
-
-//        first we need to know if the request is for a specific handyman
-//         or if the user want the system suggestion
-
-
-        // 09:00 Tues(1)
-        $handyman = User::query()->where('role', 'employee')->orWhere('role', 'user_employee')
-            ->firstOrFail()->get();
-        //notify handyman
-
-//        ->
-//        where('location', '..')
-//            ->where('blabla', '111')
-//            ->where('translations.' . session()->get('locale', 'en') . '.name', '111')
-//            ->where('timeline.1.09:00', false)->first();
-
-        return response()->json(['status' => 'success', 'Handyman' => $requestHandyman]);
     }
 
 
