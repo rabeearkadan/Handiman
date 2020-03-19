@@ -10,7 +10,7 @@
             <div class="small-box bg-success">
                 <div class="inner">
                     <h3> Full Name</h3>
-
+<p>trying to edit the length</p>
                     <p> {{$employee->name}}</p>
                 </div>
 
@@ -58,7 +58,7 @@
 
         <div class="card card-primary card-outline">
             <div class="card-body box-profile">
-                
+
             </div>
         </div>
     </div>
