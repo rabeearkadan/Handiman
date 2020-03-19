@@ -9,13 +9,13 @@
 
             <div class="small-box bg-success">
                 <div class="inner">
-                    <h3> test</h3>
-                    <p>name</p>
-                    <p> This profile belongs to {{$employee->name}}</p>
+                    <h3> Full Name</h3>
+
+                    <p> {{$employee->name}}</p>
                 </div>
 
                 <div class="icon">
-                    <i class="ion ion-bookmark"></i>
+                    <i class="ion file-caption-name"></i>
                 </div>
 
             </div>
@@ -25,13 +25,28 @@
 
             <div class="small-box bg-info">
                 <div class="inner">
-                    <h3> test</h3>
-                    <p>name</p>
-                    <p> This profile belongs to {{$employee->email}}</p>
+                    <h3> Email</h3>
+
+                    <p>  {{$employee->email}}</p>
                 </div>
 
                 <div class="icon">
-                    <i class="ion ion-bookmark"></i>
+                    <i class="ion ion-email"></i>
+                </div>
+
+            </div>
+        </div>
+        <div class="col-lg-3 col-6">
+
+            <div class="small-box bg-danger">
+                <div class="inner">
+                    <h3> Balance</h3>
+                    <p></p>
+                    <p>33$</p>
+                </div>
+
+                <div class="icon">
+                    <i class="ion ion-social-usd"></i>
                 </div>
 
             </div>
@@ -128,6 +143,13 @@
         .small-box .icon > i.fa, .small-box .icon > i.fab, .small-box .icon > i.far, .small-box .icon > i.fas, .small-box .icon > i.glyphicon, .small-box .icon > i.ion {
             font-size: 70px;
             top: 20px;
+        }
+        .bg-danger, .bg-danger>a {
+            color: #fff!important;
+        }
+
+        .bg-danger {
+            background-color: #dc3545!important;
         }
     </style>
     <link href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css" rel="stylesheet">
