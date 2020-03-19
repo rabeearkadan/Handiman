@@ -42,6 +42,7 @@
 
         .small-box p {
             font-size: 1rem;
+            margin-left: 10px;
         }
         p {
             margin-top: 0;
@@ -50,7 +51,7 @@
         *, ::after, ::before {
             box-sizing: border-box;
         }
-        user agent stylesheet
+
         p {
             display: block;
             margin-block-start: 1em;
