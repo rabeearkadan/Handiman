@@ -19,7 +19,7 @@ class HandymanController extends Controller
     public function show($id)
     {
 
-        $employee = User::query()->find($id)->get();
+        $employee = User::query()->find($id);
 
         return view('cms.employees.show', compact('employee'));
 
