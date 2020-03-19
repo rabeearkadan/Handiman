@@ -27,6 +27,20 @@
 
 @push('css')
     <style>
+        .bg-success, .bg-success>a {
+            color: #fff!important;
+        }
+
+        .bg-success {
+            background-color: #28a745!important;
+        }
+        .small-box {
+            border-radius: .25rem;
+            box-shadow: 0 0 1px rgba(0,0,0,.125), 0 1px 3px rgba(0,0,0,.2);
+            display: block;
+            margin-bottom: 20px;
+            position: relative;
+        }
         .small-box .icon > i {
             font-size: 90px;
             position: absolute;
