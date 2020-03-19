@@ -10,7 +10,7 @@
             <div class="small-box bg-success">
                 <div class="inner">
                     <h3> Full Name</h3>
-<p>trying to edit the length</p>
+                    <p>trying to edit the length</p>
                     <p> {{$employee->name}}</p>
                 </div>
 
@@ -54,12 +54,16 @@
 
 
     </div>
-    <div class="row">
 
+
+
+    <div class="row">
+<div class="col-lg-3">
         <div class="card card-primary card-outline">
             <div class="card-body box-profile">
 
             </div>
+        </div>
         </div>
     </div>
 @endsection
@@ -68,7 +72,29 @@
 @push('css')
     <style>
 
-
+        .card-primary.card-outline {
+            border-top: 3px solid #007bff;
+        }
+        .card {
+            box-shadow: 0 0 1px rgba(0,0,0,.125), 0 1px 3px rgba(0,0,0,.2);
+            margin-bottom: 1rem;
+        }
+        .card {
+            position: relative;
+            display: -ms-flexbox;
+            display: flex;
+            -ms-flex-direction: column;
+            flex-direction: column;
+            min-width: 0;
+            word-wrap: break-word;
+            background-color: #fff;
+            background-clip: border-box;
+            border: 0 solid rgba(0,0,0,.125);
+            border-radius: .25rem;
+        }
+        *, ::after, ::before {
+            box-sizing: border-box;
+        }
         h3 {
             display: block;
             font-size: 1.17em;
@@ -141,12 +167,13 @@
             font-size: 70px;
             top: 20px;
         }
-        .bg-danger, .bg-danger>a {
-            color: #fff!important;
+
+        .bg-danger, .bg-danger > a {
+            color: #fff !important;
         }
 
         .bg-danger {
-            background-color: #dc3545!important;
+            background-color: #dc3545 !important;
         }
     </style>
     <link href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css" rel="stylesheet">
