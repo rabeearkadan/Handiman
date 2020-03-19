@@ -15,7 +15,7 @@
                 </div>
 
                 <div class="icon">
-                    <i class="ion name"></i>
+                    <i class="ion ion-android-phone-portrait"></i>
                 </div>
 
             </div>
@@ -59,18 +59,7 @@
 
 @push('css')
     <style>
-        .row {
-            display: -ms-flexbox;
-            display: flex;
-            -ms-flex-wrap: wrap;
-            flex-wrap: wrap;
-            margin-right: -7.5px;
-            margin-left: -7.5px;
-        }
 
-        *, ::after, ::before {
-            box-sizing: border-box;
-        }
 
         h3 {
             display: block;
