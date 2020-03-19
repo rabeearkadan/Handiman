@@ -12,7 +12,7 @@
                     <div class="inner">
                         <h3> test</h3>
                         <p>name</p>
-{{--                        <p> This profile belongs to {{$employee->name}}</p>--}}
+                        {{--                        <p> This profile belongs to {{$employee->name}}</p>--}}
                     </div>
 
                     <div class="icon">
@@ -23,3 +23,7 @@
         </div>
     </div>
 @endsection
+
+@push('js')
+    <script src="plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+@endpush
