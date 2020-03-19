@@ -16,7 +16,7 @@
                     </div>
 
                     <div class="icon">
-                        <i class="ion ion-bookmark"></i>
+                        <i class="ion-android-camera"></i>
                     </div>
                 </div>
             </div>
