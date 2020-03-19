@@ -15,7 +15,7 @@
                 </div>
 
                 <div class="icon">
-                    <i class="ion file-caption-name"></i>
+                    <i class="ion name"></i>
                 </div>
 
             </div>
