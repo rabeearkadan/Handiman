@@ -61,8 +61,7 @@
                                 <td>
                                     <form action="{{route('employee.show',$employee->id)}}">
                                         <button class="mb-2 mr-2 btn btn-info"> info</button>
-                                        @csrf
-                                        @method('SHOW')
+
                                     </form>
                                 </td>
                             </tr>
