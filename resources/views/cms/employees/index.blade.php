@@ -20,6 +20,7 @@
                             <th>Email</th>
                             <th>Account Status</th>
                             <th>Actions</th>
+                            <th></th>
                         </tr>
                         </thead>
                         <tbody>
@@ -50,12 +51,17 @@
                                         <i class="material-icons">delete</i>
                                     </button>
                                     <form id="delete-form-{{ $employee->id }}"
-                                          action="{{ route('employee.destroy',$employee->id) }}" method="POST"
+                                          action="{{ route('employee.destroy', $employee->id) }}" method="POST"
                                           style="display: none;">
                                         @csrf
                                         @method('DELETE')
                                     </form>
 
+                                </td>
+                                <td>
+                                    <button class="mb-2 mr-2 btn btn-info"
+                                            onclick="{{ route('employee.show', $employee->id) }}">Info
+                                    </button>
                                 </td>
                             </tr>
                         @endforeach
