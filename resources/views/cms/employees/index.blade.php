@@ -59,10 +59,10 @@
 
                                 </td>
                                 <td>
-                                    <form action="{{route('employee.show',$employee->id)}}">
-                                        <button class="mb-2 mr-2 btn btn-info"> info</button>
+                                    <button class="mb-2 mr-2 btn btn-info"
+                                            onclick="location.href='{{route('employee.show',$employee->id)}}'"> info
 
-                                    </form>
+                                    </button>
                                 </td>
                             </tr>
                         @endforeach
