@@ -54,6 +54,14 @@
 
 
     </div>
+    <div class="row">
+
+        <div class="card card-primary card-outline">
+            <div class="card-body box-profile">
+                
+            </div>
+        </div>
+    </div>
 @endsection
 
 

@@ -24,80 +24,86 @@ class RequestController extends Controller
     }
 
 
-    public function requestHandyman($id, Request $req)
+    public function makeRequest(Request $req)
     {
-        $user = User::query()->find(Auth::id());
-
-        $handyman = User::query()->find($id);
-
         $this->validator($req->all())->validate();
         $requestHandyman = new RequestService();
-
-        $requestHandyman->employee_id = $id;
-        $requestHandyman->client_id = $handyman->id;
+        $requestHandyman->client_id = Auth::id();
         $requestHandyman->description = $req->input('description');
         $requestHandyman->status = 'ongoing';
+        $requestHandyman->location = explode(',',$req->input('location'));
+        $requestHandyman->timezone = $req->timezone;
+        $requestHandyman->service_id = $req->service_id;
+        //add attachment if exists
 
-        $requestHandyman->description = $req->input('description');
-        $requestHandyman->location = $user->location;
-        $client_preferences = [];
-        $client_preferences['from'] = $user->from;
-        $client_preferences['to'] = $user->to;
-        $requestHandyman->client_preferences = $client_preferences;
-        $this->notification($handyman->device_token, $user->name, 'You received a new request', 'message');
+        if ($req->has('is_urgent')  && $req->input('is_urgent')){
+            //search for urgent requests
+            //if its urgent let the system search for a handiman and make a suggestion
+            $requestHandyman->save();
+            $handyman = $this->searchForHandyman($requestHandyman);
+            if ( $handyman == null ){
+                // return no user available , you can search on more larger range
+            }else{
+                $requestHandyman->empolyee_id = $handyman->id;
+                //send notification to handyman to accept with urgent parameter
+            }
+        }else{
+            if ( $req->has('employee_id')){
+                $handyman = User::query()->find($req->input('employee_id'));
+                $requestHandyman->employee_id = $handyman->id;
+                $requestHandyman->date = $req->input('date');//yyyy-mm-dd
+            }
+            $requestHandyman->save();
+        }
 
 
-        $requestHandyman->save();
+        //$this->notification($handyman->device_token, $user->name, 'You received a new request', 'message');
+
+
+
+
 
         return response()->json(['status' => 'success', 'request' => $requestHandyman, 'handyman' => $handyman, 'client' => $user]);
 
     }
+    private function searchForHandyman($requestHandyman){
+        if ( Carbon::now($requestHandyman->timezone)->minute > 30){
+            $nowHour =str_pad(Carbon::now($requestHandyman->timezone)->hour+1,2, '0',STR_PAD_LEFT).'00';
+            $nowNextHour =str_pad(Carbon::now($requestHandyman->timezone)->hour+2,2, '0',STR_PAD_LEFT).'00';
+        }
+        else {
+            $nowHour =str_pad(Carbon::now($requestHandyman->timezone)->hour,2, '0',STR_PAD_LEFT).'00';
+            $nowNextHour =str_pad(Carbon::now($requestHandyman->timezone)->hour+1,2, '0',STR_PAD_LEFT).'00';
+        }
 
-    public function requestAny(Request $req)
-    {
-        $user = User::query()->find(Auth::id());
-
-
-        $params = $this->validate($req, [
-            'description' => 'required'
-        ]);
-
-        $requestHandyman = new RequestService();
-        $requestHandyman->client_id = $user->id;
-        $requestHandyman->description = $params['description'];
-        $requestHandyman->status = 'ongoing';
-        $client_from = $user->from;
-        $client_to = $user->to;
-
-        $latitude = $user->location[0];
-        $longitude = $user->location[1];
-
-        $handyman = User::query()
-            ->where('role', 'employee')
-            ->orWhere('role', 'user_employee')
-            ->where('isApproved', true)
-            ->where('timeline.0.' . $client_from, true)
-            ->where('timeline.0.' . $client_to, true)
+        $nowDay = Carbon::now()->dayOfWeek;
+        $availableUsers = User::query()
+            ->where('timeline.'.$nowDay.'.'.$nowHour, true)
+            ->where('timeline.'.$nowDay.'.'.$nowNextHour, true)
+            ->where('service_id', $requestHandyman->service_id)
             ->where('location', 'near', [
                 '$geometry' => [
                     'type' => 'Point',
                     'coordinates' => [
-                        $latitude,
-                        $longitude,
+                        $requestHandyman->location[0],
+                        $requestHandyman->location[1],
                     ],
+                    '$maxDistance' => 50,
                 ],
-                '$maxDistance' => 50,
             ])
-            ->firstOrFail()->get();
+            // order by location
+            ->get()->filter(function($item) use($requestHandyman, $nowNextHour, $nowHour, $nowDay){
+               $userRequests = RequestService::query()
+                   ->where('date',$nowDay)
+                   ->where('from',$nowHour )
+                   ->where('from',$nowNextHour)
+                   ->where('employee_id', $item->id)
+                   ->count();
+               return $userRequests == 0;
 
-        $requestHandyman->employee_id = $handyman->id;
-
-        $this->notification($handyman->device_token, $user->name, 'You received a new request', 'message');
-
-
-        return response()->json(['status' => 'success', 'Handyman' => $requestHandyman]);
+            });
+        return $availableUsers->first();
     }
-
     public function acceptRequest(Request $req, $id)
     {
         $request = RequestService::query()->find($id);
@@ -178,7 +184,7 @@ class RequestController extends Controller
 
         $request = RequestService::query()->find($id)->delete();
         //notify the handyman
-        
+
 
 
     }
