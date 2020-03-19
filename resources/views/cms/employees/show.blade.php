@@ -36,6 +36,28 @@
             margin-inline-end: 0px;
             font-weight: bold;
         }
+        .small-box h3, .small-box p {
+            z-index: 5;
+        }
+
+        .small-box p {
+            font-size: 1rem;
+        }
+        p {
+            margin-top: 0;
+            margin-bottom: 1rem;
+        }
+        *, ::after, ::before {
+            box-sizing: border-box;
+        }
+        user agent stylesheet
+        p {
+            display: block;
+            margin-block-start: 1em;
+            margin-block-end: 1em;
+            margin-inline-start: 0px;
+            margin-inline-end: 0px;
+        }
         .bg-success, .bg-success>a {
             color: #fff!important;
         }
