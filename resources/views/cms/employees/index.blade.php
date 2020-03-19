@@ -60,7 +60,8 @@
                                 </td>
                                 <td>
                                     <button class="mb-2 mr-2 btn btn-info"
-                                            onclick="{{ route('employee.show', $employee->id) }}">Info
+                                            href="{{ route('employee.show', $employee->id) }}"
+                                            >Info
                                     </button>
                                 </td>
                             </tr>
