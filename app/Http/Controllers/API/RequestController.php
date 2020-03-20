@@ -112,7 +112,7 @@ class RequestController extends Controller
     {
 
         $requests = RequestService::query()
-            ->where('client_id', Auth::id())->get();
+            ->where('client_id', Auth::id());
 
         return response()->json(['status' => 'success', 'requests' => $requests]);
 
