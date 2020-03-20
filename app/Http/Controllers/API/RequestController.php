@@ -31,6 +31,7 @@ class RequestController extends Controller
         $requestHandyman->client_id = Auth::id();
         $requestHandyman->description = $req->input('description');
         $requestHandyman->status = 'ongoing';
+
         $requestHandyman->location = explode(',', $req->input('location'));
         $requestHandyman->timezone = $req->timezone;
         $requestHandyman->service_id = $req->service_id;
@@ -48,16 +49,17 @@ class RequestController extends Controller
                 $requestHandyman->empolyee_id = $handyman->id;
                 $requestHandyman->type = 'urgent';
                 $requestHandyman->save();
-                $this->notification($handyman->device_token, Auth::user()->name, 'You received a new request', 'message');
+                $this->notification($handyman->device_token, Auth::user()->name, 'You received a new request', 'request');
                 return response()->json(['status' => 'success', 'message' => 'Your urgent request has reached a handyman']);
 
             }
         } else {
             if ($req->has('employee_id')) {
                 $handyman = User::query()->find($req->input('employee_id'));
+                $requestHandyman->type = 'specified';
                 $requestHandyman->employee_id = $handyman->id;
                 $requestHandyman->date = $req->input('date');//yyyy-mm-dd
-                $this->notification($handyman->device_token, Auth::user()->name, 'You received a new request', 'message');
+                $this->notification($handyman->device_token, Auth::user()->name, 'You received a new request', 'request');
             }
             $requestHandyman->save();
             return response()->json(['status' => 'success', 'message' => 'Your search was done successfully']);
@@ -105,6 +107,27 @@ class RequestController extends Controller
             });
         return $availableUsers->first();
     }
+
+    public function getClientRequests()
+    {
+
+        $requests = RequestService::query()
+            ->where('client_id', Auth::id())->get();
+
+        return response()->json(['status' => 'success', 'Urgent Requests' => $requests]);
+
+    }
+
+    public function getHandymanRequests()
+    {
+
+        $requests = RequestService::query()
+            ->where('employee_id', Auth::id())->get();
+
+        return response()->json(['status' => 'success', 'Urgent Requests' => $requests]);
+
+    }
+
 
     public function acceptRequest(Request $req, $id)
     {
@@ -257,4 +280,37 @@ class RequestController extends Controller
 
         return response()->json(['status' => 'success', 'notification' => $notification]);
     }
+
+    public function distance($lat1, $lon1, $lat2, $lon2, $unit = 'K')
+    {
+
+        $theta = $lon1 - $lon2;
+
+        $dist = sin(deg2rad($lat1)) * sin(deg2rad($lat2)) + cos(deg2rad($lat1)) * cos(deg2rad($lat2)) * cos(deg2rad($theta));
+
+        $dist = acos($dist);
+
+        $dist = rad2deg($dist);
+
+        $miles = $dist * 60 * 1.1515;
+
+        $unit = strtoupper($unit);
+
+        if ($unit == "K") {
+
+            return round(($miles * 1.609344), 2);
+
+        } else if ($unit == "N") {
+
+            return round(($miles * 0.8684), 2);
+
+        } else {
+
+            return round($miles, 2);
+
+        }
+
+
+    }
+
 }
