@@ -114,7 +114,7 @@ class RequestController extends Controller
         $requests = RequestService::query()
             ->where('client_id', Auth::id())->get();
 
-        return response()->json(['status' => 'success', 'Urgent Requests' => $requests]);
+        return response()->json(['status' => 'success', 'requests' => $requests]);
 
     }
 
@@ -124,7 +124,7 @@ class RequestController extends Controller
         $requests = RequestService::query()
             ->where('employee_id', Auth::id())->get();
 
-        return response()->json(['status' => 'success', 'Urgent Requests' => $requests]);
+        return response()->json(['status' => 'success', 'requests' => $requests]);
 
     }
 
