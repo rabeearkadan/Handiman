@@ -27,8 +27,7 @@ class RequestController extends Controller
     /**
      * Show the form for creating a new resource.
      *
-     * @param $service_id
-     * @param null $employee_id
+     * @param Request $request
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
     public function create(Request $request)
@@ -36,7 +35,7 @@ class RequestController extends Controller
         //
         $user=Auth::user();
         $employee = User::find($request->input('employee_id'));
-        $service = Service::find($service_id);
+        $service = Service::find($request->input('service_id'));
         return view('front.client.request.create',compact(['user','employee','service']));
     }
 

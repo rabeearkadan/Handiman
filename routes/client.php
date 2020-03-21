@@ -8,7 +8,7 @@ Route::get('/home','HomeController@index')->name('client.home');
 
 //Services and employee profile
 Route::get('/services/{id?}','HomeController@service')->name('client.service');
-Route::get('/services/{id}/user/{user_id}','ProfileController@userProfile')->name('client.user-profile');
+Route::get('/services/{id}/employee/{employee_id}','ProfileController@employeeProfile')->name('client.user-profile');
 
 //Chat
 

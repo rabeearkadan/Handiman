@@ -77,20 +77,20 @@
                 </form>
 
                 <div class="cards-row" style="margin-top:75px">
-                    @foreach($service->users as $user)
+                    @foreach($service->users as $employee)
                         <div class="card-row">
                             <div class="card-row-inner">
-                                <div class="card-row-image" data-background-image="{{config('image.path').$user->image}}">
+                                <div class="card-row-image" data-background-image="{{config('image.path').$employee->image}}">
                                     <div class="card-row-label">
                                         <a href=""> {{$service->name}} </a></div><!-- /.card-row-label -->
-                                    <div class="card-row-price"> {{$user->price}} / hr</div><!-- -->
+                                    <div class="card-row-price"> {{$employee->price}} / hr</div><!-- -->
                                 </div><!-- /.card-row-image -->
                                 <div class="card-row-body">
                                     <h2 class="card-row-title">
-                                        <a href="{{route('client.user-profile',[$service->id,$user->id])}}">{{$user->name}} </a>
+                                        <a href="{{route('client.user-profile',[$service->id,$employee->id])}}">{{$employee->name}} </a>
                                     </h2>
                                     <div class="card-row-content">
-                                        <p> {{$user->biography}} </p>
+                                        <p> {{$employee->biography}} </p>
                                     </div><!-- /.card-row-content -->
                                 </div><!-- /.card-row-body -->
                                 <div class="card-row-properties">
