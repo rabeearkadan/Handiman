@@ -34,7 +34,7 @@ class RequestController extends Controller
         $user=Auth::user();
         $employee = User::find($user_id);
         $service = Service::find($service_id);
-        return view('front.client.request',compact(['user','employee']));
+        return view('front.client.request.create',compact(['user','employee']));
     }
 
     /**
