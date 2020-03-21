@@ -31,55 +31,58 @@ class RequestController extends Controller
         $requestHandyman->client_id = Auth::id();
         $requestHandyman->description = $req->input('description');
         $requestHandyman->status = 'ongoing';
-        $requestHandyman->location = explode(',',$req->input('location'));
+
+        $requestHandyman->location = explode(',', $req->input('location'));
         $requestHandyman->timezone = $req->timezone;
         $requestHandyman->service_id = $req->service_id;
         //add attachment if exists
 
-        if ($req->has('is_urgent')  && $req->input('is_urgent')){
+        if ($req->has('is_urgent') && $req->input('is_urgent')) {
             //search for urgent requests
             //if its urgent let the system search for a handiman and make a suggestion
             $requestHandyman->save();
             $handyman = $this->searchForHandyman($requestHandyman);
-            if ( $handyman == null ){
-                // return no user available , you can search on more larger range
-            }else{
+            if ($handyman == null) {
+
+                return response()->json(['status' => 'success', 'message' => 'No handyman found please search on larger range']);
+            } else {
                 $requestHandyman->empolyee_id = $handyman->id;
-                //send notification to handyman to accept with urgent parameter
+                $requestHandyman->type = 'urgent';
+                $requestHandyman->save();
+                $this->notification($handyman->device_token, Auth::user()->name, 'You received a new request', 'request');
+                return response()->json(['status' => 'success', 'message' => 'Your urgent request has reached a handyman']);
+
             }
-        }else{
-            if ( $req->has('employee_id')){
+        } else {
+            if ($req->has('employee_id')) {
                 $handyman = User::query()->find($req->input('employee_id'));
+                $requestHandyman->type = 'specified';
                 $requestHandyman->employee_id = $handyman->id;
                 $requestHandyman->date = $req->input('date');//yyyy-mm-dd
+                $this->notification($handyman->device_token, Auth::user()->name, 'You received a new request', 'request');
             }
             $requestHandyman->save();
+            return response()->json(['status' => 'success', 'message' => 'Your search was done successfully']);
+
         }
 
-
-        //$this->notification($handyman->device_token, $user->name, 'You received a new request', 'message');
-
-
-
-
-
-        return response()->json(['status' => 'success', 'request' => $requestHandyman, 'handyman' => $handyman, 'client' => $user]);
 
     }
-    private function searchForHandyman($requestHandyman){
-        if ( Carbon::now($requestHandyman->timezone)->minute > 30){
-            $nowHour =str_pad(Carbon::now($requestHandyman->timezone)->hour+1,2, '0',STR_PAD_LEFT).'00';
-            $nowNextHour =str_pad(Carbon::now($requestHandyman->timezone)->hour+2,2, '0',STR_PAD_LEFT).'00';
-        }
-        else {
-            $nowHour =str_pad(Carbon::now($requestHandyman->timezone)->hour,2, '0',STR_PAD_LEFT).'00';
-            $nowNextHour =str_pad(Carbon::now($requestHandyman->timezone)->hour+1,2, '0',STR_PAD_LEFT).'00';
+
+    private function searchForHandyman($requestHandyman)
+    {
+        if (Carbon::now($requestHandyman->timezone)->minute > 30) {
+            $nowHour = str_pad(Carbon::now($requestHandyman->timezone)->hour + 1, 2, '0', STR_PAD_LEFT) . '00';
+            $nowNextHour = str_pad(Carbon::now($requestHandyman->timezone)->hour + 2, 2, '0', STR_PAD_LEFT) . '00';
+        } else {
+            $nowHour = str_pad(Carbon::now($requestHandyman->timezone)->hour, 2, '0', STR_PAD_LEFT) . '00';
+            $nowNextHour = str_pad(Carbon::now($requestHandyman->timezone)->hour + 1, 2, '0', STR_PAD_LEFT) . '00';
         }
 
         $nowDay = Carbon::now()->dayOfWeek;
         $availableUsers = User::query()
-            ->where('timeline.'.$nowDay.'.'.$nowHour, true)
-            ->where('timeline.'.$nowDay.'.'.$nowNextHour, true)
+            ->where('timeline.' . $nowDay . '.' . $nowHour, true)
+            ->where('timeline.' . $nowDay . '.' . $nowNextHour, true)
             ->where('service_id', $requestHandyman->service_id)
             ->where('location', 'near', [
                 '$geometry' => [
@@ -92,18 +95,40 @@ class RequestController extends Controller
                 ],
             ])
             // order by location
-            ->get()->filter(function($item) use($requestHandyman, $nowNextHour, $nowHour, $nowDay){
-               $userRequests = RequestService::query()
-                   ->where('date',$nowDay)
-                   ->where('from',$nowHour )
-                   ->where('from',$nowNextHour)
-                   ->where('employee_id', $item->id)
-                   ->count();
-               return $userRequests == 0;
+            ->get()->filter(function ($item) use ($requestHandyman, $nowNextHour, $nowHour, $nowDay) {
+                $userRequests = RequestService::query()
+                    ->where('date', $nowDay)
+                    ->where('from', $nowHour)
+                    ->where('from', $nowNextHour)
+                    ->where('employee_id', $item->id)
+                    ->count();
+                return $userRequests == 0;
 
             });
         return $availableUsers->first();
     }
+
+    public function getClientRequests()
+    {
+
+        $requests = RequestService::query()
+            ->where('client_id', Auth::id());
+
+        return response()->json(['status' => 'success', 'requests' => $requests]);
+
+    }
+
+    public function getHandymanRequests()
+    {
+
+        $requests = RequestService::query()
+            ->where('employee_id', Auth::id())->get();
+
+        return response()->json(['status' => 'success', 'requests' => $requests]);
+
+    }
+
+
     public function acceptRequest(Request $req, $id)
     {
         $request = RequestService::query()->find($id);
@@ -186,7 +211,6 @@ class RequestController extends Controller
         //notify the handyman
 
 
-
     }
 
     public function getRequestById($id)
@@ -256,4 +280,37 @@ class RequestController extends Controller
 
         return response()->json(['status' => 'success', 'notification' => $notification]);
     }
+
+    public function distance($lat1, $lon1, $lat2, $lon2, $unit = 'K')
+    {
+
+        $theta = $lon1 - $lon2;
+
+        $dist = sin(deg2rad($lat1)) * sin(deg2rad($lat2)) + cos(deg2rad($lat1)) * cos(deg2rad($lat2)) * cos(deg2rad($theta));
+
+        $dist = acos($dist);
+
+        $dist = rad2deg($dist);
+
+        $miles = $dist * 60 * 1.1515;
+
+        $unit = strtoupper($unit);
+
+        if ($unit == "K") {
+
+            return round(($miles * 1.609344), 2);
+
+        } else if ($unit == "N") {
+
+            return round(($miles * 0.8684), 2);
+
+        } else {
+
+            return round($miles, 2);
+
+        }
+
+
+    }
+
 }

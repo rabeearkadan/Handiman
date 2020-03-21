@@ -36,7 +36,7 @@ Route::middleware(['auth:api', 'employee'])->prefix('employee')->group(function 
     Route::put('post/{id}', 'PostController@editPost');
     Route::get('post', 'PostController@getPosts');
     Route::get('post-id/{id}', 'PostController@getPostById');
-
+    Route::get('request','RequestController@getHandymanRequests');
     Route::get('request/{id}', 'RequestController@getRequestById');
     Route::get('Ongoing-requests', 'RequestController@geHandymanOngoingRequests');
     Route::get('Outgoing-requests', 'RequestController@geHandymanOutgoingRequests');
