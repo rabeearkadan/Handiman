@@ -3,7 +3,8 @@
     <link href="{{asset('css/app.css')}}" rel="stylesheet">
     <link href="{{asset('css/client/buttons.css')}}" rel="stylesheet">
     <link href="{{asset('css/client/common-classes.css')}}" rel="stylesheet">
-    <link href="{{asset('css/client/materialize.css')}}" rel="stylesheet">
+    <link href="{{asset('css/client/requests/materialize.css')}}" rel="stylesheet">
+    <link href="{{asset('css/client/requests/file-uploader.css')}}" rel="stylesheet">
     <link href="{{asset('css/client/color-box.css')}}" rel="stylesheet">
 @endpush
 @section('content')
