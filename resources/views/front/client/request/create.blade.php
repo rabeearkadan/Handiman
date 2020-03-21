@@ -32,6 +32,9 @@
                                             {{$employee->name}}
                                         </h2>
                                     </div>
+                                    <div class="col-sm-10">
+                                        <h3>will put employee info later here</h3>
+                                    </div>
                                 </div>
                             </div>
                         @endif
@@ -71,7 +74,7 @@
                                             <div id="upload-label" style="width: 200px;">
                                                 <i class="material-icons">cloud_upload</i>
                                                 <span class="title">Drag your Files here</span>
-                                                <span>Some description here <span/>
+                                                <span> Images help asses your problem </span>
                                             </div>
                                         </div>
                                         <!-- Preview collection of uploaded documents -->
@@ -97,8 +100,9 @@
 
                                                     <div class="secondary-content actions">
                                                         <a href="#" data-dz-remove
-                                                           class="btn-floating ph red white-text waves-effect waves-light"><i
-                                                                class="material-icons white-text">clear</i></i></a>
+                                                           class="btn-floating ph red white-text waves-effect waves-light">
+                                                            <i class="material-icons white-text">clear</i>
+                                                        </a>
                                                     </div>
                                                 </div>
                                             </div>
