@@ -14,6 +14,16 @@
             <div class="main-inner">
                 <div class="container">
                     <div class="content">
+                        @if($employee)
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <img src="{{config('image.path').$employee->image}}" class="rounded" alt="employee">
+                                <h2>
+                                    {{$employee->name}}
+                                </h2>
+                            </div>
+                        </div>
+                        @endif
                         <h3> The more you elaborate, the more we can help!</h3>
                         <div class="contact-form-wrapper clearfix background-white p30">
                             <form class="contact-form" method="post" action="">
