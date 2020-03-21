@@ -9,6 +9,7 @@ use App\User;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Validator;
 
 class RequestController extends Controller
 {
@@ -30,11 +31,11 @@ class RequestController extends Controller
      * @param null $employee_id
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
-    public function create($service_id,$employee_id = null)
+    public function create(Request $request)
     {
         //
         $user=Auth::user();
-        $employee = User::find($employee_id);
+        $employee = User::find($request->input('employee_id'));
         $service = Service::find($service_id);
         return view('front.client.request.create',compact(['user','employee','service']));
     }
@@ -42,10 +43,11 @@ class RequestController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
+     * @param Request $req
+     * @param $employee_id
+     * @return void
      */
-    public function store(Request $req,$employee_id)
+    public function store(Request $req,$employee_id = null)
     {
         //
         $this->validator($req->all())->validate();
@@ -55,7 +57,7 @@ class RequestController extends Controller
         $requestHandyman->status = 'ongoing';
 
 //        $requestHandyman->location = explode(',', $req->input('location'));
-        $requestHandyman->timezone = $req->timezone;
+        $requestHandyman->timezone = $req->timezone;//'Asia\Beirut'
         $requestHandyman->service_id = $req->service_id;
         //add attachment if exists
 
@@ -100,18 +102,17 @@ class RequestController extends Controller
         $availableUsers = User::query()
             ->where('timeline.' . $nowDay . '.' . $nowHour, true)
             ->where('timeline.' . $nowDay . '.' . $nowNextHour, true)
-            ->where('service_id', $requestHandyman->service_id)
-            ->where('location', 'near', [
+            ->where('service_id', $requestHandyman->service_id)->where('location', 'near', [
                 '$geometry' => [
                     'type' => 'Point',
                     'coordinates' => [
                         $requestHandyman->location[0],
                         $requestHandyman->location[1],
                     ],
-                    '$maxDistance' => 50,
+                    'distanceField'=> "dist.calculated",
+                    '$maxDistance' => 50000000 ,
                 ],
-            ])
-            // order by location
+            ])->orderBy('dist.calculated')
             ->get()->filter(function ($item) use ($requestHandyman, $nowNextHour, $nowHour, $nowDay) {
                 $userRequests = RequestService::query()
                     ->where('date', $nowDay)
@@ -170,4 +171,12 @@ class RequestController extends Controller
     {
         //
     }
+
+    protected function validator(array $data)
+    {
+        return Validator::make($data, [
+            'description' => ['required', 'string', 'min:15']
+        ]);
+    }
+
 }
