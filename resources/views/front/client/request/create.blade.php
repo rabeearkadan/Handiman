@@ -15,14 +15,17 @@
                 <div class="container">
                     <div class="content">
                         @if($employee)
-                        <div class="row">
-                            <div class="col-sm-12">
-                                <img src="{{config('image.path').$employee->image}}" class="img-thumbnail" alt="employee">
-                                <h2>
-                                    {{$employee->name}}
-                                </h2>
+                            <div class="contact-form-wrapper clearfix background-white p30">
+                                <div class="row">
+                                    <div class="col-sm-2">
+                                        <img src="{{config('image.path').$employee->image}}" class="img-thumbnail"
+                                             alt="employee">
+                                        <h2>
+                                            {{$employee->name}}
+                                        </h2>
+                                    </div>
+                                </div>
                             </div>
-                        </div>
                         @endif
                         <h3> The more you elaborate, the more we can help!</h3>
                         <div class="contact-form-wrapper clearfix background-white p30">
@@ -38,14 +41,16 @@
                                     <div class="col-sm-4">
                                         <div class="form-group">
                                             <label for="contact-form-subject">Subject</label>
-                                            <input type="text" name="subject" id="contact-form-subject" class="form-control">
+                                            <input type="text" name="subject" id="contact-form-subject"
+                                                   class="form-control">
                                         </div><!-- /.form-group -->
                                     </div><!-- /.col-* -->
 
                                     <div class="col-sm-4">
                                         <div class="form-group">
                                             <label for="contact-form-email">E-mail</label>
-                                            <input type="text" name="email" id="contact-form-email" class="form-control">
+                                            <input type="text" name="email" id="contact-form-email"
+                                                   class="form-control">
                                         </div><!-- /.form-group -->
                                     </div><!-- /.col-* -->
                                 </div><!-- /.row -->
@@ -68,19 +73,24 @@
                                                 <i id="controller" class="material-icons">keyboard_arrow_down</i>
                                             </div>
                                             <div class="collection card" id="previews">
-                                                <div class="collection-item clearhack valign-wrapper item-template" id="zdrop-template">
+                                                <div class="collection-item clearhack valign-wrapper item-template"
+                                                     id="zdrop-template">
                                                     <div class="left pv zdrop-info" data-dz-thumbnail>
                                                         <div>
                                                             <span data-dz-name></span> <span data-dz-size></span>
                                                         </div>
                                                         <div class="progress">
-                                                            <div class="determinate" style="width:0" data-dz-uploadprogress></div>
+                                                            <div class="determinate" style="width:0"
+                                                                 data-dz-uploadprogress></div>
                                                         </div>
-                                                        <div class="dz-error-message"><span data-dz-errormessage></span></div>
+                                                        <div class="dz-error-message"><span data-dz-errormessage></span>
+                                                        </div>
                                                     </div>
 
                                                     <div class="secondary-content actions">
-                                                        <a href="#" data-dz-remove class="btn-floating ph red white-text waves-effect waves-light"><i class="material-icons white-text">clear</i></i></a>
+                                                        <a href="#" data-dz-remove
+                                                           class="btn-floating ph red white-text waves-effect waves-light"><i
+                                                                class="material-icons white-text">clear</i></i></a>
                                                     </div>
                                                 </div>
                                             </div>
@@ -91,7 +101,7 @@
                                     <label for="contact-form-message"> Problem Description</label>
                                     <textarea class="form-control" id="contact-form-message" rows="6"></textarea>
                                 </div><!-- /.form-group -->
-                                <button class="btn btn-primary pull-right"> Request </button>
+                                <button class="btn btn-primary pull-right"> Request</button>
                             </form><!-- /.contact-form -->
                         </div><!-- /.contact-form-wrapper -->
                     </div><!-- /.content -->
@@ -99,9 +109,9 @@
             </div><!-- /.main-inner -->
         </div><!-- /.main -->
     </div><!-- /.page-wrapper -->
-@endsection
-@push('js')
-    <script src="/public/js/client/requests/materialize.js"></script>
-    <script src="/public/js/client/requests/drop-zone.js"></script>
-    <script src="/public/js/client/requests/file-uploader.js"></script>
-@endpush
+    @endsection
+    @push('js')
+        <script src="/public/js/client/requests/materialize.js"></script>
+        <script src="/public/js/client/requests/drop-zone.js"></script>
+        <script src="/public/js/client/requests/file-uploader.js"></script>
+    @endpush
