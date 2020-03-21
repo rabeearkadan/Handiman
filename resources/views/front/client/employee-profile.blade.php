@@ -57,7 +57,7 @@
             <div class="col-md-10 col-lg-8">
                 <div class="intro">
                     <div class="profile-img"><img src="{{config('image.path').$employee->image}}" alt=""></div>
-                    <h2><b> {{$user->name}} </b></h2>
+                    <h2><b> {{$employee->name}} </b></h2>
                     <h4 class="font-yellow">Key Account Manager</h4>
                     <ul class="information margin-tb-30">
                         <li><b>BORN : </b>August 25, 1987</li>
@@ -89,7 +89,7 @@
             <div class="col-sm-8">
                 <div class="portfolioFilter clearfix margin-b-80">
                     <a href="#" data-filter="*" class="current"><b>ALL</b></a>
-                    @foreach($user->services as $service)
+                    @foreach($employee->services as $service)
                         <a href="#" data-filter=".{{$service->name}}"><b> {{$service->name}} </b></a>
                     @endforeach
                 </div><!-- portfolioFilter -->
@@ -98,7 +98,7 @@
     </div><!-- container -->
 
     <div class="portfolioContainer">
-        @foreach($user->posts as $post)
+        @foreach($employee->posts as $post)
             <div class="p-item @foreach($post->tags as $tag) {{$tag->name }} @endforeach">
                 <div class="card">
                     <div class="card-image">
