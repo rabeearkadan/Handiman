@@ -17,7 +17,7 @@
                         @if($employee)
                         <div class="row">
                             <div class="col-sm-12">
-                                <img src="{{config('image.path').$employee->image}}" class="rounded" alt="employee">
+                                <img src="{{config('image.path').$employee->image}}" class="img-thumbnail" alt="employee">
                                 <h2>
                                     {{$employee->name}}
                                 </h2>
