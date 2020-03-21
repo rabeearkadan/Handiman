@@ -10,6 +10,9 @@
         .main-inner{
             padding: 0;
         }
+        .pull-right{
+            float: right;
+        }
     </style>
 @endpush
 @section('content')
