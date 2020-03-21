@@ -6,6 +6,11 @@
     <link href="{{asset('css/client/requests/materialize.css')}}" rel="stylesheet">
     <link href="{{asset('css/client/requests/file-uploader.css')}}" rel="stylesheet">
     <link href="{{asset('css/client/color-box.css')}}" rel="stylesheet">
+    <style>
+        .main-inner{
+            padding: 0;
+        }
+    </style>
 @endpush
 @section('content')
     <body>
