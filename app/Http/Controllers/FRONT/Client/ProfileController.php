@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\FRONT\Client;
 
 use App\Http\Controllers\Controller;
+use App\Models\Service;
 use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -29,7 +30,8 @@ class ProfileController extends Controller
 
 
     public function userProfile($id, $user_id){
+        $service = Service::find($id);
         $user = User::find($user_id);
-        return view('front.client.employee-profile', compact('user'));
+        return view('front.client.employee-profile', compact(['user','service']));
     }
 }

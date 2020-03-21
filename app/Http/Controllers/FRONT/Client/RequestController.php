@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\FRONT\Client;
 
 use App\Http\Controllers\Controller;
+use App\Models\Service;
 use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -23,13 +24,16 @@ class RequestController extends Controller
     /**
      * Show the form for creating a new resource.
      *
+     * @param $service_id
+     * @param null $user_id
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
-    public function create($user_id)
+    public function create($service_id,$user_id = null)
     {
         //
         $user=Auth::user();
         $employee = User::find($user_id);
+        $service = Service::find($service_id);
         return view('front.client.request',compact(['user','employee']));
     }
 

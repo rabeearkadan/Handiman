@@ -15,7 +15,7 @@ Route::get('/services/{id}/user/{user_id}','ProfileController@userProfile')->nam
 //Requests
 Route::get('/requests','RequestController@index')->name('client.request.index');
 Route::get('/requests/{id}','RequestControlller@show')->name('client.request.show');
-Route::get('/requests/create/{user_id}','RequestController@create')->name('client.request.create');
+Route::get('/requests/create/{service_id}/{user_id?}','RequestController@create')->name('client.request.create');
 Route::post('/requests/create/{user_id}','RequestController@store')->name('client.request.store');
 Route::get('/requests/edit/{id}','RequestController@edit')->name('client.request.edit');
 Route::put('/requests/edit/{id}','RequestController@update')->name('client.request.update');

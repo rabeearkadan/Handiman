@@ -45,7 +45,7 @@
                 </div><!-- col-sm-4 -->
             </div><!-- row -->
         </div><!-- heading-wrapper -->
-        <a class="downlad-btn" href="#"> Request </a>
+        <a class="downlad-btn" href="{{route('client.request.create',[$service->id,$user->id])}}"> Request </a>
 
     </div><!-- container -->
 </header>
