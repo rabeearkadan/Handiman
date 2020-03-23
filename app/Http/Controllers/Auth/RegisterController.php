@@ -64,17 +64,29 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-
         return User::create([
             'name' => $data['name'],
             'email' => $data['email'],
             'role' => 'user_employee',
             'password' => Hash::make($data['password']),
+            'timeline' => $this->initTimeline(),
         ]);
 
+    }
+    public function initTimeline()
+    {
+        $timeline = [];
+        for ($i = 0; $i <= 23; $i++) {
+            $hour = str_pad($i, 2, 0, STR_PAD_LEFT) . "00";
+            for ($j = 0; $j <= 6; $j++) {
+                $timeline[$j][$hour] = false;
+            }
+        }
+        return $timeline;
     }
     public function showRegistrationForm()
     {
         return view('auth.register');
     }
+
 }
