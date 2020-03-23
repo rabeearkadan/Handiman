@@ -13,13 +13,13 @@ class NotificationController extends Controller
 {
     //
 
-    public function test($user_id)
+    public function test($user_id, $isClient)
     {
         $notification = array();
 
         $user = User::query()->find($user_id);
 
-        $notification['to'] = $user->device_token;
+        $notification['to'] = $isClient?$user->client_device_token:$user->empolyee_device_token;
         $notification['user'] = "admin";
         $notification['message'] = "test";
         $notification['type'] = 'comment';// maybe "notification", "comment(message)", "request","message"

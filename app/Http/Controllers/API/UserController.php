@@ -21,10 +21,11 @@ class UserController extends Controller
     {
         $user = Auth::user();
 
-        $params = $this->validate($request, ['device_token' => 'required', 'device_platform' => 'required']);
-
-        $user->device_token = $params['device_token'];
-        $user->device_platform = $params['device_platform'];
+        $this->validate($request, ['device_platform' => 'required']);
+        $params = $request->all();
+        foreach ($params as $param => $value){
+            $user->{$param} = $value;
+        }
         $user->save();
 
         return response()->json(['status' => 'success']);

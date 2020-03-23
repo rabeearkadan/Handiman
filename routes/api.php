@@ -51,6 +51,7 @@ Route::middleware(['auth:api', 'client'])->prefix('client')->group(function () {
     //all route related to  user
     Route::post('request/{id}', 'RequestController@requestHandyman');
 
+
     Route::post('request-any', 'RequestController@requestAny');
     Route::get('post', 'PostController@getPosts');
 
