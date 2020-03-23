@@ -86,6 +86,7 @@ class SendNotification
             //return Array - you should try to resend the message to the tokens in the array
             $downstreamResponse->tokensToRetry();
             Log::info($downstreamResponse->numberSuccess());
+            dd($downstreamResponse);
             return $downstreamResponse->numberSuccess();
         } catch (\Exception $e) {
             return false;
