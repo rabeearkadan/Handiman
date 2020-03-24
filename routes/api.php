@@ -16,6 +16,7 @@ use Illuminate\Http\Request;
 Route::post('login', 'LoginController@login');
 Route::post('register', 'RegisterController@register');
 Route::post('test-notification/{user_id}/{isClient}', 'NotificationController@test');
+Route::post('make-message/{user_id}/{isClient}','NotificationController@makeMessage');
 Route::get('getHandymanList', 'HandymanController@getHandyman');
 Route::get('getHandymenByService', 'HandymanController@getHandymenByService');
 Route::get('getHandymanSortedByLocation', 'HandymanController@getHandymanOrderedByLocation');
