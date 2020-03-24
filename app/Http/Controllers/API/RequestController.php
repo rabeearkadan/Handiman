@@ -49,7 +49,7 @@ class RequestController extends Controller
                 $requestHandyman->empolyee_id = $handyman->id;
                 $requestHandyman->type = 'urgent';
                 $requestHandyman->save();
-                $this->notification($handyman->device_token, Auth::user()->name, 'You received a new request', 'request');
+                $this->notification($handyman->employee_device_token, Auth::user()->name, 'You received a new request', 'request');
                 return response()->json(['status' => 'success', 'message' => 'Your urgent request has reached a handyman']);
 
             }

@@ -58,7 +58,7 @@ Route::middleware(['auth:api', 'client'])->prefix('client')->group(function () {
 
     Route::post('request-any', 'RequestController@requestAny');
     Route::get('post', 'PostController@getPosts');
-    Routte::post('make-request','RequestController@makeRequest');
+    Route::post('make-request','RequestController@makeRequest');
     Route::post('send-message','RequestController@sendMessage');
     Route::get('load-message','RequestController@getMessages');
 
