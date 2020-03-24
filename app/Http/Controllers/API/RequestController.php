@@ -59,7 +59,8 @@ class RequestController extends Controller
                 $requestHandyman->type = 'specified';
                 $requestHandyman->employee_id = $handyman->id;
                 $requestHandyman->date = $req->input('date');//yyyy-mm-dd
-                $this->notification($handyman->employee_device_token+"", Auth::user()->name+"", 'You received a new request', 'request');
+
+                $this->notification(($handyman->employee_device_token), (Auth::user()->name), 'You received a new request', 'request');
             }
             $requestHandyman->save();
             return response()->json(['status' => 'success', 'message' => 'Your search was done successfully']);
