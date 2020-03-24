@@ -59,7 +59,7 @@ class RequestController extends Controller
                 $requestHandyman->type = 'specified';
                 $requestHandyman->employee_id = $handyman->id;
                 $requestHandyman->date = $req->input('date');//yyyy-mm-dd
-                $this->notification($handyman->device_token, Auth::user()->name, 'You received a new request', 'request');
+                $this->notification($handyman->employee_device_token, Auth::user()->name, 'You received a new request', 'request');
             }
             $requestHandyman->save();
             return response()->json(['status' => 'success', 'message' => 'Your search was done successfully']);
@@ -266,9 +266,9 @@ class RequestController extends Controller
         $notification = $message;
         $notification['request_id'] = $id;
         if (auth()->id() == $requestService->client_id) {
-            $notification['to'] = User::query()->find($requestService->employee_id)->device_token;
+            $notification['to'] = User::query()->find($requestService->employee_id)->employee_device_token;
         } else {
-            $notification['to'] = User::query()->find($requestService->client_id)->device_token;
+            $notification['to'] = User::query()->find($requestService->client_id)->client_device_token;
         }
         $notification['type'] = 'message';
 
