@@ -55,7 +55,7 @@ class RequestController extends Controller
             }
         } else {
             if ($req->has('employee_id')) {
-                $handyman = User::query()->find($req->input('employee_id'));
+                $handyman = User::query()->find($req->input('employee_id'))->get();
                 $requestHandyman->type = 'specified';
                 $requestHandyman->employee_id = $handyman->id;
                 $requestHandyman->date = $req->input('date');//yyyy-mm-dd
@@ -276,7 +276,7 @@ class RequestController extends Controller
         $requestService->save();
     }
 
-    public function notification($to, $from, $message, $type)
+    public function Notification($to, $from, $message, $type)
     {
         $notification = array();
 
