@@ -16,7 +16,90 @@
         .pull-right {
             float: right;
         }
+
+        /* Always set the map height explicitly to define the size of the div
+       * element that contains the map. */
+        #map {
+            height: 100%;
+        }
+        /* Optional: Makes the sample page fill the window. */
+        html, body {
+            height: 100%;
+            margin: 0;
+            padding: 0;
+        }
+        #description {
+            font-family: Roboto;
+            font-size: 15px;
+            font-weight: 300;
+        }
+
+        #infowindow-content .title {
+            font-weight: bold;
+        }
+
+        #infowindow-content {
+            display: none;
+        }
+
+        #map #infowindow-content {
+            display: inline;
+        }
+
+        .pac-card {
+            margin: 10px 10px 0 0;
+            border-radius: 2px 0 0 2px;
+            box-sizing: border-box;
+            -moz-box-sizing: border-box;
+            outline: none;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+            background-color: #fff;
+            font-family: Roboto;
+        }
+
+        #pac-container {
+            padding-bottom: 12px;
+            margin-right: 12px;
+        }
+
+        .pac-controls {
+            display: inline-block;
+            padding: 5px 11px;
+        }
+
+        .pac-controls label {
+            font-family: Roboto;
+            font-size: 13px;
+            font-weight: 300;
+        }
+
+        #pac-input {
+            background-color: #fff;
+            font-family: Roboto;
+            font-size: 15px;
+            font-weight: 300;
+            margin-left: 12px;
+            padding: 0 11px 0 13px;
+            text-overflow: ellipsis;
+            width: 400px;
+        }
+
+        #pac-input:focus {
+            border-color: #4d90fe;
+        }
+
+        #title {
+            color: #fff;
+            background-color: #4d90fe;
+            font-size: 25px;
+            font-weight: 500;
+            padding: 6px 12px;
+        }
+        #target {
+            width: 345px;
+        }
     </style>
+
 @endpush
 @section('content')
     <body>
@@ -46,7 +129,7 @@
                             <form class="contact-form" method="post" action="{{route('client.request.store')}}">
                                 @csrf
                                 <div class="row">
-                                    <div class="col-sm-7">
+                                    <div class="col-sm-5">
                                         <div class="form-group">
                                             <label for="contact-form-subject">Subject</label>
                                             <input type="text" name="subject" id="contact-form-subject"
@@ -55,49 +138,6 @@
                                     </div><!-- /.col-* -->
                                 </div><!-- /.row -->
 
-
-                                <div class="row">
-                                    <div class="col-sm-12">
-                                        <!-- Uploader Dropzone -->
-                                        <div id="zdrop" class="fileuploader ">
-                                            <div id="upload-label" style="width: 200px;">
-                                                <i class="material-icons">cloud_upload</i>
-                                                <span class="title">Drag your Files here</span>
-                                                <span> Images help asses your problem </span>
-                                            </div>
-                                        </div>
-                                        <!-- Preview collection of uploaded documents -->
-                                        <div class="preview-container">
-                                            <div class="header">
-                                                <span>Uploaded Files</span>
-                                                <i id="controller" class="material-icons">keyboard_arrow_down</i>
-                                            </div>
-                                            <div class="collection card" id="previews">
-                                                <div class="collection-item clearhack valign-wrapper item-template"
-                                                     id="zdrop-template">
-                                                    <div class="left pv zdrop-info" data-dz-thumbnail>
-                                                        <div>
-                                                            <span data-dz-name></span> <span data-dz-size></span>
-                                                        </div>
-                                                        <div class="progress">
-                                                            <div class="determinate" style="width:0"
-                                                                 data-dz-uploadprogress></div>
-                                                        </div>
-                                                        <div class="dz-error-message"><span data-dz-errormessage></span>
-                                                        </div>
-                                                    </div>
-
-                                                    <div class="secondary-content actions">
-                                                        <a href="#" data-dz-remove
-                                                           class="btn-floating ph red white-text waves-effect waves-light">
-                                                            <i class="material-icons white-text">clear</i>
-                                                        </a>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div><!-- /.row -->
                                 <div class="form-group">
                                     <label for="contact-form-message"> Problem Description</label>
                                     <textarea class="form-control" id="contact-form-message" rows="6"></textarea>
@@ -118,6 +158,10 @@
                                         <input type="hidden" id="dtp_input2" value=""/><br/>
                                     </div>
                                 </div><!-- /.form-group -->
+
+                                <input id="pac-input" class="controls" type="text" placeholder="Search Box">
+                                <div id="map"></div>
+
 
                                 <button class="btn btn-primary pull-right"> Request</button>
                             </form><!-- /.contact-form -->
@@ -146,4 +190,84 @@
                 forceParse: 0
             });
         </script>
+
+        <script>
+            // This example adds a search box to a map, using the Google Place Autocomplete
+            // feature. People can enter geographical searches. The search box will return a
+            // pick list containing a mix of places and predicted search terms.
+
+            // This example requires the Places library. Include the libraries=places
+            // parameter when you first load the API. For example:
+            // <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&libraries=places">
+
+            function initAutocomplete() {
+                var map = new google.maps.Map(document.getElementById('map'), {
+                    center: {lat: -33.8688, lng: 151.2195},
+                    zoom: 13,
+                    mapTypeId: 'roadmap'
+                });
+
+                // Create the search box and link it to the UI element.
+                var input = document.getElementById('pac-input');
+                var searchBox = new google.maps.places.SearchBox(input);
+                map.controls[google.maps.ControlPosition.TOP_LEFT].push(input);
+
+                // Bias the SearchBox results towards current map's viewport.
+                map.addListener('bounds_changed', function() {
+                    searchBox.setBounds(map.getBounds());
+                });
+
+                var markers = [];
+                // Listen for the event fired when the user selects a prediction and retrieve
+                // more details for that place.
+                searchBox.addListener('places_changed', function() {
+                    var places = searchBox.getPlaces();
+
+                    if (places.length == 0) {
+                        return;
+                    }
+
+                    // Clear out the old markers.
+                    markers.forEach(function(marker) {
+                        marker.setMap(null);
+                    });
+                    markers = [];
+
+                    // For each place, get the icon, name and location.
+                    var bounds = new google.maps.LatLngBounds();
+                    places.forEach(function(place) {
+                        if (!place.geometry) {
+                            console.log("Returned place contains no geometry");
+                            return;
+                        }
+                        var icon = {
+                            url: place.icon,
+                            size: new google.maps.Size(71, 71),
+                            origin: new google.maps.Point(0, 0),
+                            anchor: new google.maps.Point(17, 34),
+                            scaledSize: new google.maps.Size(25, 25)
+                        };
+
+                        // Create a marker for each place.
+                        markers.push(new google.maps.Marker({
+                            map: map,
+                            icon: icon,
+                            title: place.name,
+                            position: place.geometry.location
+                        }));
+
+                        if (place.geometry.viewport) {
+                            // Only geocodes have viewport.
+                            bounds.union(place.geometry.viewport);
+                        } else {
+                            bounds.extend(place.geometry.location);
+                        }
+                    });
+                    map.fitBounds(bounds);
+                });
+            }
+
+        </script>
+        <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCz2sr8lqv78g7jcTN8Kjk2i-p1MO5H560&libraries=places&callback=initAutocomplete"
+                async defer></script>
     @endpush
