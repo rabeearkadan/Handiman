@@ -63,7 +63,7 @@
         }
 
         .input-group-addon {
-            padding: 6px 25px;
+            padding: 13px 32px;
             font-size: 14px;
             font-weight: 400;
             line-height: 1;
