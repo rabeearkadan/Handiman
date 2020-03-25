@@ -10,29 +10,122 @@
 
     <style>
         /*! CSS Used from: https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css */
-        @media print{
-            *,:after,:before{color:#000!important;text-shadow:none!important;background:0 0!important;-webkit-box-shadow:none!important;box-shadow:none!important;}
+        @media print {
+            *, :after, :before {
+                color: #000 !important;
+                text-shadow: none !important;
+                background: 0 0 !important;
+                -webkit-box-shadow: none !important;
+                box-shadow: none !important;
+            }
         }
-        .glyphicon{position:relative;top:1px;display:inline-block;font-family:"Glyphicons Halflings";font-style:normal;font-weight:400;line-height:1;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;}
-        .glyphicon-remove:before{content:"\e014";}
-        *{-webkit-box-sizing:border-box;-moz-box-sizing:border-box;box-sizing:border-box;}
-        :after,:before{-webkit-box-sizing:border-box;-moz-box-sizing:border-box;box-sizing:border-box;}
-        .input-group-addon{display:table-cell;}
-        .input-group-addon:not(:first-child):not(:last-child){border-radius:0;}
-        .input-group-addon{width:1%;white-space:nowrap;vertical-align:middle;}
-        .input-group-addon{padding:6px 12px;font-size:14px;font-weight:400;line-height:1;color:#555;text-align:center;background-color:#eee;border:1px solid #ccc;border-radius:4px;}
+
+        .glyphicon {
+            position: relative;
+            top: 1px;
+            display: inline-block;
+            font-family: "Glyphicons Halflings";
+            font-style: normal;
+            font-weight: 400;
+            line-height: 1;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        .glyphicon-remove:before {
+            content: "\e014";
+        }
+
+        * {
+            -webkit-box-sizing: border-box;
+            -moz-box-sizing: border-box;
+            box-sizing: border-box;
+        }
+
+        :after, :before {
+            -webkit-box-sizing: border-box;
+            -moz-box-sizing: border-box;
+            box-sizing: border-box;
+        }
+
+        .input-group-addon {
+            display: table-cell;
+        }
+
+        .input-group-addon:not(:first-child):not(:last-child) {
+            border-radius: 0;
+        }
+
+        .input-group-addon {
+            width: 1%;
+            white-space: nowrap;
+            vertical-align: middle;
+        }
+
+        .input-group-addon {
+            padding: 11px 18px;
+            font-size: 14px;
+            font-weight: 400;
+            line-height: 1;
+            color: #555;
+            text-align: center;
+            background-color: #eee;
+            border: 1px solid #ccc;
+        }
+
         /*! CSS Used fontfaces */
-        @font-face{font-family:"Glyphicons Halflings";src:url(https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/fonts/glyphicons-halflings-regular.eot);src:url(https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/fonts/glyphicons-halflings-regular.eot#iefix) format("embedded-opentype"),url(https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/fonts/glyphicons-halflings-regular.woff2) format("woff2"),url(https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/fonts/glyphicons-halflings-regular.woff) format("woff"),url(https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/fonts/glyphicons-halflings-regular.ttf) format("truetype"),url(https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/fonts/glyphicons-halflings-regular.svg#glyphicons_halflingsregular) format("svg");}
+        @font-face {
+            font-family: "Glyphicons Halflings";
+            src: url(https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/fonts/glyphicons-halflings-regular.eot);
+            src: url(https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/fonts/glyphicons-halflings-regular.eot#iefix) format("embedded-opentype"), url(https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/fonts/glyphicons-halflings-regular.woff2) format("woff2"), url(https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/fonts/glyphicons-halflings-regular.woff) format("woff"), url(https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/fonts/glyphicons-halflings-regular.ttf) format("truetype"), url(https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/fonts/glyphicons-halflings-regular.svg#glyphicons_halflingsregular) format("svg");
+        }
+
         /*! CSS Used from: https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css */
-        @media print{
-            *,:after,:before{color:#000!important;text-shadow:none!important;background:0 0!important;-webkit-box-shadow:none!important;box-shadow:none!important;}
+        @media print {
+            *, :after, :before {
+                color: #000 !important;
+                text-shadow: none !important;
+                background: 0 0 !important;
+                -webkit-box-shadow: none !important;
+                box-shadow: none !important;
+            }
         }
-        .glyphicon{position:relative;top:1px;display:inline-block;font-family:"Glyphicons Halflings";font-style:normal;font-weight:400;line-height:1;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;}
-        .glyphicon-calendar:before{content:"\e109";}
-        *{-webkit-box-sizing:border-box;-moz-box-sizing:border-box;box-sizing:border-box;}
-        :after,:before{-webkit-box-sizing:border-box;-moz-box-sizing:border-box;box-sizing:border-box;}
+
+        .glyphicon {
+            left:5px;
+            position: relative;
+            top: 1px;
+            display: inline-block;
+            font-family: "Glyphicons Halflings";
+            font-style: normal;
+            font-weight: 400;
+            line-height: 1;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        .glyphicon-calendar:before {
+            content: "\e109";
+        }
+
+        * {
+            -webkit-box-sizing: border-box;
+            -moz-box-sizing: border-box;
+            box-sizing: border-box;
+        }
+
+        :after, :before {
+            -webkit-box-sizing: border-box;
+            -moz-box-sizing: border-box;
+            box-sizing: border-box;
+        }
+
         /*! CSS Used fontfaces */
-        @font-face{font-family:"Glyphicons Halflings";src:url(https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/fonts/glyphicons-halflings-regular.eot);src:url(https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/fonts/glyphicons-halflings-regular.eot#iefix) format("embedded-opentype"),url(https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/fonts/glyphicons-halflings-regular.woff2) format("woff2"),url(https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/fonts/glyphicons-halflings-regular.woff) format("woff"),url(https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/fonts/glyphicons-halflings-regular.ttf) format("truetype"),url(https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/fonts/glyphicons-halflings-regular.svg#glyphicons_halflingsregular) format("svg");}
+        @font-face {
+            font-family: "Glyphicons Halflings";
+            src: url(https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/fonts/glyphicons-halflings-regular.eot);
+            src: url(https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/fonts/glyphicons-halflings-regular.eot#iefix) format("embedded-opentype"), url(https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/fonts/glyphicons-halflings-regular.woff2) format("woff2"), url(https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/fonts/glyphicons-halflings-regular.woff) format("woff"), url(https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/fonts/glyphicons-halflings-regular.ttf) format("truetype"), url(https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/fonts/glyphicons-halflings-regular.svg#glyphicons_halflingsregular) format("svg");
+        }
 
         .main-inner {
             padding: 0;
@@ -145,7 +238,7 @@
                                     <label for="contact-form-message"> Pick time </label>
                                     <div class="form-group">
                                         <label for="dtp_input2" class="col-md-2 control-label">Date Picking</label>
-                                        <div class="input-group date form_date col-md-5" data-date=""
+                                        <div class="input-group date form_date col-md-7" data-date=""
                                              data-date-format="dd MM yyyy" data-link-field="dtp_input2"
                                              data-link-format="yyyy-mm-dd">
                                             <input class="form-control" size="16" type="text" value="" readonly>
@@ -166,14 +259,14 @@
             </div><!-- /.main-inner -->
         </div><!-- /.main -->
     </div><!-- /.page-wrapper -->
-@endsection
-@push('js')
-    <script src="/public/js/client/requests/materialize.js"></script>
-    <script src="/public/js/client/requests/drop-zone.js"></script>
-    <script src="/public/js/client/requests/file-uploader.js"></script>
+    @endsection
+    @push('js')
+        <script src="/public/js/client/requests/materialize.js"></script>
+        <script src="/public/js/client/requests/drop-zone.js"></script>
+        <script src="/public/js/client/requests/file-uploader.js"></script>
 
-    <script src="/public/js/client/requests/bootstrap-datetimepicker.js" type="text/javascript"></script>
-    <script type="text/javascript">
+        <script src="/public/js/client/requests/bootstrap-datetimepicker.js" type="text/javascript"></script>
+        <script type="text/javascript">
             $('.form_date').datetimepicker({
                 language: 'en',
                 weekStart: 1,
@@ -185,4 +278,4 @@
                 forceParse: 0
             });
         </script>
-@endpush
+    @endpush
