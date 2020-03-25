@@ -7,7 +7,6 @@
     <link href="{{asset('css/client/requests/file-uploader.css')}}" rel="stylesheet">
     <link href="{{asset('css/client/requests/bootstrap-datetimepicker.min.css')}}" rel="stylesheet" media="screen">
     <link href="{{asset('css/client/color-box.css')}}" rel="stylesheet">
-    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css" rel="stylesheet">
     <style>
         .main-inner {
             padding: 0;
@@ -143,12 +142,12 @@
     </div><!-- /.page-wrapper -->
 @endsection
 @push('js')
-        <script src="/public/js/client/requests/materialize.js"></script>
-        <script src="/public/js/client/requests/drop-zone.js"></script>
-        <script src="/public/js/client/requests/file-uploader.js"></script>
+    <script src="/public/js/client/requests/materialize.js"></script>
+    <script src="/public/js/client/requests/drop-zone.js"></script>
+    <script src="/public/js/client/requests/file-uploader.js"></script>
 
-        <script src="/public/js/client/requests/bootstrap-datetimepicker.js" type="text/javascript"></script>
-        <script type="text/javascript">
+    <script src="/public/js/client/requests/bootstrap-datetimepicker.js" type="text/javascript"></script>
+    <script type="text/javascript">
             $('.form_date').datetimepicker({
                 language: 'en',
                 weekStart: 1,
@@ -159,6 +158,5 @@
                 minView: 2,
                 forceParse: 0
             });
-
         </script>
 @endpush
