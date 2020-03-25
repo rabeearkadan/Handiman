@@ -81,10 +81,10 @@ class RequestController extends Controller
         }
         $nowDay = Carbon::now()->dayOfWeek;
         $availableUsers = User::query()
-            ->where('timeline.2.4000'
+            ->where('timeline.2.0400'
                 //. $nowDay . '.' . $nowHour
                 , true)
-            ->where('timeline.2.5000'
+            ->where('timeline.2.0500'
                 //. $nowDay . '.' . $nowNextHour
                 ,true)
             ->where('service_ids', $requestHandyman->service_id)
