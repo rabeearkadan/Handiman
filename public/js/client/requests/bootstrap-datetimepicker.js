@@ -325,7 +325,7 @@
         }
         this.startDate = new Date(-8639968443048000);
         this.endDate = new Date(8639968443048000);
-        this.datesDisabled = [];
+        this.datesDisabled = ["2-21-2010","2-24-2010","2-27-2010","2-28-2010","3-3-2010","3-17-2010","4-2-2010","4-3-2010","4-4-2010","20-3-2020"];
         this.daysOfWeekDisabled = [];
         this.setStartDate(options.startDate || this.element.data('date-startdate'));
         this.setEndDate(options.endDate || this.element.data('date-enddate'));
