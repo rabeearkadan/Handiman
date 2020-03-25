@@ -88,7 +88,7 @@ class RequestController extends Controller
                     'type' => 'Point',
                     'coordinates' => [
 
-                       1.2,3.4,
+                       1.2,1.2,
 
 //                        $requestHandyman->location[0],
 //                        $requestHandyman->location[1],
