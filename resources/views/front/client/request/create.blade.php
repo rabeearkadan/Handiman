@@ -63,7 +63,7 @@
         }
 
         .input-group-addon {
-            padding: 13px 32px;
+            padding: 11px 18px;
             font-size: 14px;
             font-weight: 400;
             line-height: 1;
@@ -71,7 +71,6 @@
             text-align: center;
             background-color: #eee;
             border: 1px solid #ccc;
-            border-radius: 4px;
         }
 
         /*! CSS Used fontfaces */
@@ -93,6 +92,7 @@
         }
 
         .glyphicon {
+            left:5px;
             position: relative;
             top: 1px;
             display: inline-block;
