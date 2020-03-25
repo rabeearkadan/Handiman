@@ -79,25 +79,21 @@ class RequestController extends Controller
             $nowHour = str_pad(Carbon::now($requestHandyman->timezone)->hour, 2, '0', STR_PAD_LEFT) . '00';
             $nowNextHour = str_pad(Carbon::now($requestHandyman->timezone)->hour + 1, 2, '0', STR_PAD_LEFT) . '00';
         }
-
         $nowDay = Carbon::now()->dayOfWeek;
         $availableUsers = User::query()
             ->where('timeline.' . $nowDay . '.' . $nowHour, true)
             ->where('timeline.' . $nowDay . '.' . $nowNextHour, true)
-            ->where('service_id', $requestHandyman->service_id)
-            ->where('location', 'near', [
+            ->where('service_id', $requestHandyman->service_id)->where('location', 'near', [
                 '$geometry' => [
                     'type' => 'Point',
                     'coordinates' => [
-                        3.2,
-                        1.2,
-                        //$requestHandyman->location[0],
-                        //$requestHandyman->location[1],
+                        $requestHandyman->location[0],
+                        $requestHandyman->location[1],
                     ],
-                    '$maxDistance' => 50,
+                    'distanceField'=> "dist.calculated",
+                    '$maxDistance' => 50000000 ,
                 ],
-            ])
-            // order by location
+            ])->orderBy('dist.calculated')
             ->get()->filter(function ($item) use ($requestHandyman, $nowNextHour, $nowHour, $nowDay) {
                 $userRequests = RequestService::query()
                     ->where('date', $nowDay)
