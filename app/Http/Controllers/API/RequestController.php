@@ -81,9 +81,10 @@ class RequestController extends Controller
         }
         $nowDay = Carbon::now()->dayOfWeek;
         $availableUsers = User::query()
-            ->where('timeline.' . $nowDay . '.' . $nowHour, true)
-            ->where('timeline.' . $nowDay . '.' . $nowNextHour, true)
-            ->where('service_id', $requestHandyman->service_id)->where('location', 'near', [
+            //->where('timeline.' . $nowDay . '.' . $nowHour, true)
+            //->where('timeline.' . $nowDay . '.' . $nowNextHour, true)
+            //->where('service_id', $requestHandyman->service_id)
+        ->where('location', 'near', [
                 '$geometry' => [
                     'type' => 'Point',
                     'coordinates' => [
