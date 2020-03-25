@@ -83,7 +83,8 @@ class RequestController extends Controller
         $availableUsers = User::query()
             ->where('timeline.' . $nowDay . '.' . $nowHour, true)
             ->where('timeline.' . $nowDay . '.' . $nowNextHour, true)
-            ->where('service_id', $requestHandyman->service_id)->where('location', 'near', [
+            ->where('service_ids', $requestHandyman->service_id)
+        ->where('location', 'near', [
                 '$geometry' => [
                     'type' => 'Point',
                     'coordinates' => [
