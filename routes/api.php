@@ -15,7 +15,8 @@ use Illuminate\Http\Request;
 
 Route::post('login', 'LoginController@login');
 Route::post('register', 'RegisterController@register');
-Route::post('test-notification/{user_id}', 'NotificationController@test');
+Route::post('test-notification/{user_id}/{isClient}', 'NotificationController@test');
+Route::post('make-message/{user_id}/{isClient}','NotificationController@makeMessage');
 Route::get('getHandymanList', 'HandymanController@getHandyman');
 Route::get('getHandymenByService', 'HandymanController@getHandymenByService');
 Route::get('getHandymanSortedByLocation', 'HandymanController@getHandymanOrderedByLocation');
@@ -44,6 +45,9 @@ Route::middleware(['auth:api', 'employee'])->prefix('employee')->group(function 
     Route::post('reject-request/{id}', 'RequestController@rejecttRequest');
 
 
+
+
+
 });
 
 
@@ -51,8 +55,13 @@ Route::middleware(['auth:api', 'client'])->prefix('client')->group(function () {
     //all route related to  user
     Route::post('request/{id}', 'RequestController@requestHandyman');
 
+
     Route::post('request-any', 'RequestController@requestAny');
     Route::get('post', 'PostController@getPosts');
+    Route::post('make-request','RequestController@makeRequest');
+    Route::post('send-message','RequestController@sendMessage');
+    Route::get('load-message','RequestController@getMessages');
+
 
     //TODO
     // Route::get('ongoing-requests','RequestController@getOngoingRequests');

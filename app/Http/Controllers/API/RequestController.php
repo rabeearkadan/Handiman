@@ -49,7 +49,7 @@ class RequestController extends Controller
                 $requestHandyman->empolyee_id = $handyman->id;
                 $requestHandyman->type = 'urgent';
                 $requestHandyman->save();
-                $this->notification($handyman->device_token, Auth::user()->name, 'You received a new request', 'request');
+                $this->notification($handyman->employee_device_token, Auth::user()->name, 'You received a new request', 'request');
                 return response()->json(['status' => 'success', 'message' => 'Your urgent request has reached a handyman']);
 
             }
@@ -59,7 +59,8 @@ class RequestController extends Controller
                 $requestHandyman->type = 'specified';
                 $requestHandyman->employee_id = $handyman->id;
                 $requestHandyman->date = $req->input('date');//yyyy-mm-dd
-                $this->notification($handyman->device_token, Auth::user()->name, 'You received a new request', 'request');
+
+                $this->notification(($handyman->employee_device_token), (Auth::user()->name), 'You received a new request', 'request');
             }
             $requestHandyman->save();
             return response()->json(['status' => 'success', 'message' => 'Your search was done successfully']);
@@ -78,23 +79,21 @@ class RequestController extends Controller
             $nowHour = str_pad(Carbon::now($requestHandyman->timezone)->hour, 2, '0', STR_PAD_LEFT) . '00';
             $nowNextHour = str_pad(Carbon::now($requestHandyman->timezone)->hour + 1, 2, '0', STR_PAD_LEFT) . '00';
         }
-
         $nowDay = Carbon::now()->dayOfWeek;
         $availableUsers = User::query()
             ->where('timeline.' . $nowDay . '.' . $nowHour, true)
             ->where('timeline.' . $nowDay . '.' . $nowNextHour, true)
-            ->where('service_id', $requestHandyman->service_id)
-            ->where('location', 'near', [
+            ->where('service_id', $requestHandyman->service_id)->where('location', 'near', [
                 '$geometry' => [
                     'type' => 'Point',
                     'coordinates' => [
                         $requestHandyman->location[0],
                         $requestHandyman->location[1],
                     ],
-                    '$maxDistance' => 50,
+                    'distanceField'=> "dist.calculated",
+                    '$maxDistance' => 50000000 ,
                 ],
-            ])
-            // order by location
+            ])->orderBy('dist.calculated')
             ->get()->filter(function ($item) use ($requestHandyman, $nowNextHour, $nowHour, $nowDay) {
                 $userRequests = RequestService::query()
                     ->where('date', $nowDay)
@@ -112,7 +111,7 @@ class RequestController extends Controller
     {
 
         $requests = RequestService::query()
-            ->where('client_id', Auth::id());
+            ->where('client_id', Auth::id())->get();
 
         return response()->json(['status' => 'success', 'requests' => $requests]);
 
@@ -124,7 +123,18 @@ class RequestController extends Controller
         $requests = RequestService::query()
             ->where('employee_id', Auth::id())->get();
 
+
         return response()->json(['status' => 'success', 'requests' => $requests]);
+
+    }
+
+    public function getClientByRequest($id)
+    {
+        $request = RequestService::query()->find($id);
+        $client_id = $request->client_id;
+        $client = User::query()->find($client_id)->get();
+
+        return response()->json(['status' => 'success', 'client' => $client]);
 
     }
 
@@ -255,9 +265,9 @@ class RequestController extends Controller
         $notification = $message;
         $notification['request_id'] = $id;
         if (auth()->id() == $requestService->client_id) {
-            $notification['to'] = User::query()->find($requestService->employee_id)->device_token;
+            $notification['to'] = User::query()->find($requestService->employee_id)->employee_device_token;
         } else {
-            $notification['to'] = User::query()->find($requestService->client_id)->device_token;
+            $notification['to'] = User::query()->find($requestService->client_id)->client_device_token;
         }
         $notification['type'] = 'message';
 
@@ -265,7 +275,7 @@ class RequestController extends Controller
         $requestService->save();
     }
 
-    public function notification($to, $from, $message, $type)
+    public function Notification($to, $from, $message, $type)
     {
         $notification = array();
 
