@@ -87,8 +87,11 @@ class RequestController extends Controller
                 '$geometry' => [
                     'type' => 'Point',
                     'coordinates' => [
-                        $requestHandyman->location[0],
-                        $requestHandyman->location[1],
+
+                       1.2,1.2,
+
+//                        $requestHandyman->location[0],
+//                        $requestHandyman->location[1],
                     ],
                     'distanceField'=> "dist.calculated",
                     '$maxDistance' => 50000000 ,
