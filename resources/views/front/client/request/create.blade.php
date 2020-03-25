@@ -48,23 +48,8 @@
                                 <div class="row">
                                     <div class="col-sm-4">
                                         <div class="form-group">
-                                            <label for="contact-form-name">Name</label>
-                                            <input type="text" name="name" id="contact-form-name" class="form-control">
-                                        </div><!-- /.form-group -->
-                                    </div><!-- /.col-* -->
-
-                                    <div class="col-sm-4">
-                                        <div class="form-group">
                                             <label for="contact-form-subject">Subject</label>
                                             <input type="text" name="subject" id="contact-form-subject"
-                                                   class="form-control">
-                                        </div><!-- /.form-group -->
-                                    </div><!-- /.col-* -->
-
-                                    <div class="col-sm-4">
-                                        <div class="form-group">
-                                            <label for="contact-form-email">E-mail</label>
-                                            <input type="text" name="email" id="contact-form-email"
                                                    class="form-control">
                                         </div><!-- /.form-group -->
                                     </div><!-- /.col-* -->
