@@ -326,7 +326,7 @@
         this.startDate = new Date(-8639968443048000);
         this.endDate = new Date(8639968443048000);
         this.datesDisabled = [];
-        this.daysOfWeekDisabled = [1,2];
+        this.daysOfWeekDisabled = [];
         this.setStartDate(options.startDate || this.element.data('date-startdate'));
         this.setEndDate(options.endDate || this.element.data('date-enddate'));
         this.setDatesDisabled(options.datesDisabled || this.element.data('date-dates-disabled'));
