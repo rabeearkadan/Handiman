@@ -5,6 +5,7 @@ namespace App\Http\Controllers\API;
 
 
 use App\Http\Controllers\Controller;
+use App\Models\RequestService;
 use App\User;
 use App\Models\Message;
 use Illuminate\Http\Request;
@@ -24,7 +25,7 @@ class ChatController extends Controller
             'message' => 'required']);
 
         $user = User::query()->find(Auth::id());
-        $obj[$params['receiver_id']]= false;
+        $obj[$params['receiver_id']] = false;
         $array = $user->message_requests;
         array_push($array, $obj);
         $user->message_requests = $array;
@@ -32,6 +33,13 @@ class ChatController extends Controller
         $user->save();
         return response()->json(['status' => 'success', 'user' => $user]);
 
+    }
+
+
+    public function getMessages($request_id)
+    {
+        $req = RequestService::query()->find($request_id);
+        $user=Auth::user();
     }
 
 
