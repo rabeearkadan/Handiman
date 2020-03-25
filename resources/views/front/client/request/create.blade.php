@@ -5,8 +5,9 @@
     <link href="{{asset('css/client/common-classes.css')}}" rel="stylesheet">
     <link href="{{asset('css/client/requests/materialize.css')}}" rel="stylesheet">
     <link href="{{asset('css/client/requests/file-uploader.css')}}" rel="stylesheet">
-    <link href="{{asset('css/client/requests/bootstrap-datetimepicker.min.css')}}" rel="stylesheet" media="screen">
     <link href="{{asset('css/client/color-box.css')}}" rel="stylesheet">
+    <link href="{{asset('css/client/requests/bootstrap-datetimepicker.min.css')}}" rel="stylesheet" media="screen">
+
     <style>
         /*! CSS Used from: https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css */
         @media print{
