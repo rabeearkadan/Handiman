@@ -238,7 +238,7 @@
                                     <label for="contact-form-message"> Pick time </label>
                                     <div class="form-group">
                                         <label for="dtp_input2" class="col-md-2 control-label">Date Picking</label>
-                                        <div class="input-group date form_date col-md-5" data-date=""
+                                        <div class="input-group date form_date col-md-7" data-date=""
                                              data-date-format="dd MM yyyy" data-link-field="dtp_input2"
                                              data-link-format="yyyy-mm-dd">
                                             <input class="form-control" size="16" type="text" value="" readonly>
