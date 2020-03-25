@@ -89,8 +89,8 @@ class RequestController extends Controller
                 '$geometry' => [
                     'type' => 'Point',
                     'coordinates' => [
-                        1.1,
                         3.2,
+                        1.2,
                         //$requestHandyman->location[0],
                         //$requestHandyman->location[1],
                     ],
