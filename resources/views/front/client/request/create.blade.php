@@ -46,7 +46,7 @@
                             <form class="contact-form" method="post" action="{{route('client.request.store')}}">
                                 @csrf
                                 <div class="row">
-                                    <div class="col-sm-4">
+                                    <div class="col-sm-7">
                                         <div class="form-group">
                                             <label for="contact-form-subject">Subject</label>
                                             <input type="text" name="subject" id="contact-form-subject"
