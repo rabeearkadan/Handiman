@@ -43,7 +43,8 @@
                         @endif
                         <h3> The more you elaborate, the more we can help!</h3>
                         <div class="contact-form-wrapper clearfix background-white p30">
-                            <form class="contact-form" method="post" action="">
+                            <form class="contact-form" method="post" action="{{route('client.request.store')}}">
+                                @csrf
                                 <div class="row">
                                     <div class="col-sm-4">
                                         <div class="form-group">
