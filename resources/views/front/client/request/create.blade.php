@@ -5,12 +5,15 @@
     <link href="{{asset('css/client/common-classes.css')}}" rel="stylesheet">
     <link href="{{asset('css/client/requests/materialize.css')}}" rel="stylesheet">
     <link href="{{asset('css/client/requests/file-uploader.css')}}" rel="stylesheet">
+    <link href="{{asset('css/client/requests/bootstrap-datetimepicker.min.css')}}" rel="stylesheet" media="screen">
     <link href="{{asset('css/client/color-box.css')}}" rel="stylesheet">
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css" rel="stylesheet">
     <style>
-        .main-inner{
+        .main-inner {
             padding: 0;
         }
-        .pull-right{
+
+        .pull-right {
             float: right;
         }
     </style>
@@ -113,6 +116,23 @@
                                     <label for="contact-form-message"> Problem Description</label>
                                     <textarea class="form-control" id="contact-form-message" rows="6"></textarea>
                                 </div><!-- /.form-group -->
+                                <div class="form-group">
+                                    <label for="contact-form-message"> Pick time </label>
+                                    <div class="form-group">
+                                        <label for="dtp_input2" class="col-md-2 control-label">Date Picking</label>
+                                        <div class="input-group date form_date col-md-5" data-date=""
+                                             data-date-format="dd MM yyyy" data-link-field="dtp_input2"
+                                             data-link-format="yyyy-mm-dd">
+                                            <input class="form-control" size="16" type="text" value="" readonly>
+                                            <span class="input-group-addon"><span
+                                                    class="glyphicon glyphicon-remove"></span></span>
+                                            <span class="input-group-addon"><span
+                                                    class="glyphicon glyphicon-calendar"></span></span>
+                                        </div>
+                                        <input type="hidden" id="dtp_input2" value=""/><br/>
+                                    </div>
+                                </div><!-- /.form-group -->
+
                                 <button class="btn btn-primary pull-right"> Request</button>
                             </form><!-- /.contact-form -->
                         </div><!-- /.contact-form-wrapper -->
@@ -121,9 +141,24 @@
             </div><!-- /.main-inner -->
         </div><!-- /.main -->
     </div><!-- /.page-wrapper -->
-    @endsection
-    @push('js')
+@endsection
+@push('js')
         <script src="/public/js/client/requests/materialize.js"></script>
         <script src="/public/js/client/requests/drop-zone.js"></script>
         <script src="/public/js/client/requests/file-uploader.js"></script>
-    @endpush
+
+        <script src="/public/js/client/requests/bootstrap-datetimepicker.js" type="text/javascript"></script>
+        <script type="text/javascript">
+            $('.form_date').datetimepicker({
+                language: 'en',
+                weekStart: 1,
+                todayBtn: 1,
+                autoclose: 1,
+                todayHighlight: 1,
+                startView: 2,
+                minView: 2,
+                forceParse: 0
+            });
+
+        </script>
+@endpush
