@@ -2,7 +2,8 @@
 
 use Illuminate\Http\Request;
 
-use Illuminate\Support\Facades\Route;
+
+
 
 Route::post('login', 'LoginController@login');
 Route::post('register', 'RegisterController@register');
