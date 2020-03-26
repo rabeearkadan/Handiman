@@ -41,8 +41,8 @@ Route::middleware(['auth:api', 'employee'])->prefix('employee')->group(function 
     Route::get('request/{id}', 'RequestController@getRequestById');
     Route::get('ongoing-requests', 'RequestController@geHandymanOngoingRequests');
     Route::get('outgoing-requests', 'RequestController@geHandymanOutgoingRequests');
-    Route::post('accept-request/{id}', 'RequestController@acceptRequest');
-    Route::post('reject-request/{id}', 'RequestController@rejecttRequest');
+//    Route::post('accept-request/{id}', 'RequestController@acceptRequest');
+//    Route::post('reject-request/{id}', 'RequestController@rejectRequest');
 
 
 
