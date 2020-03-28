@@ -19,6 +19,7 @@
                                 </div><!-- /.page-title -->
                                 @isset($posts)
                                 <div class="posts">
+                                    {{$posts}}
                                     @foreach($posts as $post)
                                     <div class="post">
                                         <div class="post-image">
