@@ -17,9 +17,8 @@
                                 <div class="page-title">
                                     <h1> Posts </h1>
                                 </div><!-- /.page-title -->
-                                @isset($posts)
+                                @if($posts->isEmpty())
                                 <div class="posts">
-                                    {{$posts}}
                                     @foreach($posts as $post)
                                     <div class="post">
                                         <div class="post-image">
@@ -56,7 +55,7 @@
                                 </div> <!-- /.posts -->
                                 @else
                                     <h3> No posts yet</h3>
-                                @endisset
+                                @endif
                             </div><!-- /.content -->
                         </div><!-- /.col-* -->
                     </div><!-- /.row -->
