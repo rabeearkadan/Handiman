@@ -2,16 +2,8 @@
 
 use Illuminate\Http\Request;
 
-/*
-|--------------------------------------------------------------------------
-| API Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register API routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| is assigned the "api" middleware group. Enjoy building your API!
-|
-*/
+
+
 
 Route::post('login', 'LoginController@login');
 Route::post('register', 'RegisterController@register');
@@ -39,10 +31,10 @@ Route::middleware(['auth:api', 'employee'])->prefix('employee')->group(function 
     Route::get('post-id/{id}', 'PostController@getPostById');
     Route::get('request','RequestController@getHandymanRequests');
     Route::get('request/{id}', 'RequestController@getRequestById');
-    Route::get('Ongoing-requests', 'RequestController@geHandymanOngoingRequests');
-    Route::get('Outgoing-requests', 'RequestController@geHandymanOutgoingRequests');
-    Route::post('accept-request/{id}', 'RequestController@acceptRequest');
-    Route::post('reject-request/{id}', 'RequestController@rejecttRequest');
+    Route::get('ongoing-requests', 'RequestController@geHandymanOngoingRequests');
+    Route::get('outgoing-requests', 'RequestController@geHandymanOutgoingRequests');
+//    Route::post('accept-request/{id}', 'RequestController@acceptRequest');
+//    Route::post('reject-request/{id}', 'RequestController@rejectRequest');
 
 
 
@@ -59,8 +51,8 @@ Route::middleware(['auth:api', 'client'])->prefix('client')->group(function () {
     Route::post('request-any', 'RequestController@requestAny');
     Route::get('post', 'PostController@getPosts');
     Route::post('make-request','RequestController@makeRequest');
-    Route::post('send-message/{id}','RequestController@sendRequestMessage');
-    Route::get('load-message','RequestController@getMessages');
+    //Route::post('send-message/{id}','RequestController@sendRequestMessage');
+  //  Route::get('load-message','RequestController@getMessages');
 
 
     //TODO

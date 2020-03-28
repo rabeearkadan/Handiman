@@ -86,20 +86,20 @@ class RequestController extends Controller
                 , true)
             ->where('timeline.2.0500'
                 //. $nowDay . '.' . $nowNextHour
-                ,true)
+                , true)
             ->where('service_ids', $requestHandyman->service_id)
-        ->where('location', 'near', [
+            ->where('location', 'near', [
                 '$geometry' => [
                     'type' => 'Point',
                     'coordinates' => [
 
-                       1.2,1.2,
+                        1.2, 1.2,
 
 //                        $requestHandyman->location[0],
 //                        $requestHandyman->location[1],
                     ],
-                    'distanceField'=> "dist.calculated",
-                    '$maxDistance' => 50000000 ,
+                    'distanceField' => "dist.calculated",
+                    '$maxDistance' => 50000000,
                 ],
             ])->orderBy('dist.calculated')
             ->get()->filter(function ($item) use ($requestHandyman, $nowNextHour, $nowHour, $nowDay) {
@@ -125,16 +125,6 @@ class RequestController extends Controller
 
     }
 
-    public function getHandymanRequests()
-    {
-
-        $requests = RequestService::query()
-            ->where('employee_id', Auth::id())->get();
-
-
-        return response()->json(['status' => 'success', 'requests' => $requests]);
-
-    }
 
     public function getClientByRequest($id)
     {
@@ -238,20 +228,26 @@ class RequestController extends Controller
         return response()->json(['status' => 'success', 'request' => $request]);
     }
 
+    //Route::get('Ongoing-requests', 'RequestController@geHandymanOngoingRequests');
+//Route::get('Outgoing-requests', 'RequestController@geHandymanOutgoingRequests');
+
     public function geHandymanOngoingRequests()
     {
-        $user = Auth::user();
-        $ongoing = RequestService::query()->where('employee_id', $user->id)->where('status', 'ongoing')->get();
 
-        return response()->json(['status' => 'success', 'OngoingRequests' => $ongoing]);
+        $ongoing = RequestService::query()
+            ->where('employee_id', Auth::id())
+            ->where('status', 'ongoing')->get();
+
+        return response()->json(['status' => 'success', 'requests' => $ongoing]);
     }
 
     public function geHandymanOutgoingRequests()
     {
-        $user = Auth::user();
-        $outgoing = RequestService::query()->where('employee_id', $user->id)->where('status', 'outgoing')->get();
+        $outgoing = RequestService::query()
+            ->where('employee_id', Auth::id())
+            ->where('status', 'outgoing')->get();
 
-        return response()->json(['status' => 'success', 'OngoingRequests' => $outgoing]);
+        return response()->json(['status' => 'success', 'requests' => $outgoing]);
     }
 
 
