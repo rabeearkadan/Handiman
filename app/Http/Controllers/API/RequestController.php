@@ -23,6 +23,18 @@ class RequestController extends Controller
         ]);
     }
 
+    public function checkTime($day, $from, $to, User $employee)
+    {
+        $flag = true;
+        for ($i = from; $i <= to; $i++) {
+            $hour = str_pad($i,
+                    2, 0, STR_PAD_LEFT) . "00";
+            if ($employee->timeline[$day][$hour] == false) {
+                $flag = false;
+            }
+        }
+        return $flag;
+    }
 
     public function makeRequest(Request $req)
     {
@@ -238,7 +250,9 @@ class RequestController extends Controller
             ->where('employee_id', Auth::id())
             ->where('status', 'ongoing')->get();
 
-        return response()->json(['status' => 'success', 'requests' => $ongoing]);
+        $client = User::query()->where('id', $ongoing->client_id)->get();
+
+        return response()->json(['status' => 'success', 'requests' => $ongoing, 'from' => $client]);
     }
 
     public function geHandymanOutgoingRequests()
