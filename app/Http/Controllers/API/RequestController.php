@@ -238,7 +238,9 @@ class RequestController extends Controller
             ->where('employee_id', Auth::id())
             ->where('status', 'ongoing')->get();
 
-        return response()->json(['status' => 'success', 'requests' => $ongoing]);
+        $client = User::query()->where('id', $ongoing->client_id)->get();
+
+        return response()->json(['status' => 'success', 'requests' => $ongoing, 'from' => $client]);
     }
 
     public function geHandymanOutgoingRequests()
