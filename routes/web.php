@@ -22,7 +22,7 @@ Auth::routes();
 
 Route::get("register", 'Auth\RegisterController@showRegistrationForm')->name('register');
 Route::post('/contact','MailController@contact')->name('mail.contact');
-Route::get("/home", 'HomeController@index');
+Route::get("/home", 'HomeController@index')->name('home');
 
 
 

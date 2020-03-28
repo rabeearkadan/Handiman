@@ -55,7 +55,7 @@ class LoginController extends Controller
                 return redirect()->route('admin.home');
             }
             else{
-                return '/home';
+                return  redirect()->route('home');
             }
         }
         return Redirect::back();
