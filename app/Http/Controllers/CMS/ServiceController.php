@@ -22,9 +22,9 @@ class ServiceController extends Controller
             $data = Service::query()->with('users')->get();
 
             return Datatables::of($data)
-                ->addIndexColumn() ->addColumn('action', function ($row) {
+                ->addIndexColumn()->addColumn('action', function ($row) {
 
-                    $btn = '<a href="'.route('service.edit',$row['id']).'" class="edit btn btn-primary btn-sm">View</a>';
+                    $btn = '<a href="' . route('service.edit', $row['id']) . '" class="edit btn btn-primary btn-sm">View</a>';
 
                     return $btn;
                 })
@@ -75,6 +75,8 @@ class ServiceController extends Controller
             }
         }
         $service->name = $request->input('service_name');
+        $user_ids = [];
+        $service->user_ids = $user_ids;
         $service->save();
         return redirect()->route('service.index');
     }
