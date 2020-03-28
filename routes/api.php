@@ -55,7 +55,10 @@ Route::middleware(['auth:api', 'client'])->prefix('client')->group(function () {
   //  Route::get('load-message','RequestController@getMessages');
 
 
-
+    
+    // Route::get('ongoing-requests','RequestController@getOngoingRequests');
+    // Route::get('outgoing-requests','RequestController@getOutgoingRequests');
+    // Route::put('accept-request',Request)
 
 
 });
