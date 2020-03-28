@@ -17,7 +17,7 @@
                                 <div class="page-title">
                                     <h1> Posts </h1>
                                 </div><!-- /.page-title -->
-                                @if($posts->isEmpty())
+                                @if(!$posts->isEmpty())
                                 <div class="posts">
                                     @foreach($posts as $post)
                                     <div class="post">
