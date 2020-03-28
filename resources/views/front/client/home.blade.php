@@ -15,8 +15,9 @@
                         <div class="col-sm-8 col-lg-10">
                             <div class="content">
                                 <div class="page-title">
-                                    <h1>Title</h1>
+                                    <h1> Posts </h1>
                                 </div><!-- /.page-title -->
+                                @if(!$posts->isEmpty())
                                 <div class="posts">
                                     @foreach($posts as $post)
                                     <div class="post">
@@ -51,7 +52,10 @@
                                         </div><!-- /.post-meta -->
                                     </div><!-- /.post -->
                                     @endforeach
-                                </div>
+                                </div> <!-- /.posts -->
+                                @else
+                                    <h3> No posts yet</h3>
+                                @endif
                             </div><!-- /.content -->
                         </div><!-- /.col-* -->
                     </div><!-- /.row -->

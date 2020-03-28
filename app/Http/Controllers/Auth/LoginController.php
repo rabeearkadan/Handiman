@@ -7,6 +7,7 @@ use App\Providers\RouteServiceProvider;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Redirect;
 
 class LoginController extends Controller
 {
@@ -52,17 +53,13 @@ class LoginController extends Controller
         if (Auth::attempt($credentials)) {
             if ( auth()->user()->role == 'admin' ){
                 return redirect()->route('admin.home');
-            }elseif ( auth()->user()->role == 'user_employee' || auth()->user()->role == 'employee'  ){
-                return redirect()-> route('employee.home');
             }
             else{
-                return redirect()->route('client.home');
+                return  redirect()->route('home');
             }
         }
-        return 'failed';
+        return Redirect::back();
     }
-//    public function getRedirectTo(){
-//
-//    }
+
 
 }

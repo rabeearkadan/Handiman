@@ -16,7 +16,6 @@
         .pull-right {
             float: right;
         }
-
         /* Always set the map height explicitly to define the size of the div
        * element that contains the map. */
         #map {
@@ -158,10 +157,10 @@
                                         <input type="hidden" id="dtp_input2" value=""/><br/>
                                     </div>
                                 </div><!-- /.form-group -->
-
+<div class="row">
                                 <input id="pac-input" class="controls" type="text" placeholder="Search Box">
                                 <div id="map"></div>
-
+</div>
 
                                 <button class="btn btn-primary pull-right"> Request</button>
                             </form><!-- /.contact-form -->
