@@ -55,6 +55,7 @@
                                 </div> <!-- /.posts -->
                                 @else
                                     <h3> No posts yet</h3>
+                                    <img src="public/images/client/no-posts.png" alt="no posts">
                                 @endif
                             </div><!-- /.content -->
                         </div><!-- /.col-* -->
