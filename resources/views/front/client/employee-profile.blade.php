@@ -199,7 +199,7 @@
         .we-customer-review__header--user{margin-bottom:15px;color:#636366;font-size:12px;line-height:1.33337;font-weight:600;letter-spacing:0;font-family:"SF Pro Text","SF Pro Icons","Apple WebExp Icons Custom","Helvetica Neue",Helvetica,Arial,sans-serif;}
         .we-customer-review__date{-webkit-flex-shrink:0;-ms-flex-negative:0;flex-shrink:0;white-space:nowrap;}
         .we-modal{
-            position:fixed;top:48px;right:0;bottom:0;left:10;display:none;max-height:100vh;z-index:0;}
+            top:48px;right:0;bottom:0;left:10;display:none;max-height:100vh;z-index:0;}
         @media (-ms-high-contrast:none),(-ms-high-contrast:active){
             .we-modal{top:0;}
         }
