@@ -1,0 +1,31 @@
+.see-all-header__link{margin-bottom:4px;display:block;font-size:18px;line-height:1.22226;font-weight:400;letter-spacing:.027em;font-family:"SF Pro Display","SF Pro Icons","Apple WebExp Icons Custom","Helvetica Neue",Helvetica,Arial,sans-serif;}
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    z-index: 1000;
+    background-color: rgba(255,255,255,.9);
+}
+
+.we-customer-review{
+    margin-top:20px;
+}
+/*! CSS Used from: https://apps.apple.com/assets/web-experience-app-d442359b026f63c1ac3ae1bd3037bcb6.css */
+:focus{outline:rgba(0,125,250,.6) solid 4px;outline-offset:1px;}
+::-moz-focus-inner{border:0;padding:0;}
+*,::after,::before{-webkit-box-sizing:inherit;box-sizing:inherit;}
+.we-loading-spinner{
+    min-width:20px;height:20px;
+    background-image:url('/public/images/client/rating/loading-spinner-small.svg');
+    background-size:20px;
+    background-position:center center;
+    background-repeat:no-repeat;}
+@media only screen and (min-width:735px){
+    .we-loading-spinner{
+        height:35px;
+        background-image:url('/public/images/client/rating/loading-spinner-large.svg');
+        background-size:35px;}
+}
+.we-loading-spinner--see-all{margin-top:4px;margin-bottom:22px;}

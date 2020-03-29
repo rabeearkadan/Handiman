@@ -60,15 +60,12 @@
                 <div class="intro">
                     <div class="profile-img"><img src="{{config('image.path').$employee->image}}" alt=""></div>
                     <h2><b> {{$employee->name}} </b></h2>
-                    <h4 class="font-yellow">Key Account Manager</h4>
+                    <h4 class="font-yellow"> Services </h4>
                     <ul class="information margin-tb-30">
                         <li><b>BORN : </b>August 25, 1987</li>
-                        <li><b>EMAIL : </b>mymith@mywebpage.com</li>
-                        <li><b>MARITAL STATUS : </b>Married</li>
+                        <li><b>Price : </b>$7/hr</li>
                     </ul>
                     <ul class="social-icons">
-                        <li><a href="#"><i class="ion-social-pinterest"></i></a></li>
-                        <li><a href="#"><i class="ion-social-linkedin"></i></a></li>
                         <li><a href="#"><i class="ion-social-instagram"></i></a></li>
                         <li><a href="#"><i class="ion-social-facebook"></i></a></li>
                         <li><a href="#"><i class="ion-social-twitter"></i></a></li>
