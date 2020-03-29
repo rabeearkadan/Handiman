@@ -75,10 +75,7 @@ button {
     opacity: .32;
 }
 
-*, ::after, ::before {
-    -webkit-box-sizing: inherit;
-    box-sizing: inherit;
-}
+
 
 h2, h3 {
     font-size: 1em;

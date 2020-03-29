@@ -23,10 +23,7 @@
     padding: 0;
 }
 
-*, ::after, ::before {
-    -webkit-box-sizing: inherit;
-    box-sizing: inherit;
-}
+
 
 .we-loading-spinner {
     min-width: 20px;
