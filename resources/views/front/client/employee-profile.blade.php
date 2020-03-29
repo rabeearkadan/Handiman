@@ -779,22 +779,39 @@
 @endsection
 @push('js')
     <script>
-        function deleteChildren() {
-            var e = document.getElementById("modal-container");
-            var child = e.lastElementChild;
+
+        function more(){
+            document.documentElement.style.overflow = 'hidden';
+            document.body.innerHTML+= '<div class="overlay"></div> ';
+            document.getElementById('modal-container').innerHTML = ' <div class="we-modal  we-modal--open" role="dialog"><div class="we-modal__content large-10 medium-12 we-modal__content--review" ><div class="we-modal__content__wrapper"><div aria-labelledby="we-customer-review-21" class="we-customer-review lockup ember-view"><figure aria-label="3 out of 5" class="we-star-rating ember-view we-customer-review__rating we-star-rating--large"><span class="we-star-rating-stars-outlines"><span class="we-star-rating-stars we-star-rating-stars-3"></span></span></figure><div class="we-customer-review__header we-customer-review__header--user"><span class="we-truncate we-truncate--single-line ember-view we-customer-review__user"> Client Name</span><span class="we-customer-review__separator">, </span><time class="we-customer-review__date">00/00/2020</time></div><h3 class="we-truncate we-truncate--single-line ember-view we-customer-review__title">  Title</h3><blockquote class="we-customer-review__body--modal"><p>Review</p></blockquote></div></div><button class="we-modal__close" onclick="less()" aria-label="Close" ></button></div><button class="we-modal__close--overlay" id="close-div" aria-label="Close" ></button></div>';
+        }
+
+
+        function less() {
+
+            document.documentElement.style.overflow = 'scroll';
+            Element.prototype.remove = function() {
+                this.parentElement.removeChild(this);
+            };
+            NodeList.prototype.remove = HTMLCollection.prototype.remove = function() {
+                for(var i = this.length - 1; i >= 0; i--) {
+                    if(this[i] && this[i].parentElement) {
+                        this[i].parentElement.removeChild(this[i]);
+                    }
+                }
+            };
+            document.getElementsByClassName('overlay').remove();
+
+            const e = document.getElementById("modal-container");
+            let child = e.lastElementChild;
             while (child) {
                 e.removeChild(child);
                 child = e.lastElementChild;
             }
+
         }
-        var btn = document.getElementById(
-            "close-button").onclick = function() {
-            deleteChildren();
-        }
-        var div = document.getElementById(
-            "close-div").onclick = function() {
-            deleteChildren();
-        }
+
+
     </script>
     <script src="/public/common-js/jquery-3.2.1.min.js"></script>
     <script src="/public/common-js/tether.min.js"></script>
