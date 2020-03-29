@@ -1,0 +1,254 @@
+
+@media only screen and (min-width: 735px) {
+    .medium-12 {
+        -webkit-flex-shrink: 0;
+        -ms-flex-negative: 0;
+        flex-shrink: 0;
+        width: 97.10983%;
+        max-width: 97.10983%;
+    }
+}
+
+@media only screen and (min-width: 1069px) {
+    .medium-12 {
+        -webkit-flex-shrink: 0;
+        -ms-flex-negative: 0;
+        flex-shrink: 0;
+        width: 98.06122%;
+        max-width: 98.06122%;
+    }
+}
+
+@media only screen and (min-width: 1069px) {
+    .large-10 {
+        -webkit-flex-shrink: 0;
+        -ms-flex-negative: 0;
+        flex-shrink: 0;
+        width: 81.39456%;
+        max-width: 81.39456%;
+    }
+}
+
+.we-truncate {
+    position: relative;
+    z-index: 1;
+}
+
+.we-truncate--single-line {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.we-modal__content__wrapper .we-customer-review {
+    padding-left: 0;
+    padding-right: 0;
+}
+
+.we-customer-review__rating {
+    margin-bottom: 3px;
+}
+
+.we-customer-review__header {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+}
+
+.we-customer-review__separator {
+    white-space: pre;
+}
+
+.we-customer-review__title {
+    font-size: 13px;
+    line-height: 1.38462;
+    font-weight: 600;
+    letter-spacing: -.005em;
+    font-family: "SF Pro Text", "SF Pro Icons", "Apple WebExp Icons Custom", "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+.we-customer-review__header--user {
+    margin-bottom: 15px;
+    color: #636366;
+    font-size: 12px;
+    line-height: 1.33337;
+    font-weight: 600;
+    letter-spacing: 0;
+    font-family: "SF Pro Text", "SF Pro Icons", "Apple WebExp Icons Custom", "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+.we-customer-review__date {
+    -webkit-flex-shrink: 0;
+    -ms-flex-negative: 0;
+    flex-shrink: 0;
+    white-space: nowrap;
+}
+
+.we-modal {
+    position: sticky;
+    top: 48px;
+    right: 0;
+    bottom: 0;
+    left: 10;
+    display: none;
+    max-height: 100vh;
+    z-index: 0;
+}
+
+@media (-ms-high-contrast: none),(-ms-high-contrast: active) {
+    .we-modal {
+        top: 0;
+    }
+}
+
+@media only screen and (min-width: 735px) {
+    .we-modal {
+        top: 0;
+    }
+}
+
+.we-modal__content {
+    height: calc(100vh - 49px);
+    width: 100%;
+    position: fixed;
+    top: 50%;
+    background: #fff;
+    word-break: break-word;
+    -webkit-transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+    left: 50%;
+    z-index: 1;
+    border-top: 1px solid #d6d6d6;
+    padding: 30px 5px 30px 20px;
+}
+
+@media only screen and (min-width: 735px) {
+    .we-modal__content {
+        height: auto;
+        max-width: 600px;
+        max-height: calc(100vh - 108px);
+        border: 1px solid rgba(0, 0, 0, .08);
+        border-radius: 10px;
+        -webkit-box-shadow: 0 15px 20px rgba(0, 0, 0, .5);
+        box-shadow: 0 15px 20px rgba(0, 0, 0, .5);
+    }
+}
+
+.we-modal__content--review {
+    background-color: #f8f8f8;
+}
+
+.we-modal__content__wrapper {
+    max-height: calc(100vh - 109px);
+    overflow: auto;
+    -webkit-overflow-scrolling: touch;
+    padding-right: 15px;
+}
+
+@media only screen and (min-width: 735px) {
+    .we-modal__content__wrapper {
+        max-height: calc(100vh - 168px);
+    }
+}
+
+@media (-ms-high-contrast: none),(-ms-high-contrast: active) {
+    .we-modal__content {
+        border-top: 0;
+        height: 100vh;
+    }
+
+    .we-modal__content__wrapper {
+        max-height: 100%;
+    }
+}
+
+.we-modal--open {
+    display: block;
+    z-index: 10001;
+}
+
+.we-modal__close {
+    margin: 0;
+    padding: 0 20px 0 0;
+    width: 40px;
+    height: 30px;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    border: 0;
+    position: absolute;
+    top: 15px;
+    overflow: hidden;
+    -webkit-transform: translateY(-50%);
+    -ms-transform: translateY(-50%);
+    transform: translateY(-50%);
+    font-size: 20px;
+    cursor: pointer;
+    background: 0 0;
+    color: #636366;
+    text-align: right;
+    left: 0;
+    z-index: 10001;
+
+}
+
+.we-modal__close::after, .we-modal__close::before {
+    font-family: "SF Pro Icons", "Apple WebExp Icons Custom", serif;
+    color: inherit;
+    display: inline-block;
+    font-style: normal;
+    font-weight: inherit;
+    font-size: inherit;
+    line-height: 1;
+    position: relative;
+    z-index: 1;
+    alt: '';
+    text-decoration: none;
+    content: "\00d7";
+
+}
+
+.we-modal__close::before {
+    display: none;
+}
+
+.we-modal__close--overlay {
+    width: 100%;
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    cursor: default;
+    z-index: 0;
+}
+
+
+.we-customer-review__body {
+    font-size: 13px;
+    line-height: 1.38462;
+    font-weight: 400;
+    letter-spacing: -.005em;
+    font-family: "SF Pro Text", "SF Pro Icons", "Apple WebExp Icons Custom", "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+.we-truncate__button {
+    position: absolute;
+    bottom: 0;
+    float: initial;
+    right: 0;
+    z-index: 1;
+}
+
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    z-index: 1000;
+    background-color: rgba(255, 255, 255, .9);
+}
+
+
