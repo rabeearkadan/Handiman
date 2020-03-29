@@ -37,7 +37,6 @@ class ServiceController extends Controller
     public function deleteService($id)
     {
 
-        $service = Service::query()->find($id);
         $user = User::query()->find(Auth::id());
 
         $service_ids_in_user = $user->service_ids;
@@ -53,6 +52,9 @@ class ServiceController extends Controller
         unset($service_ids_in_user[$key]);
         $user->service_ids = $service_ids_in_user;
         $user->save();
+
+
+        $service = Service::query()->find($id);
 
         $user_ids_in_service = $service->user_ids;
         $key = 0;
