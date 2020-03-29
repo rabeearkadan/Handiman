@@ -249,8 +249,8 @@ class RequestController extends Controller
         $ongoing = RequestService::query()
             ->where('employee_id', Auth::id())
             ->where('status', 'ongoing')->get();
-        dd($ongoing->client_id);
-        $client = User::query()->findOrFail($ongoing->client_id);
+
+      //  $client = User::query()->findOrFail($ongoing->client_id);
 
         return response()->json(['status' => 'success', 'requests' => $ongoing, 'from' => $client]);
     }
