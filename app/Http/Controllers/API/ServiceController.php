@@ -38,32 +38,13 @@ class ServiceController extends Controller
 
         $user = User::query()->find(Auth::id());
 
-        $service_ids_in_user = $user->service_ids;
-        $key = 0;
-
-        for ($i = 0; $i < sizeof($user->service_ids); $i++) {
-            if ($service_ids_in_user[$i] === $id) {
-                $key = $i;
-                // dd($key);
-            }
+        $services = [];
+        foreach ( $user->service_ids as $s){
+            if ( $s != $id)
+            $services [] = $s;
         }
-        unset($service_ids_in_user[$key]);
-        $user->service_ids = $service_ids_in_user;
-        $user->save();
 
-//wan l mshkli wen am saving it back again its saved as an objcect //try now its the same
-        $service = Service::query()->findOrFail($id);
-        $user_ids_in_service =$service->user_ids;
-        $key = 0;
-        for ($i = 0; $i < sizeof($user_ids_in_service); $i++) {
-            if ($user_ids_in_service[$i] == $user->id) {
-                $key = $i;
-            }
-        }
-        unset($user_ids_in_service[$key]);
-        $service->user_ids = $service_ids_in_user;
-        $service->save();
-
+        $user->services()->sync($services);
 
         return response()->json(['status' => 'success']);
 
