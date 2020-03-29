@@ -42,6 +42,7 @@ class ServiceController extends Controller
 
         $service_ids_in_user[] = $user->service_ids;
         $key = 0;
+        dd($service_ids_in_user);
         for ($i = 0; $i <= sizeof($user->service_ids); $i++) {
             if ($service_ids_in_user[$i] == $id) {
                 $key = $i;
