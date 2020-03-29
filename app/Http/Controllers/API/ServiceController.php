@@ -16,8 +16,8 @@ class ServiceController extends Controller
     public function addService($id)
     {
         $service = Service::query()->find($id);
+        $user = User::query()->find(Auth::id());
 
-        $user = Auth::user();
         $user_id = $service->user_ids;
         array_push($user_id, $user->id);
         $service->user_ids = $user_id;
