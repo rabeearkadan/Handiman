@@ -5,7 +5,6 @@ namespace App\Http\Controllers\API;
 use App\Http\Controllers\Controller;
 use App\Models\Service;
 use App\User;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
 class ServiceController extends Controller
@@ -46,7 +45,7 @@ class ServiceController extends Controller
 //          dd($service_ids_in_user[$i]);
             if ($service_ids_in_user[$i] === $id) {
                 $key = $i;
-               // dd($key);
+                // dd($key);
             }
         }
         unset($service_ids_in_user[$key]);
@@ -54,8 +53,8 @@ class ServiceController extends Controller
         $user->save();
 
 
-        $service = Service::query()->find($id)->get();
-dd($service->user_ids);
+        $service = Service::query()->findOrFail($id);
+        dd($service->user_ids);
         $user_ids_in_service = $service->user_ids;
         $key = 0;
         for ($i = 0; $i < sizeof($user_ids_in_service); $i++) {
