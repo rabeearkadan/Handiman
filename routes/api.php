@@ -69,6 +69,7 @@ Route::middleware(['auth:api'])->group(function () {
     Route::post('credit-card', 'PaymentController@setCreditCard');
     Route::get('credit-card', 'PaymentController@getCreditCard');
     Route::post('add-service/{id}', 'ServiceController@addService');
+    Route::get('delete-service/{id}', 'ServiceController@deleteService');
 
     // Route::put('profile/edit', 'UserController@editProfile');
     //Route::get('profile/edit', 'UserController@getProfile');
