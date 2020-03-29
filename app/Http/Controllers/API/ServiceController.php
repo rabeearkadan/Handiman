@@ -38,7 +38,7 @@ class ServiceController extends Controller
 
         $user = User::query()->find(Auth::id());
 
-        $service_ids_in_user = $user->service_ids;
+        $service_ids_in_user = array($user->service_ids);
         $key = 0;
 
         for ($i = 0; $i < sizeof($user->service_ids); $i++) {
@@ -54,7 +54,7 @@ class ServiceController extends Controller
 
 
         $service = Service::query()->findOrFail($id);
-        $user_ids_in_service = $service->user_ids;
+        $user_ids_in_service = array($service->user_ids);
         $key = 0;
         for ($i = 0; $i < sizeof($user_ids_in_service); $i++) {
             if ($user_ids_in_service[$i] == $user->id) {
