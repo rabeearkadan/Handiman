@@ -252,7 +252,7 @@ class RequestController extends Controller
 
       //  $client = User::query()->findOrFail($ongoing->client_id);
 
-        return response()->json(['status' => 'success', 'requests' => $ongoing, 'from' => $client]);
+        return response()->json(['status' => 'success', 'requests' => $ongoing]);
     }
 
     public function getHandymanOutgoingRequests()
