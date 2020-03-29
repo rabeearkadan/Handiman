@@ -47,7 +47,7 @@ class ServiceController extends Controller
 //          dd($service_ids_in_user[$i]);
             if ($service_ids_in_user[$i] === $id) {
                 $key = $i;
-                dd($key);
+               // dd($key);
             }
         }
         unset($service_ids_in_user[$key]);
