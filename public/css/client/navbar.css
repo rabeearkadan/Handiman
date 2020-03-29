@@ -1,4 +1,5 @@
 .nav {
+    -webkit-font-smoothing: initial;
     font-size:1.1rem;
     width:100%;
     display: inline-flex;
