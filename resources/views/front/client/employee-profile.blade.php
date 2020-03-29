@@ -60,15 +60,12 @@
                 <div class="intro">
                     <div class="profile-img"><img src="{{config('image.path').$employee->image}}" alt=""></div>
                     <h2><b> {{$employee->name}} </b></h2>
-                    <h4 class="font-yellow">Key Account Manager</h4>
+                    <h4 class="font-yellow"> Services </h4>
                     <ul class="information margin-tb-30">
                         <li><b>BORN : </b>August 25, 1987</li>
-                        <li><b>EMAIL : </b>mymith@mywebpage.com</li>
-                        <li><b>MARITAL STATUS : </b>Married</li>
+                        <li><b>Price : </b>$7/hr</li>
                     </ul>
                     <ul class="social-icons">
-                        <li><a href="#"><i class="ion-social-pinterest"></i></a></li>
-                        <li><a href="#"><i class="ion-social-linkedin"></i></a></li>
                         <li><a href="#"><i class="ion-social-instagram"></i></a></li>
                         <li><a href="#"><i class="ion-social-facebook"></i></a></li>
                         <li><a href="#"><i class="ion-social-twitter"></i></a></li>
@@ -139,7 +136,7 @@
             Ratings and Reviews
         </h2>
 
-        <a href="#" class="link section__nav__see-all-link ember-view">See All</a>
+        <a href="{{route('client.user-profile.all.reviews',[$service->id,$employee->id])}}" class="link section__nav__see-all-link ember-view"> See All</a>
     </div>
     <div class="we-customer-ratings lockup ember-view">
         <div class="l-row">
@@ -212,7 +209,7 @@
 
                 <blockquote class="we-truncate we-truncate--multi-line we-truncate--interactive we-truncate--truncated ember-view we-customer-review__body">
 
-                    <div class="we-clamp ember-view" style="height: 72px; -webkit-mask: linear-gradient(0deg, rgba(0, 0, 0, 0) 0px, rgba(0, 0, 0, 0) 18.0001px, rgb(0, 0, 0) 18.0001px), linear-gradient(270deg, rgba(0, 0, 0, 0) 0px, rgba(0, 0, 0, 0) 32.8px, rgb(0, 0, 0) 68.8002px);">
+                    <div class="we-clamp ember-view">
                         <p>Review</p>
                     </div>
 
@@ -252,7 +249,7 @@
 
                 <blockquote  class="we-truncate we-truncate--multi-line we-truncate--interactive we-truncate--truncated ember-view we-customer-review__body">
 
-                    <div  class="we-clamp ember-view"  style="height: 72px; -webkit-mask: linear-gradient(0deg, rgba(0, 0, 0, 0) 0px, rgba(0, 0, 0, 0) 18.0001px, rgb(0, 0, 0) 18.0001px), linear-gradient(270deg, rgba(0, 0, 0, 0) 0px, rgba(0, 0, 0, 0) 32.8px, rgb(0, 0, 0) 68.8002px);">
+                    <div  class="we-clamp ember-view">
                         <p >Review</p>
                     </div>
 
@@ -273,7 +270,6 @@
     </div>
 
 
-    </div>
 
     <div class="l-row l-row--margin-top medium-hide">
 
@@ -462,9 +458,7 @@
                 child = e.lastElementChild;
             }
         }
-
-
-    </script>
+ </script>
     <script src="/public/common-js/jquery-3.2.1.min.js"></script>
     <script src="/public/common-js/tether.min.js"></script>
     <script src="/public/common-js/bootstrap.js"></script>
@@ -474,7 +468,3 @@
     <script src="/public/common-js/jquery.fluidbox.min.js"></script>
     <script src="/public/common-js/scripts.js"></script>
 @endpush
-
-
-
-

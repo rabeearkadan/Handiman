@@ -1,4 +1,7 @@
 .nav {
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased ;
+    font-size:15px;
     width:100%;
     display: inline-flex;
     position: relative;
@@ -6,7 +9,7 @@
     background-color: #fff;
     padding: 0 20px;
     box-shadow: 0 10px 40px rgba(227, 228, 232, 0.8);
-    margin-bottom: 20px;
+    margin: 0 0 20px ;
 }
 .nav-item{
     color: #83818c;
@@ -40,7 +43,6 @@
     position: absolute;
     left: 0;
     bottom: 0;
-    height: 4px;
     transition: .4s;
     height: 5px;
     z-index: 1;
@@ -48,7 +50,8 @@
 }
 @media (max-width: 580px) {
     .nav {
-        overflow: auto;
+        overflow-y: hidden;
+        overflow-x: auto;
         padding: 0 10px;
     }
     .nav-item {

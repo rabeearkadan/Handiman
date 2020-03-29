@@ -1,3 +1,6 @@
+body{
+    margin:0;
+}
 .link:link, .link:visited, a:link, a:visited {
     text-decoration: none;
 }
@@ -6,7 +9,7 @@ button {
     border: 0;
 }
 
-h2 + *, h3 + *, p + * {
+h2 , h3 , p  {
     margin-top: 0;
 }
 
@@ -75,10 +78,7 @@ button {
     opacity: .32;
 }
 
-*, ::after, ::before {
-    -webkit-box-sizing: inherit;
-    box-sizing: inherit;
-}
+
 
 h2, h3 {
     font-size: 1em;
@@ -651,7 +651,10 @@ h2, h3 {
     background-repeat: no-repeat;
     margin-left: auto;
 }
-
+.we-clamp.ember-view{
+    height:72px;
+    mask: linear-gradient(0deg, rgba(0, 0, 0, 0) 0px, rgba(0, 0, 0, 0) 18.0001px, rgb(0, 0, 0) 18.0001px), linear-gradient(270deg, rgba(0, 0, 0, 0) 0px, rgba(0, 0, 0, 0) 32.8px, rgb(0, 0, 0) 68.8002px);
+}
 .we-star-bar-graph__stars--2 {
     width: 19.5px;
 }
