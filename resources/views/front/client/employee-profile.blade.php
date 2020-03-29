@@ -136,7 +136,7 @@
             Ratings and Reviews
         </h2>
 
-        <a href="#" class="link section__nav__see-all-link ember-view">See All</a>
+        <a href="{{route('client.user-profile.all.reviews')}}" class="link section__nav__see-all-link ember-view"> See All</a>
     </div>
     <div class="we-customer-ratings lockup ember-view">
         <div class="l-row">
@@ -209,7 +209,7 @@
 
                 <blockquote class="we-truncate we-truncate--multi-line we-truncate--interactive we-truncate--truncated ember-view we-customer-review__body">
 
-                    <div class="we-clamp ember-view" style="height: 72px; -webkit-mask: linear-gradient(0deg, rgba(0, 0, 0, 0) 0px, rgba(0, 0, 0, 0) 18.0001px, rgb(0, 0, 0) 18.0001px), linear-gradient(270deg, rgba(0, 0, 0, 0) 0px, rgba(0, 0, 0, 0) 32.8px, rgb(0, 0, 0) 68.8002px);">
+                    <div class="we-clamp ember-view">
                         <p>Review</p>
                     </div>
 
@@ -249,7 +249,7 @@
 
                 <blockquote  class="we-truncate we-truncate--multi-line we-truncate--interactive we-truncate--truncated ember-view we-customer-review__body">
 
-                    <div  class="we-clamp ember-view"  style="height: 72px; -webkit-mask: linear-gradient(0deg, rgba(0, 0, 0, 0) 0px, rgba(0, 0, 0, 0) 18.0001px, rgb(0, 0, 0) 18.0001px), linear-gradient(270deg, rgba(0, 0, 0, 0) 0px, rgba(0, 0, 0, 0) 32.8px, rgb(0, 0, 0) 68.8002px);">
+                    <div  class="we-clamp ember-view">
                         <p >Review</p>
                     </div>
 
@@ -270,7 +270,6 @@
     </div>
 
 
-    </div>
 
     <div class="l-row l-row--margin-top medium-hide">
 
@@ -459,9 +458,7 @@
                 child = e.lastElementChild;
             }
         }
-
-
-    </script>
+ </script>
     <script src="/public/common-js/jquery-3.2.1.min.js"></script>
     <script src="/public/common-js/tether.min.js"></script>
     <script src="/public/common-js/bootstrap.js"></script>
@@ -471,7 +468,3 @@
     <script src="/public/common-js/jquery.fluidbox.min.js"></script>
     <script src="/public/common-js/scripts.js"></script>
 @endpush
-
-
-
-
