@@ -1,3 +1,6 @@
+body{
+    margin:0;
+}
 .link:link, .link:visited, a:link, a:visited {
     text-decoration: none;
 }
