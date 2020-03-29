@@ -54,7 +54,6 @@ class ServiceController extends Controller
 
 
         $service = Service::query()->findOrFail($id);
-        dd($service->user_ids);
         $user_ids_in_service = $service->user_ids;
         $key = 0;
         for ($i = 0; $i < sizeof($user_ids_in_service); $i++) {
