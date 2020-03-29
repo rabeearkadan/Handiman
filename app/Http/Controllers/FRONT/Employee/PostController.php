@@ -50,8 +50,10 @@ class PostController extends Controller
         $post = Post::create( $this->validatePost($request));
         $post->users()->attach($user->_id);
         $user->posts()->attach($post->_id);
-        foreach ($tags as $tagId) {
-            $post->tags()->attach($tagId);
+        if(isset($tags)) {
+            foreach ($tags as $tagId) {
+                $post->tags()->attach($tagId);
+            }
         }
         return redirect(route('employee.post.index'));
     }
@@ -98,7 +100,7 @@ class PostController extends Controller
      * Remove the specified resource from storage.
      *
      * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
      */
     public function destroy($id)
     {
