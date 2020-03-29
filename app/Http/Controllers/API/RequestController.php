@@ -248,7 +248,7 @@ class RequestController extends Controller
 
         $ongoing = RequestService::query()
             ->where('employee_id', Auth::id())
-            ->where('status', 'ongoing')->get();
+            ->where('status', 'ongoing');
 
         $client = User::query()->where('id', $ongoing->client_id)->get();
 
