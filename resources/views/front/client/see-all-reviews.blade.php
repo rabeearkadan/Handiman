@@ -11,8 +11,8 @@
                 employee Name
             </a>
             <span class="see-all-header__title">
-          Ratings and Reviews
-        </span>
+                Ratings and Reviews
+            </span>
         </h1>
         <div class="we-customer-ratings lockup ember-view">
             <div class="l-row">
@@ -59,21 +59,22 @@
                 </div>
             </div>
         </div>
+        <!-- all reviews -->
         <div class="l-row">
+            <!-- review -->
             <div
                 class="ember-view l-column--grid l-column small-12 medium-6 large-4 small-valign-top l-column--equal-height">
                 <div class="we-customer-review lockup ember-view">
                     <figure aria-label="1 out of 5"
                             class="we-star-rating ember-view we-customer-review__rating we-star-rating--large">
-                                    <span class="we-star-rating-stars-outlines">
-                                        <span class="we-star-rating-stars we-star-rating-stars-1"></span>
-                                    </span>
+                        <span class="we-star-rating-stars-outlines">
+                            <span class="we-star-rating-stars we-star-rating-stars-1"></span>
+                        </span>
                     </figure>
                     <div class="we-customer-review__header we-customer-review__header--user">
-                                    <span
-                                        class="we-truncate we-truncate--single-line ember-view we-customer-review__user">
-                                        Client Name
-                                    </span>
+                        <span class="we-truncate we-truncate--single-line ember-view we-customer-review__user">
+                            Client Name
+                        </span>
                         <span class="we-customer-review__separator">, </span>
                         <time aria-label="Month 0, 2020" class="we-customer-review__date">
                             00/00/2020
@@ -82,11 +83,12 @@
                     <h3 class="we-truncate we-truncate--single-line ember-view we-customer-review__title">
                         title
                     </h3>
-
                     <blockquote
                         class="we-truncate we-truncate--multi-line we-truncate--interactive we-truncate--truncated ember-view we-customer-review__body">
                         <div class="we-clamp ember-view">
-                            <p>body</p>
+                            <p>I report many problem in WhatsApp and all I got the feed back
+                                is same reply which is cut and paste from your technical department. I have serious
+                                issues and took snapshots and the </p>
                             <br>
                         </div>
                         <button class="we-truncate__button link">
@@ -94,8 +96,8 @@
                         </button>
                     </blockquote>
                 </div>
-            </div>
-        </div>
+            </div><!-- review -->
+        </div><!-- all reviews -->
         <div class="we-loading-spinner ember-view we-loading-spinner--see-all"></div>
     </section>
 @endsection
