@@ -125,53 +125,8 @@
                 </div>
             </div><!-- col-sm-4 -->
             <div class="col-sm-8">
-                <p class="margin-b-50">Duis non volutpat arcu, eu mollis tellus. Sed finibus aliquam neque
-                    sit amet sodales. Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                    Nulla maximus pellentes que velit, quis consequat nulla effi citur at.
-                    Maecenas sed massa tristique.Duis non volutpat arcu, eu mollis tellus.
-                    Sed finibus aliquam neque sit amet sodales. Lorem ipsum dolor sit amet,
-                    consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur
-                    adipiscing elit. Nulla maximus pellentes que velit, quis consequat nulla
-                    effi citur at.Maecenas sed massa tristique.</p>
+                <p class="margin-b-50"> {{$employee->biography}} </p>
 
-                <div class="row">
-                    <div class="col-sm-6 col-md-6 col-lg-3">
-                        <div class="radial-prog-area margin-b-30">
-                            <div class="radial-progress" data-prog-percent=".97">
-                                <div></div>
-                                <h6 class="progress-title">HTML5 & CSS3</h6>
-                            </div>
-                        </div><!-- radial-prog-area-->
-                    </div><!-- col-sm-6-->
-
-                    <div class="col-sm-6 col-md-6 col-lg-3">
-                        <div class="radial-prog-area margin-b-30">
-                            <div class="radial-progress" data-prog-percent=".78">
-                                <div></div>
-                                <h6 class="progress-title">WEB DESIGN</h6>
-                            </div>
-                        </div><!-- radial-prog-area-->
-                    </div><!-- col-sm-6-->
-
-                    <div class="col-sm-6 col-md-6 col-lg-3">
-                        <div class="radial-prog-area margin-b-30">
-                            <div class="radial-progress" data-prog-percent=".67">
-                                <div></div>
-                                <h6 class="progress-title">JAVA</h6>
-                            </div>
-                        </div><!-- radial-prog-area-->
-                    </div><!-- col-sm-6-->
-
-                    <div class="col-sm-6 col-md-6 col-lg-3">
-                        <div class="radial-prog-area margin-b-50">
-                            <div class="radial-progress" data-prog-percent=".97">
-                                <div></div>
-                                <h6 class="progress-title">PHP</h6>
-                            </div>
-                        </div><!-- radial-prog-area-->
-                    </div><!-- col-sm-6-->
-
-                </div><!-- row -->
             </div><!-- col-sm-8 -->
         </div><!-- row -->
     </div><!-- container -->
