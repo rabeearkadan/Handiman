@@ -3,8 +3,6 @@
 use Illuminate\Http\Request;
 
 
-
-
 Route::post('login', 'LoginController@login');
 Route::post('register', 'RegisterController@register');
 Route::post('test-notification/{user_id}/{isClient}', 'NotificationController@test');

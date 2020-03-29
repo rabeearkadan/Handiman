@@ -8,6 +8,277 @@
     <link href="{{asset('css/client/employee-profile/common-css/fluidbox.min.css')}}" rel="stylesheet">
     <link href="{{asset('css/client/employee-profile/cv-portfolio/styles.css')}}" rel="stylesheet">
     <link href="{{asset('css/client/employee-profile/cv-portfolio/responsive.css')}}" rel="stylesheet">
+    <style>
+
+        .link:link,.link:visited,a:link,a:visited{text-decoration:none;}
+        button{border:0;}
+        h2+*,h3+*,p+*{margin-top:0;}
+        h2,h3{color:#1d1d1f;}
+        blockquote,button,figure,h2,h3,p{margin:0;padding:0;}
+        button{background:0 0;-webkit-box-sizing:content-box;box-sizing:content-box;color:inherit;cursor:pointer;font:inherit;line-height:inherit;overflow:visible;vertical-align:inherit;}
+        button:disabled{cursor:default;}
+        :focus{outline:rgba(0,125,250,.6) solid 4px;outline-offset:1px;}
+        ::-moz-focus-inner{border:0;padding:0;}
+        h2,h3{font-weight:600;}
+        button{font-synthesis:none;-moz-font-feature-settings:'kern';-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;direction:ltr;text-align:left;}
+        .link,a{color:#0070c9;letter-spacing:inherit;}
+        .link:hover,a:hover{text-decoration:underline;}
+        .link:active,a:active{text-decoration:none;}
+        .link:disabled,a:disabled{opacity:.32;}
+        *,::after,::before{-webkit-box-sizing:inherit;box-sizing:inherit;}
+        h2,h3{font-size:1em;font-weight:400;}
+        .l-row{padding:0;font-size:0;}
+        .l-row--peek{display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-box-align:end;-webkit-align-items:flex-end;-ms-flex-align:end;align-items:flex-end;}
+        .l-row--margin-top{margin-top:20px;}
+        .l-column{margin:0;padding:0;display:inline-block;vertical-align:bottom;font-size:13px;}
+        .l-row{margin-left:-3.39506%;}
+        .l-column{margin-left:3.28358%;}
+        .small-valign-top{vertical-align:top!important;-webkit-align-self:start;-ms-flex-item-align:start;align-self:start;}
+        @media only screen and (max-width:734px){
+            .l-row--peek{overflow-x:auto;overflow-y:hidden;-webkit-overflow-scrolling:touch;overflow-scrolling:touch;width:auto;min-width:100%;white-space:nowrap;margin-bottom:-9.75px;margin-left:-6.25vw;margin-right:-6.25vw;padding-left:6.25vw;padding-right:6.25vw;}
+            .l-row--peek::after{content:'';display:block;-webkit-box-flex:0;-webkit-flex:0 0 6.25vw;-ms-flex:0 0 6.25vw;flex:0 0 6.25vw;-webkit-align-self:stretch;-ms-flex-item-align:stretch;align-self:stretch;}
+            .l-row--peek .l-column:first-child{margin-left:0;}
+            .l-row--peek .small-4{-webkit-flex-shrink:0;-ms-flex-negative:0;flex-shrink:0;width:87.5vw;max-width:87.5vw;}
+            .l-row--peek .l-column{white-space:normal;padding-bottom:9.75px;}
+        }
+        .small-4{-webkit-flex-shrink:0;-ms-flex-negative:0;flex-shrink:0;width:30.04975%;max-width:30.04975%;}
+        .small-8{-webkit-flex-shrink:0;-ms-flex-negative:0;flex-shrink:0;width:63.38308%;max-width:63.38308%;}
+        @media only screen and (min-width:735px){
+            .small-4{-webkit-flex-shrink:0;-ms-flex-negative:0;flex-shrink:0;width:30.44316%;max-width:30.44316%;}
+            .small-8{-webkit-flex-shrink:0;-ms-flex-negative:0;flex-shrink:0;width:63.77649%;max-width:63.77649%;}
+        }
+        @media only screen and (min-width:1069px){
+            .small-4{-webkit-flex-shrink:0;-ms-flex-negative:0;flex-shrink:0;width:31.39456%;max-width:31.39456%;}
+            .small-8{-webkit-flex-shrink:0;-ms-flex-negative:0;flex-shrink:0;width:64.72789%;max-width:64.72789%;}
+        }
+        @media only screen and (min-width:735px){
+            .l-row{margin-left:-2.97619%;}
+            .l-column{margin-left:2.89017%;}
+        }
+        @media only screen and (min-width:735px){
+            .medium-6{-webkit-flex-shrink:0;-ms-flex-negative:0;flex-shrink:0;width:47.10983%;max-width:47.10983%;}
+        }
+        @media only screen and (min-width:1069px){
+            .medium-6{-webkit-flex-shrink:0;-ms-flex-negative:0;flex-shrink:0;width:48.06122%;max-width:48.06122%;}
+            .l-row{margin-left:-1.97711%;}
+            .l-column{margin-left:1.93878%;}
+        }
+        @media only screen and (min-width:1069px){
+            .large-4{-webkit-flex-shrink:0;-ms-flex-negative:0;flex-shrink:0;width:31.39456%;max-width:31.39456%;}
+        }
+        .l-column--equal-height{-webkit-align-self:stretch;-ms-flex-item-align:stretch;align-self:stretch;}
+        .small-hide{display:none;}
+        @media only screen and (min-width:735px){
+            .medium-hide{display:none;}
+            .medium-show{display:block;}
+        }
+        .l-content-width{margin-left:auto;margin-right:auto;width:87.5%;}
+        @media only screen and (min-width:735px){
+            .l-content-width{margin-left:auto;margin-right:auto;width:692px;}
+        }
+        @media only screen and (min-width:1069px){
+            .l-content-width{margin-left:auto;margin-right:auto;width:980px;}
+        }
+        .link{text-decoration:none;}
+        .link{color:#0070c9;}
+        @media (monochrome),(min-monochrome:1){
+            .link{text-decoration:underline!important;}
+        }
+        .is-app-theme .link{color:#0070c9;}
+        .link:active,.link:focus,.link:hover{text-decoration:underline;}
+        .section{padding-top:19px;padding-bottom:32px;height:100}
+        .section--bordered{border-top:1px solid #d6d6d6;}
+        .section__headline{margin-bottom:17px;-webkit-flex-shrink:1;-ms-flex-negative:1;flex-shrink:1;font-size:20px;line-height:1.2;font-weight:700;letter-spacing:.024em;font-family:"SF Pro Display","SF Pro Icons","Apple WebExp Icons Custom","Helvetica Neue",Helvetica,Arial,sans-serif;}
+        .section__nav{display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-box-pack:justify;-webkit-justify-content:space-between;-ms-flex-pack:justify;justify-content:space-between;-webkit-box-align:end;-webkit-align-items:flex-end;-ms-flex-align:end;align-items:flex-end;}
+        .section__nav__see-all-link{margin-bottom:17px;display:inline-block;-webkit-flex-shrink:0;-ms-flex-negative:0;flex-shrink:0;margin-left:16px;}
+        .we-truncate{position:relative;z-index:1;}
+        .we-truncate--single-line{overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}
+        .we-truncate__button{float:right;}
+        .l-column--equal-height>.we-customer-review{min-height:184px;}
+        .we-star-rating{display:inline-block;}
+        .we-star-rating-stars,.we-star-rating-stars-outlines{display:inline-block;height:9.5px;background-image:url(https://apps.apple.com/assets/images/stars-lg-bc4f4bfdd931e007ab096dd1c209c689.svg);background-size:10px 19px;}
+        .we-star-rating--large .we-star-rating-stars,.we-star-rating--large .we-star-rating-stars-outlines{height:25px;background-size:24px 50px;}
+        .we-star-rating-stars-outlines{width:50px;background-position:0 9.5px;line-height:9.5px;z-index:1;}
+        .we-star-rating--large .we-star-rating-stars-outlines{width:120px;background-position:0 25px;}
+        .we-star-rating-stars{width:0;background-position-x:0;}
+        .we-star-rating--large .we-star-rating-stars.we-star-rating-stars-1{width:24px;}
+        .we-star-rating--large .we-star-rating-stars.we-star-rating-stars-2{width:48px;}
+        .we-star-rating--large .we-star-rating-stars.we-star-rating-stars-3{width:72px;}
+        .we-star-rating--large .we-star-rating-stars.we-star-rating-stars-4{width:96px;}
+        .we-star-rating--large .we-star-rating-stars.we-star-rating-stars-5{width:120px;}
+
+
+        .we-star-rating-stars.we-star-rating-stars-1{width:10px;}
+        .we-star-rating-stars.we-star-rating-stars-2{width:20px;}
+        .we-star-rating-stars.we-star-rating-stars-3{width:30px;}
+        .we-star-rating-stars.we-star-rating-stars-4{width:40px;}
+        .we-star-rating-stars.we-star-rating-stars-5{width:50px;}
+
+
+        .we-customer-ratings{margin-bottom:15px;}
+        .we-customer-ratings__stats{display:-webkit-inline-box;display:-webkit-inline-flex;display:-ms-inline-flexbox;display:inline-flex;vertical-align:bottom;-webkit-box-pack:justify;-webkit-justify-content:space-between;-ms-flex-pack:justify;justify-content:space-between;}
+        .we-customer-ratings__averages{text-align:center;color:#636366;font-size:13px;line-height:1.38462;font-weight:600;letter-spacing:-.005em;font-family:"SF Pro Text","SF Pro Icons","Apple WebExp Icons Custom","Helvetica Neue",Helvetica,Arial,sans-serif;}
+        @media only screen and (min-width:735px){
+            .we-customer-ratings__averages{text-align:left;}
+        }
+        .we-customer-ratings__count{margin-top:8px;text-align:right;color:#636366;font-size:13px;line-height:1.38462;font-weight:400;letter-spacing:-.005em;font-family:"SF Pro Text","SF Pro Icons","Apple WebExp Icons Custom","Helvetica Neue",Helvetica,Arial,sans-serif;}
+        @media only screen and (min-width:735px){
+            .we-customer-ratings__count{margin-top:0;-webkit-align-self:flex-end;-ms-flex-item-align:end;align-self:flex-end;}
+        }
+        .we-customer-review{background-color:#f8f8f8;border-radius:6px;-webkit-align-self:start;-ms-flex-item-align:start;align-self:start;height:100%;}
+        .we-customer-ratings__averages__display{margin-bottom:10px;display:block;line-height:43px;font-size:60px;font-weight:700;letter-spacing:-.07em;color:#4c4c50;margin-right:3px;}
+        @media only screen and (min-width:735px){
+            .we-customer-ratings__averages__display{margin-bottom:0;display:inline-block;}
+        }
+        .we-customer-review{padding:13px 16px 16px;}
+        .we-customer-review__rating{margin-bottom:3px;}
+        .we-customer-review__header{display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;}
+        .we-customer-review__separator{white-space:pre;}
+        .we-customer-review__title{font-size:13px;line-height:1.38462;font-weight:600;letter-spacing:-.005em;font-family:"SF Pro Text","SF Pro Icons","Apple WebExp Icons Custom","Helvetica Neue",Helvetica,Arial,sans-serif;}
+        .we-customer-review__body{font-size:13px;line-height:1.38462;font-weight:400;letter-spacing:-.005em;font-family:"SF Pro Text","SF Pro Icons","Apple WebExp Icons Custom","Helvetica Neue",Helvetica,Arial,sans-serif;}
+        .we-customer-review__header--user{margin-bottom:15px;color:#636366;font-size:12px;line-height:1.33337;font-weight:600;letter-spacing:0;font-family:"SF Pro Text","SF Pro Icons","Apple WebExp Icons Custom","Helvetica Neue",Helvetica,Arial,sans-serif;}
+        .we-customer-review__date{-webkit-flex-shrink:0;-ms-flex-negative:0;flex-shrink:0;white-space:nowrap;}
+        .we-star-bar-graph__row{display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-box-align:center;-webkit-align-items:center;-ms-flex-align:center;align-items:center;}
+        .we-star-bar-graph__bar{width:calc(100% - 59px);height:2px;position:relative;top:1px;background-color:#efeff4;border-radius:4px;margin-left:10px;z-index:1;}
+        .we-star-bar-graph__bar__foreground-bar{max-width:100%;height:100%;position:absolute;top:0;background-color:#636366;border-radius:4px;left:0;z-index:1;}
+        .we-star-bar-graph__stars{width:10px;height:9px;display:inline-block;background-image:url(https://apps.apple.com/assets/images/five-star-rating-gray-ec0707c56bc834adf5dd504c555d4982.svg);background-size:49px 9px;background-position:100% center;background-repeat:no-repeat;margin-left:auto;}
+        .we-star-bar-graph__stars--2{width:19.5px;}
+        .we-star-bar-graph__stars--3{width:29.5px;}
+        .we-star-bar-graph__stars--4{width:39.5px;}
+        .we-star-bar-graph__stars--5{width:49px;}
+        @media only screen and (min-width:735px){
+            .we-star-bar-graph{margin-bottom:4px;}
+        }
+        .we-clamp{display:block;overflow:hidden;-webkit-mask-size:100% 100%;mask-size:100% 100%;-webkit-mask-position:right bottom;mask-position:right bottom;word-break:break-word;}
+
+
+
+
+
+
+
+
+        button{border:0;}
+        h3+*,p+*{margin-top:0;}
+        h3{color:#1d1d1f;}
+        blockquote,button,figure,h3,p{margin:0;padding:0;}
+        button{background:0 0;-webkit-box-sizing:content-box;box-sizing:content-box;color:inherit;cursor:pointer;font:inherit;line-height:inherit;overflow:visible;vertical-align:inherit;}
+        button:disabled{cursor:default;}
+        :focus{outline:rgba(0,125,250,.6) solid 4px;outline-offset:1px;}
+        ::-moz-focus-inner{border:0;padding:0;}
+        h3{font-weight:600;}
+        button{font-synthesis:none;-moz-font-feature-settings:'kern';-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;direction:ltr;text-align:left;}
+        *,::after,::before{-webkit-box-sizing:inherit;box-sizing:inherit;}
+        h3{font-size:1em;font-weight:400;}
+        @media only screen and (min-width:735px){
+            .medium-12{-webkit-flex-shrink:0;-ms-flex-negative:0;flex-shrink:0;width:97.10983%;max-width:97.10983%;}
+        }
+        @media only screen and (min-width:1069px){
+            .medium-12{-webkit-flex-shrink:0;-ms-flex-negative:0;flex-shrink:0;width:98.06122%;max-width:98.06122%;}
+        }
+        @media only screen and (min-width:1069px){
+            .large-10{-webkit-flex-shrink:0;-ms-flex-negative:0;flex-shrink:0;width:81.39456%;max-width:81.39456%;}
+        }
+        .we-truncate{position:relative;z-index:1;}
+        .we-truncate--single-line{overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}
+        .we-star-rating{display:inline-block;}
+        .we-star-rating-stars,.we-star-rating-stars-outlines{display:inline-block;height:9.5px;background-image:url(https://apps.apple.com/assets/images/stars-lg-bc4f4bfdd931e007ab096dd1c209c689.svg);background-size:10px 19px;}
+        .we-star-rating--large .we-star-rating-stars,.we-star-rating--large .we-star-rating-stars-outlines{height:25px;background-size:24px 50px;}
+        .we-star-rating-stars-outlines{width:50px;background-position:0 9.5px;line-height:9.5px;z-index:1;}
+        .we-star-rating--large .we-star-rating-stars-outlines{width:120px;background-position:0 25px;}
+        .we-star-rating-stars{width:0;background-position-x:0;}
+        .we-star-rating-stars.we-star-rating-stars-4{width:40px;}
+        .we-star-rating--large .we-star-rating-stars.we-star-rating-stars-4{width:96px;}
+        .we-customer-review{background-color:#f8f8f8;border-radius:6px;-webkit-align-self:start;-ms-flex-item-align:start;align-self:start;height:100%;}
+        .we-customer-review{padding:13px 16px 16px;}
+        .we-modal__content__wrapper .we-customer-review{padding-left:0;padding-right:0;}
+        .we-customer-review__rating{margin-bottom:3px;}
+        .we-customer-review__header{display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;}
+        .we-customer-review__separator{white-space:pre;}
+        .we-customer-review__title{font-size:13px;line-height:1.38462;font-weight:600;letter-spacing:-.005em;font-family:"SF Pro Text","SF Pro Icons","Apple WebExp Icons Custom","Helvetica Neue",Helvetica,Arial,sans-serif;}
+        .we-customer-review__header--user{margin-bottom:15px;color:#636366;font-size:12px;line-height:1.33337;font-weight:600;letter-spacing:0;font-family:"SF Pro Text","SF Pro Icons","Apple WebExp Icons Custom","Helvetica Neue",Helvetica,Arial,sans-serif;}
+        .we-customer-review__date{-webkit-flex-shrink:0;-ms-flex-negative:0;flex-shrink:0;white-space:nowrap;}
+        .we-modal{
+            position:fixed;top:48px;right:0;bottom:0;left:10;display:none;max-height:100vh;z-index:0;}
+        @media (-ms-high-contrast:none),(-ms-high-contrast:active){
+            .we-modal{top:0;}
+        }
+        .we-modal--page-overlay{padding:0;background:rgba(255,255,255,.9);}
+        @media only screen and (min-width:735px){
+            .we-modal{top:0;}
+            .we-modal--page-overlay{padding-top:54px;padding-bottom:54px;}
+        }
+        .we-modal__content{height:calc(100vh - 49px);width:100%;position:absolute;top:50%;background:#fff;word-break:break-word;-webkit-transform:translate(-50%,-50%);-ms-transform:translate(-50%,-50%);transform:translate(-50%,-50%);left:50%;z-index:1;border-top:1px solid #d6d6d6;padding:30px 5px 30px 20px;}
+        @media only screen and (min-width:735px){
+            .we-modal__content{height:auto;max-width:600px;max-height:calc(100vh - 108px);border:1px solid rgba(0,0,0,.08);border-radius:10px;-webkit-box-shadow:0 15px 20px rgba(0,0,0,.5);box-shadow:0 15px 20px rgba(0,0,0,.5);}
+        }
+        .we-modal__content--review{background-color:#f8f8f8;}
+        .we-modal__content__wrapper{max-height:calc(100vh - 109px);overflow:auto;-webkit-overflow-scrolling:touch;padding-right:15px;}
+        @media only screen and (min-width:735px){
+            .we-modal__content__wrapper{max-height:calc(100vh - 168px);}
+        }
+        @media (-ms-high-contrast:none),(-ms-high-contrast:active){
+            .we-modal__content{border-top:0;height:100vh;}
+            .we-modal__content__wrapper{max-height:100%;}
+        }
+        .we-modal--open{display:block;z-index:10001;}
+        .we-modal__close{
+            margin:0;
+            padding:0 20px 0 0;
+            width:40px;
+            height:30px;
+            -webkit-box-sizing:border-box;
+            box-sizing:border-box;border:0;
+            position:absolute;
+            top:15px;
+            overflow:hidden;
+            -webkit-transform:translateY(-50%);
+            -ms-transform:translateY(-50%);
+            transform:translateY(-50%);
+            font-size:20px;
+            cursor:pointer;background:0 0;
+            color:#636366;
+            text-align:right;
+            left:0;
+            z-index:10001;
+
+        }
+        .we-modal__close::after,.we-modal__close::before{
+            font-family:"SF Pro Icons","Apple WebExp Icons Custom";
+            color:inherit;
+            display:inline-block;
+            font-style:normal;
+            font-weight:inherit;
+            font-size:inherit;line-height:1;
+            position:relative;z-index:1;alt:'';
+            text-decoration:none;
+            content: "\00d7";
+
+        }
+        .we-modal__close::before{display:none;}
+        .we-modal__close--overlay{width:100%;position:absolute;top:0;right:0;bottom:0;left:0;cursor:default;z-index:0;}
+
+
+        .we-customer-review__body {
+            font-size: 13px;
+            line-height: 1.38462;
+            font-weight: 400;
+            letter-spacing: -.005em;
+            font-family: "SF Pro Text","SF Pro Icons","Apple WebExp Icons Custom","Helvetica Neue",Helvetica,Arial,sans-serif;
+        }
+        .we-truncate__button {
+            position: absolute;
+            bottom: 0;
+            float: initial;
+            right: 0;
+            z-index: 1;
+        }
+
+
+
+
+
+    </style>
 @endpush
 @section('content')
 <header>
@@ -304,8 +575,188 @@
         </div><!-- row-->
     </div><!-- container-->
 </section><!-- counter-section-->
+
+
+
+<section class="l-content-width section section--bordered">
+    <div class="section__nav">
+        <h2 class="section__headline">
+            Ratings and Reviews
+        </h2>
+
+        <a  class="link section__nav__see-all-link ember-view">See All</a>
+    </div>
+    <div class="we-customer-ratings lockup ember-view">
+        <div class="l-row">
+            <div class="we-customer-ratings__stats l-column small-4 medium-6 large-4">
+                <div class="we-customer-ratings__averages">
+                    <span class="we-customer-ratings__averages__display">N.M</span> out of 5
+                </div>
+                <div class="we-customer-ratings__count small-hide medium-show"> N Ratings</div>
+            </div>
+            <div class=" l-column small-8 medium-6 large-4">
+                <figure class="we-star-bar-graph">
+                    <div class="we-star-bar-graph__row">
+                        <span class="we-star-bar-graph__stars we-star-bar-graph__stars--5"></span>
+                        <div class="we-star-bar-graph__bar">
+                            <div class="we-star-bar-graph__bar__foreground-bar" style="width: 0%;"></div>
+                        </div>
+                    </div>
+                    <div class="we-star-bar-graph__row">
+                        <span class="we-star-bar-graph__stars we-star-bar-graph__stars--4"></span>
+                        <div class="we-star-bar-graph__bar">
+                            <div class="we-star-bar-graph__bar__foreground-bar" style="width: 0%;"></div>
+                        </div>
+                    </div>
+                    <div class="we-star-bar-graph__row">
+                        <span class="we-star-bar-graph__stars we-star-bar-graph__stars--3"></span>
+                        <div class="we-star-bar-graph__bar">
+                            <div class="we-star-bar-graph__bar__foreground-bar" style="width: 0%;"></div>
+                        </div>
+                    </div>
+                    <div class="we-star-bar-graph__row">
+                        <span class="we-star-bar-graph__stars we-star-bar-graph__stars--2"></span>
+                        <div class="we-star-bar-graph__bar">
+                            <div class="we-star-bar-graph__bar__foreground-bar" style="width: 0%;"></div>
+                        </div>
+                    </div>
+                    <div class="we-star-bar-graph__row">
+                        <span class="we-star-bar-graph__stars "></span>
+                        <div class="we-star-bar-graph__bar">
+                            <div class="we-star-bar-graph__bar__foreground-bar" style="width: 0%;"></div>
+                        </div>
+                    </div>
+                </figure>
+                <p class="we-customer-ratings__count medium-hide"> N Ratings</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="l-row l-row--peek">
+
+        <div  class="ember-view small-valign-top l-column--equal-height l-column small-4 medium-6 large-4">
+            <div  class="ember-view">
+            </div>
+            <div class="we-customer-review lockup ember-view">
+                <figure aria-label="4 out of 5"  class="we-star-rating ember-view we-customer-review__rating we-star-rating--large"><span class="we-star-rating-stars-outlines">
+  <span class="we-star-rating-stars we-star-rating-stars-4"></span>
+</span>
+                    <!----></figure>
+
+                <div class="we-customer-review__header we-customer-review__header--user">
+  <span class="we-truncate we-truncate--single-line ember-view we-customer-review__user">  Client Name
+</span>
+
+                    <span class="we-customer-review__separator">, </span>
+
+                    <time  aria-label="May 00, 2020" class="we-customer-review__date">00/00/2020</time>
+                </div>
+
+                <h3  class="we-truncate we-truncate--single-line ember-view we-customer-review__title"> Title
+                </h3>
+
+                <blockquote  class="we-truncate we-truncate--multi-line we-truncate--interactive we-truncate--truncated ember-view we-customer-review__body">
+
+                    <div  class="we-clamp ember-view"  style="height: 72px; -webkit-mask: linear-gradient(0deg, rgba(0, 0, 0, 0) 0px, rgba(0, 0, 0, 0) 18.0001px, rgb(0, 0, 0) 18.0001px), linear-gradient(270deg, rgba(0, 0, 0, 0) 0px, rgba(0, 0, 0, 0) 32.8px, rgb(0, 0, 0) 68.8002px);">
+                        <p >Review</p>
+                    </div>
+
+
+
+
+                    <button aria-hidden="true" tabindex="-1" class="we-truncate__button link">
+                        more
+                    </button>
+                </blockquote>
+
+                <!----></div>
+
+        </div>
+
+
+
+    </div>
+
+
+    </div>
+
+    <div class="l-row l-row--margin-top medium-hide">
+
+        <!---->
+
+        <!---->
+
+        <!---->
+
+        <!---->
+
+        <!---->
+
+        <!---->
+
+        <!---->
+
+        <!---->
+
+        <!---->
+
+        <!---->
+
+    </div>
+</section>
+
+
+
+
+<div id="modal-container">
+    <div class="we-modal we-modal--page-overlay we-modal--open" role="dialog">
+        <div class="we-modal__content large-10 medium-12 we-modal__content--review" >
+            <div class="we-modal__content__wrapper">
+                <div aria-labelledby="we-customer-review-21" class="we-customer-review lockup ember-view">
+                    <figure aria-label="3 out of 5" class="we-star-rating ember-view we-customer-review__rating we-star-rating--large">
+                  <span class="we-star-rating-stars-outlines">
+  <span class="we-star-rating-stars we-star-rating-stars-3"></span>
+</span>
+                    </figure>
+                    <div class="we-customer-review__header we-customer-review__header--user">
+  <span class="we-truncate we-truncate--single-line ember-view we-customer-review__user">  Client Name
+</span>
+                        <span class="we-customer-review__separator">, </span>
+                        <time class="we-customer-review__date">00/00/2020</time>
+                    </div>
+                    <h3 class="we-truncate we-truncate--single-line ember-view we-customer-review__title">  Title
+                    </h3>
+                    <blockquote class="we-customer-review__body--modal">
+                        <p>Review</p>
+
+                    </blockquote>
+                </div>
+            </div>
+            <button class="we-modal__close" id="close-button" aria-label="Close" ></button>
+        </div>
+        <button class="we-modal__close--overlay" tabindex="-1" id="close-div" aria-label="Close" ></button>
+    </div>
+</div>
 @endsection
 @push('js')
+    <script>
+        function deleteChildren() {
+            var e = document.getElementById("modal-container");
+            var child = e.lastElementChild;
+            while (child) {
+                e.removeChild(child);
+                child = e.lastElementChild;
+            }
+        }
+        var btn = document.getElementById(
+            "close-button").onclick = function() {
+            deleteChildren();
+        }
+        var div = document.getElementById(
+            "close-div").onclick = function() {
+            deleteChildren();
+        }
+    </script>
     <script src="/public/common-js/jquery-3.2.1.min.js"></script>
     <script src="/public/common-js/tether.min.js"></script>
     <script src="/public/common-js/bootstrap.js"></script>
