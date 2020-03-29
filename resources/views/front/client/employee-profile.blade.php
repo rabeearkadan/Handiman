@@ -10,6 +10,7 @@
     <link href="{{asset('css/client/employee-profile/cv-portfolio/responsive.css')}}" rel="stylesheet">
     <style>
 
+
         .link:link,.link:visited,a:link,a:visited{text-decoration:none;}
         button{border:0;}
         h2+*,h3+*,p+*{margin-top:0;}
@@ -199,16 +200,15 @@
         .we-customer-review__header--user{margin-bottom:15px;color:#636366;font-size:12px;line-height:1.33337;font-weight:600;letter-spacing:0;font-family:"SF Pro Text","SF Pro Icons","Apple WebExp Icons Custom","Helvetica Neue",Helvetica,Arial,sans-serif;}
         .we-customer-review__date{-webkit-flex-shrink:0;-ms-flex-negative:0;flex-shrink:0;white-space:nowrap;}
         .we-modal{
+            position:sticky;
             top:48px;right:0;bottom:0;left:10;display:none;max-height:100vh;z-index:0;}
         @media (-ms-high-contrast:none),(-ms-high-contrast:active){
             .we-modal{top:0;}
         }
-        .we-modal--page-overlay{padding:0;background:rgba(255,255,255,.9);}
         @media only screen and (min-width:735px){
             .we-modal{top:0;}
-            .we-modal--page-overlay{padding-top:54px;padding-bottom:54px;}
         }
-        .we-modal__content{height:calc(100vh - 49px);width:100%;position:absolute;top:50%;background:#fff;word-break:break-word;-webkit-transform:translate(-50%,-50%);-ms-transform:translate(-50%,-50%);transform:translate(-50%,-50%);left:50%;z-index:1;border-top:1px solid #d6d6d6;padding:30px 5px 30px 20px;}
+        .we-modal__content{height:calc(100vh - 49px);width:100%;position:fixed;top:50%;background:#fff;word-break:break-word;-webkit-transform:translate(-50%,-50%);-ms-transform:translate(-50%,-50%);transform:translate(-50%,-50%);left:50%;z-index:1;border-top:1px solid #d6d6d6;padding:30px 5px 30px 20px;}
         @media only screen and (min-width:735px){
             .we-modal__content{height:auto;max-width:600px;max-height:calc(100vh - 108px);border:1px solid rgba(0,0,0,.08);border-radius:10px;-webkit-box-shadow:0 15px 20px rgba(0,0,0,.5);box-shadow:0 15px 20px rgba(0,0,0,.5);}
         }
@@ -273,6 +273,22 @@
             right: 0;
             z-index: 1;
         }
+
+        .overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 100%;
+            width: 100%;
+            z-index: 1000;
+            background-color: rgba(255,255,255,.9);
+        }
+        modal-open{
+            overflow:hidden;
+        }
+
+
+
 
 
 
@@ -446,6 +462,184 @@
     </div><!-- container -->
 </section><!-- about-section -->
 
+
+<section class="l-content-width section section--bordered">
+    <div class="section__nav">
+        <h2 class="section__headline">
+            Ratings and Reviews
+        </h2>
+
+        <a href="#" class="link section__nav__see-all-link ember-view">See All</a>
+    </div>
+    <div class="we-customer-ratings lockup ember-view">
+        <div class="l-row">
+            <div class="we-customer-ratings__stats l-column small-4 medium-6 large-4">
+                <div class="we-customer-ratings__averages">
+                    <span class="we-customer-ratings__averages__display">N.M</span> out of 5
+                </div>
+                <div class="we-customer-ratings__count small-hide medium-show"> N Ratings</div>
+            </div>
+            <div class=" l-column small-8 medium-6 large-4">
+                <figure class="we-star-bar-graph">
+                    <div class="we-star-bar-graph__row">
+                        <span class="we-star-bar-graph__stars we-star-bar-graph__stars--5"></span>
+                        <div class="we-star-bar-graph__bar">
+                            <div class="we-star-bar-graph__bar__foreground-bar" style="width: 0%;"></div>
+                        </div>
+                    </div>
+                    <div class="we-star-bar-graph__row">
+                        <span class="we-star-bar-graph__stars we-star-bar-graph__stars--4"></span>
+                        <div class="we-star-bar-graph__bar">
+                            <div class="we-star-bar-graph__bar__foreground-bar" style="width: 0%;"></div>
+                        </div>
+                    </div>
+                    <div class="we-star-bar-graph__row">
+                        <span class="we-star-bar-graph__stars we-star-bar-graph__stars--3"></span>
+                        <div class="we-star-bar-graph__bar">
+                            <div class="we-star-bar-graph__bar__foreground-bar" style="width: 0%;"></div>
+                        </div>
+                    </div>
+                    <div class="we-star-bar-graph__row">
+                        <span class="we-star-bar-graph__stars we-star-bar-graph__stars--2"></span>
+                        <div class="we-star-bar-graph__bar">
+                            <div class="we-star-bar-graph__bar__foreground-bar" style="width: 0%;"></div>
+                        </div>
+                    </div>
+                    <div class="we-star-bar-graph__row">
+                        <span class="we-star-bar-graph__stars "></span>
+                        <div class="we-star-bar-graph__bar">
+                            <div class="we-star-bar-graph__bar__foreground-bar" style="width: 0%;"></div>
+                        </div>
+                    </div>
+                </figure>
+                <p class="we-customer-ratings__count medium-hide"> N Ratings</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="l-row l-row--peek">
+
+        <div class="ember-view small-valign-top l-column--equal-height l-column small-4 medium-6 large-4">
+            <div class="ember-view">
+            </div>
+            <div class="we-customer-review lockup ember-view">
+                <figure aria-label="4 out of 5" class="we-star-rating ember-view we-customer-review__rating we-star-rating--large"><span class="we-star-rating-stars-outlines">
+         <span class="we-star-rating-stars we-star-rating-stars-4"></span>
+       </span>
+                    <!----></figure>
+
+                <div class="we-customer-review__header we-customer-review__header--user">
+         <span class="we-truncate we-truncate--single-line ember-view we-customer-review__user">  Client Name
+       </span>
+
+                    <span class="we-customer-review__separator">, </span>
+
+                    <time aria-label="May 00, 2020" class="we-customer-review__date">00/00/2020</time>
+                </div>
+
+                <h3 class="we-truncate we-truncate--single-line ember-view we-customer-review__title"> Title
+                </h3>
+
+                <blockquote class="we-truncate we-truncate--multi-line we-truncate--interactive we-truncate--truncated ember-view we-customer-review__body">
+
+                    <div class="we-clamp ember-view" style="height: 72px; -webkit-mask: linear-gradient(0deg, rgba(0, 0, 0, 0) 0px, rgba(0, 0, 0, 0) 18.0001px, rgb(0, 0, 0) 18.0001px), linear-gradient(270deg, rgba(0, 0, 0, 0) 0px, rgba(0, 0, 0, 0) 32.8px, rgb(0, 0, 0) 68.8002px);">
+                        <p>Review</p>
+                    </div>
+
+
+
+
+                    <button onclick="more()" class="we-truncate__button link">
+                        more
+                    </button>
+                </blockquote>
+
+                <!----></div>
+
+        </div>
+
+
+        <div  class="ember-view small-valign-top l-column--equal-height l-column small-4 medium-6 large-4">
+            <div  class="ember-view">
+            </div>
+            <div class="we-customer-review lockup ember-view">
+                <figure aria-label="4 out of 5"  class="we-star-rating ember-view we-customer-review__rating we-star-rating--large"><span class="we-star-rating-stars-outlines">
+         <span class="we-star-rating-stars we-star-rating-stars-4"></span>
+       </span>
+                    <!----></figure>
+
+                <div class="we-customer-review__header we-customer-review__header--user">
+         <span class="we-truncate we-truncate--single-line ember-view we-customer-review__user">  Client Name
+       </span>
+
+                    <span class="we-customer-review__separator">, </span>
+
+                    <time  aria-label="May 00, 2020" class="we-customer-review__date">00/00/2020</time>
+                </div>
+
+                <h3  class="we-truncate we-truncate--single-line ember-view we-customer-review__title"> Title
+                </h3>
+
+                <blockquote  class="we-truncate we-truncate--multi-line we-truncate--interactive we-truncate--truncated ember-view we-customer-review__body">
+
+                    <div  class="we-clamp ember-view"  style="height: 72px; -webkit-mask: linear-gradient(0deg, rgba(0, 0, 0, 0) 0px, rgba(0, 0, 0, 0) 18.0001px, rgb(0, 0, 0) 18.0001px), linear-gradient(270deg, rgba(0, 0, 0, 0) 0px, rgba(0, 0, 0, 0) 32.8px, rgb(0, 0, 0) 68.8002px);">
+                        <p >Review</p>
+                    </div>
+
+
+
+
+                    <button onclick="more()" class="we-truncate__button link">
+                        more
+                    </button>
+                </blockquote>
+
+                <!----></div>
+
+        </div>
+
+
+
+    </div>
+
+
+    </div>
+
+    <div class="l-row l-row--margin-top medium-hide">
+
+        <!---->
+
+        <!---->
+
+        <!---->
+
+        <!---->
+
+        <!---->
+
+        <!---->
+
+        <!---->
+
+        <!---->
+
+        <!---->
+
+        <!---->
+
+    </div>
+</section>
+
+
+
+<div id="modal-container">
+
+</div>
+
+
+
+
+
 <section class="experience-section section">
     <div class="container">
         <div class="row">
@@ -578,165 +772,10 @@
 
 
 
-<section class="l-content-width section section--bordered">
-    <div class="section__nav">
-        <h2 class="section__headline">
-            Ratings and Reviews
-        </h2>
-
-        <a  class="link section__nav__see-all-link ember-view">See All</a>
-    </div>
-    <div class="we-customer-ratings lockup ember-view">
-        <div class="l-row">
-            <div class="we-customer-ratings__stats l-column small-4 medium-6 large-4">
-                <div class="we-customer-ratings__averages">
-                    <span class="we-customer-ratings__averages__display">N.M</span> out of 5
-                </div>
-                <div class="we-customer-ratings__count small-hide medium-show"> N Ratings</div>
-            </div>
-            <div class=" l-column small-8 medium-6 large-4">
-                <figure class="we-star-bar-graph">
-                    <div class="we-star-bar-graph__row">
-                        <span class="we-star-bar-graph__stars we-star-bar-graph__stars--5"></span>
-                        <div class="we-star-bar-graph__bar">
-                            <div class="we-star-bar-graph__bar__foreground-bar" style="width: 0%;"></div>
-                        </div>
-                    </div>
-                    <div class="we-star-bar-graph__row">
-                        <span class="we-star-bar-graph__stars we-star-bar-graph__stars--4"></span>
-                        <div class="we-star-bar-graph__bar">
-                            <div class="we-star-bar-graph__bar__foreground-bar" style="width: 0%;"></div>
-                        </div>
-                    </div>
-                    <div class="we-star-bar-graph__row">
-                        <span class="we-star-bar-graph__stars we-star-bar-graph__stars--3"></span>
-                        <div class="we-star-bar-graph__bar">
-                            <div class="we-star-bar-graph__bar__foreground-bar" style="width: 0%;"></div>
-                        </div>
-                    </div>
-                    <div class="we-star-bar-graph__row">
-                        <span class="we-star-bar-graph__stars we-star-bar-graph__stars--2"></span>
-                        <div class="we-star-bar-graph__bar">
-                            <div class="we-star-bar-graph__bar__foreground-bar" style="width: 0%;"></div>
-                        </div>
-                    </div>
-                    <div class="we-star-bar-graph__row">
-                        <span class="we-star-bar-graph__stars "></span>
-                        <div class="we-star-bar-graph__bar">
-                            <div class="we-star-bar-graph__bar__foreground-bar" style="width: 0%;"></div>
-                        </div>
-                    </div>
-                </figure>
-                <p class="we-customer-ratings__count medium-hide"> N Ratings</p>
-            </div>
-        </div>
-    </div>
-
-    <div class="l-row l-row--peek">
-
-        <div  class="ember-view small-valign-top l-column--equal-height l-column small-4 medium-6 large-4">
-            <div  class="ember-view">
-            </div>
-            <div class="we-customer-review lockup ember-view">
-                <figure aria-label="4 out of 5"  class="we-star-rating ember-view we-customer-review__rating we-star-rating--large"><span class="we-star-rating-stars-outlines">
-  <span class="we-star-rating-stars we-star-rating-stars-4"></span>
-</span>
-                    <!----></figure>
-
-                <div class="we-customer-review__header we-customer-review__header--user">
-  <span class="we-truncate we-truncate--single-line ember-view we-customer-review__user">  Client Name
-</span>
-
-                    <span class="we-customer-review__separator">, </span>
-
-                    <time  aria-label="May 00, 2020" class="we-customer-review__date">00/00/2020</time>
-                </div>
-
-                <h3  class="we-truncate we-truncate--single-line ember-view we-customer-review__title"> Title
-                </h3>
-
-                <blockquote  class="we-truncate we-truncate--multi-line we-truncate--interactive we-truncate--truncated ember-view we-customer-review__body">
-
-                    <div  class="we-clamp ember-view"  style="height: 72px; -webkit-mask: linear-gradient(0deg, rgba(0, 0, 0, 0) 0px, rgba(0, 0, 0, 0) 18.0001px, rgb(0, 0, 0) 18.0001px), linear-gradient(270deg, rgba(0, 0, 0, 0) 0px, rgba(0, 0, 0, 0) 32.8px, rgb(0, 0, 0) 68.8002px);">
-                        <p >Review</p>
-                    </div>
 
 
 
 
-                    <button aria-hidden="true" tabindex="-1" class="we-truncate__button link">
-                        more
-                    </button>
-                </blockquote>
-
-                <!----></div>
-
-        </div>
-
-
-
-    </div>
-
-
-    </div>
-
-    <div class="l-row l-row--margin-top medium-hide">
-
-        <!---->
-
-        <!---->
-
-        <!---->
-
-        <!---->
-
-        <!---->
-
-        <!---->
-
-        <!---->
-
-        <!---->
-
-        <!---->
-
-        <!---->
-
-    </div>
-</section>
-
-
-
-
-<div id="modal-container">
-    <div class="we-modal we-modal--page-overlay we-modal--open" role="dialog">
-        <div class="we-modal__content large-10 medium-12 we-modal__content--review" >
-            <div class="we-modal__content__wrapper">
-                <div aria-labelledby="we-customer-review-21" class="we-customer-review lockup ember-view">
-                    <figure aria-label="3 out of 5" class="we-star-rating ember-view we-customer-review__rating we-star-rating--large">
-                  <span class="we-star-rating-stars-outlines">
-  <span class="we-star-rating-stars we-star-rating-stars-3"></span>
-</span>
-                    </figure>
-                    <div class="we-customer-review__header we-customer-review__header--user">
-  <span class="we-truncate we-truncate--single-line ember-view we-customer-review__user">  Client Name
-</span>
-                        <span class="we-customer-review__separator">, </span>
-                        <time class="we-customer-review__date">00/00/2020</time>
-                    </div>
-                    <h3 class="we-truncate we-truncate--single-line ember-view we-customer-review__title">  Title
-                    </h3>
-                    <blockquote class="we-customer-review__body--modal">
-                        <p>Review</p>
-
-                    </blockquote>
-                </div>
-            </div>
-            <button class="we-modal__close" id="close-button" aria-label="Close" ></button>
-        </div>
-        <button class="we-modal__close--overlay" tabindex="-1" id="close-div" aria-label="Close" ></button>
-    </div>
-</div>
 @endsection
 @push('js')
     <script>
