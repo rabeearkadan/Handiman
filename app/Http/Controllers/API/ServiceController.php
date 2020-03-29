@@ -40,7 +40,7 @@ class ServiceController extends Controller
         $service = Service::query()->find($id);
         $user = User::query()->find(Auth::id());
 
-        $service_ids_in_user = $user->service_ids;
+        $service_ids_in_user[] = $user->service_ids;
         $key = 0;
         for ($i = 0; $i <= sizeof($service_ids_in_user); $i++) {
             if ($service_ids_in_user[$i] == $id) {
@@ -51,7 +51,7 @@ class ServiceController extends Controller
         $user->service_ids = $service_ids_in_user;
         $user->save();
 
-        $user_ids_in_service = $service->user_ids;
+        $user_ids_in_service []= $service->user_ids;
         $key = 0;
         for ($i = 0; $i <= sizeof($user_ids_in_service); $i++) {
             if ($user_ids_in_service[$i] == $id) {
