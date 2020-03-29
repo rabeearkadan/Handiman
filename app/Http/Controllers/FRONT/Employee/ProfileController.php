@@ -29,7 +29,5 @@ class ProfileController extends Controller
     public function clientProfile($id){
 
     }
-    public function allReviews(){
-        return view('front.client.see-all-reviews');
-    }
+
 }

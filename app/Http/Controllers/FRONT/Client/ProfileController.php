@@ -34,4 +34,8 @@ class ProfileController extends Controller
         $employee = User::find($employee_id);
         return view('front.client.employee-profile', compact(['employee','service']));
     }
+    public function allReviews($id, $employee_id){
+        $employee = User::find($employee_id);
+        return view('front.client.see-all-reviews',compact('employee'));
+    }
 }
