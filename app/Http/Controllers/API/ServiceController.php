@@ -54,7 +54,7 @@ class ServiceController extends Controller
         $user->save();
 
 
-        $service = Service::query()->find($id);
+        $service = Service::query()->find($id)->get();
 dd($service->user_ids);
         $user_ids_in_service = $service->user_ids;
         $key = 0;
