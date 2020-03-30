@@ -1,4 +1,86 @@
 @extends('front.client.profile.my-profile')
+@push('css')
+    <link href="{{asset('css/client/map.css')}}" rel="stylesheet" type="text/css">
+    <link href="{{asset('css/client/new-address.css')}}" rel="stylesheet" type="text/css">
+    <style>
+        /* Always set the map height explicitly to define the size of the div
+         * element that contains the map. */
+        #map {
+        }
+        /* Optional: Makes the sample page fill the window. */
+
+        #description {
+            font-family: Roboto;
+            font-size: 15px;
+            font-weight: 300;
+        }
+
+        #infowindow-content .title {
+            font-weight: bold;
+        }
+
+        #infowindow-content {
+            display: none;
+        }
+
+        #map #infowindow-content {
+            display: inline;
+        }
+
+        .pac-card {
+            margin: 10px 10px 0 0;
+            border-radius: 2px 0 0 2px;
+            box-sizing: border-box;
+            -moz-box-sizing: border-box;
+            outline: none;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+            background-color: #fff;
+            font-family: Roboto;
+        }
+
+        #pac-container {
+            padding-bottom: 12px;
+            margin-right: 12px;
+        }
+
+        .pac-controls {
+            display: inline-block;
+            padding: 5px 11px;
+        }
+
+        .pac-controls label {
+            font-family: Roboto;
+            font-size: 13px;
+            font-weight: 300;
+        }
+
+        #pac-input {
+            background-color: #fff;
+            font-family: Roboto;
+            font-size: 15px;
+            font-weight: 300;
+            margin-left: 12px;
+            padding: 0 11px 0 13px;
+            text-overflow: ellipsis;
+            width: 400px;
+        }
+
+        #pac-input:focus {
+            border-color: #4d90fe;
+        }
+
+        #title {
+            color: #fff;
+            background-color: #4d90fe;
+            font-size: 25px;
+            font-weight: 500;
+            padding: 6px 12px;
+        }
+        #target {
+            width: 345px;
+        }
+    </style>
+@endpush
 @section('profile-content')
     <div class="page-title">
         <h1>Edit Profile</h1>
@@ -61,29 +143,43 @@
             </div><!-- /.form-group -->
         </div><!-- /.row -->
         <div class="row">
-        <div class="col-sm-6">
-            <div class="form-group">
-                <select name="property">
-                    <option>Property Type</option>
-                    <option>Apartment</option>
-                    <option>Condo</option>
-                    <option>House</option>
-                    <option>Villa</option>
-                </select>
-            </div><!-- /.form-group -->
-        </div>
-        <div class="col-sm-6">
-            <div class="form-group">
-                <select name="contract">
-                    <option>Contract</option>
-                    <option>Rent</option>
-                    <option>Sale</option>
-                </select>
-            </div><!-- /.form-group -->
-        </div><!-- /.col-* -->
-    </div><!-- /.row -->
+            <div class="col-sm-6">
+                <div class="form-group">
+                    <select name="property">
+                        <option>Property Type</option>
+                        <option>Apartment</option>
+                        <option>Condo</option>
+                        <option>House</option>
+                        <option>Villa</option>
+                    </select>
+                </div><!-- /.form-group -->
+            </div>
+            <div class="col-sm-6">
+                <div class="form-group">
+                    <select name="contract">
+                        <option>Contract</option>
+                        <option>Rent</option>
+                        <option>Sale</option>
+                    </select>
+                </div><!-- /.form-group -->
+            </div><!-- /.col-* -->
+        </div><!-- /.row -->
+    </div><!-- /.background -white -->
+    <div class="line-item__add">
+        <button type="button" class="js-line-item-trigger marketing-button--skin-reset button--icon" id="AddLineItem">
+            <svg class="icon icon--fill-primary" aria-hidden="true" focusable="false">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 40 40">
+                    <path
+                        d="M20 0C9 0 0 9 0 20s9 20 20 20 20-9 20-20S31 0 20 0zm0 38c-9.9 0-18-8.1-18-18S10.1 2 20 2s18 8.1 18 18-8.1 18-18 18z"></path>
+                    <path
+                        d="M28 20c0 .5-.5 1-1 1h-6v6.3c0 .6-.5 1-1 1s-1-.4-1-1V21h-6.3c-.6 0-1-.5-1-1s.4-1 1-1H19v-6c0-.5.5-1 1-1s1 .5 1 1v6h6c.5 0 1 .5 1 1z"></path>
+                </svg>
+            </svg>
+            <span class="body-link">
+    Add another address
+  </span>
+        </button>
     </div>
-
     <div class="background-white p20 mb30">
         <h4 class="page-title">
             Biography
@@ -116,14 +212,14 @@
             map.controls[google.maps.ControlPosition.TOP_LEFT].push(input);
 
             // Bias the SearchBox results towards current map's viewport.
-            map.addListener('bounds_changed', function() {
+            map.addListener('bounds_changed', function () {
                 searchBox.setBounds(map.getBounds());
             });
 
             var markers = [];
             // Listen for the event fired when the user selects a prediction and retrieve
             // more details for that place.
-            searchBox.addListener('places_changed', function() {
+            searchBox.addListener('places_changed', function () {
                 var places = searchBox.getPlaces();
 
                 if (places.length == 0) {
@@ -131,14 +227,14 @@
                 }
 
                 // Clear out the old markers.
-                markers.forEach(function(marker) {
+                markers.forEach(function (marker) {
                     marker.setMap(null);
                 });
                 markers = [];
 
                 // For each place, get the icon, name and location.
                 var bounds = new google.maps.LatLngBounds();
-                places.forEach(function(place) {
+                places.forEach(function (place) {
                     if (!place.geometry) {
                         console.log("Returned place contains no geometry");
                         return;
@@ -171,8 +267,9 @@
         }
 
     </script>
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyApA0BZrqcfRauI8W5RLAQYjNJla_AS3gA&libraries=places&callback=initAutocomplete"
-            async defer></script>
+    <script
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyApA0BZrqcfRauI8W5RLAQYjNJla_AS3gA&libraries=places&callback=initAutocomplete"
+        async defer></script>
     <script src="/public/js/client/dropdown.js" type="text/javascript"></script>
     <script src="/public/js/client/collapse.js" type="text/javascript"></script>
     <script src="/public/js/client/jquery.colorbox-min.js" type="text/javascript"></script>
