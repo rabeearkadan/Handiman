@@ -63,7 +63,7 @@
                 <input type="text" class="form-control" value="12345">
             </div><!-- /.form-group -->
         </div><!-- /.row -->
-        div class="row">
+        <div class="row">
         <div class="col-sm-6">
             <div class="form-group">
                 <select name="property">
