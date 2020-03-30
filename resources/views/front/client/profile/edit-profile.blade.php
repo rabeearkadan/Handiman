@@ -10,7 +10,7 @@
         /* Optional: Makes the sample page fill the window. */
 
         #description {
-            font-family: Roboto;
+            font-family: Roboto, serif;
             font-size: 15px;
             font-weight: 300;
         }
@@ -35,7 +35,7 @@
             outline: none;
             box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
             background-color: #fff;
-            font-family: Roboto;
+            font-family: Roboto, serif;
         }
 
         #pac-container {
@@ -49,14 +49,14 @@
         }
 
         .pac-controls label {
-            font-family: Roboto;
+            font-family: Roboto, serif;
             font-size: 13px;
             font-weight: 300;
         }
 
         #pac-input {
             background-color: #fff;
-            font-family: Roboto;
+            font-family: Roboto, serif;
             font-size: 15px;
             font-weight: 300;
             margin-left: 12px;
@@ -92,20 +92,20 @@
         </h4>
         <div class="row">
             <div class="form-group col-sm-6">
-                <label>Name</label>
-                <input type="text" class="form-control" value="John">
+                <label for="name" >Name</label>
+                <input type="text" class="form-control" name="name" id="name" value="">
             </div><!-- /.form-group -->
             <div class="form-group col-sm-6">
-                <label>Surname</label>
-                <input type="text" class="form-control" value="Doe">
+                <label for="surname">Surname</label>
+                <input type="text" class="form-control" name="surname" id="surname" value="">
             </div><!-- /.form-group -->
             <div class="form-group col-sm-6">
-                <label>E-mail</label>
-                <input type="text" class="form-control" value="sample@example.com">
+                <label for="email">E-mail</label>
+                <input type="text" class="form-control" name="email" id="email" value="">
             </div><!-- /.form-group -->
             <div class="form-group col-sm-6">
-                <label>Phone</label>
-                <input type="text" class="form-control" value="123-456-789">
+                <label for="phone">Phone</label>
+                <input type="text" class="form-control" name="phone" id="phone" value="" placeholder="+96171456789">
             </div><!-- /.form-group -->
         </div><!-- /.row -->
     </div>
@@ -120,47 +120,51 @@
         </h4>
         <div class="row">
             <div class="form-group col-sm-6">
-                <label>Address Name</label>
-                <input type="text" class="form-control" value="Home">
+                <label for="address_name">Address Name, this will be displayed when choosing your location in a request </label>
+                <input type="text" class="form-control" name="name" id="address_name" placeholder="Home Beirut">
             </div>
         </div>
         <div class="map-position">
-            <input id="pac-input" class="controls" type="text" placeholder="Search Box">
+            <input id="pac-input" name="map-input" class="controls" type="text" placeholder="Search Box">
             <div id="map"></div>
         </div><!-- /.map-property -->
         <div class="row" style="margin-top:20px">
             <div class="form-group col-sm-6">
-                <label>Street</label>
-                <input type="text" class="form-control" value=" ">
+                <label for="street" >Street</label>
+                <input type="text" class="form-control" name="street" id="street"  value=" ">
             </div><!-- /.form-group -->
             <div class="form-group col-sm-3">
-                <label>House Number/Name</label>
-                <input type="text" class="form-control" value="">
+                <label for="house"> House Number/Name </label>
+                <input type="text" class="form-control" name="house" id="house" value="">
             </div><!-- /.form-group -->
             <div class="form-group col-sm-3">
-                <label>ZIP</label>
-                <input type="text" class="form-control" value="">
+                <label for="zip"> ZIP </label>
+                <input type="text" class="form-control" name="zip" id="zip" value="">
             </div><!-- /.form-group -->
         </div><!-- /.row -->
         <div class="row">
             <div class="col-sm-6">
                 <div class="form-group">
-                    <select name="property">
-                        <option>Property Type</option>
-                        <option>Apartment</option>
-                        <option>Condo</option>
-                        <option>House</option>
-                        <option>Villa</option>
-                    </select>
+                    <label>
+                        <select name="property">
+                            <option>Property Type</option>
+                            <option>Apartment</option>
+                            <option>Condo</option>
+                            <option>House</option>
+                            <option>Villa</option>
+                        </select>
+                    </label>
                 </div><!-- /.form-group -->
             </div>
             <div class="col-sm-6">
                 <div class="form-group">
-                    <select name="contract">
-                        <option>Contract</option>
-                        <option>Rent</option>
-                        <option>Sale</option>
-                    </select>
+                    <label>
+                        <select name="contract">
+                            <option>Contract</option>
+                            <option>Rent</option>
+                            <option>Sale</option>
+                        </select>
+                    </label>
                 </div><!-- /.form-group -->
             </div><!-- /.col-* -->
         </div><!-- /.row -->
@@ -265,10 +269,8 @@
                 map.fitBounds(bounds);
             });
         }
-
     </script>
-    <script
-        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyApA0BZrqcfRauI8W5RLAQYjNJla_AS3gA&libraries=places&callback=initAutocomplete"
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyApA0BZrqcfRauI8W5RLAQYjNJla_AS3gA&libraries=places&callback=initAutocomplete"
         async defer></script>
     <script src="/public/js/client/dropdown.js" type="text/javascript"></script>
     <script src="/public/js/client/collapse.js" type="text/javascript"></script>
