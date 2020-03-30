@@ -145,7 +145,6 @@
         <div class="row">
             <div class="col-sm-6">
                 <div class="form-group">
-                    <label>
                         <select name="property">
                             <option>Property Type</option>
                             <option>Apartment</option>
@@ -153,18 +152,15 @@
                             <option>House</option>
                             <option>Villa</option>
                         </select>
-                    </label>
                 </div><!-- /.form-group -->
             </div>
             <div class="col-sm-6">
                 <div class="form-group">
-                    <label>
                         <select name="contract">
                             <option>Contract</option>
                             <option>Rent</option>
                             <option>Sale</option>
                         </select>
-                    </label>
                 </div><!-- /.form-group -->
             </div><!-- /.col-* -->
         </div><!-- /.row -->
