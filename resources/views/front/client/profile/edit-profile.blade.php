@@ -28,44 +28,19 @@
         </div><!-- /.row -->
     </div>
 
-    <div class="background-white p30 mb30">
-        <h3 class="page-title">Attributes</h3>
-        <div class="row">
-            <div class="col-sm-6">
-                <div class="form-group">
-                    <select name="property">
-                        <option>Property Type</option>
-                        <option>Apartment</option>
-                        <option>Condo</option>
-                        <option>House</option>
-                        <option>Villa</option>
-                    </select>
-                </div><!-- /.form-group -->
-            </div>
-            <div class="col-sm-6">
-                <div class="form-group">
-                    <select name="contract">
-                        <option>Contract</option>
-                        <option>Rent</option>
-                        <option>Sale</option>
-                    </select>
-                </div><!-- /.form-group -->
-            </div><!-- /.col-* -->
-        </div><!-- /.row -->
-    </div><!-- /.box -->
 
-        <div class="background-white p20 mb30">
-            <div class="map-position">
-                <input id="pac-input" class="controls" type="text" placeholder="Search Box">
-                <div id="map"></div>
-            </div><!-- /.map-property -->
-        </div><!-- /.detail-map -->
+
 
     <div class="background-white p20 mb30">
         <h4 class="page-title">
             Address
             <a href="#" class="btn btn-primary btn-xs pull-right">Save</a>
         </h4>
+
+        <div class="map-position">
+            <input id="pac-input" class="controls" type="text" placeholder="Search Box">
+            <div id="map"></div>
+        </div><!-- /.map-property -->
         <div class="row">
             <div class="form-group col-sm-6">
                 <label>State</label>
@@ -88,6 +63,28 @@
                 <input type="text" class="form-control" value="12345">
             </div><!-- /.form-group -->
         </div><!-- /.row -->
+        div class="row">
+        <div class="col-sm-6">
+            <div class="form-group">
+                <select name="property">
+                    <option>Property Type</option>
+                    <option>Apartment</option>
+                    <option>Condo</option>
+                    <option>House</option>
+                    <option>Villa</option>
+                </select>
+            </div><!-- /.form-group -->
+        </div>
+        <div class="col-sm-6">
+            <div class="form-group">
+                <select name="contract">
+                    <option>Contract</option>
+                    <option>Rent</option>
+                    <option>Sale</option>
+                </select>
+            </div><!-- /.form-group -->
+        </div><!-- /.col-* -->
+    </div><!-- /.row -->
     </div>
 
     <div class="background-white p20 mb30">
