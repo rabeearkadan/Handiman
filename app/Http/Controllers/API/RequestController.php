@@ -250,7 +250,7 @@ class RequestController extends Controller
             ->where('employee_id', Auth::id())
             ->where('status', 'ongoing')->get();
 
-      //  $client = User::query()->findOrFail($ongoing->client_id);
+
 
         return response()->json(['status' => 'success', 'requests' => $ongoing]);
     }
