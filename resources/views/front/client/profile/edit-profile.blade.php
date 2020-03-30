@@ -36,31 +36,28 @@
             Address
             <a href="#" class="btn btn-primary btn-xs pull-right">Save</a>
         </h4>
-
+        <div class="row">
+            <div class="form-group col-sm-6">
+                <label>Address Name</label>
+                <input type="text" class="form-control" value="Home">
+            </div>
+        </div>
         <div class="map-position">
             <input id="pac-input" class="controls" type="text" placeholder="Search Box">
             <div id="map"></div>
         </div><!-- /.map-property -->
-        <div class="row">
-            <div class="form-group col-sm-6">
-                <label>State</label>
-                <input type="text" class="form-control" value="New York">
-            </div><!-- /.form-group -->
-            <div class="form-group col-sm-6">
-                <label>City</label>
-                <input type="text" class="form-control" value="New York City">
-            </div><!-- /.form-group -->
+        <div class="row" style="margin-top:20px">
             <div class="form-group col-sm-6">
                 <label>Street</label>
-                <input type="text" class="form-control" value="Everton Eve">
+                <input type="text" class="form-control" value=" ">
             </div><!-- /.form-group -->
             <div class="form-group col-sm-3">
-                <label>House Number</label>
-                <input type="text" class="form-control" value="123">
+                <label>House Number/Name</label>
+                <input type="text" class="form-control" value="">
             </div><!-- /.form-group -->
             <div class="form-group col-sm-3">
                 <label>ZIP</label>
-                <input type="text" class="form-control" value="12345">
+                <input type="text" class="form-control" value="">
             </div><!-- /.form-group -->
         </div><!-- /.row -->
         <div class="row">
