@@ -243,19 +243,19 @@ class RequestController extends Controller
     //Route::get('Ongoing-requests', 'RequestController@geHandymanOngoingRequests');
 //Route::get('Outgoing-requests', 'RequestController@geHandymanOutgoingRequests');
 
-    public function geHandymanOngoingRequests()
+    public function getHandymanOngoingRequests()
     {
 
         $ongoing = RequestService::query()
             ->where('employee_id', Auth::id())
             ->where('status', 'ongoing')->get();
 
-        $client = User::query()->where('id', $ongoing->client_id)->get();
 
-        return response()->json(['status' => 'success', 'requests' => $ongoing, 'from' => $client]);
+
+        return response()->json(['status' => 'success', 'requests' => $ongoing]);
     }
 
-    public function geHandymanOutgoingRequests()
+    public function getHandymanOutgoingRequests()
     {
         $outgoing = RequestService::query()
             ->where('employee_id', Auth::id())

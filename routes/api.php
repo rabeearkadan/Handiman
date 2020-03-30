@@ -2,7 +2,7 @@
 
 use Illuminate\Http\Request;
 
-
+// api route without authantication
 Route::post('login', 'LoginController@login');
 Route::post('register', 'RegisterController@register');
 Route::post('test-notification/{user_id}/{isClient}', 'NotificationController@test');
@@ -19,9 +19,9 @@ Route::get('getHandymenByService/{id}', 'HandymanController@getHandymenByService
 Route::get('getHandymanSortedByLocation', 'HandymanController@getHandymanOrderedByLocation');
 Route::get('getHandymanSortedByPrice', 'HandymanController@getHandymanOrderedByPrice');
 
-
 Route::middleware(['auth:api', 'employee'])->prefix('employee')->group(function () {
-    // all routes related to handy man
+
+// api route with auth and employee middleware the route is starts with api/empolyee
     Route::post('post', 'PostController@addPost');
     Route::delete('post/{id}', 'PostController@deletePost');
     Route::put('post/{id}', 'PostController@editPost');
@@ -29,17 +29,20 @@ Route::middleware(['auth:api', 'employee'])->prefix('employee')->group(function 
     Route::get('post-id/{id}', 'PostController@getPostById');
     Route::get('request', 'RequestController@getHandymanRequests');
     Route::get('request/{id}', 'RequestController@getRequestById');
-    Route::get('ongoing-requests', 'RequestController@geHandymanOngoingRequests');
-    Route::get('outgoing-requests', 'RequestController@geHandymanOutgoingRequests');
+    Route::get('ongoing-requests', 'RequestController@getHandymanOngoingRequests');
+    Route::get('outgoing-requests', 'RequestController@getHandymanOutgoingRequests');
+
+    Route::post('add-service/{id}', 'ServiceController@addService');
+    Route::get('delete-service/{id}', 'ServiceController@deleteService');
+
 //    Route::post('accept-request/{id}', 'RequestController@acceptRequest');
 //    Route::post('reject-request/{id}', 'RequestController@rejectRequest');
 
 
 });
 
-
 Route::middleware(['auth:api', 'client'])->prefix('client')->group(function () {
-    //all route related to  user
+// api route with auth and client middleware the route is starts with api/client
     Route::post('request/{id}', 'RequestController@requestHandyman');
 
 
@@ -50,15 +53,15 @@ Route::middleware(['auth:api', 'client'])->prefix('client')->group(function () {
     //  Route::get('load-message','RequestController@getMessages');
 
 
-    // Route::get('ongoing-requests','RequestController@getOngoingRequests');
+    Route::get('ongoing-requests', 'RequestController@getOngoingRequests');
     // Route::get('outgoing-requests','RequestController@getOutgoingRequests');
     // Route::put('accept-request',Request)
 
-
 });
 
-
 Route::middleware(['auth:api'])->group(function () {
+
+// api route with auth  the route is starts with api/
     //all routes related to user and handyman
     Route::post('device-token', 'UserController@setDeviceToken');
     Route::get('profile-edit', 'UserController@getProfile');
@@ -68,8 +71,6 @@ Route::middleware(['auth:api'])->group(function () {
 
     Route::post('credit-card', 'PaymentController@setCreditCard');
     Route::get('credit-card', 'PaymentController@getCreditCard');
-    Route::post('add-service/{id}', 'ServiceController@addService');
-    Route::get('delete-service/{id}', 'ServiceController@deleteService');
 
     // Route::put('profile/edit', 'UserController@editProfile');
     //Route::get('profile/edit', 'UserController@getProfile');
