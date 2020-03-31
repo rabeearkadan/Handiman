@@ -245,19 +245,21 @@ class RequestController extends Controller
 
     public function getHandymanOngoingRequests()
     {
-
         $ongoing = RequestService::query()
             ->where('employee_id', Auth::id())
             ->where('status', 'ongoing')->get();
+        if($ongoing==null)
+            return response()->json(['status' => 'success','message'=>'You have no ongoing requests']);
+            
+            $list = $ongoing->client()->get();
 
+        return response()->json(['status' => 'success','requests'=>$list]);
 
-
-        return response()->json(['status' => 'success', 'requests' => $ongoing]);
     }
 
     public function getHandymanOutgoingRequests()
     {
-        $outgoing = RequestService::query()
+        $outgoing = RequestService::query()->client()
             ->where('employee_id', Auth::id())
             ->where('status', 'outgoing')->get();
 
