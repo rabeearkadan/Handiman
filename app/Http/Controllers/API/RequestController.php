@@ -40,7 +40,7 @@ class RequestController extends Controller
     {
         $this->validator($req->all())->validate();
         $requestHandyman = new RequestService();
-        $requestHandyman->client_id = Auth::id();
+        $requestHandyman->subject = $req->input('subject');
         $requestHandyman->description = $req->input('description');
         $requestHandyman->status = 'ongoing';
 
@@ -53,6 +53,7 @@ class RequestController extends Controller
             //search for urgent requests
             //if its urgent let the system search for a handiman and make a suggestion
             $requestHandyman->save();
+            $requestHandyman->clients()->attach(Auth::id());
             $handyman = $this->searchForHandyman($requestHandyman);
             if ($handyman == null) {
 
@@ -61,6 +62,7 @@ class RequestController extends Controller
                 $requestHandyman->empolyee_id = $handyman->id;
                 $requestHandyman->type = 'urgent';
                 $requestHandyman->save();
+                $requestHandyman->clients()->attach(Auth::id());
                 $this->notification($handyman->employee_device_token, Auth::user()->name, 'You received a new request', 'request');
                 return response()->json(['status' => 'success', 'message' => 'Your urgent request has reached a handyman']);
 
@@ -69,13 +71,18 @@ class RequestController extends Controller
             if ($req->has('employee_id')) {
                 $handyman = User::query()->find($req->input('employee_id'));
                 $requestHandyman->type = 'specified';
-                $requestHandyman->employee_id = $handyman->id;
                 $requestHandyman->date = $req->input('date');//yyyy-mm-dd
 
                 $this->notification(($handyman->employee_device_token), (Auth::user()->name), 'You received a new request', 'request');
             }
             $requestHandyman->save();
-            return response()->json(['status' => 'success', 'message' => 'Your search was done successfully']);
+            $requestHandyman->clients()->attach(Auth::id());
+            if ($req->has('employee_id')) {
+                $handyman = User::query()->find($req->input('employee_id'));
+                $requestHandyman->employees()->attach($handyman->id);
+            }
+
+                return response()->json(['status' => 'success', 'message' => 'Your search was done successfully']);
 
         }
 
@@ -246,12 +253,11 @@ class RequestController extends Controller
     public function getHandymanOngoingRequests()
     {
 
-
-        $requests = RequestService::all()->where('status', 'ongoing')->get(RequestService::all());
+        $requests = Auth::user()->employeeRequests()->where('status', 'ongoing');
         if ($requests == null)
             return response()->json(['status' => 'success', 'message' => 'You have no ongoing requests']);
 
-        $requests = $requests->client()->get();
+        $requests = $requests->clients()->first();
 
         return response()->json(['status' => 'success', 'requests' => $requests]);
 

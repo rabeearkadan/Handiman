@@ -86,7 +86,7 @@ class RequestController extends Controller
 
 
                 $requestHandyman->date = $req->input('date');//yyyy-mm-dd
-//                $this->notification($handyman->device_token, Auth::user()->name, 'You received a new request', 'request');
+                $this->notification($handyman->device_token, Auth::user()->name, 'You received a new request', 'request');
             }
             $requestHandyman->save();
             $requestHandyman->clients()->attach(Auth::id());
@@ -94,7 +94,6 @@ class RequestController extends Controller
                 $handyman = User::query()->find($req->input('employee_id'));
                 $requestHandyman->employees()->attach($handyman->id);
             }
-            dd($requestHandyman);
         }
         return view('front.client.request.index');
     }

@@ -19,7 +19,8 @@ class RequestService extends Eloquent
     {
         return $this->belongsToMany(
             User::class, null, 'employee_request_ids', 'employee_ids '
-        );    }
+        );
+    }
     public function clients()
     {
         return $this->belongsToMany(
