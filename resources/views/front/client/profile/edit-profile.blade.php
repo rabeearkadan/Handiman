@@ -135,7 +135,7 @@
             </div>
             <div class="map-position">
                 <input id="pac-input" name="map-input" class="controls" type="text" placeholder="Search Box">
-                <input type="hidden" name="location" id="place-id">
+                <input type="hidden" name="lat" id="lat">
                 <div id="map"></div>
             </div><!-- /.map-property -->
             <div class="row" style="margin-top:20px">
@@ -274,6 +274,7 @@
                     }
                 });
                 map.fitBounds(bounds);
+                document.getElementById('lat').value = places.geometry.location.lat();
             });
         }
     </script>
