@@ -154,10 +154,8 @@
                                         </div>
                                         <div class="col-sm-10">
                                             <h3>will put employee info later here</h3>
-                                            <input type="text" name="employee_id" value="{{$employee->id}}"
-                                                   style="display: none">
-                                            <input type="text" name="service_id" value="{{$service->id}}"
-                                                   style="display: none">
+                                            <input type="hidden" name="employee_id" value="{{$employee->id}}">
+                                            <input type="hidden" name="service_id" value="{{$service->id}}">
                                         </div>
                                     </div>
                                 </div>
