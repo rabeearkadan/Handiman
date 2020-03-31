@@ -52,7 +52,6 @@ class RequestController extends Controller
        // $this->validator($req->all())->validate();
         $requestHandyman = new RequestService();
 
-        $requestHandyman->clients()->attach(Auth::id());
 
 
         $requestHandyman->description = $req->input('description');
@@ -74,6 +73,7 @@ class RequestController extends Controller
                 $requestHandyman->empolyee_id = $req->input('employee_id');
                 $requestHandyman->type = 'urgent';
                 $requestHandyman->save();
+                $requestHandyman->clients()->attach(Auth::id());
 //                $this->notification($handyman->device_token, Auth::user()->name, 'You received a new request', 'request');
 //                return response()->json(['status' => 'success', 'message' => 'Your urgent request has reached a handyman']);
 
@@ -83,13 +83,17 @@ class RequestController extends Controller
                 $handyman = User::query()->find($req->input('employee_id'));
                 $requestHandyman->type = 'specified';
 
-                $requestHandyman->employees()->attach($handyman->id);
 
 
                 $requestHandyman->date = $req->input('date');//yyyy-mm-dd
 //                $this->notification($handyman->device_token, Auth::user()->name, 'You received a new request', 'request');
             }
             $requestHandyman->save();
+            $requestHandyman->clients()->attach(Auth::id());
+            if ($req->has('employee_id')) {
+                $handyman = User::query()->find($req->input('employee_id'));
+                $requestHandyman->employees()->attach($handyman->id);
+            }
             dd($requestHandyman);
         }
         return view('front.client.request.index');
