@@ -247,7 +247,7 @@ class RequestController extends Controller
     {
 
 
-        $requests = RequestService::all()->where('status', 'ongoing')->get();
+        $requests = RequestService::all()->where('status', 'ongoing')->get(RequestService::all());
         if ($requests == null)
             return response()->json(['status' => 'success', 'message' => 'You have no ongoing requests']);
 
