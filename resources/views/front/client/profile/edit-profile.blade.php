@@ -136,6 +136,7 @@
             <div class="map-position">
                 <input id="pac-input" name="map-input" class="controls" type="text" placeholder="Search Box">
                 <input type="hidden" name="lat" id="lat">
+                <input type="hidden" name="long" id="long">
                 <div id="map"></div>
             </div><!-- /.map-property -->
             <div class="row" style="margin-top:20px">
@@ -273,8 +274,14 @@
                         bounds.extend(place.geometry.location);
                     }
                 });
+
                 map.fitBounds(bounds);
-                document.getElementById('lat').value = places.geometry.location.lat();
+            });
+
+            google.maps.event.addListener(input, 'place_changed', function () {
+                var place = input.getPlace();
+                document.getElementById('long').value = place.geometry.location.lat();
+                document.getElementById('lat').value = place.geometry.location.lng();
             });
         }
     </script>
