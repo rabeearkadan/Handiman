@@ -253,7 +253,7 @@ class RequestController extends Controller
     public function getHandymanOngoingRequests()
     {
 
-        $requests = Auth::user()->employeeRequests()->where('status', 'ongoing')->get();
+        $requests = Auth::user()->employeeRequests()->where('status','ongoing')->get();
         if ($requests == null)
             return response()->json(['status' => 'success', 'message' => 'You have no ongoing requests']);
         $requests = $requests->map(function($item){

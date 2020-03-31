@@ -86,7 +86,7 @@ class User extends Eloquent implements
     {
         return $this->belongsToMany(
             RequestService::class, null, 'employee_ids ', 'employee_request_ids'
-        );
+        )->with('clients')->with('employees');
     }
     public function clientRequests()
     {
