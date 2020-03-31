@@ -49,6 +49,7 @@ class RequestController extends Controller
     public function store(Request $req)
     {
         //
+        dd($req);
         $this->validator($req->all())->validate();
         $requestHandyman = new RequestService();
 
