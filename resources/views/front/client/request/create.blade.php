@@ -20,21 +20,7 @@
             font-size: 18px;
             color: #60666d;
         }
-        @media (min-width: 768px) {
-            .select-box {
-                width: 70%;
-            }
-        }
-        @media (min-width: 992px) {
-            .select-box {
-                width: 50%;
-            }
-        }
-        @media (min-width: 1200px) {
-            .select-box {
-                width: 30%;
-            }
-        }
+
         .select-box__current {
             position: relative;
             box-shadow: 0 15px 30px -10px rgba(0, 0, 0, 0.1);
@@ -168,8 +154,7 @@
                                     </div><!-- /.col-* -->
                                     <div class="col-sm-5">
                                         <div class="form-group">
-
-
+                                            <label for="subject">Address</label>
                                             <div class="select-box">
                                                 <div class="select-box__current" tabindex="1">
                                                     <div class="select-box__value">
