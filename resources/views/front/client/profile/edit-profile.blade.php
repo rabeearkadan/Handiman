@@ -131,15 +131,15 @@
         <div class="row" style="margin-top:20px">
             <div class="form-group col-sm-6">
                 <label for="street" >Street</label>
-                <input type="text" class="form-control" name="street" id="street"  value=" ">
+                <input type="text" class="form-control" name="street" id="street"  value="" placeholder="">
             </div><!-- /.form-group -->
             <div class="form-group col-sm-3">
                 <label for="house"> House Number/Name </label>
-                <input type="text" class="form-control" name="house" id="house" value="">
+                <input type="text" class="form-control" name="house" id="house" value="" placeholder="">
             </div><!-- /.form-group -->
             <div class="form-group col-sm-3">
                 <label for="zip"> ZIP </label>
-                <input type="text" class="form-control" name="zip" id="zip" value="">
+                <input type="text" class="form-control" name="zip" id="zip" value="" placeholder="">
             </div><!-- /.form-group -->
         </div><!-- /.row -->
         <div class="row">

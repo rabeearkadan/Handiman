@@ -86,9 +86,7 @@
                     <blockquote
                         class="we-truncate we-truncate--multi-line we-truncate--interactive we-truncate--truncated ember-view we-customer-review__body">
                         <div class="we-clamp ember-view">
-                            <p>I report many problem in WhatsApp and all I got the feed back
-                                is same reply which is cut and paste from your technical department. I have serious
-                                issues and took snapshots and the </p>
+                            <p>Review  </p>
                             <br>
                         </div>
                         <button class="we-truncate__button link">
