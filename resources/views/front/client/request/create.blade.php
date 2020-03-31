@@ -7,6 +7,15 @@
     <link href="{{asset('css/client/requests/file-uploader.css')}}" rel="stylesheet">
     <link href="{{asset('css/client/color-box.css')}}" rel="stylesheet">
     <link href="{{asset('css/client/requests/icons.css')}}" rel="stylesheet" media="screen">
+    <style>
+        .pull-right{
+            float: right;
+        }
+        #date-input:focus:not([readonly]) {
+            border-bottom: 1px solid #26a69a;
+            box-shadow: 0 1px 0 0 #26a69a;
+        }
+    </style>
 @endpush
 @section('content')
     <body>
@@ -38,15 +47,23 @@
                                 <div class="row">
                                     <div class="col-sm-5">
                                         <div class="form-group">
-                                            <label for="contact-form-subject">Subject</label>
-                                            <input type="text" name="subject" id="contact-form-subject"
-                                                   class="form-control">
+                                            <label for="subject">Subject</label>
+                                            <input type="text" name="subject" id="subject" class="form-control">
+                                        </div><!-- /.form-group -->
+                                    </div><!-- /.col-* -->
+                                    <div class="col-sm-5">
+                                        <div class="form-group">
+                                            <label for="address">Address</label>
+                                            <select id="address">
+                                                <option> address 1</option>
+                                                <option> address 2</option>
+                                            </select>
                                         </div><!-- /.form-group -->
                                     </div><!-- /.col-* -->
                                 </div><!-- /.row -->
                                 <div class="form-group">
-                                    <label for="contact-form-message"> Problem Description</label>
-                                    <textarea class="form-control" id="contact-form-message" rows="6"></textarea>
+                                    <label for="problem"> Problem Description</label>
+                                    <textarea class="form-control" id="problem" rows="6"></textarea>
                                 </div><!-- /.form-group -->
                                 <div class="row">
                                     <div class="col-sm-5">
@@ -57,8 +74,8 @@
                                     </div><!--/.col-*-->
                                 </div><!--/.row-->
                                 <button class="btn btn-primary pull-right"> Request</button>
-                            </form><!-- /.contact-form -->
-                        </div><!-- /.contact-form-wrapper -->
+                            </form><!-- /.form -->
+                        </div><!-- /.wrapper -->
                     </div><!-- /.content -->
                 </div><!-- /.container -->
             </div><!-- /.main-inner -->
