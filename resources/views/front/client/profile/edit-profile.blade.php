@@ -220,6 +220,11 @@
 
             // Create the search box and link it to the UI element.
             var input = document.getElementById('pac-input');
+            map.event.addListener(input, 'place_changed', function () {
+                var place = input.getPlace();
+                document.getElementById('long').value = place.geometry.location.lat();
+                document.getElementById('lat').value = place.geometry.location.lng();
+            });
             var searchBox = new google.maps.places.SearchBox(input);
             map.controls[google.maps.ControlPosition.TOP_LEFT].push(input);
 
@@ -276,12 +281,6 @@
                 });
 
                 map.fitBounds(bounds);
-            });
-
-            map.event.addListener(input, 'place_changed', function () {
-                var place = input.getPlace();
-                document.getElementById('long').value = place.geometry.location.lat();
-                document.getElementById('lat').value = place.geometry.location.lng();
             });
         }
     </script>
