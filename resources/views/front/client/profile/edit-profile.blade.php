@@ -278,7 +278,7 @@
                 map.fitBounds(bounds);
             });
 
-            map.addListener(input, 'place_changed', function () {
+            map.event.addListener(input, 'place_changed', function () {
                 var place = input.getPlace();
                 document.getElementById('long').value = place.geometry.location.lat();
                 document.getElementById('lat').value = place.geometry.location.lng();
