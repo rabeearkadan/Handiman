@@ -256,11 +256,7 @@ class RequestController extends Controller
         $requests = Auth::user()->employeeRequests()->where('status','ongoing')->get();
         if ($requests == null)
             return response()->json(['status' => 'success', 'message' => 'You have no ongoing requests']);
-        $requests = $requests->map(function($item){
-            $item->client = $item->clients()->first()->simplifiedArray();
-            $item->employee = $item->empolyees()->first()->simplifiedArray();
-            return $item;
-        });
+//
         return response()->json(['status' => 'success', 'requests' => $requests]);
 
     }
