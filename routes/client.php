@@ -35,3 +35,6 @@ Route::get('/profile','ProfileController@myProfile')->name('client.profile');
 Route::get('/profile/password','ProfileController@editPassword')->name('client.password');
 Route::get('/profile/payment','ProfileController@editPayment')->name('client.payment');
 Route::put('/profile','ProfileController@editProfile')->name('client.edit.profile');
+
+Route::post('/profile/add/address','ProfileController@addAddress')->name('client.add.address');
+Route::put('/profile/edit/address','ProfileController@editAddress')->name('client.edit.address');

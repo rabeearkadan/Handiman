@@ -7,6 +7,7 @@
          * element that contains the map. */
         #map {
         }
+
         /* Optional: Makes the sample page fill the window. */
 
         #description {
@@ -76,6 +77,7 @@
             font-weight: 500;
             padding: 6px 12px;
         }
+
         #target {
             width: 345px;
         }
@@ -92,7 +94,7 @@
         </h4>
         <div class="row">
             <div class="form-group col-sm-6">
-                <label for="name" >Name</label>
+                <label for="name">Name</label>
                 <input type="text" class="form-control" name="name" id="name" value="">
             </div><!-- /.form-group -->
             <div class="form-group col-sm-6">
@@ -114,37 +116,44 @@
 
 
     <div class="background-white p20 mb30">
-        <h4 class="page-title">
-            Address
-            <a href="#" class="btn btn-primary btn-xs pull-right">Save</a>
-        </h4>
-        <div class="row">
-            <div class="form-group col-sm-6">
-                <label for="address_name">Address Name, this will be displayed when choosing your location in a request </label>
-                <input type="text" class="form-control" name="name" id="address_name" placeholder="Home Beirut">
+        <form method="post"
+              action="@if(($user->locations)) {{route('client.edit.address')}}  @else {{route('client.add.address')}} @endif">
+            @csrf
+            @if($user->locations)
+            @method('put')
+            @endif
+            <h4 class="page-title">
+                Address
+                <button type="submit" class="btn btn-primary btn-xs pull-right">Save</button>
+            </h4>
+            <div class="row">
+                <div class="form-group col-sm-6">
+                    <label for="address_name">Address Name, this will be displayed when choosing your location in a
+                        request </label>
+                    <input type="text" class="form-control" name="name" id="address_name" placeholder="Home Beirut">
+                </div>
             </div>
-        </div>
-        <div class="map-position">
-            <input id="pac-input" name="map-input" class="controls" type="text" placeholder="Search Box">
-            <div id="map"></div>
-        </div><!-- /.map-property -->
-        <div class="row" style="margin-top:20px">
-            <div class="form-group col-sm-6">
-                <label for="street" >Street</label>
-                <input type="text" class="form-control" name="street" id="street"  value="" placeholder="">
-            </div><!-- /.form-group -->
-            <div class="form-group col-sm-3">
-                <label for="house"> House Number/Name </label>
-                <input type="text" class="form-control" name="house" id="house" value="" placeholder="">
-            </div><!-- /.form-group -->
-            <div class="form-group col-sm-3">
-                <label for="zip"> ZIP </label>
-                <input type="text" class="form-control" name="zip" id="zip" value="" placeholder="">
-            </div><!-- /.form-group -->
-        </div><!-- /.row -->
-        <div class="row">
-            <div class="col-sm-6">
-                <div class="form-group">
+            <div class="map-position">
+                <input id="pac-input" name="map-input" class="controls" type="text" placeholder="Search Box">
+                <div id="map"></div>
+            </div><!-- /.map-property -->
+            <div class="row" style="margin-top:20px">
+                <div class="form-group col-sm-6">
+                    <label for="street">Street</label>
+                    <input type="text" class="form-control" name="street" id="street" value="" placeholder="">
+                </div><!-- /.form-group -->
+                <div class="form-group col-sm-3">
+                    <label for="house"> House Number/Name </label>
+                    <input type="text" class="form-control" name="house" id="house" value="" placeholder="">
+                </div><!-- /.form-group -->
+                <div class="form-group col-sm-3">
+                    <label for="zip"> ZIP </label>
+                    <input type="text" class="form-control" name="zip" id="zip" value="" placeholder="">
+                </div><!-- /.form-group -->
+            </div><!-- /.row -->
+            <div class="row">
+                <div class="col-sm-6">
+                    <div class="form-group">
                         <select name="property">
                             <option>Property Type</option>
                             <option>Apartment</option>
@@ -152,18 +161,19 @@
                             <option>House</option>
                             <option>Villa</option>
                         </select>
-                </div><!-- /.form-group -->
-            </div>
-            <div class="col-sm-6">
-                <div class="form-group">
+                    </div><!-- /.form-group -->
+                </div>
+                <div class="col-sm-6">
+                    <div class="form-group">
                         <select name="contract">
                             <option>Contract</option>
                             <option>Rent</option>
                             <option>Sale</option>
                         </select>
-                </div><!-- /.form-group -->
-            </div><!-- /.col-* -->
-        </div><!-- /.row -->
+                    </div><!-- /.form-group -->
+                </div><!-- /.col-* -->
+            </div><!-- /.row -->
+        </form>
     </div><!-- /.background -white -->
     <div class="line-item__add">
         <button type="button" class="js-line-item-trigger marketing-button--skin-reset button--icon" id="AddLineItem">
@@ -266,7 +276,8 @@
             });
         }
     </script>
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyApA0BZrqcfRauI8W5RLAQYjNJla_AS3gA&libraries=places&callback=initAutocomplete"
+    <script
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyApA0BZrqcfRauI8W5RLAQYjNJla_AS3gA&libraries=places&callback=initAutocomplete"
         async defer></script>
     <script src="/public/js/client/dropdown.js" type="text/javascript"></script>
     <script src="/public/js/client/collapse.js" type="text/javascript"></script>

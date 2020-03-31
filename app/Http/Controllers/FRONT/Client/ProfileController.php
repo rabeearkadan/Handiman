@@ -23,7 +23,26 @@ class ProfileController extends Controller
     $user = Auth::user();
     return view('front.client.profile.payment', compact('user'));
     }
-
+    public function addAddress(Request $request){
+        dd($request);
+        $user = Auth::user();
+        $data = ["type"=> $request->type,
+            "location" => [$request->lon ,$request->la] ,
+            "street" => $request->street ,
+            "house" => $request->house,
+            "zip" => $request->zip,
+            "property_type" => $request->property,
+            "contract_type" => $request->contract,
+        ];
+        $user->push('locations',$data);
+        $user->save();
+        return view('front.client.profile.edit-profile', compact('user'));
+    }
+    public function editAddress(){
+        $user = Auth::user();
+        $user->push('locations', '');
+        return view('front.client.profile.edit-profile', compact('user'));
+    }
     public function editProfile(){
 
     }
