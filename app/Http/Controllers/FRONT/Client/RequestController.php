@@ -44,7 +44,7 @@ class RequestController extends Controller
      *
      * @param Request $req
      * @param $employee_id
-     * @return void
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
     public function store(Request $req)
     {
@@ -90,7 +90,9 @@ class RequestController extends Controller
 //                $this->notification($handyman->device_token, Auth::user()->name, 'You received a new request', 'request');
             }
             $requestHandyman->save();
+            dd($requestHandyman);
         }
+        return view('front.client.request.index');
     }
 
     private function searchForHandyman($requestHandyman)
