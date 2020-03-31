@@ -25,7 +25,9 @@
             position: relative;
             box-shadow: 0 15px 30px -10px rgba(0, 0, 0, 0.1);
             cursor: pointer;
-            outline: none;
+            outline: rgb(132, 144, 111);
+            outline-style: inset;
+            outline-width: medium;
         }
         .select-box__current:focus + .select-box__list {
             opacity: 1;
