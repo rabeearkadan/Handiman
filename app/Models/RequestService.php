@@ -15,5 +15,15 @@ class RequestService extends Eloquent
     {
         return $this->belongsToMany(User::class);
     }
+    public function employees()
+    {
+        return $this->belongsToMany(
+            User::class, null, 'employee_ids', 'employee_request_ids'
+        );    }
+    public function clients()
+    {
+        return $this->belongsToMany(
+            User::class, null, 'client_ids', 'employee_request_ids'
+        );    }
 
 }

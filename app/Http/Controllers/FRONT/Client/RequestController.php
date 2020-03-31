@@ -52,7 +52,7 @@ class RequestController extends Controller
        // $this->validator($req->all())->validate();
         $requestHandyman = new RequestService();
 
-        $requestHandyman->users()->attach(Auth::id());
+        $requestHandyman->clients()->attach(Auth::id());
 
 
         $requestHandyman->description = $req->input('description');
@@ -83,7 +83,7 @@ class RequestController extends Controller
                 $handyman = User::query()->find($req->input('employee_id'));
                 $requestHandyman->type = 'specified';
 
-                $requestHandyman->users()->attach($handyman->id);
+                $requestHandyman->employees()->attach($handyman->id);
 
 
                 $requestHandyman->date = $req->input('date');//yyyy-mm-dd

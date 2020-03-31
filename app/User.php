@@ -81,12 +81,19 @@ class User extends Eloquent implements
         return $this->belongsToMany(Invoice::class);
     }
 
-    public function requests()
+
+    public function employeeRequests()
     {
-
-        return $this->belongsToMany(RequestService::class);
+        return $this->belongsToMany(
+            RequestService::class, null, 'employee_request_ids', 'employee_ids'
+        );
     }
-
+    public function clientRequests()
+    {
+        return $this->belongsToMany(
+            RequestService::class, null, 'client_request_ids', 'client_ids'
+        );
+    }
     public function simplifiedArray()
     {
         return [
