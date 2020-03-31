@@ -226,7 +226,7 @@
             var place = input.getPlace();
 
             document.getElementById('lat').value = place.geometry.location.lat();
-            document.getElementById('lon').value = place.geometry.location.lng();
+            document.getElementById('long').value = place.geometry.location.lng();
             // Bias the SearchBox results towards current map's viewport.
             map.addListener('bounds_changed', function () {
                 searchBox.setBounds(map.getBounds());
