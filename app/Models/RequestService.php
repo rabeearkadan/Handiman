@@ -16,13 +16,4 @@ class RequestService extends Eloquent
         return $this->belongsToMany(User::class);
     }
 
-    public function employee()
-    {
-        return $this->belongsTo(User::class, 'employee_id');
-    }
-
-    public function client()
-    {
-        return $this->belongsTo(User::class, 'client_id');
-    }
 }

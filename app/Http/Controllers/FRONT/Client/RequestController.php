@@ -46,19 +46,21 @@ class RequestController extends Controller
      * @param $employee_id
      * @return void
      */
-    public function store(Request $req,$employee_id = null)
+    public function store(Request $req)
     {
         //
-        dd($req);
         $this->validator($req->all())->validate();
         $requestHandyman = new RequestService();
-        $requestHandyman->client_id = Auth::id();
+
+        $requestHandyman->users()->attach(Auth::id());
+
+
         $requestHandyman->description = $req->input('description');
         $requestHandyman->status = 'ongoing';
 
 //        $requestHandyman->location = explode(',', $req->input('location'));
         $requestHandyman->timezone = $req->timezone;//'Asia\Beirut'
-        $requestHandyman->service_id = $req->service_id;
+        $requestHandyman->service_id = $req->input('service_id');
         //add attachment if exists
 
         if ($req->has('is_urgent') && $req->input('is_urgent')) {
@@ -67,9 +69,9 @@ class RequestController extends Controller
             $requestHandyman->save();
             $handyman = $this->searchForHandyman($requestHandyman);
             if ($handyman == null) {
-
+                // TODO: Implement searchForHandyman() method.
             } else {
-                $requestHandyman->empolyee_id = $employee_id;
+                $requestHandyman->empolyee_id = $req->input('employee_id');
                 $requestHandyman->type = 'urgent';
                 $requestHandyman->save();
 //                $this->notification($handyman->device_token, Auth::user()->name, 'You received a new request', 'request');
@@ -80,7 +82,10 @@ class RequestController extends Controller
             if ($req->has('employee_id')) {
                 $handyman = User::query()->find($req->input('employee_id'));
                 $requestHandyman->type = 'specified';
-                $requestHandyman->employee_id = $handyman->id;
+
+                $requestHandyman->users()->attach($handyman->id);
+
+
                 $requestHandyman->date = $req->input('date');//yyyy-mm-dd
 //                $this->notification($handyman->device_token, Auth::user()->name, 'You received a new request', 'request');
             }

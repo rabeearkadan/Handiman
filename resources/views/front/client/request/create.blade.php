@@ -7,6 +7,7 @@
     <link href="{{asset('css/client/requests/file-uploader.css')}}" rel="stylesheet">
     <link href="{{asset('css/client/color-box.css')}}" rel="stylesheet">
     <link href="{{asset('css/client/requests/icons.css')}}" rel="stylesheet" media="screen">
+    <link href="{{asset('lib/font-awesome/css/font-awesome.css')}}" rel="stylesheet">
     <style>
         .pull-right{
             float: right;
@@ -145,7 +146,7 @@
                         @endif
                         <h3> The more you elaborate, the more we can help!</h3>
                         <div class="contact-form-wrapper clearfix background-white p30">
-                            <form class="contact-form" method="post" action="{{route('client.request.store')}}">
+                            <form class="contact-form" method="post" action="{{route('client.request.store',['service_id'=>$service->id,'employee_id'=>$employee->id])}}">
                                 @csrf
                                 <div class="row">
                                     <div class="col-sm-5">
@@ -156,7 +157,7 @@
                                     </div><!-- /.col-* -->
                                     <div class="col-sm-5">
                                         <div class="form-group">
-                                            <label for="subject">Address</label>
+                                            <label for="subject"> <i class="fa fa-home" aria-hidden="true"></i> Address</label>
                                             <div class="select-box">
                                                 <div class="select-box__current" tabindex="1">
                                                     <div class="select-box__value">
@@ -168,7 +169,7 @@
                                                 </div>
                                                 <ul class="select-box__list">
                                                     <li>
-                                                        <label class="select-box__option" for="0" aria-hidden="aria-hidden"> Address1</label>
+                                                        <label class="select-box__option" for="0" aria-hidden="true"> Address1</label>
                                                     </li>
                                                 </ul>
                                             </div>
@@ -177,18 +178,18 @@
                                     </div><!-- /.col-* -->
                                 </div><!-- /.row -->
                                 <div class="form-group">
-                                    <label for="problem"> Problem Description</label>
-                                    <textarea class="form-control" id="problem" rows="6"></textarea>
+                                    <label for="description"> Problem Description</label>
+                                    <textarea class="form-control" id="description" name="description" rows="6"></textarea>
                                 </div><!-- /.form-group -->
                                 <div class="row">
                                     <div class="col-sm-5">
                                         <div class="form-group">
                                             <label for="date-input"> Pick a day </label>
-                                            <input id="date-input" name="date" type="text" data-dd-theme="leaf">
+                                            <input id="date-input" name="date" type="text" data-dd-theme="leaf" data-dd-format="Y-m-d">
                                         </div><!--/.form-group-->
                                     </div><!--/.col-*-->
                                 </div><!--/.row-->
-                                <button class="btn btn-primary pull-right"> Request</button>
+                                <button type="submit" class="btn btn-primary pull-right"> Request</button>
                             </form><!-- /.form -->
                         </div><!-- /.wrapper -->
                     </div><!-- /.content -->
