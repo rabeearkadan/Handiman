@@ -55,7 +55,7 @@ class RequestController extends Controller
 
 
         $requestHandyman->description = $req->input('description');
-        $requestHandyman->status = 'ongoing';
+        $requestHandyman->status = 'pending';
 
 //        $requestHandyman->location = explode(',', $req->input('location'));
         $requestHandyman->timezone = $req->timezone;//'Asia\Beirut'
