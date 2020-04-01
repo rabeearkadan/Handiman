@@ -217,6 +217,8 @@
                     return;
                 }
 
+                console.log( places);
+
 
                 // Clear out the old markers.
                 markers.forEach(function (marker) {
