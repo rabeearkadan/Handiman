@@ -62,14 +62,14 @@ class RequestController extends Controller
 
                 $this->notification(($handyman->employee_device_token), (Auth::user()->name), 'You received a new request', 'request');
             }
-            $requestHandyman->save();
-            $requestHandyman->clients()->attach(Auth::id());
-            if ($req->has('employee_id')) {
-                $handyman = User::query()->find($req->input('employee_id'));
-                $requestHandyman->employees()->attach($handyman->id);
-            }
 
-                return response()->json(['status' => 'success', 'message' => 'Your search was done successfully']);
+            $requestHandyman->clients()->attach(Auth::id());
+            $handyman = User::query()->find($req->input('employee_id'));
+            $requestHandyman->employees()->attach($handyman->id);
+            $requestHandyman->save();
+
+
+            return response()->json(['status' => 'success', 'message' => 'Your search was done successfully']);
 
         }
 
@@ -240,12 +240,12 @@ class RequestController extends Controller
     public function getHandymanRequests()
     {
 
-        $requests = Auth::user()->employeeRequests()->where('status','pending')->get();
+        $requests = Auth::user()->employeeRequests()->where('status', 'pending')->get();
         if ($requests == null)
             return response()->json(['status' => 'success', 'message' => 'You have no ongoing requests']);
-        $requests = $requests->map( function ($item) {
-           $item->client = User::query()->find($item->client_ids[0])->simplifiedArray();
-           return $item;
+        $requests = $requests->map(function ($item) {
+            $item->client = User::query()->find($item->client_ids[0])->simplifiedArray();
+            return $item;
         });
         return response()->json(['status' => 'success', 'requests' => $requests]);
 
