@@ -25,77 +25,7 @@ $(document).ready(function () {
     /**
      * Map
      */
-    var map = $('#map');
-    var markers = new Array();
-    var icons = ['support', 'beer', 'plane', 'flag', 'wifi', 'tint', 'star', 'cutlery', 'music', 'recycle'];
-
-    function get_gps_ranges(center_lat, center_lng, range_level_lat, range_level_lng) {
-        var lat = center_lat + (Math.random() * (range_level_lat + range_level_lat) - range_level_lat);
-        var lng = center_lng + (Math.random() * (range_level_lng + range_level_lng) - range_level_lng);
-        return Array(lat, lng);
-    }
-
-    for (var i = 0; i < 50; i++) {
-        var position = get_gps_ranges(40.761077, -73.983307, 0.08, 0.60);
-        var icon = icons[Math.floor(Math.random() * icons.length)];
-
-        markers.push({
-            latitude: position[0],
-            longitude: position[1],
-            marker_content: '<div class="marker"><div class="marker-inner"><i class="fa fa-' + icon + '"></div></div>',
-            content: '<div class="infobox"><div class="infobox-inner"><div class="infobox-content"><dl><dt>Address</dt><dd>Evenue Street 800</dd><dt>Phone</dt><dd>+1-123-456-789</dd> <dt>Web</dt><dd><a href="#">http://example.com</a></dd><dt>Rating</dt><dd class="rating"><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i></dd></dl></div><a href="#" class="close"><i class="fa fa-close"></i></a></div>'
-        });
-    }
-
-    var map_settings = {
-        infowindow: {
-            borderBottomSpacing: 0,
-            height: 195,
-            width: 165,
-            offsetX: 30,
-            offsetY: -120
-        },
-        cluster: {
-            height: 40,
-            width: 40,
-            gridSize: 60
-        },
-        zoom: 11,
-        transparentMarkerImage: map.data('transparent-marker-image'),
-        transparentClusterImage: map.data('transparent-marker-image'),
-        markers: markers,
-        styles: map.data('styles')
-    };
-
-    if (map.length) {
-        map.google_map(map_settings);
-    }
-
-    var map = $('#fullscreen-map');
-
-    var map_settings = {
-        infowindow: {
-            borderBottomSpacing: 0,
-            height: 195,
-            width: 165,
-            offsetX: 30,
-            offsetY: -120
-        },
-        cluster: {
-            height: 40,
-            width: 40,
-            gridSize: 60
-        },
-        zoom: 11,
-        transparentMarkerImage: map.data('transparent-marker-image'),
-        transparentClusterImage: map.data('transparent-marker-image'),
-        markers: markers,
-        styles: map.data('styles')
-    };
-
-    if (map.length) {
-        map.google_map(map_settings);
-    }
+   
 
     /**
      * Colorbox
