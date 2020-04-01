@@ -134,7 +134,7 @@
             <div class="map-position">
                 <input id="pac-input" name="map-input" class="controls" type="text" placeholder="Search Box">
                 <input type="hidden" name="lat" id="lat">
-                <input type="hidden" name="long" id="long">
+                <input type="hidden" name="lng" id="long">
                 <div id="map"></div>
             </div><!-- /.map-property -->
             <div class="row" style="margin-top:20px">
