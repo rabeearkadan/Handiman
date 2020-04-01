@@ -95,7 +95,7 @@
         <div class="row">
             <div class="form-group col-sm-6">
                 <label for="name">Name</label>
-                <input type="text" class="form-control" name="name" id="name" value="">
+                <input type="text" class="form-control" name="name" id="name" value="{{$user->name}}">
             </div><!-- /.form-group -->
             <div class="form-group col-sm-6">
                 <label for="surname">Surname</label>
@@ -103,11 +103,11 @@
             </div><!-- /.form-group -->
             <div class="form-group col-sm-6">
                 <label for="email">E-mail</label>
-                <input type="text" class="form-control" name="email" id="email" value="">
+                <input type="text" class="form-control" name="email" id="email" value="{{$user->email}}">
             </div><!-- /.form-group -->
             <div class="form-group col-sm-6">
                 <label for="phone">Phone</label>
-                <input type="text" class="form-control" name="phone" id="phone" value="" placeholder="+96171456789">
+                <input type="text" class="form-control" name="phone" id="phone" value="{{$user->phone}}" placeholder="71456789">
             </div><!-- /.form-group -->
         </div><!-- /.row -->
     </div>
@@ -223,7 +223,7 @@
             var searchBox = new google.maps.places.SearchBox(input);
             map.controls[google.maps.ControlPosition.TOP_LEFT].push(input);
 
-            
+
             // Bias the SearchBox results towards current map's viewport.
             map.addListener('bounds_changed', function () {
                 searchBox.setBounds(map.getBounds());
