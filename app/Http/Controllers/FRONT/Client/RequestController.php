@@ -24,7 +24,7 @@ class RequestController extends Controller
         $pendingRequests = Auth::user()->clientRequests()->where('status','pending')->get();
         $approvedRequests = Auth::user()->clientRequests()->where('status','approved')->get();
         $pendingRequests = $pendingRequests->map(function ($item) {
-                $item->service = Service::find($item->service_id)->name;
+                $item->service_name = Service::find($item->service_id)->name;
                 $item->employee = User::find($item->employee_ids[0]);
                 return $item;
             });

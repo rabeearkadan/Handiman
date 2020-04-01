@@ -22,7 +22,7 @@
                 @foreach($pendingRequests as $request)
                     <tr>
                         <td>
-                            <img src="{{config('image.path')}}" alt=""/>
+                            <img src="{{config('image.path').$request->employee->image}}" alt=""/>
                             <p> {{$request->employee->name}} </p>
                         </td>
                         <td> {{$request->subject}} </td>
