@@ -32,8 +32,7 @@
         </div><!-- /.row -->
     </div>
 
-
-@if(count($user->locations) > 0)
+@if(isset($user->locations))
 @foreach($user->locations as $location)
     <div class="background-white p20 mb30">
         <form method="post" action="{{route('client.edit.address')}}">
