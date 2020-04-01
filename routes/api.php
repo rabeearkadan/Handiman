@@ -27,10 +27,9 @@ Route::middleware(['auth:api', 'employee'])->prefix('employee')->group(function 
     Route::put('post/{id}', 'PostController@editPost');
     Route::get('post', 'PostController@getPosts');
     Route::get('post-id/{id}', 'PostController@getPostById');
-    Route::get('request', 'RequestController@getHandymanRequests');
     Route::get('request/{id}', 'RequestController@getRequestById');
-    Route::get('ongoing-requests', 'RequestController@getHandymanOngoingRequests');
-    Route::get('outgoing-requests', 'RequestController@getHandymanOutgoingRequests');
+    Route::get('pending-requests', 'RequestController@getHandymanRequests');
+    Route::get('jobs', 'RequestController@getHandymanJobs');
 
     Route::post('add-service/{id}', 'ServiceController@addService');
     Route::get('delete-service/{id}', 'ServiceController@deleteService');

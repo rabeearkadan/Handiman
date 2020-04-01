@@ -42,7 +42,7 @@ class RequestController extends Controller
         $requestHandyman = new RequestService();
         $requestHandyman->subject = $req->input('subject');
         $requestHandyman->description = $req->input('description');
-        $requestHandyman->status = 'ongoing';
+        $requestHandyman->status = 'pending';
 
         $requestHandyman->location = explode(',', $req->input('location'));
         $requestHandyman->timezone = $req->timezone;
@@ -250,10 +250,10 @@ class RequestController extends Controller
     //Route::get('Ongoing-requests', 'RequestController@geHandymanOngoingRequests');
 //Route::get('Outgoing-requests', 'RequestController@geHandymanOutgoingRequests');
 
-    public function getHandymanOngoingRequests()
+    public function getHandymanRequests()
     {
 
-        $requests = Auth::user()->employeeRequests()->where('status','ongoing')->get();
+        $requests = Auth::user()->employeeRequests()->where('status','pending')->get();
         if ($requests == null)
             return response()->json(['status' => 'success', 'message' => 'You have no ongoing requests']);
         $requests = $requests->map( function ($item) {
@@ -264,7 +264,7 @@ class RequestController extends Controller
 
     }
 
-    public function getHandymanOutgoingRequests()
+    public function getHandymanJobs()
     {
         $outgoing = RequestService::query()->client()
             ->where('employee_id', Auth::id())
