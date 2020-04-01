@@ -51,62 +51,6 @@ $(document).ready(function () {
         $('.detail-gallery-preview a').attr('href', link);
     });
 
-    /**
-     * Listing Detail Map
-     */
-    var listing_detail_map = $('#listing-detail-map');
-    if (listing_detail_map.length) {
-
-        listing_detail_map.google_map({
-            center: {
-                latitude: listing_detail_map.data('latitude'),
-                longitude: listing_detail_map.data('longitude')
-            },
-            zoom: listing_detail_map.data('zoom'),
-            transparentMarkerImage: listing_detail_map.data('transparent-marker-image'),
-            transparentClusterImage: listing_detail_map.data('transparent-marker-image'),
-            infowindow: {
-                borderBottomSpacing: 0,
-                height: 195,
-                width: 165,
-                offsetX: 30,
-                offsetY: -120
-            },
-            markers: [{
-                latitude: listing_detail_map.data('latitude'),
-                longitude: listing_detail_map.data('longitude'),
-                marker_content: '<div class="marker"><div class="marker-inner"><i class="' + listing_detail_map.data('icon') + '"></div></div>'
-            }]
-        });
-    }
-
-    /**
-     * Listing Detail Street View
-     */
-    $('#listing-detail-location a[data-toggle="tab"]').on('shown.bs.tab', function (e) {
-        var target = $(this).attr('href');
-
-        if (target == '#street-view-panel') {
-
-            var street_view = $('#listing-detail-street-view');
-
-            new google.maps.StreetViewPanorama(document.getElementById('listing-detail-street-view'), {
-                    position: {
-                        lat: street_view.data('latitude'),
-                        lng: street_view.data('longitude')
-                    },
-                    pov: {
-                        heading: street_view.data('heading'),
-                        pitch: street_view.data('pitch')
-                    },
-                    zoom: street_view.data('zoom'),
-                    linksControl: false,
-                    panControl: false,
-                    visible: true
-                }
-            );
-        }
-    });
 
     /**
      * Listing Detail Bookmark & Like
