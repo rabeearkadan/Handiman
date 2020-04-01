@@ -28,9 +28,6 @@ class RequestController extends Controller
                 $item->employee = User::find($item->employee_ids[0]);
                 return $item;
             });
-        dd($pendingRequests);
-
-
         return view('front.client.request.index',compact(['pendingRequests','approvedRequests']));
     }
 
