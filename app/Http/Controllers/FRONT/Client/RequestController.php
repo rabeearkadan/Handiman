@@ -21,7 +21,25 @@ class RequestController extends Controller
     public function index()
     {
         //
-        return view('front.client.request.index');
+        $pendingRequests = Auth::user()->clientRequests()->where('status','pending');
+        $approvedRequests = Auth::user()->clientRequests()->where('status','approved');
+        $pendingRequests = $pendingRequests->map( function ($item) {
+            $item->service = Service::find($item->service_id)->name;
+            return $item;
+        });
+        $pendingRequests = $pendingRequests->map( function ($item) {
+            $item->employee = User::query()->find($item->employee_ids[0]);
+            return $item;
+        });
+        $approvedRequests = $approvedRequests->map( function ($item) {
+            $item->service_name = Service::find($item->service_id)->name;
+            return $item;
+        });
+        $approvedRequests = $approvedRequests->map( function ($item) {
+            $item->employee = User::query()->find($item->employee_ids[0]);
+            return $item;
+        });
+        return view('front.client.request.index',compact(['pendingRequests','approvedRequests']));
     }
 
     /**
