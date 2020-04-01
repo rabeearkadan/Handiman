@@ -23,19 +23,6 @@ class RequestController extends Controller
         ]);
     }
 
-    public function checkTime($day, $from, $to, User $employee)
-    {
-        $flag = true;
-        for ($i = from; $i <= to; $i++) {
-            $hour = str_pad($i,
-                    2, 0, STR_PAD_LEFT) . "00";
-            if ($employee->timeline[$day][$hour] == false) {
-                $flag = false;
-            }
-        }
-        return $flag;
-    }
-
     public function makeRequest(Request $req)
     {
         $this->validator($req->all())->validate();
