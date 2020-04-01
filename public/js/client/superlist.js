@@ -18,9 +18,7 @@ $(document).ready(function () {
     /**
      * Bootstrap Tooltip
      */
-    $(function () {
-        $('[data-toggle="tooltip"]').tooltip()
-    })
+
 
     /**
      * Map
