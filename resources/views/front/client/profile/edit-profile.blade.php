@@ -217,7 +217,7 @@
                     return;
                 }
 
-                console.log( places);
+
 
 
                 // Clear out the old markers.
@@ -255,6 +255,8 @@
                     } else {
                         bounds.extend(place.geometry.location);
                     }
+                    document.getElementById('lat').val( place.geometry.location.lat())
+                    document.getElementById('lng').val( place.geometry.location.lng())
                 });
 
                 map.fitBounds(bounds);
