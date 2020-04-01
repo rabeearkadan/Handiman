@@ -335,8 +335,8 @@
                     } else {
                         bounds.extend(place.geometry.location);
                     }
-                    document.getElementById('lat').value = place.geometry.location.lat()
-                    document.getElementById('lng').value  = place.geometry.location.lng()
+                    $('#lat').val( place.geometry.location.lat())
+                    $('#lng').val( place.geometry.location.lng())
                 });
 
                 map.fitBounds(bounds);
