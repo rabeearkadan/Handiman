@@ -27,7 +27,7 @@ class ProfileController extends Controller
     public function addAddress(Request $request){
         $user = Auth::user();
         $data = [
-            "_id" => Str::random(300),
+            "_id" => Str::random(24),
             "type"=> $request->type,
             "location" => [$request->lat,$request->lng] ,
             "street" => $request->street ,
