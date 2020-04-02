@@ -9,6 +9,7 @@
         #map {
             height: 550px;
         }
+
         /* Optional: Makes the sample page fill the window. */
 
         #description {
@@ -28,6 +29,7 @@
         #map #infowindow-content {
             display: inline;
         }
+
         .pac-card {
             margin: 10px 10px 0 0;
             border-radius: 2px 0 0 2px;
@@ -109,133 +111,136 @@
             </div><!-- /.form-group -->
             <div class="form-group col-sm-6">
                 <label for="phone">Phone</label>
-                <input type="text" class="form-control" name="phone" id="phone" value="{{$user->phone}}" placeholder="71456789">
+                <input type="text" class="form-control" name="phone" id="phone" value="{{$user->phone}}"
+                       placeholder="71456789">
             </div><!-- /.form-group -->
         </div><!-- /.row -->
     </div>
 
-@foreach($user->client_addresses as $address)
-    <div class="background-white p20 mb30">
-        <form method="post" action="{{route('client.edit.address')}}">
-            @csrf
-            @method('put')
-            <h4 class="page-title">
-                Address
-                <button type="submit" class="btn btn-primary btn-xs pull-right">Save</button>
-            </h4>
-            <div class="row">
-                <div class="form-group col-sm-6">
-                    <label for="address_name">Address Name, this will be displayed when choosing your location in a
-                        request </label>
-                    <input type="text" class="form-control" name="name" id="address_name" placeholder="Home Beirut">
+    @foreach($user->client_addresses as $address)
+        <div class="background-white p20 mb30">
+            <form method="post" action="{{route('client.edit.address')}}">
+                @csrf
+                @method('put')
+                <h4 class="page-title">
+                    Address
+                    <button type="submit" class="btn btn-primary btn-xs pull-right">Save</button>
+                </h4>
+                <div class="row">
+                    <div class="form-group col-sm-6">
+                        <label for="address_name">Address Name, this will be displayed when choosing your location in a
+                            request </label>
+                        <input type="text" class="form-control" name="name" id="address_name" placeholder="Home Beirut">
+                    </div>
                 </div>
-            </div>
-            <div class="map-position">
-                <input id="pac-input" name="map-input" class="controls" type="text" placeholder="Search Box">
-                <input type="hidden" name="lat" id="lat">
-                <input type="hidden" name="lng" id="lng">
-                <div id="map"></div>
-            </div><!-- /.map-property -->
-            <div class="row" style="margin-top:20px">
-                <div class="form-group col-sm-6">
-                    <label for="street">Street</label>
-                    <input type="text" class="form-control" name="street" id="street" value="" placeholder="">
-                </div><!-- /.form-group -->
-                <div class="form-group col-sm-3">
-                    <label for="house"> House Number/Name </label>
-                    <input type="text" class="form-control" name="house" id="house" value="" placeholder="">
-                </div><!-- /.form-group -->
-                <div class="form-group col-sm-3">
-                    <label for="zip"> ZIP </label>
-                    <input type="text" class="form-control" name="zip" id="zip" value="" placeholder="">
-                </div><!-- /.form-group -->
-            </div><!-- /.row -->
-            <div class="row">
-                <div class="col-sm-6">
-                    <div class="form-group">
-                        <select name="property">
-                            <option>Property Type</option>
-                            <option>Apartment</option>
-                            <option>Condo</option>
-                            <option>House</option>
-                            <option>Villa</option>
-                        </select>
+                <div class="map-position">
+                    <input id="pac-input" name="map-input" class="controls" type="text" placeholder="Search Box">
+                    <input type="hidden" name="lat" id="lat">
+                    <input type="hidden" name="lng" id="lng">
+                    <div id="map"></div>
+                </div><!-- /.map-property -->
+                <div class="row" style="margin-top:20px">
+                    <div class="form-group col-sm-6">
+                        <label for="street">Street</label>
+                        <input type="text" class="form-control" name="street" id="street" value="" placeholder="">
                     </div><!-- /.form-group -->
+                    <div class="form-group col-sm-3">
+                        <label for="house"> House Number/Name </label>
+                        <input type="text" class="form-control" name="house" id="house" value="" placeholder="">
+                    </div><!-- /.form-group -->
+                    <div class="form-group col-sm-3">
+                        <label for="zip"> ZIP </label>
+                        <input type="text" class="form-control" name="zip" id="zip" value="" placeholder="">
+                    </div><!-- /.form-group -->
+                </div><!-- /.row -->
+                <div class="row">
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <select name="property">
+                                <option>Property Type</option>
+                                <option>Apartment</option>
+                                <option>Condo</option>
+                                <option>House</option>
+                                <option>Villa</option>
+                            </select>
+                        </div><!-- /.form-group -->
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <select name="contract">
+                                <option>Contract</option>
+                                <option>Rent</option>
+                                <option>Sale</option>
+                            </select>
+                        </div><!-- /.form-group -->
+                    </div><!-- /.col-* -->
+                </div><!-- /.row -->
+            </form>
+        </div><!-- /.background -white -->
+    @endforeach
+    @if(!isset($user->client_addressses))
+        <div class="background-white p20 mb30">
+            <form method="post" action="{{route('client.add.address')}}">
+                @csrf
+                <h4 class="page-title">
+                    Address
+                    <button type="submit" class="btn btn-primary btn-xs pull-right">Save</button>
+                </h4>
+                <div class="row">
+                    <div class="form-group col-sm-6">
+                        <label for="type">Address Name, this will be displayed when choosing your location in a
+                            request </label>
+                        <input type="text" class="form-control" name="type" id="type" placeholder="Home Beirut">
+                    </div>
                 </div>
-                <div class="col-sm-6">
-                    <div class="form-group">
-                        <select name="contract">
-                            <option>Contract</option>
-                            <option>Rent</option>
-                            <option>Sale</option>
-                        </select>
+                <div class="map-position">
+                    <input id="pac-input" name="map-input" class="controls" type="text" placeholder="Search Box">
+                    <input type="hidden" name="lat" id="lat">
+                    <input type="hidden" name="lng" id="lng">
+                    <div id="map"></div>
+                </div><!-- /.map-property -->
+                <div class="row" style="margin-top:20px">
+                    <div class="form-group col-sm-6">
+                        <label for="street">Street</label>
+                        <input type="text" class="form-control" name="street" id="street" value="" placeholder="">
                     </div><!-- /.form-group -->
-                </div><!-- /.col-* -->
-            </div><!-- /.row -->
-        </form>
-    </div><!-- /.background -white -->
-@endforeach
-    <div class="background-white p20 mb30">
-        <form method="post" action="{{route('client.add.address')}}">
-            @csrf
-            <h4 class="page-title">
-                Address
-                <button type="submit" class="btn btn-primary btn-xs pull-right">Save</button>
-            </h4>
-            <div class="row">
-                <div class="form-group col-sm-6">
-                    <label for="type">Address Name, this will be displayed when choosing your location in a
-                        request </label>
-                    <input type="text" class="form-control" name="type" id="type" placeholder="Home Beirut">
-                </div>
-            </div>
-            <div class="map-position">
-                <input id="pac-input" name="map-input" class="controls" type="text" placeholder="Search Box">
-                <input type="hidden" name="lat" id="lat">
-                <input type="hidden" name="lng" id="lng">
-                <div id="map"></div>
-            </div><!-- /.map-property -->
-            <div class="row" style="margin-top:20px">
-                <div class="form-group col-sm-6">
-                    <label for="street">Street</label>
-                    <input type="text" class="form-control" name="street" id="street" value="" placeholder="">
-                </div><!-- /.form-group -->
-                <div class="form-group col-sm-3">
-                    <label for="house"> House Number/Name </label>
-                    <input type="text" class="form-control" name="house" id="house" value="" placeholder="">
-                </div><!-- /.form-group -->
-                <div class="form-group col-sm-3">
-                    <label for="zip"> ZIP </label>
-                    <input type="text" class="form-control" name="zip" id="zip" value="" placeholder="">
-                </div><!-- /.form-group -->
-            </div><!-- /.row -->
-            <div class="row">
-                <div class="col-sm-6">
-                    <div class="form-group">
-                        <select name="property">
-                            <option>Property Type</option>
-                            <option>Apartment</option>
-                            <option>Condo</option>
-                            <option>House</option>
-                            <option>Villa</option>
-                        </select>
+                    <div class="form-group col-sm-3">
+                        <label for="house"> House Number/Name </label>
+                        <input type="text" class="form-control" name="house" id="house" value="" placeholder="">
                     </div><!-- /.form-group -->
-                </div>
-                <div class="col-sm-6">
-                    <div class="form-group">
-                        <select name="contract">
-                            <option>Contract</option>
-                            <option>Rent</option>
-                            <option>Sale</option>
-                        </select>
+                    <div class="form-group col-sm-3">
+                        <label for="zip"> ZIP </label>
+                        <input type="text" class="form-control" name="zip" id="zip" value="" placeholder="">
                     </div><!-- /.form-group -->
-                </div><!-- /.col-* -->
-            </div><!-- /.row -->
-        </form>
-    </div><!-- /.background -white -->
-
+                </div><!-- /.row -->
+                <div class="row">
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <select name="property">
+                                <option>Property Type</option>
+                                <option>Apartment</option>
+                                <option>Condo</option>
+                                <option>House</option>
+                                <option>Villa</option>
+                            </select>
+                        </div><!-- /.form-group -->
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <select name="contract">
+                                <option>Contract</option>
+                                <option>Rent</option>
+                                <option>Sale</option>
+                            </select>
+                        </div><!-- /.form-group -->
+                    </div><!-- /.col-* -->
+                </div><!-- /.row -->
+            </form>
+        </div><!-- /.background -white -->
+    @endif
     <div class="line-item__add">
-        <button type="button" onclick="" class="js-line-item-trigger marketing-button--skin-reset button--icon" id="AddLineItem">
+        <button type="button" onclick="" class="js-line-item-trigger marketing-button--skin-reset button--icon"
+                id="AddLineItem">
             <svg class="icon icon--fill-primary" aria-hidden="true" focusable="false">
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 40 40">
                     <path
@@ -249,14 +254,14 @@
   </span>
         </button>
     </div>
-{{--    <div class="background-white p20 mb30">--}}
-{{--        <h4 class="page-title">--}}
-{{--            Biography--}}
-{{--            <a href="#" class="btn btn-primary btn-xs pull-right">Save</a>--}}
-{{--        </h4>--}}
-{{--        <textarea class="form-control" rows="7"></textarea>--}}
-{{--        <div class="textarea-resize"></div>--}}
-{{--    </div>--}}
+    {{--    <div class="background-white p20 mb30">--}}
+    {{--        <h4 class="page-title">--}}
+    {{--            Biography--}}
+    {{--            <a href="#" class="btn btn-primary btn-xs pull-right">Save</a>--}}
+    {{--        </h4>--}}
+    {{--        <textarea class="form-control" rows="7"></textarea>--}}
+    {{--        <div class="textarea-resize"></div>--}}
+    {{--    </div>--}}
 @endsection
 @push('js')
     <script>
@@ -332,8 +337,8 @@
                     } else {
                         bounds.extend(place.geometry.location);
                     }
-                    $('#lat').val( place.geometry.location.lat())
-                    $('#lng').val( place.geometry.location.lng())
+                    $('#lat').val(place.geometry.location.lat())
+                    $('#lng').val(place.geometry.location.lng())
                 });
 
                 map.fitBounds(bounds);
