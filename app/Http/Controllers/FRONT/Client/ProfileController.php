@@ -14,7 +14,6 @@ class ProfileController extends Controller
     //
     public function myProfile(){
         $user = Auth::user();
-        dd($user->client_addresses);
         return view('front.client.profile.edit-profile', compact('user'));
     }
     public function editPassword(){
