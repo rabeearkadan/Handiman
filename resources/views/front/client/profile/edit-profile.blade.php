@@ -114,8 +114,8 @@
         </div><!-- /.row -->
     </div>
 
-@if(isset($user->locations))
-@foreach($user->locations as $location)
+@if(isset($user->addresses))
+@foreach($user->addresses as $address)
     <div class="background-white p20 mb30">
         <form method="post" action="{{route('client.edit.address')}}">
             @csrf

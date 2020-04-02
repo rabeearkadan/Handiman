@@ -7,6 +7,7 @@ use App\Models\Service;
 use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Str;
 
 class ProfileController extends Controller
 {
@@ -24,23 +25,24 @@ class ProfileController extends Controller
     return view('front.client.profile.payment', compact('user'));
     }
     public function addAddress(Request $request){
-        dd($request);
         $user = Auth::user();
-        $data = ["type"=> $request->type,
-            "location" => [$request->lon ,$request->la] ,
+        $data = [
+            "_id" => Str::random(300),
+            "type"=> $request->type,
+            "location" => [$request->lat,$request->lng] ,
             "street" => $request->street ,
             "house" => $request->house,
             "zip" => $request->zip,
             "property_type" => $request->property,
             "contract_type" => $request->contract,
         ];
-        $user->push('locations',$data);
+        $user->push('addresses',$data);
         $user->save();
         return view('front.client.profile.edit-profile', compact('user'));
     }
     public function editAddress(){
         $user = Auth::user();
-        $user->push('locations', '');
+       // $user->push('locations', '');
         return view('front.client.profile.edit-profile', compact('user'));
     }
     public function editProfile(){
