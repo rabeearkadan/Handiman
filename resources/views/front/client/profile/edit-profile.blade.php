@@ -114,13 +114,13 @@
         </div><!-- /.row -->
     </div>
 
-@if(isset($user->client_addresses))
+@foreach($user->client_addresses as $address)
     <div class="background-white p20 mb30">
         <form method="post" action="{{route('client.edit.address')}}">
             @csrf
             @method('put')
             <h4 class="page-title">
-                Address
+                {{$address}}
                 <button type="submit" class="btn btn-primary btn-xs pull-right">Save</button>
             </h4>
             <div class="row">
@@ -174,7 +174,7 @@
             </div><!-- /.row -->
         </form>
     </div><!-- /.background -white -->
-@else
+@endforeach
     <div class="background-white p20 mb30">
         <form method="post" action="{{route('client.add.address')}}">
             @csrf
