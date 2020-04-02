@@ -24,7 +24,6 @@ class RequestController extends Controller
             $item->client = User::find($item->client_ids[0]);
             return $item;
         });
-        dd($requests);
         return view('front.employee.requests',compact('requests'));
     }
 
