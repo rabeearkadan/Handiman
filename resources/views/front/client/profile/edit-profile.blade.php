@@ -115,7 +115,6 @@
     </div>
 
 @if(isset($user->client_addresses))
-@foreach($user->client_addresses as $address)
     <div class="background-white p20 mb30">
         <form method="post" action="{{route('client.edit.address')}}">
             @csrf
@@ -175,7 +174,6 @@
             </div><!-- /.row -->
         </form>
     </div><!-- /.background -white -->
-@endforeach
 @else
     <div class="background-white p20 mb30">
         <form method="post" action="{{route('client.add.address')}}">
@@ -188,13 +186,13 @@
                 <div class="form-group col-sm-6">
                     <label for="address_name">Address Name, this will be displayed when choosing your location in a
                         request </label>
-                    <input type="text" class="form-control" name="name" id="address_name" placeholder="Home Beirut">
+                    <input type="text" class="form-control" name="name" id="type" placeholder="Home Beirut">
                 </div>
             </div>
             <div class="map-position">
                 <input id="pac-input" name="map-input" class="controls" type="text" placeholder="Search Box">
                 <input type="hidden" name="lat" id="lat">
-                <input type="hidden" name="long" id="long">
+                <input type="hidden" name="lng" id="lng">
                 <div id="map"></div>
             </div><!-- /.map-property -->
             <div class="row" style="margin-top:20px">
