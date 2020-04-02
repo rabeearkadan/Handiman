@@ -2,6 +2,9 @@
 
 namespace App\Console;
 
+use App\Console\Commands\SchedularEngine;
+use App\Console\Commands\TimeOutRequests;
+use Facade\FlareClient\Time\Time;
 use Illuminate\Console\Scheduling\Schedule;
 use Illuminate\Foundation\Console\Kernel as ConsoleKernel;
 
@@ -14,6 +17,8 @@ class Kernel extends ConsoleKernel
      */
     protected $commands = [
         //
+        SchedularEngine::class,
+        TimeOutRequests::class
     ];
 
     /**
@@ -26,6 +31,10 @@ class Kernel extends ConsoleKernel
     {
         // $schedule->command('inspire')
         //          ->hourly();
+        $schedule->command('app:scheduler')
+            ->everyMinute();
+        $schedule->command('app:timeOutRequest')
+            ->everyTenMinutes();
     }
 
     /**
