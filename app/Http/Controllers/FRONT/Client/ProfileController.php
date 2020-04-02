@@ -36,7 +36,7 @@ class ProfileController extends Controller
             "property_type" => $request->property,
             "contract_type" => $request->contract,
         ];
-        $user->push('addresses',$data);
+        $user->push('client_addresses',$data);
         $user->save();
         return view('front.client.profile.edit-profile', compact('user'));
     }
