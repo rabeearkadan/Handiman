@@ -243,7 +243,7 @@ class RequestController extends Controller
     public function getHandymanRequests()
     {
         $pending = Auth::user()->employeeRequests()->where('status','pending')->get();
-        
+
         if ($pending == null)
             return response()->json(['status' => 'success', 'message' => 'You have no ongoing requests']);
         $prequest = $pending->map(function ($item) {
@@ -267,6 +267,7 @@ class RequestController extends Controller
         $request = RequestService::query()->find($id);
         $request->status = $req->input('status');
         $client = User::query()->find($request->client_ids[0]);
+        $request->save();
         $this->notification($client->client_device_token, Auth::user()->name, 'Your request has been' . $request->status, 'request');
         return response()->json(['status' => 'success']);
     }
