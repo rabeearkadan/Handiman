@@ -243,7 +243,7 @@ class RequestController extends Controller
     public function getHandymanRequests()
     {
         $pending = Auth::user()->employeeRequests()->where('status','pending')->get();
-        dd($pending);
+        
         if ($pending == null)
             return response()->json(['status' => 'success', 'message' => 'You have no ongoing requests']);
         $prequest = $pending->map(function ($item) {
