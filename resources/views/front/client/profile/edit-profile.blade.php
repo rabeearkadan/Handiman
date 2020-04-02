@@ -184,9 +184,9 @@
             </h4>
             <div class="row">
                 <div class="form-group col-sm-6">
-                    <label for="address_name">Address Name, this will be displayed when choosing your location in a
+                    <label for="type">Address Name, this will be displayed when choosing your location in a
                         request </label>
-                    <input type="text" class="form-control" name="name" id="type" placeholder="Home Beirut">
+                    <input type="text" class="form-control" name="type" id="type" placeholder="Home Beirut">
                 </div>
             </div>
             <div class="map-position">
