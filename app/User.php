@@ -85,8 +85,7 @@ class User extends Eloquent implements
     public function employeeRequests()
     {
         return $this->belongsToMany(
-            RequestService::class, null, 'employee_ids ', 'employee_request_ids'
-        );
+            RequestService::class, null, 'employee_ids ', 'employee_request_ids');
     }
     public function clientRequests()
     {

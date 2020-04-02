@@ -242,14 +242,15 @@ class RequestController extends Controller
 
     public function getHandymanRequests()
     {
-        $requests = Auth::user()->employeeRequests()->where('status','pending')->get();
-        if ($requests == null)
+        $pending = Auth::user()->employeeRequests()->where('status','pending')->get();
+        dd($pending);
+        if ($pending == null)
             return response()->json(['status' => 'success', 'message' => 'You have no ongoing requests']);
-        $requests = $requests->map(function ($item) {
+        $prequest = $pending->map(function ($item) {
             $item->client = User::query()->find($item->client_ids[0])->simplifiedArray();
             return $item;
         });
-        return response()->json(['status' => 'success', 'requests' => $requests]);
+        return response()->json(['status' => 'success', 'requests' => $prequest]);
     }
 
     public function getHandymanJobs()
