@@ -120,7 +120,7 @@
             @csrf
             @method('put')
             <h4 class="page-title">
-                {{$address}}
+                Address
                 <button type="submit" class="btn btn-primary btn-xs pull-right">Save</button>
             </h4>
             <div class="row">
