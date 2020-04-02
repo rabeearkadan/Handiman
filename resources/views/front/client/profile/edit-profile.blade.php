@@ -233,7 +233,6 @@
             </div><!-- /.row -->
         </form>
     </div><!-- /.background -white -->
-@endif
 
     <div class="line-item__add">
         <button type="button" onclick="" class="js-line-item-trigger marketing-button--skin-reset button--icon" id="AddLineItem">
