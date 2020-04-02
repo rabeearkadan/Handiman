@@ -130,7 +130,7 @@
                     <div class="form-group col-sm-6">
                         <label for="address_name">Address Name, this will be displayed when choosing your location in a
                             request </label>
-                        <input type="text" class="form-control" name="name" id="address_name"  placeholder="Home Beirut">
+                        <input type="text" class="form-control" name="name" id="address_name" value="{{$address['type']}}" placeholder="Home Beirut">
                     </div>
                 </div>
                 <div class="map-position">
@@ -142,33 +142,33 @@
                 <div class="row" style="margin-top:20px">
                     <div class="form-group col-sm-6">
                         <label for="street">Street</label>
-                        <input type="text" class="form-control" name="street" id="street" value="{{$address->street}}" placeholder="">
+                        <input type="text" class="form-control" name="street" id="street" value="{{$address['street']}}" placeholder="">
                     </div><!-- /.form-group -->
                     <div class="form-group col-sm-3">
                         <label for="house"> House Number/Name </label>
-                        <input type="text" class="form-control" name="house" id="house" value="{{$address->house}}" placeholder="">
+                        <input type="text" class="form-control" name="house" id="house" value="{{$address['house']}}" placeholder="">
                     </div><!-- /.form-group -->
                     <div class="form-group col-sm-3">
                         <label for="zip"> ZIP </label>
-                        <input type="text" class="form-control" name="zip" id="zip" value="{{$address->zip}}" placeholder="">
+                        <input type="text" class="form-control" name="zip" id="zip" value="{{$address['zip']}}" placeholder="">
                     </div><!-- /.form-group -->
                 </div><!-- /.row -->
                 <div class="row">
                     <div class="col-sm-6">
                         <div class="form-group">
                             <select name="property">
-                                <option selected="@if($address->property_type =='Apartment') selected @endif">Apartment</option>
-                                <option selected="@if($address->property_type =='Condo') selected @endif">Condo</option>
-                                <option selected="@if($address->property_type =='House') selected @endif">House</option>
-                                <option selected="@if($address->property_type =='Villa') selected @endif">Villa</option>
+                                <option selected="@if($address['property_type'] =='Apartment') selected @endif">Apartment</option>
+                                <option selected="@if($address['property_type'] =='Condo') selected @endif">Condo</option>
+                                <option selected="@if($address['property_type'] =='House') selected @endif">House</option>
+                                <option selected="@if($address['property_type'] =='Villa') selected @endif">Villa</option>
                             </select>
                         </div><!-- /.form-group -->
                     </div>
                     <div class="col-sm-6">
                         <div class="form-group">
                             <select name="contract">
-                                <option selected="@if($address->contract_type =='Rent') selected @endif">Rent</option>
-                                <option selected="@if($address->contract_type =='Sale') selected @endif">Sale</option>
+                                <option selected="@if($address['contract_type'] =='Rent') selected @endif">Rent</option>
+                                <option selected="@if($address['contract_type'] =='Sale') selected @endif">Sale</option>
                             </select>
                         </div><!-- /.form-group -->
                     </div><!-- /.col-* -->
