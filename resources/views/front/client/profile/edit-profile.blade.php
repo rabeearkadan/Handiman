@@ -178,7 +178,7 @@
             </form>
         </div><!-- /.background -white -->
     @endforeach
-    @if(!isset($user->client_addressses))
+    @if(is_null($user->client_addressses))
         <div class="background-white p20 mb30">
             <form method="post" action="{{route('client.add.address')}}">
                 @csrf
