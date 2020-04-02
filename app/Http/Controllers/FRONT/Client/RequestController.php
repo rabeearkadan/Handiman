@@ -52,7 +52,7 @@ class RequestController extends Controller
      *
      * @param Request $req
      * @param $employee_id
-     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
      */
     public function store(Request $req)
     {
@@ -103,7 +103,7 @@ class RequestController extends Controller
                 $requestHandyman->employees()->attach($handyman->id);
             }
         }
-        return view('front.client.request.index');
+        return redirect(route('client.request.index'));
     }
 
     private function searchForHandyman($requestHandyman)
