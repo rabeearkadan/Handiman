@@ -116,7 +116,7 @@
             </div><!-- /.form-group -->
         </div><!-- /.row -->
     </div>
-
+    @if($user->client_addressses !=  null)
     @foreach($user->client_addresses as $address)
         <div class="background-white p20 mb30">
             <form method="post" action="{{route('client.edit.address')}}">
@@ -178,7 +178,7 @@
             </form>
         </div><!-- /.background -white -->
     @endforeach
-    @if($user->client_addressses !=  null)
+@else
         <div class="background-white p20 mb30">
             <form method="post" action="{{route('client.add.address')}}">
                 @csrf
