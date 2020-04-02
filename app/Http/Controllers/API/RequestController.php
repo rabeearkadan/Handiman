@@ -63,10 +63,13 @@ class RequestController extends Controller
                 $this->notification(($handyman->employee_device_token), (Auth::user()->name), 'You received a new request', 'request');
             }
 
-            $requestHandyman->clients()->attach(Auth::id());
-            $handyman = User::query()->find($req->input('employee_id'));
-            $requestHandyman->employees()->attach($handyman->id);
+
             $requestHandyman->save();
+            $requestHandyman->clients()->attach(Auth::id());
+            if ($req->has('employee_id')) {
+                $handyman = User::query()->find($req->input('employee_id'));
+                $requestHandyman->employees()->attach($handyman->id);
+            }
 
 
             return response()->json(['status' => 'success', 'message' => 'Your search was done successfully']);
