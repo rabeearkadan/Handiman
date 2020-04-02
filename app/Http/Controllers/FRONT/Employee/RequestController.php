@@ -3,7 +3,10 @@
 namespace App\Http\Controllers\FRONT\Employee;
 
 use App\Http\Controllers\Controller;
+use App\Models\Service;
+use App\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class RequestController extends Controller
 {
@@ -15,7 +18,14 @@ class RequestController extends Controller
     public function index()
     {
         //
-        return view('front.employee.requests');
+        $requests = Auth::user()->employeeRequests()->where('status','pending')->get();
+        $requests = $requests->map(function ($item) {
+            $item->service_name = Service::find($item->service_id)->name;
+            $item->client = User::find($item->client_ids[0]);
+            return $item;
+        });
+        dd($requests);
+        return view('front.employee.requests',compact('requests'));
     }
 
     /**
