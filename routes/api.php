@@ -30,7 +30,7 @@ Route::middleware(['auth:api', 'employee'])->prefix('employee')->group(function 
     Route::get('request/{id}', 'RequestController@getRequestById');
     Route::get('pending-requests', 'RequestController@getHandymanRequests');
     Route::get('jobs', 'RequestController@getHandymanJobs');
-
+    Route::post('reply-request/{id}', 'RequestController@replyToRequest');
     Route::post('add-service/{id}', 'ServiceController@addService');
     Route::get('delete-service/{id}', 'ServiceController@deleteService');
 

@@ -259,6 +259,14 @@ class RequestController extends Controller
         return response()->json(['status' => 'success', 'requests' => $outgoing]);
     }
 
+    public function replyToRequest($id, Request $req)
+    {
+        $request = RequestService::query()->find($id);
+        $request->status = $req->input('status');
+        $client = User::query()->find($request->client_ids[0]);
+        $this->notification($client->client_device_token, Auth::user()->name, 'Your request has been' . $request->status, 'request');
+        return response()->json(['status' => 'success']);
+    }
 
     public function sendRequestMessage(Request $request, $id)
     {
