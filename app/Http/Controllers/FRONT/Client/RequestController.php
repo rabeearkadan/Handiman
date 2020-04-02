@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\FRONT\Client;
 
+use App\Events\NotificationSenderEvent;
 use App\Http\Controllers\Controller;
 use App\Models\RequestService;
 use App\Models\Service;
@@ -194,6 +195,21 @@ class RequestController extends Controller
         return Validator::make($data, [
             'description' => ['required', 'string', 'min:15']
         ]);
+    }
+    public function Notification($to, $from, $message, $type)
+    {
+        $notification = array();
+
+
+        $notification['to'] = $to;
+        $notification['user'] = $from;
+        $notification['message'] = $message;
+        $notification['type'] = $type;// maybe "notification", "comment(message)", "request","message"
+        $notification['object'] = [];
+
+        event(new NotificationSenderEvent($notification));
+
+        return response()->json(['status' => 'success', 'notification' => $notification]);
     }
 
 }
