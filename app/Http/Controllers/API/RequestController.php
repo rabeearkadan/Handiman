@@ -23,6 +23,20 @@ class RequestController extends Controller
         ]);
     }
 
+    public function checkTimeline($from, $to, $day, User $handyman)
+    {
+        $flag = true;
+        for ($i = $from; $i <= $to; $i++) {
+            $hour = str_pad($i,
+                    2, 0, STR_PAD_LEFT) . "00";
+            if ($handyman->timeline[$day][$i] == true) {
+                $flag = false;
+                break;
+            }
+        }
+        return $flag;
+    }
+
     public function makeRequest(Request $req)
     {
         $this->validator($req->all())->validate();
@@ -37,8 +51,21 @@ class RequestController extends Controller
         //add attachment if exists
 
         if ($req->has('is_urgent') && $req->input('is_urgent')) {
-            //search for urgent requests
-            //if its urgent let the system search for a handiman and make a suggestion
+            if ($req->has('from') && $req->has('to')) {
+                $requestHandyman->from = $req->from;
+                $requestHandyman->to = $req->to;
+                // search handyman with the availability of 'from' and 'to'
+            } else if ($req->has('from') && (!$req->has('to'))) {
+                $requestHandyman->from = $req->from;
+                $requestHandyman->to = null;
+                $requestHandyman->handyman_to = 'pending';
+                // search for handyman with  availability of 'from' and for two hours from 'from' but the handyman should estimate the 'to'
+            } else {
+                if ($req->has('to')) {
+                    $requestHandyman->to = $req->to;
+                    // from is now
+                }
+            }
             $requestHandyman->save();
             $requestHandyman->clients()->attach(Auth::id());
             $handyman = $this->searchForHandyman($requestHandyman);
@@ -59,11 +86,13 @@ class RequestController extends Controller
                 $handyman = User::query()->find($req->input('employee_id'));
                 $requestHandyman->type = 'specified';
                 $requestHandyman->date = $req->input('date');//yyyy-mm-dd
-                if ($req->has('from'))
+                if ($req->has('from')) {
                     $requestHandyman->from = $req->input('from');
+                }
                 if ($req->has('to')) {
                     $requestHandyman->to = $req->input('to');
-                // the handyman should estimate the to
+                    $requestHandyman->to = null;
+                    $requestHandyman->handyman_to = 'pending';
                 }
                 $this->notification(($handyman->employee_device_token), (Auth::user()->name), 'You received a new request', 'request');
             }
@@ -95,22 +124,19 @@ class RequestController extends Controller
         }
         $nowDay = Carbon::now()->dayOfWeek;
         $availableUsers = User::query()
-            ->where('timeline.2.0400'
-                //. $nowDay . '.' . $nowHour
+            ->where('timeline'
+                . $nowDay . '.' . $nowHour
                 , true)
-            ->where('timeline.2.0500'
-                //. $nowDay . '.' . $nowNextHour
+            ->where('timeline'
+                . $nowDay . '.' . $nowNextHour
                 , true)
             ->where('service_ids', $requestHandyman->service_id)
             ->where('location', 'near', [
                 '$geometry' => [
                     'type' => 'Point',
                     'coordinates' => [
-
-                        1.2, 1.2,
-
-//                        $requestHandyman->location[0],
-//                        $requestHandyman->location[1],
+                        $requestHandyman->location[0],
+                        $requestHandyman->location[1],
                     ],
                     'distanceField' => "dist.calculated",
                     '$maxDistance' => 50000000,
@@ -129,111 +155,6 @@ class RequestController extends Controller
         return $availableUsers->first();
     }
 
-    public function getClientRequests()
-    {
-
-        $requests = RequestService::query()
-            ->where('client_id', Auth::id())->get();
-
-        return response()->json(['status' => 'success', 'requests' => $requests]);
-
-    }
-
-
-    public function getClientByRequest($id)
-    {
-        $request = RequestService::query()->find($id);
-        $client_id = $request->client_id;
-        $client = User::query()->find($client_id)->get();
-
-        return response()->json(['status' => 'success', 'client' => $client]);
-
-    }
-
-
-    public function acceptRequest(Request $req, $id)
-    {
-        $request = RequestService::query()->find($id);
-        $request->handyman_status = 'accept';
-        $request->estimate_time = $req->input('time_estimate');
-
-
-        // notify the client to respond to the estimated # hours
-        $request->save();
-        return response()->json(['status' => 'success']);
-    }
-
-    public function rejectRequest(Request $req, $id)
-    {
-        $request = RequestService::query()->find($id);
-        $request->handyman_status = 'reject';
-
-
-        // notify the client with the rejection
-        $request->save();
-        return response()->json(['status' => 'success']);
-    }
-
-    public function acceptEstimateHours(Request $req, $id)
-    {
-
-        $request = RequestService::query()->find($id);
-        $employee_id = $request->employe_id;
-        $employee = User::query()->find($employee_id);
-        $location[] = $request->location;
-        $day = $request->day;
-        $from = $request->from;
-        $to = $request->to;
-        $flag = true;
-
-        for ($i = $from; $i <= $to; $i++) {
-
-            $hour = str_pad($i,
-                    2, 0, STR_PAD_LEFT) . "00";
-            if ($employee->timeline[$day][$hour] == false) {
-                $flag = false;
-                break;
-            }
-
-
-        }
-        if ($flag) {
-            for ($i = $from; $i <= $to; $i++) {
-                $hour = str_pad($i,
-                        2, 0, STR_PAD_LEFT) . "00";
-
-                // $employee->timeline[$day][$hour]['id']=$request->id;
-                // we will save the id of the request at every hour
-            }
-
-        }
-        // the process is not done yet
-        // we need to check the location before and after so that we make sure that no two locations contradict with the time
-        // for that we will call a function that returns the time needed to cover the two distances
-        // (from{lat,long}) {employee location before the request}
-        //(to{from,long}) {the request location}
-
-        // we need then to check the location of the employee he needs to be in after the request so that is does not contradicts
-        $hour = str_pad($i,
-                2, 0, STR_PAD_LEFT) . "00";
-        if ($employee->timeline[$day][$to + $hour] == true) {
-            // then the employee has a free hour after the request is done
-        } else {
-            // the handyman has a request
-
-        }
-
-
-    }
-
-    public function rejectEstimateHours(Request $req, $id)
-    {
-
-        $request = RequestService::query()->find($id)->delete();
-        //notify the handyman
-
-
-    }
 
     public function getRequestById($id)
     {
@@ -242,8 +163,6 @@ class RequestController extends Controller
         return response()->json(['status' => 'success', 'request' => $request]);
     }
 
-    //Route::get('Ongoing-requests', 'RequestController@geHandymanOngoingRequests');
-//Route::get('Outgoing-requests', 'RequestController@geHandymanOutgoingRequests');
 
     public function getHandymanRequests()
     {
