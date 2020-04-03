@@ -59,7 +59,12 @@ class RequestController extends Controller
                 $handyman = User::query()->find($req->input('employee_id'));
                 $requestHandyman->type = 'specified';
                 $requestHandyman->date = $req->input('date');//yyyy-mm-dd
-
+                if ($req->has('from'))
+                    $requestHandyman->from = $req->input('from');
+                if ($req->has('to')) {
+                    $requestHandyman->to = $req->input('to');
+                // the handyman should estimate the to
+                }
                 $this->notification(($handyman->employee_device_token), (Auth::user()->name), 'You received a new request', 'request');
             }
 
@@ -242,7 +247,7 @@ class RequestController extends Controller
 
     public function getHandymanRequests()
     {
-        $pending = Auth::user()->employeeRequests()->where('status','pending')->get();
+        $pending = Auth::user()->employeeRequests()->where('status', 'pending')->get();
 
         if ($pending == null)
             return response()->json(['status' => 'success', 'message' => 'You have no ongoing requests']);
