@@ -153,6 +153,7 @@ class RequestController extends Controller
         $matchingHandyman = null;
         foreach ($availableUsers as $handyman) {
             $flag = $this->checkTimeline($from, $to, $day, $handyman);
+            // check this handyman requests if they dont contradict with the current request
             if ($flag) {
                 $matchingHandyman = $handyman;
 
