@@ -9,13 +9,12 @@
 
             <div class="small-box bg-success">
                 <div class="inner">
-                    <h3> Full Name</h3>
-                    <p>trying to edit the length</p>
+                    <h3 style=""> Full Name</h3>
                     <p> {{$employee->name}}</p>
                 </div>
 
                 <div class="icon">
-                    <i class="ion ion-android-phone-portrait"></i>
+                    <i class="ion name"></i>
                 </div>
 
             </div>
@@ -80,7 +79,51 @@
 
 @push('css')
     <style>
+        @media (min-width: 1200px){
+            .col-lg-3 .small-box h3, .col-md-3 .small-box h3, .col-xl-3 .small-box h3 {
+                 font-size: 2.2rem;
+            }}
 
+            @media (min-width: 992px){
+                .col-lg-3 .small-box h3, .col-md-3 .small-box h3, .col-xl-3 .small-box h3 {
+                     font-size: 1.6rem;
+                }}
+                .small-box h3, .small-box p {
+                     z-index: 5;
+                }
+                .small-box h3 {
+                     font-size: 2.2rem;
+                     font-weight: 700;
+                     margin: 0 0 10px 0;
+                     padding: 0;
+                     white-space: nowrap;
+                }
+                .h3, h3 {
+                    font-size: 1.75rem;
+                }
+                .h1, .h2, .h3, .h4, .h5, .h6, h1, h2, h3, h4, h5, h6 {
+                    margin-bottom: .5rem;
+                    font-family: inherit;
+                    font-weight: 500;
+                    line-height: 1.2;
+                    color: inherit;
+                }
+                h1, h2, h3, h4, h5, h6 {
+                    margin-top: 0;
+                    margin-bottom: .5rem;
+                }
+                *, ::after, ::before {
+                    box-sizing: border-box;
+                }
+                h3 {
+                    display: block;
+                    font-size: 1.17em;
+                    margin-block-start: 1em;
+                    margin-block-end: 1em;
+                    margin-inline-start: 0px;
+                    margin-inline-end: 0px;
+                    font-weight: bold;
+                }
         .card-primary.card-outline {
             border-top: 3px solid #007bff;
         }
