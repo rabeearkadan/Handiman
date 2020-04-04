@@ -22,9 +22,8 @@ Route::get('getHandymanSortedByPrice', 'HandymanController@getHandymanOrderedByP
 Route::middleware(['auth:api', 'employee'])->prefix('employee')->group(function () {
 
 // api route with auth and employee middleware the route is starts with api/empolyee
-    Route::post('post', 'PostController@addPost');
+
     Route::delete('post/{id}', 'PostController@deletePost');
-    Route::put('post/{id}', 'PostController@editPost');
     Route::get('post', 'PostController@getPosts');
     Route::get('post-id/{id}', 'PostController@getPostById');
     Route::get('request/{id}', 'RequestController@getRequestById');
@@ -60,7 +59,7 @@ Route::middleware(['auth:api'])->group(function () {
     Route::get('timeline-view/{id}', 'UserController@getTimeline');
     Route::post('message/{id}', 'ChatController@sendMessage');
     Route::get('message/{id}', 'ChatController@loadMessages');
-
+    Route::post('post', 'PostController@addPost');
     Route::post('credit-card', 'PaymentController@setCreditCard');
     Route::get('credit-card', 'PaymentController@getCreditCard');
 
