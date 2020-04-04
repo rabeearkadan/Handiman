@@ -64,7 +64,7 @@
 
                 <div class="small-box bg-danger">
                     <div class="inner">
-                        <p>Status:</p>
+                        <p style="font-size: 2.2rem">Status:</p>
 
                         <p> not Approved</p>
                     </div>
@@ -153,6 +153,10 @@
 
         *, ::after, ::before {
             box-sizing: border-box;
+        }
+
+        p {
+            font-size: 2.2rem;
         }
 
         h3 {
