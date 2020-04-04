@@ -25,7 +25,7 @@ class RequestController extends Controller
         ]);
     }
 
-    public function checkTimeline($from, $to, $day, $handyman)
+    public function checkTimeline($from, $to, $day, User $handyman)
     {
         $flag = true;
         for ($i = $from; $i <= $to; $i++) {
@@ -34,6 +34,25 @@ class RequestController extends Controller
             if ($handyman->timeline[$day][$i] == true) {
                 $flag = false;
                 break;
+            }
+        }
+        return $flag;
+    }
+
+    public function checkRequests(User $handyman, $day, $from, $to)
+    {
+        $requests = RequestService::query()->where('employee_ids.0', $handyman->id);
+        $flag = true;
+        foreach ($requests as $req) {
+            if ($req->day == $day) {
+                for ($i = $from; $i <= $to; $i++) {
+                    $hour = str_pad($i,
+                            2, 0, STR_PAD_LEFT) . "00";
+                    if ($hour == $req->from || $hour == $req->to) {
+                        $flag = false;
+                        break;
+                    }
+                }
             }
         }
         return $flag;
@@ -152,11 +171,11 @@ class RequestController extends Controller
 
         $matchingHandyman = null;
         foreach ($availableUsers as $handyman) {
-            $flag = $this->checkTimeline($from, $to, $day, $handyman);
-            // check this handyman requests if they dont contradict with the current request
-            if ($flag) {
+            $flag1 = $this->checkTimeline($from, $to, $day, $handyman);
+            $flag2 = $this->checkRequests($handyman, $day, $from, $to);
+            if ($flag1 && $flag2) {
                 $matchingHandyman = $handyman;
-
+                break;
             }
         }
 
