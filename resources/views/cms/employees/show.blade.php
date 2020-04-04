@@ -208,6 +208,7 @@
 
         .small-box h3, .small-box p {
             z-index: 5;
+            font-size: 2.2rem;
         }
 
         .small-box p {
