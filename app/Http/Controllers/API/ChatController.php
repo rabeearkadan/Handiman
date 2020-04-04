@@ -4,10 +4,12 @@
 namespace App\Http\Controllers\API;
 
 
+use App\Events\NotificationSenderEvent;
 use App\Http\Controllers\Controller;
 use App\Models\RequestService;
 use App\User;
 use App\Models\Message;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
@@ -16,31 +18,59 @@ use Illuminate\Support\Facades\Validator;
 class ChatController extends Controller
 {
 
-
-    public function requestToChat(Request $request)
+    public function loadMessages($id)
     {
 
-        $params = $this->validate($request, [
-            'receiver_id' => 'required',
-            'message' => 'required']);
-
-        $user = User::query()->find(Auth::id());
-        $obj[$params['receiver_id']] = false;
-        $array = $user->message_requests;
-        array_push($array, $obj);
-        $user->message_requests = $array;
-
-        $user->save();
-        return response()->json(['status' => 'success', 'user' => $user]);
+        $requestService = RequestService::query()->find($id);
+        $messages = $requestService->messages;
+        if ($messages != null)
+            return response()->json(['status' => 'success', 'messages' => $messages]);
+        return response()->json(['status' => 'success', 'messages' => "no messages yet"]);
 
     }
 
 
-    public function getMessages($request_id)
+    public function sendMessage(Request $request, $id)
     {
-        $req = RequestService::query()->find($request_id);
-        $user=Auth::user();
+
+        $requestService = RequestService::query()->find($id);
+
+        $messages = $requestService->messages;
+        $message = [
+            'message' => $request->input('message'),
+            'date' => Carbon::now()->toDateTimeString(),
+            'from' => Auth::user()->simplifiedArray()
+        ];
+        array_push($messages, $message);
+        $requestService->messages = $messages;
+        $notification = $message;
+        $notification['request_id'] = $id;
+        if (auth()->id() == $requestService->client_id) {
+            $notification['to'] = User::query()->find($requestService->employee_id)->employee_device_token;
+        } else {
+            $notification['to'] = User::query()->find($requestService->client_id)->client_device_token;
+        }
+        $notification['type'] = 'message';
+
+        event(new NotificationSenderEvent($notification));
+        $requestService->save();
     }
 
+    public
+    function Notification($to, $from, $message, $type)
+    {
+        $notification = array();
+
+
+        $notification['to'] = $to;
+        $notification['user'] = $from;
+        $notification['message'] = $message;
+        $notification['type'] = $type;// maybe "notification", "comment(message)", "request","message"
+        $notification['object'] = [];
+
+        event(new NotificationSenderEvent($notification));
+
+        return response()->json(['status' => 'success', 'notification' => $notification]);
+    }
 
 }

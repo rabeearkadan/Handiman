@@ -234,34 +234,6 @@ class RequestController extends Controller
         return response()->json(['status' => 'success']);
     }
 
-    public
-    function sendRequestMessage(Request $request, $id)
-    {
-
-        $requestService = RequestService::query()->find($id);
-
-        $messages = $requestService->messages;
-        $message = [
-            'message' => $request->input('message'),
-            'date' => Carbon::now()->toDateTimeString(),
-            'from' => Auth::user()->simplifiedArray()
-        ];
-        array_push($messages, $message);
-        $requestService->messages = $messages;
-        // send notification to the other user if the auth is 'from request ' the notification is sent to the to
-        // and vice cersa
-        $notification = $message;
-        $notification['request_id'] = $id;
-        if (auth()->id() == $requestService->client_id) {
-            $notification['to'] = User::query()->find($requestService->employee_id)->employee_device_token;
-        } else {
-            $notification['to'] = User::query()->find($requestService->client_id)->client_device_token;
-        }
-        $notification['type'] = 'message';
-
-        event(new NotificationSenderEvent($notification));
-        $requestService->save();
-    }
 
     public
     function Notification($to, $from, $message, $type)
