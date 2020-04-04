@@ -80,7 +80,7 @@ class RequestController extends Controller
             $images = [];
             foreach ($req['images'] as $image) {
                 try {
-                    $certificates[] = $this->uploadAny('certificates', $image, '.pdf');
+                   $images[] = $this->uploadAny('requests', $image, '.png');
                 } catch (\Exception $e) {
                     return response()->json(['status' => 'error', 'message' => "error uploading image"]);
                 }
@@ -288,10 +288,8 @@ class RequestController extends Controller
     public
     function uploadAny($file, $folder, $ext = 'png')
     {
-        /** @var TYPE_NAME $file */
         $file = base64_decode($file);
 
-        /** @var TYPE_NAME $file_name */
         $file_name = Str::random(25) . '.' . $ext; //generating unique file name;
         if (!Storage::disk('public')->exists($folder)) {
             Storage::disk('public')->makeDirectory($folder);

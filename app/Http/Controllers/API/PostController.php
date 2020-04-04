@@ -39,18 +39,25 @@ class PostController extends Controller
     public function addPost(Request $request)
     {
         $params = $this->validate($request, [
-            'post_picture' => 'required',
-            'post_text' => 'required']);
+            'title' => 'required',
+            'body' => 'required']);
 
         $post = new Post();
 
-        $post->title = $request->input('post_text');
-        $post->content = Auth::user()->_id;
+        $post->title = $request->input('title');
+        $post->body = $request->input('body');
+        if ($request->has('images')) {
+            $images = [];
+            foreach ($request['images'] as $image) {
+                try {
+                    $images[] = $this->uploadAny('posts', $image, '.png');
+                } catch (\Exception $e) {
+                    return response()->json(['status' => 'error', 'message' => "error uploading image"]);
+                }
+            }
+            $post->images = $images;
+        }
 
-        $file_name = $this->uploadAny($params['post_picture'], 'posts');
-        $post->image = $file_name;
-
-        $post->request_id = $request->input('request_id'); // it maye be null
         $post->save();
 
         return response()->json(['status' => 'success', 'post' => $post]);
@@ -62,9 +69,9 @@ class PostController extends Controller
         $post = Post::query()->find($id);
 
         $post->title = $request->input('title');
-        $post->content =$request->input('content');
+        $post->content = $request->input('content');
         $post->save();
-        return response()->json(['status'=>'success']);
+        return response()->json(['status' => 'success']);
 
     }
 
