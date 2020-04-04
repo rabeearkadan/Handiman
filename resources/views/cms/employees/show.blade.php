@@ -11,11 +11,12 @@
                 <div class="inner">
                     <h3 style=""> Full Name</h3>
                     <p> {{$employee->name}}</p>
+                    <div class="icon">
+                        <i class="ion ion-android-contact"></i>
+                    </div>
                 </div>
 
-                <div class="icon">
-                    <i class="ion ion-android-contact"></i>
-                </div>
+
 
             </div>
         </div>
