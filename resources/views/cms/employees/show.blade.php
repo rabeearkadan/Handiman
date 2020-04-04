@@ -9,8 +9,8 @@
 
             <div class="small-box bg-success">
                 <div class="inner">
-                    <h3 style=""> Full Name</h3>
-                    <p>{{$emplyee->role}}</p>
+                    {{--                    <h3 style=""> Full Name</h3>--}}
+                    <p>Full Name:</p>
                     <p> {{$employee->name}}</p>
                 </div>
 
@@ -25,7 +25,7 @@
 
             <div class="small-box bg-info">
                 <div class="inner">
-                    <h3> Email</h3>
+                    <p>Email:</p>
 
                     <p>  {{$employee->email}}</p>
                 </div>
@@ -36,23 +36,47 @@
 
             </div>
         </div>
-        <div class="col-lg-3 col-6">
 
-            <div class="small-box bg-danger">
-                <div class="inner">
-                    <h3> Balance</h3>
-                    <p></p>
-                    <p>33$</p>
+
+        @if(($employee->isApproved)==true )
+
+
+            <div class="col-lg-3 col-6">
+
+                <div class="small-box bg-info">
+                    <div class="inner">
+                        <p>Status:</p>
+
+                        <p> Approved</p>
+                    </div>
+
+                    <div class="icon">
+                        <i class="ion ion-checkmark"></i>
+                    </div>
+
                 </div>
-
-                <div class="icon">
-                    <i class="ion ion-social-usd"></i>
-                </div>
-
             </div>
-        </div>
+
+        @else
 
 
+            <div class="col-lg-3 col-6">
+
+                <div class="small-box bg-danger">
+                    <div class="inner">
+                        <p>Status:</p>
+
+                        <p> not Approved</p>
+                    </div>
+
+                    <div class="icon">
+                        <i class="ion ion-android-alert"></i>
+                    </div>
+
+                </div>
+            </div>
+
+        @endif
     </div>
 
 
