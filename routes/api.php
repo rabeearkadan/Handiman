@@ -58,8 +58,8 @@ Route::middleware(['auth:api'])->group(function () {
     Route::get('profile-edit', 'UserController@getProfile');
     Route::post('profile-edit', 'UserController@editProfile');
     Route::get('timeline-view/{id}', 'UserController@getTimeline');
-    Route::post('message', 'ChatController@sendMessage');
-    Route::get('message', 'ChatController@loadMessages');
+    Route::post('message/{id}', 'ChatController@sendMessage');
+    Route::get('message/{id}', 'ChatController@loadMessages');
 
     Route::post('credit-card', 'PaymentController@setCreditCard');
     Route::get('credit-card', 'PaymentController@getCreditCard');
