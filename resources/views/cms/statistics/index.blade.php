@@ -1,16 +1,37 @@
 @extends('cms.layouts.app')
 
 @section('content')
-    <div class="tab-content">
-        <div class="tab-pane tabs-animation fade show active" id="tab-content-0" role="tabpanel">
-            <div class="row">
-                <div class="col-md-6">
-                    <div class="main-card mb-3 card">
-                        <div class="card-body">
-                            <h5 class="card-title">Pie Chart</h5>
-                            <canvas id="chart-area"></canvas>
-                        </div>
-                    </div>
-                </div>
 
+    <div class="row">
+
+        <div id="chartContainer" style="height: 370px; width: 100%;"></div>
+
+    </div>
 @endsection
+@push('js')
+
+    <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
+    <script>
+        window.onload = function () {
+
+
+            var chart = new CanvasJS.Chart("chartContainer", {
+                animationEnabled: true,
+                title: {
+                    text: "Usage Share of Desktop Browsers"
+                },
+                subtitles: [{
+                    text: "November 2017"
+                }],
+                data: [{
+                    type: "pie",
+                    yValueFormatString: "#,##0.00\"%\"",
+                    indexLabel: "{label} ({y})",
+                    dataPoints: json_encode("{{$dataPoints}}", JSON_NUMERIC_CHECK)
+        }]
+        });
+            chart.render();
+
+        }
+    </script>
+@endpush
