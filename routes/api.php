@@ -25,6 +25,7 @@ Route::middleware(['auth:api', 'employee'])->prefix('employee')->group(function 
 
     Route::delete('post/{id}', 'PostController@deletePost');
     Route::get('post', 'PostController@getPosts');
+
     Route::get('post-id/{id}', 'PostController@getPostById');
     Route::get('request/{id}', 'RequestController@getRequestById');
     Route::get('pending-requests', 'RequestController@getHandymanRequests');
@@ -32,9 +33,8 @@ Route::middleware(['auth:api', 'employee'])->prefix('employee')->group(function 
     Route::post('reply-request/{id}', 'RequestController@replyToRequest');
     Route::post('add-service/{id}', 'ServiceController@addService');
     Route::get('delete-service/{id}', 'ServiceController@deleteService');
+    Route::post('post', 'PostController@addPost');
 
-//    Route::post('accept-request/{id}', 'RequestController@acceptRequest');
-//    Route::post('reject-request/{id}', 'RequestController@rejectRequest');
 
 
 });
@@ -59,7 +59,6 @@ Route::middleware(['auth:api'])->group(function () {
     Route::get('timeline-view/{id}', 'UserController@getTimeline');
     Route::post('message/{id}', 'ChatController@sendMessage');
     Route::get('message/{id}', 'ChatController@loadMessages');
-    Route::post('post', 'PostController@addPost');
     Route::post('credit-card', 'PaymentController@setCreditCard');
     Route::get('credit-card', 'PaymentController@getCreditCard');
 
