@@ -10,7 +10,7 @@
             <div class="small-box bg-success">
                 <div class="inner">
                     {{--                    <h3 style=""> Full Name</h3>--}}
-                    <p>Full Name:</p>
+                    <p style="font-size: 2.2rem">Full Name:</p>
                     <p> {{$employee->name}}</p>
                 </div>
 
@@ -25,7 +25,7 @@
 
             <div class="small-box bg-info">
                 <div class="inner">
-                    <p>Email:</p>
+                    <p style="font-size: 2.2rem">Email:</p>
 
                     <p>  {{$employee->email}}</p>
                 </div>

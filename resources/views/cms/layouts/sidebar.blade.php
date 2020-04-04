@@ -39,9 +39,9 @@
                     <li class="app-sidebar__heading">System</li>
 
                     <li>
-                        <a href="{{route('service.index')}}" class="mm-active">
+                        <a href="{{route('service.index')}}" class="mm">
                             <i class="metismenu-icon pe-7s-rocket"></i>
-                            Service
+                            Services
                         </a>
                     </li>
 
@@ -62,6 +62,17 @@
                         </a>
                     </li>
                     <li class="app-sidebar__heading">Reports</li>
+
+                    <li class="app-sidebar__heading">Statistics</li>
+
+                    <li>
+                        <a href="{{route('statistics.index')}}" class="mm">
+                            <i class="metismenu-icon pe-7s-rocket"></i>
+                            Services
+                        </a>
+                    </li>
+                    <li class="app-sidebar__heading">Contacted Us</li>
+
 
                 </ul>
             </div>
