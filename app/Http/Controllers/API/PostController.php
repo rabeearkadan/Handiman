@@ -46,7 +46,7 @@ class PostController extends Controller
 
         $post->title = $request->input('title');
         $post->body = $request->input('body');
-        dd($request->input('images'));
+//        dd($request->input('images'));
         if ($request->has('images')) {
             $images = [];
             foreach ($request['images'] as $image) {
