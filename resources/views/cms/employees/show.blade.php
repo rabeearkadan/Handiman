@@ -10,13 +10,13 @@
             <div class="small-box bg-success">
                 <div class="inner">
                     <h3 style=""> Full Name</h3>
+                    <p> {{$employee->role}}</p>
                     <p> {{$employee->name}}</p>
-                    <div class="icon">
-                        <i class="ion ion-android-contact"></i>
-                    </div>
                 </div>
 
-
+                <div class="icon">
+                    <i class="ion ion-android-contact"></i>
+                </div>
 
             </div>
         </div>
@@ -37,222 +37,236 @@
             </div>
         </div>
         <div class="col-lg-3 col-6">
+            @if(($employee->isApproved)==true )
 
-            <div class="small-box bg-danger">
-                <div class="inner">
-                    <h3> Balance</h3>
-                    <p></p>
-                    <p>33$</p>
+                <div class="small-box bg-success">
+                    <div class="inner">
+                        <h3> Status</h3>
+                        <p></p>
+                        <p>Approved$</p>
+                    </div>
+
+                    <div class="icon">
+                        <i class="ion ion-android-checkbox"></i>
+                    </div>
+
                 </div>
 
-                <div class="icon">
-                    <i class="ion ion-social-usd"></i>
-                </div>
+            @else
 
-            </div>
+                <div class="small-box bg-success">
+                    <div class="inner">
+                        <h3> Status</h3>
+                        <p></p>
+                        <p>not Approved$</p>
+                    </div>
+
+                    <div class="icon">
+                        <i class="ion ion-android-checkbox"></i>
+                    </div>
+
+                </div>
+            @endif
+
         </div>
 
 
-    </div>
-
-
-
-    <div class="row">
-        <div class="col-lg-3">
-            <div class="card card-primary card-outline">
-                <div class="card-body box-profile">
-                    <div class="text-center">
-                        <div
-                            style="border-radius: 50%; height: 180px; width: 180px; margin-left: auto; margin-right: auto; border: 3px solid #adb5bd">
-
+        <div class="row">
+            <div class="col-lg-3">
+                <div class="card card-primary card-outline">
+                    <div class="card-body box-profile">
+                        <div class="text-center">
                             <div
-                                style="border-radius: 50%; height: 174px; width: 174px; background-size: cover; background-position: center center; border: 3px solid #fff; background-image: url('https://mis.bau.edu.lb/web/v12/iConnectV12/admin/ProfileImage.aspx?ID=201801949&Code=F0DC386DD0')">
+                                style="border-radius: 50%; height: 180px; width: 180px; margin-left: auto; margin-right: auto; border: 3px solid #adb5bd">
+
+                                <div
+                                    style="border-radius: 50%; height: 174px; width: 174px; background-size: cover; background-position: center center; border: 3px solid #fff; background-image: url('https://mis.bau.edu.lb/web/v12/iConnectV12/admin/ProfileImage.aspx?ID=201801949&Code=F0DC386DD0')">
+
+                                </div>
+                                <h3 class="profile-username text-center">
+
+                                    <span> {{$employee->name}}</span>
+                                </h3>
 
                             </div>
-                            <h3 class="profile-username text-center">
-
-                                <span> {{$employee->name}}</span>
-                            </h3>
-
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
 
-@endsection
+        @endsection
 
 
-@push('css')
-    <style>
-        @media (min-width: 1200px) {
-            .col-lg-3 .small-box h3, .col-md-3 .small-box h3, .col-xl-3 .small-box h3 {
-                font-size: 2.2rem;
-            }
-        }
+        @push('css')
+            <style>
+                @media (min-width: 1200px) {
+                    .col-lg-3 .small-box h3, .col-md-3 .small-box h3, .col-xl-3 .small-box h3 {
+                        font-size: 2.2rem;
+                    }
+                }
 
-        @media (min-width: 992px) {
-            .col-lg-3 .small-box h3, .col-md-3 .small-box h3, .col-xl-3 .small-box h3 {
-                font-size: 1.6rem;
-            }
-        }
+                @media (min-width: 992px) {
+                    .col-lg-3 .small-box h3, .col-md-3 .small-box h3, .col-xl-3 .small-box h3 {
+                        font-size: 1.6rem;
+                    }
+                }
 
-        .small-box h3, .small-box p {
-            z-index: 5;
-        }
+                .small-box h3, .small-box p {
+                    z-index: 5;
+                }
 
-        .small-box h3 {
-            font-size: 2.2rem;
-            font-weight: 700;
-            margin: 0 0 10px 0;
-            padding: 0;
-            white-space: nowrap;
-        }
+                .small-box h3 {
+                    font-size: 2.2rem;
+                    font-weight: 700;
+                    margin: 0 0 10px 0;
+                    padding: 0;
+                    white-space: nowrap;
+                }
 
-        .h3, h3 {
-            font-size: 1.75rem;
-        }
+                .h3, h3 {
+                    font-size: 1.75rem;
+                }
 
-        .h1, .h2, .h3, .h4, .h5, .h6, h1, h2, h3, h4, h5, h6 {
-            margin-bottom: .5rem;
-            font-family: inherit;
-            font-weight: 500;
-            line-height: 1.2;
-            color: inherit;
-        }
+                .h1, .h2, .h3, .h4, .h5, .h6, h1, h2, h3, h4, h5, h6 {
+                    margin-bottom: .5rem;
+                    font-family: inherit;
+                    font-weight: 500;
+                    line-height: 1.2;
+                    color: inherit;
+                }
 
-        h1, h2, h3, h4, h5, h6 {
-            margin-top: 0;
-            margin-bottom: .5rem;
-        }
+                h1, h2, h3, h4, h5, h6 {
+                    margin-top: 0;
+                    margin-bottom: .5rem;
+                }
 
-        *, ::after, ::before {
-            box-sizing: border-box;
-        }
+                *, ::after, ::before {
+                    box-sizing: border-box;
+                }
 
-        h3 {
-            display: block;
-            font-size: 1.17em;
-            margin-block-start: 1em;
-            margin-block-end: 1em;
-            margin-inline-start: 0px;
-            margin-inline-end: 0px;
-            font-weight: bold;
-        }
+                h3 {
+                    display: block;
+                    font-size: 1.17em;
+                    margin-block-start: 1em;
+                    margin-block-end: 1em;
+                    margin-inline-start: 0px;
+                    margin-inline-end: 0px;
+                    font-weight: bold;
+                }
 
-        .card-primary.card-outline {
-            border-top: 3px solid #007bff;
-        }
+                .card-primary.card-outline {
+                    border-top: 3px solid #007bff;
+                }
 
-        .card {
-            box-shadow: 0 0 1px rgba(0, 0, 0, .125), 0 1px 3px rgba(0, 0, 0, .2);
-            margin-bottom: 1rem;
-        }
+                .card {
+                    box-shadow: 0 0 1px rgba(0, 0, 0, .125), 0 1px 3px rgba(0, 0, 0, .2);
+                    margin-bottom: 1rem;
+                }
 
-        .card {
-            position: relative;
-            display: -ms-flexbox;
-            display: flex;
-            -ms-flex-direction: column;
-            flex-direction: column;
-            min-width: 0;
-            word-wrap: break-word;
-            background-color: #fff;
-            background-clip: border-box;
-            border: 0 solid rgba(0, 0, 0, .125);
-            border-radius: .25rem;
-        }
+                .card {
+                    position: relative;
+                    display: -ms-flexbox;
+                    display: flex;
+                    -ms-flex-direction: column;
+                    flex-direction: column;
+                    min-width: 0;
+                    word-wrap: break-word;
+                    background-color: #fff;
+                    background-clip: border-box;
+                    border: 0 solid rgba(0, 0, 0, .125);
+                    border-radius: .25rem;
+                }
 
-        *, ::after, ::before {
-            box-sizing: border-box;
-        }
+                *, ::after, ::before {
+                    box-sizing: border-box;
+                }
 
-        h3 {
-            display: block;
-            font-size: 1.17em;
-            margin-block-start: 1em;
-            margin-block-end: 1em;
-            margin-inline-start: 10px;
-            margin-inline-end: 0px;
-            font-weight: bold;
-        }
+                h3 {
+                    display: block;
+                    font-size: 1.17em;
+                    margin-block-start: 1em;
+                    margin-block-end: 1em;
+                    margin-inline-start: 10px;
+                    margin-inline-end: 0px;
+                    font-weight: bold;
+                }
 
-        .small-box h3, .small-box p {
-            z-index: 5;
-        }
+                .small-box h3, .small-box p {
+                    z-index: 5;
+                }
 
-        .small-box p {
-            font-size: 1rem;
-            margin-left: 10px;
-        }
+                .small-box p {
+                    font-size: 1rem;
+                    margin-left: 10px;
+                }
 
-        .bg-info, .bg-info > a {
-            color: #fff !important;
-        }
+                .bg-info, .bg-info > a {
+                    color: #fff !important;
+                }
 
-        .bg-info {
-            background-color: #17a2b8 !important;
-        }
+                .bg-info {
+                    background-color: #17a2b8 !important;
+                }
 
-        p {
-            margin-top: 0;
-            margin-bottom: 1rem;
-        }
+                p {
+                    margin-top: 0;
+                    margin-bottom: 1rem;
+                }
 
-        *, ::after, ::before {
-            box-sizing: border-box;
-        }
+                *, ::after, ::before {
+                    box-sizing: border-box;
+                }
 
-        .profile-username {
-            font-size: 21px;
-            margin-top: 5px;
-        }
+                .profile-username {
+                    font-size: 21px;
+                    margin-top: 5px;
+                }
 
-        p {
-            display: block;
-            margin-block-start: 1em;
-            margin-block-end: 1em;
-            margin-inline-start: 0px;
-            margin-inline-end: 0px;
-        }
+                p {
+                    display: block;
+                    margin-block-start: 1em;
+                    margin-block-end: 1em;
+                    margin-inline-start: 0px;
+                    margin-inline-end: 0px;
+                }
 
-        .bg-success, .bg-success > a {
-            color: #fff !important;
-        }
+                .bg-success, .bg-success > a {
+                    color: #fff !important;
+                }
 
-        .bg-success {
-            background-color: #28a745 !important;
-        }
+                .bg-success {
+                    background-color: #28a745 !important;
+                }
 
-        .small-box {
-            border-radius: .25rem;
-            box-shadow: 0 0 1px rgba(0, 0, 0, .125), 0 1px 3px rgba(0, 0, 0, .2);
-            display: block;
-            margin-bottom: 20px;
-            position: relative;
-        }
+                .small-box {
+                    border-radius: .25rem;
+                    box-shadow: 0 0 1px rgba(0, 0, 0, .125), 0 1px 3px rgba(0, 0, 0, .2);
+                    display: block;
+                    margin-bottom: 20px;
+                    position: relative;
+                }
 
-        .small-box .icon > i {
-            font-size: 90px;
-            position: absolute;
-            right: 15px;
-            top: 15px;
-            transition: all .3s linear;
-        }
+                .small-box .icon > i {
+                    font-size: 90px;
+                    position: absolute;
+                    right: 15px;
+                    top: 15px;
+                    transition: all .3s linear;
+                }
 
-        .small-box .icon > i.fa, .small-box .icon > i.fab, .small-box .icon > i.far, .small-box .icon > i.fas, .small-box .icon > i.glyphicon, .small-box .icon > i.ion {
-            font-size: 70px;
-            top: 20px;
-        }
+                .small-box .icon > i.fa, .small-box .icon > i.fab, .small-box .icon > i.far, .small-box .icon > i.fas, .small-box .icon > i.glyphicon, .small-box .icon > i.ion {
+                    font-size: 70px;
+                    top: 20px;
+                }
 
-        .bg-danger, .bg-danger > a {
-            color: #fff !important;
-        }
+                .bg-danger, .bg-danger > a {
+                    color: #fff !important;
+                }
 
-        .bg-danger {
-            background-color: #dc3545 !important;
-        }
-    </style>
-    <link href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css" rel="stylesheet">
-@endpush
+                .bg-danger {
+                    background-color: #dc3545 !important;
+                }
+            </style>
+            <link href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css" rel="stylesheet">
+    @endpush
