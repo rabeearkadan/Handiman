@@ -52,7 +52,7 @@ class PostController extends Controller
             $images = [];
             foreach ($imagesParam as $image) {
                 try {
-                    $images[] = $this->uploadAny( $image, 'posts','.png'); 
+                    $images[] = $this->uploadAny( $image, 'posts','png');
                 } catch (\Exception $e) {
                     return response()->json(['status' => 'error', 'message' => "error uploading image"]);
                 }
