@@ -46,13 +46,14 @@ class PostController extends Controller
 
         $post->title = $request->input('title');
         $post->body = $request->input('body');
+        $post->users()->attach(Auth::id());
 //        dd($request->input('images'));
         if ($request->has('images')) {
             $imagesParam = $request->input('images');
             $images = [];
             foreach ($imagesParam as $image) {
                 try {
-                    $images[] = $this->uploadAny( $image, 'posts','png');
+                    $images[] = $this->uploadAny($image, 'posts', 'png');
                 } catch (\Exception $e) {
                     return response()->json(['status' => 'error', 'message' => "error uploading image"]);
                 }

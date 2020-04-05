@@ -25,47 +25,7 @@ class RequestController extends Controller
         ]);
     }
 
-    public function checkTimeline($from, $to, $day, User $handyman)
-    {
-        $flag = true;
-        for ($i = $from; $i <= $to; $i++) {
-            $hour = str_pad($i,
-                    2, 0, STR_PAD_LEFT) . "00";
-            if ($handyman->timeline[$day][$i] == true) {
-                $flag = false;
-                break;
-            }
-        }
-        return $flag;
-    }
 
-    public function checkRequests(User $handyman, $day, $from, $to)
-    {
-        $requestsq = RequestService::query()->whereHas('employees', function($q) use ($handyman){
-            $q->where( '_id', $handyman->_id);
-        })->where('day', $day)->where('status','!=','done');
-        //0800 or 08:00
-        //0800 -> 1000
-        for( $i = (int)$from; $i <= (int) $to ; $i=$i+100){
-            $requestsq->where('from', str_pad( $i , 4,"0",STR_PAD_LEFT ) );
-        }
-        //
-
-//        $flag = true;
-//        foreach ($requests as $req) {
-//            if ($req->day == $day) {
-//                for ($i = $from; $i <= $to; $i++) {
-//                    $hour = str_pad($i,
-//                            2, 0, STR_PAD_LEFT) . "00";
-//                    if ($hour == $req->from || $hour == $req->to) {
-//                        $flag = false;
-//                        break;
-//                    }
-//                }
-//            }
-//        }
-        return $requestsq->count() == 0;
-    }
 
     public function makeRequest(Request $req)
     {
@@ -78,18 +38,12 @@ class RequestController extends Controller
         $requestHandyman->timezone = $req->timezone;
         $requestHandyman->service_id = $req->service_id;
 
-        if (Carbon::now($requestHandyman->timezone)->minute > 30) {
-            $nowHour = str_pad(Carbon::now($requestHandyman->timezone)->hour + 1, 2, '0', STR_PAD_LEFT) . '00';
-            $nowNextHour = str_pad(Carbon::now($requestHandyman->timezone)->hour + 2, 2, '0', STR_PAD_LEFT) . '00';
-        } else {
-            $nowHour = str_pad(Carbon::now($requestHandyman->timezone)->hour, 2, '0', STR_PAD_LEFT) . '00';
-            $nowNextHour = str_pad(Carbon::now($requestHandyman->timezone)->hour + 1, 2, '0', STR_PAD_LEFT) . '00';
-        }
         if ($req->has('images')) {
+            $imagesParam = $req->input('images');
             $images = [];
-            foreach ($req['images'] as $image) {
+            foreach ($imagesParam as $image) {
                 try {
-                   $images[] = $this->uploadAny('requests', $image, '.png');
+                    $images[] = $this->uploadAny($image, 'requests', 'png');
                 } catch (\Exception $e) {
                     return response()->json(['status' => 'error', 'message' => "error uploading image"]);
                 }
@@ -98,45 +52,31 @@ class RequestController extends Controller
         }
 
         if ($req->has('is_urgent') && $req->input('is_urgent')) {
-            if ($req->has('from') && $req->has('to')) {
-                $requestHandyman->from = $req->from;
-                $requestHandyman->to = $req->to;
-                $handyman = $this->searchForHandyman($requestHandyman, $req->input('from'), $req->input('to'));
-                // $this->Notification()
-            } else if ($req->has('from') && (!$req->has('to'))) {
-                $requestHandyman->from = $req->from;
-                $requestHandyman->to = null;
-                $requestHandyman->handyman_to = 'pending';
-                $handyman = $this->searchForHandyman($requestHandyman, $req->from, $req->from + 2);
-                //$this->Notification()
+            if (Carbon::now($requestHandyman->timezone)->minute > 30) {
+                $nowHour = str_pad(Carbon::now($requestHandyman->timezone)->hour + 1, 2, '0', STR_PAD_LEFT) . '00';
+                $nowNextHour = str_pad(Carbon::now($requestHandyman->timezone)->hour + 2, 2, '0', STR_PAD_LEFT) . '00';
             } else {
-                if ($req->has('to')) {
-                    $requestHandyman->to = $req->to;
-                    $requestHandyman->from = $nowHour;
-                    $handyman = $this->searchForHandyman($requestHandyman, $nowHour, $req->to);
-                    //notification
-                } else {
-                    $requestHandyman->from = $nowHour;
-                    $requestHandyman->to = $nowNextHour;
-                }
+                $nowHour = str_pad(Carbon::now($requestHandyman->timezone)->hour, 2, '0', STR_PAD_LEFT) . '00';
+                $nowNextHour = str_pad(Carbon::now($requestHandyman->timezone)->hour + 1, 2, '0', STR_PAD_LEFT) . '00';
+            }
+            if ($req->has('from')) {
+                $requestHandyman->from = $req->from;
+            } else {
+                $requestHandyman->from = $nowHour;
+            }
+            if ($req->has('to')) {
+                $requestHandyman->to = $req->to;
+            } else {
+                $requestHandyman->to = $nowNextHour;
             }
             $requestHandyman->save();
             $requestHandyman->clients()->attach(Auth::id());
-            if ($handyman == null) {
-                return response()->json(['status' => 'success', 'message' => 'No handyman found please search on larger range']);
-            } else {
-                $requestHandyman->empolyee_id = $handyman->id;
-                $requestHandyman->type = 'urgent';
-                $requestHandyman->save();
-                $requestHandyman->clients()->attach(Auth::id());
-                $this->notification($handyman->employee_device_token, Auth::user()->name, 'You received a new request', 'request');
-                return response()->json(['status' => 'success', 'message' => 'Your urgent request has reached a handyman']);
 
-            }
+            return response()->json(['status' => 'success', 'message' => 'Your request has been sent to the scheduler']);
+
         } else {
             if ($req->has('employee_id')) {
                 $handyman = User::query()->find($req->input('employee_id'));
-                $requestHandyman->type = 'specified';
                 $requestHandyman->date = $req->input('date');
                 if ($req->has('from'))
                     $requestHandyman->from = $req->input('from');
@@ -154,42 +94,13 @@ class RequestController extends Controller
                 $handyman = User::query()->find($req->input('employee_id'));
                 $requestHandyman->employees()->attach($handyman->id);
             }
-            return response()->json(['status' => 'success', 'message' => 'Your search was done successfully']);
+            return response()->json(['status' => 'success', 'message' => 'Please stay in touch for confirmation']);
         }
 
 
     }
 
-    private function searchForHandyman($requestHandyman, $from, $to)
-    {
 
-        $day = Carbon::now()->dayOfWeek;
-        $availableUsers = User::query()
-            ->where('service_ids', $requestHandyman->service_id)
-            ->where('location', 'near', [
-                '$geometry' => [
-                    'type' => 'Point',
-                    'coordinates' => [
-                        $requestHandyman->location[0],
-                        $requestHandyman->location[1],
-                    ],
-                    'distanceField' => "dist.calculated",
-                    '$maxDistance' => 50000000,
-                ],
-            ])->orderBy('dist.calculated')->get();
-
-        $matchingHandyman = null;
-        foreach ($availableUsers as $handyman) {
-            $flag1 = $this->checkTimeline($from, $to, $day, $handyman);
-            $flag2 = $this->checkRequests($handyman, $day, $from, $to);
-            if ($flag1 && $flag2) {
-                $matchingHandyman = $handyman;
-                break;
-            }
-        }
-
-        return $matchingHandyman;
-    }
 
 
     public
