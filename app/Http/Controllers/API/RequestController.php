@@ -41,21 +41,30 @@ class RequestController extends Controller
 
     public function checkRequests(User $handyman, $day, $from, $to)
     {
-        $requests = RequestService::query()->where('employee_ids.0', $handyman->id);
-        $flag = true;
-        foreach ($requests as $req) {
-            if ($req->day == $day) {
-                for ($i = $from; $i <= $to; $i++) {
-                    $hour = str_pad($i,
-                            2, 0, STR_PAD_LEFT) . "00";
-                    if ($hour == $req->from || $hour == $req->to) {
-                        $flag = false;
-                        break;
-                    }
-                }
-            }
+        $requestsq = RequestService::query()->whereHas('employees', function($q) use ($handyman){
+            $q->where( '_id', $handyman->_id);
+        })->where('day', $day)->where('status','!=','done');
+        //0800 or 08:00
+        //0800 -> 1000
+        for( $i = (int)$from; $i <= (int) $to ; $i=$i+100){
+            $requestsq->where('from', str_pad( $i , 4,"0",STR_PAD_LEFT ) );
         }
-        return $flag;
+        //
+
+//        $flag = true;
+//        foreach ($requests as $req) {
+//            if ($req->day == $day) {
+//                for ($i = $from; $i <= $to; $i++) {
+//                    $hour = str_pad($i,
+//                            2, 0, STR_PAD_LEFT) . "00";
+//                    if ($hour == $req->from || $hour == $req->to) {
+//                        $flag = false;
+//                        break;
+//                    }
+//                }
+//            }
+//        }
+        return $requestsq->count() == 0;
     }
 
     public function makeRequest(Request $req)

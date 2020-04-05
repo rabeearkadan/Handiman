@@ -48,9 +48,9 @@ class PostController extends Controller
         $post->body = $request->input('body');
 //        dd($request->input('images'));
         if ($request->has('images')) {
-            $params = $request->only(['images']);
+            $imagesParam = $request->input('images');
             $images = [];
-            foreach ($params['images'] as $image) {
+            foreach ($imagesParam as $image) {
                 try {
                     $images[] = $this->uploadAny('posts', $image, '.png');
                 } catch (\Exception $e) {

@@ -41,15 +41,21 @@ class TimeOutRequests extends Command
     public function handle()
     {
 
-        $nowTime = Carbon::now()->timestamp;
+        $nowTime = Carbon::now();
         $requests = RequestService::query()->where('status', 'pending')->get();
         foreach ($requests as $req) {
-            $duration = $nowTime->diffInMinutes($req->created_at);
-            if ($duration >= 20) {
-                $req->employee_id;
-                $this->searchForHandyman($req);
-                $req->save();
+            if ( $req->empolyees()->count() > 0 ){
+                $duration = $nowTime->diffInMinutes($req->updated_at);
+                if ( $duration > 30 ){
+                    // un register request for handyman
+                    $req->employees()->attach(null);
+                    $req->save();
+                }else  if ($duration >= 20) {
+                        //send notification reminder for employee
+
+                }
             }
+
         }
         //1- get all requests the status are pending, with employee ID and  the time of the request is greater than 30 min
         //2- un assign the request ; to allow the Scheduler Engine find another employee for the request
@@ -57,7 +63,7 @@ class TimeOutRequests extends Command
 
     public function searchForHandyman($request)
     {
-        
+
 
     }
 }
