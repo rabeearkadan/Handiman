@@ -23,7 +23,7 @@ class UserController extends Controller
 
         $this->validate($request, ['device_platform' => 'required']);
         $params = $request->all();
-        foreach ($params as $param => $value){
+        foreach ($params as $param => $value) {
             $user->{$param} = $value;
         }
         $user->save();
@@ -66,7 +66,7 @@ class UserController extends Controller
             'apartment_details',
 // employee extra info
             'cv',
-            'certificates',
+            'certificate',
             'timeline',
             'criminal_record',
             'service',
@@ -100,35 +100,17 @@ class UserController extends Controller
 
         if (Arr::has($params, 'apartment_details'))
             $user->apartment_details = $params['apartment_details'];
-        /*
-         *
-                   'timeline' => 'optional',
-                   'criminal_record' => 'optional',
-                   'service' => 'optional',
-                   'biography' => 'optional'
-         */
 
         if (Arr::has($params, 'cv'))
-            $user->cv = $this->uploadAny('cv', $params['cv'], '.pdf');
-        if (Arr::has($params, 'certificates')) {
-            $certificates = [];
-            foreach ($params['certificates'] as $certificate) {
-                try {
-
-                    $certificates[] = $this->uploadAny('certificates', $certificate, '.pdf');
-                } catch (\Exception $e) {
-                    return response()->json(['status' => 'error', 'message' => "error uploading certificate"]);
-                }
-
-            }
-            $user->certificates = $certificates;
-        }
-
+            $user->cv = $this->uploadAny('cvs', $params['cv'], '.pdf');
+        if (Arr::has($params, 'certificate'))
+            $user->cv = $this->uploadAny('cv', $params['certificate'], '.pdf');
+        if (Arr::has($params, 'criminal_record'))
+            $user->cv = $this->uploadAny('criminal_records', $params['criminal_record'], '.png');
 
         if (Arr::has($params, 'timeline')) {
             $timeline = [];
             for ($i = 0; $i <= 23; $i++) {
-                // 00:00 01:00 .....23:00
                 $hour = str_pad($i,
                         2, 0, STR_PAD_LEFT) . "00";
 
@@ -185,22 +167,9 @@ class UserController extends Controller
             }
             $user->timeline = $timeline;
 
-            /*
-             * 0  0   1         0
-             * 1  1   0
-             * 2  0   0
-             * 3  1   1
-             * 4  0   1
-             * 5  1   0
-             * 6
-             *  00:00 01:00 ... 23:00
-             */
         }
 
         $user->save();
-
-        //users m-m timeline  m-m timelineDetails
-        // leftjoin lefion query
 
         return response()->json(['status' => 'success', 'user' => $user]);
 
@@ -216,10 +185,8 @@ class UserController extends Controller
 
     public function uploadAny($file, $folder, $ext = 'png')
     {
-        /** @var TYPE_NAME $file */
         $file = base64_decode($file);
 
-        /** @var TYPE_NAME $file_name */
         $file_name = Str::random(25) . '.' . $ext; //generating unique file name;
         if (!Storage::disk('public')->exists($folder)) {
             Storage::disk('public')->makeDirectory($folder);
