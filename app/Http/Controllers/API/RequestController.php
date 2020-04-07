@@ -6,6 +6,7 @@ use App\Events\NotificationSenderEvent;
 use App\Http\Controllers\Controller;
 use  App\Models\RequestService;
 
+use App\Models\Service;
 use App\User;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
@@ -119,6 +120,7 @@ class RequestController extends Controller
         $req->handyman_to = 'approved';
     }
 
+
     public
     function getHandymanRequests()
     {
@@ -128,6 +130,10 @@ class RequestController extends Controller
             return response()->json(['status' => 'success', 'message' => 'You have no ongoing requests']);
         $prequest = $pending->map(function ($item) {
             $item->client = User::query()->find($item->client_ids[0])->simplifiedArray();
+            return $item;
+        });
+        $pendingrequest = $pending->map(function ($item) {
+            $item->service = Service::query()->find($item->service_id)->simplifiedArray();
             return $item;
         });
         return response()->json(['status' => 'success', 'requests' => $prequest]);
