@@ -85,11 +85,7 @@ class UserController extends Controller
             $user->birth_date = $params['birth_date'];
 
         if (Arr::has($params, 'location')){
-            $location=[];
-            $location[0]=$params['location'];
-
-           $location[1]=$params['location'];
-           $user->location=$location;
+           $user->location=$params['location'];
         }
 
         if (Arr::has($params, 'gender'))
