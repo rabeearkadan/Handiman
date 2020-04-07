@@ -133,7 +133,7 @@ class RequestController extends Controller
             return $item;
         });
         $pending_request = $prequest->map(function ($item) {
-            $item->service = Service::query()->find($item->service_id)->simplifiedArray();
+            $item->service = Service::query()->find($item->service_id)->ServicesimplifiedArray();
             return $item;
         });
         return response()->json(['status' => 'success', 'requests' => $pending_request]);
