@@ -86,9 +86,9 @@ class UserController extends Controller
 
         if (Arr::has($params, 'location')){
             $location=[];
-            $location[0]=$params['location[0]'];
+            $location[0]=$params['location'];
 
-           $location[1]=$params['location[1]'];
+           $location[1]=$params['location'];
            $user->location=$location;
         }
 
