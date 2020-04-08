@@ -10,7 +10,6 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Str;
 
-use App\User;
 class LoginController extends Controller
 {
     /*
@@ -61,11 +60,12 @@ class LoginController extends Controller
 
     public function login(Request $request)
     {
-       $this->validateLogin($request);
+        $res = $this->validateLogin($request);
+        Log::info($res);
         if ($this->attemptLogin($request)) {
 
             // check
-            $user = User::query()->find(Auth::id())->get();
+            $user = Auth::user();
             if (($user->role == 'user' && ($request->input('role') == 'employee'))
                 || ($user->role == 'employee' && ($request->input('role') == 'user'))
             ) {
