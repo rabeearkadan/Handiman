@@ -20,7 +20,7 @@ class UserController extends Controller
     protected function validator(array $data)
     {
         return Validator::make($data, [
-            'location' => ['required', 'double', 'max:255'],
+            'location' => ['required', 'array', 'max:255'],
         ]);
     }
     public function setDeviceToken(Request $request)
