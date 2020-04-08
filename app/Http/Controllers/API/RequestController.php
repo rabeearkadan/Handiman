@@ -139,13 +139,13 @@ class RequestController extends Controller
     public
     function getClientRequests()
     {
-//        $pending = Auth::user()->clientRequests()->where('status', 'pending')->get();
-//
-//        if ($pending == null)
-//            return response()->json(['status' => 'success', 'message' => 'You have no ongoing requests']);
-//        else {
-//
-//
+        $pending = Auth::user()->clientRequests()->where('status', 'pending')->get();
+
+        if ($pending == null)
+            return response()->json(['status' => 'success', 'message' => 'You have no ongoing requests']);
+        else {
+
+
 //            $prequest = $pending->map(function ($item) {
 //                $item->handyman = User::query()->find($item->employee_ids[0])->simplifiedArray();
 //                return $item;
@@ -155,8 +155,8 @@ class RequestController extends Controller
 //                $item->service = Service::query()->find($item->service_id)->ServiceArray();
 //                return $item;
 //            });
-//        }
-        return response()->json(['status' => 'success', 'requests' => "not defined"]);
+        }
+        return response()->json(['status' => 'success', 'requests' =>$pending]);
     }
 
     public
