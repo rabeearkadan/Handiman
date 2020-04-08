@@ -88,7 +88,7 @@ class UserController extends Controller
         if (Arr::has($params, 'latitude') && Arr::has($params, 'longitude') ) {
             $latitude = $request->input('latitude');
 
-            $longitude = $request->input('latitude');
+            $longitude = $request->input('longitude');
             $location = [];
             $location[0] = (double)$latitude;
             $location[1] = (double)$longitude;
