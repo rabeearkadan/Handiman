@@ -86,9 +86,11 @@ class UserController extends Controller
             $user->birth_date = $params['birth_date'];
 
         if (Arr::has($params, 'location')) {
-            $location = $request->input('location');
-            $user->location[0] = (double)explode(',', $location);
-            $user->location[1] = (double)explode(',', $location);
+            $latitude = $request->input('latitude');
+
+            $longitude = $request->input('latitude');
+            $user->location[0] = (double)$latitude;
+            $user->location[1] = (double)$longitude;
 
 
         }
