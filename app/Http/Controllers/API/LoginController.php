@@ -10,6 +10,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Str;
 
+use App\User;
 class LoginController extends Controller
 {
     /*
@@ -65,7 +66,7 @@ class LoginController extends Controller
         if ($this->attemptLogin($request)) {
 
             // check
-            $user = Auth::user();
+            $user =  User::query()->find(Auth::id());
             if (($user->role == 'user' && ($request->input('role') == 'employee'))
                 || ($user->role == 'employee' && ($request->input('role') == 'user'))
             ) {
