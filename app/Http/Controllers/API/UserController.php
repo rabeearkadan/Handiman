@@ -56,7 +56,7 @@ class UserController extends Controller
         $params = $request->only([
 // common info
             'image',
-            'location',
+            'latitude','longitude',
             'birth_date',
             'gender',
             'bank_account',
@@ -85,12 +85,14 @@ class UserController extends Controller
         if (Arr::has($params, 'birth_date'))
             $user->birth_date = $params['birth_date'];
 
-        if (Arr::has($params, 'location')) {
+        if (Arr::has($params, 'latitude') && Arr::has($params, 'longitude') ) {
             $latitude = $request->input('latitude');
 
             $longitude = $request->input('latitude');
-            $user->location[0] = (double)$latitude;
-            $user->location[1] = (double)$longitude;
+            $location = [];
+            $location[0] = $latitude;
+            $location[1] = $longitude;
+            $user->locations = $location;
 
 
         }
