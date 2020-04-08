@@ -10,16 +10,21 @@ class RequestService extends Eloquent
 {
     //
     protected $table = 'requests';
+    protected $casts = [
+        'date' => 'datetime:Y-m-d',
+    ];
 
     public function users()
     {
         return $this->belongsToMany(User::class);
     }
+
     public function employees()
     {
         return $this->belongsToMany(
             User::class, null, 'employee_request_ids', 'employee_ids');
     }
+
     public function clients()
     {
         return $this->belongsToMany(

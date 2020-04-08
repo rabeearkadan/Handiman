@@ -28,6 +28,8 @@ class User extends Eloquent implements
      *
      * @var array
      */
+
+
     protected $fillable = [
         'name', 'email', 'password', 'phone', 'api_token', 'role'
     ];
@@ -48,6 +50,7 @@ class User extends Eloquent implements
      */
     protected $casts = [
         'email_verified_at' => 'datetime',
+        'location' => 'array',
     ];
 
 
@@ -89,12 +92,14 @@ class User extends Eloquent implements
         );
 
     }
+
     public function clientRequests()
     {
         return $this->belongsToMany(
             RequestService::class, null, 'client_ids', 'client_request_ids'
         );
     }
+
     public function simplifiedArray()
     {
         return [
