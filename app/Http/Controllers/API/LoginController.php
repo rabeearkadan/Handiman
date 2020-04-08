@@ -65,7 +65,7 @@ class LoginController extends Controller
         if ($this->attemptLogin($request)) {
 
             // check
-            $user = User::query()->find(Auth::id());
+            $user = User::query()->find(Auth::id())->get();
             if (($user->role == 'user' && ($request->input('role') == 'employee'))
                 || ($user->role == 'employee' && ($request->input('role') == 'user'))
             ) {
