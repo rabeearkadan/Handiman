@@ -10,9 +10,9 @@ class RequestService extends Eloquent
 {
     //
     protected $table = 'requests';
-    protected $casts = [
-        'date' => 'datetime:Y-m-d',
-    ];
+//    protected $casts = [
+//        'date' => 'datetime:Y-m-d',
+//    ];
 
     public function users()
     {
