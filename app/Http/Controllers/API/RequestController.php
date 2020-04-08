@@ -143,7 +143,7 @@ class RequestController extends Controller
 
         if ($pending == null)
             return response()->json(['status' => 'success', 'message' => 'You have no ongoing requests']);
-        else {
+
 
 
 //            $prequest = $pending->map(function ($item) {
@@ -155,7 +155,8 @@ class RequestController extends Controller
 //                $item->service = Service::query()->find($item->service_id)->ServiceArray();
 //                return $item;
 //            });
-        }
+       // }
+        else
         return response()->json(['status' => 'success', 'requests' =>$pending]);
     }
 
