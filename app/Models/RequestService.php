@@ -10,7 +10,7 @@ class RequestService extends Eloquent
 {
     //
     protected $table = 'requests';
-   
+
     public function users()
     {
         return $this->belongsToMany(User::class);

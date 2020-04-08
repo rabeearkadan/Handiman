@@ -14,7 +14,7 @@ class Service extends Eloquent
     {
         return $this->belongsToMany(User::class);
     }
-    public function ServicesimplifiedArray()
+    public function ServiceArray()
     {
         return [
             '_id' => $this->_id,
