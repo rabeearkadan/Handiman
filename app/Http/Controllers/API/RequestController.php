@@ -147,7 +147,7 @@ class RequestController extends Controller
         if ($pending == null)
             return response()->json(['status' => 'success', 'message' => 'You have no ongoing requests']);
         $prequest = $pending->map(function ($item) {
-            $item->client = User::query()->find($item->employee_ids[0])->simplifiedArray();
+            $item->handyman = User::query()->find($item->employee_ids[0])->simplifiedArray();
             return $item;
         });
         $pending_request = $prequest->map(function ($item) {
