@@ -29,7 +29,10 @@ class User extends Eloquent implements
      * @var array
      */
 
-
+    protected $casts = [
+        'email_verified_at' => 'datetime',
+        'location' => 'float'
+    ];
     protected $fillable = [
         'name', 'email', 'password', 'phone', 'api_token', 'role'
     ];
