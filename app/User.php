@@ -42,16 +42,6 @@ class User extends Eloquent implements
     protected $hidden = [
         'password', 'remember_token', 'api_token', 'device_token', 'device_platform'
     ];
-//was hidden and I remove it
-    /**
-     * The attributes that should be cast to native types.
-     *
-     * @var array
-     */
-    protected $casts = [
-        'email_verified_at' => 'datetime',
-        'location' => 'float',
-    ];
 
 
     public function isClient()
