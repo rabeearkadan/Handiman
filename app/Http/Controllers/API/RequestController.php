@@ -34,7 +34,13 @@ class RequestController extends Controller
         $requestHandyman->subject = $req->input('subject');
         $requestHandyman->description = $req->input('description');
         $requestHandyman->status = 'pending';
-        $requestHandyman->location = explode(',', $req->input('location'));
+        $latitude = $req->input('latitude');
+
+        $longitude = $req->input('longitude');
+        $location = [];
+        $location[0] = (double)$latitude;
+        $location[1] = (double)$longitude;
+        $requestHandyman->locations = $location;
         $requestHandyman->timezone = $req->timezone;
         $requestHandyman->service_id = $req->service_id;
 
