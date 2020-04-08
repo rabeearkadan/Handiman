@@ -27,7 +27,6 @@ class RequestController extends Controller
     }
 
 
-
     public function makeRequest(Request $req)
     {
         $this->validator($req->all())->validate();
@@ -102,8 +101,6 @@ class RequestController extends Controller
     }
 
 
-
-
     public
     function getRequestById($id)
     {
@@ -146,14 +143,19 @@ class RequestController extends Controller
 
         if ($pending == null)
             return response()->json(['status' => 'success', 'message' => 'You have no ongoing requests']);
-        $prequest = $pending->map(function ($item) {
-            $item->handyman = User::query()->find($item->employee_ids[0])->simplifiedArray();
-            return $item;
-        });
-        $pending_request = $prequest->map(function ($item) {
-            $item->service = Service::query()->find($item->service_id)->ServiceArray();
-            return $item;
-        });
+        else {
+
+
+            $prequest = $pending->map(function ($item) {
+                $item->handyman = User::query()->find($item->employee_ids[0])->simplifiedArray();
+                return $item;
+            });
+
+            $pending_request = $prequest->map(function ($item) {
+                $item->service = Service::query()->find($item->service_id)->ServiceArray();
+                return $item;
+            });
+        }
         return response()->json(['status' => 'success', 'requests' => $pending_request]);
     }
 
