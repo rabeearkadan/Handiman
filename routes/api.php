@@ -45,7 +45,7 @@ Route::middleware(['auth:api', 'client'])->prefix('client')->group(function () {
     Route::post('request-any', 'RequestController@requestAny');
     Route::get('post', 'PostController@getPosts');
     Route::post('make-request', 'RequestController@makeRequest');
-    Route::get('ongoing-requests', 'RequestController@getOngoingRequests');
+    Route::get('ongoing-requests', 'RequestController@getClientRequests');
 
 });
 
