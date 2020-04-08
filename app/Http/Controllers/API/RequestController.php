@@ -108,23 +108,6 @@ class RequestController extends Controller
 
 
     public
-    function getRequestById($id)
-    {
-        $request = RequestService::query()->find($id);
-
-        return response()->json(['status' => 'success', 'request' => $request]);
-    }
-
-    public
-    function setRequestTo(Request $request)
-    {
-        $req = RequestService::query()->find($request->input('id'));
-        $req->to = $request->input('to');
-        $req->handyman_to = 'approved';
-    }
-
-
-    public
     function getHandymanRequests()
     {
         $pending = Auth::user()->employeeRequests()->where('status', 'pending')->get();
@@ -142,8 +125,38 @@ class RequestController extends Controller
         return response()->json(['status' => 'success', 'requests' => $pending_request]);
     }
 
+
     public
-    function getClientRequests()
+    function getHandymanJobs()
+    {
+        $outgoing = Auth::user()->employeeRequests()->where('status', 'approved')->where('done', false)->get();
+
+        if ($outgoing == null)
+            return response()->json(['status' => 'success', 'message' => 'You have no ongoing requests']);
+        $orequest = $outgoing->map(function ($item) {
+            $item->client = User::query()->find($item->client_ids[0])->simplifiedArray();
+            return $item;
+        });
+        $outgoing_request = $orequest->map(function ($item) {
+            $item->service = Service::query()->find($item->service_id)->ServiceArray();
+            return $item;
+        });
+        return response()->json(['status' => 'success', 'requests' => $outgoing_request]);
+    }
+
+    public
+    function replyToRequest($id, Request $req)
+    {
+        $request = RequestService::query()->find($id);
+        $request->status = $req->input('status');
+        $client = User::query()->find($request->client_ids[0]);
+        $request->save();
+        $this->notification($client->client_device_token, Auth::user()->name, 'Your request has been' . $request->status, 'request');
+        return response()->json(['status' => 'success']);
+    }
+
+    public
+    function getClientOngoingRequests()
     {
         $pending = Auth::user()->clientRequests()->where('status', 'pending')->get();
 
@@ -165,24 +178,41 @@ class RequestController extends Controller
         }
     }
 
-    public
-    function getHandymanJobs()
+    public function getClientOutgoingRequests()
     {
-        $outgoing = RequestService::query()->client()
-            ->where('employee_id', Auth::id())
-            ->where('status', 'outgoing')->get();
 
-        return response()->json(['status' => 'success', 'requests' => $outgoing]);
+        $outgoing = Auth::user()->clientRequests()->where('status', 'approved')->where('done', false)->get();
+
+        if ($outgoing == null)
+            return response()->json(['status' => 'success', 'message' => 'You have no ongoing requests']);
+        else {
+
+
+            $orequest = $outgoing->map(function ($item) {
+                $item->handyman = User::query()->find($item->employee_ids[0])->simplifiedArray();
+                return $item;
+            });
+
+            $outgoig_request = $orequest->map(function ($item) {
+                $item->service = Service::query()->find($item->service_id)->ServiceArray();
+                return $item;
+            });
+            return response()->json(['status' => 'success', 'requests' => $outgoig_request]);
+        }
     }
 
-    public
-    function replyToRequest($id, Request $req)
+    public function onRequestDone($id)
     {
         $request = RequestService::query()->find($id);
-        $request->status = $req->input('status');
-        $client = User::query()->find($request->client_ids[0]);
-        $request->save();
-        $this->notification($client->client_device_token, Auth::user()->name, 'Your request has been' . $request->status, 'request');
+//        $request->report;
+//        $request->payment
+
+        $request->isdone = true;
+
+        // when the request is done the client should rate the handyman and give  a feedback
+        //$handyma_id= $rquest->employee_id[0]
+        //we will get the the count of the handyman requests then add the rate value to his old rate and divided on total
+
         return response()->json(['status' => 'success']);
     }
 

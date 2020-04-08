@@ -36,7 +36,6 @@ Route::middleware(['auth:api', 'employee'])->prefix('employee')->group(function 
     Route::post('post', 'PostController@addPost');
 
 
-
 });
 
 Route::middleware(['auth:api', 'client'])->prefix('client')->group(function () {
@@ -45,7 +44,9 @@ Route::middleware(['auth:api', 'client'])->prefix('client')->group(function () {
     Route::post('request-any', 'RequestController@requestAny');
     Route::get('post', 'PostController@getPosts');
     Route::post('make-request', 'RequestController@makeRequest');
-    Route::get('ongoing-requests', 'RequestController@getClientRequests');
+    Route::get('ongoing-requests', 'RequestController@getClientOngoingRequests');
+    Route::get('outgoing-requests', 'RequestController@getClientOutgoingRequests');
+    Route::post('request-done/{id}', 'RequestController@onRequestDone');
 
 });
 
