@@ -61,12 +61,11 @@ class LoginController extends Controller
 
     public function login(Request $request)
     {
-        $res = $this->validateLogin($request);
-        Log::info($res);
+       $this->validateLogin($request);
         if ($this->attemptLogin($request)) {
 
             // check
-            $user =  User::query()->find(Auth::id());
+            $user = Auth::id();
             if (($user->role == 'user' && ($request->input('role') == 'employee'))
                 || ($user->role == 'employee' && ($request->input('role') == 'user'))
             ) {
