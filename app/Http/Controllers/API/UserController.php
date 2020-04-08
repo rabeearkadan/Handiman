@@ -85,9 +85,12 @@ class UserController extends Controller
         if (Arr::has($params, 'birth_date'))
             $user->birth_date = $params['birth_date'];
 
-        if (Arr::has($params, 'location')){
-            $this->validator($request->all())->validate();
-           $user->location=$params['location'];
+        if (Arr::has($params, 'location')) {
+            $location []= $request->input('location');
+            $user->location[0] = (double)explode(',', $location)[0];
+            $user->location[1] = (double)explode(',', $location)[1];
+
+
         }
 
         if (Arr::has($params, 'gender'))
