@@ -50,7 +50,7 @@ class User extends Eloquent implements
      */
     protected $casts = [
         'email_verified_at' => 'datetime',
-        'location' => 'array',
+        'location' => 'float',
     ];
 
 
