@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Str;
 use mysql_xdevapi\Exception;
 use phpDocumentor\Reflection\DocBlock\Tags\Return_;
@@ -16,7 +17,12 @@ use phpDocumentor\Reflection\Types\Integer;
 class UserController extends Controller
 {
     //
-
+    protected function validator(array $data)
+    {
+        return Validator::make($data, [
+            'location' => ['required', 'double', 'max:255'],
+        ]);
+    }
     public function setDeviceToken(Request $request)
     {
         $user = Auth::user();
@@ -85,6 +91,7 @@ class UserController extends Controller
             $user->birth_date = $params['birth_date'];
 
         if (Arr::has($params, 'location')){
+            $this->validator($request->all())->validate();
            $user->location=$params['location'];
         }
 
