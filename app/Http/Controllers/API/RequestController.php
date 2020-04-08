@@ -132,11 +132,11 @@ class RequestController extends Controller
             $item->client = User::query()->find($item->client_ids[0])->simplifiedArray();
             return $item;
         });
-//        $pending_request = $prequest->map(function ($item) {
-//            $item->service = Service::query()->find($item->service_id)->ServiceArray();
-//            return $item;
-//        });
-        return response()->json(['status' => 'success', 'requests' => $prequest]);
+        $pending_request = $prequest->map(function ($item) {
+            $item->service = Service::query()->find($item->service_id)->ServiceArray();
+            return $item;
+        });
+        return response()->json(['status' => 'success', 'requests' => $pending_request]);
     }
 
     public
