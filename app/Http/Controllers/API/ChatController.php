@@ -51,14 +51,19 @@ class ChatController extends Controller
         $requestService = RequestService::query()->find($id);
 
         $messages = $requestService->messages;
+
+
         $message = [
             'message' => $request->input('message'),
             'date' => Carbon::now()->toDateTimeString(),
             'from' => Auth::user()->simplifiedArray()
         ];
-        array_push($messages, $message);
+        if ($messages != null) {
+
+            array_push($messages, $message);
+        }
         $requestService->messages = $messages;
-//
+
 //        $notification = $message;
 //        $notification['request_id'] = $id;
 //        if (auth()->id() == $requestService->client_id) {
