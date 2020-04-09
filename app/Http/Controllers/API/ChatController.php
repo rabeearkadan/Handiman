@@ -63,6 +63,7 @@ class ChatController extends Controller
             array_push($messages, $message);
         } else {
             $messages = [];
+            array_push($messages, $message);
         }
         $requestService->messages = $messages;
 
