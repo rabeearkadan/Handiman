@@ -34,6 +34,7 @@ Route::middleware(['auth:api', 'employee'])->prefix('employee')->group(function 
     Route::post('add-service/{id}', 'ServiceController@addService');
     Route::get('delete-service/{id}', 'ServiceController@deleteService');
     Route::post('post', 'PostController@addPost');
+    Route::get('chat-requests', 'ChatController@notDoneRequests');
 
 
 });

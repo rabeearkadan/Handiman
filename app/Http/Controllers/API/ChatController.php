@@ -7,6 +7,7 @@ namespace App\Http\Controllers\API;
 use App\Events\NotificationSenderEvent;
 use App\Http\Controllers\Controller;
 use App\Models\RequestService;
+use App\Models\Service;
 use App\User;
 use App\Models\Message;
 use Carbon\Carbon;
@@ -29,6 +30,20 @@ class ChatController extends Controller
 
     }
 
+    public function notDoneRequests()
+    {
+        //only requests that are approved and not done can have chat
+        $requests = Auth::user()->employeeRequests()->where('status', 'approved')->where('done', false)->get();
+
+        if ($requests == null)
+            return response()->json(['status' => 'success', 'message' => 'You have no requests to chat']);
+        $_requests = $requests->map(function ($item) {
+            $item->client = User::query()->find($item->client_ids[0])->simplifiedArray();
+            return $item;
+        });
+
+        return response()->json(['status' => 'success', 'requests' => $_requests]);
+    }
 
     public function sendMessage(Request $request, $id)
     {
