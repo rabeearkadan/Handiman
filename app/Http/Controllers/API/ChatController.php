@@ -33,7 +33,7 @@ class ChatController extends Controller
     public function notDoneRequests()
     {
         //only requests that are approved and not done can have chat
-        $requests = Auth::user()->employeeRequests()->where('status', 'approved')->where('done', false)->get();
+        $requests = Auth::user()->employeeRequests()->where('status', 'approved')->where('isdone', false)->get();
 
         if ($requests == null)
             return response()->json(['status' => 'success', 'message' => 'You have no requests to chat']);
