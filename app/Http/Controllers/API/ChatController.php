@@ -69,10 +69,10 @@ class ChatController extends Controller
 
         $notification = $message;
         $notification['request_id'] = $id;
-        if (auth()->id() == $requestService->client_id) {
-            $notification['to'] = User::query()->find($requestService->employee_id)->employee_device_token;
+        if (auth()->id() == $requestService->client_ids[0]) {
+            $notification['to'] = User::query()->find($requestService->employee_ids[0])->employee_device_token;
         } else {
-            $notification['to'] = User::query()->find($requestService->client_id)->client_device_token;
+            $notification['to'] = User::query()->find($requestService->client_ids[0])->client_device_token;
         }
         $notification['type'] = 'message';
 
