@@ -24,7 +24,11 @@ class PostController extends Controller
     public function getPosts()
     {
         $posts = Post::all();
-        return response()->json(['status' => 'success', 'posts' => $posts]);
+        $post = $posts->map(function ($item) {
+            $item->handyman = User::query()->find($item->user_ids[0])->SimplifiedArray();
+            return $item;
+        });
+        return response()->json(['status' => 'success', 'posts' => $post]);
 
     }
 
