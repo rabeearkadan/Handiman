@@ -77,9 +77,9 @@ class RegisterController extends Controller
     {
         $timeline = [];
         for ($i = 0; $i <= 23; $i++) {
-            $hour = str_pad($i, 2, 0, STR_PAD_LEFT) . "00";
+
             for ($j = 0; $j <= 6; $j++) {
-                $timeline[$j][$hour] = false;
+                $timeline[$j][$i] = false;
             }
         }
         return $timeline;

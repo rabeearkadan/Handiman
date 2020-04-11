@@ -117,8 +117,7 @@ class SchedularEngine extends Command
     {
         $flag = true;
         for ($i = (int)$from; $i <= (int)$to; $i = $i + 100) {
-            $hour = str_pad($i, 4, "0", STR_PAD_LEFT);
-            if ($handyman->timeline[$day][$hour] == false) {
+            if ($handyman->timeline[$day][$i] == false) {
                 $flag = false;
                 break;
             }
@@ -132,7 +131,7 @@ class SchedularEngine extends Command
             $q->where('_id', $handyman->_id);
         })->where('day', $day)->where('status', '!=', 'done');
         for ($i = (int)$from; $i <= (int)$to; $i = $i + 100) {
-            $requestsq->where('from', str_pad($i, 4, "0", STR_PAD_LEFT));
+            $requestsq->where('from', $i);
         }
         return $requestsq->count() == 0;
     }
