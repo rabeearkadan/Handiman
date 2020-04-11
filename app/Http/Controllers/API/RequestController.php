@@ -106,6 +106,18 @@ class RequestController extends Controller
 
     }
 
+    public function cancelRequest($id)
+    {
+        $request = RequestService::query()->find($id);
+        $handyman = User::query()->find($request->employee_ids[0]);
+
+        $this->notification($handyman->employee_device_token, Auth::user()->name, 'request has been canceled' .
+            $request->subject, 'request');
+        $request->delete();
+        return response()->json(['status' => 'success', 'message' => 'request is canceled']);
+
+
+    }
 
     public
     function getHandymanRequests()
