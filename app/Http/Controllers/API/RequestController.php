@@ -175,6 +175,23 @@ class RequestController extends Controller
         });
         return response()->json(['status' => 'success', 'requests' => $outgoing_request]);
     }
+    public
+    function getHandymanTasks()
+    {
+        $outgoing = Auth::user()->employeeRequests()->where('status', 'approved')->get();
+
+        if ($outgoing == null)
+            return response()->json(['status' => 'success', 'message' => 'You have no ongoing requests']);
+        $orequest = $outgoing->map(function ($item) {
+            $item->client = User::query()->find($item->client_ids[0])->simplifiedArray();
+            return $item;
+        });
+        $outgoing_request = $orequest->map(function ($item) {
+            $item->service = Service::query()->find($item->service_id)->ServiceArray();
+            return $item;
+        });
+        return response()->json(['status' => 'success', 'requests' => $outgoing_request]);
+    }
 
     public
     function replyToRequest($id, Request $req)
