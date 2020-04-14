@@ -86,7 +86,7 @@ class RequestController extends Controller
                 $handyman = User::query()->find($req->input('employee_id'));
 
 
-                $requestHandyman->date = Carbon::createFromFormat('Y-m-d H', $req->input('date'))->toDateTimeString();
+                $requestHandyman->date = Carbon::createFromFormat('Y-m-d ', $req->input('date'))->toDateTimeString();
                 if ($req->has('from'))
                     $requestHandyman->from = $req->input('from');
                 if ($req->has('to')) {
