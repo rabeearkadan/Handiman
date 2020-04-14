@@ -113,7 +113,24 @@ class RequestController extends Controller
 
         $this->notification($handyman->employee_device_token, Auth::user()->name, 'request has been canceled' .
             $request->subject, 'request');
+
+        $user = User::query()->find(Auth::id());
+
+        $client_request_ids = [];
+        foreach ($user->client_request_ids as $s) {
+            if ($s != $id)
+                $client_request_ids [] = $s;
+        }
+        $employee_request_ids = [];
+        foreach ($user->employee_request_ids as $s) {
+            $employee_request_ids[] = $s;
+        }
+        $user->employeeRequests()->sync($employee_request_ids);
+        $user->clientRequests()->sync($client_request_ids);
+
+
         $request->delete();
+
         return response()->json(['status' => 'success', 'message' => 'request is canceled']);
 
 
