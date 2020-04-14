@@ -122,7 +122,7 @@ class RequestController extends Controller
                 $client_request_ids [] = $s;
         }
         $employee_request_ids = [];
-        foreach ($user->employee_request_ids as $s) {
+        foreach ($handyman->employee_request_ids as $s) {
             $employee_request_ids[] = $s;
         }
         $user->employeeRequests()->sync($employee_request_ids);
