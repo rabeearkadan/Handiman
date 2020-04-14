@@ -11,6 +11,10 @@ class RequestService extends Eloquent
     //
     protected $table = 'requests';
 
+    protected $casts = [
+        'date' => 'datetime',
+
+    ];
     public function users()
     {
         return $this->belongsToMany(User::class);
