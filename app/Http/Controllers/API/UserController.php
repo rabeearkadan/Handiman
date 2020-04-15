@@ -112,9 +112,9 @@ class UserController extends Controller
             $user->apartment_details = $params['apartment_details'];
 
         if (Arr::has($params, 'cv'))
-            $user->cv = $this->uploadAny('cvs', $params['cv'], '.pdf');
+            $user->cv = $this->uploadAny('cvs', $params['cv'], 'pdf');
         if (Arr::has($params, 'certificate'))
-            $user->cv = $this->uploadAny('cv', $params['certificate'], '.pdf');
+            $user->cv = $this->uploadAny('cv', $params['certificate'], 'pdf');
         if (Arr::has($params, 'criminal_record'))
             $user->cv = $this->uploadAny('criminal_records', $params['criminal_record'], '.png');
 
