@@ -43,7 +43,6 @@ Route::middleware(['auth:api', 'employee'])->prefix('employee')->group(function 
 Route::middleware(['auth:api', 'client'])->prefix('client')->group(function () {
 // api route with auth and client middleware the route is starts with api/client
     Route::post('request/{id}', 'RequestController@requestHandyman');
-    Route::post('request-any', 'RequestController@requestHandyman');
     Route::get('post', 'PostController@getPosts');
     Route::post('make-request', 'RequestController@makeRequest');
     Route::get('ongoing-requests', 'RequestController@getClientOngoingRequests');
