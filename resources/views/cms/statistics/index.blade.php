@@ -27,9 +27,9 @@
                     type: "pie",
                     yValueFormatString: "#,##0.00\"%\"",
                     indexLabel: "{label} ({y})",
-                    dataPoints: @json($dataPoints)
-        }]
-        });
+                    dataPoints: "@json($dataPoints)"
+                }]
+            });
             chart.render();
 
         }
