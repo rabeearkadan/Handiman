@@ -20,6 +20,7 @@ class Service extends Eloquent
             '_id' => $this->_id,
             'name' => $this->name,
             'image' => $this->image,
+            'indicator'=>$this->indicator,
         ];
     }
 
