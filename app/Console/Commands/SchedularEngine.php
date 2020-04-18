@@ -23,19 +23,14 @@ class SchedularEngine extends Command
 
     public function handle()
     {
-//        $this->Notification(
-//            'd8M25IfgRRiJX8Q_Iu0B-0:APA91bHuD7Wl1hy5pOyaM3LrC053EoEgTOZHCyNcPV3SFmZwJ94Ce3QC7EzXCXHFeF3P4sEKNUt4GKRV7
-//            ybn6mAMw_uJRYItR35sn8xo29YsSaPM5N6Fjv4bq4ASelvCgPZA6_Gd1JlPh',
-//
-//            'admin', 'testing the scheduler', 'comment');
 
-        $nowTime = Carbon::now()->timestamp;
+        $nowTime = Carbon::now();
         $request = RequestService::query()->where('status', 'pending')->where('employee_id', null)->get();
         foreach ($request as $req) {
             $handyman = $this->searchForHandyman($req);
             if ($handyman == null) {
                 $user = User::query()->find($req->client_ids[0]);
-                $this->Notification($user->cient_device_token, 'Admin', 'You have less than 10 minutes to reply for pending requests', 'notification');
+                $this->Notification($user->cient_device_token, 'Admin', 'no results found, search on large area', 'notification');
 
             } else {
                 $req->save();

@@ -161,7 +161,8 @@ class RequestController extends Controller
     public
     function getHandymanJobs()
     {
-        $outgoing = Auth::user()->employeeRequests()->where('status', 'approved')->where('isdone', false)->get();
+        $handyman=User::query()->find(Auth::id());
+        $outgoing = $handyman->employeeRequests()->where('status', 'approved')->where('isdone', false)->get();
 
         if ($outgoing == null)
             return response()->json(['status' => 'success', 'message' => 'You have no ongoing requests']);

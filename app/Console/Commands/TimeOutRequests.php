@@ -41,9 +41,10 @@ class TimeOutRequests extends Command
      */
     public function handle()
     {
-        $nowTime = Carbon::now();
+
         $requests = RequestService::query()->where('status', 'pending')->get();
         foreach ($requests as $req) {
+            $nowTime = Carbon::now($req->timezone);
             if ($req->empolyees()->count() > 0) {
                 $client = User::query()->find($req->client_ids[0]);
                 $client_device = $client->client_device_token;
@@ -61,8 +62,7 @@ class TimeOutRequests extends Command
             }
 
         }
-        //1- get all requests the status are pending, with employee ID and  the time of the request is greater than 30 min
-        //2- un assign the request ; to allow the Scheduler Engine find another employee for the request
+
     }
 
     public function Notification($to, $from, $message, $type)
