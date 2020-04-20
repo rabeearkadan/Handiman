@@ -140,10 +140,10 @@ class RequestController extends Controller
     }
 
     public
-    function getHandymanRequests($id)
+    function getHandymanRequests()
     {
-        $handyman=User::query()->find($id);
-        $pending =$handyman->employeeRequests()->where('status', 'pending')->get();
+
+        $pending = Auth::user()->employeeRequests()->where('status', 'pending')->get();
 
         if ($pending == null)
             return response()->json(['status' => 'success', 'message' => 'You have no ongoing requests']);
@@ -160,9 +160,9 @@ class RequestController extends Controller
 
 
     public
-    function getHandymanJobs()
+    function getHandymanJobs($id)
     {
-        $handyman=User::query()->find(Auth::id());
+        $handyman = User::query()->find($id);
         $outgoing = $handyman->employeeRequests()->where('status', 'approved')->where('isdone', false)->get();
 
         if ($outgoing == null)
@@ -177,6 +177,7 @@ class RequestController extends Controller
         });
         return response()->json(['status' => 'success', 'requests' => $outgoing_request]);
     }
+
     public
     function getHandymanTasks()
     {
