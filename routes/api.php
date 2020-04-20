@@ -28,7 +28,6 @@ Route::middleware(['auth:api', 'employee'])->prefix('employee')->group(function 
 
     Route::get('post-id/{id}', 'PostController@getPostById');
     Route::get('request/{id}', 'RequestController@getRequestById');
-    Route::get('pending-requests', 'RequestController@getHandymanRequests');
     Route::get('jobs', 'RequestController@getHandymanJobs');
     Route::get('schedule','RequestController@getHandymanTasks');
     Route::post('reply-request/{id}', 'RequestController@replyToRequest');
@@ -64,6 +63,8 @@ Route::middleware(['auth:api'])->group(function () {
     Route::get('message/{id}', 'ChatController@loadMessages');
     Route::post('credit-card', 'PaymentController@setCreditCard');
     Route::get('credit-card', 'PaymentController@getCreditCard');
+
+    Route::get('pending-requests/{id}', 'RequestController@getHandymanRequests');
 
     // Route::put('profile/edit', 'UserController@editProfile');
     //Route::get('profile/edit', 'UserController@getProfile');

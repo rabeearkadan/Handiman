@@ -140,9 +140,10 @@ class RequestController extends Controller
     }
 
     public
-    function getHandymanRequests()
+    function getHandymanRequests($id)
     {
-        $pending = Auth::user()->employeeRequests()->where('status', 'pending')->get();
+        $handyman=User::query()->find($id);
+        $pending =$handyman->employeeRequests()->where('status', 'pending')->get();
 
         if ($pending == null)
             return response()->json(['status' => 'success', 'message' => 'You have no ongoing requests']);
