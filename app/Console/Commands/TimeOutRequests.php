@@ -49,7 +49,7 @@ class TimeOutRequests extends Command
             $handyman_device = $handyman->employee_device_token;
             $nowTime = Carbon::now();
             $duration = $nowTime->diffInMinutes($req->updated_at);
-            $this->Notification($handyman_device, 'Admin', $duration, 'notification');
+           // $this->Notification($handyman_device, 'Admin', $duration, 'notification');
             if ($req->empolyees()->count() > 0) {
                 $client = User::query()->find($req->client_ids[0]);
                 $client_device = $client->client_device_token;
@@ -57,8 +57,8 @@ class TimeOutRequests extends Command
                 $handyman_device = $handyman->employee_device_token;
                 $duration = $nowTime->diffInMinutes($req->updated_at);
                 if ($duration > 30) {
-                    $req->employee_ids=null;
-                    $req->save();
+//                    $req->employee_ids=null;
+//                    $req->save();
 
                     $this->Notification($client_device, 'Admin', "Handyman didn't respond, your request will be handled by the system", 'notification');
                 } else if ($duration >= 20 && $duration<=30) {
