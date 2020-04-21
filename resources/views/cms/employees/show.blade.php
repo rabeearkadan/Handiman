@@ -75,9 +75,49 @@
                 </div>
             </div>
         @endif
+
+        <div class="col-lg-3 col-6">
+
+            <div class="small-box bg-danger">
+                <div class="inner">
+                    <p style="font-size: 2.2rem">Location:</p>
+
+                    <p> beirut</p>
+                </div>
+
+                <div class="icon">
+                    <i class="ion ion-location"></i>
+                </div>
+
+            </div>
+        </div>
     </div>
 
 
+    <div class="tab-content">
+        <div class="tab-pane tabs-animation fade show active" id="tab-content-1" role="tabpanel">
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="card-body"><h5 class="card-title">Posts</h5><h6 class="card-subtitle">Lorem
+                            ipsum dolor sit amet, consectetuer adipiscing elit</h6>
+                        <p>Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa
+                            quis eni</p></div>
+                </div>
+                <div class="mb-3 card card-body"><h5 class="card-title">Special Title Treatment</h5>With supporting text
+                    below as a natural lead-in to additional content.
+                    <button class="btn btn-primary">Go somewhere</button>
+                </div>
+                <div class="mb-3 text-center card card-body"><h5 class="card-title">Special Title Treatment</h5>With
+                    supporting text below as a natural lead-in to additional content.
+                    <button class="btn btn-danger">Go somewhere</button>
+                </div>
+                <div class="mb-3 text-right card card-body"><h5 class="card-title">Special Title Treatment</h5>With
+                    supporting text below as a natural lead-in to additional content.
+                    <button class="btn btn-outline-focus">Go somewhere</button>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <div class="row">
         <div class="col-lg-3">
@@ -133,7 +173,8 @@
                                     <div class="widget-content-wrapper">
                                         <div class="widget-content-left mr-3">
                                             <div class="widget-content-left">
-                                                <img width="40" class="rounded-circle" src="assets/images/avatars/4.jpg" alt="">
+                                                <img width="40" class="rounded-circle"
+                                                     src="assets/images/avatars/4.jpg" alt="">
                                             </div>
                                         </div>
                                         <div class="widget-content-left flex2">
@@ -148,7 +189,9 @@
                                 <div class="badge badge-warning">Pending</div>
                             </td>
                             <td class="text-center">
-                                <button type="button" id="PopoverCustomT-1" class="btn btn-primary btn-sm">Details</button>
+                                <button type="button" id="PopoverCustomT-1" class="btn btn-primary btn-sm">
+                                    Details
+                                </button>
                             </td>
                         </tr>
                         <tr>
@@ -158,12 +201,14 @@
                                     <div class="widget-content-wrapper">
                                         <div class="widget-content-left mr-3">
                                             <div class="widget-content-left">
-                                                <img width="40" class="rounded-circle" src="assets/images/avatars/3.jpg" alt="">
+                                                <img width="40" class="rounded-circle"
+                                                     src="assets/images/avatars/3.jpg" alt="">
                                             </div>
                                         </div>
                                         <div class="widget-content-left flex2">
                                             <div class="widget-heading">Ruben Tillman</div>
-                                            <div class="widget-subheading opacity-7">Etiam sit amet orci eget</div>
+                                            <div class="widget-subheading opacity-7">Etiam sit amet orci eget
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
@@ -173,7 +218,9 @@
                                 <div class="badge badge-success">Completed</div>
                             </td>
                             <td class="text-center">
-                                <button type="button" id="PopoverCustomT-2" class="btn btn-primary btn-sm">Details</button>
+                                <button type="button" id="PopoverCustomT-2" class="btn btn-primary btn-sm">
+                                    Details
+                                </button>
                             </td>
                         </tr>
                         <tr>
@@ -183,7 +230,8 @@
                                     <div class="widget-content-wrapper">
                                         <div class="widget-content-left mr-3">
                                             <div class="widget-content-left">
-                                                <img width="40" class="rounded-circle" src="assets/images/avatars/2.jpg" alt="">
+                                                <img width="40" class="rounded-circle"
+                                                     src="assets/images/avatars/2.jpg" alt="">
                                             </div>
                                         </div>
                                         <div class="widget-content-left flex2">
@@ -198,7 +246,9 @@
                                 <div class="badge badge-danger">In Progress</div>
                             </td>
                             <td class="text-center">
-                                <button type="button" id="PopoverCustomT-3" class="btn btn-primary btn-sm">Details</button>
+                                <button type="button" id="PopoverCustomT-3" class="btn btn-primary btn-sm">
+                                    Details
+                                </button>
                             </td>
                         </tr>
                         <tr>
@@ -208,7 +258,8 @@
                                     <div class="widget-content-wrapper">
                                         <div class="widget-content-left mr-3">
                                             <div class="widget-content-left">
-                                                <img width="40" class="rounded-circle" src="assets/images/avatars/1.jpg" alt=""></div>
+                                                <img width="40" class="rounded-circle"
+                                                     src="assets/images/avatars/1.jpg" alt=""></div>
                                         </div>
                                         <div class="widget-content-left flex2">
                                             <div class="widget-heading">Vinnie Wagstaff</div>
@@ -222,14 +273,17 @@
                                 <div class="badge badge-info">On Hold</div>
                             </td>
                             <td class="text-center">
-                                <button type="button" id="PopoverCustomT-4" class="btn btn-primary btn-sm">Details</button>
+                                <button type="button" id="PopoverCustomT-4" class="btn btn-primary btn-sm">
+                                    Details
+                                </button>
                             </td>
                         </tr>
                         </tbody>
                     </table>
                 </div>
                 <div class="d-block text-center card-footer">
-                    <button class="mr-2 btn-icon btn-icon-only btn btn-outline-danger"><i class="pe-7s-trash btn-icon-wrapper"> </i></button>
+                    <button class="mr-2 btn-icon btn-icon-only btn btn-outline-danger"><i
+                            class="pe-7s-trash btn-icon-wrapper"> </i></button>
                     <button class="btn-wide btn btn-success">Save</button>
                 </div>
             </div>
