@@ -47,7 +47,7 @@ class TimeOutRequests extends Command
         foreach ($requests as $req) {
             $handyman = User::query()->find($req->employee_ids[0]);
             $handyman_device = $handyman->employee_device_token;
-            $nowTime = Carbon::now($req->timezone);
+            $nowTime = Carbon::now();
 
             $this->Notification($handyman_device, 'Admin', $nowTime, 'notification');
             if ($req->empolyees()->count() > 0) {
