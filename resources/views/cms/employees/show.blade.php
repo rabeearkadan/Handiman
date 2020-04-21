@@ -97,27 +97,22 @@
     <div class="tab-content">
         <div class="tab-pane tabs-animation fade show active" id="tab-content-1" role="tabpanel">
             <div class="row">
-                <div class="col-md-4">
-                    <div class="card-body"><h5 class="card-title">Posts</h5><h6 class="card-subtitle">Lorem
-                            ipsum dolor sit amet, consectetuer adipiscing elit</h6>
-                        <p>Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa
-                            quis eni</p></div>
-                </div>
-                <div class="mb-3 card card-body"><h5 class="card-title">Special Title Treatment</h5>With supporting text
-                    below as a natural lead-in to additional content.
-                    <button class="btn btn-primary">Go somewhere</button>
-                </div>
-                <div class="mb-3 text-center card card-body"><h5 class="card-title">Special Title Treatment</h5>With
+
+
+
+                <div class="mb-3 text-center card card-body"><h5 class="card-title">Check Employy's posts</h5>With
                     supporting text below as a natural lead-in to additional content.
                     <button class="btn btn-danger">Go somewhere</button>
                 </div>
-                <div class="mb-3 text-right card card-body"><h5 class="card-title">Special Title Treatment</h5>With
+
+                <div class="mb-3 text-right card card-body"><h5 class="card-title">Check Employee's services</h5>With
                     supporting text below as a natural lead-in to additional content.
                     <button class="btn btn-outline-focus">Go somewhere</button>
                 </div>
             </div>
         </div>
     </div>
+
 
     <div class="row">
         <div class="col-lg-3">
