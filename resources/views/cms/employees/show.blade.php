@@ -15,7 +15,7 @@
                 </div>
 
                 <div class="icon">
-                    <i class="ion ion-android-contact"></i>
+                    <i  style="background: url('https://mis.bau.edu.lb/web/v12/iConnectV12/admin/ProfileImage.aspx?ID=201801949&Code=F0DC386DD0')">"></i>
                 </div>
 
             </div>
