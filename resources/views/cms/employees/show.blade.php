@@ -15,7 +15,7 @@
                 </div>
 
                 <div class="icon">
-                    <i  style="height: 174px; width: 174px; background: url('https://mis.bau.edu.lb/web/v12/iConnectV12/admin/ProfileImage.aspx?ID=201801949&Code=F0DC386DD0');"></i>
+                    <i class="ion ion-android-contact"></i>
                 </div>
 
             </div>
@@ -99,13 +99,12 @@
             <div class="row">
 
 
-
-                <div class="mb-3 text-center card card-body"><h5 class="card-title">Check Employy's posts</h5>With
+                <div class="mb-3 text-center card card-body"><h5 class="card-title">Special Title Treatment</h5>With
                     supporting text below as a natural lead-in to additional content.
                     <button class="btn btn-danger">Go somewhere</button>
                 </div>
 
-                <div class="mb-3 text-right card card-body"><h5 class="card-title">Check Employee's services</h5>With
+                <div class="mb-3 text-right card card-body"><h5 class="card-title">Special Title Treatment</h5>With
                     supporting text below as a natural lead-in to additional content.
                     <button class="btn btn-outline-focus">Go somewhere</button>
                 </div>
@@ -115,7 +114,7 @@
 
 
     <div class="row">
-        <div class="col-lg-3">
+        <div class="col-lg-3 col-6">
             <div class="card card-primary card-outline">
                 <div class="card-body box-profile">
                     <div class="text-center">
@@ -128,9 +127,35 @@
                             </div>
                             <h3 class="profile-username text-center">
 
-                                <span> {{$employee->name}}</span>
+                                <span> </span>
                             </h3>
 
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="col-lg-3 col-6">
+            <div class="tab-content">
+                <div class="tab-pane tabs-animation fade show active" id="tab-content-0" role="tabpanel">
+                    <div class="main-card mb-3 card">
+                        <div class="card-body">
+                            <div id='calendar'></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="tab-pane tabs-animation fade" id="tab-content-1" role="tabpanel">
+                    <div class="main-card mb-3 card">
+                        <div class="card-body">
+                            <div id='calendar-list'></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="tab-pane tabs-animation fade" id="tab-content-2" role="tabpanel">
+                    <div class="main-card mb-3 card">
+                        <div class="card-body">
+                            <div id="calendar-bg-events"></div>
                         </div>
                     </div>
                 </div>
