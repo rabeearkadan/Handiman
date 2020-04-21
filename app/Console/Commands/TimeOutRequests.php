@@ -49,7 +49,7 @@ class TimeOutRequests extends Command
             $handyman_device = $handyman->employee_device_token;
             $nowTime = Carbon::now();
 
-            $this->Notification($handyman_device, 'Admin', $nowTime, 'notification');
+           // $this->Notification($handyman_device, 'Admin', $nowTime, 'notification');
             if ($req->empolyees()->count() > 0) {
                 $client = User::query()->find($req->client_ids[0]);
                 $client_device = $client->client_device_token;
