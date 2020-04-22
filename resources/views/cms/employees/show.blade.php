@@ -135,8 +135,8 @@
                 </div>
             </div>
         </div>
-        
-        <div class="col-lg-3 col-6">
+
+        <div class="col-lg-6 col-12">
             <div class="tab-content">
                 <div class="tab-pane tabs-animation fade show active" id="tab-content-0" role="tabpanel">
                     <div class="main-card mb-3 card">

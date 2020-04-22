@@ -50,7 +50,7 @@ class TimeOutRequests extends Command
             $nowTime = Carbon::now();
             $duration = $nowTime->diffInMinutes($req->updated_at);
            // $this->Notification($handyman_device, 'Admin', $duration, 'notification');
-            if ($req->empolyees()->count() > 0) {
+            if ($req->employees()->count() > 0) {
                 $client = User::query()->find($req->client_ids[0]);
                 $client_device = $client->client_device_token;
                 $handyman = User::query()->find($req->employee_ids[0]);
