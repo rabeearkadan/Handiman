@@ -25,7 +25,7 @@ class SchedularEngine extends Command
     {
 
         $nowTime = Carbon::now();
-        $request = RequestService::query()->where('status', 'pending')->where('employee_id', null)->get();
+        $request = RequestService::query()->where('status', 'pending')->where('employee_ids.0', null)->get();
         foreach ($request as $req) {
             $handyman = $this->searchForHandyman($req);
             if ($handyman == null) {
