@@ -40,8 +40,7 @@ class SchedularEngine extends Command
             }
 
         }
-        //1- getting all pending requests with status pending with no employee id
-        //2- make algo to find optimal employee
+      
     }
 
     private function searchForHandyman($requestHandyman)

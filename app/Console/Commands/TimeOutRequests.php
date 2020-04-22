@@ -44,12 +44,12 @@ class TimeOutRequests extends Command
 
         $requests = RequestService::query()->where('status', 'pending')->get();
 
+        $nowTime = Carbon::now();
         foreach ($requests as $req) {
-            $nowTime = Carbon::now($req->timezone);
+
             if ($req->employees()->count() > 0) {
                 $client = User::query()->find($req->client_ids[0]);
                 $handyman = User::query()->find($req->employee_ids[0]);
-
                 $client_device = $client->client_device_token;
                 $handyman_device = $handyman->employee_device_token;
                 $duration = $nowTime->diffInMinutes($req->updated_at);
