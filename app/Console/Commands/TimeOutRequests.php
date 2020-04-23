@@ -54,7 +54,8 @@ class TimeOutRequests extends Command
                 $handyman_device = $handyman->employee_device_token;
                 $duration = $nowTime->diffInMinutes($req->updated_at);
                 if ($duration > 30) {
-                    $req->employee_ids[0] = null;
+//                    $req->employees()->attach(null);
+//                    $req->save();
                     $this->Notification($client_device, 'Admin', "Handyman didn't respond, your request will be handled by the system", 'notification');
                 } else if ($duration >= 20 && $duration <= 30) {
                     $this->Notification($handyman_device, 'Admin', 'You have less than 10 minutes to reply for pending requests', 'notification');
