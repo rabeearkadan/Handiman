@@ -25,7 +25,6 @@ class HandymanController extends Controller
     }
 
 
-
     public function test()
     {
         $notification = array();
@@ -57,8 +56,8 @@ class HandymanController extends Controller
 
     public function getHandymenByService($id)
     {
-        $list = Service::query()->where('_id',$id )->first();
-        if ( $list == null )
+        $list = Service::query()->where('_id', $id)->first();
+        if ($list == null)
             return response()->json(['status' => 'error', 'message' => "no service found"]);
         $users = $list->users()->where('isApproved', true)->get();
         return response()->json(['status' => 'success', 'handymen' => $users]);
@@ -66,7 +65,7 @@ class HandymanController extends Controller
 
     }
 
-    public function getHandymanByLocation($longitude, $latitude)
+    public function getHandymanByLocation(Request $request)
     {
         $handymanList = User::query()
             ->where('role', 'employee')
@@ -76,12 +75,13 @@ class HandymanController extends Controller
                 '$geometry' => [
                     'type' => 'Point',
                     'coordinates' => [
-                        $longitude,
-                        $latitude,
+                        (double)$request->input('latitude'),
+                        (double)$request->input('longitude'),
                     ],
-                    '$maxDistance' => 50,
+                    'distanceField' => "dist.calculated",
+                    '$maxDistance' => 50000000,
                 ],
-            ])->get();
+            ])->orderBy('dist.calculated')->get();
         return response()->json(['status' => 'success', 'HandymanList' => $handymanList]);
     }
 
@@ -101,7 +101,6 @@ class HandymanController extends Controller
         $handyman = User::query()->findOrFail($id);
         return response()->json(['status' => 'success', 'HandymanList' => $handyman]);
     }
-
 
 
 }

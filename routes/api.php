@@ -16,7 +16,7 @@ Route::get('getServices', 'ServiceController@getServices');
 
 Route::get('getHandymanList', 'HandymanController@getHandyman');
 Route::get('getHandymenByService/{id}', 'HandymanController@getHandymenByService');
-Route::get('getHandymanSortedByLocation', 'HandymanController@getHandymanOrderedByLocation');
+Route::get('getHandymanSortedByLocation', 'HandymanController@getHandymanByLocation');
 Route::get('getHandymanSortedByPrice', 'HandymanController@getHandymanOrderedByPrice');
 
 Route::middleware(['auth:api', 'employee'])->prefix('employee')->group(function () {
