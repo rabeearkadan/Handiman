@@ -68,8 +68,7 @@ class HandymanController extends Controller
     public function getHandymanByLocation(Request $request)
     {
         $handymanList = User::query()
-            ->where('role', 'employee')
-            ->orWhere('role', 'user_employee')
+            ->where('role', 'employee' or 'user_employee')
             ->where('isApproved', true)
             ->where('location', 'near', [
                 '$geometry' => [
@@ -79,7 +78,7 @@ class HandymanController extends Controller
                         (double)$request->input('longitude'),
                     ],
                     'distanceField' => "dist.calculated",
-                    '$maxDistance' => 50000000,
+                    '$maxDistance' => 500000,
                 ],
             ])->orderBy('dist.calculated')->get();
         return response()->json(['status' => 'success', 'HandymanList' => $handymanList]);
