@@ -41,7 +41,7 @@ class RequestController extends Controller
         $location = [];
         $location[0] = (double)$latitude;
         $location[1] = (double)$longitude;
-        $requestHandyman->locations = $location;
+        $requestHandyman->location = $location;
         $requestHandyman->timezone = $req->timezone;
         $requestHandyman->service_id = $req->service_id;
 

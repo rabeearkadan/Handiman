@@ -56,9 +56,7 @@ class TimeOutRequests extends Command
                 if ($duration > 30) {
                     $this->Notification($client_device, 'Admin', "Handyman didn't respond, your request will be handled by the system", 'notification');
 
-                    $request = RequestService::query()->find($req->id);
-                    $request->employee_ids[0] = "";
-                    $request->save();
+                    
                     } else if ($duration >= 20 && $duration <= 30) {
                     $this->Notification($handyman_device, 'Admin', 'You have less than 10 minutes to reply for pending requests', 'notification');
 
