@@ -55,7 +55,7 @@ class TimeOutRequests extends Command
                 $duration = $nowTime->diffInMinutes($req->updated_at);
                 if ($duration > 30) {
                     $this->Notification($client_device, 'Admin', "Handyman didn't respond, your request will be handled by the system", 'notification');
-                    $req->employees()->detach();
+                 //   $req->employees()->detach();
 
                 } else if ($duration >= 20 && $duration <= 30) {
                     $this->Notification($handyman_device, 'Admin', 'You have less than 10 minutes to reply for pending requests', 'notification');
