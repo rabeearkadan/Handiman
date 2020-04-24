@@ -80,7 +80,7 @@ class HandymanController extends Controller
                     'distanceField' => "dist.calculated",
                     '$maxDistance' => 500000,
                 ],
-            ])->orderBy('dist.calculated')->get();
+            ])->orderBy('dist.calculated');
         return response()->json(['status' => 'success', 'HandymanList' => $handymanList]);
     }
 
