@@ -92,7 +92,7 @@ class UserController extends Controller
             $location = [];
             $location[0] = (double)$latitude;
             $location[1] = (double)$longitude;
-            $user->locations = $location;
+            $user->location= $location;
 
 
         }
