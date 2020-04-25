@@ -35,6 +35,7 @@ class RequestController extends Controller
         $requestHandyman->subject = $req->input('subject');
         $requestHandyman->description = $req->input('description');
         $requestHandyman->status = 'pending';
+        $requestHandyman->isdone = false;
         $latitude = $req->input('latitude');
 
         $longitude = $req->input('longitude');
