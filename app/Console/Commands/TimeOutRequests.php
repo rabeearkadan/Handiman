@@ -46,19 +46,22 @@ class TimeOutRequests extends Command
 
         $nowTime = Carbon::now();
         foreach ($requests as $req) {
+            $client = User::query()->find($req->client_ids[0]);
+            $duration = $nowTime->diffInMinutes($req->updated_at);
+
+            $this->Notification($client->client_device_token, 'Admin', $duration, 'notification');
 
             if ($req->employees()->count() > 0) {
                 $client = User::query()->find($req->client_ids[0]);
                 $handyman = User::query()->find($req->employee_ids[0]);
                 $client_device = $client->client_device_token;
                 $handyman_device = $handyman->employee_device_token;
-                $duration = $nowTime->diffInMinutes($req->updated_at);
-                $this->Notification($client_device, 'Admin',$duration, 'notification');
+                $this->Notification($client_device, 'Admin', $duration, 'notification');
 
-                $this->Notification($handyman_device, 'Admin',$duration, 'notification');
+                $this->Notification($handyman_device, 'Admin', $duration, 'notification');
 
                 if ($duration > 30) {
-               $req->employees()->detach();
+                    $req->employees()->detach();
 
                 } else if ($duration >= 20 && $duration <= 30) {
                     $this->Notification($handyman_device, 'Admin', 'You have less than 10 minutes to reply for pending requests', 'notification');
