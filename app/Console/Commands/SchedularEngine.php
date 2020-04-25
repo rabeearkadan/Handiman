@@ -29,7 +29,7 @@ class SchedularEngine extends Command
         foreach ($request as $req) {
 
             if ($req->employees()->count()==0){
-                $req->employees()->attach('5e7d3968e8deab6cd0066972');
+               // $req->employees()->attach('5e7d3968e8deab6cd0066972');
             }
 //            $handyman = $this->searchForHandyman($req);
 //            if ($handyman == null) {
