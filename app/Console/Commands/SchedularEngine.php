@@ -25,22 +25,26 @@ class SchedularEngine extends Command
     {
 
         $nowTime = Carbon::now();
-        $request = RequestService::query()->where('status', 'pending')->where('employee_ids.0', null)->get();
+        $request = RequestService::query()->where('status', 'pending')->get();
         foreach ($request as $req) {
-            $handyman = $this->searchForHandyman($req);
-            if ($handyman == null) {
-                $user = User::query()->find($req->client_ids[0]);
-                $this->Notification($user->cient_device_token, 'Admin', 'no results found, search on large area', 'notification');
 
-            } else {
-                $req->save();
-                $req->employees()->attach($handyman->id);
-                $this->Notification($handyman->employee_device_token, 'Admin', 'You received a new request', 'request');
-
+            if ($req->employees()->count()==0){
+                $req->employees()->attach('5e7d3968e8deab6cd0066972');
             }
+//            $handyman = $this->searchForHandyman($req);
+//            if ($handyman == null) {
+//                $user = User::query()->find($req->client_ids[0]);
+//                $this->Notification($user->cient_device_token, 'Admin', 'no results found, search on large area', 'notification');
+//
+//            } else {
+//                $req->save();
+//                $req->employees()->attach($handyman->id);
+//                $this->Notification($handyman->employee_device_token, 'Admin', 'You received a new request', 'request');
+//
+//            }
 
         }
-      
+
     }
 
     private function searchForHandyman($requestHandyman)
