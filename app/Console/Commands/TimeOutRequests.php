@@ -49,7 +49,6 @@ class TimeOutRequests extends Command
             $client = User::query()->find($req->client_ids[0]);
             $duration = $nowTime->diffInMinutes($req->updated_at);
 
-            $this->Notification($client->client_device_token, 'Admin', $duration, 'notification');
 
             if ($req->employees()->count() > 0) {
                 $client = User::query()->find($req->client_ids[0]);
@@ -61,7 +60,7 @@ class TimeOutRequests extends Command
                 $this->Notification($handyman_device, 'Admin', $duration, 'notification');
 
                 if ($duration > 30) {
-                    $req->employees()->detach();
+                    $req->employees()->detach($req->employee_ids);
 
                 } else if ($duration >= 20 && $duration <= 30) {
                     $this->Notification($handyman_device, 'Admin', 'You have less than 10 minutes to reply for pending requests', 'notification');
