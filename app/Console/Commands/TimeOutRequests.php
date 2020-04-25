@@ -55,6 +55,8 @@ class TimeOutRequests extends Command
                 $duration = $nowTime->diffInMinutes($req->updated_at);
                 $this->Notification($client_device, 'Admin',$duration, 'notification');
 
+                $this->Notification($handyman_device, 'Admin',$duration, 'notification');
+
                 if ($duration > 30) {
                $req->employees()->detach();
 
