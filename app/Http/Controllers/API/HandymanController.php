@@ -72,8 +72,8 @@ class HandymanController extends Controller
             '$geometry' => [
                 'type' => 'Point',
                 'coordinates' => [
-                    35.4836967587471, // longitude
-                    33.88665217978115,
+                    33.88862989999999, // longitude
+                    35.49547959999999,
                     ],
             ],
             '$maxDistance' => 50,
