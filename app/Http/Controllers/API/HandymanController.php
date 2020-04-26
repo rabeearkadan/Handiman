@@ -65,16 +65,16 @@ class HandymanController extends Controller
 
     }
 
-    public function getHandymanByLocation(Request $request)
+    public function getHandymanByLocation()
     {
 
         $handymanList = User::query()->where('location', 'near', [
             '$geometry' => [
                 'type' => 'Point',
                 'coordinates' => [
-                    (double)$request->input('longitude'), // longitude
-                    (double)$request->input('latitude'), // latitude
-                ],
+                    35.4836967587471, // longitude
+                    33.88665217978115,
+                    ],
             ],
             '$maxDistance' => 50,
         ])->get();
