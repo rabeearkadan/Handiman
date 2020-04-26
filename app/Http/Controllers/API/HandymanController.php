@@ -67,20 +67,32 @@ class HandymanController extends Controller
 
     public function getHandymanByLocation(Request $request)
     {
-        $handymanList = User::query()
-            ->where('role', 'employee' or 'user_employee')
-            ->where('isApproved', true)
-            ->where('location', 'near', [
-                '$geometry' => [
-                    'type' => 'Point',
-                    'coordinates' => [
-                        (double)$request->input('latitude'),
-                        (double)$request->input('longitude'),
-                    ],
-                    'distanceField' => "dist.calculated",
-                    '$maxDistance' => 500000,
+
+        $handymanList = User::query()->where('location', 'near', [
+            '$geometry' => [
+                'type' => 'Point',
+                'coordinates' => [
+                    (double)$request->input('longitude'), // longitude
+                    (double)$request->input('latitude'), // latitude
                 ],
-            ])->orderBy('dist.calculated')->get();
+            ],
+            '$maxDistance' => 50,
+        ])->get();
+
+//        $handymanList = User::query()
+//            ->where('role', 'employee' or 'user_employee')
+//            ->where('isApproved', true)
+//            ->where('location', 'near', [
+//                '$geometry' => [
+//                    'type' => 'Point',
+//                    'coordinates' => [
+//                        (double)$request->input('latitude'),
+//                        (double)$request->input('longitude'),
+//                    ],
+//                    'distanceField' => "dist.calculated",
+//                    '$maxDistance' => 500000,
+//                ],
+//            ])->orderBy('dist.calculated')->get();
         return response()->json(['status' => 'success', 'HandymanList' => $handymanList]);
     }
 

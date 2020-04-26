@@ -61,7 +61,19 @@ class TimeOutRequests extends Command
                     //$this->Notification($client_device, 'Admin', $duration, 'notification');
                     $this->Notification($handyman_device, 'Admin', $duration, 'notification');
 
-                    $req->employees()->detach();
+
+                    $employee_ids = [];
+                    $employee_ids[0] = "";
+                    $req->employee_ids = $employee_ids;
+                    $req->employees()->sync($employee_ids);
+
+
+                    $employee_request_ids = [];
+                    foreach ($handyman->employee_request_ids as $s) {
+                        if ($s != $req->id)
+                            $employee_request_ids [] = $s;
+                    }
+                    $handyman->employeeRequests()->sync($employee_request_ids);
 
                 } else if ($duration >= 20 && $duration <= 30) {
                     $this->Notification($handyman_device, 'Admin', 'You have less than 10 minutes to reply for pending requests', 'notification');
