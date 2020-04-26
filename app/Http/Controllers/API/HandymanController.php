@@ -68,7 +68,7 @@ class HandymanController extends Controller
     public function getHandymanByLocation()
     {
 
-        $handymanList = User::where('location', 'near', [
+        $handymanList = User::where('location', 'nearSphere', [
             '$geometry' => [
                 'type' => 'Point',
                 'coordinates' => [
