@@ -29,6 +29,7 @@ class SchedularEngine extends Command
         foreach ($request as $req) {
 
             if ($req->employees()->count()==0){
+
                // $req->employees()->attach('5e7d3968e8deab6cd0066972');
             }
 //            $handyman = $this->searchForHandyman($req);
@@ -52,18 +53,18 @@ class SchedularEngine extends Command
 
 
         $availableUsers = User::query()
-            ->where('service_ids', $requestHandyman->service_id)
-            ->where('location', 'near', [
-                '$geometry' => [
-                    'type' => 'Point',
-                    'coordinates' => [
-                        $requestHandyman->location[0],
-                        $requestHandyman->location[1],
-                    ],
-                    'distanceField' => "dist.calculated",
-                    '$maxDistance' => 50000000,
-                ],
-            ])->orderBy('dist.calculated')->get();
+            ->where('service_ids', $requestHandyman->service_id)->get();
+//            ->where('location', 'near', [
+//                '$geometry' => [
+//                    'type' => 'Point',
+//                    'coordinates' => [
+//                        $requestHandyman->location[0],
+//                        $requestHandyman->location[1],
+//                    ],
+//                    'distanceField' => "dist.calculated",
+//                    '$maxDistance' => 50000000,
+//                ],
+//            ])->orderBy('dist.calculated')->get();
 
         $matchingHandyman = null;
         if (Carbon::now($requestHandyman->timezone)->minute > 30) {

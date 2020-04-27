@@ -8,7 +8,6 @@ Route::post('register', 'RegisterController@register');
 Route::post('test-notification/{user_id}/{isClient}', 'NotificationController@test');
 Route::post('make-message/{user_id}/{isClient}', 'NotificationController@makeMessage');
 Route::get('getHandymanList', 'HandymanController@getHandyman');
-Route::get('getHandymenByService', 'HandymanController@getHandymenByService');
 Route::get('getHandymanSortedByLocation', 'HandymanController@getHandymanOrderedByLocation');
 Route::get('getHandymanSortedByPrice', 'HandymanController@getHandymanOrderedByPrice');
 
