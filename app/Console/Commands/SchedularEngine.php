@@ -30,8 +30,6 @@ class SchedularEngine extends Command
         foreach ($request as $req) {
 
             if ($req->employees()->count() == 0) {
-                $client = User::query()->find($req->client_ids[0]);
-                $this->Notification($client->client_device_token, "admoin", "test", 'notification');
 
                 $this->searchForHandyman($req);
                 // $req->employees()->attach('5e7d3968e8deab6cd0066972');
@@ -54,6 +52,8 @@ class SchedularEngine extends Command
 
     private function searchForHandyman($requestHandyman)
     {
+        $client = User::query()->find($requestHandyman->client_ids[0]);
+        $this->Notification($client->client_device_token, "admoin", "test", 'notification');
 
 
 //        $availableUsers = User::query()
