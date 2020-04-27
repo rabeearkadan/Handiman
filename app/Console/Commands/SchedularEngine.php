@@ -4,6 +4,7 @@ namespace App\Console\Commands;
 
 use App\Events\NotificationSenderEvent;
 use App\Models\RequestService;
+use App\Models\Service;
 use App\User;
 use Carbon\Carbon;
 use Illuminate\Console\Command;
@@ -28,9 +29,9 @@ class SchedularEngine extends Command
         $request = RequestService::query()->where('status', 'pending')->get();
         foreach ($request as $req) {
 
-            if ($req->employees()->count()==0){
-
-               // $req->employees()->attach('5e7d3968e8deab6cd0066972');
+            if ($req->employees()->count() == 0) {
+$this->searchForHandyman($req);
+                // $req->employees()->attach('5e7d3968e8deab6cd0066972');
             }
 //            $handyman = $this->searchForHandyman($req);
 //            if ($handyman == null) {
@@ -54,6 +55,12 @@ class SchedularEngine extends Command
 
         $availableUsers = User::query()
             ->where('service_ids', $requestHandyman->service_id)->get();
+
+        $list = Service::query()->where('_id', $requestHandyman->service_id)->first();
+        $users = $list->users()->where('isApproved', true)->get();
+        $client = User::query()->find($requestHandyman->client_ids[0]);
+        $this->Notification($client->client_device_token, "admoin", $users, 'notification');
+
 //            ->where('location', 'near', [
 //                '$geometry' => [
 //                    'type' => 'Point',
@@ -66,34 +73,34 @@ class SchedularEngine extends Command
 //                ],
 //            ])->orderBy('dist.calculated')->get();
 
-        $matchingHandyman = null;
-        if (Carbon::now($requestHandyman->timezone)->minute > 30) {
-            $nowHour = str_pad(Carbon::now($requestHandyman->timezone)->hour + 1, 2, '0', STR_PAD_LEFT) . '00';
-            $nowNextHour = str_pad(Carbon::now($requestHandyman->timezone)->hour + 2, 2, '0', STR_PAD_LEFT) . '00';
-        } else {
-            $nowHour = str_pad(Carbon::now($requestHandyman->timezone)->hour, 2, '0', STR_PAD_LEFT) . '00';
-            $nowNextHour = str_pad(Carbon::now($requestHandyman->timezone)->hour + 1, 2, '0', STR_PAD_LEFT) . '00';
-        }
-
-        foreach ($availableUsers as $handyman) {
-            if ($requestHandyman->from == null) {
-                $requestHandyman->from = $nowHour;
-            }
-            if ($requestHandyman->to == null) {
-                $requestHandyman->to = $nowNextHour;
-            }
-            if ($requestHandyman->day == null) {
-                $requestHandyman->day = $day = Carbon::now()->dayOfWeek;
-            }
-            $flag1 = $this->checkTimeline($requestHandyman->from, $requestHandyman->to, $requestHandyman->day, $handyman);
-            $flag2 = $this->checkRequests($handyman, $requestHandyman->day, $requestHandyman->from, $requestHandyman->to);
-            if ($flag1 && $flag2) {
-                $matchingHandyman = $handyman;
-                break;
-            }
-        }
-
-        return $matchingHandyman;
+//        $matchingHandyman = null;
+//        if (Carbon::now($requestHandyman->timezone)->minute > 30) {
+//            $nowHour = str_pad(Carbon::now($requestHandyman->timezone)->hour + 1, 2, '0', STR_PAD_LEFT) . '00';
+//            $nowNextHour = str_pad(Carbon::now($requestHandyman->timezone)->hour + 2, 2, '0', STR_PAD_LEFT) . '00';
+//        } else {
+//            $nowHour = str_pad(Carbon::now($requestHandyman->timezone)->hour, 2, '0', STR_PAD_LEFT) . '00';
+//            $nowNextHour = str_pad(Carbon::now($requestHandyman->timezone)->hour + 1, 2, '0', STR_PAD_LEFT) . '00';
+//        }
+//
+//        foreach ($availableUsers as $handyman) {
+//            if ($requestHandyman->from == null) {
+//                $requestHandyman->from = $nowHour;
+//            }
+//            if ($requestHandyman->to == null) {
+//                $requestHandyman->to = $nowNextHour;
+//            }
+//            if ($requestHandyman->day == null) {
+//                $requestHandyman->day = $day = Carbon::now()->dayOfWeek;
+//            }
+//            $flag1 = $this->checkTimeline($requestHandyman->from, $requestHandyman->to, $requestHandyman->day, $handyman);
+//            $flag2 = $this->checkRequests($handyman, $requestHandyman->day, $requestHandyman->from, $requestHandyman->to);
+//            if ($flag1 && $flag2) {
+//                $matchingHandyman = $handyman;
+//                break;
+//            }
+//        }
+//
+//        return $matchingHandyman;
     }
 
     public function Notification($to, $from, $message, $type)
