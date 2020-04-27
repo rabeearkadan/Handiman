@@ -113,6 +113,7 @@ class SchedularEngine extends Command
 
     public function checkTimeline($from, $to, $day, User $handyman)
     {
+        $day=Carbon::create($day)->dayOfWeek;
         $flag = true;
         for ($i = (int)$from; $i <= (int)$to; $i++) {
             if ($handyman->timeline[$day][$i] == false) {
