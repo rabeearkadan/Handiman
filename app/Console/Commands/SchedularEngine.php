@@ -115,12 +115,12 @@ class SchedularEngine extends Command
     {
         $day=Carbon::create($day)->dayOfWeek;
         $flag = true;
-//        for ($i = (int)$from; $i <= (int)$to; $i++) {
-//            if ($handyman->timeline[$day][$i] == false) {
-//                $flag = false;
-//                break;
-//            }
-//        }
+        for ($i = (int)$from; $i <(int)$to; $i++) {
+            if ($handyman->timeline[$day][$i] == false) {
+                $flag = false;
+                break;
+            }
+        }
         return $flag;
     }
 
@@ -128,8 +128,8 @@ class SchedularEngine extends Command
     {
         $requestsq = RequestService::query()->whereHas('employees', function ($q) use ($handyman) {
             $q->where('_id', $handyman->_id);
-        })->where('day', $day)->where('status', '!=', 'done');
-        for ($i = (int)$from; $i <= (int)$to; $i++) {
+        })->where('day', $day)->where('isdone', false);
+        for ($i = (int)$from; $i < (int)$to; $i++) {
             $requestsq->where('from', $i);
         }
         return $requestsq->count() == 0;
