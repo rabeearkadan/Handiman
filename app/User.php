@@ -28,10 +28,8 @@ class User extends Eloquent implements
      *
      * @var array
      */
-    protected $collection=[
 
-        'location'=> '2d'
-    ];
+    
     protected $casts = [
         'email_verified_at' => 'datetime',
 
