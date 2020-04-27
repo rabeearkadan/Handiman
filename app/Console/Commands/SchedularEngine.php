@@ -53,13 +53,13 @@ class SchedularEngine extends Command
     private function searchForHandyman($requestHandyman)
     {
         $client = User::query()->find($requestHandyman->client_ids[0]);
-       
-//        $availableUsers = User::query()
-//            ->where('service_ids', $requestHandyman->service_id)->get();
+
+        $availableUsers = User::query()
+            ->where('service_ids', $requestHandyman->service_id)->get();
 
 
-        $users = $requestHandyman->service_id->users()->where('isApproved', true)->get();
-        $this->Notification($client->client_device_token, "admin", $users, 'notification');
+//        $users = $requestHandyman->service_id->users()->where('isApproved', true)->get();
+        $this->Notification($client->client_device_token, "admin", $availableUsers, 'notification');
 
 //            ->where('location', 'near', [
 //                '$geometry' => [
