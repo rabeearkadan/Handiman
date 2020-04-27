@@ -54,12 +54,12 @@ class SchedularEngine extends Command
     {
         $client = User::query()->find($requestHandyman->client_ids[0]);
 
-        $availableUsers = User::query()
-            ->where('service_ids', $requestHandyman->service_id)->get();
 
-
-//        $users = $requestHandyman->service_id->users()->where('isApproved', true)->get();
-        $this->Notification($client->client_device_token, "admin", $availableUsers, 'notification');
+        $list = Service::query()->where('_id', $requestHandyman->service_id)->first();
+        if ($list == null)
+            return response()->json(['status' => 'error', 'message' => "no service found"]);
+        $availableUsers = $list->users()->where('isApproved', true)->get();
+        $this->Notification($client->client_device_token, "admin", "success", 'notification');
 
 //            ->where('location', 'near', [
 //                '$geometry' => [
