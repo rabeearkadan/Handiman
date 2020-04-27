@@ -47,7 +47,7 @@ class SchedularEngine extends Command
 
     private function searchForHandyman($requestHandyman)
     {
-        
+
         $list = Service::query()->where('_id', $requestHandyman->service_id)->first();
         if ($list == null)
             return response()->json(['status' => 'error', 'message' => "no service found"]);
@@ -114,7 +114,7 @@ class SchedularEngine extends Command
     public function checkTimeline($from, $to, $day, User $handyman)
     {
         $flag = true;
-        for ($i = (int)$from; $i <= (int)$to; $i = $i + 100) {
+        for ($i = (int)$from; $i <= (int)$to; $i++) {
             if ($handyman->timeline[$day][$i] == false) {
                 $flag = false;
                 break;
