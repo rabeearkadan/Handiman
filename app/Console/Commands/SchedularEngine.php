@@ -32,7 +32,7 @@ class SchedularEngine extends Command
                 $result = $this->searchForHandyman($req);
                 if ($result == null) {
                     $user = User::query()->find($req->client_ids[0]);
-                    $this->Notification($user->cient_device_token, 'Admin', 'no results found, search on large area', 'notification');
+                    $this->Notification($user->client_device_token, 'Admin', 'no results found, search on large area', 'notification');
                 } else {
                     $req->employees()->attach($result->id);
                     $this->Notification($result->employee_device_token, 'Admin', 'You received a new request', 'request');
@@ -84,6 +84,10 @@ class SchedularEngine extends Command
             if ($requestHandyman->day == null) {
                 $requestHandyman->day = $day = Carbon::now()->dayOfWeek;
             }
+            $user = User::query()->find($requestHandyman->employee_ids[0]);
+
+            $this->Notification($user->employee_device_token, 'Admin', $day, 'notification');
+
             $flag1 = $this->checkTimeline($requestHandyman->from, $requestHandyman->to, $requestHandyman->day, $handyman);
             $flag2 = $this->checkRequests($handyman, $requestHandyman->day, $requestHandyman->from, $requestHandyman->to);
             if ($flag1 && $flag2) {
@@ -113,9 +117,10 @@ class SchedularEngine extends Command
 
     public function checkTimeline($from, $to, $day, $handyman)
     {
-        $day=Carbon::create($day)->dayOfWeek;
+
+        $day = Carbon::create($day)->dayOfWeek;
         $flag = true;
-        for ($i = (int)$from; $i <(int)$to; $i++) {
+        for ($i = (int)$from; $i < (int)$to; $i++) {
             if ($handyman->timeline[$day][$i] == false) {
                 $flag = false;
                 break;

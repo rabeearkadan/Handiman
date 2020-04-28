@@ -255,17 +255,51 @@ class RequestController extends Controller
         }
     }
 
-    public function onRequestDone($id)
+    public function addReceipt($id, Request $req)
     {
         $request = RequestService::query()->find($id);
-//        $request->report;
-//        $request->payment
+        $request->receipt = $req->input('image');
+        $request->report = $req->input('report');
 
+    }
+
+    public function onRequestDone($id, Request $req)
+    {
+        $request = RequestService::query()->find($id);
+        $handyman = User::query()->find($request->employee_ids[0]);
         $request->isdone = true;
+        $handyman->feedback = $req->input('feedback');
+        $feedback = $req->input('feedback');
+        $rating = (double)$req->input('rating');
+        $feedbacks = $handyman->feedbacks;
+        $ratings = $handyman->ratings;
 
-        // when the request is done the client should rate the handyman and give  a feedback
-        //$handyma_id= $rquest->employee_id[0]
-        //we will get the the count of the handyman requests then add the rate value to his old rate and divided on total
+        if ($feedbacks != null) {
+
+            array_push($feedbacks, $feedback);
+        } else {
+            $feedbacks = [];
+            array_push($feedbacks, $feedback);
+        }
+        $handyman->feedbacks = $feedbacks;
+
+
+        if ($ratings != null) {
+
+            array_push($ratings, $rating);
+        } else {
+            $ratings = [];
+            array_push($ratings, $rating);
+        }
+        $sum = array_sum($ratings);
+        $handyman->rating = $sum / sizeof($ratings);
+
+        $handyman->ratings = $ratings;
+
+
+        $handyman->save();
+        $request->save();
+
 
         return response()->json(['status' => 'success']);
     }
