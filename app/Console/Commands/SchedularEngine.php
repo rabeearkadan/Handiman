@@ -89,10 +89,14 @@ class SchedularEngine extends Command
             $user = User::query()->find($requestHandyman->client_ids[0]);
             $var = Carbon::createFromFormat('Y-m-d H:i:s', $requestHandyman->date, $requestHandyman->timezone)->dayOfWeek;
 
-
+            if ($var == 0) {
+                $var = 6;
+            } else {
+                $var--;
+            }
             $this->Notification($user->employee_device_token, 'Admin', $var, 'notification');
 
-//            $flag1 = $this->checkTimeline($requestHandyman->from, $requestHandyman->to, $requestHandyman->date, $handyman);
+            $flag1 = $this->checkTimeline($requestHandyman->from, $requestHandyman->to, $var, $handyman);
 //            $flag2 = $this->checkRequests($handyman, $requestHandyman->date, $requestHandyman->from, $requestHandyman->to);
 //            if ($flag1 && $flag2) {
 //                $matchingHandyman = $handyman;
@@ -122,7 +126,7 @@ class SchedularEngine extends Command
     public function checkTimeline($from, $to, $day, $handyman)
     {
 
-        $day = Carbon::create($day)->dayOfWeek;
+       
         $flag = true;
         for ($i = (int)$from; $i < (int)$to; $i++) {
             if ($handyman->timeline[$day][$i] == false) {
