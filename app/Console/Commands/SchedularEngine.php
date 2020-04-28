@@ -37,6 +37,7 @@ class SchedularEngine extends Command
                     $this->Notification($user->client_device_token, 'Admin', 'no results found, search on large area', 'notification');
                 } else {
                     $req->employees()->attach($result->id);
+                    $req->updated_at = Carbon::now()->timestamp;
                     $this->Notification($result->employee_device_token, 'Admin', 'You received a new request', 'request');
 
                 }
@@ -98,7 +99,7 @@ class SchedularEngine extends Command
 
             $flag1 = $this->checkTimeline($requestHandyman->from, $requestHandyman->to, $var, $handyman);
 //            $flag2 = $this->checkRequests($handyman, $requestHandyman->date, $requestHandyman->from, $requestHandyman->to);
-            $flag2=true;
+            $flag2 = true;
             if ($flag1 && $flag2) {
                 $matchingHandyman = $handyman;
                 break;
