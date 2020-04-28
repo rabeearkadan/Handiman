@@ -84,10 +84,10 @@ class SchedularEngine extends Command
                 $requestHandyman->to = $nowNextHour;
             }
             if ($requestHandyman->date == null) {
-                $requestHandyman->date =Carbon::now()->dayOfWeek;
+                $requestHandyman->date = Carbon::now()->dayOfWeek;
             }
             $user = User::query()->find($requestHandyman->client_ids[0]);
-            $var = Carbon::createFromImmutable($requestHandyman->date)->dayOfWeek;
+            $var = Carbon::createFromFormat('Y-m-d H:i:s', $requestHandyman->date, $requestHandyman->timezone);
 
 
             $this->Notification($user->employee_device_token, 'Admin', $var, 'notification');
