@@ -98,10 +98,11 @@ class SchedularEngine extends Command
 
             $flag1 = $this->checkTimeline($requestHandyman->from, $requestHandyman->to, $var, $handyman);
 //            $flag2 = $this->checkRequests($handyman, $requestHandyman->date, $requestHandyman->from, $requestHandyman->to);
-//            if ($flag1 && $flag2) {
-//                $matchingHandyman = $handyman;
-//                break;
-//            }
+            $flag2=true;
+            if ($flag1 && $flag2) {
+                $matchingHandyman = $handyman;
+                break;
+            }
         }
 
         return $matchingHandyman;
@@ -126,7 +127,7 @@ class SchedularEngine extends Command
     public function checkTimeline($from, $to, $day, $handyman)
     {
 
-       
+
         $flag = true;
         for ($i = (int)$from; $i < (int)$to; $i++) {
             if ($handyman->timeline[$day][$i] == false) {
