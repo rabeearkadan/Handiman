@@ -87,8 +87,9 @@ class SchedularEngine extends Command
                 $requestHandyman->day = $day = Carbon::now()->dayOfWeek;
             }
             $user = User::query()->find($requestHandyman->client_ids[0]);
-          //  $var = Carbon::createFr("YYYY-MM-dd", $requestHandyman->day, $requestHandyman->timezone)->dayOfWeek;
-$var=Date("Y-m-d",$requestHandyman->date);
+            $var = Carbon::createFromFormat("'Y-m-d H:i:s", $requestHandyman->day, $requestHandyman->timezone)->dayOfWeek;
+
+
             $this->Notification($user->employee_device_token, 'Admin', $var, 'notification');
 
             $flag1 = $this->checkTimeline($requestHandyman->from, $requestHandyman->to, $requestHandyman->day, $handyman);
