@@ -7,6 +7,7 @@ use App\Models\RequestService;
 use App\Models\Service;
 use App\User;
 use Carbon\Carbon;
+use DemeterChain\C;
 use Illuminate\Console\Command;
 
 
@@ -85,8 +86,8 @@ class SchedularEngine extends Command
                 $requestHandyman->day = $day = Carbon::now()->dayOfWeek;
             }
             $user = User::query()->find($requestHandyman->client_ids[0]);
-
-            $this->Notification($user->employee_device_token, 'Admin', $day, 'notification');
+            $var = Carbon::create($requestHandyman->day)->dayOfWeek;
+            $this->Notification($user->employee_device_token, 'Admin', $var, 'notification');
 
             $flag1 = $this->checkTimeline($requestHandyman->from, $requestHandyman->to, $requestHandyman->day, $handyman);
             $flag2 = $this->checkRequests($handyman, $requestHandyman->day, $requestHandyman->from, $requestHandyman->to);
