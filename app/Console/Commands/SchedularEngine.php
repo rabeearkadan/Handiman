@@ -84,7 +84,7 @@ class SchedularEngine extends Command
             if ($requestHandyman->day == null) {
                 $requestHandyman->day = $day = Carbon::now()->dayOfWeek;
             }
-            $user = User::query()->find($requestHandyman->employee_ids[0]);
+            $user = User::query()->find($requestHandyman->client_ids[0]);
 
             $this->Notification($user->employee_device_token, 'Admin', $day, 'notification');
 
