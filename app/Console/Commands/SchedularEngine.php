@@ -37,7 +37,8 @@ class SchedularEngine extends Command
                     $this->Notification($user->client_device_token, 'Admin', 'no results found, search on large area', 'notification');
                 } else {
                     $req->employees()->attach($result->id);
-                    $req->updated_at = Carbon::now()->timestamp;
+                    $req->updated_at = Carbon::now();
+                    $req->save();
                     $this->Notification($result->employee_device_token, 'Admin', 'You received a new request', 'request');
 
                 }
