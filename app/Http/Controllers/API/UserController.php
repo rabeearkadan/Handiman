@@ -116,7 +116,7 @@ class UserController extends Controller
         if (Arr::has($params, 'certificate'))
             $user->certificate= $this->uploadAny($params['certificate'],'certificates', 'pdf');
         if (Arr::has($params, 'criminal_record'))
-            $user->criminal_record = $this->uploadAny( $params['criminal_record'],'criminal_records', 'png');
+            $user->criminal_record = $this->uploadAny( $params['criminal_record'],'criminal_records', 'pdf');
 
         if (Arr::has($params, 'timeline')) {
             $timeline = [];
