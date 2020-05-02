@@ -271,20 +271,10 @@ class RequestController extends Controller
             $flag3 = true;
 
             $array = str_split($item);
-            for ($i = 0; $i < sizeof($array) - 1; $i++) {
-                if ($array[$i] == '=') {
-                    $name += $array[$i];
+            
 
-                }
-                if ($array[$i] == ',') {
-                    break;
-                }
 
-            }
 
-            $array = [
-                $name, $qty, $price
-            ];
             array_push($receipt_items, $array);
 
         }
