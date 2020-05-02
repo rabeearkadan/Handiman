@@ -4,12 +4,10 @@ namespace App\Http\Controllers\API;
 
 use App\Events\NotificationSenderEvent;
 use App\Http\Controllers\Controller;
-use App\Models\Invoice;
 use  App\Models\RequestService;
 
 use App\Models\Service;
 use App\User;
-use Barryvdh\DomPDF\PDF;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -260,18 +258,8 @@ class RequestController extends Controller
     public function addReceipt($id, Request $req)
     {
         $request = RequestService::query()->find($id);
-        $invoice = new Invoice();
-
-        $request->receipt = $invoice->receipt = $req->input('receipt');
-        $request->total = $invoice->total = $req->input('total');
-        $request->save();
-        $invoice->save();
-        // $request->report = $req->input('report');
-
-//        $pdf = PDF::loadView('pdf.customers', $data);
-        // If you want to store the generated pdf to the server then you can use the store function
-//        $pdf->save(storage_path() . '_filename.pdf');
-        //send notification to client
+        $request->receipt = $req->input('image');
+        $request->report = $req->input('report');
 
     }
 
@@ -280,6 +268,7 @@ class RequestController extends Controller
         $request = RequestService::query()->find($id);
         $handyman = User::query()->find($request->employee_ids[0]);
         $request->isdone = true;
+        $handyman->feedback = $req->input('feedback');
         $feedback = $req->input('feedback');
         $rating = (double)$req->input('rating');
         $feedbacks = $handyman->feedbacks;
