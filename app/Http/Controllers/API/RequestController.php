@@ -4,6 +4,7 @@ namespace App\Http\Controllers\API;
 
 use App\Events\NotificationSenderEvent;
 use App\Http\Controllers\Controller;
+use App\Models\Invoice;
 use  App\Models\RequestService;
 
 use App\Models\Service;
@@ -258,9 +259,12 @@ class RequestController extends Controller
     public function addReceipt($id, Request $req)
     {
         $request = RequestService::query()->find($id);
-        $request->receipt = $req->input('image');
-        $request->report = $req->input('report');
-
+        $invoice = new Invoice();
+        $request->receipt = $invoice->receipt = $req->input('receipt');
+        $request->total = $invoice->total = $req->input('total');
+        $request->save();
+        $invoice->save();
+        return response()->json(['status' => 'success']);
     }
 
     public function onRequestDone($id, Request $req)
