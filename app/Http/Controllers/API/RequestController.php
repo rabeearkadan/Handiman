@@ -263,36 +263,36 @@ class RequestController extends Controller
         // $request->receipt = $invoice->receipt = $req->input('receipt');
         $receipt_items = [];
         foreach ($req->input('receipt') as $item) {
-            $name = '';
+            $name = 'name';
             $qty = 0;
             $price = 0;
             $flag1 = true;
             $flag2 = true;
             $flag3 = true;
-            for ($i = 0; $i < sizeof($item); $i++) {
-                if ($item[$i] == '=') {
-                    if ($flag1 == true) {
-                        while ($item[$i] != ',') {
-                            $name += $item[$i];
-                        }
-                        $flag1 = false;
-                    }
-                    if ($flag2 == true) {
-                        while ($item[$i] != ',') {
-                            $qty += $item[$i];
-                        }
-                        $flag2 = false;
-                    }
-                    if ($flag3 = true) {
-                        while ($item[$i] != ')') {
-                            $price += $item[$i];
-                        }
-                        $flag3 = false;
-                    }
-
-                }
-
-            }
+//            for ($i = 0; $i < sizeof($item); $i++) {
+//                if ($item[$i] == '=') {
+//                    if ($flag1 == true) {
+//                        while ($item[$i] != ',') {
+//                            $name += $item[$i];
+//                        }
+//                        $flag1 = false;
+//                    }
+//                    if ($flag2 == true) {
+//                        while ($item[$i] != ',') {
+//                            $qty += $item[$i];
+//                        }
+//                        $flag2 = false;
+//                    }
+//                    if ($flag3 = true) {
+//                        while ($item[$i] != ')') {
+//                            $price += $item[$i];
+//                        }
+//                        $flag3 = false;
+//                    }
+//
+//                }
+//
+//            }
             $array = [
                 $name, $qty, $price
             ];
