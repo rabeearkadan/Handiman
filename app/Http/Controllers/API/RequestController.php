@@ -269,30 +269,32 @@ class RequestController extends Controller
             $flag1 = true;
             $flag2 = true;
             $flag3 = true;
-//            for ($i = 0; $i < sizeof($item); $i++) {
-//                if ($item[$i] == '=') {
-//                    if ($flag1 == true) {
-//                        while ($item[$i] != ',') {
-//                            $name += $item[$i];
-//                        }
-//                        $flag1 = false;
-//                    }
-//                    if ($flag2 == true) {
-//                        while ($item[$i] != ',') {
-//                            $qty += $item[$i];
-//                        }
-//                        $flag2 = false;
-//                    }
-//                    if ($flag3 = true) {
-//                        while ($item[$i] != ')') {
-//                            $price += $item[$i];
-//                        }
-//                        $flag3 = false;
-//                    }
-//
-//                }
-//
-//            }
+
+            for ($i = 0; $i < strlen($item); $i++) {
+                if ($item[$i] == '=') {
+                    if ($flag1 == true) {
+                        while ($item[$i] != ',') {
+                            $name += $item[$i];
+                        }
+                        $flag1 = false;
+                    }
+                    if ($flag2 == true) {
+                        while ($item[$i] != ',') {
+                            $qty += $item[$i];
+                        }
+                        $flag2 = false;
+                    }
+                    if ($flag3 = true) {
+                        while ($item[$i] != ')') {
+                            $price += $item[$i];
+                        }
+                        $flag3 = false;
+                    }
+
+                }
+
+            }
+
             $array = [
                 $name, $qty, $price
             ];
