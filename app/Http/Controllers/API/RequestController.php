@@ -284,7 +284,7 @@ class RequestController extends Controller
                         $flag2 = false;
                     }
                     if ($flag3 = true) {
-                        while ($item[$i] != ',') {
+                        while ($item[$i] != ')') {
                             $price += $item[$i];
                         }
                         $flag3 = false;
