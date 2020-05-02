@@ -270,9 +270,7 @@ class RequestController extends Controller
             $flag2 = true;
             $flag3 = true;
 
-            $array = str_split($item);
-            
-
+            $array = explode($item, ' ');
 
 
             array_push($receipt_items, $array);
