@@ -263,8 +263,7 @@ class RequestController extends Controller
         // $request->receipt = $invoice->receipt = $req->input('receipt');
         $receipt_items = [];
         foreach ($req->input('receipt') as $item) {
-            
-            array_push($receipt_items, var_dump(json_decode($item)));
+            array_push($receipt_items, json_decode($item));
 
         }
         $request->receipt = $invoice->receipt = $receipt_items;
