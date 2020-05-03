@@ -259,17 +259,19 @@ class RequestController extends Controller
     public function addReceipt($id, Request $req)
     {
         $request = RequestService::query()->find($id);
+        $client = User::query()->find($request->client_ids[0]);
         $invoice = new Invoice();
-        // $request->receipt = $invoice->receipt = $req->input('receipt');
         $receipt_items = [];
         foreach ($req->input('receipt') as $item) {
             array_push($receipt_items, json_decode($item));
-
         }
         $request->receipt = $invoice->receipt = $receipt_items;
-        $request->total = $invoice->total = $req->input('total');
+        $request->total = (double)$invoice->total = (double)$req->input('total');
         $request->save();
         $invoice->save();
+        $this->notification(($client->client_device_token), (Auth::user()->name), 'You received a receipt', 'request');
+
+
         return response()->json(['status' => 'success']);
     }
 

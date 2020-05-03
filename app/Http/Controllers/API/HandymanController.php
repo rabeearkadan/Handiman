@@ -59,7 +59,7 @@ class HandymanController extends Controller
         $list = Service::query()->where('_id', $id)->first();
         if ($list == null)
             return response()->json(['status' => 'error', 'message' => "no service found"]);
-        $users = $list->users()->where('isApproved', true)->get();
+        $users = $list->users()->where('isApproved', true)->orderBy('rating')->get();
         return response()->json(['status' => 'success', 'handymen' => $users]);
 
 
@@ -74,7 +74,7 @@ class HandymanController extends Controller
                 'coordinates' => [
                     35.4836967587471, // longitude
                     35.49547959999999,
-                    ],
+                ],
             ],
             '$maxDistance' => 50,
         ])->get();
