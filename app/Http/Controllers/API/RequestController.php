@@ -144,6 +144,7 @@ class RequestController extends Controller
 
     public function setPayment(Request $req, $id)
     {
+
         Stripe::setApiKey('sk_test_4eC39HqLyjWDarjtT1zdp7dc');
         $request = RequestService::query()->find($id);
         $total = $request->total;
