@@ -82,17 +82,18 @@ class HandymanController extends Controller
         $handymanList = User::query()
             ->where('role', 'employee' or 'user_employee')
             ->where('isApproved', true)
-            ->where('location', 'near', [
-                '$geometry' => [
-                    'type' => 'Point',
-                    'coordinates' => [
-                        (float)$request->input('latitude'),
-                        (float)$request->input('longitude'),
-                    ],
-                    'distanceField' => "dist.calculated",
-                    '$maxDistance' => 5000,
-                ],
-            ])->orderBy('dist.calculated')->get();
+//            ->where('location', 'near', [
+//                '$geometry' => [
+//                    'type' => 'Point',
+//                    'coordinates' => [
+//                        (float)$request->input('latitude'),
+//                        (float)$request->input('longitude'),
+//                    ],
+//                    'distanceField' => "dist.calculated",
+//                    '$maxDistance' => 5000,
+//                ],
+//            ])->orderBy('dist.calculated')
+            ->get();
         return response()->json(['status' => 'success', 'HandymanList' => $handymanList]);
     }
 
