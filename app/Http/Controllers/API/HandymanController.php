@@ -65,34 +65,34 @@ class HandymanController extends Controller
 
     }
 
-    public function getHandymanByLocation()
+    public function getHandymanByLocation(Request $request)
     {
 
-        $handymanList = User::where('location', 'near', [
-            '$geometry' => [
-                'type' => 'Point',
-                'coordinates' => [
-                    35.4836967587471, // longitude
-                    35.49547959999999,
-                ],
-            ],
-            '$maxDistance' => 50,
-        ])->get();
-
-//        $handymanList = User::query()
-//            ->where('role', 'employee' or 'user_employee')
-//            ->where('isApproved', true)
-//            ->where('location', 'near', [
-//                '$geometry' => [
-//                    'type' => 'Point',
-//                    'coordinates' => [
-//                        (double)$request->input('latitude'),
-//                        (double)$request->input('longitude'),
-//                    ],
-//                    'distanceField' => "dist.calculated",
-//                    '$maxDistance' => 500000,
+//        $handymanList = User::where('location', 'near', [
+//            '$geometry' => [
+//                'type' => 'Point',
+//                'coordinates' => [
+//                    35.4836967587471, // longitude
+//                    35.49547959999999,
 //                ],
-//            ])->orderBy('dist.calculated')->get();
+//            ],
+//            '$maxDistance' => 50,
+//        ])->get();
+
+        $handymanList = User::query()
+            ->where('role', 'employee' or 'user_employee')
+            ->where('isApproved', true)
+            ->where('location', 'near', [
+                '$geometry' => [
+                    'type' => 'Point',
+                    'coordinates' => [
+                        (double)$request->input('latitude'),
+                        (double)$request->input('longitude'),
+                    ],
+                    'distanceField' => "dist.calculated",
+                    '$maxDistance' => 500000,
+                ],
+            ])->orderBy('dist.calculated')->get();
         return response()->json(['status' => 'success', 'HandymanList' => $handymanList]);
     }
 
