@@ -16,6 +16,7 @@ use Illuminate\Support\Facades\Date;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Str;
+use Stripe\Stripe;
 
 
 class RequestController extends Controller
@@ -41,8 +42,8 @@ class RequestController extends Controller
 
         $longitude = $req->input('longitude');
         $location = [];
-        $location[0] = (double)$latitude;
-        $location[1] = (double)$longitude;
+        $location[0] = (double)$longitude;
+        $location[1] = (double)$latitude;
         $requestHandyman->location = $location;
         $requestHandyman->timezone = $req->timezone;
         $requestHandyman->service_id = $req->service_id;
@@ -138,6 +139,12 @@ class RequestController extends Controller
 
         return response()->json(['status' => 'success', 'message' => 'request is canceled']);
 
+
+    }
+
+    public function payment()
+    {
+        Stripe::setApiKey("sk_test_rPUYuVgziB8APOOSyd9q4zgT00rtI4Hhat");
 
     }
 
