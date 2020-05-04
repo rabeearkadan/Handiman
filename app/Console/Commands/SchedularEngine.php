@@ -55,19 +55,22 @@ class SchedularEngine extends Command
         $list = Service::query()->where('_id', $requestHandyman->service_id)->first();
         if ($list == null)
             return response()->json(['status' => 'error', 'message' => "no service found"]);
-        $availableUsers = $list->users()->where('isApproved', true)->get();
-
-//            ->where('location', 'near', [
-//                '$geometry' => [
-//                    'type' => 'Point',
-//                    'coordinates' => [
-//                        $requestHandyman->location[0],
-//                        $requestHandyman->location[1],
-//                    ],
-//                    'distanceField' => "dist.calculated",
-//                    '$maxDistance' => 50000000,
-//                ],
-//            ])->orderBy('dist.calculated')->get();
+        $availableUsers = $list->users()->where('isApproved', true)
+            ->where('role', 'user_employee')
+            ->orWhere('role', 'employee')
+            ->where('isApproved', true)
+            ->where('location', 'near', [
+                '$geometry' => [
+                    'type' => 'Point',
+                    'coordinates' => [
+                        (float)$requestHandyman->locaation[0],
+                        (float)$requestHandyman->location[1],
+                    ],
+                    'distanceField' => "dist.calculated",
+                    '$maxDistance' => 50000,
+                ],
+            ])->orderBy('dist.calculated')
+            ->get();
 
         $matchingHandyman = null;
         if (Carbon::now($requestHandyman->timezone)->minute > 30) {

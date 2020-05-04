@@ -90,8 +90,8 @@ class UserController extends Controller
 
             $longitude = $request->input('longitude');
             $location = [];
-            $location[0] = (double)$latitude;
-            $location[1] = (double)$longitude;
+            $location[0] = (double)$longitude;
+            $location[1] = (double)$latitude;
             $user->location= $location;
 
 
