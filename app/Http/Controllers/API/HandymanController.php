@@ -87,8 +87,8 @@ class HandymanController extends Controller
                 '$geometry' => [
                     'type' => 'Point',
                     'coordinates' => [
-                        (float)$request->input('latitude'),
                         (float)$request->input('longitude'),
+                        (float)$request->input('latitude'),
                     ],
                     'distanceField' => "dist.calculated",
                     '$maxDistance' => 50,
