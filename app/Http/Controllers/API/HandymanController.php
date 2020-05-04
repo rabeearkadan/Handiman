@@ -89,7 +89,7 @@ class HandymanController extends Controller
                         35.4836967587471, // longitude
                         35.49547959999999,
                     ],
-                    'distanceField' => "dist.calculated",
+//                    'distanceField' => "dist.calculated",
                     '$maxDistance' => 5000,
                 ],
             ])->orderBy('dist.calculated')->get();
