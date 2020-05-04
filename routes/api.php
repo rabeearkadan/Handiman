@@ -48,6 +48,7 @@ Route::middleware(['auth:api', 'client'])->prefix('client')->group(function () {
     Route::get('outgoing-requests', 'RequestController@getClientOutgoingRequests');
     Route::post('request-done/{id}', 'RequestController@onRequestDone');
     Route::post('request-cancel/{id}', 'RequestController@cancelRequest');
+    Route::post('payment/{id}', 'RequestController@setPayment');
 
 });
 
