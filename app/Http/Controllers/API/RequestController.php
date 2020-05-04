@@ -142,9 +142,38 @@ class RequestController extends Controller
 
     }
 
-    public function payment()
+    public function setPayment(Request $req, $id)
     {
-        Stripe::setApiKey("sk_test_rPUYuVgziB8APOOSyd9q4zgT00rtI4Hhat");
+        Stripe::setApiKey('sk_test_4eC39HqLyjWDarjtT1zdp7dc');
+        $request = RequestService::query()->find($id);
+        $total = $request->total;
+        $user = User::query()->find($request->client_ids[0]);
+        $token = $req->input('stripe_token');
+
+        try {
+            $charge = \Stripe\Charge::create([
+                'amount' => (int)($total * 100),
+                'currency' => 'USD',
+                'description' => $user->name,
+                'source' => $token,
+                'capture' => true,
+            ]);
+            if ($charge != null) {
+                return response()->json(['status' => 'success']);
+            }
+            return response()->json(['status' => 'error', 'message' => __('api.something-went-wrong')]);
+        } catch (CardException $exception) {
+            return response()->json(['status' => 'error', 'message' => __('api.card-decline')]);
+        } catch (ApiConnectionException $e) {
+            return response()->json(['status' => 'error', 'message' => __('api.something-went-wrong')]);
+        } catch (ApiErrorException $e) {
+            return response()->json(['status' => 'error', 'message' => __('api.something-went-wrong')]);
+        } catch (AuthenticationException $e) {
+            return response()->json(['status' => 'error', 'message' => __('api.something-went-wrong')]);
+        } catch (\Exception $e) {
+            return response()->json(['status' => 'error', 'message' => __('api.something-went-wrong')]);
+        }
+
 
     }
 
