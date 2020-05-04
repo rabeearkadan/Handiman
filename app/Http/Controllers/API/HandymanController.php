@@ -80,7 +80,7 @@ class HandymanController extends Controller
 //        ])->get();
 
         $handymanList = User::query()
-            ->where('role', 'employee' or 'user_employee')
+            ->where('role', 'user_employee')
             ->where('isApproved', true)
 //            ->where('location', 'near', [
 //                '$geometry' => [
