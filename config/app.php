@@ -231,6 +231,7 @@ return [
         'FCM'      => LaravelFCM\Facades\FCM::class,
         'FCMGroup' => LaravelFCM\Facades\FCMGroup::class, // Optional
         'DataTables' => Yajra\DataTables\Facades\DataTables::class,
+
     ],
 
 ];
