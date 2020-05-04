@@ -86,13 +86,13 @@ class HandymanController extends Controller
                 '$geometry' => [
                     'type' => 'Point',
                     'coordinates' => [
-                        35.4836967587471, // longitude
-                        35.49547959999999,
+                        (float)$request->input('latitude'),
+                        (float)$request->input('longitude'),
                     ],
-//                    'distanceField' => "dist.calculated",
+                    'distanceField' => "dist.calculated",
                     '$maxDistance' => 5000,
-                ],])->get();
-//            ])->orderBy('dist.calculated')->get();
+                ],
+            ])->orderBy('dist.calculated')->get();
         return response()->json(['status' => 'success', 'HandymanList' => $handymanList]);
     }
 
