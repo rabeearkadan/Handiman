@@ -91,7 +91,7 @@ class HandymanController extends Controller
                         (float)$request->input('longitude'),
                     ],
                     'distanceField' => "dist.calculated",
-                    '$maxDistance' => 5000,
+                    '$maxDistance' => 50,
                 ],
             ])->orderBy('dist.calculated')
             ->get();
