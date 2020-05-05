@@ -277,7 +277,7 @@ class RequestController extends Controller
     public function getClientOutgoingRequests()
     {
 
-        $outgoing = Auth::user()->clientRequests()->where('status', 'approved')->where('done', false)->get();
+        $outgoing = Auth::user()->clientRequests()->where('status', 'approved')->get();
 
         if ($outgoing == null)
             return response()->json(['status' => 'success', 'message' => 'You have no ongoing requests']);
