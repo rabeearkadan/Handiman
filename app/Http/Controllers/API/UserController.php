@@ -55,6 +55,7 @@ class UserController extends Controller
 
         $params = $request->only([
 // common info
+            'addresses',
             'image',
             'latitude', 'longitude',
             'birth_date',
@@ -76,6 +77,21 @@ class UserController extends Controller
 
         ]);
 
+        if (Arr::has($params, 'addresses')) {
+            $addresses = $user->addresses;
+            if ($addresses == null) {
+                $addresses = [];
+                foreach ($params['addresses'] as $address) {
+                    array_push($addresses, $address);
+                }
+
+            } else {
+                foreach ($params['addresses'] as $address) {
+                    array_push($addresses, $address);
+                }
+            }
+            $user->addresses = $addresses;
+        }
         if (Arr::has($params, 'image'))
             $user->image = $this->uploadAny($params['image'], 'profile');
 
@@ -92,7 +108,7 @@ class UserController extends Controller
             $location = [];
             $location[0] = (double)$longitude;
             $location[1] = (double)$latitude;
-            $user->location= $location;
+            $user->location = $location;
 
 
         }
@@ -112,11 +128,11 @@ class UserController extends Controller
             $user->apartment_details = $params['apartment_details'];
 
         if (Arr::has($params, 'cv'))
-            $user->cv = $this->uploadAny( $params['cv'], 'cv','pdf');
+            $user->cv = $this->uploadAny($params['cv'], 'cv', 'pdf');
         if (Arr::has($params, 'certificate'))
-            $user->certificate= $this->uploadAny($params['certificate'],'certificates', 'pdf');
+            $user->certificate = $this->uploadAny($params['certificate'], 'certificates', 'pdf');
         if (Arr::has($params, 'criminal_record'))
-            $user->criminal_record = $this->uploadAny( $params['criminal_record'],'criminal_records', 'pdf');
+            $user->criminal_record = $this->uploadAny($params['criminal_record'], 'criminal_records', 'pdf');
 
         if (Arr::has($params, 'timeline')) {
             $timeline = [];
