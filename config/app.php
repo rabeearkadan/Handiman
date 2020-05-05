@@ -178,7 +178,6 @@ return [
         Jenssegers\Mongodb\MongodbServiceProvider::class,
         LaravelFCM\FCMServiceProvider::class,
         Yajra\DataTables\DataTablesServiceProvider::class,
-        niklasravnsborg\LaravelPdf\PdfServiceProvider::class,
 
     ],
 
@@ -233,7 +232,6 @@ return [
         'FCM'      => LaravelFCM\Facades\FCM::class,
         'FCMGroup' => LaravelFCM\Facades\FCMGroup::class, // Optional
         'DataTables' => Yajra\DataTables\Facades\DataTables::class,
-        'PDF' => niklasravnsborg\LaravelPdf\Facades\Pdf::class,
           ],
 
 ];
