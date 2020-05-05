@@ -81,14 +81,11 @@ class UserController extends Controller
             $addresses = $user->addresses;
             if ($addresses == null) {
                 $addresses = [];
-                foreach ($params['addresses'] as $address) {
-                    array_push($addresses, $address);
-                }
+                $addresses[0] = [$request->longitude, $request->latitude];
 
             } else {
-                foreach ($params['addresses'] as $address) {
-                    array_push($addresses, $address);
-                }
+                array_push($addresses, [$request->longitude, $request->latitude]);
+
             }
             $user->addresses = $addresses;
         }
