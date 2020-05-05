@@ -151,6 +151,9 @@ class RequestController extends Controller
 
         Stripe::setApiKey('sk_test_rPUYuVgziB8APOOSyd9q4zgT00rtI4Hhat');
         $request = RequestService::query()->find($id);
+        //testing
+        $request->paid = true;
+        $request->save();
         $total = $request->total;
         $user = User::query()->find($request->client_ids[0]);
         $token = $req->input('stripe_token');
