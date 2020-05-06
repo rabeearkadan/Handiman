@@ -24,18 +24,16 @@
         <tr>
             <td>
                 <div style="width: 40%;">
-                    <div style="font-size: 20px">{{substr($travelLocation->name, 0, 45)}}..</div>
-                </div>
+                   </div>
             </td>
             <td>
-                <div style="text-align: right;margin-right: 40px;color: #555">{{$date}}</div>
-            </td>
+               </td>
         </tr>
     </table>
 </div>
 <div style="position: absolute;
 width: 80px;height: 80px;border-radius: 50%;background: #f99100;color: white;right: 20px;top: 105px;text-align: center;font-size: 20px;font-weight: bold">
-    <div style="margin-top: 25px;"> {{$currancy}}</div>
+    <div style="margin-top: 25px;"> {{$data}}</div>
 </div>
 
 @endsection
