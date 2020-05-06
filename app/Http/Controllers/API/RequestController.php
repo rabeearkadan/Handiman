@@ -166,7 +166,7 @@ class RequestController extends Controller
                 'description' => 'My First Test Customer (created for API docs)',
             ]);
             $request->customer_id = $customer->id;
-            $request->save();
+
 
             \Stripe\PaymentMethod::create([
                 'type' => 'card',
@@ -177,7 +177,7 @@ class RequestController extends Controller
                     'exp_year' => 2021,
                     'cvc' => '314',
                 ],
-                'customer'=>$request->cusomer_id,
+                'customer'=>$customer->id,
             ]);
             $charge = \Stripe\Charge::create([
                 'amount' => (int)($total * 100),
@@ -185,11 +185,11 @@ class RequestController extends Controller
                 'description' => $user->name,
                 'source' => $token,
                 'capture' => true,
-                'customer' => $request->customer_id,
+                'customer' => $customer->id,
                 'receipt_email' => 'itani0369-@hotmail.com',
 
             ]);
-
+            $request->save();
 
             if ($charge != null) {
                 return response()->json(['status' => 'success']);
