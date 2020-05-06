@@ -380,7 +380,7 @@ class RequestController extends Controller
             Storage::disk('public')->makeDirectory('reports');
         }
 
-       
+
 
 
         return $pdf->save('storage/reports/pdf/'.'.pdf');
