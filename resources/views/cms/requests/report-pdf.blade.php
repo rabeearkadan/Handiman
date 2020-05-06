@@ -6,19 +6,6 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
 </header>
 
-<table style="width: 100%;">
-
-    <tr>
-        <td style="width:80%">
-            <div style="width: 40%;">
-                <div style="color: #f99100;font-size:30px;font-family:'poppins-m'"> {{__('front.label.voucher.00001')}}</div>
-            </div>
-        </td>
-        <td style="width:20%">
-            <img style="width: 20%" src="images/logo-moovtoo-black.svg">
-        </td>
-    </tr>
-</table>
 <div style="width: 95%; position: relative;border: 1px solid #eaeaea;border-radius: 10px;margin-top: 20px;height: 40px">
     <table>
         <tr>
