@@ -169,7 +169,6 @@ class RequestController extends Controller
                 'description' => $user->name,
                 'source' => $token,
                 'capture' => true,
-                'customer' => 'cus_HEG79wguy5dlfM',
                 'receipt_email' => 'itani0369-@hotmail.com',
 
             ]);
