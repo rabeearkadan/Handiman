@@ -168,16 +168,14 @@ class RequestController extends Controller
                 'description' => $user->name,
                 'source' => $token,
                 'capture' => true,
-                'receipt_email'=>'itani0369-@hotmail.com'
+                'receipt_email' => 'itani0369-@hotmail.com'
 
             ]);
-
             $payout = \Stripe\Payout::create([
-                'amount' => (int)($total * 100),
+                'amount' => 1100,
                 'currency' => 'usd',
-
-              //  'destination' => '4242424242424242',
             ]);
+
 
             if ($charge != null) {
                 return response()->json(['status' => 'success']);
