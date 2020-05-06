@@ -383,9 +383,10 @@ class RequestController extends Controller
         if (!Storage::disk('public')->exists('reports/pdf')) {
             Storage::disk('public')->makeDirectory('reports/pdf');
         }
+        //$pdf->sa
 
 
-        return $pdf->save('storage/reports/pdf/' . Str::random(25) . '.pdf');
+        return $pdf->save('storage/reports/pdf/'.'.pdf');
 
     }
 
