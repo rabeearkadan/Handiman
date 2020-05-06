@@ -9,10 +9,11 @@ use  App\Models\RequestService;
 
 use App\Models\Service;
 use App\User;
+use Barryvdh\DomPDF\PDF;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Date;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Str;
@@ -146,20 +147,33 @@ class RequestController extends Controller
 
     }
 
+    function stringToPDF()
+    {
+        $data = [
+            'foo' => 'bar'
+        ];
+
+        $pdf = (new \Barryvdh\DomPDF\PDF)->loadView('pdf.invoice', $data);
+       $this->uploadAny($pdf, 'requests', 'pdf');
+        return response()->json(['status' => 'success']);
+
+    }
+
     public function setPayment(Request $req, $id)
     {
 
         Stripe::setApiKey('sk_test_rPUYuVgziB8APOOSyd9q4zgT00rtI4Hhat');
         $request = RequestService::query()->find($id);
         $handyman = User::query()->find($request->employee_ids[0]);
-        $this->notification('d8M25IfgRRiJX8Q_Iu0B-0:APA91bG8a5yRbgfrESPwz8q8MYK7D0oCt9JS94HIlxPDxDDmm8AyN5FQCWq4e_zmODbCGwMsrdEC9NeAkl5-rkA9u55GF7i9SUjD4WUBQ9eAPEc1-ZcHRHHlaRVHGNPj2fMm5fO3FA9v'
-            , 'Genie', 'check receipt', 'request');
+        $this->notification('', 'Genie', 'check receipt', 'request');
 
         $request->paid = true;
         $request->save();
         $total = $request->total;
         $user = User::query()->find($request->client_ids[0]);
         $token = $req->input('stripe_token');
+        //todo
+        //   $request->report =
 
         try {
 
