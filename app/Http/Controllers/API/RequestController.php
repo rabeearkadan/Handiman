@@ -157,11 +157,15 @@ class RequestController extends Controller
             , 'Genie', 'check receipt', 'request');
 
         $request->paid = true;
-        $request->save();
         $total = $request->total;
         $user = User::query()->find($request->client_ids[0]);
         $token = $req->input('stripe_token');
 
+        $file_name = Str::random(25);
+        $this->stringToPDF($file_name);
+        $request->report = 'reports/pdf/' . $file_name . '/.pdf';
+
+        $request->save();
         try {
 
             $charge = \Stripe\Charge::create([
@@ -175,11 +179,6 @@ class RequestController extends Controller
             ]);
 
             if ($charge != null) {
-                $file_name = Str::random(25);
-                $this->stringToPDF($file_name);
-                $request->report = 'reports/pdf/' . $file_name . '/.pdf';
-
-                $request->save();
                 return response()->json(['status' => 'success']);
             }
             return response()->json(['status' => 'error', 'message' => __('api.something-went-wrong')]);
