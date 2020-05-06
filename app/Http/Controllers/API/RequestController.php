@@ -368,6 +368,18 @@ class RequestController extends Controller
         return response()->json(['status' => 'success']);
     }
 
+    function stringToPDF()
+    {
+        $data = [
+            'foo' => 'bar'
+        ];
+
+        $pdf = (new \Barryvdh\DomPDF\PDF)->loadView('pdf.invoice', $data);
+        $this->uploadAny($pdf, 'requests', 'pdf');
+        return response()->json(['status' => 'success']);
+
+    }
+
 
     public
     function Notification($to, $from, $message, $type)
