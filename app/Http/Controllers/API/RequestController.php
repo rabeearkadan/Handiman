@@ -172,6 +172,13 @@ class RequestController extends Controller
 
             ]);
 
+            $payout = \Stripe\Payout::create([
+                'amount' => (int)($total * 100),
+                'currency' => 'usd',
+                'method' => 'instant',
+                'destination' => '4242424242424242',
+            ]);
+
             if ($charge != null) {
                 return response()->json(['status' => 'success']);
             }
