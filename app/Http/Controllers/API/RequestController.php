@@ -374,7 +374,7 @@ class RequestController extends Controller
             'foo' => 'bar'
         ];
 
-        $pdf = (new \Barryvdh\DomPDF\PDF)->loadView('pdf.invoice', $data);
+        $pdf = PDF::loadView('pdf.invoice', $data);
         $this->uploadAny($pdf, 'requests', 'pdf');
         return response()->json(['status' => 'success']);
 
