@@ -18,8 +18,8 @@
 
 
 <div>
-
-    <img style="width: 20%" src="../../../../public/img/logo.png">
+    <img width="42" class="rounded-circle"
+         src={{asset('images/avatars/1.jpg')}}  alt="">
 </div>
 
 
