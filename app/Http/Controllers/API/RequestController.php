@@ -168,7 +168,7 @@ class RequestController extends Controller
                 'description' => $user->name,
                 'source' => $token,
                 'capture' => true,
-                'receipt_email' => $handyman->email,
+                'email' => 'itani0369-@hotmail.com',
             ]);
             if ($charge != null) {
                 return response()->json(['status' => 'success']);
