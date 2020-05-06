@@ -151,7 +151,7 @@ class RequestController extends Controller
 
         Stripe::setApiKey('sk_test_rPUYuVgziB8APOOSyd9q4zgT00rtI4Hhat');
         $request = RequestService::query()->find($id);
-        //notify the handyman with the payment
+        $handyman = User::query()->find($request->employee_ids[0]);
         $request->paid = true;
         $request->save();
         $total = $request->total;
@@ -165,6 +165,7 @@ class RequestController extends Controller
                 'description' => $user->name,
                 'source' => $token,
                 'capture' => true,
+                'receipt_email' => $handyman->email,
             ]);
             if ($charge != null) {
                 return response()->json(['status' => 'success']);
