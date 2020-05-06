@@ -174,7 +174,7 @@ class RequestController extends Controller
             $customer = \Stripe\Customer::create([
                 'description' => 'My First Test Customer (created for API docs)',
             ])->getLastResponse();
-            $request->customer = $customer;
+            $request->customer = $customer->id;
             $request->save();
 
 
