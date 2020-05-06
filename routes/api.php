@@ -3,7 +3,6 @@
 use Illuminate\Http\Request;
 
 // api route without authantication
-Route::post('pdf','RequestController@stringToPDF');
 Route::post('login', 'LoginController@login');
 Route::post('register', 'RegisterController@register');
 Route::post('test-notification/{user_id}/{isClient}', 'NotificationController@test');
