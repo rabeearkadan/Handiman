@@ -375,9 +375,19 @@ class RequestController extends Controller
             'foo' => 'bar'
         ];
 
-        $pdf = PDF::loadView('pdf.invoice', $data);
-        $this->uploadAny($pdf, 'requests', 'pdf');
-        return response()->json(['status' => 'success']);
+        $pdf = Pdf::loadView('cms.layouts.report-pdf', compact($data));
+
+
+        if (!Storage::disk('public')->exists('reports')) {
+            Storage::disk('public')->makeDirectory('reports');
+        }
+
+        if (!Storage::disk('public')->exists('reports/pdf')) {
+            Storage::disk('public')->makeDirectory('reports/pdf');
+        }
+
+
+        return $pdf->save('storage/reports/pdf/' . Str::random(25) . '.pdf');
 
     }
 
