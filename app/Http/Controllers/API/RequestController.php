@@ -176,7 +176,7 @@ class RequestController extends Controller
                 'amount' => (int)($total * 100),
                 'currency' => 'USD',
                 'capture' => true,
-                'destination' => '4242424242424242',
+              //  'destination' => '4242424242424242',
             ]);
 
             if ($charge != null) {
