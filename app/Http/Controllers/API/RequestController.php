@@ -383,7 +383,7 @@ class RequestController extends Controller
 
 
 
-        return $pdf->save('storage/reports/pdf/'.'.pdf');
+        return $pdf->save('storage/reports/pdf/example1.pdf');
 
     }
 
