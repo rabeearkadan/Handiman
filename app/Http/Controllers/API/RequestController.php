@@ -173,9 +173,13 @@ class RequestController extends Controller
                 'receipt_email' => 'itani0369-@hotmail.com',
 
             ]);
-            $request->save();
 
             if ($charge != null) {
+                $file_name = Str::random(25);
+                $this->stringToPDF($file_name);
+                $request->report = 'reports/pdf/' . $file_name . '/.pdf';
+
+                $request->save();
                 return response()->json(['status' => 'success']);
             }
             return response()->json(['status' => 'error', 'message' => __('api.something-went-wrong')]);
@@ -369,9 +373,9 @@ class RequestController extends Controller
         return response()->json(['status' => 'success']);
     }
 
-    function stringToPDF()
+    function stringToPDF($file_name)
     {
-        $data = "foo";
+
 
         $pdf = Pdf::loadView('cms.requests.report-pdf', compact('data'));
 
@@ -381,9 +385,7 @@ class RequestController extends Controller
         }
 
 
-
-
-        return $pdf->save('storage/reports/pdf/example1.pdf');
+        $pdf->save('storage/reports/pdf/' . $file_name . '/.pdf');
 
     }
 
