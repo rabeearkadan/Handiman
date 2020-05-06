@@ -165,7 +165,7 @@ class RequestController extends Controller
             $customer = \Stripe\Customer::create([
                 'description' => 'My First Test Customer (created for API docs)',
             ]);
-            $request->customer_id=$customer->id;
+            $request->customer_id = $customer->id;
             $request->save();
             $charge = \Stripe\Charge::create([
                 'amount' => (int)($total * 100),
@@ -173,11 +173,10 @@ class RequestController extends Controller
                 'description' => $user->name,
                 'source' => $token,
                 'capture' => true,
-                'customer'=>$customer->id,
+                'customer' => $request->customer_id,
                 'receipt_email' => 'itani0369-@hotmail.com'
 
             ]);
-
 
 
             if ($charge != null) {
