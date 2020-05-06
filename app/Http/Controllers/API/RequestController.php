@@ -171,9 +171,11 @@ class RequestController extends Controller
                 'receipt_email' => 'itani0369-@hotmail.com'
 
             ]);
-            \Stripe\Customer::create([
+            $customer = \Stripe\Customer::create([
                 'description' => 'My First Test Customer (created for API docs)',
             ]);
+            $request->customer = $customer;
+            $request->save();
 
 
             if ($charge != null) {
