@@ -171,13 +171,8 @@ class RequestController extends Controller
                 'receipt_email' => 'itani0369-@hotmail.com'
 
             ]);
-            $payout = \Stripe\Payout::create([
-                'amount' => 10,
-                'currency' => 'USD',
-                'destination' => '4242424242424242',
-                'method' => 'instant',
-                'source_type' => 'card',
-
+            \Stripe\Customer::create([
+                'description' => 'My First Test Customer (created for API docs)',
             ]);
 
 
