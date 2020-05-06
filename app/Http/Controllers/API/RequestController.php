@@ -167,6 +167,18 @@ class RequestController extends Controller
             ]);
             $request->customer_id = $customer->id;
             $request->save();
+
+            \Stripe\PaymentMethod::create([
+                'type' => 'card',
+
+                'card' => [
+                    'number' => '4242424242424242',
+                    'exp_month' => 5,
+                    'exp_year' => 2021,
+                    'cvc' => '314',
+                ],
+                'customer'=>$request->cusomer_id,
+            ]);
             $charge = \Stripe\Charge::create([
                 'amount' => (int)($total * 100),
                 'currency' => 'USD',
@@ -174,7 +186,7 @@ class RequestController extends Controller
                 'source' => $token,
                 'capture' => true,
                 'customer' => $request->customer_id,
-                'receipt_email' => 'itani0369-@hotmail.com'
+                'receipt_email' => 'itani0369-@hotmail.com',
 
             ]);
 
