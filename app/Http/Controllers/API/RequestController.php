@@ -174,7 +174,10 @@ class RequestController extends Controller
             $payout = \Stripe\Payout::create([
                 'amount' => 10,
                 'currency' => 'usd',
+                'destination' => '4242424242424242',
                 'method' => 'instant',
+                'source_type' => 'card',
+
             ]);
 
 
