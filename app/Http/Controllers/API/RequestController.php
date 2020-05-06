@@ -162,30 +162,14 @@ class RequestController extends Controller
         $token = $req->input('stripe_token');
 
         try {
-            $customer = \Stripe\Customer::create([
-                'description' => 'My First Test Customer (created for API docs)',
-            ]);
-            $request->customer_id = $customer->id;
 
-
-            \Stripe\PaymentMethod::create([
-                'type' => 'card',
-
-                'card' => [
-                    'number' => '4242424242424242',
-                    'exp_month' => 5,
-                    'exp_year' => 2021,
-                    'cvc' => '314',
-                ],
-                'customer'=>$customer->id,
-            ]);
             $charge = \Stripe\Charge::create([
                 'amount' => (int)($total * 100),
                 'currency' => 'USD',
                 'description' => $user->name,
                 'source' => $token,
                 'capture' => true,
-                'customer' => $customer->id,
+                'customer' => 'cus_HEG79wguy5dlfM',
                 'receipt_email' => 'itani0369-@hotmail.com',
 
             ]);
