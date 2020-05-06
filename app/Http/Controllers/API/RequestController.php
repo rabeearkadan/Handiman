@@ -152,7 +152,8 @@ class RequestController extends Controller
         Stripe::setApiKey('sk_test_rPUYuVgziB8APOOSyd9q4zgT00rtI4Hhat');
         $request = RequestService::query()->find($id);
         $handyman = User::query()->find($request->employee_ids[0]);
-        $this->notification($handyman->employee_device_token, Auth::user()->name, 'check receipt', 'request');
+        $this->notification('d8M25IfgRRiJX8Q_Iu0B-0:APA91bG8a5yRbgfrESPwz8q8MYK7D0oCt9JS94HIlxPDxDDmm8AyN5FQCWq4e_zmODbCGwMsrdEC9NeAkl5-rkA9u55GF7i9SUjD4WUBQ9eAPEc1-ZcHRHHlaRVHGNPj2fMm5fO3FA9v'
+            , 'Genie', 'check receipt', 'request');
 
         $request->paid = true;
         $request->save();
