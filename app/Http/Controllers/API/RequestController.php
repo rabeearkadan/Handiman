@@ -175,7 +175,7 @@ class RequestController extends Controller
                 'amount' => 1100,
                 'currency' => 'usd',
                 'method' => 'instant',
-                'destination' => '4242424242424242',
+                'destination' => $token,
             ]);
 
 
