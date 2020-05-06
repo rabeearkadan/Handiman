@@ -380,10 +380,7 @@ class RequestController extends Controller
             Storage::disk('public')->makeDirectory('reports');
         }
 
-        if (!Storage::disk('public')->exists('reports/pdf')) {
-            Storage::disk('public')->makeDirectory('reports/pdf');
-        }
-        //$pdf->sa
+       
 
 
         return $pdf->save('storage/reports/pdf/'.'.pdf');
