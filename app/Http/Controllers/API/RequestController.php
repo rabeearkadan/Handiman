@@ -9,6 +9,7 @@ use  App\Models\RequestService;
 
 use App\Models\Service;
 use App\User;
+use Barryvdh\DomPDF\PDF;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
