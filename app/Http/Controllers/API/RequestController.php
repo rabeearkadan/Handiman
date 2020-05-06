@@ -375,7 +375,7 @@ class RequestController extends Controller
             'foo' => 'bar'
         ];
 
-        $pdf = Pdf::loadView('cms.layouts.report-pdf', compact($data));
+        $pdf = Pdf::loadView('cms.requests.report-pdf', compact($data));
 
 
         if (!Storage::disk('public')->exists('reports')) {
