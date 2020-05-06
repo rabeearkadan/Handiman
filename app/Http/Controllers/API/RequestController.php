@@ -371,9 +371,7 @@ class RequestController extends Controller
 
     function stringToPDF()
     {
-        $data = [
-            'foo' => 'bar'
-        ];
+        $data = "foo";
 
         $pdf = Pdf::loadView('cms.requests.report-pdf', compact('data'));
 
