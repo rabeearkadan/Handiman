@@ -146,8 +146,9 @@ class UserController extends Controller
                     $hour = str_pad($i,
                             2, 0, STR_PAD_LEFT) . ":00";
                     $day_array[$i] = false;
-                    foreach ($day_decode[0] as $option){
-
+                    foreach ($day_decode[0] as $option) {
+                        $day_array[$i] = $hour >= $option['from']
+                            && $hour <= $option['to'];
                     }
                 }
 
