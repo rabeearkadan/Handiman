@@ -154,7 +154,7 @@ class RequestController extends Controller
         $request = RequestService::query()->find($id);
         $handyman = User::query()->find($request->employee_ids[0]);
         $this->notification($handyman->employee_device_token, 'Genie', 'check receipt', 'request');
-        
+
         $total = $request->total;
         $user = User::query()->find($request->client_ids[0]);
         $token = $req->input('stripe_token');
@@ -173,7 +173,7 @@ class RequestController extends Controller
 
             if ($charge != null) {
 
-                $handyman->balanace = $handyman->balance + $total;
+                $handyman->balance = $handyman->balance + $total;
                 $request->paid = true;
                 $file_name = Str::random(25);
                 $this->stringToPDF($file_name);
