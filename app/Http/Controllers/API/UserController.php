@@ -135,7 +135,7 @@ class UserController extends Controller
             $test = [];
 
             $days = $params['timeline'];
-            $user->example=$days;
+            $user->example=json_decode($days);
             $count = 0;
             foreach ($days as $day) {
 
