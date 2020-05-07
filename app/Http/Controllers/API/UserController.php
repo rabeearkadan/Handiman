@@ -138,7 +138,7 @@ class UserController extends Controller
                 $test[0][$i] = $day_decode;
             }
 
-            $user->test_timeline = $test
+            $user->test_timeline = $test;
 //            $timeline = [];
 //            for ($i = 0; $i <= 23; $i++) {
 //                $hour = $i;
