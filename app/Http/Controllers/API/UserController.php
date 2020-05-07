@@ -146,7 +146,7 @@ class UserController extends Controller
                     $hour = str_pad($i,
                             2, 0, STR_PAD_LEFT) . ":00";
                     $day_array[$i] = false;
-                    foreach ($day_decode[$count] as $option){
+                    foreach ($day_decode[0] as $option){
 
                     }
                 }
