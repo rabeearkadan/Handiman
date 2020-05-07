@@ -141,17 +141,18 @@ class UserController extends Controller
                 $day_decode = json_decode($day);
                 $day_array = [];
                 for ($i = 0; $i <= 23; $i++) {
-
+                    $ob = json_decode($day_decode);
                     $hour = str_pad($i,
                             2, 0, STR_PAD_LEFT) . ":00";
-                    if ($hour >= $day_decode[$i][0]['from']) {
-                        $day_array[$i]=false;
-                    }
+
+//                    if ($hour >= $day_decode[$i][0]['from']) {
+//                        $day_array[$i] = false;
+//                    }
 //                        $day_array[$i] = true;
 //                    } else {
 //                        $day_array[$i] = false;
 //                    }
-                     $day_array[$i] = $hour;
+                    $day_array[$i] = $ob;
 //                    $day_array[$i] = $hour >= $day_decode[0]['from'] && $hour <= $day_decode[0]['to'];
                 }
                 $test[$count] = $day_array;
