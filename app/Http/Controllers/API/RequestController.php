@@ -153,19 +153,12 @@ class RequestController extends Controller
         Stripe::setApiKey('sk_test_rPUYuVgziB8APOOSyd9q4zgT00rtI4Hhat');
         $request = RequestService::query()->find($id);
         $handyman = User::query()->find($request->employee_ids[0]);
-        $this->notification('d8M25IfgRRiJX8Q_Iu0B-0:APA91bG8a5yRbgfrESPwz8q8MYK7D0oCt9JS94HIlxPDxDDmm8AyN5FQCWq4e_zmODbCGwMsrdEC9NeAkl5-rkA9u55GF7i9SUjD4WUBQ9eAPEc1-ZcHRHHlaRVHGNPj2fMm5fO3FA9v'
-            , 'Genie', 'check receipt', 'request');
-
-        $request->paid = true;
+        $this->notification($handyman->employee_device_token, 'Genie', 'check receipt', 'request');
+        
         $total = $request->total;
         $user = User::query()->find($request->client_ids[0]);
         $token = $req->input('stripe_token');
 
-        $file_name = Str::random(25);
-        $this->stringToPDF($file_name);
-        $request->report = 'reports/pdf/' . $file_name . '/.pdf';
-
-        $request->save();
         try {
 
             $charge = \Stripe\Charge::create([
@@ -174,11 +167,20 @@ class RequestController extends Controller
                 'description' => $user->name,
                 'source' => $token,
                 'capture' => true,
-                'receipt_email' => 'itani0369-@hotmail.com',
+                'receipt_email' => $handyman->email,
 
             ]);
 
             if ($charge != null) {
+
+                $handyman->balanace = $handyman->balance + $total;
+                $request->paid = true;
+                $file_name = Str::random(25);
+                $this->stringToPDF($file_name);
+                $request->report = 'reports/pdf/' . $file_name . '/.pdf';
+
+                $request->save();
+                $handyman->save();
                 return response()->json(['status' => 'success']);
             }
             return response()->json(['status' => 'error', 'message' => __('api.something-went-wrong')]);
