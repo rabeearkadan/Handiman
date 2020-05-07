@@ -155,7 +155,7 @@ class UserController extends Controller
                     $day_array[$i] = $day_decode[$i];
 //                    $day_array[$i] = $hour >= $day_decode[0]['from'] && $hour <= $day_decode[0]['to'];
                 }
-                $test[$count] = $day_array;
+                $test[$count] = $day_decode;
                 $count++;
             }
 
