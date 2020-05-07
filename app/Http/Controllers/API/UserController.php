@@ -135,67 +135,14 @@ class UserController extends Controller
             $test = [];
 
 
-
-          $test[0]=json_decode($params['timeline'][0]);
-
-
+            $test[0] = json_decode($params['timeline'][0]);
+            $test[1] = json_decode($params['timeline'][1]);
+            $test[2] = json_decode($params['timeline'][2]);
+            $test[3] = json_decode($params['timeline'][3]);
+            $test[4] = json_decode($params['timeline'][4]);
+            $test[5] = json_decode($params['timeline'][5]);
+            $test[6] = json_decode($params['timeline'][6]);
             $user->test_timeline = $test;
-//            $timeline = [];
-//            for ($i = 0; $i <= 23; $i++) {
-//                $hour = $i;
-//
-//                foreach ($params['timeline'][0] as $option) {
-//                    $timeline[0][$hour] =
-//                        $hour >= $params['timeline'][0][$option]['from']
-//                        && $hour <= $params['timeline'][0][$option]['to'];
-//
-//                }
-//
-//                foreach ($params['timeline'][1] as $option) {
-//                    $timeline[1][$hour] =
-//                        $hour >= $params['timeline'][1][$option]['from']
-//                        && $hour <= $params['timeline'][1][$option]['to'];
-//
-//                }
-//
-//                foreach ($params['timeline'][2] as $option) {
-//                    $timeline[2][$hour] =
-//                        $hour >= $params['timeline'][2][$option]['from']
-//                        && $hour <= $params['timeline'][2][$option]['to'];
-//
-//                }
-//
-//                foreach ($params['timeline'][3] as $option) {
-//                    $timeline[3][$hour] =
-//                        $hour >= $params['timeline'][3][$option]['from']
-//                        && $hour <= $params['timeline'][3][$option]['to'];
-//
-//                }
-//
-//                foreach ($params['timeline'][4] as $option) {
-//                    $timeline[4][$hour] =
-//                        $hour >= $params['timeline'][4][$option]['from']
-//                        && $hour <= $params['timeline'][4][$option]['to'];
-//
-//                }
-//
-//                foreach ($params['timeline'][5] as $option) {
-//                    $timeline[5][$hour] =
-//                        $hour >= $params['timeline'][5][$option]['from']
-//                        && $hour <= $params['timeline'][5][$option]['to'];
-//
-//                }
-//
-//                foreach ($params['timeline'][6] as $option) {
-//                    $timeline[6][$hour] =
-//                        $hour >= $params['timeline'][6][$option]['from']
-//                        && $hour <= $params['timeline'][6][$option]['to'];
-//
-//                }
-//
-//
-//            }
-//            $user->timeline = $timeline;
 
         }
 
