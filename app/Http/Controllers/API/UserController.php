@@ -133,9 +133,12 @@ class UserController extends Controller
 
         if (Arr::has($params, 'timeline')) {
             $test = [];
-            for ($i = 0; $i <= 23; $i++) {
-                $day_decode = json_decode($params['timeline[0]']);
-                $test[0][$i] = $day_decode;
+
+            $days = $params['timeline'];
+            foreach ($days as $day) {
+
+                $day_decode = json_decode($day);
+                $test[0] = $day_decode
             }
 
             $user->test_timeline = $test;
