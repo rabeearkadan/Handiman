@@ -135,8 +135,8 @@ class UserController extends Controller
             $test = [];
 
 
-            
-          $test[0]=$params['timeline'][0];
+
+          $test[0]=json_decode($params['timeline'][0]);
 
 
             $user->test_timeline = $test;
