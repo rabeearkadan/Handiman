@@ -141,7 +141,7 @@ class UserController extends Controller
 
                 $day_decode = json_decode($day);
 
-                $test[$count] = $count;
+                $test[$count] = $day_decode;
                 $count++;
             }
 
