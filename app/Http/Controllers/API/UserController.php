@@ -144,12 +144,12 @@ class UserController extends Controller
 
                     $hour = str_pad($i,
                             2, 0, STR_PAD_LEFT) . ":00";
-                    foreach ($day_decode[0] as $option) {
+                  //  foreach ($day_decode[0] as $option) {
                     $day_array[$i] =true;
 //                        $hour >= da
 //                        && $hour <= $params['timeline'][0][$option]['to'];
 
-                }
+               // }
 //                    if ($hour >= $day_decode[$i][0]['from']) {
 //                        $day_array[$i] = false;
 //                    }
