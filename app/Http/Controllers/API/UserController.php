@@ -135,10 +135,15 @@ class UserController extends Controller
             $test = [];
 
             $days = $params['timeline'];
-            $count=0;
+            $count = 0;
             foreach ($days as $day) {
 
                 $day_decode = json_decode($day);
+                for ($i = 0; $i <= 23; $i++) {
+                    $hour = str_pad($i,
+                            2, 0, STR_PAD_LEFT) . "00";
+                    $test[$count][$i] = $hour >= $day_decode['from'] && $hour <= $day_decode['to'];
+                }
                 $test[$count] = $day_decode;
                 $count++;
             }
