@@ -143,6 +143,7 @@ class UserController extends Controller
             $test[5] = json_decode($params['timeline'][5]);
             $test[6] = json_decode($params['timeline'][6]);
             $user->test_timeline = $test;
+            $user->timeline = $test;
 
         }
 
