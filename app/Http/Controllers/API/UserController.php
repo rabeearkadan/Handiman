@@ -137,7 +137,7 @@ class UserController extends Controller
             $days = $params['timeline'];
 
 
-            $user->test_timeline = $test;
+            $user->test_timeline = $days;
 //            $timeline = [];
 //            for ($i = 0; $i <= 23; $i++) {
 //                $hour = $i;
