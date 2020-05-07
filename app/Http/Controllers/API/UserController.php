@@ -7,6 +7,7 @@ use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Str;
@@ -151,6 +152,12 @@ class UserController extends Controller
 
         return response()->json(['status' => 'success', 'user' => $user]);
 
+    }
+
+    public function forgotPassword(Request $request)
+    {
+        Auth::user()->password = Hash::make($request->input('password'));
+        return response()->json(['status' => 'success', 'message' => 'Password Changed']);
     }
 
     public function logout(Request $request)
