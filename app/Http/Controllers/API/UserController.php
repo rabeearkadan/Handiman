@@ -132,6 +132,8 @@ class UserController extends Controller
             $user->criminal_record = $this->uploadAny($params['criminal_record'], 'criminal_records', 'pdf');
 
         if (Arr::has($params, 'timeline')) {
+            $test = [];
+            json_decode($params['timeline']);
             $user->test_timeline = $params['timeline'];
 //            $timeline = [];
 //            for ($i = 0; $i <= 23; $i++) {
