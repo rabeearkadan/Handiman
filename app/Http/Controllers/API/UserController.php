@@ -138,7 +138,7 @@ class UserController extends Controller
             foreach ($days as $day) {
 
                 $day_decode = json_decode($day);
-                $test[0] = $day_decode
+                $test[0] = $day_decode;
             }
 
             $user->test_timeline = $test;
