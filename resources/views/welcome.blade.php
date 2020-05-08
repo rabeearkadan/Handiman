@@ -147,34 +147,21 @@ About Section
                     handyman service providers is a challenging task especially when one travels and moves to a new
                     place because service providers are situated across different areas and differ in costs, quality and
                     type of service that they provide.
+                </p>
+                <p class="about-text">
                     Also, a lot of handyman are not aware of the customers who are in need of their services. This made
                     an impact on both, individual and the handy service provider. To overcome this, technology gave the
                     right solution. When an appealing mobile application is built, paired with a web platform, it
                     becomes easy for both the parties. An individual can get the right person for a reasonable cost and
                     the handy service provider can get connected with the customers easily.
+                </p>
+                <p class="about-text">
                     The demand for handyman services in the MENA region and the rest of the world has been because of
                     several influencing factors. According to The Startups Team (2015), demand for handyman service jobs
                     is attributed to the increasingly busy and hectic lives that people lead. Finding enough time to
                     juggle work with family and other commitments can be troublesome, and consequently more and more
                     people are looking for help with odd-jobs around their home, whether it is changing light fittings,
                     putting up shelves or repairing dripping taps.
-
-                </p>
-                <p class="about-text">
-
-                    Several studies suggest several factors contributing to the growing need for handyman services as
-                    having second homes, income/rental units and commercial property maintenance. Secondly, the Arab
-                    world has experienced a decline in cost and increase of new phone models which has seen rise in
-                    phone handyman services.
-                </p>
-                <p class="about-text">
-
-                    Handyman services are odd jobs that many people cannot do, and find it challenging to locate this
-                    type of services. In case of emergencies like tap leakages, car breakdowns among others, it becomes
-                    difficult for one to access these services immediately. In cases where the emergency is serious such
-                    as an electric fault from electronic equipment’s, this can lead to calamities like fire which have
-                    profound consequences (Residential Tenancies Authority, n.d; South Liverpool Homes, n.d). Thus,
-                    locating the nearest skilled handyman is a must.
                 </p>
             </div>
         </div>
