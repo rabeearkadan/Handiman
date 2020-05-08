@@ -340,14 +340,14 @@ Testimonials Section
         <div class="row">
             <div class="col-md-3">
                 <div class="profile">
-                    <div class="pic"><img src="../../public/img/client-1.jpg" alt=""></div>
+                    <div class="pic"><img src="../../public/img/Dr-Islam-El-Kabbani.jpg-1.jpg" alt=""></div>
                     <h4>Dr. Islam El-Kabani</h4>
                     <span>Assistant Professor of Computer Science</span>
                 </div>
             </div>
             <div class="col-md-9">
                 <div class="quote">
-                    <b><img src="../../public/img/Dr-Islam-El-Kabbani.jpg" alt=""></b> Dr. Islam Elkabani received his Ph.D.
+                    Dr. Islam Elkabani received his Ph.D.
                     in Computer Science from New Mexico State University (NMSU), USA in 2007. He worked as a Teaching
                     and Research Assistant during his graduate studies at NMSU. Between 2007 and 2009, he worked as an
                     Assistant Professor of Computer Science and an Executive Director of the Computer Center of the
@@ -360,7 +360,6 @@ Testimonials Section
                 </div>
             </div>
         </div>
-
 
 
     </div>
