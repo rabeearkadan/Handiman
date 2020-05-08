@@ -348,7 +348,7 @@ Testimonials Section
             <div class="col-md-9">
                 <div class="quote">
                     <small><img
-                            src="../../public/img/quote_sign_right.png"
+                            src="../../public/img/quote_sign_left.png.png"
                             alt=""></small>
                     Dr. Islam Elkabani received his Ph.D.
                     in Computer Science from New Mexico State University (NMSU), USA in 2007. He worked as a Teaching
