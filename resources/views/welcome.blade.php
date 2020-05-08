@@ -340,7 +340,7 @@ Testimonials Section
         <div class="row">
             <div class="col-md-3">
                 <div class="profile">
-                    <div class="pic"><img src="../../public/img/Dr-Islam-El-Kabbani.jpg-1.jpg" alt=""></div>
+                    <div class="pic"><img src="../../public/img/Dr-Islam-El-Kabbani.jpg" alt=""></div>
                     <h4>Dr. Islam El-Kabani</h4>
                     <span>Assistant Professor of Computer Science</span>
                 </div>
