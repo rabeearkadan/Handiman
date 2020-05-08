@@ -26,32 +26,31 @@
     <link href="favicon.ico" rel="shortcut icon">
 
 
+    <link
+        href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,700,700i|Raleway:300,400,500,700,800"
+        rel="stylesheet">
 
-        <link
-            href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,700,700i|Raleway:300,400,500,700,800"
-            rel="stylesheet">
+    <!-- Bootstrap CSS File -->
+    <link href="../../public/lib/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
-        <!-- Bootstrap CSS File -->
-        <link href="../../public/lib/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Libraries CSS Files -->
+    <link href="../../public/lib/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+    <link href="../../public/lib/animate-css/animate.min.css" rel="stylesheet">
 
-        <!-- Libraries CSS Files -->
-        <link href="../../public/lib/font-awesome/css/font-awesome.min.css" rel="stylesheet">
-        <link href="../../public/lib/animate-css/animate.min.css" rel="stylesheet">
-
-        <link href="../../public/css/style.css" rel="stylesheet">
-    {{--    <!-- Main Stylesheet File -->--}}
-    {{--    <link href="../../public/css/style.css" rel="stylesheet">--}}
+    <link href="../../public/css/style.css" rel="stylesheet">
+{{--    <!-- Main Stylesheet File -->--}}
+{{--    <link href="../../public/css/style.css" rel="stylesheet">--}}
 
 
-    <!-- Main Stylesheet File -->
-        <link href="../../public/css/style.css" rel="stylesheet">
+<!-- Main Stylesheet File -->
+    <link href="../../public/css/style.css" rel="stylesheet">
 
-<!-- =======================================================
-      Theme Name: Imperial
-      Theme URL: https://bootstrapmade.com/imperial-free-onepage-bootstrap-theme/
-      Author: BootstrapMade.com
-      Author URL: https://bootstrapmade.com
-    ======================================================= -->
+    <!-- =======================================================
+          Theme Name: Imperial
+          Theme URL: https://bootstrapmade.com/imperial-free-onepage-bootstrap-theme/
+          Author: BootstrapMade.com
+          Author URL: https://bootstrapmade.com
+        ======================================================= -->
 </head>
 
 <body>
@@ -60,9 +59,9 @@
 <section id="hero">
     <div class="hero-container">
         <div class="wow fadeIn">
-{{--            <div class="hero-logo">--}}
-{{--                <img class="" src="../../public/img/logo.png" alt="Genie">--}}
-{{--            </div>--}}
+            {{--            <div class="hero-logo">--}}
+            {{--                <img class="" src="../../public/img/logo.png" alt="Genie">--}}
+            {{--            </div>--}}
 
             <h1>Welcome to Genie</h1>
             <h2>We provide <span class="rotating">handyman Scheduling, services availability</span>
@@ -78,7 +77,7 @@
     <div class="container">
 
         <div id="logo" class="pull-left">
-            <a href="#hero"><img src="../../public/img/logo.png" alt="" title="" /></a>
+            <a href="#hero"><img src="../../public/img/logo.png" alt="" title=""/></a>
             <!-- Uncomment below if you prefer to use a text image -->
             <!--<h1><a href="#hero">Header 1</a></h1>-->
         </div>
@@ -108,14 +107,13 @@
                 </li>
                 <li><a href="{{ route('login') }}">Login</a></li>
                 <li><a href="{{ route('register') }}">Register</a></li>
-                <li><a href="{{route('admin.home')}}">Admin</a> </li>
+                <li><a href="{{route('admin.home')}}">Admin</a></li>
             </ul>
         </nav>
         <!-- #nav-menu-container -->
     </div>
 </header>
 <!-- #header -->
-
 
 
 <!--==========================
@@ -181,32 +179,38 @@ Services Section
             <div class="col-md-4 service-item">
                 <div class="service-icon"><i class="fa fa-desktop"></i></div>
                 <h4 class="service-title"><a href=""> ACCEPT/REJECT JOB REQUEST </a></h4>
-                <p class="service-description"> According to the product availability, number of handymen available and the pending orders, accept or reject the orders through app for finding Handyman. </p>
+                <p class="service-description"> According to the product availability, number of handymen available and
+                    the pending orders, accept or reject the orders through app for finding Handyman. </p>
             </div>
             <div class="col-md-4 service-item">
                 <div class="service-icon"><i class="fa fa-bar-chart"></i></div>
                 <h4 class="service-title"><a href=""> SWITCH ONLINE/OFFLINE </a></h4>
-                <p class="service-description"> You may toggle the availability of the handymen within your on demand handyman app. The handymans may also set their availability. </p>
+                <p class="service-description"> You may toggle the availability of the handymen within your on demand
+                    handyman app. The handymans may also set their availability. </p>
             </div>
             <div class="col-md-4 service-item">
                 <div class="service-icon"><i class="fa fa-paper-plane"></i></div>
                 <h4 class="service-title"><a href=""> PAY BY CASH/CREDIT CARD </a></h4>
-                <p class="service-description">Let the Handymen on demand app users pay through different payment mediums, including cash, net banking or credit/debit cards.</p>
+                <p class="service-description">Let the Handymen on demand app users pay through different payment
+                    mediums, including cash, net banking or credit/debit cards.</p>
             </div>
             <div class="col-md-4 service-item">
                 <div class="service-icon"><i class="fa fa-photo"></i></div>
                 <h4 class="service-title"><a href=""> INSTANT ALERT </a></h4>
-                <p class="service-description"> The app for finding Handyman sends instant alerts for booking, cancelation, scheduling, and arrival time of handyman and job completion. </p>
+                <p class="service-description"> The app for finding Handyman sends instant alerts for booking,
+                    cancelation, scheduling, and arrival time of handyman and job completion. </p>
             </div>
             <div class="col-md-4 service-item">
                 <div class="service-icon"><i class="fa fa-road"></i></div>
                 <h4 class="service-title"><a href=""> GENERATE NEW BILLS EASILY </a></h4>
-                <p class="service-description"> The app for finding Handyman sends instant alerts for booking, cancelation, scheduling, and arrival time of handyman and job completion. </p>
+                <p class="service-description"> The app for finding Handyman sends instant alerts for booking,
+                    cancelation, scheduling, and arrival time of handyman and job completion. </p>
             </div>
             <div class="col-md-4 service-item">
                 <div class="service-icon"><i class="fa fa-shopping-bag"></i></div>
                 <h4 class="service-title"><a href="">CANCEL BOOKINGS</a></h4>
-                <p class="service-description">The on demand Handyman service app users may cancel the booking if they are not available at home or have found an alternative.</p>
+                <p class="service-description">The on demand Handyman service app users may cancel the booking if they
+                    are not available at home or have found an alternative.</p>
             </div>
         </div>
     </div>
@@ -328,10 +332,8 @@ Testimonials Section
     <div class="container wow fadeInUp">
         <div class="row">
             <div class="col-md-12">
-                <h3 class="section-title">Testimonials</h3>
+                <h3 class="section-title">Supervisor</h3>
                 <div class="section-title-divider"></div>
-                <p class="section-description">Erdo lide, nora porodo filece, salvam esse se, quod concedimus ses haec
-                    dicturum fuisse</p>
             </div>
         </div>
 
@@ -339,36 +341,27 @@ Testimonials Section
             <div class="col-md-3">
                 <div class="profile">
                     <div class="pic"><img src="../../public/img/client-1.jpg" alt=""></div>
-                    <h4>Saul Goodman</h4>
-                    <span>Lawless Inc</span>
+                    <h4>Dr. Islam El-Kabani</h4>
+                    <span>Assistant Professor of Computer Science</span>
                 </div>
             </div>
             <div class="col-md-9">
                 <div class="quote">
-                    <b><img src="../../public/img/quote_sign_left.png" alt=""></b> Proin iaculis purus consequat sem cure digni ssim
-                    donec porttitora entum suscipit rhoncus. Accusantium quam, ultricies eget id, aliquam eget nibh et.
-                    Maecen aliquam, risus at semper. <small><img src="../../public/img/quote_sign_right.png" alt=""></small>
+                    <b><img src="../../public/img/Dr-Islam-El-Kabbani.jpg" alt=""></b> Dr. Islam Elkabani received his Ph.D.
+                    in Computer Science from New Mexico State University (NMSU), USA in 2007. He worked as a Teaching
+                    and Research Assistant during his graduate studies at NMSU. Between 2007 and 2009, he worked as an
+                    Assistant Professor of Computer Science and an Executive Director of the Computer Center of the
+                    Faculty of Science at Alexandria University, Egypt. He has been a faculty member in the Computer
+                    Science Department at Beirut Arab University since September 2009. His research interests include
+                    Knowledge Representation, Answer Set Programming, Social Networks Analysis and Mining, Assistive
+                    Technologies, Natural Language Processing and Data Mining. <small><img
+                            src="../../public/img/quote_sign_right.png"
+                            alt=""></small>
                 </div>
             </div>
         </div>
 
-        <div class="row">
-            <div class="col-md-9">
-                <div class="quote">
-                    <b><img src="../../public/img/quote_sign_left.png" alt=""></b> Sed ut perspiciatis unde omnis iste natus error
-                    sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo
-                    inventore veritatis architecto beatae. <small><img src="../../public/img/quote_sign_right.png" alt=""></small>
-                </div>
-            </div>
-            <div class="col-md-3">
-                <div class="profile">
-                    <div class="pic"><img src="../../public/img/client-2.jpg" alt=""></div>
 
-                    <h4>Sara Wilsson</h4>
-                    <span>Odeo Inc</span>
-                </div>
-            </div>
-        </div>
 
     </div>
 </section>
@@ -546,20 +539,20 @@ Footer
 
 <a href="#" class="back-to-top"><i class="fa fa-chevron-up"></i></a>
 
-    <!-- Required JavaScript Libraries -->
-    <script src="../../public/lib/jquery/jquery.min.js"></script>
-    <script src="../../public/lib/bootstrap/js/bootstrap.min.js"></script>
-    <script src="../../public/lib/superfish/hoverIntent.js"></script>
-    <script src="../../public/lib/superfish/superfish.min.js"></script>
-    <script src="../../public/lib/morphext/morphext.min.js"></script>
-    <script src="../../public/lib/wow/wow.min.js"></script>
-    <script src="../../public/lib/stickyjs/sticky.js"></script>
-    <script src="../../public/lib/easing/easing.js"></script>
+<!-- Required JavaScript Libraries -->
+<script src="../../public/lib/jquery/jquery.min.js"></script>
+<script src="../../public/lib/bootstrap/js/bootstrap.min.js"></script>
+<script src="../../public/lib/superfish/hoverIntent.js"></script>
+<script src="../../public/lib/superfish/superfish.min.js"></script>
+<script src="../../public/lib/morphext/morphext.min.js"></script>
+<script src="../../public/lib/wow/wow.min.js"></script>
+<script src="../../public/lib/stickyjs/sticky.js"></script>
+<script src="../../public/lib/easing/easing.js"></script>
 
-    <!-- Template Specisifc Custom Javascript File -->
-    <script src="../../public/js/custom.js"></script>
+<!-- Template Specisifc Custom Javascript File -->
+<script src="../../public/js/custom.js"></script>
 
-    <script src="../../public/contactform/contactform.js"></script>
+<script src="../../public/contactform/contactform.js"></script>
 
 
 </body>
