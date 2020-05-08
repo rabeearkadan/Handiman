@@ -88,7 +88,7 @@
                 <li><a href="#about">About Us</a></li>
 
                 <li><a href="#team">Team</a></li>
-            
+
                 <li><a href="{{ route('login') }}">Login</a></li>
                 <li><a href="{{ route('register') }}">Register</a></li>
             </ul>
