@@ -377,17 +377,15 @@ Team Section
             <div class="col-md-12">
                 <h3 class="section-title">Our Team</h3>
                 <div class="section-title-divider"></div>
-                <p class="section-description">Sed ut perspiciatis unde omnis iste natus error sit voluptatem
-                    accusantium doloremque</p>
+                <p class="section-description">Computer Science Students at Beirut Arab University</p>
             </div>
         </div>
 
         <div class="row">
             <div class="col-md-3">
                 <div class="member">
-                    <div class="pic"><img src="../../public/img/team-1.jpg" alt=""></div>
-                    <h4>Walter White</h4>
-                    <span>Chief Executive Officer</span>
+                    <div class="pic"><img src="../../public/img/Mhmd_itani.jpeg" alt=""></div>
+                    <h4>Mohammad H. Itani</h4>
                     <div class="social">
                         <a href=""><i class="fa fa-twitter"></i></a>
                         <a href=""><i class="fa fa-facebook"></i></a>
@@ -399,9 +397,9 @@ Team Section
 
             <div class="col-md-3">
                 <div class="member">
-                    <div class="pic"><img src="../../public/img/team-2.jpg" alt=""></div>
-                    <h4>Sarah Jhinson</h4>
-                    <span>Product Manager</span>
+                    <div class="pic"><img src="../../public/img/ahmddorra.jpeg" alt=""></div>
+                    <h4>Ahmad Dorra</h4>
+
                     <div class="social">
                         <a href=""><i class="fa fa-twitter"></i></a>
                         <a href=""><i class="fa fa-facebook"></i></a>
@@ -413,9 +411,8 @@ Team Section
 
             <div class="col-md-3">
                 <div class="member">
-                    <div class="pic"><img src="../../public/img/team-3.jpg" alt=""></div>
-                    <h4>William Anderson</h4>
-                    <span>CTO</span>
+                    <div class="pic"><img src="../../public/img/noura_shouli.jpeg" alt=""></div>
+                    <h4>Noura Shouli</h4>
                     <div class="social">
                         <a href=""><i class="fa fa-twitter"></i></a>
                         <a href=""><i class="fa fa-facebook"></i></a>
@@ -427,9 +424,8 @@ Team Section
 
             <div class="col-md-3">
                 <div class="member">
-                    <div class="pic"><img src="../../public/img/team-4.jpg" alt=""></div>
-                    <h4>Amanda Jepson</h4>
-                    <span>Accountant</span>
+                    <div class="pic"><img src="../../public/img/rami_chamseddine.jpeg" alt=""></div>
+                    <h4>Rami Chamseddine</h4>
                     <div class="social">
                         <a href=""><i class="fa fa-twitter"></i></a>
                         <a href=""><i class="fa fa-facebook"></i></a>
@@ -452,8 +448,7 @@ Contact Section
             <div class="col-md-12">
                 <h3 class="section-title">Contact Us</h3>
                 <div class="section-title-divider"></div>
-                <p class="section-description">Sed ut perspiciatis unde omnis iste natus error sit voluptatem
-                    accusantium doloremque</p>
+                <p class="section-description"> </p>
             </div>
         </div>
 
@@ -462,17 +457,17 @@ Contact Section
                 <div class="info">
                     <div>
                         <i class="fa fa-map-marker"></i>
-                        <p>A108 Adam Street<br>New York, NY 535022</p>
+                        <p>Beirut, Lebanon</p>
                     </div>
 
                     <div>
                         <i class="fa fa-envelope"></i>
-                        <p>info@example.com</p>
+                        <p>geniesenior2020@gmail.com</p>
                     </div>
 
                     <div>
                         <i class="fa fa-phone"></i>
-                        <p>+1 5589 55488 55s</p>
+                        <p>+961 76979280</p>
                     </div>
 
                 </div>
