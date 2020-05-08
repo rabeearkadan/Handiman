@@ -125,8 +125,6 @@ About Section
             <div class="col-md-12">
                 <h3 class="section-title">About Us</h3>
                 <div class="section-title-divider"></div>
-                <p class="section-description">Sed ut perspiciatis unde omnis iste natus error sit voluptatem
-                    accusantium doloremque laudantium, totam rem aperiam</p>
             </div>
         </div>
     </div>
@@ -134,27 +132,49 @@ About Section
         <div class="row">
 
             <div class="col-lg-6 about-img">
-                <img src="../../public/img/about-img.jpg" alt="">
+                <img src="../../public/img/plumber.jpg" alt="">
             </div>
 
             <div class="col-md-6 about-content">
-                <h2 class="about-title">We provide great services and ideass</h2>
+                <h2 class="about-title">We provide great services and ideas</h2>
                 <p class="about-text">
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore
-                    et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-                    aliquip ex ea commodo consequat. Duis aute irure dolor
-                    in reprehenderit in voluptate
+                    It is common that every home has some problems with any of the household items such as kitchen
+                    equipment, Air Conditioner, washing machine, Television, etc and you might need plumber or
+                    electrician or mechanic or any other handy service. There are a lot of handyman available but still
+                    it has become a challenging task to get the things to be serviced as no handyman will be available
+                    on time. Despite this, when you get a handyman, he might charge heavy cost. Nonetheless, it is of
+                    great difficulty to choose a reputable handyman, a stranger that will enter the home. Locating
+                    handyman service providers is a challenging task especially when one travels and moves to a new
+                    place because service providers are situated across different areas and differ in costs, quality and
+                    type of service that they provide.
+                    Also, a lot of handyman are not aware of the customers who are in need of their services. This made
+                    an impact on both, individual and the handy service provider. To overcome this, technology gave the
+                    right solution. When an appealing mobile application is built, paired with a web platform, it
+                    becomes easy for both the parties. An individual can get the right person for a reasonable cost and
+                    the handy service provider can get connected with the customers easily.
+                    The demand for handyman services in the MENA region and the rest of the world has been because of
+                    several influencing factors. According to The Startups Team (2015), demand for handyman service jobs
+                    is attributed to the increasingly busy and hectic lives that people lead. Finding enough time to
+                    juggle work with family and other commitments can be troublesome, and consequently more and more
+                    people are looking for help with odd-jobs around their home, whether it is changing light fittings,
+                    putting up shelves or repairing dripping taps.
+
                 </p>
                 <p class="about-text">
-                    Ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in
-                    voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-                    proident, sunt in culpa qui officia deserunt mollit anim
-                    id est laborum
+
+                    Several studies suggest several factors contributing to the growing need for handyman services as
+                    having second homes, income/rental units and commercial property maintenance. Secondly, the Arab
+                    world has experienced a decline in cost and increase of new phone models which has seen rise in
+                    phone handyman services.
                 </p>
                 <p class="about-text">
-                    Ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in
-                    voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-                    proident, sunt in culpa qui officia deserunt molli.
+
+                    Handyman services are odd jobs that many people cannot do, and find it challenging to locate this
+                    type of services. In case of emergencies like tap leakages, car breakdowns among others, it becomes
+                    difficult for one to access these services immediately. In cases where the emergency is serious such
+                    as an electric fault from electronic equipment’s, this can lead to calamities like fire which have
+                    profound consequences (Residential Tenancies Authority, n.d; South Liverpool Homes, n.d). Thus,
+                    locating the nearest skilled handyman is a must.
                 </p>
             </div>
         </div>
@@ -448,7 +468,7 @@ Contact Section
             <div class="col-md-12">
                 <h3 class="section-title">Contact Us</h3>
                 <div class="section-title-divider"></div>
-                <p class="section-description"> </p>
+                <p class="section-description"></p>
             </div>
         </div>
 
