@@ -155,14 +155,7 @@ About Section
                     becomes easy for both the parties. An individual can get the right person for a reasonable cost and
                     the handy service provider can get connected with the customers easily.
                 </p>
-                <p class="about-text">
-                    The demand for handyman services in the MENA region and the rest of the world has been because of
-                    several influencing factors. According to The Startups Team (2015), demand for handyman service jobs
-                    is attributed to the increasingly busy and hectic lives that people lead. Finding enough time to
-                    juggle work with family and other commitments can be troublesome, and consequently more and more
-                    people are looking for help with odd-jobs around their home, whether it is changing light fittings,
-                    putting up shelves or repairing dripping taps.
-                </p>
+                
             </div>
         </div>
     </div>
