@@ -10,9 +10,7 @@
                     <button class="mb-2 mr-2 btn btn-primary" onclick="location.href='{{route('service.create')}}'">Add
                         New Service
                     </button>
-                    <button class="mb-2 mr-2 btn btn-danger" onclick="location.href='{{route('service.test')}}'"> data
-                        tables
-                    </button>
+
 
                     <table class="mb-0 table">
                         <thead>
@@ -49,16 +47,7 @@
                                     </form>
 
 
-                                    <button  class="btn btn-primary waves-effect" type="button"
-                                            onclick="deletePost('{{ $service->id }}')">
-                                        <i class="material-icons">edit</i>
-                                    </button>
-                                    <form id="edit-form-{{ $service->id }}"
-                                          action="{{ route('service.edit',$service->id) }}" method="POST"
-                                          style="display: none;">
-                                        @csrf
-                                        @method('EDIT')
-                                    </form>
+
 
 
                                 </td>
