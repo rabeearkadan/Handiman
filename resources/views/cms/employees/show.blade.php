@@ -21,7 +21,7 @@
             </div>
         </div>
 
-        <div class="col-lg-3 col-6">
+        <div class="col-lg-5 col-6">
 
             <div class="small-box bg-info">
                 <div class="inner">
