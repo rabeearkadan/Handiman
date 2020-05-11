@@ -76,21 +76,6 @@
             </div>
         @endif
 
-        <div class="col-lg-3 col-6">
-
-            <div class="small-box bg-danger">
-                <div class="inner">
-                    <p >Location:</p>
-
-                    <p style="font-size: 2.2rem" >Beirut </p>
-                </div>
-
-                <div class="icon">
-                    <i class="ion ion-location"></i>
-                </div>
-
-            </div>
-        </div>
     </div>
 
 
