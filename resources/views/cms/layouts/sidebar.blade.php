@@ -61,7 +61,14 @@
                             Employees
                         </a>
                     </li>
-                    <li class="app-sidebar__heading">Reports</li>
+                    <li class="app-sidebar__heading">Reports
+                    </li>
+                    <li>
+                        <a href="{{route('report.index')}}" class="mm">
+                            <i class="metismenu-icon pe-7s-rocket"></i>
+                            Clients
+                        </a>
+                    </li>
 
                     <li class="app-sidebar__heading">Statistics</li>
 
@@ -73,7 +80,12 @@
                     </li>
                     <li class="app-sidebar__heading">Contacted Us</li>
 
-
+                    <li>
+                        <a href="{{route('contact.index')}}" class="mm">
+                            <i class="metismenu-icon pe-7s-rocket"></i>
+                            Services
+                        </a>
+                    </li>
                 </ul>
             </div>
         </div>
