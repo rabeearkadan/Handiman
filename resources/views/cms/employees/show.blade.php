@@ -10,7 +10,7 @@
             <div class="small-box bg-success">
                 <div class="inner">
                     {{--                    <h3 style=""> Full Name</h3>--}}
-                    <p >Full Name:</p>
+                    <p>Full Name:</p>
                     <p style="font-size: 2.2rem"> {{$employee->name}}</p>
                 </div>
 
@@ -25,7 +25,7 @@
 
             <div class="small-box bg-info">
                 <div class="inner">
-                    <p >Email:</p>
+                    <p>Email:</p>
 
                     <p style="font-size: 2.2rem">  {{$employee->email}}</p>
                 </div>
@@ -47,7 +47,7 @@
                     <div class="inner">
                         <p>Status:</p>
 
-                        <p  style="font-size: 2.2rem"> Approved</p>
+                        <p style="font-size: 2.2rem"> Approved</p>
                     </div>
 
                     <div class="icon">
@@ -110,13 +110,14 @@
                                 style="border-radius: 50%; height: 174px; width: 174px; background-size: cover; background-position: center center; border: 3px solid #fff; background-image: url('https://mis.bau.edu.lb/web/v12/iConnectV12/admin/ProfileImage.aspx?ID=201801949&Code=F0DC386DD0')">
 
                             </div>
-                            <h3 class="profile-username text-center">
-
-                                <span> </span>
-                            </h3>
-
                         </div>
+
                     </div>
+                    <h3 class="profile-username text-center">
+
+                        <span>tesst </span>
+                    </h3>
+
                 </div>
             </div>
         </div>

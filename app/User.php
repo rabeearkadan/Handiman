@@ -29,7 +29,7 @@ class User extends Eloquent implements
      * @var array
      */
 
-    
+
     protected $casts = [
         'email_verified_at' => 'datetime',
 

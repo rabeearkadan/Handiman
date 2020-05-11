@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\CMS;
 
 use App\Http\Controllers\Controller;
+use App\Models\RequestService;
 use App\User;
 use Illuminate\Http\Request;
 
@@ -20,8 +21,9 @@ class HandymanController extends Controller
     {
 
         $employee = User::query()->find($id);
+        $requests=$employee->employeeRequests()->get();
 
-        return view('cms.employees.show', compact('employee'));
+        return view('cms.employees.show', compact('employee','requests'));
 
     }
 
