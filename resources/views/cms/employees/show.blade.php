@@ -10,8 +10,8 @@
             <div class="small-box bg-success">
                 <div class="inner">
                     {{--                    <h3 style=""> Full Name</h3>--}}
-                    <p style="font-size: 2.2rem">Full Name:</p>
-                    <p> {{$employee->name}}</p>
+                    <p >Full Name:</p>
+                    <p style="font-size: 2.2rem"> {{$employee->name}}</p>
                 </div>
 
                 <div class="icon">
