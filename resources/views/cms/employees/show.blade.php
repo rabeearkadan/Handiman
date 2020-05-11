@@ -10,7 +10,7 @@
             <div class="small-box bg-success">
                 <div class="inner">
                     {{--                    <h3 style=""> Full Name</h3>--}}
-                    <p>Full Name:</p>
+                    <p >Full Name:</p>
                     <p style="font-size: 2.2rem"> {{$employee->name}}</p>
                 </div>
 
@@ -25,7 +25,7 @@
 
             <div class="small-box bg-info">
                 <div class="inner">
-                    <p>Email:</p>
+                    <p >Email:</p>
 
                     <p style="font-size: 2.2rem">  {{$employee->email}}</p>
                 </div>
@@ -47,7 +47,7 @@
                     <div class="inner">
                         <p>Status:</p>
 
-                        <p style="font-size: 2.2rem"> Approved</p>
+                        <p  style="font-size: 2.2rem"> Approved</p>
                     </div>
 
                     <div class="icon">
@@ -80,11 +80,9 @@
 
             <div class="small-box bg-danger">
                 <div class="inner">
-                    <p>Location:</p>
+                    <p >Location:</p>
 
-                    <p style="font-size: 2.2rem">
-                        <button onclick="displayLocation()"></button>
-                    </p>
+                    <p style="font-size: 2.2rem" > </p>
                 </div>
 
                 <div class="icon">
@@ -317,17 +315,16 @@
 
 
     <script>
-        function displayLocation() {
-
+        function displayLocation(latitude,longitude){
             var request = new XMLHttpRequest();
 
             var method = 'GET';
-            var url = 'http://maps.googleapis.com/maps/api/geocode/json?latlng=' + {{$employee->location[0]}} +',' + {{$employee->location[1]}} +'&sensor=true';
+            var url = 'http://maps.googleapis.com/maps/api/geocode/json?latlng='+latitude+','+longitude+'&sensor=true';
             var async = true;
 
             request.open(method, url, async);
-            request.onreadystatechange = function () {
-                if (request.readyState == 4 && request.status == 200) {
+            request.onreadystatechange = function(){
+                if(request.readyState == 4 && request.status == 200){
                     var data = JSON.parse(request.responseText);
                     var address = data.results[0];
                     document.write(address.formatted_address);
@@ -336,15 +333,15 @@
             request.send();
         };
 
-        var successCallback = function (position) {
+        var successCallback = function(position){
             var x = position.coords.latitude;
             var y = position.coords.longitude;
-            displayLocation(x, y);
+            displayLocation(x,y);
         };
 
-        var errorCallback = function (error) {
+        var errorCallback = function(error){
             var errorMessage = 'Unknown error';
-            switch (error.code) {
+            switch(error.code) {
                 case 1:
                     errorMessage = 'Permission denied';
                     break;
@@ -364,9 +361,9 @@
             maximumAge: 0
         };
 
-        navigator.geolocation.getCurrentPosition(successCallback, errorCallback, options);
+        navigator.geolocation.getCurrentPosition(successCallback,errorCallback,options);
     </script>
-@endpush
+    @endpush
 
 @push('css')
     <style>
