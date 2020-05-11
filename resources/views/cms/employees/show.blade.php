@@ -152,7 +152,7 @@
     <div class="row">
         <div class="col-md-12">
             <div class="main-card mb-3 card">
-                <div class="card-header">Active Users
+                <div class="card-header">Employee Requests
                     <div class="btn-actions-pane-right">
                         <div role="group" class="btn-group-sm btn-group">
                             <button class="active btn btn-focus">Last Week</button>
@@ -172,6 +172,8 @@
                         </tr>
                         </thead>
                         <tbody>
+
+                        @foreach($requests as $request)
                         <tr>
                             <td class="text-center text-muted">#345</td>
                             <td>
@@ -184,16 +186,16 @@
                                             </div>
                                         </div>
                                         <div class="widget-content-left flex2">
-                                            <div class="widget-heading">John Doe</div>
+                                            <div class="widget-heading">{{$request->id}}</div>
                                             <div class="widget-subheading opacity-7">Web Developer</div>
                                         </div>
                                     </div>
                                 </div>
                             </td>
-                            <td class="text-center">Madrid</td>
-                            <td class="text-center">
-                                <div class="badge badge-warning">Pending</div>
-                            </td>
+{{--                            <td class="text-center">Madrid</td>--}}
+{{--                            <td class="text-center">--}}
+{{--                                <div class="badge badge-warning">Pending</div>--}}
+{{--                            </td>--}}
                             <td class="text-center">
                                 <button type="button" id="PopoverCustomT-1" class="btn btn-primary btn-sm">
                                     Details
@@ -284,6 +286,7 @@
                                 </button>
                             </td>
                         </tr>
+                            @endforeach
                         </tbody>
                     </table>
                 </div>
