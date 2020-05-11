@@ -193,9 +193,9 @@
                                 </div>
                             </td>
 {{--                            <td class="text-center">Madrid</td>--}}
-{{--                            <td class="text-center">--}}
-{{--                                <div class="badge badge-warning">Pending</div>--}}
-{{--                            </td>--}}
+                            <td class="text-center">
+                                <div class="badge badge-warning">Pending</div>
+                            </td>
                             <td class="text-center">
                                 <button type="button" id="PopoverCustomT-1" class="btn btn-primary btn-sm">
                                     Details
