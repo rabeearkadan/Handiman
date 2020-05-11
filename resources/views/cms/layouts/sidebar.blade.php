@@ -66,7 +66,7 @@
                     <li>
                         <a href="{{route('report.index')}}" class="mm">
                             <i class="metismenu-icon pe-7s-rocket"></i>
-                            Clients
+                            Request's Reports
                         </a>
                     </li>
 
@@ -83,7 +83,7 @@
                     <li>
                         <a href="{{route('contact.index')}}" class="mm">
                             <i class="metismenu-icon pe-7s-rocket"></i>
-                            Services
+                           Messages
                         </a>
                     </li>
                 </ul>
