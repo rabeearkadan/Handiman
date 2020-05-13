@@ -32,7 +32,7 @@
                                     <i class="material-icons">delete</i>
                                 </button>
                                 <form id="delete-form-{{ $message->id }}"
-                                      action="{{ route('message.destroy', $message->id) }}" method="POST"
+                                      action="{{ route('contact.destroy', $message->id) }}" method="POST"
                                       style="display: none;">
                                     @csrf
                                     @method('DELETE')
