@@ -22,7 +22,7 @@
                         <tr id="row-{{$message->id}}">
                             <th scope="row">1</th>
 
-                            <td>{{$message->name}}</td>
+                            <td>{{$message->from}}</td>
                             <td>{{$message->subject}}</td>
                             <td>{{$message->message}}</td>
                             <td>{{$message->email}}</td>
