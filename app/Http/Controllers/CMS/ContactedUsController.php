@@ -22,6 +22,6 @@ class ContactedUsController extends Controller
         } catch (\Exception $e) {
         }
 
-        return redirect()->route('cms.contact.index');
+        return redirect()->route('contact.index');
     }
 }
