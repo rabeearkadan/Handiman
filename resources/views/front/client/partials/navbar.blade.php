@@ -6,6 +6,7 @@
     <a href="{{route('client.reviews.index')}}" class="nav-item @if ( request()->is('client/reviews*')) {{'is-active'}} @endif" active-color="purple"> Reviews </a>
     <a href="{{route('client.profile')}}" class="nav-item @if ( request()->is('client/profile*')) {{'is-active'}} @endif" active-color="green">Profile</a>
     <span class="nav-indicator"></span>
+    <a href="" class="nav-item" > logout</a>
 </nav>
 
 @push('js')
