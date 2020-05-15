@@ -125,18 +125,18 @@
                 <div class="col-sm-6">
                     <div class="form-group">
                         <select name="property">
-                            <option selected="@if($address['property_type'] =='Apartment') selected @endif">Apartment</option>
-                            <option selected="@if($address['property_type'] =='Condo') selected @endif">Condo</option>
-                            <option selected="@if($address['property_type'] =='House') selected @endif">House</option>
-                            <option selected="@if($address['property_type'] =='Villa') selected @endif">Villa</option>
+                            <option>Apartment</option>
+                            <option>Condo</option>
+                            <option>House</option>
+                            <option>Villa</option>
                         </select>
                     </div><!-- /.form-group -->
                 </div>
                 <div class="col-sm-6">
                     <div class="form-group">
                         <select name="contract">
-                            <option selected="@if($address['contract_type'] =='Rent') selected @endif">Rent</option>
-                            <option selected="@if($address['contract_type'] =='Sale') selected @endif">Sale</option>
+                            <option>Rent</option>
+                            <option>Sale</option>
                         </select>
                     </div><!-- /.form-group -->
                 </div><!-- /.col-* -->
