@@ -21,7 +21,7 @@
                                 <div class="widget">
                                     <div class="user-photo">
                                         <a href="#">
-                                            <img id="userimage"  src="" alt="User Photo">
+                                            <img id="userimage"  alt="Your Photo">
                                             <span class="user-photo-action">Click here to re-upload</span>
                                             <input type="file" onchange="document.getElementById('userimage').src = window.URL.createObjectURL(this.files[0])">
                                         </a>

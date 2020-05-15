@@ -3,33 +3,26 @@
     <link href="{{asset('css/client/map.css')}}" rel="stylesheet" type="text/css">
     <link href="{{asset('css/client/new-address.css')}}" rel="stylesheet" type="text/css">
     <style>
-
         /* Always set the map height explicitly to define the size of the div
          * element that contains the map. */
         #map {
             height: 550px;
         }
-
         /* Optional: Makes the sample page fill the window. */
-
         #description {
             font-family: Roboto, serif;
             font-size: 15px;
             font-weight: 300;
         }
-
         #infowindow-content .title {
             font-weight: bold;
         }
-
         #infowindow-content {
             display: none;
         }
-
         #map #infowindow-content {
             display: inline;
         }
-
         .pac-card {
             margin: 10px 10px 0 0;
             border-radius: 2px 0 0 2px;
@@ -40,7 +33,6 @@
             background-color: #fff;
             font-family: Roboto, serif;
         }
-
         #pac-container {
             padding-bottom: 12px;
             margin-right: 12px;
@@ -91,64 +83,67 @@
     <div class="page-title">
         <h1>Edit Profile</h1>
     </div><!-- /.page-title -->
-    <div class="background-white p20 mb30">
-        <h4 class="page-title">
-            Contact Information
-            <a href="#" class="btn btn-primary btn-xs pull-right">Save</a>
-        </h4>
-        <div class="row">
-            <div class="form-group col-sm-6">
-                <label for="name">Name</label>
-                <input type="text" class="form-control" name="name" id="name" value="{{$user->name}}">
-            </div><!-- /.form-group -->
-            <div class="form-group col-sm-6">
-                <label for="surname">Surname</label>
-                <input type="text" class="form-control" name="surname" id="surname" value="">
-            </div><!-- /.form-group -->
-            <div class="form-group col-sm-6">
-                <label for="email">E-mail</label>
-                <input type="text" class="form-control" name="email" id="email" value="{{$user->email}}">
-            </div><!-- /.form-group -->
-            <div class="form-group col-sm-6">
-                <label for="phone">Phone</label>
-                <input type="text" class="form-control" name="phone" id="phone" value="{{$user->phone}}"
-                       placeholder="71456789">
-            </div><!-- /.form-group -->
-        </div><!-- /.row -->
-    </div>
+
+
 
     <div class="background-white p20 mb30">
-    @if($user->client_addresses !=  null)
-    @foreach($user->client_addresses as $address)
+        <form method="post" action="{{route('client.address.store')}}">
+            @csrf
+            @method('put')
+            <h4 class="page-title">
+                Address
+                <button type="submit" class="btn btn-primary btn-xs pull-right">Save</button>
+            </h4>
+            <div class="row">
+                <div class="form-group col-sm-6">
+                    <label for="address_name">Address Name, this will be displayed when choosing your location in a
+                        request </label>
+                    <input type="text" class="form-control" name="name" id="address_name" value="{{$address['type']}}" placeholder="Home Beirut">
+                </div>
+            </div>
+            <div class="map-position">
+                <input id="pac-input" name="map-input" class="controls" type="text" placeholder="Search Box">
+                <input type="hidden" name="lat" id="lat">
+                <input type="hidden" name="lng" id="lng">
+                <div id="map"></div>
+            </div><!-- /.map-property -->
+            <div class="row" style="margin-top:20px">
+                <div class="form-group col-sm-6">
+                    <label for="street">Street</label>
+                    <input type="text" class="form-control" name="street" id="street" value="{{$address['street']}}" placeholder="">
+                </div><!-- /.form-group -->
+                <div class="form-group col-sm-3">
+                    <label for="house"> House Number/Name </label>
+                    <input type="text" class="form-control" name="house" id="house" value="{{$address['house']}}" placeholder="">
+                </div><!-- /.form-group -->
+                <div class="form-group col-sm-3">
+                    <label for="zip"> ZIP </label>
+                    <input type="text" class="form-control" name="zip" id="zip" value="{{$address['zip']}}" placeholder="">
+                </div><!-- /.form-group -->
+            </div><!-- /.row -->
+            <div class="row">
+                <div class="col-sm-6">
+                    <div class="form-group">
+                        <select name="property">
+                            <option selected="@if($address['property_type'] =='Apartment') selected @endif">Apartment</option>
+                            <option selected="@if($address['property_type'] =='Condo') selected @endif">Condo</option>
+                            <option selected="@if($address['property_type'] =='House') selected @endif">House</option>
+                            <option selected="@if($address['property_type'] =='Villa') selected @endif">Villa</option>
+                        </select>
+                    </div><!-- /.form-group -->
+                </div>
+                <div class="col-sm-6">
+                    <div class="form-group">
+                        <select name="contract">
+                            <option selected="@if($address['contract_type'] =='Rent') selected @endif">Rent</option>
+                            <option selected="@if($address['contract_type'] =='Sale') selected @endif">Sale</option>
+                        </select>
+                    </div><!-- /.form-group -->
+                </div><!-- /.col-* -->
+            </div><!-- /.row -->
+        </form>
+    </div><!-- /.background -white -->
 
-                <h4 class="page-title">
-                    Addresses
-                </h4>
-                <div class="row">
-                    {{ $address-> }}
-                </div><!-- /.row -->
-
-    @endforeach
-    @endif
-        <div class="row">
-        <div class="line-item__add">
-            <button type="button" onclick="" class="js-line-item-trigger marketing-button--skin-reset button--icon"
-                    id="AddLineItem">
-                <svg class="icon icon--fill-primary" aria-hidden="true" focusable="false">
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 40 40">
-                        <path
-                            d="M20 0C9 0 0 9 0 20s9 20 20 20 20-9 20-20S31 0 20 0zm0 38c-9.9 0-18-8.1-18-18S10.1 2 20 2s18 8.1 18 18-8.1 18-18 18z"></path>
-                        <path
-                            d="M28 20c0 .5-.5 1-1 1h-6v6.3c0 .6-.5 1-1 1s-1-.4-1-1V21h-6.3c-.6 0-1-.5-1-1s.4-1 1-1H19v-6c0-.5.5-1 1-1s1 .5 1 1v6h6c.5 0 1 .5 1 1z"></path>
-                    </svg>
-                </svg>
-                <span class="body-link">
-    Add address
-  </span>
-            </button>
-        </div>
-        </div>
-        </div><!-- /.background -white -->
 
     {{--    <div class="background-white p20 mb30">--}}
     {{--        <h4 class="page-title">--}}

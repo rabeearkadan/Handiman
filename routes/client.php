@@ -34,7 +34,9 @@ Route::put('/reviews/edit/{invoice_id}','ReviewsController@update')->name('clien
 Route::get('/profile','ProfileController@myProfile')->name('client.profile');
 Route::get('/profile/password','ProfileController@editPassword')->name('client.password');
 Route::get('/profile/payment','ProfileController@editPayment')->name('client.payment');
-Route::put('/profile','ProfileController@editProfile')->name('client.edit.profile');
+Route::put('/profile','ProfileController@editProfile')->name('client.profile.update');
 
-Route::post('/profile/add/address','ProfileController@addAddress')->name('client.add.address');
-Route::put('/profile/edit/address','ProfileController@editAddress')->name('client.edit.address');
+Route::get('/profile/address/create','ProfileController@createAddress')->name('client.address.create');
+Route::post('/profile/address/create','ProfileController@storeAddress')->name('client.address.store');
+Route::get('/profile/addresses/{id}/edit','ProfileController@editAddress')->name('client.address.edit');
+Route::put('/profile/addresses/{id}/edit','ProfileController@updateAddress')->name('client.address.update');

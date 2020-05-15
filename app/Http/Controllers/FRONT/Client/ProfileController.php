@@ -24,10 +24,19 @@ class ProfileController extends Controller
     $user = Auth::user();
     return view('front.client.profile.payment', compact('user'));
     }
-    public function addAddress(Request $request){
+
+    // functions for Client Addresses
+    public function createAddress(Request $request){
+        $user = Auth::user();
+
+        return view('front.client.profile.create-address', compact('user'));
+    }
+
+    public function storeAddress(Request $request){
         $user = Auth::user();
         $data = [
             "_id" => Str::random(24),
+            "name" => $request->name,
             "type"=> $request->type,
             "location" => [$request->lat,$request->lng] ,
             "street" => $request->street ,
@@ -40,15 +49,27 @@ class ProfileController extends Controller
         $user->save();
         return view('front.client.profile.edit-profile', compact('user'));
     }
+
     public function editAddress(){
+        $user = Auth::user();
+        // $user->push('locations', '');
+        return view('front.client.profile.edit-address', compact('user'));
+    }
+
+    public function updateAddress(){
         $user = Auth::user();
        // $user->push('locations', '');
         return view('front.client.profile.edit-profile', compact('user'));
     }
+
+
+
+    //end of functions for Client addresses
+
+
     public function editProfile(){
 
     }
-
 
     public function employeeProfile($id, $employee_id){
         $service = Service::find($id);
