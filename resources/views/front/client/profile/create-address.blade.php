@@ -242,6 +242,5 @@
     <script src="/public/js/client/dropdown.js" type="text/javascript"></script>
     <script src="/public/js/client/collapse.js" type="text/javascript"></script>
     <script src="/public/js/client/jquery.colorbox-min.js" type="text/javascript"></script>
-    <script src="/public/js/client/bootstrap-select.min.js" type="text/javascript"></script>
     <script src="/public/js/client/superlist.js" type="text/javascript"></script>
 @endpush
