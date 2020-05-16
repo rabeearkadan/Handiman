@@ -223,7 +223,7 @@ class RequestController extends Controller
     function getHandymanJobs($id)
     {
         $handyman = User::query()->find($id);
-        $outgoing = $handyman->employeeRequests()->where('status', 'approved')->where('isdone', false)->get();
+        $outgoing = $handyman->employeeRequests()->where('status', 'approved')->get();
 
         if ($outgoing == null)
             return response()->json(['status' => 'success', 'message' => 'You have no ongoing requests']);
