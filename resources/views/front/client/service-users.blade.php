@@ -101,7 +101,7 @@
                                         <dt> Category</dt>
                                         <dd>Location</dd>
                                         <dt>Location</dt>
-                                        <dd> {{$employee->biography}}  </dd>
+                                        <dd> Rating  </dd>
                                         <dt>
                                             <div class="card-row-rating">
                                                 @for($x=$employee->rating;$x>0;$x--)
