@@ -80,14 +80,13 @@
                     @foreach($service->users as $employee)
                         <div class="card-row">
                             <div class="card-row-inner">
-                                <a href="{{route('client.user-profile',[$service->id,$employee->id])}}">
-                                    <div class="card-row-image"
-                                         data-background-image="{{config('image.path').$employee->image}}">
-                                        <div class="card-row-label">
-                                            {{$service->name}} </div><!-- /.card-row-label -->
+                                <div class="card-row-image"
+                                     data-background-image="{{config('image.path').$employee->image}}">
+                                    <a href="{{route('client.user-profile',[$service->id,$employee->id])}}">
+                                        <div class="card-row-label">{{$service->name}} </div><!-- /.card-row-label -->
                                         <div class="card-row-price"> ${{$employee->price}} / hr</div><!-- -->
-                                    </div><!-- /.card-row-image -->
-                                </a>
+                                    </a>
+                                </div><!-- /.card-row-image -->
                                 <div class="card-row-body">
                                     <h2 class="card-row-title">
                                         <a href="{{route('client.user-profile',[$service->id,$employee->id])}}">{{$employee->name}} </a>
