@@ -92,7 +92,7 @@
             @method('put')
             <h4 class="page-title">
                 Address
-                <button type="submit" class="btn btn-primary btn-xs pull-right">Save</button>
+                <button type="submit" class="btn btn-primary btn-xs pull-right">Add</button>
             </h4>
             <div class="row">
                 <div class="form-group col-sm-6">
