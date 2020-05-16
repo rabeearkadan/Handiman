@@ -96,19 +96,21 @@
                                 <div class="card-row-properties">
                                     <dl>
                                         <dd>Price</dd>
-                                        <dt>$100 / hr</dt>
+                                        <dt> {{$employee->price}}  / hr</dt>
                                         <dd>Category</dd>
                                         <dt> Category</dt>
                                         <dd>Location</dd>
                                         <dt>Location</dt>
-                                        <dd>Rating</dd>
+                                        <dd> {{$employee->biography}}  </dd>
                                         <dt>
                                             <div class="card-row-rating">
-                                                <i class="fa fa-star"></i>
-                                                <i class="fa fa-star"></i>
-                                                <i class="fa fa-star"></i>
-                                                <i class="fa fa-star"></i>
-                                                <i class="fa fa-star"></i>
+                                                @for($x=$employee->rating;$x>0;$x--)
+                                                    @if($x<1)
+                                                        <i class="fa fa-star-half"></i>
+                                                    @else
+                                                    <i class="fa fa-star"></i>
+                                                    @endif
+                                                @endfor
                                             </div><!-- /.card-row-rating -->
                                         </dt>
                                     </dl>
