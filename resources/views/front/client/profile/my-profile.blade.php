@@ -21,7 +21,6 @@
                                 <div class="widget">
                                     <div class="user-photo">
                                         <a href="#">
-                                            <img src="" alt="User Photo">
                                             <span class="user-photo-action">Click here to re-upload</span>
                                         </a>
                                     </div><!-- /.user-photo -->

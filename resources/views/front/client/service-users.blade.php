@@ -80,10 +80,12 @@
                     @foreach($service->users as $employee)
                         <div class="card-row">
                             <div class="card-row-inner">
-                                <div class="card-row-image" data-background-image="{{config('image.path').$employee->image}}">
-                                    <div class="card-row-label">
-                                        <a href=""> {{$service->name}} </a></div><!-- /.card-row-label -->
-                                    <div class="card-row-price"> {{$employee->price}} / hr</div><!-- -->
+                                <div class="card-row-image"
+                                     data-background-image="{{config('image.path').$employee->image}}">
+                                    <a href="{{route('client.user-profile',[$service->id,$employee->id])}}">
+                                        <div class="card-row-label">{{$service->name}} </div><!-- /.card-row-label -->
+                                        <div class="card-row-price"> ${{$employee->price}} / hr</div><!-- -->
+                                    </a>
                                 </div><!-- /.card-row-image -->
                                 <div class="card-row-body">
                                     <h2 class="card-row-title">
@@ -96,19 +98,24 @@
                                 <div class="card-row-properties">
                                     <dl>
                                         <dd>Price</dd>
-                                        <dt>$100 / hr</dt>
+                                        <dt> ${{$employee->price}} / hr</dt>
                                         <dd>Category</dd>
                                         <dt> Category</dt>
                                         <dd>Location</dd>
                                         <dt>Location</dt>
-                                        <dd>Rating</dd>
+                                        <dd> Rating</dd>
                                         <dt>
                                             <div class="card-row-rating">
-                                                <i class="fa fa-star"></i>
-                                                <i class="fa fa-star"></i>
-                                                <i class="fa fa-star"></i>
-                                                <i class="fa fa-star"></i>
-                                                <i class="fa fa-star"></i>
+                                                @for($x=$employee->rating;$x>0;$x--)
+                                                    @if($x<1)
+                                                        <i class="fa fa-star-half-o"></i>
+                                                    @else
+                                                        <i class="fa fa-star"></i>
+                                                    @endif
+                                                @endfor
+                                                @for($x=5-ceil($employee->rating);$x>0;$x--)
+                                                    <i class="fa fa-star-o"></i>
+                                                @endfor
                                             </div><!-- /.card-row-rating -->
                                         </dt>
                                     </dl>
