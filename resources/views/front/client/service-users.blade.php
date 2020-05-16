@@ -111,7 +111,7 @@
                                                     <i class="fa fa-star"></i>
                                                     @endif
                                                 @endfor
-                                                    @for($x=5-$employee->rating;$x>0;$x--)
+                                                    @for($x=5-ceil($employee->rating);$x>0;$x--)
                                                             <i class="fa fa-star-o"></i>
                                                     @endfor
                                             </div><!-- /.card-row-rating -->
