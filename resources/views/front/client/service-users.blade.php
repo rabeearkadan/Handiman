@@ -106,7 +106,7 @@
                                             <div class="card-row-rating">
                                                 @for($x=$employee->rating;$x>0;$x--)
                                                     @if($x<1)
-                                                        <i class="fa fa-star-half"></i>
+                                                        <i class="fa fa-star-half-o"></i>
                                                     @else
                                                     <i class="fa fa-star"></i>
                                                     @endif
