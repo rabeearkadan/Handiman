@@ -125,7 +125,10 @@
                     Addresses
                 </h4>
                 <div class="row">
-                    {{ $address['name'] }}
+                    <i class="fa fa-map-marker" aria-hidden="true"></i>
+                    <h3>{{ $address['name'] }}</h3>
+                    <a href="{{route('client.address.edit',$address['_id'])}}"> <i
+                            class="fa fa-edit"></i> </a>
                 </div><!-- /.row -->
 
     @endforeach
