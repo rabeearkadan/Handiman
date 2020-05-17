@@ -77,7 +77,7 @@
                 </form>
 
                 <div class="cards-row" style="margin-top:75px">
-
+                    <div class="list">
                     @foreach($service->users as $employee)
                         <div class="card-row">
                             <div class="card-row-inner">
@@ -99,7 +99,7 @@
                                 <div class="card-row-properties">
                                     <dl>
                                         <dd>Price</dd>
-                                        <dt> ${{$employee->price}} / hr</dt>
+                                        <dt class="price"> ${{$employee->price}} / hr</dt>
                                         <dd>Category</dd>
                                         <dt> Category</dt>
                                         <dd>Location</dd>
@@ -124,7 +124,7 @@
                             </div><!-- /.card-row-inner -->
                         </div><!-- /.card-row -->
                     @endforeach
-
+                    </div><!-- /.list -->
                 </div><!-- /.cards-row -->
             </div><!-- /.fullscreen-wrapper -->
         </div><!-- /.main -->
@@ -137,7 +137,7 @@
     <script src="/public/js/client/superlist.js" type="text/javascript"></script>
     <script src="/public/js/client/list.js" type="text/javascript"></script>
     <script>
-      
+
         var options = {
             valueNames: [ 'name', 'price' ],
             fuzzySearch: {
