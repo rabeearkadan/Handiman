@@ -50,13 +50,13 @@ class ProfileController extends Controller
         return view('front.client.profile.edit-profile', compact('user'));
     }
 
-    public function editAddress(){
+    public function editAddress($id){
         $user = Auth::user();
         // $user->push('locations', '');
         return view('front.client.profile.edit-address', compact('user'));
     }
 
-    public function updateAddress(){
+    public function updateAddress($id){
         $user = Auth::user();
        // $user->push('locations', '');
         return view('front.client.profile.edit-profile', compact('user'));
