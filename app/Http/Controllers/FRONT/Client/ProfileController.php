@@ -54,7 +54,7 @@ class ProfileController extends Controller
         $user = Auth::user();
         $address = null;
         foreach($user->client_addresses as $client_address) {
-            if ($address['_id'] == $id) {
+            if ($client_address['_id'] == $id) {
                 $address = $client_address;
              break;
     }
