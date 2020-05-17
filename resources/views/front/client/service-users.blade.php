@@ -13,12 +13,12 @@
 @section('content')
     <div class="page-wrapper">
         <div class="main">
-            <div class="fullscreen-wrapper" style="padding:12px">
+            <div id="employees-list" class="fullscreen-wrapper" style="padding:12px">
                 <form class="filter" method="post" action="?">
                     <div class="row">
                         <div class="col-sm-12 col-md-4">
                             <div class="form-group">
-                                <input type="text" placeholder="Keyword" class="form-control">
+                                <input type="text" placeholder="Keyword" class="form-control search">
                             </div><!-- /.form-group -->
                         </div><!-- /.col-* -->
 
@@ -77,6 +77,7 @@
                 </form>
 
                 <div class="cards-row" style="margin-top:75px">
+
                     @foreach($service->users as $employee)
                         <div class="card-row">
                             <div class="card-row-inner">
@@ -123,6 +124,7 @@
                             </div><!-- /.card-row-inner -->
                         </div><!-- /.card-row -->
                     @endforeach
+
                 </div><!-- /.cards-row -->
             </div><!-- /.fullscreen-wrapper -->
         </div><!-- /.main -->
@@ -133,6 +135,24 @@
     <script src="/public/js/client/jquery.colorbox-min.js" type="text/javascript"></script>
     <script src="/public/js/client/bootstrap-select.min.js" type="text/javascript"></script>
     <script src="/public/js/client/superlist.js" type="text/javascript"></script>
+    <script src="/public/js/client/list.js" type="text/javascript"></script>
+    <script>
+     
+        var options = {
+            valueNames: [ 'name', 'price' ],
+            fuzzySearch: {
+                searchClass: "fuzzy-search",
+                location: 0,
+                distance: 100,
+                threshold: 0.4,
+                multiSearch: true
+            }
+        };
+        var employeesList = new List('employees-list', options);
+        function defaultSort(element){
+            employeeslist.sort(element.innerHTML, { order: "asc" })
+        }
+    </script>
 @endpush
 
 
