@@ -90,10 +90,10 @@
                                 </div><!-- /.card-row-image -->
                                 <div class="card-row-body">
                                     <h2 class="card-row-title">
-                                        <a href="{{route('client.user-profile',[$service->id,$employee->id])}}">{{$employee->name}} </a>
+                                        <a href="{{route('client.user-profile',[$service->id,$employee->id])}}" class="name">{{$employee->name}} </a>
                                     </h2>
                                     <div class="card-row-content">
-                                        <p> {{$employee->biography}} </p>
+                                        <p class="biography"> {{$employee->biography}} </p>
                                     </div><!-- /.card-row-content -->
                                 </div><!-- /.card-row-body -->
                                 <div class="card-row-properties">
