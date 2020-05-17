@@ -51,10 +51,15 @@ class ProfileController extends Controller
     }
 
     public function editAddress($id){
-        dd('here');
         $user = Auth::user();
-        // $user->push('locations', '');
-        return view('front.client.profile.edit-address', compact('user'));
+        $address = null;
+        foreach($user->client_addresses as $client_address) {
+            if ($address['_id'] == $id) {
+                $address = $client_address;
+             break;
+    }
+}
+        return view('front.client.profile.edit-address', compact(['user','address']));
     }
 
     public function updateAddress($id){
