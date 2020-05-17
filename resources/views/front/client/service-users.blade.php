@@ -137,7 +137,7 @@
     <script src="/public/js/client/superlist.js" type="text/javascript"></script>
     <script src="/public/js/client/list.js" type="text/javascript"></script>
     <script>
-     
+      
         var options = {
             valueNames: [ 'name', 'price' ],
             fuzzySearch: {
