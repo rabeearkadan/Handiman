@@ -141,11 +141,7 @@
         var options = {
             valueNames: [ 'name', 'price' ],
             fuzzySearch: {
-                searchClass: "fuzzy-search",
-                location: 0,
-                distance: 100,
-                threshold: 0.4,
-                multiSearch: true
+                searchClass: "fuzzy-search"
             }
         };
         var employeesList = new List('employees-list', options);
