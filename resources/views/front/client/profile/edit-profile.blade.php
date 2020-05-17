@@ -125,7 +125,7 @@
                     Addresses
                 </h4>
                 <div class="row">
-                    {{ $address->name }}
+                    {{ $address['name'] }}
                 </div><!-- /.row -->
 
     @endforeach
