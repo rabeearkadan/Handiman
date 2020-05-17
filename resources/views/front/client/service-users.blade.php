@@ -63,8 +63,8 @@
                 <form method="get" action="?" class="filter-sort">
                     <div class="form-group">
                         <select title="Sort by">
-                            <option name="price">Price</option>
-                            <option name="rating">Rating</option>
+                            <option name="price">price</option>
+                            <option name="rating">rating</option>
                         </select>
                     </div><!-- /.form-group -->
 
@@ -146,7 +146,7 @@
         };
         var employeesList = new List('employees-list', options);
         function defaultSort(element){
-            employeeslist.sort(element.innerHTML, { order: "asc" })
+            employeesList.sort(element.innerHTML, { order: "asc" })
         }
     </script>
 @endpush
