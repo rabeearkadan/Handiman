@@ -127,7 +127,7 @@
                 <div class="row">
                     <h3> <i class="fa fa-map-marker" aria-hidden="true"></i>
                     {{ $address['name'] }}
-                    <a href="{{route('client.address.edit',$address['_id'])}}"> <i
+                    <a href="{{route('client.address.edit',[id =>$address['_id']] )}}"> <i
                             class="fa fa-edit"></i> </a>
                         <a href="#" onclick="document.getElementById('{{$address['_id']}}').submit();">
                             <i class="fa fa-trash"></i> </a>
