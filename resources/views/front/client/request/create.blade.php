@@ -174,11 +174,13 @@
                                             <label for="subject"> <i class="fa fa-home" aria-hidden="true"></i> Address</label>
                                             <div class="select-box">
                                                 <div class="select-box__current" tabindex="1">
-                                                    <div class="select-box__value">
 
+                                                    <div class="select-box__value">
+                                                        @foreach($user->client_addresses as $address)
                                                         <input class="select-box__input" type="radio" id="0" value="1"
                                                                name="address" checked="checked"/>
-                                                        <p class="select-box__input-text">Address 1</p>
+                                                        <p class="select-box__input-text">{{$address['name']}}</p>
+                                                            @endforeach
                                                     </div>
 
                                                     <img class="select-box__icon"
