@@ -47,7 +47,7 @@ class ProfileController extends Controller
         ];
         $user->push('client_addresses',$data);
         $user->save();
-        sleep(5);
+        $user = Auth::user();
         return view('front.client.profile.edit-profile', compact('user'));
     }
 
