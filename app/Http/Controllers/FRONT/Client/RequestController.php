@@ -48,7 +48,6 @@ class RequestController extends Controller
         $service = Service::find($request->input('service_id'));
         $startDate = new DateTime('now') ;
        //date("d/m/Y");
-        echo $startDate->format('m/d/Y');
         $Days = array();
         $date = $startDate;
         $bool= false;
