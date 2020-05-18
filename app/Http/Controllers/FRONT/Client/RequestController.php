@@ -52,6 +52,7 @@ class RequestController extends Controller
         $Days = array();
         $date = $startDate;
         $bool= false;
+        $availableDaysString="";
         for($x=0;$x<24;$x++) {
      //       $Days[$date->format('d/m/Y')] = array_fill(0, 24, true);
             $day = date('w', strtotime($date->format('Y-m-d')));
@@ -66,10 +67,13 @@ class RequestController extends Controller
             if($bool==false){
                 unset($Days[$date->format('d/m/Y')]);
             }
+            else{
+                $availableDaysString = $availableDaysString.','.$date->format('d/m/Y');
+            }
             $bool= false;
             $date->modify('+1 day');
         }
-        dd($Days);
+        dd($Days,$availableDaysString);
         return view('front.client.request.create',compact(['user','employee','service']));
     }
 
