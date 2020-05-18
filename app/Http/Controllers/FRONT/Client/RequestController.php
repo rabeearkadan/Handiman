@@ -48,7 +48,8 @@ class RequestController extends Controller
         $startDate=date("d/m/Y");
         $Days = array();
         for($x=0;$x<24;$x++) {
-            $Days[$startDate->modify('+'.$x.'day')] = array_fill(0, 24, true);
+
+            $Days[ date('d/m/Y',strtotime($startDate . "+".$x."days"))] = array_fill(0, 24, true);
         }
         dd($Days); 
         return view('front.client.request.create',compact(['user','employee','service']));
