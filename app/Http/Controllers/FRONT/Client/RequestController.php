@@ -8,6 +8,7 @@ use App\Models\RequestService;
 use App\Models\Service;
 use App\User;
 use Carbon\Carbon;
+use DateTime;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
@@ -44,13 +45,14 @@ class RequestController extends Controller
         $user=Auth::user();
         $employee = User::find($request->input('employee_id'));
         $service = Service::find($request->input('service_id'));
-
-        $startDate=date("d/m/Y");
-        echo $startDate;
+        $startDate = new DateTime('now') ;
+       //date("d/m/Y");
+        echo $startDate->format('d/m/Y');
         $Days = array();
+        $date = $startDate;
         for($x=0;$x<24;$x++) {
-
-            $Days[ date('d/m/Y',strtotime($startDate . "+".$x." days"))] = array_fill(0, 24, true);
+            $Days[$date->format('d/m/Y')] = array_fill(0, 24, true);
+            $date->modify('+1 day');
         }
         dd($Days);
         return view('front.client.request.create',compact(['user','employee','service']));
