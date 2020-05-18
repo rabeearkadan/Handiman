@@ -44,6 +44,13 @@ class RequestController extends Controller
         $user=Auth::user();
         $employee = User::find($request->input('employee_id'));
         $service = Service::find($request->input('service_id'));
+
+        $startDate=date("d/m/Y");
+        $Days = array();
+        for($x=0;$x<24;$x++) {
+            $Days[$startDate->modify('+'.$x.'day')] = array_fill(0, 24, true);
+        }
+        dd($Days);
         return view('front.client.request.create',compact(['user','employee','service']));
     }
 

@@ -232,8 +232,9 @@
         <script>
             $(document).ready(function () {
                 $('#date-input').dateDropper({
+                    alert(@php @endphp);
                     enabledDays: '03/31/2020,04/10/2020',
-                    maxYear: 2021,
+                    maxYear: 2020,
                     minYear: 2020
                 });
             });
