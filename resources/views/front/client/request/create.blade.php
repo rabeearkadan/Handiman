@@ -275,6 +275,20 @@
                      }
                  });
             });
+            fromSelect.change(function(){
+                toSelect.find('option').remove().end();
+              var from= fromSelect.val();
+                $.each( timepicker[$("#date-input").val()], function( key, value ) {
+                    // alert( key + ": " + value["from"] );
+                    if(from.isBetween(value["from"],value["to"])){
+                        for(var to=from+1;to<=value["to"];to++) {
+                            toSelect.append(
+                                $('<option></option>').val(to).html(to)
+                            );
+                        }
+                    }
+                });
+            });
 
         </script>
 @endpush
