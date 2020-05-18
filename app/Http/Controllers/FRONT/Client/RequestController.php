@@ -52,8 +52,7 @@ class RequestController extends Controller
         $date = $startDate;
         for($x=0;$x<24;$x++) {
      //       $Days[$date->format('d/m/Y')] = array_fill(0, 24, true);
-            $timestamp = strtotime($startDate->format('d/m/Y'));
-            $day = date('w', $date);
+            $day = date('w', strtotime($date));
             $Days[$date->format('d/m/Y')][$x]=$employee->timeline[$day][$x];
             $date->modify('+1 day');
         }
