@@ -261,12 +261,18 @@
                 });
 
             });
+            var fromSelect = $('#from');
+            var toSelect = $('#to');
             $("#date-input").change(function(){
-
-
+               fromSelect.find('option').remove().end();
+               toSelect.find('option').remove().end();
                  $.each( timepicker[$("#date-input").val()], function( key, value ) {
                      alert( key + ": " + value["from"] );
+                     fromSelect.append(
+                         $('<option></option>').val(value["from"]).html( value["from"])
+                     );
                  });
             });
+
         </script>
 @endpush
