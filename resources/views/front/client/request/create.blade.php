@@ -262,8 +262,11 @@
 
             });
             $("#date-input").change(function(){
-                alert($("#date-input").val());
-
+                alert(
+                $('#my-input').dateDropper('getDate',function(date){
+                   return date.formatted;
+                })
+                );
                 // $.each( timepicker, function( key, value ) {
                 //     alert( key + ": " + value );
                 // });
