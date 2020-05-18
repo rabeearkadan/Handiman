@@ -219,6 +219,7 @@
                                 <div class="row">
                                     <div class="col-sm-6">
                                         <div class="form-group">
+                                            <label for="from"> Choose starting time </label>
                                             <select name="from" id="from">
 
                                             </select>
@@ -226,6 +227,7 @@
                                     </div>
                                     <div class="col-sm-6">
                                         <div class="form-group">
+                                            <label for="to"> Choose ending time </label>
                                             <select name="to" id="to">
 
                                             </select>
