@@ -173,13 +173,12 @@
                                         <div class="form-group">
                                             <label for="subject"> <i class="fa fa-home" aria-hidden="true"></i> Address</label>
                                             <div class="select-box">
+                                                @foreach($user->client_addresses as $address)
                                                 <div class="select-box__current" tabindex="1">
                                                     <div class="select-box__value">
-                                                        @foreach($user->client_addresses as $address)
                                                         <input class="select-box__input" type="radio" id="{{$address['_id']}}" value="{{$address['_id']}}"
                                                                name="address" />
                                                         <p class="select-box__input-text">{{$address['name']}}</p>
-                                                            @endforeach
 
                                                     </div>
 
@@ -187,11 +186,15 @@
                                                          src="/public/images/client/drop-down-arrow.svg"
                                                          alt="Arrow Icon" aria-hidden="true"/>
                                                 </div>
+                                                @endforeach
                                                 <ul class="select-box__list">
+                                                    @foreach($user->client_addresses as $address)
                                                     <li>
                                                         <label class="select-box__option" for="0" aria-hidden="true">
-                                                            Address1</label>
+                                                            {{$address['name']}}
+                                                        </label>
                                                     </li>
+                                                    @endforeach
                                                 </ul>
                                             </div>
 
