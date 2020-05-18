@@ -12,6 +12,7 @@ use DateTime;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
+use function MongoDB\Driver\Monitoring\removeSubscriber;
 
 class RequestController extends Controller
 {
@@ -54,16 +55,18 @@ class RequestController extends Controller
         for($x=0;$x<24;$x++) {
      //       $Days[$date->format('d/m/Y')] = array_fill(0, 24, true);
             $day = date('w', strtotime($date->format('Y-m-d')));
-            echo $day." ";
+         //   echo $day." ";
             for ($hour=0;$hour<24;$hour++) {
                 $Days[$date->format('d/m/Y')][$hour] = $employee->timeline[$day][$hour];
-               // if()
+               if( $Days[$date->format('d/m/Y')][$hour]==true){
+                   $bool=true;
+               }
 
             }
-//            if($bool==false){
-//
-//            }
-            $bool= true;
+            if($bool==false){
+                unset($Days[$date->format('d/m/Y')]);
+            }
+            $bool= false;
             $date->modify('+1 day');
         }
         dd($Days);
