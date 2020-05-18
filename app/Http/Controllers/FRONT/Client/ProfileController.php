@@ -47,6 +47,7 @@ class ProfileController extends Controller
         ];
         $user->push('client_addresses',$data);
         $user->save();
+        dd($user);
         return view('front.client.profile.edit-profile', compact('user'));
     }
 
