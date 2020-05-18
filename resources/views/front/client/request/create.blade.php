@@ -177,7 +177,7 @@
 
                                                     <div class="select-box__value">
                                                         @foreach($user->client_addresses as $address)
-                                                        <input class="select-box__input" type="radio" id="0" value="1"
+                                                        <input class="select-box__input" type="radio" id="{{$address['_id']}}" value="{{$address['_id']}}"
                                                                name="address" checked="checked"/>
                                                         <p class="select-box__input-text">{{$address['name']}}</p>
                                                             @endforeach
@@ -190,7 +190,7 @@
                                                 <ul class="select-box__list">
                                                     @foreach($user->client_addresses as $address)
                                                     <li>
-                                                        <label class="select-box__option" for="0" aria-hidden="true">
+                                                        <label class="select-box__option" for="{{$address['_id']}}" aria-hidden="true">
                                                         {{$address['name']}}
                                                         </label>
                                                     </li>
