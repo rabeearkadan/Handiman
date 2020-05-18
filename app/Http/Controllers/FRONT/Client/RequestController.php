@@ -53,8 +53,8 @@ class RequestController extends Controller
         $bool= false;
         for($x=0;$x<24;$x++) {
      //       $Days[$date->format('d/m/Y')] = array_fill(0, 24, true);
-            $day = date('w', strtotime($date->format('d/m/Y')));
-            echo $day;
+            $day = date('w', strtotime($date->format('Y-m-d')));
+            echo $day." ";
             for ($hour=0;$hour<24;$hour++) {
                 $Days[$date->format('d/m/Y')][$hour] = $employee->timeline[$day][$hour];
                // if()
