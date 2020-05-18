@@ -215,6 +215,24 @@
                                         </div><!--/.form-group-->
                                     </div><!--/.col-*-->
                                 </div><!--/.row-->
+                                <div class="row">
+                                    <div class="col-sm-6">
+                                        <div class="form-group">
+                                            <select name="from" id="from">
+
+                                            </select>
+                                        </div><!-- /.form-group -->
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <div class="form-group">
+                                            <select name="to" id="to">
+
+                                            </select>
+                                        </div><!-- /.form-group -->
+                                    </div><!-- /.col-* -->
+                                </div><!-- /.row -->
+
+
                                 <button type="submit" class="btn btn-primary pull-right"> Request</button>
                             </div><!-- /.wrapper -->
                         </form><!-- /.form -->
@@ -237,6 +255,8 @@
                     maxYear: 2020,
                     minYear: 2020
                 });
+            });
+            $("#date-input").change(function(){
             });
         </script>
 @endpush
