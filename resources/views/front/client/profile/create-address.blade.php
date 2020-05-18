@@ -89,7 +89,6 @@
     <div class="background-white p20 mb30">
         <form method="post" action="{{route('client.address.store')}}">
             @csrf
-            @method('put')
             <h4 class="page-title">
                 Address
                 <button type="submit" class="btn btn-primary btn-xs pull-right">Add</button>
