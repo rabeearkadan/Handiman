@@ -175,9 +175,12 @@
                                             <div class="select-box">
                                                 <div class="select-box__current" tabindex="1">
                                                     <div class="select-box__value">
-                                                        <input class="select-box__input" type="radio" id="0" value="1"
-                                                               name="address" checked="checked"/>
-                                                        <p class="select-box__input-text">Address 1</p>
+                                                        @foreach($user->client_addresses as $address)
+                                                        <input class="select-box__input" type="radio" id="{{$address['_id']}}" value="{{$address['_id']}}"
+                                                               name="address" />
+                                                        <p class="select-box__input-text">{{$address['name']}}</p>
+                                                            @endforeach
+
                                                     </div>
 
                                                     <img class="select-box__icon"

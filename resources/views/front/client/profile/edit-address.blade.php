@@ -81,10 +81,8 @@
 @endpush
 @section('profile-content')
     <div class="page-title">
-        <h1>Edit Profile</h1>
+        <h1>Edit Address</h1>
     </div><!-- /.page-title -->
-
-
 
             <div class="background-white p20 mb30">
                 <form method="post" action="{{route('client.address.update',$address['_id'])}}">
@@ -231,7 +229,6 @@
                     $('#lat').val(place.geometry.location.lat())
                     $('#lng').val(place.geometry.location.lng())
                 });
-
                 map.fitBounds(bounds);
             });
         }
