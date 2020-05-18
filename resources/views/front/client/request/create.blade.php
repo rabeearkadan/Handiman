@@ -283,6 +283,7 @@
                     // alert( key + ": " + value["from"] );
                     if(from >= value["from"] && from <=value["to"]){
                         alert("in if");
+                        alert(value["to"]);
                         for(var to=from+1;to<=value["to"];to++) {
                             alert(to);
                             toSelect.append(
