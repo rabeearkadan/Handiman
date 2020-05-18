@@ -232,7 +232,7 @@
         <script>
             $(document).ready(function () {
                 $('#date-input').dateDropper({
-                    enabledDays: '{{$availableDaysString}}',
+                    enabledDays: '19/05/2020,20/05/2020',
                     maxYear: 2021,
                     minYear: 2020
                 });
