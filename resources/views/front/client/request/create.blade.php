@@ -262,11 +262,11 @@
 
             });
             $("#date-input").change(function(){
-                alert($("#date-input").val());
 
-                // $.each( timepicker, function( key, value ) {
-                //     alert( key + ": " + value );
-                // });
+
+                 $.each( timepicker[$("#date-input").val()], function( key, value ) {
+                     alert( key + ": " + value["from"] );
+                 });
             });
         </script>
 @endpush
