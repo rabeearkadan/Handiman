@@ -251,6 +251,7 @@
         <script src="/public/js/client/requests/file-uploader.js"></script>
         <script src="/public/js/client/requests/date-dropper.pro.min.js"></script>
         <script>
+            var timepicker = @json($timepicker);
             $(document).ready(function () {
                 $('#date-input').dateDropper({
                     format: 'd-m-Y',
@@ -258,6 +259,7 @@
                     maxYear: 2020,
                     minYear: 2020
                 });
+                alert(timepicker);
             });
             $("#date-input").change(function(){
             });
