@@ -46,12 +46,13 @@ class RequestController extends Controller
         $service = Service::find($request->input('service_id'));
 
         $startDate=date("d/m/Y");
+        echo $startDate;
         $Days = array();
         for($x=0;$x<24;$x++) {
 
             $Days[ date('d/m/Y',strtotime($startDate . "+".$x."days"))] = array_fill(0, 24, true);
         }
-        dd($Days); 
+        dd($Days);
         return view('front.client.request.create',compact(['user','employee','service']));
     }
 
