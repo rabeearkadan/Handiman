@@ -68,7 +68,12 @@ class RequestController extends Controller
                 unset($Days[$date->format('d/m/Y')]);
             }
             else{
-                $availableDaysString = $availableDaysString.','.$date->format('d/m/Y');
+                if($availableDaysString==""){
+                    $availableDaysString = $date->format('d/m/Y');
+                }
+                else {
+                    $availableDaysString = $availableDaysString . ',' . $date->format('d/m/Y');
+                }
             }
             $bool= false;
             $date->modify('+1 day');
