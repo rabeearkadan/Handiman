@@ -118,15 +118,15 @@
     </div>
 
     <div class="background-white p20 mb30">
+        <h4 class="page-title">
+            Addresses
+        </h4>
     @if($user->client_addresses !=  null)
     @foreach($user->client_addresses as $address)
 
-                <h4 class="page-title">
-                    Addresses
-                </h4>
                 <div class="row">
                     <h3> <i class="fa fa-map-marker" aria-hidden="true"></i>
-                    {{ $address['name'] }}
+                    {{ $address[1] }}
                     <a href="{{route('client.address.edit',$address['_id'])}}"> <i
                             class="fa fa-edit"></i> </a>
                         <a href="#" onclick="document.getElementById('{{$address['_id']}}').submit();">
