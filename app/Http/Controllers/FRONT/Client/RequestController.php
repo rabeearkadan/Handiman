@@ -53,7 +53,9 @@ class RequestController extends Controller
         for($x=0;$x<24;$x++) {
      //       $Days[$date->format('d/m/Y')] = array_fill(0, 24, true);
             $day = date('w', strtotime($date->format('d/m/Y')));
-            $Days[$date->format('d/m/Y')][$x]=$employee->timeline[$day][$x];
+            for ($hour=0;$hour<24;$hour++) {
+                $Days[$date->format('d/m/Y')][$hour] = $employee->timeline[$day][$hour];
+            }
             $date->modify('+1 day');
         }
         dd($Days);
