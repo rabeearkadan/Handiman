@@ -53,16 +53,30 @@ class RequestController extends Controller
         $date = $startDate;
         $bool= false;
         $availableDaysString="";
+        $timepicker=array();
         for($x=0;$x<24;$x++) {
      //       $Days[$date->format('d/m/Y')] = array_fill(0, 24, true);
             $day = date('w', strtotime($date->format('Y-m-d')));
          //   echo $day." ";
             for ($hour=0;$hour<24;$hour++) {
                 $Days[$date->format('d/m/Y')][$hour] = $employee->timeline[$day][$hour];
+
                if( $Days[$date->format('d/m/Y')][$hour]==true){
                    $bool=true;
                }
 
+            }
+            foreach ($employee->employeeRequests as $request){
+                if($request->isdone==false & $request->date->format('d/m/Y') == $date->format('d/m/Y') ){
+                    for($from=$request->from; $from<$request->to;$from++) {
+                        $Days[$date->format('d/m/Y')][$from]=false;
+                    }
+                }
+            }
+            for ($hour=0;$hour<24;$hour++) {
+                if ($Days[$date->format('d/m/Y')][$hour] == true) {
+                    $bool = true;
+                }
             }
             if($bool==false){
                 unset($Days[$date->format('d/m/Y')]);
@@ -74,11 +88,31 @@ class RequestController extends Controller
                 else {
                     $availableDaysString = $availableDaysString . ',' . $date->format('d/m/Y');
                 }
+                $timepicker[$date->format('d/m/Y')]=array();
+                $break=false;
+                $index=0;
+                $from=0;
+                for ($hour=0;$hour<24;$hour++) {
+                   if($Days[$date->format('d/m/Y')][$hour]==true) {
+                       if($break==true && !empty($timepicker[$date->format('d/m/Y')])){
+                           $index++;
+                       }
+                       $break=false;
+                       $timepicker[$date->format('d/m/Y')][$index] = array(
+                           'from'=>$from,
+                           'to'=>$hour+1
+                       );
+                        }
+                   else{
+                       $break=true;
+                       $from=$hour+1;
+                   }
+                    }
             }
             $bool= false;
             $date->modify('+1 day');
         }
-        dd($Days,$availableDaysString);
+        dd($Days,$availableDaysString,$timepicker);
         return view('front.client.request.create',compact(['user','employee','service']));
     }
 
