@@ -259,11 +259,14 @@
                     maxYear: 2020,
                     minYear: 2020
                 });
-                $.each( timepicker, function( key, value ) {
-                    alert( key + ": " + value );
-                });
+
             });
             $("#date-input").change(function(){
+                alert($("#date-input").val());
+
+                // $.each( timepicker, function( key, value ) {
+                //     alert( key + ": " + value );
+                // });
             });
         </script>
 @endpush
