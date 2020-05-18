@@ -83,10 +83,10 @@ class RequestController extends Controller
             }
             else{
                 if($availableDaysString==""){
-                    $availableDaysString = $date->format('d/m/Y');
+                    $availableDaysString = $date->format('m/d/Y');
                 }
                 else {
-                    $availableDaysString = $availableDaysString . ',' . $date->format('d/m/Y');
+                    $availableDaysString = $availableDaysString . ',' . $date->format('m/d/Y');
                 }
                 $timepicker[$date->format('d/m/Y')]=array();
                 $break=false;
