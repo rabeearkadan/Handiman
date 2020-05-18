@@ -280,7 +280,7 @@
               var from= fromSelect.val();
                 $.each( timepicker[$("#date-input").val()], function( key, value ) {
                     // alert( key + ": " + value["from"] );
-                    if(from.isBetween(value["from"],value["to"])){
+                    if(from >= value["from"] && from <=value["to"]){
                         for(var to=from+1;to<=value["to"];to++) {
                             toSelect.append(
                                 $('<option></option>').val(to).html(to)
