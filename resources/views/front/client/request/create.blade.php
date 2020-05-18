@@ -267,10 +267,12 @@
                fromSelect.find('option').remove().end();
                toSelect.find('option').remove().end();
                  $.each( timepicker[$("#date-input").val()], function( key, value ) {
-                     alert( key + ": " + value["from"] );
-                     fromSelect.append(
-                         $('<option></option>').val(value["from"]).html( value["from"])
-                     );
+                     // alert( key + ": " + value["from"] );
+                     for(var from=value["from"];from<value["to"];from++) {
+                         fromSelect.append(
+                             $('<option></option>').val(from).html(from)
+                         );
+                     }
                  });
             });
 
