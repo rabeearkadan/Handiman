@@ -48,7 +48,7 @@ class RequestController extends Controller
         $service = Service::find($request->input('service_id'));
         $startDate = new DateTime('now') ;
        //date("d/m/Y");
-        echo $startDate->format('d/m/Y');
+        echo $startDate->format('m/d/Y');
         $Days = array();
         $date = $startDate;
         $bool= false;
@@ -57,29 +57,28 @@ class RequestController extends Controller
         for($x=0;$x<24;$x++) {
      //       $Days[$date->format('d/m/Y')] = array_fill(0, 24, true);
             $day = date('w', strtotime($date->format('Y-m-d')));
-         //   echo $day." ";
             for ($hour=0;$hour<24;$hour++) {
-                $Days[$date->format('d/m/Y')][$hour] = $employee->timeline[$day][$hour];
+                $Days[$date->format('m/d/Y')][$hour] = $employee->timeline[$day][$hour];
 
-               if( $Days[$date->format('d/m/Y')][$hour]==true){
+               if( $Days[$date->format('m/d/Y')][$hour]==true){
                    $bool=true;
                }
 
             }
             foreach ($employee->employeeRequests as $request){
-                if($request->isdone==false & $request->date->format('d/m/Y') == $date->format('d/m/Y') ){
+                if($request->isdone==false & $request->date->format('m/d/Y') == $date->format('m/d/Y') ){
                     for($from=$request->from; $from<$request->to;$from++) {
-                        $Days[$date->format('d/m/Y')][$from]=false;
+                        $Days[$date->format('m/d/Y')][$from]=false;
                     }
                 }
             }
             for ($hour=0;$hour<24;$hour++) {
-                if ($Days[$date->format('d/m/Y')][$hour] == true) {
+                if ($Days[$date->format('m/d/Y')][$hour] == true) {
                     $bool = true;
                 }
             }
             if($bool==false){
-                unset($Days[$date->format('d/m/Y')]);
+                unset($Days[$date->format('m/d/Y')]);
             }
             else{
                 if($availableDaysString==""){
@@ -88,17 +87,17 @@ class RequestController extends Controller
                 else {
                     $availableDaysString = $availableDaysString . ',' . $date->format('m/d/Y');
                 }
-                $timepicker[$date->format('d/m/Y')]=array();
+                $timepicker[$date->format('m/d/Y')]=array();
                 $break=false;
                 $index=0;
                 $from=0;
                 for ($hour=0;$hour<24;$hour++) {
-                   if($Days[$date->format('d/m/Y')][$hour]==true) {
-                       if($break==true && !empty($timepicker[$date->format('d/m/Y')])){
+                   if($Days[$date->format('m/d/Y')][$hour]==true) {
+                       if($break==true && !empty($timepicker[$date->format('m/d/Y')])){
                            $index++;
                        }
                        $break=false;
-                       $timepicker[$date->format('d/m/Y')][$index] = array(
+                       $timepicker[$date->format('m/d/Y')][$index] = array(
                            'from'=>$from,
                            'to'=>$hour+1
                        );
