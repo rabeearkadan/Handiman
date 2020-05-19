@@ -72,10 +72,11 @@
                 var periodId = period.getId();
                 var handleAbscissa = period.getAbscissas()[edgeIndex];
                 // $("#onhandlemouseenter_infoo").html("Last OnHandleMouseenter data:" + "<br>" + " --- x-position: " + handlePosition + " px<br>" + " --- slider value (abscissa): " + handleAbscissa + "<br>" + " --- orientation: " + (edgeIndex === 1 ? "right" : "left") + " handle<br>" + "Period id: " + periodId + "<br>");
+                var position= context.position();
                 $('#pointer').html(handleAbscissa);
                 $('#pointer').show();
-                $('#pointer').css('top', e.pageX - $(this).offset().top);
-                $('#pointer').css('left', e.pageX - $(this).offset().left );
+                $('#pointer').css('top', position.top);
+                $('#pointer').css('left', position.left );
                 setTimeout(function () {
                     $("#pointer").hide('blind', {}, 100)
                 }, 5000);
