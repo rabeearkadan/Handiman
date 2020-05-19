@@ -73,8 +73,8 @@
                 // $("#onhandlemouseenter_infoo").html("Last OnHandleMouseenter data:" + "<br>" + " --- x-position: " + handlePosition + " px<br>" + " --- slider value (abscissa): " + handleAbscissa + "<br>" + " --- orientation: " + (edgeIndex === 1 ? "right" : "left") + " handle<br>" + "Period id: " + periodId + "<br>");
                 $('#pointer').html(handleAbscissa);
                 $('#pointer').show();
-                $('#pointer').css('top', event.pageY);
-                $('#pointer').css('left', event.pageX - 80);
+                $('#pointer').css('top', event.pageY -200);
+                $('#pointer').css('left', event.pageX - 300);
                 setTimeout(function () {
                     $("#pointer").hide('blind', {}, 100)
                 }, 5000);
