@@ -75,8 +75,8 @@
                 var position= context.position();
                 $('#pointer').html(handleAbscissa);
                 $('#pointer').show();
-                $('#pointer').css('top', position.top);
-                $('#pointer').css('left', position.left );
+                $('#pointer').css('top', position.top + $(window)['scrollTop']);
+                $('#pointer').css('left', position.left + $(window)['scrollLeft'] );
                 setTimeout(function () {
                     $("#pointer").hide('blind', {}, 100)
                 }, 5000);
