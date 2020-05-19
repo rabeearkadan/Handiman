@@ -284,7 +284,8 @@
                     if(from >= value["from"] && from <=value["to"]){
                         alert("in if");
                         alert(value["to"]);
-                        for(var to=0;to<=value["to"];to++) {
+                        from++;
+                        for(var to=from;to<=value["to"];to++) {
                             alert(to);
                             toSelect.append(
                                 $('<option></option>').val(to).html(to)
