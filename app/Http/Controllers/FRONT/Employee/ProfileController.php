@@ -11,14 +11,14 @@ class ProfileController extends Controller
     //
     public function myProfile(){
         $user = Auth::user();
-        return view('front.employee.profile.edit-profile', compact('user'));
+        return view('front.employee.profile.edit-profile',compact('user'));
     }
     public function editPassword(){
 
     }
     public function editPayment(){
         $user = Auth::user();
-        return view('front.employee.profile.payment', compact('user'));
+        return view('front.employee.profile.payment',compact('user'));
     }
 
     public function editProfile(){
@@ -30,8 +30,8 @@ class ProfileController extends Controller
 
     }
     public function editSchedule(){
-
-        return view('front.employee.profile.schedule');
+        $user = Auth::user();
+        return view('front.employee.profile.schedule',compact('user'));
     }
     public function updateSchedule(){
 
