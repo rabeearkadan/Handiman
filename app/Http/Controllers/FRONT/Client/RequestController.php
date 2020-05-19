@@ -122,16 +122,22 @@ class RequestController extends Controller
      */
     public function store(Request $req)
     {
-        //
+        $user = Auth::user();
        // $this->validator($req->all())->validate();
         $requestHandyman = new RequestService();
-
-
-
+        $requestHandyman->subject = $req->input('subject');
         $requestHandyman->description = $req->input('description');
         $requestHandyman->status = 'pending';
-
-//        $requestHandyman->location = explode(',', $req->input('location'));
+        $requestHandyman->isdone = false;
+        //  $requestHandyman->location = explode(',', $req->input('location'));
+        $address = null;
+        foreach($user->client_addresses as $client_address) {
+            if ($client_address['_id'] == $req->address) {
+                $address = $client_address;
+                break;
+            }
+        }
+        $requestHandyman->client_address = $address;
         $requestHandyman->timezone = $req->timezone;//'Asia\Beirut'
         $requestHandyman->service_id = $req->input('service_id');
         //add attachment if exists
@@ -156,10 +162,7 @@ class RequestController extends Controller
             if ($req->has('employee_id')) {
                 $handyman = User::query()->find($req->input('employee_id'));
                 $requestHandyman->type = 'specified';
-
-
-
-                $requestHandyman->date = $req->input('date');//yyyy-mm-dd
+                $requestHandyman->date = DateTime::createFromFormat('m/d/Y', $req->input('date'))->format('Y-m-d');//yyyy-mm-dd
                 $this->notification($handyman->device_token, Auth::user()->name, 'You received a new request', 'request');
             }
             $requestHandyman->save();
