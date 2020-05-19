@@ -63,7 +63,7 @@
             intervals.setOnHandleMouseenterCallback(function (context, period, edgeIndex) {
                 // var handlePosition = context.offset().left;
                 // var periodId = period.getId();
-                // var handleAbscissa = period.getAbscissas()[edgeIndex];
+                var handleAbscissa = period.getAbscissas()[edgeIndex];
                 // $("#onhandlemouseenter_infoo").html("Last OnHandleMouseenter data:" + "<br>" + " --- x-position: " + handlePosition + " px<br>" + " --- slider value (abscissa): " + handleAbscissa + "<br>" + " --- orientation: " + (edgeIndex === 1 ? "right" : "left") + " handle<br>" + "Period id: " + periodId + "<br>");
                 $('#pointer').html(handleAbscissa);
                 $('#pointer').show();
