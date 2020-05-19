@@ -19,20 +19,30 @@
                                         </a>
                                     </div><!-- /.user-photo -->
                                 </div><!-- /.widget -->
-
-
                                 <div class="widget">
-
                                     <ul class="menu-advanced">
-                                        <li class="@if(request()->is('employee/profile')) {{'active'}} @endif"><a href="{{route('employee.profile')}}"><i class="fa fa-user"></i> Edit Profile</a></li>
-                                        <li class="@if(request()->is('employee/profile/password')) {{'active'}} @endif"><a href="{{route('employee.password')}}"><i class="fa fa-key"></i> Password</a></li>
-                                        <li class="@if(request()->is('employee/profile/payment')) {{'active'}} @endif"><a href="{{route('employee.payment')}}"><i class="fa fa-money"></i> Payment</a></li>
+                                        <li class="@if(request()->is('employee/profile')) {{'active'}} @endif">
+                                            <a href="{{route('employee.profile')}}">
+                                                <i class="fa fa-user"></i>
+                                                Edit Profile
+                                            </a>
+                                        </li>
+                                        <li class="@if(request()->is('employee/profile/password')) {{'active'}} @endif">
+                                            <a href="{{route('employee.password')}}">
+                                                <i class="fa fa-key"></i>
+                                                Password
+                                            </a>
+                                        </li>
+                                        <li class="@if(request()->is('employee/profile/payment')) {{'active'}} @endif">
+                                            <a href="{{route('employee.payment')}}">
+                                                <i class="fa fa-money"></i>
+                                                Payment
+                                            </a>
+                                        </li>
                                     </ul>
                                 </div><!-- /.widget -->
-
                             </div><!-- /.sidebar -->
                         </div><!-- /.col-* -->
-
                         <div class="col-sm-8 col-lg-9">
                             <div class="content">
                                 @yield('profile-content')
@@ -42,10 +52,5 @@
                 </div><!-- /.container -->
             </div><!-- /.main-inner -->
         </div><!-- /.main -->
-
-
-
     </div><!-- /.page-wrapper -->
 @endsection
-
-

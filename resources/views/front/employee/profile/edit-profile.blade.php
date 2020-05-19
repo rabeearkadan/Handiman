@@ -6,21 +6,26 @@
         #map {
             height: 550px;
         }
+
         /* Optional: Makes the sample page fill the window. */
         #description {
             font-family: Roboto, serif;
             font-size: 15px;
             font-weight: 300;
         }
+
         #infowindow-content .title {
             font-weight: bold;
         }
+
         #infowindow-content {
             display: none;
         }
+
         #map #infowindow-content {
             display: inline;
         }
+
         .pac-card {
             margin: 10px 10px 0 0;
             border-radius: 2px 0 0 2px;
@@ -31,6 +36,7 @@
             background-color: #fff;
             font-family: Roboto, serif;
         }
+
         #pac-container {
             padding-bottom: 12px;
             margin-right: 12px;
@@ -73,8 +79,6 @@
         #target {
             width: 345px;
         }
-
-
     </style>
 @endpush
 @section('profile-content')
@@ -85,75 +89,61 @@
     <div class="background-white p20 mb30">
         <h3 class="page-title">
             Contact Information
-
             <a href="#" class="btn btn-primary btn-xs pull-right">Save</a>
         </h3>
 
         <div class="row">
             <div class="form-group col-sm-6">
                 <label>Name</label>
-                <input type="text" class="form-control" value="John">
+                <input type="text" name="name" class="form-control" value="{{$user->name}}">
             </div><!-- /.form-group -->
 
             <div class="form-group col-sm-6">
                 <label>Surname</label>
-                <input type="text" class="form-control" value="Doe">
+                <input type="text" name="surname" class="form-control" value="{{$user->surname}}">
             </div><!-- /.form-group -->
 
             <div class="form-group col-sm-6">
                 <label>E-mail</label>
-                <input type="text" class="form-control" value="sample@example.com">
+                <input type="text" name="email" class="form-control" value="{{$user->email}}">
             </div><!-- /.form-group -->
 
             <div class="form-group col-sm-6">
                 <label>Phone</label>
-                <input type="text" class="form-control" value="123-456-789">
+                <input type="text" name="phone" class="form-control" value="{{$user->phone}}">
             </div><!-- /.form-group -->
         </div><!-- /.row -->
     </div>
-
     <div class="background-white p20 mb30">
         <h3 class="page-title">
             Social Connections
-
             <a href="#" class="btn btn-primary btn-xs pull-right">Save</a>
         </h3>
-
         <div class="form-horizontal">
             <div class="form-group">
-                <label class="col-sm-2 control-label">Facebook</label>
-
+                <label for="facebook" class="col-sm-2 control-label">Facebook</label>
                 <div class="col-sm-9">
-                    <input type="text" class="form-control" value="http://facebook.com/">
+                    <input type="text" class="form-control" name="facebook" id="facebook" value="@if($user->facebook){{$user->facebook}}@else http://facebook.com/@endif">
                 </div><!-- /.col-* -->
             </div><!-- /.form-group -->
 
             <div class="form-group">
-                <label class="col-sm-2 control-label">Twitter</label>
-
+                <label for="twitter" class="col-sm-2 control-label">Twitter</label>
                 <div class="col-sm-9">
-                    <input type="text" class="form-control" value="http://twitter.com/">
+                    <input type="text" id="twitter" name="twitter" class="form-control" value="@if($user->twitter){{$user->twitter}}@else http://twitter.com/@endif">
                 </div><!-- /.col-* -->
             </div><!-- /.form-group -->
-
-
-
-
-
             <div class="form-group">
-                <label class="col-sm-2 control-label">Instagram</label>
-
+                <label for="instagram" class="col-sm-2 control-label">Instagram</label>
                 <div class="col-sm-9">
-                    <input type="text" class="form-control" value="http://instagram.com/">
+                    <input type="text" class="form-control" name="instagram" id="instagram" value="@if($user->instagram){{$user->instagram}}@else http://instagram.com/@endif">
                 </div><!-- /.col-* -->
             </div><!-- /.form-group -->
         </div><!-- /.form-inline -->
     </div><!-- /.background-white -->
-
     <div class="background-white p20 mb30">
         <h3 class="page-title">
             Address
-
             <a href="#" class="btn btn-primary btn-xs pull-right">Save</a>
         </h3>
         <div class="map-position">
@@ -164,40 +154,28 @@
         </div><!-- /.map-property -->
         <div class="row">
             <div class="form-group col-sm-6">
-                <label>State</label>
-                <input type="text" class="form-control" value="New York">
-            </div><!-- /.form-group -->
-
-            <div class="form-group col-sm-6">
-                <label>City</label>
-                <input type="text" class="form-control" value="New York City">
-            </div><!-- /.form-group -->
-
-            <div class="form-group col-sm-6">
                 <label>Street</label>
-                <input type="text" class="form-control" value="Everton Eve">
+                <input type="text" class="form-control" name="street" value="{{$user->employee_address['street']}}">
             </div><!-- /.form-group -->
-
             <div class="form-group col-sm-3">
-                <label>House Number</label>
-                <input type="text" class="form-control" value="123">
+                <label>Building Number/Name</label>
+                <input type="text" class="form-control" name="building" value="{{$user->employee_address['building']}}">
             </div><!-- /.form-group -->
-
             <div class="form-group col-sm-3">
                 <label>ZIP</label>
-                <input type="text" class="form-control" value="12345">
+                <input type="text" class="form-control" name="zip" value="{{$user->employee_address['zip']}}">
             </div><!-- /.form-group -->
         </div><!-- /.row -->
     </div>
-
     <div class="background-white p20 mb30">
         <h3 class="page-title">
             Biography
-
-            <a href="#" class="btn btn-primary btn-xs pull-right">Save</a>
+            <input type="submit" value = "Save"  class="btn btn-primary btn-xs pull-right" />
         </h3>
-
-        <textarea class="form-control" rows="7"></textarea><div class="textarea-resize"></div>
+        <textarea class="form-control" name="biography" rows="7" form="">
+            {{$user->biography}}
+        </textarea>
+        <div class="textarea-resize"></div>
     </div>
 @endsection
 @push('js')
@@ -216,18 +194,14 @@
                 zoom: 13,
                 mapTypeId: 'roadmap'
             });
-
             // Create the search box and link it to the UI element.
             var input = document.getElementById('pac-input');
             var searchBox = new google.maps.places.SearchBox(input);
             map.controls[google.maps.ControlPosition.TOP_LEFT].push(input);
-
-
             // Bias the SearchBox results towards current map's viewport.
             map.addListener('bounds_changed', function () {
                 searchBox.setBounds(map.getBounds());
             });
-
             var markers = [];
             // Listen for the event fired when the user selects a prediction and retrieve
             // more details for that place.
@@ -237,8 +211,6 @@
                 if (places.length == 0) {
                     return;
                 }
-
-
                 // Clear out the old markers.
                 markers.forEach(function (marker) {
                     marker.setMap(null);
