@@ -19,7 +19,7 @@
             <div class="form-horizontal">
                 <div class="form-group">
                     <label for="slider{{$day}}" class="col-sm-1 control-label"> {{date('D', strtotime("Sunday +{$day} days"))}}</label>
-                    <div class="col-sm-11">
+                    <div class="col-sm-11" style="margin-top: 12px;">
                         <div id="slider{{$day}}"></div>
                         <input type="hidden" id="periods{{$day}}" name="periods{{$day}}" value="">
                     </div><!-- /.col-* -->
@@ -60,15 +60,15 @@
                 }());
             });
             intervals.setOnHandleSlideCallback(function (context, period, edgeIndex) {
-                // var handlePosition = context.offset().left;
-                // var periodId = period.getId();
-                // var handleAbscissa = period.getAbscissas()[edgeIndex];
+                var handlePosition = context.offset().left;
+                var periodId = period.getId();
+                var handleAbscissa = period.getAbscissas()[edgeIndex];
                 // $("#onhandleslide_infoo").html("Last OnHandleSlide data:" + "<br>" + " --- x-position: " + handlePosition + " px<br>" + " --- slider value (abscissa): " + handleAbscissa + "<br>" + " --- orientation: " + (edgeIndex === 1 ? "right" : "left") + " handle<br>" + "Period id: " + periodId + "<br>");
                 return false;
             });
             intervals.setOnHandleMouseenterCallback(function (context, period, edgeIndex) {
-                // var handlePosition = context.offset().left;
-                // var periodId = period.getId();
+                var handlePosition = context.offset().left;
+                var periodId = period.getId();
                 var handleAbscissa = period.getAbscissas()[edgeIndex];
                 // $("#onhandlemouseenter_infoo").html("Last OnHandleMouseenter data:" + "<br>" + " --- x-position: " + handlePosition + " px<br>" + " --- slider value (abscissa): " + handleAbscissa + "<br>" + " --- orientation: " + (edgeIndex === 1 ? "right" : "left") + " handle<br>" + "Period id: " + periodId + "<br>");
                 $('#pointer').html(handleAbscissa);
