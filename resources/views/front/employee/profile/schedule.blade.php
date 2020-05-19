@@ -8,29 +8,35 @@
         <h1>Schedule</h1>
     </div><!-- /.page-title -->
     <div id="pointer"></div>
-    <div class="background-white p15 mb30">
-        <h3 class="page-title">
-            Week-Days
-            <input type="submit" value="Save" class="btn btn-primary btn-xs pull-right"/>
-        </h3>
-        <div class="form-horizontal">
-            <div class="form-group">
-                <label for="" class="col-sm-1 control-label">0</label>
-                <div class="col-sm-11">
-                    <div id="slider"></div>
-                    <input type="hidden" id="periods" name="periods" value="">
-                </div><!-- /.col-* -->
-            </div><!-- /.form-group -->
-        </div><!-- /.form-inline -->
-    </div><!-- /.background-white -->
+    <form method="post" action="">
+        @csrf
+        <div class="background-white p15 mb30">
+            <h3 class="page-title">
+                Week-Days
+                <input type="submit" value="Save" class="btn btn-primary btn-xs pull-right"/>
+            </h3>
+            @for($day=0;$day<7;$day++)
+            <div class="form-horizontal">
+                <div class="form-group">
+                    <label for="slider{{$day}}" class="col-sm-1 control-label"> {{date('D', strtotime("Sunday +{$day} days"))}}</label>
+                    <div class="col-sm-11">
+                        <div id="slider{{$day}}"></div>
+                        <input type="hidden" id="periods{{$day}}" name="periods{{$day}}" value="">
+                    </div><!-- /.col-* -->
+                </div><!-- /.form-group -->
+            </div><!-- /.form-inline -->
+            @endfor
+        </div><!-- /.background-white -->
+    </form>
 @endsection
 @push('js')
     <script type="text/javascript" src="/public/js/employee/jquery-1.9.1.js"></script>
     <script type="text/javascript" src="/public/js/employee/jquery-ui.js"></script>
     <script type="text/javascript" src="/public/js/employee/slider.js"></script>
     <script>
+        @for($day=0;$day<7;$day++)
         $(function () {
-            var intervals = new Intervals("#slider");
+            var intervals = new Intervals("#slider{{$day}}");
             intervals.addPeriod(1, 1);
             intervals.addPeriod(12, 6);
             // $("#form").submit(function(){
@@ -67,8 +73,8 @@
                 // $("#onhandlemouseenter_infoo").html("Last OnHandleMouseenter data:" + "<br>" + " --- x-position: " + handlePosition + " px<br>" + " --- slider value (abscissa): " + handleAbscissa + "<br>" + " --- orientation: " + (edgeIndex === 1 ? "right" : "left") + " handle<br>" + "Period id: " + periodId + "<br>");
                 $('#pointer').html(handleAbscissa);
                 $('#pointer').show();
-                $('#pointer').css('top', event.pageY );
-                $('#pointer').css('left', event.pageX-80);
+                $('#pointer').css('top', event.pageY);
+                $('#pointer').css('left', event.pageX - 80);
                 setTimeout(function () {
                     $("#pointer").hide('blind', {}, 100)
                 }, 5000);
@@ -77,5 +83,6 @@
                 //return false;
             });
         });
+        @endfor
     </script>
 @endpush
