@@ -1,5 +1,5 @@
 #pointer {
-    position: absolute;
+    position: fixed;
     border: solid 1px #fc0;
 }
 

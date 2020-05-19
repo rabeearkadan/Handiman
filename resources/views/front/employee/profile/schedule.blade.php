@@ -77,11 +77,11 @@
                 $('#pointer').html(handleAbscissa);
                 $('#pointer').show();
 
-                $('#pointer').css('top', yhandlePosition- $(window).scrollTop());
+                $('#pointer').css('top', yhandlePosition- $(window).scrollTop()+20);
                 $('#pointer').css('left',handlePosition- $(window).scrollLeft() );
                 setTimeout(function () {
-                    $("#pointer").hide('blind', {}, 100)
-                }, 5000);
+                    $("#pointer").hide()
+                }, 3000);
             });
             intervals.setOnBeforeHandleSlideCallback(function (context, period, edgeIndex) {
                 //return false;
