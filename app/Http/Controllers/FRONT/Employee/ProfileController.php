@@ -29,5 +29,12 @@ class ProfileController extends Controller
     public function clientProfile($id){
 
     }
+    public function editSchedule(){
+
+        return view('front.employee.profile.schedule');
+    }
+    public function updateSchedule(){
+
+    }
 
 }

@@ -39,6 +39,12 @@
                                                 Payment
                                             </a>
                                         </li>
+                                        <li class="@if(request()->is('employee/profile/schedule')) {{'active'}} @endif">
+                                            <a href="{{route('employee.schedule.show')}}">
+                                                <i class="fa fa-calendar"></i>
+                                                Schedule
+                                            </a>
+                                        </li>
                                     </ul>
                                 </div><!-- /.widget -->
                             </div><!-- /.sidebar -->
