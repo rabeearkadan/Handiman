@@ -12,7 +12,6 @@ use DateTime;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
-use function MongoDB\Driver\Monitoring\removeSubscriber;
 
 class RequestController extends Controller
 {
