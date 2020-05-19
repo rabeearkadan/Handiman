@@ -274,19 +274,16 @@
                          );
                      }
                  });
+            fromSelect.trigger('change')
             });
             fromSelect.change(function(){
                 toSelect.find('option').remove().end();
               var from= fromSelect.val();
-              alert(from);
                 $.each( timepicker[$("#date-input").val()], function( key, value ) {
                     // alert( key + ": " + value["from"] );
                     if(from >= value["from"] && from <=value["to"]){
-                        alert("in if");
-                        alert(value["to"]);
                         from++;
                         for(var to=from;to<=value["to"];to++) {
-                            alert(to);
                             toSelect.append(
                                 $('<option></option>').val(to).html(to)
                             );
