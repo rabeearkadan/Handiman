@@ -8,8 +8,9 @@
         <h1>Schedule</h1>
     </div><!-- /.page-title -->
     <div id="pointer"></div>
-    <form method="post" action="">
+    <form method="post" action="{{route('employee.schedule.update')}}">
         @csrf
+        @method('put')
         <div class="background-white p15 mb30">
             <h3 class="page-title">
                 Week-Days
@@ -73,8 +74,8 @@
                 // $("#onhandlemouseenter_infoo").html("Last OnHandleMouseenter data:" + "<br>" + " --- x-position: " + handlePosition + " px<br>" + " --- slider value (abscissa): " + handleAbscissa + "<br>" + " --- orientation: " + (edgeIndex === 1 ? "right" : "left") + " handle<br>" + "Period id: " + periodId + "<br>");
                 $('#pointer').html(handleAbscissa);
                 $('#pointer').show();
-                $('#pointer').css('top', event.pageY -200);
-                $('#pointer').css('left', event.pageX - 300);
+                $('#pointer').css('top', event.pageY -100);
+                $('#pointer').css('left', event.pageX - 500);
                 setTimeout(function () {
                     $("#pointer").hide('blind', {}, 100)
                 }, 5000);
