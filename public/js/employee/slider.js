@@ -33,7 +33,7 @@
             min: 0,
             max: 24,
             step: 1,
-            gap: 1,
+            gap: 2,
             newlength: 1,
             disabled: false
         };
