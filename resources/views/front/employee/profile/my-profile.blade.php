@@ -39,8 +39,8 @@
                                                 Payment
                                             </a>
                                         </li>
-                                        <li class="@if(request()->is('employee/profile/schedule')) {{'active'}} @endif">
-                                            <a href="{{route('employee.schedule.show')}}">
+                                        <li class="@if(request()->is('employee/profile/schedule/edit')) {{'active'}} @endif">
+                                            <a href="{{route('employee.schedule.edit')}}">
                                                 <i class="fa fa-calendar"></i>
                                                 Schedule
                                             </a>
