@@ -72,7 +72,7 @@
                 $('#pointer').css('left',handlePosition- $(window).scrollLeft() );
                 setTimeout(function () {
                     $("#pointer").hide()
-                }, 3000);
+                }, 5000);
                 return false;
             });
             intervals.setOnHandleMouseenterCallback(function (context, period, edgeIndex) {
@@ -87,7 +87,7 @@
                 $('#pointer').css('left',handlePosition- $(window).scrollLeft() );
                 setTimeout(function () {
                     $("#pointer").hide()
-                }, 3000);
+                }, 5000);
             });
             intervals.setOnBeforeHandleSlideCallback(function (context, period, edgeIndex) {
                 //return false;
