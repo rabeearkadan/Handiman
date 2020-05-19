@@ -54,8 +54,21 @@ class ProfileController extends Controller
                 }
             }
             }
+        $user->timeline =$this->initTimeline();
+        $user->save();
         dd($periods);
         return view('front.employee.profile.schedule',compact('user'));
+    }
+    public function initTimeline()
+    {
+        $timeline = [];
+        for ($i = 0; $i <= 23; $i++) {
+
+            for ($j = 0; $j <= 6; $j++) {
+                $timeline[$j][$i] = false;
+            }
+        }
+        return $timeline;
     }
     public function updateSchedule(){
 
