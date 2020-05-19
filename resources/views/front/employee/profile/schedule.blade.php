@@ -15,8 +15,8 @@
         </h3>
         <div class="form-horizontal">
             <div class="form-group">
-                <label for="" class="col-sm-2 control-label">0</label>
-                <div class="col-sm-9">
+                <label for="" class="col-sm-1 control-label">0</label>
+                <div class="col-sm-11">
                     <div id="slider"></div>
                     <input type="hidden" id="periods" name="periods" value="">
                 </div><!-- /.col-* -->
