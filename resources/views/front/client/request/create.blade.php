@@ -8,6 +8,7 @@
     <link href="{{asset('css/client/color-box.css')}}" rel="stylesheet">
     <link href="{{asset('css/client/requests/icons.css')}}" rel="stylesheet" media="screen">
     <link href="{{asset('lib/font-awesome/css/font-awesome.css')}}" rel="stylesheet">
+    <link href="{{asset('css/client/select.css')}}" rel="stylesheet" type="text/css">
     <style>
         .pull-right {
             float: right;
@@ -174,10 +175,13 @@
                                             <label for="subject"> <i class="fa fa-home" aria-hidden="true"></i> Address</label>
                                             <div class="select-box">
                                                 <div class="select-box__current" tabindex="1">
+
                                                     <div class="select-box__value">
-                                                        <input class="select-box__input" type="radio" id="0" value="1"
+                                                        @foreach($user->client_addresses as $address)
+                                                        <input class="select-box__input" type="radio" id="{{$address['_id']}}" value="{{$address['_id']}}"
                                                                name="address" checked="checked"/>
-                                                        <p class="select-box__input-text">Address 1</p>
+                                                        <p class="select-box__input-text">{{$address['name']}}</p>
+                                                            @endforeach
                                                     </div>
 
                                                     <img class="select-box__icon"
@@ -185,10 +189,13 @@
                                                          alt="Arrow Icon" aria-hidden="true"/>
                                                 </div>
                                                 <ul class="select-box__list">
+                                                    @foreach($user->client_addresses as $address)
                                                     <li>
-                                                        <label class="select-box__option" for="0" aria-hidden="true">
-                                                            Address1</label>
+                                                        <label class="select-box__option" for="{{$address['_id']}}" aria-hidden="true">
+                                                        {{$address['name']}}
+                                                        </label>
                                                     </li>
+                                                    @endforeach
                                                 </ul>
                                             </div>
 
@@ -205,10 +212,30 @@
                                         <div class="form-group">
                                             <label for="date-input"> Pick a day </label>
                                             <input id="date-input" name="date" type="text" data-dd-theme="leaf"
-                                                   data-dd-format="Y-m-d">
+                                                   data-dd-format="m/d/Y">
                                         </div><!--/.form-group-->
                                     </div><!--/.col-*-->
                                 </div><!--/.row-->
+                                <div class="row">
+                                    <div class="col-sm-6">
+                                        <div class="form-group">
+                                            <label for="from"> Choose starting time </label>
+                                            <select name="from" id="from">
+
+                                            </select>
+                                        </div><!-- /.form-group -->
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <div class="form-group">
+                                            <label for="to"> Choose ending time </label>
+                                            <select name="to" id="to">
+
+                                            </select>
+                                        </div><!-- /.form-group -->
+                                    </div><!-- /.col-* -->
+                                </div><!-- /.row -->
+
+
                                 <button type="submit" class="btn btn-primary pull-right"> Request</button>
                             </div><!-- /.wrapper -->
                         </form><!-- /.form -->
@@ -224,12 +251,49 @@
         <script src="/public/js/client/requests/file-uploader.js"></script>
         <script src="/public/js/client/requests/date-dropper.pro.min.js"></script>
         <script>
+            var timepicker = @json($timepicker);
             $(document).ready(function () {
                 $('#date-input').dateDropper({
-                    enabledDays: '03/31/2020,04/10/2020',
-                    maxYear: 2021,
+                    format: 'd-m-Y',
+                    enabledDays: '{{$availableDaysString}}',
+                    maxYear: 2020,
                     minYear: 2020
                 });
+
             });
+            var fromSelect = $('#from');
+            var toSelect = $('#to');
+            $("#date-input").change(function(){
+               fromSelect.find('option').remove().end();
+               toSelect.find('option').remove().end();
+                 $.each( timepicker[$("#date-input").val()], function( key, value ) {
+                     // alert( key + ": " + value["from"] );
+                     for(var from=value["from"];from<value["to"];from++) {
+                         fromSelect.append(
+                             $('<option></option>').val(from).html(from)
+                         );
+                     }
+                 });
+            fromSelect.trigger('change')
+            });
+            fromSelect.change(function(){
+                toSelect.find('option').remove().end();
+              var from= fromSelect.val();
+                $.each( timepicker[$("#date-input").val()], function( key, value ) {
+                    // alert( key + ": " + value["from"] );
+                    if(from >= value["from"] && from <=value["to"]){
+                        from++;
+                        for(var to=from;to<=value["to"];to++) {
+                            if(to===24){
+                                to=0;
+                            }
+                            toSelect.append(
+                                $('<option></option>').val(to).html(to)
+                            );
+                        }
+                    }
+                });
+            });
+
         </script>
 @endpush

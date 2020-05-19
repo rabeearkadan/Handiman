@@ -13,12 +13,12 @@
 @section('content')
     <div class="page-wrapper">
         <div class="main">
-            <div class="fullscreen-wrapper" style="padding:12px">
+            <div id="employees-list" class="fullscreen-wrapper" style="padding:12px">
                 <form class="filter" method="post" action="?">
                     <div class="row">
                         <div class="col-sm-12 col-md-4">
                             <div class="form-group">
-                                <input type="text" placeholder="Keyword" class="form-control">
+                                <input type="text" placeholder="Keyword" class="form-control search">
                             </div><!-- /.form-group -->
                         </div><!-- /.col-* -->
 
@@ -42,18 +42,18 @@
 
                     <hr>
 
-                    <div class="row">
-                        <div class="col-sm-8">
-                            <div class="filter-actions">
-                                <a href="#"><i class="fa fa-close"></i> Reset Filter</a>
-                                <a href="#"><i class="fa fa-save"></i> Save Search</a>
-                            </div><!-- /.filter-actions -->
-                        </div><!-- /.col-* -->
+{{--                    <div class="row">--}}
+{{--                        <div class="col-sm-8">--}}
+{{--                            <div class="filter-actions">--}}
+{{--                                <a href="#"><i class="fa fa-close"></i> Reset Filter</a>--}}
+{{--                                <a href="#"><i class="fa fa-save"></i> Save Search</a>--}}
+{{--                            </div><!-- /.filter-actions -->--}}
+{{--                        </div><!-- /.col-* -->--}}
 
-                        <div class="col-sm-4">
-                            <button type="submit" class="btn btn-primary">Redefine Search Result</button>
-                        </div><!-- /.col-* -->
-                    </div><!-- /.row -->
+{{--                        <div class="col-sm-4">--}}
+{{--                            <button type="submit" class="btn btn-primary">Redefine Search Result</button>--}}
+{{--                        </div><!-- /.col-* -->--}}
+{{--                    </div><!-- /.row -->--}}
                 </form>
 
                 <h2 class="page-title">
@@ -63,8 +63,8 @@
                 <form method="get" action="?" class="filter-sort">
                     <div class="form-group">
                         <select title="Sort by">
-                            <option name="price">Price</option>
-                            <option name="rating">Rating</option>
+                            <option name="price">price</option>
+                            <option name="rating">rating</option>
                         </select>
                     </div><!-- /.form-group -->
 
@@ -77,6 +77,7 @@
                 </form>
 
                 <div class="cards-row" style="margin-top:75px">
+                    <div class="list">
                     @foreach($service->users as $employee)
                         <div class="card-row">
                             <div class="card-row-inner">
@@ -89,16 +90,16 @@
                                 </div><!-- /.card-row-image -->
                                 <div class="card-row-body">
                                     <h2 class="card-row-title">
-                                        <a href="{{route('client.user-profile',[$service->id,$employee->id])}}">{{$employee->name}} </a>
+                                        <a href="{{route('client.user-profile',[$service->id,$employee->id])}}" class="name">{{$employee->name}} </a>
                                     </h2>
                                     <div class="card-row-content">
-                                        <p> {{$employee->biography}} </p>
+                                        <p class="biography"> {{$employee->biography}} </p>
                                     </div><!-- /.card-row-content -->
                                 </div><!-- /.card-row-body -->
                                 <div class="card-row-properties">
                                     <dl>
                                         <dd>Price</dd>
-                                        <dt> ${{$employee->price}} / hr</dt>
+                                        <dt class="price"> ${{$employee->price}} / hr</dt>
                                         <dd>Category</dd>
                                         <dt> Category</dt>
                                         <dd>Location</dd>
@@ -123,6 +124,7 @@
                             </div><!-- /.card-row-inner -->
                         </div><!-- /.card-row -->
                     @endforeach
+                    </div><!-- /.list -->
                 </div><!-- /.cards-row -->
             </div><!-- /.fullscreen-wrapper -->
         </div><!-- /.main -->
@@ -133,6 +135,20 @@
     <script src="/public/js/client/jquery.colorbox-min.js" type="text/javascript"></script>
     <script src="/public/js/client/bootstrap-select.min.js" type="text/javascript"></script>
     <script src="/public/js/client/superlist.js" type="text/javascript"></script>
+    <script src="/public/js/client/list.js" type="text/javascript"></script>
+    <script>
+
+        var options = {
+            valueNames: [ 'name', 'price' ],
+            fuzzySearch: {
+                searchClass: "fuzzy-search"
+            }
+        };
+        var employeesList = new List('employees-list', options);
+        function defaultSort(element){
+            employeesList.sort(element.innerHTML, { order: "asc" })
+        }
+    </script>
 @endpush
 
 

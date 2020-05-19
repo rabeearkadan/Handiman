@@ -8,6 +8,7 @@ use App\Models\RequestService;
 use App\Models\Service;
 use App\User;
 use Carbon\Carbon;
+use DateTime;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
@@ -44,7 +45,72 @@ class RequestController extends Controller
         $user=Auth::user();
         $employee = User::find($request->input('employee_id'));
         $service = Service::find($request->input('service_id'));
-        return view('front.client.request.create',compact(['user','employee','service']));
+        $startDate = new DateTime('now') ;
+       //date("d/m/Y");
+        $Days = array();
+        $date = $startDate;
+        $bool= false;
+        $availableDaysString="";
+        $timepicker=array();
+        for($x=0;$x<24;$x++) {
+     //       $Days[$date->format('d/m/Y')] = array_fill(0, 24, true);
+            $day = date('w', strtotime($date->format('Y-m-d')));
+            for ($hour=0;$hour<24;$hour++) {
+                $Days[$date->format('m/d/Y')][$hour] = $employee->timeline[$day][$hour];
+
+               if( $Days[$date->format('m/d/Y')][$hour]==true){
+                   $bool=true;
+               }
+
+            }
+            foreach ($employee->employeeRequests as $request){
+                if($request->isdone==false & $request->date->format('m/d/Y') == $date->format('m/d/Y') ){
+                    for($from=$request->from; $from<$request->to;$from++) {
+                        $Days[$date->format('m/d/Y')][$from]=false;
+                    }
+                }
+            }
+            for ($hour=0;$hour<24;$hour++) {
+                if ($Days[$date->format('m/d/Y')][$hour] == true) {
+                    $bool = true;
+                }
+            }
+            if($bool==false){
+                unset($Days[$date->format('m/d/Y')]);
+            }
+            else{
+                if($availableDaysString==""){
+                    $availableDaysString = $date->format('m/d/Y');
+                }
+                else {
+                    $availableDaysString = $availableDaysString . ',' . $date->format('m/d/Y');
+                }
+                $timepicker[$date->format('m/d/Y')]=array();
+                $break=false;
+                $index=0;
+                $from=0;
+                for ($hour=0;$hour<24;$hour++) {
+                   if($Days[$date->format('m/d/Y')][$hour]==true) {
+                       if($break==true && !empty($timepicker[$date->format('m/d/Y')])){
+                           $index++;
+                       }
+                       $break=false;
+                       $timepicker[$date->format('m/d/Y')][$index] = array(
+                           'from'=>$from,
+                           'to'=>$hour+1
+                       );
+                        }
+                   else{
+                       $break=true;
+                       $from=$hour+1;
+                   }
+                    }
+            }
+            $bool= false;
+            $date->modify('+1 day');
+        }
+        //dd($Days,$availableDaysString,$timepicker);
+        return view('front.client.request.create',compact(['user','employee','service','availableDaysString','timepicker']));
     }
 
     /**
@@ -56,16 +122,22 @@ class RequestController extends Controller
      */
     public function store(Request $req)
     {
-        //
+        $user = Auth::user();
        // $this->validator($req->all())->validate();
         $requestHandyman = new RequestService();
-
-
-
+        $requestHandyman->subject = $req->input('subject');
         $requestHandyman->description = $req->input('description');
         $requestHandyman->status = 'pending';
-
-//        $requestHandyman->location = explode(',', $req->input('location'));
+        $requestHandyman->isdone = false;
+        //  $requestHandyman->location = explode(',', $req->input('location'));
+        $address = null;
+        foreach($user->client_addresses as $client_address) {
+            if ($client_address['_id'] == $req->address) {
+                $address = $client_address;
+                break;
+            }
+        }
+        $requestHandyman->client_address = $address;
         $requestHandyman->timezone = $req->timezone;//'Asia\Beirut'
         $requestHandyman->service_id = $req->input('service_id');
         //add attachment if exists
@@ -89,11 +161,18 @@ class RequestController extends Controller
         } else {
             if ($req->has('employee_id')) {
                 $handyman = User::query()->find($req->input('employee_id'));
-                $requestHandyman->type = 'specified';
+//                $requestHandyman->type = 'specified';
+//                $requestHandyman->date = DateTime::createFromFormat('m/d/Y', $req->input('date'))->format('Y-m-d');//yyyy-mm-dd
+                $requestHandyman->date = Carbon::createFromFormat('Y-m-d', $req->input('date'), $requestHandyman->timezone);
+                if ($req->has('from'))
+                    $requestHandyman->from = $req->input('from');
+                if ($req->has('to')) {
+                    $requestHandyman->to = $req->input('to');
+                } else {
+                   // $requestHandyman->handyman_to = 'pending';
+                    $requestHandyman->to = null;
+                }
 
-
-
-                $requestHandyman->date = $req->input('date');//yyyy-mm-dd
                 $this->notification($handyman->device_token, Auth::user()->name, 'You received a new request', 'request');
             }
             $requestHandyman->save();
