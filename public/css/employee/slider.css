@@ -12,7 +12,7 @@
     height: 1.2em;
     position: absolute;
     z-index: 99;
-    margin: -7px 0 0 -13px;
+    margin: -5px 0 0 -13px;
     border: 1px solid #d3d3d3;
     -moz-border-radius: 5px;
     -webkit-border-radius: 5px;
@@ -27,8 +27,8 @@
     position: absolute;
     color: #fff;
     text-align: center;
-    right: 1px;
-    top: -2px;
+    right: -6px;
+    top: -6px;
     line-height: 26px;
     font-size: 23px;
 }

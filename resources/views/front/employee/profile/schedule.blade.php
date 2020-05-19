@@ -7,7 +7,7 @@
     <div class="page-title">
         <h1>Schedule</h1>
     </div><!-- /.page-title -->
-
+    <div id="pointer"></div>
     <div class="background-white p15 mb30">
         <h3 class="page-title">
             Week-Days
