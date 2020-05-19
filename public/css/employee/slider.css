@@ -8,8 +8,8 @@
 }
 
 .ui-slider-control-plus, .ui-slider-control-minus {
-    width: 26px;
-    height: 26px;
+    width: 1.2em;
+    height: 1.2em;
     position: absolute;
     z-index: 99;
     margin: -7px 0 0 -13px;
@@ -22,15 +22,15 @@
 }
 
 .ui-slider-control-plus:after, .ui-slider-control-minus:after {
+    width: 1.2em;
+    height: 1.2em;
     position: absolute;
-    width: 26px;
-    height: 26px;
     color: #fff;
     text-align: center;
     right: 1px;
     top: -2px;
     line-height: 26px;
-    font-size: 26px;
+    font-size: 23px;
 }
 
 .ui-slider-control-plus:after {

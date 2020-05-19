@@ -8,7 +8,7 @@
         <h1>Schedule</h1>
     </div><!-- /.page-title -->
 
-    <div class="background-white p20 mb30">
+    <div class="background-white p15 mb30">
         <h3 class="page-title">
             Week-Days
             <input type="submit" value="Save" class="btn btn-primary btn-xs pull-right"/>
