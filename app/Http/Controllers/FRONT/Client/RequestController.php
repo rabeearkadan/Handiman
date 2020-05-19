@@ -161,8 +161,18 @@ class RequestController extends Controller
         } else {
             if ($req->has('employee_id')) {
                 $handyman = User::query()->find($req->input('employee_id'));
-                $requestHandyman->type = 'specified';
-                $requestHandyman->date = DateTime::createFromFormat('m/d/Y', $req->input('date'))->format('Y-m-d');//yyyy-mm-dd
+//                $requestHandyman->type = 'specified';
+//                $requestHandyman->date = DateTime::createFromFormat('m/d/Y', $req->input('date'))->format('Y-m-d');//yyyy-mm-dd
+                $requestHandyman->date = Carbon::createFromFormat('Y-m-d', $req->input('date'), $requestHandyman->timezone);
+                if ($req->has('from'))
+                    $requestHandyman->from = $req->input('from');
+                if ($req->has('to')) {
+                    $requestHandyman->to = $req->input('to');
+                } else {
+                   // $requestHandyman->handyman_to = 'pending';
+                    $requestHandyman->to = null;
+                }
+
                 $this->notification($handyman->device_token, Auth::user()->name, 'You received a new request', 'request');
             }
             $requestHandyman->save();
