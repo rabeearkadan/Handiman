@@ -11,7 +11,7 @@ class ProfileController extends Controller
     //
     public function myProfile(){
         $user = Auth::user();
-        return view('front.employee.profile.my-profile', compact('user'));
+        return view('front.employee.profile.edit-profile', compact('user'));
     }
     public function editPassword(){
 
