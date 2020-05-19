@@ -1,6 +1,6 @@
 @extends('layouts.employee.app')
 @push('css')
-    <link href="{{asset('css/client/my-profile.css')}}" rel="stylesheet">
+    <link href="{{asset('css/employee/my-profile.css')}}" rel="stylesheet">
     <link href="{{asset('lib/font-awesome/css/font-awesome.css')}}" rel="stylesheet">
 @endpush
 @section('content')
