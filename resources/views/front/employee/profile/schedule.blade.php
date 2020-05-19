@@ -69,14 +69,13 @@
             });
             intervals.setOnHandleMouseenterCallback(function (context, period, edgeIndex) {
                 var handlePosition = context.offset().left;
-                var yhandlePosition = context.offset().top;
                 var periodId = period.getId();
                 var handleAbscissa = period.getAbscissas()[edgeIndex];
                 // $("#onhandlemouseenter_infoo").html("Last OnHandleMouseenter data:" + "<br>" + " --- x-position: " + handlePosition + " px<br>" + " --- slider value (abscissa): " + handleAbscissa + "<br>" + " --- orientation: " + (edgeIndex === 1 ? "right" : "left") + " handle<br>" + "Period id: " + periodId + "<br>");
                 $('#pointer').html(handleAbscissa);
                 $('#pointer').show();
-                $('#pointer').css('top', yhandlePosition );
-                $('#pointer').css('left', handlePosition );
+                $('#pointer').css('top', e.pageX - $(this).offset().top);
+                $('#pointer').css('left', e.pageX - $(this).offset().left );
                 setTimeout(function () {
                     $("#pointer").hide('blind', {}, 100)
                 }, 5000);
