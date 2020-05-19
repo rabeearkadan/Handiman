@@ -719,7 +719,7 @@ button.ui-button::-moz-focus-inner {
 .ui-slider .ui-slider-handle {
     position: absolute;
     z-index: 2;
-    width: 1.2em;
+    width: 0.8em;
     height: 1.2em;
     cursor: default;
 }
@@ -734,7 +734,7 @@ button.ui-button::-moz-focus-inner {
 }
 
 .ui-slider-horizontal {
-    height: .8em;
+    height: 1em;
 }
 
 .ui-slider-horizontal .ui-slider-handle {
