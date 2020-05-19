@@ -54,10 +54,9 @@ class ProfileController extends Controller
                 }
             }
             }
-        dd($periods);
         return view('front.employee.profile.schedule',compact('user'));
     }
-    
+
     public function updateSchedule(){
 
     }
