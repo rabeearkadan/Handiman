@@ -2,6 +2,8 @@
 @push('css')
     <link href="{{asset('css/employee/jquery-ui.css')}}" rel="stylesheet">
     <link href="{{asset('css/employee/slider.css')}}" rel="stylesheet">
+@endpush
+@push('priority-css')
     <style>
         .p15 {
             padding: 0px;
