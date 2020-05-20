@@ -59,18 +59,17 @@ class SchedularEngine extends Command
             return response()->json(['status' => 'error', 'message' => "no service found"]);
         $availableUsers = $list->users()
             ->where('isApproved', true)
-            ->where('role', 'user_employee')
-//            ->where('location', 'near', [
-//                '$geometry' => [
-//                    'type' => 'Point',
-//                    'coordinates' => [
-//                        (float)$requestHandyman->locaation[0],
-//                        (float)$requestHandyman->location[1],
-//                    ],
-//                    'distanceField' => "dist.calculated",
-//                    '$maxDistance' => 50000,
-//                ],
-//            ])->orderBy('dist.calculated')
+            ->where('location', 'near', [
+                '$geometry' => [
+                    'type' => 'Point',
+                    'coordinates' => [
+                        (float)$requestHandyman->locaation[0],
+                        (float)$requestHandyman->location[1],
+                    ],
+                    'distanceField' => "dist.calculated",
+                    '$maxDistance' => 50000,
+                ],
+            ])->orderBy('dist.calculated')
             ->get();
 
         $user = User::query()->find($requestHandyman->client_ids[0]);
