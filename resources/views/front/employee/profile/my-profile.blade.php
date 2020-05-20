@@ -2,14 +2,6 @@
 @push('css')
     <link href="{{asset('css/employee/my-profile.css')}}" rel="stylesheet">
     <link href="{{asset('lib/font-awesome/css/font-awesome.css')}}" rel="stylesheet">
-    <style>
-        @media screen and (min-width: 460px) {
-            .col-sm-12 {
-                padding-right: 5px;
-                padding-left: 5px;
-            }
-        }
-    </style>
 @endpush
 @section('content')
     <div class="page-wrapper" id="profile">
