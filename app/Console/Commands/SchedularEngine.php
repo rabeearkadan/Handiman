@@ -73,6 +73,9 @@ class SchedularEngine extends Command
 //            ])->orderBy('dist.calculated')
             ->get();
 
+        $user = User::query()->find($requestHandyman->client_ids[0]);
+        $this->Notification($user->client_device_token, 'Admin', "test", 'notification');
+
         $matchingHandyman = null;
         if (Carbon::now($requestHandyman->timezone)->minute > 30) {
             $nowHour = str_pad(Carbon::now($requestHandyman->timezone)->hour + 1, 2, '0', STR_PAD_LEFT) . '00';
