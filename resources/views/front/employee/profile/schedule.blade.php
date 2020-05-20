@@ -68,18 +68,15 @@
                 }());
             });
             intervals.setOnHandleSlideCallback(function (context, period, edgeIndex) {
-                var handlePosition = context.offset().left;
-                var yhandlePosition = context.offset().top;
+                var handlePosition = context.getBoundingClientRect().left;
+                var yhandlePosition = context.getBoundingClientRect().top;
                 var periodId = period.getId();
                 var handleAbscissa = period.getAbscissas()[edgeIndex];
                 // $("#onhandleslide_infoo").html("Last OnHandleSlide data:" + "<br>" + " --- x-position: " + handlePosition + " px<br>" + " --- slider value (abscissa): " + handleAbscissa + "<br>" + " --- orientation: " + (edgeIndex === 1 ? "right" : "left") + " handle<br>" + "Period id: " + periodId + "<br>");
                 $('#pointer').html("<span>"+handleAbscissa+"</span>");
                 $('#pointer').show();
-               // $('#pointer').css('top', yhandlePosition- $(window).scrollTop()-20);
-               // $('#pointer').css('left',handlePosition- $(window).scrollLeft() );
-                var newValue = Number( (intervals.value - intervals.min) * 100 / (intervals.max - intervals.min) )
-                var newPosition = 10 - (newValue * 0.2);
-                $('#pointer').style.left = 'calc(${newValue}% + (${newPosition}px))';
+               $('#pointer').css('top', yhandlePosition);
+               $('#pointer').css('left',handlePosition );
                 return false;
             });
             intervals.setOnHandleMouseenterCallback(function (context, period, edgeIndex) {
