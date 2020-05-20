@@ -75,7 +75,7 @@
                 // $("#onhandleslide_infoo").html("Last OnHandleSlide data:" + "<br>" + " --- x-position: " + handlePosition + " px<br>" + " --- slider value (abscissa): " + handleAbscissa + "<br>" + " --- orientation: " + (edgeIndex === 1 ? "right" : "left") + " handle<br>" + "Period id: " + periodId + "<br>");
                 $('#pointer').html(handleAbscissa);
                 $('#pointer').show();
-                $('#pointer').css('top', yhandlePosition- $(window).scrollTop()+20);
+                $('#pointer').css('top', yhandlePosition- $(window).scrollTop()-20);
                 $('#pointer').css('left',handlePosition- $(window).scrollLeft() );
                 setTimeout(function () {
                     $("#pointer").hide()
@@ -88,13 +88,13 @@
                 var periodId = period.getId();
                 var handleAbscissa = period.getAbscissas()[edgeIndex];
                 // $("#onhandlemouseenter_infoo").html("Last OnHandleMouseenter data:" + "<br>" + " --- x-position: " + handlePosition + " px<br>" + " --- slider value (abscissa): " + handleAbscissa + "<br>" + " --- orientation: " + (edgeIndex === 1 ? "right" : "left") + " handle<br>" + "Period id: " + periodId + "<br>");
-                $('#pointer').html(handleAbscissa);
-                $('#pointer').show();
-                $('#pointer').css('top', yhandlePosition- $(window).scrollTop()-20);
-                $('#pointer').css('left',handlePosition- $(window).scrollLeft() );
-                setTimeout(function () {
-                    $("#pointer").hide()
-                }, 5000);
+                // $('#pointer').html(handleAbscissa);
+                // $('#pointer').show();
+                // $('#pointer').css('top', yhandlePosition- $(window).scrollTop()-20);
+                // $('#pointer').css('left',handlePosition- $(window).scrollLeft() );
+                // setTimeout(function () {
+                //     $("#pointer").hide()
+                // }, 5000);
             });
             intervals.setOnBeforeHandleSlideCallback(function (context, period, edgeIndex) {
                 //return false;
