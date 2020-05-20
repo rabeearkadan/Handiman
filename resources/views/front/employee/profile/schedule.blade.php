@@ -36,10 +36,10 @@
     </form>
 @endsection
 @push('js')
+    <script type="text/javascript" src="/public/js/employee/jquery.ui.touch-punch.min.js"></script>
     <script type="text/javascript" src="/public/js/employee/jquery-1.9.1.js"></script>
     <script type="text/javascript" src="/public/js/employee/jquery-ui.js"></script>
     <script type="text/javascript" src="/public/js/employee/slider.js"></script>
-    <script type="text/javascript" src="/public/js/employee/jquery.ui.touch-punch.min.js"></script>
     <script>
         @for($day=0;$day<7;$day++)
         $(function () {
