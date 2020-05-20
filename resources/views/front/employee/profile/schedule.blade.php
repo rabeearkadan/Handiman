@@ -79,6 +79,9 @@
                 $('#pointer').show();
                 $('#pointer').css('top', yhandlePosition-35);
                 $('#pointer').css('left',handlePosition+6);
+                setTimeout(function () {
+                    $("#pointer").hide()
+                }, 5000);
                 return false;
             });
             intervals.setOnHandleMouseenterCallback(function (context, period, edgeIndex) {
@@ -99,6 +102,7 @@
                 //return false;
             });
         });
+
         @endfor
     </script>
 @endpush
