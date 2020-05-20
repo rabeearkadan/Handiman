@@ -36,7 +36,7 @@ class SchedularEngine extends Command
                     $user = User::query()->find($req->client_ids[0]);
                     $var = Carbon::createFromFormat('Y-m-d H:i:s', $req->date, $req->timezone)->dayOfWeek;
 
-                    $this->Notification($user->client_device_token, 'Admin', $var.' no results found, search on large area', 'notification');
+                    $this->Notification($user->client_device_token, 'Admin', $var . ' no results found, search on large area', 'notification');
                 } else {
                     $req->employees()->attach($result->id);
                     $req->updated_at = Carbon::now();
@@ -57,9 +57,7 @@ class SchedularEngine extends Command
         $list = Service::query()->where('_id', $requestHandyman->service_id)->first();
         if ($list == null)
             return response()->json(['status' => 'error', 'message' => "no service found"]);
-        $availableUsers = $list->users()->where('isApproved', true)
-            ->where('role', 'user_employee')
-            ->orWhere('role', 'employee')
+        $availableUsers = $list->users()
             ->where('isApproved', true)
             ->where('location', 'near', [
                 '$geometry' => [
@@ -73,6 +71,9 @@ class SchedularEngine extends Command
                 ],
             ])->orderBy('dist.calculated')
             ->get();
+
+        $user = User::query()->find($requestHandyman->client_ids[0]);
+        $this->Notification($user->client_device_token, 'Admin', $availableUsers, 'notification');
 
         $matchingHandyman = null;
         if (Carbon::now($requestHandyman->timezone)->minute > 30) {
