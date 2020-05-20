@@ -28,8 +28,17 @@
                 <div class="form-group">
                     <label for="slider{{$day}}" class="col-sm-1 control-label"> {{date('D', strtotime("Sunday +{$day} days"))}}</label>
                     <div class="col-sm-11" style="margin-top: 12px;">
+                        <div class="col-sm-12">
                         <div id="slider{{$day}}"></div>
                         <input type="hidden" id="periods{{$day}}" name="periods{{$day}}" value="">
+                        </div>
+                        <div class="col-sm-12">
+                            @for($hours=0;$hours<=24;$hours++)
+                                <div class="ticks">
+                                    <span class="slider-tick-mark-main" style="left:{{$hour*4.16666666}}%;"></span>
+                                    <span class="slider-tick-mark-main-text" style="left:{{$hour*4.16666666}}%;">{{$hour}}</span>
+                                @endfor
+                        </div>
                     </div><!-- /.col-* -->
                 </div><!-- /.form-group -->
             </div><!-- /.form-inline -->
