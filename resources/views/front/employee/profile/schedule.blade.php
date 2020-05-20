@@ -33,7 +33,7 @@
                         <input type="hidden" id="periods{{$day}}" name="periods{{$day}}" value="">
                         </div>
                         <div class="col-sm-12">
-                            @for($hours=0;$hours<=24;$hours++)
+                            @for($hour=0;$hour<=24;$hour++)
                                 <div class="ticks">
                                     <span class="slider-tick-mark-main" style="left:{{$hour*4.16666666}}%;"></span>
                                     <span class="slider-tick-mark-main-text" style="left:{{$hour*4.16666666}}%;">{{$hour}}</span>
