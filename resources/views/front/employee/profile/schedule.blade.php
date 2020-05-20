@@ -8,11 +8,13 @@
         }
     </style>
 @endpush
+@section('outer-elements')
+    <div id="pointer" class="range-value"></div>
+@endsection
 @section('profile-content')
     <div class="page-title">
         <h1>Schedule</h1>
     </div><!-- /.page-title -->
-    <div id="pointer" class="range-value"></div>
     <form method="post" action="{{route('employee.schedule.update')}}">
         @csrf
         @method('put')
