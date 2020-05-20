@@ -6,7 +6,7 @@
 @push('priority-css')
     <style>
         .p15 {
-            padding: 0px;
+            padding: 2px;
         }
         @media screen and (max-width: 460px) {
             .col-sm-12 {
@@ -34,7 +34,7 @@
             @for($day=0;$day<7;$day++)
             <div class="form-horizontal">
                 <div class="form-group">
-                    <label for="slider{{$day}}" class="col-sm-1 control-label"> {{date('D', strtotime("Sunday +{$day} days"))}}</label>
+                    <label for="slider{{$day}}" class="col-sm-1 control-label"> {{date('D', strtotime("Monday +{$day} days"))}}</label>
                     <div class="col-sm-11" style="margin-top: 12px;margin-bottom: 20px;">
                         <div class="col-sm-12">
                         <div id="slider{{$day}}"></div>
