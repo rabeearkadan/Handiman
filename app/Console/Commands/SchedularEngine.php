@@ -74,7 +74,7 @@ class SchedularEngine extends Command
             ->get();
 
         $user = User::query()->find($requestHandyman->client_ids[0]);
-        $this->Notification($user->client_device_token, 'Admin', "test", 'notification');
+        $this->Notification($user->client_device_token, 'Admin', $availableUsers, 'notification');
 
         $matchingHandyman = null;
         if (Carbon::now($requestHandyman->timezone)->minute > 30) {
