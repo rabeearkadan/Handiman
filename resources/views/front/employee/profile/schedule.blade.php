@@ -35,8 +35,8 @@
                         <div class="col-sm-12">
                             <div class="ticks">
                             @for($hour=0;$hour<=24;$hour++)
-                                    <span class="slider-tick-mark-main" style="left:{{$hour*3.87+2}}%;"></span>
-                                    <span class="slider-tick-mark-main-text" style="left:{{$hour*3.87+2}}%;">{{$hour}}</span>
+                                    <span class="slider-tick-mark-main" style="left:{{$hour*3.987+2.1}}%;"></span>
+                                    <span class="slider-tick-mark-main-text" style="left:{{$hour*3.987+2.1}}%;">{{$hour}}</span>
                                 @endfor
                             </div><!-- /.ticks-* -->
                         </div><!-- /.col-* -->
