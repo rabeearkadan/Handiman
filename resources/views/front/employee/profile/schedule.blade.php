@@ -69,18 +69,22 @@
                     return confirm('Delete period between ' + period.getAbscissas()[0] + ' and ' + period.getAbscissas()[1]);
                 }());
             });
+            var timeout=null;
             intervals.setOnHandleSlideCallback(function (context, period, edgeIndex) {
                 var handlePosition = context.offset().left;
                 var yhandlePosition = context.offset().top;
                 var periodId = period.getId();
                 var handleAbscissa = period.getAbscissas()[edgeIndex];
                 // $("#onhandleslide_infoo").html("Last OnHandleSlide data:" + "<br>" + " --- x-position: " + handlePosition + " px<br>" + " --- slider value (abscissa): " + handleAbscissa + "<br>" + " --- orientation: " + (edgeIndex === 1 ? "right" : "left") + " handle<br>" + "Period id: " + periodId + "<br>");
+               if(timeout){
+                    clearTimeout(timeout);
+               }
                 $("#pointer").stop(true);
                 $('#pointer').html("<span>"+handleAbscissa+"</span>");
                 $('#pointer').show();
                 $('#pointer').css('top', yhandlePosition-35);
                 $('#pointer').css('left',handlePosition+6);
-                setTimeout(function () {
+                timeout = setTimeout(function () {
                     $("#pointer").hide()
                 }, 5000);
                 return false;
