@@ -68,15 +68,15 @@
                 }());
             });
             intervals.setOnHandleSlideCallback(function (context, period, edgeIndex) {
-                var handlePosition = context.left;
-                var yhandlePosition = context.top;
+                var handlePosition = context.offset().left;
+                var yhandlePosition = context.offset().top;
                 var periodId = period.getId();
                 var handleAbscissa = period.getAbscissas()[edgeIndex];
                 // $("#onhandleslide_infoo").html("Last OnHandleSlide data:" + "<br>" + " --- x-position: " + handlePosition + " px<br>" + " --- slider value (abscissa): " + handleAbscissa + "<br>" + " --- orientation: " + (edgeIndex === 1 ? "right" : "left") + " handle<br>" + "Period id: " + periodId + "<br>");
                 $('#pointer').html("<span>"+handleAbscissa+"</span>");
                 $('#pointer').show();
-                $('#pointer').css('top', yhandlePosition- $(window).scrollTop()-20);
-                $('#pointer').css('left',handlePosition- $(window).scrollLeft() );
+                $('#pointer').css('top', yhandlePosition);
+                $('#pointer').css('left',handlePosition );
                 return false;
             });
             intervals.setOnHandleMouseenterCallback(function (context, period, edgeIndex) {

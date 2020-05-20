@@ -64,8 +64,7 @@
     border-left: 0.8em solid #e6e6e6;
 }
 .range-value{
-    position: absolute;
-    top: -50%;
+    position: relative;
 }
 .range-value span{
     width: 30px;
