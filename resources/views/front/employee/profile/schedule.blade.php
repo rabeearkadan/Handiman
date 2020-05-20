@@ -75,9 +75,12 @@
                 // $("#onhandleslide_infoo").html("Last OnHandleSlide data:" + "<br>" + " --- x-position: " + handlePosition + " px<br>" + " --- slider value (abscissa): " + handleAbscissa + "<br>" + " --- orientation: " + (edgeIndex === 1 ? "right" : "left") + " handle<br>" + "Period id: " + periodId + "<br>");
                 $('#pointer').html("<span>"+handleAbscissa+"</span>");
                 $('#pointer').show();
-                $('#pointer').css('top', yhandlePosition- $(window).scrollTop()-20);
+               // $('#pointer').css('top', yhandlePosition- $(window).scrollTop()-20);
                 $('#pointer').css('left',handlePosition- $(window).scrollLeft() );
-               
+                var newValue = Number( (intervals.value - intervals.min) * 100 / (intervals.max - intervals.min) )
+                var newPosition = 10 - (newValue * 0.2);
+                $('#pointer').style.left = `calc(${newValue}% + (${newPosition}px))`;
+            };
                 return false;
             });
             intervals.setOnHandleMouseenterCallback(function (context, period, edgeIndex) {
