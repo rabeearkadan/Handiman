@@ -1,7 +1,3 @@
-#pointer {
-    position: fixed;
-    border: solid 1px #fc0;
-}
 
 .ui-slider-horizontal .ui-slider-range {
     background-color: #97ce00;
@@ -66,4 +62,35 @@
     border-top: 0.8em solid transparent;
     border-bottom: 0.8em solid transparent;
     border-left: 0.8em solid #e6e6e6;
+}
+.range-value{
+    position: absolute;
+    z-index: 12;
+}
+.range-value span{
+    width: 30px;
+    height: 24px;
+    line-height: 24px;
+    text-align: center;
+    background: #03a9f4;
+    color: #fff;
+    font-size: 12px;
+    display: block;
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%, 0);
+    border-radius: 6px;
+}
+.range-value span:before{
+    content: "";
+    position: absolute;
+    width: 0;
+    height: 0;
+    border-top: 10px solid #03a9f4;
+    border-left: 5px solid transparent;
+    border-right: 5px solid transparent;
+    top: 100%;
+    left: 50%;
+    margin-left: -5px;
+    margin-top: -1px;
 }

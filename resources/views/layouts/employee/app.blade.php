@@ -21,7 +21,7 @@
 <body>
     @include('front.employee.partials.preloader')
     @include('front.employee.partials.navbar')
-
+    @yield('outer-elements')
     <div class="content">
         @yield('content')
     </div>
