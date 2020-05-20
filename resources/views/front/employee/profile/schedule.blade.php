@@ -12,7 +12,7 @@
     <div class="page-title">
         <h1>Schedule</h1>
     </div><!-- /.page-title -->
-    <div id="pointer"></div>
+    <div id="pointer" class="range-value"></div>
     <form method="post" action="{{route('employee.schedule.update')}}">
         @csrf
         @method('put')
@@ -90,7 +90,7 @@
                 // $("#onhandlemouseenter_infoo").html("Last OnHandleMouseenter data:" + "<br>" + " --- x-position: " + handlePosition + " px<br>" + " --- slider value (abscissa): " + handleAbscissa + "<br>" + " --- orientation: " + (edgeIndex === 1 ? "right" : "left") + " handle<br>" + "Period id: " + periodId + "<br>");
                 $('#pointer').html(handleAbscissa);
                 $('#pointer').show();
-                $('#pointer').css('top', yhandlePosition- $(window).scrollTop()+20);
+                $('#pointer').css('top', yhandlePosition- $(window).scrollTop()-20);
                 $('#pointer').css('left',handlePosition- $(window).scrollLeft() );
                 setTimeout(function () {
                     $("#pointer").hide()
