@@ -60,7 +60,6 @@ class SchedularEngine extends Command
         $availableUsers = $list->users()->where('isApproved', true)
             ->where('role', 'user_employee')
             ->orWhere('role', 'employee')
-            ->where('isApproved', true)
 //            ->where('location', 'near', [
 //                '$geometry' => [
 //                    'type' => 'Point',
