@@ -6,9 +6,11 @@
         .p15 {
             padding: 0px;
         }
-        .col-sm-12{
-            padding-right: 5px;
-            padding-left:5px;
+        @media screen and (min-width: 460px) {
+            .col-sm-12 {
+                padding-right: 5px;
+                padding-left: 5px;
+            }
         }
     </style>
 @endpush
