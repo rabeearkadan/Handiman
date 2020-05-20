@@ -36,7 +36,7 @@ class SchedularEngine extends Command
                     $user = User::query()->find($req->client_ids[0]);
                     $var = Carbon::createFromFormat('Y-m-d H:i:s', $req->date, $req->timezone)->dayOfWeek;
 
-                    $this->Notification($user->client_device_token, 'Admin', $var.' no results found, search on large area', 'notification');
+                    $this->Notification($user->client_device_token, 'Admin', $var . ' no results found, search on large area', 'notification');
                 } else {
                     $req->employees()->attach($result->id);
                     $req->updated_at = Carbon::now();
@@ -61,17 +61,17 @@ class SchedularEngine extends Command
             ->where('role', 'user_employee')
             ->orWhere('role', 'employee')
             ->where('isApproved', true)
-            ->where('location', 'near', [
-                '$geometry' => [
-                    'type' => 'Point',
-                    'coordinates' => [
-                        (float)$requestHandyman->locaation[0],
-                        (float)$requestHandyman->location[1],
-                    ],
-                    'distanceField' => "dist.calculated",
-                    '$maxDistance' => 50000,
-                ],
-            ])->orderBy('dist.calculated')
+//            ->where('location', 'near', [
+//                '$geometry' => [
+//                    'type' => 'Point',
+//                    'coordinates' => [
+//                        (float)$requestHandyman->locaation[0],
+//                        (float)$requestHandyman->location[1],
+//                    ],
+//                    'distanceField' => "dist.calculated",
+//                    '$maxDistance' => 50000,
+//                ],
+//            ])->orderBy('dist.calculated')
             ->get();
 
         $matchingHandyman = null;
