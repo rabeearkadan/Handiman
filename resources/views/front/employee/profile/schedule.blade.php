@@ -80,7 +80,6 @@
                 var newValue = Number( (intervals.value - intervals.min) * 100 / (intervals.max - intervals.min) )
                 var newPosition = 10 - (newValue * 0.2);
                 $('#pointer').style.left = `calc(${newValue}% + (${newPosition}px))`;
-            };
                 return false;
             });
             intervals.setOnHandleMouseenterCallback(function (context, period, edgeIndex) {
