@@ -42,6 +42,7 @@
     <script>
         @for($day=0;$day<7;$day++)
         $(function () {
+
             var intervals = new Intervals("#slider{{$day}}");
             intervals.addPeriod(1, 1);
             intervals.addPeriod(12, 6);
