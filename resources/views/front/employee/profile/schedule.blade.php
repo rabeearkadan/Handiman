@@ -75,6 +75,7 @@
                 var periodId = period.getId();
                 var handleAbscissa = period.getAbscissas()[edgeIndex];
                 // $("#onhandleslide_infoo").html("Last OnHandleSlide data:" + "<br>" + " --- x-position: " + handlePosition + " px<br>" + " --- slider value (abscissa): " + handleAbscissa + "<br>" + " --- orientation: " + (edgeIndex === 1 ? "right" : "left") + " handle<br>" + "Period id: " + periodId + "<br>");
+                $("#pointer").stop(true);
                 $('#pointer').html("<span>"+handleAbscissa+"</span>");
                 $('#pointer').show();
                 $('#pointer').css('top', yhandlePosition-35);
