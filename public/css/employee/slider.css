@@ -63,11 +63,13 @@
     border-bottom: 0.8em solid transparent;
     border-left: 0.8em solid #e6e6e6;
 }
-.range-value{
+
+.range-value {
     position: absolute;
     z-index: 12;
 }
-.range-value span{
+
+.range-value span {
     width: 30px;
     height: 24px;
     line-height: 24px;
@@ -81,7 +83,8 @@
     transform: translate(-50%, 0);
     border-radius: 6px;
 }
-.range-value span:before{
+
+.range-value span:before {
     content: "";
     position: absolute;
     width: 0;
@@ -94,3 +97,34 @@
     margin-left: -5px;
     margin-top: -1px;
 }
+
+.slider-tick-mark-main {
+    display: inline-block;
+    width: 1px;
+    background: #bbb;
+    height: 7px;
+    position: absolute;
+    top: 8px;
+    font-size: 11px;
+}
+
+.slider-tick-mark-main-text {
+    display: inline-block;
+    width: 20px;
+    height: 10px;
+    position: absolute;
+    top: 15px;
+    font-size: 9px;
+    text-align: center;
+    margin-left: -9px;
+}
+
+.slider-tick-mark-side {
+    display: inline-block;
+    width: 1px;
+    background: #ccc;
+    height: 5px;
+    position: absolute;
+    top: 8px;
+}
+

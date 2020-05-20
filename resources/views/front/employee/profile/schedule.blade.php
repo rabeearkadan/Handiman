@@ -2,9 +2,17 @@
 @push('css')
     <link href="{{asset('css/employee/jquery-ui.css')}}" rel="stylesheet">
     <link href="{{asset('css/employee/slider.css')}}" rel="stylesheet">
+@endpush
+@push('priority-css')
     <style>
         .p15 {
             padding: 0px;
+        }
+        @media screen and (max-width: 460px) {
+            .col-sm-12 {
+                padding-right: 5px;
+                padding-left: 5px;
+            }
         }
     </style>
 @endpush
@@ -27,9 +35,19 @@
             <div class="form-horizontal">
                 <div class="form-group">
                     <label for="slider{{$day}}" class="col-sm-1 control-label"> {{date('D', strtotime("Sunday +{$day} days"))}}</label>
-                    <div class="col-sm-11" style="margin-top: 12px;">
+                    <div class="col-sm-11" style="margin-top: 12px;margin-bottom: 20px;">
+                        <div class="col-sm-12">
                         <div id="slider{{$day}}"></div>
                         <input type="hidden" id="periods{{$day}}" name="periods{{$day}}" value="">
+                        </div><!-- /.col-* -->
+                        <div class="col-sm-12">
+                            <div class="ticks">
+                            @for($hour=0;$hour<=24;$hour++)
+                                    <span class="slider-tick-mark-main" style="left:{{$hour*3.987+2}}%;"></span>
+                                    <span class="slider-tick-mark-main-text" style="left:{{$hour*3.987+2}}%;">{{$hour}}</span>
+                                @endfor
+                            </div><!-- /.ticks-* -->
+                        </div><!-- /.col-* -->
                     </div><!-- /.col-* -->
                 </div><!-- /.form-group -->
             </div><!-- /.form-inline -->

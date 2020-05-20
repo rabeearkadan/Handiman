@@ -17,6 +17,7 @@
     @stack('css')
     <link href="{{asset('css/employee/navbar.css')}}" rel="stylesheet">
     <link href="{{asset('css/employee/preloader.css')}}" rel="stylesheet">
+    @stack('priority-css')
 </head>
 <body>
     @include('front.employee.partials.preloader')
