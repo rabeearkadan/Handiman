@@ -279,6 +279,7 @@ class RequestController extends Controller
 
 
             $prequest = $pending->map(function ($item) {
+                 if ($item->employees()->count() > 0)
                 $item->handyman = User::query()->find($item->employee_ids[0])->simplifiedArray();
                 return $item;
             });
