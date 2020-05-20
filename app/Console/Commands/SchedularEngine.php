@@ -34,7 +34,9 @@ class SchedularEngine extends Command
                 $result = $this->searchForHandyman($req);
                 if ($result == null) {
                     $user = User::query()->find($req->client_ids[0]);
-                    $this->Notification($user->client_device_token, 'Admin', 'no results found, search on large area', 'notification');
+                    $var = Carbon::createFromFormat('Y-m-d H:i:s', $req->date, $req->timezone)->dayOfWeek;
+
+                    $this->Notification($user->client_device_token, 'Admin', $var.' no results found, search on large area', 'notification');
                 } else {
                     $req->employees()->attach($result->id);
                     $req->updated_at = Carbon::now();
