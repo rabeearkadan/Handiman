@@ -6,6 +6,10 @@
         .p15 {
             padding: 0px;
         }
+        .col-sm-12{
+            padding-right: 5px;
+            padding-left:5px;
+        }
     </style>
 @endpush
 @section('outer-elements')
