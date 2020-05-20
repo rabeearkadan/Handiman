@@ -65,6 +65,7 @@
 }
 .range-value{
     position: absolute;
+    z-index: 12;
 }
 .range-value span{
     width: 30px;
