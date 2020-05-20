@@ -77,9 +77,7 @@
                 $('#pointer').show();
                 $('#pointer').css('top', yhandlePosition- $(window).scrollTop()-20);
                 $('#pointer').css('left',handlePosition- $(window).scrollLeft() );
-                setTimeout(function () {
-                    $("#pointer").hide()
-                }, 5000);
+               
                 return false;
             });
             intervals.setOnHandleMouseenterCallback(function (context, period, edgeIndex) {
