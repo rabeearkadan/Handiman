@@ -14,6 +14,7 @@
     @endif
     <link href="{{asset('css/client/navbar.css')}}" rel="stylesheet">
     <link href="{{asset('css/client/preloader.css')}}" rel="stylesheet">
+    <link href="{{asset('css/materialize.min.css')}}" rel="stylesheet">
 </head>
 
 <body>
@@ -25,6 +26,7 @@
 </div>
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script src="/public/js/materialize.min.js"></script>
 @stack('js')
 
 </body>
