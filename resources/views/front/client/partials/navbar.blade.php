@@ -1,5 +1,4 @@
 <nav class="nav">
-    <a href="#" data-target="slide-out" class="sidenav-trigger"><i class="fa fa-bars">menu</i></a>
     <a href="{{route('client.home')}}" class="nav-item @if (  request()->is('client/home*')) {{'is-active'}} @endif" active-color="green">Home</a>
     <a href="{{route('client.service')}}"  class="nav-item @if ( request()->is('client/services*')) {{'is-active'}} @endif" active-color="orange">Services</a>
     <a href="{{route('client.request.index')}}" class="nav-item  @if ( request()->is('client/request*')) {{'is-active'}} @endif " active-color="blue">Requests</a>
@@ -9,6 +8,7 @@
     <span class="nav-indicator"></span>
     <a href="" class="nav-item" > logout</a>
 </nav>
+<a href="#" data-target="slide-out" class="sidenav-trigger"><i class="fa fa-bars">menu</i></a>
 
 <ul id="slide-out" class="sidenav">
     <li><div class="user-view">
