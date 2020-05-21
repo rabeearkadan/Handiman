@@ -17,6 +17,7 @@
     @stack('css')
     <link href="{{asset('css/employee/navbar.css')}}" rel="stylesheet">
     <link href="{{asset('css/employee/preloader.css')}}" rel="stylesheet">
+    <link href="{{asset('css/materialize.min.css')}}" rel="stylesheet">
     @stack('priority-css')
 </head>
 <body>
@@ -28,6 +29,7 @@
     </div>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="/public/js/materialize.min.js"></script>
     @stack('js')
 
 </body>
