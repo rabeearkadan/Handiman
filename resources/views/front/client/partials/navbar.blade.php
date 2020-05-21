@@ -4,7 +4,6 @@
     <a href="{{route('client.service')}}"  class="nav-item @if ( request()->is('client/services*')) {{'is-active'}} @endif" active-color="orange">Services</a>
     <a href="{{route('client.request.index')}}" class="nav-item  @if ( request()->is('client/request*')) {{'is-active'}} @endif " active-color="blue">Requests</a>
     <span class="nav-indicator"></span>
-    <a href="" class="nav-item" > logout</a>
 </nav>
 <ul id="slide-out" class="sidenav">
     <li><div class="user-view">
@@ -19,10 +18,12 @@
     <li><a class="waves-effect" href="{{route('client.profile')}}">Profile</a></li>
     <li><a class="waves-effect" href="{{route('client.invoice.index')}}">Bills</a></li>
     <li><a class="waves-effect" href="{{route('client.reviews.index')}}">Reviews</a></li>
-    <li><a class="waves-effect" href="">Switch</a></li>
-    <li><a class="waves-effect" href="">Logout</a></li>
+    <li><a class="waves-effect" href="{{route('employee.home')}}">Switch</a></li>
+    <li><a class="waves-effect" href="{{ url('/logout') }}" onclick="e.preventDefault(); document.getElementById('logout-form').submit();">Logout</a></li>
 </ul>
-
+<form id="logout-form" action="{{ url('/logout') }}" method="post" style="display: none;">
+    @csrf
+</form>
 
 @push('js')
     <script>
