@@ -7,6 +7,7 @@
     <!-- Fonts -->
 
     <!-- Styles -->
+    <link href="{{asset('css/materialize.min.css')}}" rel="stylesheet">
     @stack('css')
     @if(request()->route()->getName() != "client.user-profile")
         <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
@@ -14,7 +15,6 @@
     @endif
     <link href="{{asset('css/client/navbar.css')}}" rel="stylesheet">
     <link href="{{asset('css/client/preloader.css')}}" rel="stylesheet">
-    <link href="{{asset('css/materialize.min.css')}}" rel="stylesheet">
 </head>
 
 <body>
