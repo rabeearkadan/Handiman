@@ -17,23 +17,8 @@ class ServiceController extends Controller
         $service = Service::query()->find($id);
         $user = User::query()->find(Auth::id());
 
-        $user_id = $service->user_ids;
-        array_push($user_id, $user->id);
-        $service->user_ids = $user_id;
-        $service->save();
-
-        if ($user->service_ids == null) {
-
-
-            $service_ids = $user->service_ids;
-            array_push($service_ids, $id);
-            $user->service_ids = $service_ids;
-        } else {
-            $user->service_ids[0] = $id;
-        }
-
-        $user->save();
-
+        $service->users()->attach(Auth::id());
+        $user->services()->attach($id);
         return response()->json(['status' => 'success']);
 
 
