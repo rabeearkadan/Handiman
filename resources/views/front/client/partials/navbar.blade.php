@@ -21,7 +21,7 @@
     <li><a class="waves-effect" href="{{route('employee.home')}}">Switch</a></li>
     <li><a class="waves-effect" href="{{ url('/logout') }}" onclick="e.preventDefault(); document.getElementById('logout-form').submit();">Logout</a></li>
 </ul>
-<form id="logout-form" action="{{ url('/logout') }}" method="post" style="display: none;">
+<form id="logout-form" action="{{ route('logout') }}" method="post" style="display: none;">
     @csrf
 </form>
 
