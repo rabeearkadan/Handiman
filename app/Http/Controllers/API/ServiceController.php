@@ -22,10 +22,16 @@ class ServiceController extends Controller
         $service->user_ids = $user_id;
         $service->save();
 
-        $service_ids = $user->service_ids;
-        array_push($service_ids, $id);
+        if ($user->service_ids == null) {
 
-        $user->service_ids = $service_ids;
+
+            $service_ids = $user->service_ids;
+            array_push($service_ids, $id);
+            $user->service_ids = $service_ids;
+        } else {
+            $user->service_ids[0] = $id;
+        }
+
         $user->save();
 
         return response()->json(['status' => 'success']);
@@ -39,9 +45,9 @@ class ServiceController extends Controller
         $user = User::query()->find(Auth::id());
 
         $services = [];
-        foreach ( $user->service_ids as $s){
-            if ( $s != $id)
-            $services [] = $s;
+        foreach ($user->service_ids as $s) {
+            if ($s != $id)
+                $services [] = $s;
         }
 
         $user->services()->sync($services);
