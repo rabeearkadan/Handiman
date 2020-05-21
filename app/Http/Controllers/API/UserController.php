@@ -165,17 +165,19 @@ class UserController extends Controller
         $user->save();
         if ($user->image != null &&
             $user->biography != null &&
+            $user->gender != null &&
             $user->service_ids != null &&
             $user->location != null &&
             $this->checkTimeline($user) &&
             $user->certificate != null &&
             $user->criminal_record != null &&
             $user->cv != null
-
         ) {
             $user->isApproved = true;
-            $user->save();
+        } else {
+            $user->isApproved = false;
         }
+        $user->save();
         return response()->json(['status' => 'success', 'user' => $user]);
 
     }
