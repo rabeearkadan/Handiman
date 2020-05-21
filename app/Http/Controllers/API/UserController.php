@@ -49,10 +49,24 @@ class UserController extends Controller
         return response()->json(['status' => 'success', 'timeline' => $timeline]);
     }
 
-//public function
+    public function checkTimeline($user)
+    {
+        $flag = false;
+        for ($i = 0; $i <= 6; $i++) {
+            for ($j = 0; $j <= 23; $j++) {
+                if ($user->timeline[$i][$j] == true) {
+                    $flag = true;
+                    break;
+                }
+            }
+        }
+        return $flag;
+    }
+
     public function editProfile(Request $request)
     {
         $user = User::query()->find(Auth::id());
+
 
         $params = $request->only([
 // common info
@@ -149,7 +163,19 @@ class UserController extends Controller
         }
 
         $user->save();
+        if ($user->image != null &&
+            $user->biography != null &&
+            $user->service_ids != null &&
+            $user->location != null &&
+            $this->checkTimeline($user) &&
+            $user->certificate != null &&
+            $user->criminal_record != null &&
+            $user->cv != null
 
+        ) {
+            $user->isApproved = true;
+            $user->save();
+        }
         return response()->json(['status' => 'success', 'user' => $user]);
 
     }
