@@ -3,26 +3,24 @@
     <a href="{{route('client.home')}}" class="nav-item @if (  request()->is('client/home*')) {{'is-active'}} @endif" active-color="green">Home</a>
     <a href="{{route('client.service')}}"  class="nav-item @if ( request()->is('client/services*')) {{'is-active'}} @endif" active-color="orange">Services</a>
     <a href="{{route('client.request.index')}}" class="nav-item  @if ( request()->is('client/request*')) {{'is-active'}} @endif " active-color="blue">Requests</a>
-    <a href="{{route('client.invoice.index')}}" class="nav-item @if ( request()->is('client/invoice*')) {{'is-active'}} @endif" active-color="red"> Invoices </a>
-    <a href="{{route('client.reviews.index')}}" class="nav-item @if ( request()->is('client/reviews*')) {{'is-active'}} @endif" active-color="purple"> Reviews </a>
-    <a href="{{route('client.profile')}}" class="nav-item @if ( request()->is('client/profile*')) {{'is-active'}} @endif" active-color="green">Profile</a>
     <span class="nav-indicator"></span>
     <a href="" class="nav-item" > logout</a>
 </nav>
 <ul id="slide-out" class="sidenav">
     <li><div class="user-view">
             <div class="background">
-                <img src="">
+                <img >
             </div>
-            <a href="#user"><img class="circle" src=""></a>
-            <a href="#name"><span class="black-text name">nnnn</span></a>
-            <a href="#email"><span class="black-text email">nnnnn@gmail.com</span></a>
+            <a href="#user"><img class="circle" src="{{ Auth::user()->image }}"></a>
+            <a href="#name"><span class="black-text name">{{ Auth::user()->name }}</span></a>
+            <a href="#email"><span class="black-text email">{{ Auth::user()->email }}</span></a>
         </div></li>
-    <li><a href="#!"><i class="material-icons">cloud</i>First Link With Icon</a></li>
-    <li><a href="#!">Second Link</a></li>
-    <li><div class="divider"></div></li>
-    <li><a class="subheader">Subheader</a></li>
-    <li><a class="waves-effect" href="#!">Third Link With Waves</a></li>
+
+    <li><a class="waves-effect" href="{{route('client.profile')}}">Profile</a></li>
+    <li><a class="waves-effect" href="{{route('client.invoice.index')}}">Bills</a></li>
+    <li><a class="waves-effect" href="{{route('client.reviews.index')}}">Reviews</a></li>
+    <li><a class="waves-effect" href="">Switch</a></li>
+    <li><a class="waves-effect" href="">Logout</a></li>
 </ul>
 
 
