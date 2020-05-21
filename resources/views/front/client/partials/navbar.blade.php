@@ -9,8 +9,6 @@
     <span class="nav-indicator"></span>
     <a href="" class="nav-item" > logout</a>
 </nav>
-<a href="#" data-target="slide-out" class="sidenav-trigger"><i class="fa fa-bars">menu</i></a>
-
 <ul id="slide-out" class="sidenav">
     <li><div class="user-view">
             <div class="background">
