@@ -8,6 +8,7 @@
 
     <!-- Styles -->
     <link href="{{asset('css/materialize.min.css')}}" rel="stylesheet">
+    <link href="{{asset('lib/font-awesome/css/font-awesome.css')}}" rel="stylesheet">
     @stack('css')
     @if(request()->route()->getName() != "client.user-profile")
         <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
