@@ -16,28 +16,28 @@
 
 </head>
 <body>
-<nav class="black">
-    <div class="nav-wrapper">
-        <a href="#!" class="brand-logo">Logo</a>
-        <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
-        <ul class="right hide-on-med-and-down">
-            <li><a href="">Register</a></li>
-            <li><a href="">Abouts us</a></li>
-            <li><a href="">Our Team</a></li>
-            <li><a href="">Contact us</a></li>
-        </ul>
-    </div>
-</nav>
 
-<ul class="sidenav" id="mobile-demo">
-    <li><a href="">Register</a></li>
-    <li><a href="">Register</a></li>
-    <li><a href="">Register</a></li>
-    <li><a href="">Register</a></li>
-</ul>
 
 <div id="app">
-        <div id="preloader"></div>
+    <nav class="black">
+        <div class="nav-wrapper">
+            <a href="#!" class="brand-logo">Logo</a>
+            <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+            <ul class="right hide-on-med-and-down">
+                <li><a href="">Register</a></li>
+                <li><a href="">Abouts us</a></li>
+                <li><a href="">Our Team</a></li>
+                <li><a href="">Contact us</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <ul class="sidenav" id="mobile-demo">
+        <li><a href="">Register</a></li>
+        <li><a href="">Register</a></li>
+        <li><a href="">Register</a></li>
+        <li><a href="">Register</a></li>
+    </ul>
         @yield('content')
     </div>
 @stack('script')
