@@ -42,29 +42,27 @@
 
 </head>
 <body>
-
-    <div id="app">
-        <div id="preloader"></div>
-
-        <nav class="black">
-            <div class="nav-wrapper">
-                <a href="{{url('/')}}" class="brand-logo"></a>
-                <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
-                <ul class="right hide-on-med-and-down">
-                    <li><a href="{{route('register')}}">Register</a></li>
-                    <li><a href="{{url('/#about')}}">Abouts us</a></li>
-                    <li><a href="{{url('/#team')}}">Our Team</a></li>
-                    <li><a href="{{url('/#contact')}}">Contact us</a></li>
-                </ul>
-            </div>
-        </nav>
-
-        <ul class="sidenav" id="mobile-demo">
+<nav class="black">
+    <div class="nav-wrapper">
+        <a href="{{url('/')}}" class="brand-logo"></a>
+        <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+        <ul class="right hide-on-med-and-down">
             <li><a href="{{route('register')}}">Register</a></li>
             <li><a href="{{url('/#about')}}">Abouts us</a></li>
             <li><a href="{{url('/#team')}}">Our Team</a></li>
             <li><a href="{{url('/#contact')}}">Contact us</a></li>
         </ul>
+    </div>
+</nav>
+
+<ul class="sidenav" id="mobile-demo">
+    <li><a href="{{route('register')}}">Register</a></li>
+    <li><a href="{{url('/#about')}}">Abouts us</a></li>
+    <li><a href="{{url('/#team')}}">Our Team</a></li>
+    <li><a href="{{url('/#contact')}}">Contact us</a></li>
+</ul>
+    <div id="app">
+        <div id="preloader"></div>
         @yield('content')
     </div>
     <footer class="footer">
