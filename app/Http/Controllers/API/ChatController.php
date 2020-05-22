@@ -51,7 +51,7 @@ class ChatController extends Controller
         if ($requests == null)
             return response()->json(['status' => 'success', 'message' => 'You have no requests to chat']);
         $_requests = $requests->map(function ($item) {
-            $item->employee = User::query()->find($item->employee_ids[0])->simplifiedArray();
+            $item->client = User::query()->find($item->employee_ids[0])->simplifiedArray();
             return $item;
         });
 
