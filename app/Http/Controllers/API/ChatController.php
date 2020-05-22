@@ -30,7 +30,7 @@ class ChatController extends Controller
 
     }
 
-    public function notDoneRequests()
+    public function employeeRequests()
     {
         $requests = Auth::user()->employeeRequests()->where('status', 'approved')->where('isdone', false)->get();
 
@@ -43,6 +43,21 @@ class ChatController extends Controller
 
         return response()->json(['status' => 'success', 'requests' => $_requests]);
     }
+
+    public function clientRequests()
+    {
+        $requests = Auth::user()->clientRequests()->where('status', 'approved')->where('isdone', false)->get();
+
+        if ($requests == null)
+            return response()->json(['status' => 'success', 'message' => 'You have no requests to chat']);
+        $_requests = $requests->map(function ($item) {
+            $item->client = User::query()->find($item->employee_ids[0])->simplifiedArray();
+            return $item;
+        });
+
+        return response()->json(['status' => 'success', 'requests' => $_requests]);
+    }
+
 
     public function sendMessage(Request $request, $id)
     {
