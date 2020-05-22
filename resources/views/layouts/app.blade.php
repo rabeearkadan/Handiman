@@ -24,11 +24,11 @@
     <div class="nav-wrapper">
         <a href="#" class="brand-logo">lll</a>
         <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
-        <ul class="right hide-on-med-and-down">
+        <ul class="right hide-on-small-only">
             <li><a href="{{route('register')}}">Register</a></li>
             <li><a href="{{url('/#about')}}">Abouts us</a></li>
-            <li><a href="{{url('/#team')}}">Our Team</a></li>
-            <li><a href="{{url('/#contact')}}">Contact us</a></li>
+            <li><a href="">Our Team</a></li>
+            <li><a href="">Contact us</a></li>
         </ul>
     </div>
 </nav>
