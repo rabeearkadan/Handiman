@@ -6,50 +6,50 @@
 
     <title>{{ config('app.name', 'Laravel') }}</title>
 
+    <!-- Scripts -->
+    <script src="{{ asset('js/app.js') }}" defer></script>
 
+    <!-- Fonts -->
+    <link rel="dns-prefetch" href="//fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet" type="text/css">
 
     <!-- Styles -->
-    <link href="{{asset('css/materialize.min.css')}}" rel="stylesheet">
-
+    <link href="{{asset('css/app.css')}}" rel="stylesheet">
+    <link href="{{asset('css/navbar.css')}}" rel="stylesheet">
     @stack('css')
 
 </head>
 <body>
-
-
-<div id="app">
-    <nav class="black">
-        <div class="nav-wrapper">
-            <a href="#!" class="brand-logo">Logo</a>
-            <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
-            <ul class="right hide-on-med-and-down">
-                <li><a href="">Register</a></li>
-                <li><a href="">Abouts us</a></li>
-                <li><a href="">Our Team</a></li>
-                <li><a href="">Contact us</a></li>
-            </ul>
+<nav class="navbar navbar-expand-md bg-dark navbar-dark">
+    <a class="navbar-brand" href="#">Navbar</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+        <div class="navTrigger">
+            <i></i><i></i><i></i>
         </div>
-    </nav>
+    </button>
 
-    <ul class="sidenav" id="mobile-demo">
-        <li><a href="">Register</a></li>
-        <li><a href="">Register</a></li>
-        <li><a href="">Register</a></li>
-        <li><a href="">Register</a></li>
-    </ul>
+
+    <div class="collapse navbar-collapse" id="collapsibleNavbar">
+        <ul class="navbar-nav">
+            <li class="nav-item">
+                <a class="nav-link" href="#">Register</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">Link</a>
+            </li>
+        </ul>
+    </div>
+</nav>
+    <div id="app">
+        <div id="preloader"></div>
         @yield('content')
     </div>
 @stack('script')
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-
-<script src="/public/js/materialize.js" type="text/javascript"></script>
-
 <script>
-    $(document).ready(function(){
-        $('.sidenav').sidenav();
+    $('.navTrigger').click(function(){
+        $(this).toggleClass('active');
     });
-
-
 </script>
+
 </body>
 </html>
