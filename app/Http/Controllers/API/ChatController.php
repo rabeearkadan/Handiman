@@ -22,10 +22,8 @@ class ChatController extends Controller
 
     public function chats()
     {
-        $type = 0;
         if (Auth::user()->isclient()) {
             $requests = Auth::user()->clientRequests()->where('status', 'approved')->where('isdone', false)->get();
-            $type = 1;
         } else {
             $requests = Auth::user()->employeeRequests()->where('status', 'approved')->where('isdone', false)->get();
         }
@@ -33,11 +31,9 @@ class ChatController extends Controller
             return response()->json(['status' => 'success', 'message' => 'You have no requests to chat']);
 
         $_requests = $requests->map(function ($item) {
-            if ($type = 1) {
-                $item->handyman = User::query()->find($item->handyman_ids[0])->simplifiedArray();
-            } else {
-                $item->client = User::query()->find($item->client_ids[0])->simplifiedArray();
-            }
+            $item->handyman = User::query()->find($item->employee_ids[0])->simplifiedArray();
+            $item->client = User::query()->find($item->client_ids[0])->simplifiedArray();
+
             return $item;
         });
 
