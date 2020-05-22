@@ -14,7 +14,6 @@
 
     <!-- Styles -->
 
-    <link href="{{asset('css/app.css')}}" rel="stylesheet">
     <link href="{{asset('css/materialize.min.css')}}" rel="stylesheet">
     <link href="{{asset('css/footer.css')}}" rel="stylesheet">
     <link href="{{asset('css/social-buttons.css')}}" rel="stylesheet">
