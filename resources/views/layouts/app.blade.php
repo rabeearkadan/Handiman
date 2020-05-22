@@ -15,6 +15,7 @@
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
     <!-- Styles -->
+    <link href="{{asset('css/app.css')}}" rel="stylesheet">
 {{--    <link href="{{asset('css/navbar.css')}}" rel="stylesheet">--}}
 {{--    Remember to delete the file --}}
     <link href="{{asset('css/footer.css')}}" rel="stylesheet">
