@@ -19,27 +19,44 @@ use Illuminate\Support\Facades\Validator;
 class ChatController extends Controller
 {
 
-
-    public function chats()
+    public function loadMessages($id)
     {
+
+        $requestService = RequestService::query()->find($id);
+        $messages = $requestService->messages;
+        if ($messages != null)
+            return response()->json(['status' => 'success', 'messages' => $messages]);
+        return response()->json(['status' => 'success', 'messages' => "no messages yet"]);
+
+    }
+
+    public function notDoneRequests()
+    {
+<<<<<<< HEAD
         if (Auth::user()->isclient()) {
             $requests = Auth::user()->clientRequests()->where('status', 'approved')->where('isdone', false)->get();
         } else {
             $requests = Auth::user()->employeeRequests()->where('status', 'approved')->where('isdone', false)->get();
         }
+=======
+        $requests = Auth::user()->employeeRequests()->where('status', 'approved')->where('isdone', false)->get();
+
+>>>>>>> parent of f53c6c2... .
         if ($requests == null)
             return response()->json(['status' => 'success', 'message' => 'You have no requests to chat']);
-
         $_requests = $requests->map(function ($item) {
+<<<<<<< HEAD
             $item->handyman = User::query()->find($item->employee_ids[0])->simplifiedArray();
             $item->client = User::query()->find($item->client_ids[0])->simplifiedArray();
 
+=======
+            $item->client = User::query()->find($item->client_ids[0])->simplifiedArray();
+>>>>>>> parent of f53c6c2... .
             return $item;
         });
 
         return response()->json(['status' => 'success', 'requests' => $_requests]);
     }
-
 
     public function sendMessage(Request $request, $id)
     {

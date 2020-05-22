@@ -35,7 +35,7 @@ Route::middleware(['auth:api', 'employee'])->prefix('employee')->group(function 
     Route::post('add-service/{id}', 'ServiceController@addService');
     Route::get('delete-service/{id}', 'ServiceController@deleteService');
     Route::post('post', 'PostController@addPost');
-    Route::get('chat-requests', 'ChatController@chats');
+    Route::get('chat-requests', 'ChatController@notDoneRequests');
     Route::post('receipt/{id}', 'RequestController@addReceipt');
 
 
@@ -52,8 +52,6 @@ Route::middleware(['auth:api', 'client'])->prefix('client')->group(function () {
     Route::post('request-cancel/{id}', 'RequestController@cancelRequest');
     Route::post('payment/{id}', 'RequestController@setPayment');
 
-    Route::get('chat-requests', 'ChatController@chats');
-
 });
 
 Route::middleware(['auth:api'])->group(function () {
@@ -65,6 +63,7 @@ Route::middleware(['auth:api'])->group(function () {
     Route::post('profile-edit', 'UserController@editProfile');
     Route::get('timeline-view/{id}', 'UserController@getTimeline');
     Route::post('message/{id}', 'ChatController@sendMessage');
+    Route::get('message/{id}', 'ChatController@loadMessages');
     Route::post('credit-card', 'PaymentController@setCreditCard');
     Route::get('credit-card', 'PaymentController@getCreditCard');
 
