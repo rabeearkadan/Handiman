@@ -18,7 +18,7 @@
     <link href="{{asset('css/app.css')}}" rel="stylesheet">
 {{--    <link href="{{asset('css/navbar.css')}}" rel="stylesheet">--}}
 {{--    Remember to delete the file --}}
-    <link href="{{asset('css/footer.min.css')}}" rel="stylesheet">
+    <link href="{{asset('css/footer.css')}}" rel="stylesheet">
     <link href="{{asset('css/social-buttons.css')}}" rel="stylesheet">
     <link href="{{asset('css/materialize.min.css')}}" rel="stylesheet">
     <style>
@@ -47,7 +47,7 @@
 
         <nav class="black">
             <div class="nav-wrapper">
-                <a href="{{url('/')}}" class="brand-logo"><img src="/public/img/logo.png" alt="Home"></a>
+                <a href="{{url('/')}}" class="brand-logo"><img src="" alt="Home"></a>
                 <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
                 <ul class="right hide-on-med-and-down">
                     <li><a href="{{route('register')}}">Register</a></li>
