@@ -15,7 +15,7 @@
 
     <!-- Styles -->
     <link href="{{asset('css/app.css')}}" rel="stylesheet">
-    <link href="{{asset('css/materialize.css')}}" rel="stylesheet">
+    <link href="{{asset('css/materialize.min.css')}}" rel="stylesheet">
 
     @stack('css')
 
