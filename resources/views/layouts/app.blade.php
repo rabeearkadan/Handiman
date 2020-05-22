@@ -21,7 +21,7 @@
 </head>
 <body>
 <nav class="navbar navbar-expand-md bg-dark navbar-dark">
-    <a class="navbar-brand" href="{{url('/home')}}"><img src="/public/img/logo.png" alt="Home"></a>
+    <a class="navbar-brand" href="{{url('/home')}}"><img  width="130px" height="70px" src="/public/img/logo.png" alt="Home"></a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
         <div class="navTrigger">
             <i></i><i></i><i></i>
