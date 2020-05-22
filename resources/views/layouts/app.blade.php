@@ -21,7 +21,7 @@
 </head>
 <body>
 <nav class="navbar navbar-expand-md bg-dark navbar-dark">
-    <a class="navbar-brand" href="#">Navbar</a>
+    <a class="navbar-brand" href="{{url('/home')}}"><img src="/public/img/logo.png" alt="Home"></a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
         <div class="navTrigger">
             <i></i><i></i><i></i>
@@ -31,12 +31,28 @@
 
     <div class="collapse navbar-collapse" id="collapsibleNavbar">
         <ul class="navbar-nav">
+
+                @if(request()->route()->getName() != "login")
+                <li class="nav-item">
+                <a class="nav-link" href="{{route('login')}}">Login</a>
+                </li>
+            @endif
+                    @if(request()->route()->getName() != "register")
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{route('register')}}">Register</a>
+                        </li>
+                    @endif
+
             <li class="nav-item">
-                <a class="nav-link" href="#">Register</a>
+                <a class="nav-link" href="{{url('/#about')}}">About</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#">Link</a>
+                <a class="nav-link" href="{{url('/#team')}}">Our Team</a>
             </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{{url('/#contact')}}">Contact Us</a>
+            </li>
+
         </ul>
     </div>
 </nav>
