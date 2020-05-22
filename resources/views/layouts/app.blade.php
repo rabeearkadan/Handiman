@@ -15,11 +15,9 @@
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
     <!-- Styles -->
-    <link href="{{asset('css/materialize.min.css')}}" rel="stylesheet">
 
     <link href="{{asset('css/app.css')}}" rel="stylesheet">
-{{--    <link href="{{asset('css/navbar.css')}}" rel="stylesheet">--}}
-{{--    Remember to delete the file --}}
+    <link href="{{asset('css/materialize.min.css')}}" rel="stylesheet">
     <link href="{{asset('css/footer.css')}}" rel="stylesheet">
     <link href="{{asset('css/social-buttons.css')}}" rel="stylesheet">
     <style>
@@ -44,7 +42,7 @@
 <body>
 <nav class="black">
     <div class="nav-wrapper">
-        <a href="{{url('/')}}" class="brand-logo"></a>
+        <a href="" class="brand-logo">lll</a>
         <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
         <ul class="right hide-on-med-and-down">
             <li><a href="{{route('register')}}">Register</a></li>
