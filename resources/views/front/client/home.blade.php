@@ -72,7 +72,8 @@
 @push('js')
 <script>
     $('.carousel.carousel-slider').carousel({
-        fullWidth: true
+        fullWidth: true,
+        indicators: true
     });
 </script>
 @endpush
