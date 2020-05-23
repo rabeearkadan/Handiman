@@ -30,7 +30,7 @@
                                         </div><!-- /.post-content -->
                                         <div class="post-meta clearfix">
                                             <div class="post-meta-author">
-                                                @foreach($post->users() as $user)
+                                                @foreach($post->users as $user)
                                                 <a href=""><img class="responsive-img" src="{{config('image.path').$user->image}}"></a>
                                                     <a href=""> {{$user->name}} </a>
                                                 @endforeach
