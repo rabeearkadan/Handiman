@@ -146,7 +146,10 @@ class User extends Eloquent implements
                 ->sum('rating');
             $count = RequestService::query()->where("service_id", $service->id)
                 ->count();
+            if ( $count > 0)
             $result[$service->_id] = $sum / $count;
+            else
+                $result[$service->_id] = 0;
         }
         return $result;
     }
