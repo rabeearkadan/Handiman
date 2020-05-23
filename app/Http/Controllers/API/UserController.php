@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\API;
 
 use App\Http\Controllers\Controller;
+use App\Models\RequestService;
 use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Arr;
@@ -20,18 +21,11 @@ class UserController extends Controller
     //
     public function addRating(Request $request)
     {
-        $handyman = User::query()->find($request->input('handyman'));
         $request_id = $request->input('request');
         $rate=(double)$request->input('rating');
-        if ($handyman->rating[$request_id] != null) {
-
-            $ex = $handyman->rating[$request_id];
-            $ex['rating'][$request_id]['rating'] = $rate;
-            $handyman->push('rating'[$request_id]['ratings'], 2);
-        } else {
-            $handyman->push('rating', $request_id);
-        }
-        $handyman->save();
+        $requestService = RequestService::query()->find($request_id);
+        $requestService->rating = $rate;
+        $requestService->save();
         return response()->json(['status' => 'success']);
     }
 
