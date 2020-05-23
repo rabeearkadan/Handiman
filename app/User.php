@@ -141,7 +141,7 @@ class User extends Eloquent implements
     public function getRatingObjectAttribute(){
         if ( $this->service_ids == null)
             return [];
-        $services = Service::query()->whereIn( '_ids', $this->service_ids)->get();
+        $services = Service::query()->whereIn( '_id', $this->service_ids)->get();
         $result=[];
         foreach ( $services as $service){
             $sum = RequestService::query()->where("service_id", $service->id)
