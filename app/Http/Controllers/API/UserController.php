@@ -20,7 +20,7 @@ class UserController extends Controller
     //
     public function addRating(Request $request)
     {
-        $handyman = User::query()->find($request->input('handyman'))->get();
+        $handyman = User::query()->find($request->input('handyman'));
         $request_id = $request->input('request');
         if ($handyman->rating[$request_id] != null) {
             $handyman->rating[$request_id]['rating']=2;
