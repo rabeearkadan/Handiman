@@ -22,10 +22,11 @@ class UserController extends Controller
     {
         $handyman = User::query()->find($request->input('handyman'));
         $request_id = $request->input('request');
+        $rate=$request->input('rating');
         if ($handyman->rating[$request_id] != null) {
 
             $ex = $handyman->rating[$request_id];
-            $ex['rating'][$request_id]['rating'] = 2;
+            $ex['rating'][$request_id]['rating'] = $rate;
             $handyman->push('rating',$ex);
         } else {
             $handyman->push('rating', $request_id);
