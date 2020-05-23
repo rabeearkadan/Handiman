@@ -95,14 +95,13 @@
     margin-right: 30px; }
 .post-image img {
     width: 180px;
-    max-height: 235px;
+   height: 235px;
 }
 @media (max-width: 1199px) {
     .post-image {
         float: none;
         margin: 0px 0px 30px 0px; }
     .post-image img {
-        height: auto;
         width: 100%;
         max-height: 235px;
     }
