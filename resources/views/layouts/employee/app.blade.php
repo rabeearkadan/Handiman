@@ -15,7 +15,7 @@
     @if(request()->route()->getName() != "employee.post.create")
     <link href="{{asset('css/app.css')}}" rel="stylesheet">
     @endif
-    <link href="{{asset('css/materialize.min.css')}}" rel="stylesheet">
+    <link href="{{asset('css/employee/materialize.min.css')}}" rel="stylesheet">
     @stack('css')
     <link href="{{asset('css/employee/navbar.css')}}" rel="stylesheet">
     <link href="{{asset('css/employee/preloader.css')}}" rel="stylesheet">
