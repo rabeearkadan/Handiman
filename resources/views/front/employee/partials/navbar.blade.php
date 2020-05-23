@@ -29,10 +29,16 @@
             <li class="nav-item">
                 <a  href="{{route('employee.profile')}}" class="@if(request()->is('employee/profile*')) {{'active'}} @endif"> Profile </a>
             </li>
+            <li class="nav-item">
+                <a  href="#" onclick="document.getElementById('logout-form').submit()" class="@if(request()->is('logout')) {{'active'}} @endif"> Logout </a>
+            </li>
         </ul>
     </div>
 </nav>
-
+</ul>
+<form id="logout-form" action="{{ route('logout') }}" method="post" style="display: none;">
+    @csrf
+</form>
 
 @push('js')
     <script>
