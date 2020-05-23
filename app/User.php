@@ -145,8 +145,10 @@ class User extends Eloquent implements
         $result=[];
         foreach ( $services as $service){
             $sum = RequestService::query()->where("service_id", $service->id)
+                ->where('rating', '!=', null)
                 ->sum('rating');
             $count = RequestService::query()->where("service_id", $service->id)
+                ->where('rating', '!=', null)
                 ->count();
             if ( $count > 0)
             $result[$service->_id] = $sum / $count;
