@@ -5071,7 +5071,9 @@ small {
     line-height: inherit
 }
 
-
+.btn:focus, .btn-large:focus, .btn-small:focus, .btn-floating:focus {
+    background-color: #1d7d74
+}
 
 .btn, .btn-large, .btn-small {
     text-decoration: none;
@@ -5906,10 +5908,7 @@ select:focus {
     outline: 1px solid #c9f3ef
 }
 
-button:focus {
-    outline: none;
-    background-color: #2ab7a9
-}
+
 
 label {
     font-size: .8rem;
