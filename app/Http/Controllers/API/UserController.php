@@ -18,6 +18,16 @@ use phpDocumentor\Reflection\Types\Integer;
 class UserController extends Controller
 {
     //
+    public function addRating(Request $request)
+    {
+        $handyman = User::query()->find($request->input('handyman'));
+        $request_id = $request->input('request');
+        if ($handyman->rating[$request_id] != null) {
+            $handyman->rating[$request_id] = (double)4.4;
+        } else {
+            $handyman->push('rating', $request_id);
+        }
+    }
 
     public function setDeviceToken(Request $request)
     {
@@ -77,7 +87,7 @@ class UserController extends Controller
             'gender',
             'bank_account',
 // user extra info
-        'address',
+            'address',
             'from',
             'to',
             'payment_method',
