@@ -22,7 +22,7 @@
                                     @foreach($posts as $post)
                                     <div class="post">
                                         <div class="post-image">
-                                            <img src="{{config('image.path').$post->image}}" alt="A Clockwork Origin">
+                                            <img src="{{config('image.path').$post->images[0]}}" alt="Post Images">
                                         </div><!-- /.post-image -->
                                         <div class="post-content">
                                             <h2> {{$post->title}} </h2>
@@ -30,8 +30,8 @@
                                         </div><!-- /.post-content -->
                                         <div class="post-meta clearfix">
                                             <div class="post-meta-author">
-                                                <a>By </a>
-                                                @foreach($post->users as $user)
+                                                @foreach($post->users() as $user)
+                                                <a href=""><img class="responsive-img" src="{{config('image.path').$user->image}}"></a>
                                                     <a href=""> {{$user->name}} </a>
                                                 @endforeach
                                             </div><!-- /.post-meta-author -->
