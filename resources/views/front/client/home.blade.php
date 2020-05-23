@@ -22,7 +22,7 @@
                                     @foreach($posts as $post)
                                     <div class="post">
                                         <div class="post-image">
-                                            <img src="{{config('image.path').$post->image}}" alt="Post Images">
+                                            <img src="{{config('image.path').$post->images[0]}}" alt="Post Images">
                                         </div><!-- /.post-image -->
                                         <div class="post-content">
                                             <h2> {{$post->title}} </h2>
