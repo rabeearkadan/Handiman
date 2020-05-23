@@ -27,6 +27,8 @@ class UserController extends Controller
         } else {
             $handyman->push('rating', $request_id);
         }
+        $handyman->save();
+        return response()->json(['status' => 'success']);
     }
 
     public function setDeviceToken(Request $request)
