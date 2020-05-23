@@ -94,6 +94,7 @@
     float: left;
     margin-right: 30px; }
 .post-image img {
+    max-height: 235px;
     width: 180px; }
 @media (max-width: 1199px) {
     .post-image {
@@ -101,7 +102,9 @@
         margin: 0px 0px 30px 0px; }
     .post-image img {
         height: auto;
-        width: 100%; } }
+        width: 100%;
+        max-height: 260px;
+    } }
 
 .post-content {
     display: table-cell; }
