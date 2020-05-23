@@ -74,7 +74,7 @@
     $('.carousel.carousel-slider').carousel({
         fullWidth: true,
         duration:200,
-        noWrap:true
+        noWrap:false
     });
 </script>
 @endpush
