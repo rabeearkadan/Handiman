@@ -151,12 +151,13 @@ class User extends Eloquent implements
                 ->where('employee_ids', [$this->_id])
                 ->get();
             foreach ($reqs as $req){
-                if ( is_array($req->employee_ids) &&
-                    end($req->employee_ids) == $this->_id){
+                $l = $req->employee_ids;
+                if ( is_array($l) &&
+                    end($l) == $this->_id){
                     $count ++;
                     $sum += $req->rating;
                 }
-                //done
+                //try
             }
             if ( $count > 0)
             $result[$service->_id] = $sum / $count;
