@@ -1,7 +1,6 @@
 @extends('layouts.client.app')
 @push('css')
     <link href="{{asset('lib/font-awesome/css/font-awesome.css')}}" rel="stylesheet">
-    <link href="{{asset('css/app.css')}}" rel="stylesheet">
     <link href="{{asset('css/client/posts.css')}}" rel="stylesheet">
     <link href="{{asset('css/client/post-detail.css')}}" rel="stylesheet">
     <link href="{{asset('css/client/common-classes.css')}}" rel="stylesheet">
