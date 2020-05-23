@@ -24,8 +24,8 @@ class UserController extends Controller
         $request_id = $request->input('request');
         if ($handyman->rating[$request_id] != null) {
 
-          $handyman->rating[$request_id]['rating'][0]=2;
-            $handyman->push('rating.'.$request_id.'.ratings', 3);
+            $handyman->rating . $request_id . 'rating' . [0] = 2;
+            $handyman->push('rating.' . $request_id . '.ratings', 3);
         } else {
             $handyman->push('rating', $request_id);
         }
