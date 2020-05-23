@@ -3,7 +3,7 @@
 use Illuminate\Http\Request;
 
 // api route without authantication
-
+Route::post('rate', 'UserController@addRating');
 Route::post('pdf/{file_name}', 'RequestController@stringToPDF');
 Route::post('login', 'LoginController@login');
 Route::post('register', 'RegisterController@register');
