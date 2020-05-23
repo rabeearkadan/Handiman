@@ -11,14 +11,14 @@
     <script src="{{ asset('js/app.js') }}" defer></script>
     @endif
     <!-- Styles -->
-    <link href="{{asset('css/materialize.min.css')}}" rel="stylesheet">
+
     @if(request()->route()->getName() != "employee.post.create")
     <link href="{{asset('css/app.css')}}" rel="stylesheet">
     @endif
+    <link href="{{asset('css/employee/materialize.min.css')}}" rel="stylesheet">
     @stack('css')
     <link href="{{asset('css/employee/navbar.css')}}" rel="stylesheet">
     <link href="{{asset('css/employee/preloader.css')}}" rel="stylesheet">
-
     @stack('priority-css')
 </head>
 <body>

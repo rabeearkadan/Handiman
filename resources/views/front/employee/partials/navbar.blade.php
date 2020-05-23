@@ -1,6 +1,6 @@
 
 <nav class="navbar navbar-expand-lg navbar-light ">
-    <a class="navbar-brand" href="#">Navbar</a>
+    <a class="navbar-brand" href="#"><img src="/public/img/logo.png" width="70px" height="35px"></a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
         <div class="navTrigger">
             <i></i><i></i><i></i>
@@ -29,10 +29,19 @@
             <li class="nav-item">
                 <a  href="{{route('employee.profile')}}" class="@if(request()->is('employee/profile*')) {{'active'}} @endif"> Profile </a>
             </li>
+            <li class="nav-item">
+                <a  href="{{route('client.home')}}"> Switch </a>
+            </li>
+            <li class="nav-item">
+                <a  href="#" onclick="document.getElementById('logout-form').submit()" > Logout </a>
+            </li>
         </ul>
     </div>
 </nav>
-
+</ul>
+<form id="logout-form" action="{{ route('logout') }}" method="post" style="display: none;">
+    @csrf
+</form>
 
 @push('js')
     <script>
