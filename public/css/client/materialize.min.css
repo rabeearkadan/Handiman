@@ -7024,7 +7024,7 @@ input[type=range]::-ms-thumb {
 
 .sidenav li {
     float: none;
-    line-height: 48px
+    line-height: 48px;
     display: -webkit-flex !important;
 }
 
