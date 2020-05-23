@@ -257,6 +257,6 @@ nav {
     border-radius: .25rem;
     outline: none;
 }
-.navbar-toggler:focus{
-    outline: none;
+.navTrigger.active{
+    background-color: transparent;
 }
