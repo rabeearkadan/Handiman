@@ -66,7 +66,7 @@ class RequestController extends Controller
             $requestHandyman->images = $images;
         }
 
-        if ($req->has('is_urgent') && $req->input('is_urgent')) {
+        if ($req->has('is_urgent') ) {
             if (Carbon::now($requestHandyman->timezone)->minute > 30) {
                 $nowHour = str_pad(Carbon::now($requestHandyman->timezone)->hour + 1, 2, '0', STR_PAD_LEFT) . '00';
                 $nowNextHour = str_pad(Carbon::now($requestHandyman->timezone)->hour + 2, 2, '0', STR_PAD_LEFT) . '00';
