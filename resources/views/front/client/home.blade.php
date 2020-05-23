@@ -32,7 +32,7 @@
                                             <div class="post-meta-author">
                                                 @foreach($post->users as $user)
                                                 <a href="">
-                                                    <img width="35px" height="35px" class="circle responsive-img" src="{{config('image.path').$user->image}}">
+                                                    <img style="width:35px; height:35px" class="circle responsive-img" src="{{config('image.path').$user->image}}">
                                                 </a>
                                                     <a href=""> {{$user->name}} </a>
                                                 @endforeach
