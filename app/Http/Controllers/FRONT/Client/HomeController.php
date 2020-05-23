@@ -12,7 +12,7 @@ class HomeController extends Controller
     //
 
     public function index( Request $request ){
-        $posts = Post::orderBy('created_at','desc')->take(3)->get();
+        $posts = Post::orderBy('created_at','desc')->take(10)->get();
         return view ('front.client.home',compact('posts'));
     }
 
