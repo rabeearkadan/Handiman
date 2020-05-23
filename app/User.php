@@ -47,6 +47,8 @@ class User extends Eloquent implements
         'password', 'remember_token', 'api_token', 'device_token', 'device_platform'
     ];
 
+    protected $appends=['rating_object'];
+
 
     public function isClient()
     {
@@ -133,5 +135,19 @@ class User extends Eloquent implements
     public function getEmailForVerification()
     {
         // TODO: Implement getEmailForVerification() method.
+    }
+
+
+    public function getRatingObjectAttribute(){
+        $services = Service::query()->whereIn( '_ids', $this->service_ids)->get();
+        $result=[];
+        foreach ( $services as $service){
+            $sum = RequestService::query()->where("service_id", $service->id)
+                ->sum('rating');
+            $count = RequestService::query()->where("service_id", $service->id)
+                ->count();
+            $result[$service->_id] = $sum / $count;
+        }
+        return $result;
     }
 }
