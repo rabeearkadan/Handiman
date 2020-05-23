@@ -255,6 +255,7 @@ nav {
     background-color: transparent;
     border: 1px solid transparent;
     border-radius: .25rem;
+    outline: none;
 }
 .navbar-toggler:focus{
     outline: none;
