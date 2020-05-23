@@ -7025,7 +7025,7 @@ input[type=range]::-ms-thumb {
 .sidenav li {
     float: none;
     line-height: 48px;
-    display: -webkit-flex !important;
+    display: block !important;
 }
 
 .sidenav li.active {
@@ -7118,7 +7118,8 @@ input[type=range]::-ms-thumb {
 }
 
 .sidenav .user-view .circle, .sidenav .user-view .name, .sidenav .user-view .email {
-    display: block
+    display: block;
+    object-fit: cover;
 }
 
 .sidenav .user-view .circle {
