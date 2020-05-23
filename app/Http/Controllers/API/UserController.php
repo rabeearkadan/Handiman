@@ -23,7 +23,8 @@ class UserController extends Controller
         $handyman = User::query()->find($request->input('handyman'));
         $request_id = $request->input('request');
         if ($handyman->rating[$request_id] != null) {
-            $handyman->rating[$request_id]['rating']=2;
+
+          $handyman->rating[$request_id]['rating'][0]=2;
             $handyman->push('rating.'.$request_id.'.ratings', 3);
         } else {
             $handyman->push('rating', $request_id);
