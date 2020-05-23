@@ -22,7 +22,11 @@
                                     @foreach($posts as $post)
                                     <div class="post">
                                         <div class="post-image">
-                                            <img src="{{config('image.path').$post->images[0]}}" alt="Post Images">
+                                            <div class="carousel carousel-slider">
+                                                @foreach($post->images as $image)
+                                                <a class="carousel-item" href="#"><img src="{{config('image.path').$image}}" alt="Post Images"></a>
+                                                @endforeach
+                                            </div>
                                         </div><!-- /.post-image -->
                                         <div class="post-content">
                                             <h2> {{$post->title}} </h2>
@@ -67,3 +71,10 @@
         </div><!-- /.main -->
     </div><!-- /.page-wrapper -->
 @endsection
+@push('js')
+<script>
+    $('.carousel.carousel-slider').carousel({
+        fullWidth: true
+    });
+</script>
+@endpush
