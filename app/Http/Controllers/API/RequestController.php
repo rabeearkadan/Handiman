@@ -43,8 +43,8 @@ class RequestController extends Controller
         $requestHandyman->description = $req->input('description');
         $requestHandyman->status = 'pending';
         $requestHandyman->isdone = false;
+        $requestHandyman->date = Carbon::createFromFormat('Y-m-d', $req->input('date'), $requestHandyman->timezone);
         $latitude = $req->input('latitude');
-
         $longitude = $req->input('longitude');
         $location = [];
         $location[0] = (double)$longitude;
@@ -66,7 +66,7 @@ class RequestController extends Controller
             $requestHandyman->images = $images;
         }
 
-        if ($req->has('is_urgent') && $req->input('is_urgent')) {
+        if ($req->has('is_urgent') ) {
             if (Carbon::now($requestHandyman->timezone)->minute > 30) {
                 $nowHour = str_pad(Carbon::now($requestHandyman->timezone)->hour + 1, 2, '0', STR_PAD_LEFT) . '00';
                 $nowNextHour = str_pad(Carbon::now($requestHandyman->timezone)->hour + 2, 2, '0', STR_PAD_LEFT) . '00';
@@ -94,7 +94,6 @@ class RequestController extends Controller
                 $handyman = User::query()->find($req->input('employee_id'));
 
 
-                $requestHandyman->date = Carbon::createFromFormat('Y-m-d', $req->input('date'), $requestHandyman->timezone);
                 if ($req->has('from'))
                     $requestHandyman->from = $req->input('from');
                 if ($req->has('to')) {
@@ -279,8 +278,8 @@ class RequestController extends Controller
 
 
             $prequest = $pending->map(function ($item) {
-                 if ($item->employees()->count() > 0)
-                $item->handyman = User::query()->find($item->employee_ids[0])->simplifiedArray();
+                if ($item->employees()->count() > 0)
+                    $item->handyman = User::query()->find($item->employee_ids[0])->simplifiedArray();
                 return $item;
             });
 
