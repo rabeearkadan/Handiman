@@ -73,7 +73,7 @@
 <script>
     $('.carousel.carousel-slider').carousel({
         fullWidth: true,
-        indicators: true
+        noWrap:true
     });
 </script>
 @endpush
