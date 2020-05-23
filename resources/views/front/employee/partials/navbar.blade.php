@@ -1,6 +1,6 @@
 
 <nav class="navbar navbar-expand-lg navbar-light ">
-    <a class="navbar-brand" href="#"><img src="/public/img/logo.png" width="80px" height="40px"></a>
+    <a class="navbar-brand" href="#"><img src="/public/img/logo.png" width="70px" height="30px"></a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
         <div class="navTrigger">
             <i></i><i></i><i></i>
