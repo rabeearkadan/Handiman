@@ -12,7 +12,7 @@
             <div class="main-inner">
                 <div class="container">
                     <div class="row">
-                        <div class="col-sm-8 col-lg-10">
+                        <div class="col-sm-12 col-lg-10">
                             <div class="content">
                                 <div class="page-title">
                                     <h1> Posts </h1>
