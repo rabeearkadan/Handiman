@@ -70,7 +70,8 @@
     </div><!-- /.page-wrapper -->
 @endsection
 @push('js')
-<script>
+    <script src="/public/js/materialize.js"></script>
+    <script>
     $('.carousel.carousel-slider').carousel({
         fullWidth: true
     });
