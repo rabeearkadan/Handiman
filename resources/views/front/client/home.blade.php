@@ -21,13 +21,11 @@
                                 <div class="posts">
                                     @foreach($posts as $post)
                                     <div class="post">
-                                        <div class="post-image">
                                             <div class="carousel carousel-slider">
                                                 @foreach($post->images as $image)
                                                 <a class="carousel-item" href="#"><img src="{{config('image.path').$image}}" alt="Post Images"></a>
                                                 @endforeach
                                             </div>
-                                        </div><!-- /.post-image -->
                                         <div class="post-content">
                                             <h2> {{$post->title}} </h2>
                                             <p> {{$post->body}} </p>
