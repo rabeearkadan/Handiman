@@ -11,11 +11,12 @@
     <script src="{{ asset('js/app.js') }}" defer></script>
     @endif
     <!-- Styles -->
+
     @if(request()->route()->getName() != "employee.post.create")
     <link href="{{asset('css/app.css')}}" rel="stylesheet">
     @endif
-    @stack('css')
     <link href="{{asset('css/materialize.min.css')}}" rel="stylesheet">
+    @stack('css')
     <link href="{{asset('css/employee/navbar.css')}}" rel="stylesheet">
     <link href="{{asset('css/employee/preloader.css')}}" rel="stylesheet">
 
