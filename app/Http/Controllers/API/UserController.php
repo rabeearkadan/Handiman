@@ -27,7 +27,7 @@ class UserController extends Controller
 
             $ex = $handyman->rating[$request_id];
             $ex['rating'][$request_id]['rating'] = $rate;
-            $handyman->push('rating'[$request_id]['ratings'],$rate);
+            $handyman->push('rating'[$request_id]['ratings'], (double)$rate);
         } else {
             $handyman->push('rating', $request_id);
         }
