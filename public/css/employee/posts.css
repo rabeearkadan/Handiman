@@ -94,6 +94,7 @@
     float: left;
     margin-right: 30px; }
 .post-image img {
+    max-height: 235px;
     width: 180px; }
 @media (max-width: 1199px) {
     .post-image {
