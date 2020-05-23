@@ -7739,16 +7739,23 @@ input[type=range]::-ms-thumb {
 }
 
 .carousel {
+    float: left;
     overflow: hidden;
     position: relative;
-    max-height: 235px;
-    width: 180px;
+    max-height: 250px;
+    width: 200px;
     -webkit-perspective: 500px;
     perspective: 500px;
     -webkit-transform-style: preserve-3d;
     transform-style: preserve-3d;
     -webkit-transform-origin: 0% 50%;
     transform-origin: 0% 50%
+}
+@media only screen and (max-width: 1000px) {
+    .carousel {
+        max-height: 260px;
+        width: 100%;
+    }
 }
 
 .carousel.carousel-slider {
