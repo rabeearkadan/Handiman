@@ -31,7 +31,9 @@
                                         <div class="post-meta clearfix">
                                             <div class="post-meta-author">
                                                 @foreach($post->users as $user)
-                                                <a href=""><img class="circle responsive-img" src="{{config('image.path').$user->image}}"></a>
+                                                <a href="">
+                                                    <img width="35px" height="35px" class="circle responsive-img" src="{{config('image.path').$user->image}}">
+                                                </a>
                                                     <a href=""> {{$user->name}} </a>
                                                 @endforeach
                                             </div><!-- /.post-meta-author -->
