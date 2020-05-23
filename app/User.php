@@ -144,12 +144,20 @@ class User extends Eloquent implements
         $services = Service::query()->whereIn( '_id', $this->service_ids)->get();
         $result=[];
         foreach ( $services as $service){
-            $sum = RequestService::query()->where("service_id", $service->id)
+            $sum = 0;
+            $count = 0;
+            $reqs = RequestService::query()->where("service_id", $service->id)
                 ->where('rating', '!=', null)
-                ->sum('rating');
-            $count = RequestService::query()->where("service_id", $service->id)
-                ->where('rating', '!=', null)
-                ->count();
+                ->where('employee_ids', [$this->_id])
+                ->get();
+            foreach ($reqs as $req){
+                if ( is_array($req->employee_ids) &&
+                    end($req->employee_ids) == $this->_id){
+                    $count ++;
+                    $sum += $req->rating;
+                }
+                //done
+            }
             if ( $count > 0)
             $result[$service->_id] = $sum / $count;
             else
