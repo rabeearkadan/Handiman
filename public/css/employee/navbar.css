@@ -4,6 +4,7 @@
     cursor: pointer;
     width: 30px;
     height: 25px;
+    background-color: transparent;
 }
 
 .navTrigger i {
@@ -255,8 +256,8 @@ nav {
     background-color: transparent;
     border: 1px solid transparent;
     border-radius: .25rem;
+}
+.navbar-toggler:focus{
     outline: none;
 }
-.navTrigger.active{
-    background-color: transparent;
-}
+
