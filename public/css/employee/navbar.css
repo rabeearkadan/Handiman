@@ -242,6 +242,7 @@
 }
 
 .navbar {
+    box-sizing: border-box;
     position: relative;
     padding: .5rem 1rem;
 }
