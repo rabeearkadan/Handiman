@@ -59,20 +59,21 @@
 
                     <div class="container mt-2" id="services">
                         <div class="row">
-                            @for($i=0;$i<2;$i++)
+                            @foreach($request->images as $image)
                                 @if ( $loop->index % 4 == 0 )
                         </div>
                         <div class="row">
                             @endif
                             <div class="col-md-3 col-sm-6">
                                 <div class="card card-block">
-                                    <img src="{{config('image.path').$request->images[$i]}}" alt="later">
+                                    <img src="{{config('image.path').$image}}" alt="later">
                                     </a>
                                 </div>
                             </div>
-                            @endfor
+                            @endforeach
                         </div>
                     </div>
+
 
                     <button class="mt-2 btn btn-primary">Sign in</button>
                 </form>
