@@ -54,10 +54,12 @@ class RequestController extends Controller
 
     public function show($id)
     {
-        $req = RequestService::query()->find($id);
-        if ($req->employees()->count()>0)
-            $req->handyman = User::query()->find($req->employee_ids[0])->simplifiedArray();
-        $req->client = User::query()->find($req->client_ids[0])->simplifiedArray();
+        $request = RequestService::query()->find($id);
+        if ($request->employees()->count()>0)
+            $request->handyman = User::query()->find($request->employee_ids[0])->simplifiedArray();
+        else
+            $request->handyman['name']='stll looking for handyman';
+        $request->client = User::query()->find($request->client_ids[0])->simplifiedArray();
 
 
         return view('cms.requests.show', compact('req'));
