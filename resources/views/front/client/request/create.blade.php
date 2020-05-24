@@ -202,6 +202,8 @@
                                         </div><!-- /.form-group -->
                                     </div><!-- /.col-* -->
                                 </div><!-- /.row -->
+                                <div class="row">
+                                    <div class="col-sm-12">
                                 <div class="file-field input-field">
                                     <div class="btn">
                                         <span>File</span>
@@ -209,6 +211,8 @@
                                     </div>
                                     <div class="file-path-wrapper">
                                         <input class="file-path validate" type="text" placeholder="Upload one or more files">
+                                    </div>
+                                </div>
                                     </div>
                                 </div>
                                 <div class="form-group">
