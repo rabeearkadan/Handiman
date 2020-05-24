@@ -61,26 +61,26 @@ class HandymanController extends Controller
         if ($list == null)
             return response()->json(['status' => 'error', 'message' => "no service found"]);
         $users = $list->users()->where('isApproved', true)->get();
-        $this->stable_usort($users,'rating_object'.$id);
 
-        return response()->json(['status' => 'successful', 'handymen' => $users]);
+
+        $n = sizeof($users);
+
+        for ($i = 0; $i < $n; $i++) {
+            for ($j = 0; $j < $n - $i - 1; $j++) {
+                if ((double)$users[$j]->rating_object[$id] < (double)$users[$j+1]->rating_object[$id]) {
+                    $t = $users[$j];
+                    $users[$j] = $users[$j + 1];
+                    $users[$j + 1] = $t;
+                }
+            }
+        }
+
+
+        return response()->json(['status' => 'success', 'handymen' => $users]);
 
 
     }
 
-    function stable_usort(&$array, $cmp)
-    {
-        $i = 0;
-        $array = array_map(function($elt)use(&$i)
-        {
-            return [$i++, $elt];
-        }, $array);
-        usort($array, function($a, $b)use($cmp)
-        {
-            return $cmp($a[1], $b[1]) ?: ($a[0] - $b[0]);
-        });
-        $array = array_column($array, 1);
-    }
     public function getHandymanByLocation(Request $request)
     {
 
