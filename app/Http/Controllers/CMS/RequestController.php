@@ -43,16 +43,11 @@ class RequestController extends Controller
     public function show($id)
     {
         $req = RequestService::query()->find($id);
-        if ($req->employee_ids[0] != null) {
-            $_req = $req->map(function ($item) {
-                $item->handyman = User::query()->find($item->employee_ids[0])->simplifiedArray();
-                return $item;
-            });
-        }
-        $request = $_req->map(function ($item) {
-            $item->client = User::query()->find($item->client_ids[0])->simplifiedArray();
-            return $item;
-        });
+        if ($req->employee_ids[0] != null)
+            $req->handyman = User::query()->find($req->employee_ids[0])->simplifiedArray();
+        $req->client = User::query()->find($req->client_ids[0])->simplifiedArray();
+       
+
         return view('cms.requests.index', compact('request'));
 
     }
