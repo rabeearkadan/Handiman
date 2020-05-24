@@ -60,7 +60,7 @@ class HandymanController extends Controller
         $list = Service::query()->where('_id', $id)->first();
         if ($list == null)
             return response()->json(['status' => 'error', 'message' => "no service found"]);
-        $users = $list->users()->orderBy('rating_object' [$id], 'desc')->where('isApproved', true)->get();
+        $users = $list->users()->orderBy('rating_object'.$id, 'desc')->where('isApproved', true)->get();
         return response()->json(['status' => 'successful', 'handymen' => $users]);
 
 
