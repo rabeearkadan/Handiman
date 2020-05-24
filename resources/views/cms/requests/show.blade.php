@@ -66,7 +66,7 @@
                         </div>
                         <div class="mySlides">
                             <div class="numbertext">1 / 6</div>
-                            <img src={{asset('images/avatars/2.jpg)}}   style="width:100%">
+                            <img src={{asset('images/avatars/1.jpg)}}   style="width:100%">
                         </div>
 
 
@@ -79,10 +79,10 @@
 
                         <div class="row">
                             <div class="column">
-                                <img class="demo cursor" src={{asset('images/avatars/2.jpg)}}  style="width:100%" onclick="currentSlide(1)" alt="The Woods">
+                                <img class="demo cursor" src={{asset('images/avatars/1.jpg)}}  style="width:100%" onclick="currentSlide(1)" alt="The Woods">
                             </div>
                             <div class="column">
-                                <img class="demo cursor" src={{asset('images/avatars/2.jpg)}}  style="width:100%" onclick="currentSlide(2)" alt="Cinque Terre">
+                                <img class="demo cursor" src={{asset('images/avatars/1.jpg)}}  style="width:100%" onclick="currentSlide(2)" alt="Cinque Terre">
                             </div>
                     </div>
 
