@@ -19,6 +19,7 @@
             display: block;
             width: 100%;
             margin: 0 auto;
+            z-index: 10;
             font-family: 'Open Sans', 'Helvetica Neue', 'Segoe UI', 'Calibri', 'Arial', sans-serif;
             font-size: 18px;
             color: #60666d;
@@ -104,6 +105,7 @@
             display: block;
             padding: 15px;
             background-color: #fff;
+            margin: 0;
         }
 
         .select-box__option:hover, .select-box__option:focus {
