@@ -67,7 +67,7 @@
                 <li>
                     <a href="{{route('request.index')}}" class="mm">
                         <i class="metismenu-icon pe-7s-rocket"></i>
-                        Requests Reports
+                        Monitor Ongoing Requests
                     </a>
                 </li>
 
