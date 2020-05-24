@@ -6224,7 +6224,7 @@ textarea.materialize-textarea {
 }
 
 .character-counter {
-    min-height: 18px
+    min-height: 18px;
     display:none;
 }
 
