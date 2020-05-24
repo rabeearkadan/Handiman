@@ -59,6 +59,7 @@
 
                     <div class="container mt-2" id="services">
                         <div class="row">
+                            @if($request->images!=null)
                             @foreach($request->images as $image)
                                 @if ( $loop->index % 4 == 0 )
                         </div>
@@ -72,6 +73,7 @@
                             </div>
                             @endforeach
                         </div>
+                        @endif
                     </div>
 
 
