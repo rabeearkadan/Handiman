@@ -9,6 +9,7 @@
     <link href="{{asset('css/client/requests/icons.css')}}" rel="stylesheet" media="screen">
     <link href="{{asset('lib/font-awesome/css/font-awesome.css')}}" rel="stylesheet">
     <link href="{{asset('css/client/select.css')}}" rel="stylesheet" type="text/css">
+    <link href="{{asset('css/client/materialize.min.css')}}" rel="stylesheet" type="text/css">
     <style>
         .pull-right {
             float: right;
