@@ -31,7 +31,7 @@
                                 <td>{{$request->subject}}</td>
                                 <td>{{$request->status}}</td>
 {{--                                <td hidden> {{$client=json_encode($request->client,true)}}</td>--}}
-                                <td> {{ $request->client }}</td>
+                                <td> {{ $request->client['name'] }}</td>
 
                                 <td>
                                     <button class="btn btn-danger waves-effect" type="button"
