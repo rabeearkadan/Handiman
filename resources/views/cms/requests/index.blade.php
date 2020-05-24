@@ -44,7 +44,7 @@
                                 </td>
                                 <td>
                                     <button class="mb-2 mr-2 btn btn-info"
-                                            onclick="location.href='{{route('$request.show',$request->id)}}'"> info..
+                                            onclick="location.href='{{route('request.show',$request->id)}}'"> info..
 
                                     </button>
                                 </td>

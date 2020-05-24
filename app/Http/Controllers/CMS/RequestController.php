@@ -38,15 +38,12 @@ class RequestController extends Controller
         //
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param int $id
-     * @return \Illuminate\Http\Response
-     */
+
     public function show($id)
     {
-        //
+        $request=RequestService::query()->find($id);
+        return view('cms.requests.index', compact('request'));
+
     }
 
     /**
