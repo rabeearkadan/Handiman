@@ -100,7 +100,7 @@
 
 <body>
 <div class="invoice-box rtl">
-    <table cellpadding="0" cellspacing="0">
+    <table  style="border-collapse: separate; border-spacing: 10px;">
         <tr class="top">
             <td colspan="2">
                 <table>
