@@ -76,7 +76,7 @@ class HandymanController extends Controller
 //        }
 
 
-        return response()->json(['status' => 'successful', 'handymen' => $users]);
+        return response()->json(['status' => 'success', 'handymen' => $users]);
 
 
     }
