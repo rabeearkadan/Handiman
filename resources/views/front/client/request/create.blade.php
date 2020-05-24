@@ -7,7 +7,6 @@
     <link href="{{asset('css/client/requests/icons.css')}}" rel="stylesheet" media="screen">
     <link href="{{asset('lib/font-awesome/css/font-awesome.css')}}" rel="stylesheet">
     <link href="{{asset('css/client/select.css')}}" rel="stylesheet" type="text/css">
-    <link href="{{asset('css/client/materialize.min.css')}}" rel="stylesheet">
     <style>
         .pull-right {
             float: right;
@@ -208,9 +207,9 @@
                                 <div class="file-field input-field">
                                     <div class="btn">
                                         <span>File</span>
-                                        <input type="file" multiple >
+                                        <input type="file" multiple style="width: max-content">
                                     </div>
-                                    <div class="file-path-wrapper">
+                                    <div class="file-path-wrapper" style="width: fit-content">
                                         <input class="file-path validate" type="text" placeholder="Upload one or more files">
                                     </div>
                                 </div>
