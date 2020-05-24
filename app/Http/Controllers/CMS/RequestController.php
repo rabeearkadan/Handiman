@@ -55,7 +55,7 @@ class RequestController extends Controller
     public function show($id)
     {
         $req = RequestService::query()->find($id);
-        if ($req->employee_ids[0] != null)
+        if ($req->employees()->count()>0)
             $req->handyman = User::query()->find($req->employee_ids[0])->simplifiedArray();
         $req->client = User::query()->find($req->client_ids[0])->simplifiedArray();
 
