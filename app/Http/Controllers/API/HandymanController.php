@@ -64,8 +64,21 @@ class HandymanController extends Controller
 
         $output = [];
         for ($i = 0; $i < sizeof($users); $i++) {
-            $output[$i] = (double) $users[$i]->rating_object[ $id];
+            $output[$i] = (double)$users[$i]->rating_object[$id];
 
+        }
+
+
+        $n = sizeof($users);
+
+        for ($i = 0; $i < $n; $i++) {
+            for ($j = 0; $j < $n - $i - 1; $j++) {
+                if ((double)$users[$j]->rating_object[$id] > (double)$users[$j+1]->rating_object[$id]) {
+                    $t = $users[$j];
+                    $users[$j] = $users[$j + 1];
+                    $users[$j + 1] = $t;
+                }
+            }
         }
 
 
