@@ -51,7 +51,7 @@
                         </div>
                         <div class="col-md-2">
                             <div class="position-relative form-group"><label for="exampleZip" class="">To</label><input
-                                    value="{{$request-->images}}:00" name="zip" id="exampleZip" type="text"
+                                    value="{{$request->images}}:00" name="zip" id="exampleZip" type="text"
                                     class="form-control"></div>
                         </div>
                     </div>
