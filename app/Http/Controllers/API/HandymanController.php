@@ -70,13 +70,13 @@ class HandymanController extends Controller
             for($j = $i + 1; $j < sizeof($users) ; $j++)
             {
 
-                if ($users[$j]->rating_object.$id < $users[$low]->rating_object.$id )
+                if ((double)$users[$j]->rating_object.$id < (double) $users[$low]->rating_object.$id )
                 {
                     $low = $j;
                 }
             }
 
-            if ($users[$i]->rating_object.$id > $users[$low]->rating_object.$id)
+            if ((double) $users[$i]->rating_object.$id >= (double)$users[$low]->rating_object.$id)
             {
                 $tmp = $users[$i];
                 $users[$i] = $users[$low];
