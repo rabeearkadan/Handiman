@@ -12,7 +12,7 @@
                         <div class="col-md-6">
                             <div class="position-relative form-group">
                                 <label for="exampleEmail11" class="">Client</label>
-                                <input value="{{$request->user['name']}}" name="name" class="form-control">
+                                <input value="{{$request->client['name']}}" name="name" class="form-control">
                             </div>
                         </div>
                         <div class="col-md-6">
