@@ -6224,7 +6224,8 @@ textarea.materialize-textarea {
 }
 
 .character-counter {
-    min-height: 18px
+    min-height: 18px;
+    display:none;
 }
 
 [type="radio"]:not(:checked), [type="radio"]:checked {
@@ -7031,7 +7032,9 @@ input[type=range]::-ms-thumb {
 .sidenav li.active {
     background-color: rgba(0, 0, 0, 0.05)
 }
-
+.background > img{
+    object-fit: cover;
+}
 .sidenav li > a {
     color: rgba(0, 0, 0, 0.87);
     display: block;

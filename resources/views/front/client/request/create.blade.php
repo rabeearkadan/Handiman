@@ -3,8 +3,6 @@
     <link href="{{asset('css/app.css')}}" rel="stylesheet">
     <link href="{{asset('css/client/buttons.css')}}" rel="stylesheet">
     <link href="{{asset('css/client/common-classes.css')}}" rel="stylesheet">
-    <link href="{{asset('css/client/requests/materialize.css')}}" rel="stylesheet">
-    <link href="{{asset('css/client/requests/file-uploader.css')}}" rel="stylesheet">
     <link href="{{asset('css/client/color-box.css')}}" rel="stylesheet">
     <link href="{{asset('css/client/requests/icons.css')}}" rel="stylesheet" media="screen">
     <link href="{{asset('lib/font-awesome/css/font-awesome.css')}}" rel="stylesheet">
@@ -19,6 +17,7 @@
             display: block;
             width: 100%;
             margin: 0 auto;
+            z-index: 10;
             font-family: 'Open Sans', 'Helvetica Neue', 'Segoe UI', 'Calibri', 'Arial', sans-serif;
             font-size: 18px;
             color: #60666d;
@@ -104,6 +103,7 @@
             display: block;
             padding: 15px;
             background-color: #fff;
+            margin: 0;
         }
 
         .select-box__option:hover, .select-box__option:focus {
@@ -202,6 +202,15 @@
                                         </div><!-- /.form-group -->
                                     </div><!-- /.col-* -->
                                 </div><!-- /.row -->
+                                <div class="file-field input-field">
+                                    <div class="btn">
+                                        <span>File</span>
+                                        <input type="file" multiple>
+                                    </div>
+                                    <div class="file-path-wrapper">
+                                        <input class="file-path validate" type="text" placeholder="Upload one or more files">
+                                    </div>
+                                </div>
                                 <div class="form-group">
                                     <label for="description"> Problem Description</label>
                                     <textarea class="form-control" id="description" name="description"
@@ -246,9 +255,9 @@
     </div><!-- /.page-wrapper -->
 @endsection
 @push('js')
-        <script src="/public/js/client/requests/materialize.js"></script>
-        <script src="/public/js/client/requests/drop-zone.js"></script>
-        <script src="/public/js/client/requests/file-uploader.js"></script>
+{{--        <script src="/public/js/client/requests/materialize.js"></script>--}}
+{{--        <script src="/public/js/client/requests/drop-zone.js"></script>--}}
+{{--        <script src="/public/js/client/requests/file-uploader.js"></script>--}}
         <script src="/public/js/client/requests/date-dropper.pro.min.js"></script>
         <script>
             var timepicker = @json($timepicker);
