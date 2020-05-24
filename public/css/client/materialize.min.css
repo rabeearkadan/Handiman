@@ -6225,6 +6225,7 @@ textarea.materialize-textarea {
 
 .character-counter {
     min-height: 18px
+    display:none;
 }
 
 [type="radio"]:not(:checked), [type="radio"]:checked {
