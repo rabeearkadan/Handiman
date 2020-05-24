@@ -5,12 +5,7 @@
     <div class="row">
         <div class="col-lg-12">
             <div class="main-card mb-3 card">
-                <div class="card-body"><h5 class="card-title">Clients Table</h5>
-
-                    {{--                    <button class="mb-2 mr-2 btn btn-primary" onclick="location.href='{{route('service.create')}}'">Add--}}
-                    {{--                        New Service--}}
-                    {{--                    </button>--}}
-                    {{--                    <button  class="mb-2 mr-2 btn btn-danger" onclick="location.href='{{route('service.test')}}'"> data tables</button>--}}
+                <div class="card-body"><h5 class="card-title">Pending Requests</h5>
 
                     <table class="mb-0 table">
                         <thead>
@@ -20,7 +15,7 @@
                             <th>Service</th>
                             <th>Subject</th>
                             <th>
-                                <button class="btn btn-success waves-effect">Pending</button>
+                             Date
                             </th>
                             <th>Actions</th>
                             <th>info</th>
@@ -34,7 +29,7 @@
                                 <td> {{ $request->client['name'] }}</td>
                                 <td> {{ $request->service['name'] }}</td>
                                 <td>{{$request->subject}}</td>
-                                <td>{{$request->status}}</td>
+                                <td>{{$request->date}}</td>
                                 <td>
                                     <button class="btn btn-danger waves-effect" type="button"
                                             onclick="deletePost('{{ $request->id }}')">

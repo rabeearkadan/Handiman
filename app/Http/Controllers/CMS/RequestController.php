@@ -14,7 +14,7 @@ class RequestController extends Controller
 
     public function index()
     {
-        $_requests = RequestService::all();
+        $_requests = RequestService::all()->where('status','pending');
 
         $request = $_requests->map(function ($item) {
             $item->service = Service::query()->find($item->service_id)->ServiceArray();
