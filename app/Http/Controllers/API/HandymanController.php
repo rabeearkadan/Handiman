@@ -60,12 +60,27 @@ class HandymanController extends Controller
         $list = Service::query()->where('_id', $id)->first();
         if ($list == null)
             return response()->json(['status' => 'error', 'message' => "no service found"]);
-        $users = $list->users()->orderBy('rating_object'.$id, 'desc')->where('isApproved', true)->get();
+        $users = $list->users()->where('isApproved', true)->get();
+        $this->stable_usort($users,'rating_object'.$id);
+
         return response()->json(['status' => 'successful', 'handymen' => $users]);
 
 
     }
 
+    function stable_usort(&$array, $cmp)
+    {
+        $i = 0;
+        $array = array_map(function($elt)use(&$i)
+        {
+            return [$i++, $elt];
+        }, $array);
+        usort($array, function($a, $b)use($cmp)
+        {
+            return $cmp($a[1], $b[1]) ?: ($a[0] - $b[0]);
+        });
+        $array = array_column($array, 1);
+    }
     public function getHandymanByLocation(Request $request)
     {
 
