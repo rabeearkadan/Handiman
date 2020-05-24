@@ -23,33 +23,36 @@
                                     class="form-control"></div>
                         </div>
                     </div>
-                    <div class="position-relative form-group"><label for="exampleAddress" class="">Address</label><input
-                            name="address" id="exampleAddress" placeholder="1234 Main St" type="text"
+                    <div class="position-relative form-group"><label for="exampleAddress" class="">Subject</label><input
+                            name="address" id="exampleAddress" value="{{$request->subject}}" type="text"
                             class="form-control"></div>
-                    <div class="position-relative form-group"><label for="exampleAddress2" class="">Address
-                            2</label><input name="address2" id="exampleAddress2"
-                                            placeholder="Apartment, studio, or floor" type="text" class="form-control">
+                    <div class="position-relative form-group"><label for="exampleAddress2" class="">Description
+                            2</label><input name="address2" id="exampleAddress2" value="{{$request->description}}"
+                                            type="text" class="form-control">
                     </div>
                     <div class="form-row">
                         <div class="col-md-6">
                             <div class="position-relative form-group"><label for="exampleCity"
-                                                                             class="">City</label><input name="city"
+                                                                             class="">Date</label><input name="city"
                                                                                                          id="exampleCity"
                                                                                                          type="text"
+                                                                                                         value="{{$request->date}}"
                                                                                                          class="form-control">
                             </div>
                         </div>
                         <div class="col-md-4">
                             <div class="position-relative form-group"><label for="exampleState"
-                                                                             class="">State</label><input name="state"
-                                                                                                          id="exampleState"
-                                                                                                          type="text"
-                                                                                                          class="form-control">
+                                                                             class="">From</label><input name="state"
+                                                                                                         id="exampleState"
+                                                                                                         value="{{$request->from}}:00"
+                                                                                                         type="text"
+                                                                                                         class="form-control">
                             </div>
                         </div>
                         <div class="col-md-2">
-                            <div class="position-relative form-group"><label for="exampleZip" class="">Zip</label><input
-                                    name="zip" id="exampleZip" type="text" class="form-control"></div>
+                            <div class="position-relative form-group"><label for="exampleZip" class="">To</label><input
+                                    value="{{$request->to}}:00" name="zip" id="exampleZip" type="text"
+                                    class="form-control"></div>
                         </div>
                     </div>
                     <div class="position-relative form-check"><input name="check" id="exampleCheck" type="checkbox"
