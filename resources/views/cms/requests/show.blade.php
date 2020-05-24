@@ -56,36 +56,53 @@
                         </div>
                     </div>
 
-{{--                    --}}{{--                    // here will go the images og the request--}}
+                    {{--                    --}}{{--                    // here will go the images og the request--}}
 
 
-{{--                    <div class="container">--}}
-{{--                        <div class="mySlides">--}}
-{{--                            <div class="numbertext">1 / 6</div>--}}
-{{--                            <img src={{asset('images/avatars/1.jpg')}}   style="width:100%">--}}
-{{--                        </div>--}}
-{{--                        <div class="mySlides">--}}
-{{--                            <div class="numbertext">1 / 6</div>--}}
-{{--                            <img src={{asset('images/avatars/1.jpg)}}   style="width:100%">--}}
-{{--                        </div>--}}
+                    {{--                    <div class="container">--}}
+                    {{--                        <div class="mySlides">--}}
+                    {{--                            <div class="numbertext">1 / 6</div>--}}
+                    {{--                            <img src={{asset('images/avatars/1.jpg')}}   style="width:100%">--}}
+                    {{--                        </div>--}}
+                    {{--                        <div class="mySlides">--}}
+                    {{--                            <div class="numbertext">1 / 6</div>--}}
+                    {{--                            <img src={{asset('images/avatars/1.jpg)}}   style="width:100%">--}}
+                    {{--                        </div>--}}
 
 
-{{--                        <a class="prev" onclick="plusSlides(-1)">❮</a>--}}
-{{--                        <a class="next" onclick="plusSlides(1)">❯</a>--}}
+                    {{--                        <a class="prev" onclick="plusSlides(-1)">❮</a>--}}
+                    {{--                        <a class="next" onclick="plusSlides(1)">❯</a>--}}
 
-{{--                        <div class="caption-container">--}}
-{{--                            <p id="caption"></p>--}}
-{{--                        </div>--}}
+                    {{--                        <div class="caption-container">--}}
+                    {{--                            <p id="caption"></p>--}}
+                    {{--                        </div>--}}
 
-{{--                        <div class="row">--}}
-{{--                            <div class="column">--}}
-{{--                                <img class="demo cursor" src={{asset('images/avatars/1.jpg)}}  style="width:100%" onclick="currentSlide(1)" alt="The Woods">--}}
-{{--                            </div>--}}
-{{--                            <div class="column">--}}
-{{--                                <img class="demo cursor" src={{asset('images/avatars/1.jpg)}}  style="width:100%" onclick="currentSlide(2)" alt="Cinque Terre">--}}
-{{--                            </div>--}}
-{{--                    </div>--}}
-{{--                    </div>--}}
+                    {{--                        <div class="row">--}}
+                    {{--                            <div class="column">--}}
+                    {{--                                <img class="demo cursor" src={{asset('images/avatars/1.jpg)}}  style="width:100%" onclick="currentSlide(1)" alt="The Woods">--}}
+                    {{--                            </div>--}}
+                    {{--                            <div class="column">--}}
+                    {{--                                <img class="demo cursor" src={{asset('images/avatars/1.jpg)}}  style="width:100%" onclick="currentSlide(2)" alt="Cinque Terre">--}}
+                    {{--                            </div>--}}
+                    {{--                    </div>--}}
+                    {{--                    </div>--}}
+
+                    <div class="container mt-2" id="services">
+                        <div class="row">
+                            @foreach($request->images as $image)
+                                @if ( $loop->index % 4 == 0 )
+                        </div>
+                        <div class="row">
+                            @endif
+                            <div class="col-md-3 col-sm-6">
+                                <div class="card card-block">
+                                    <img src="{{config('image.path').$image}}" alt="later">
+                                    </a>
+                                </div>
+                            </div>
+                            @endforeach
+                        </div>
+                    </div>
 
                     <button class="mt-2 btn btn-primary">Sign in</button>
                 </form>
@@ -98,40 +115,6 @@
 
 
 @push('js')
-<script type="text/javascript">
-        var slideIndex = 1;
-        showSlides(slideIndex);
-
-        function plusSlides(n) {
-            showSlides(slideIndex += n);
-        }
-
-        function currentSlide(n) {
-            showSlides(slideIndex = n);
-        }
-
-        function showSlides(n) {
-            var i;
-            var slides = document.getElementsByClassName("mySlides");
-            var dots = document.getElementsByClassName("demo");
-            var captionText = document.getElementById("caption");
-            if (n > slides.length) {
-                slideIndex = 1
-            }
-            if (n < 1) {
-                slideIndex = slides.length
-            }
-            for (i = 0; i < slides.length; i++) {
-                slides[i].style.display = "none";
-            }
-            for (i = 0; i < dots.length; i++) {
-                dots[i].className = dots[i].className.replace(" active", "");
-            }
-            slides[slideIndex - 1].style.display = "block";
-            dots[slideIndex - 1].className += " active";
-            captionText.innerHTML = dots[slideIndex - 1].alt;
-        }
-    </script>
 
 
     <script src="https://unpkg.com/sweetalert2@7.19.1/dist/sweetalert2.all.js"></script>
