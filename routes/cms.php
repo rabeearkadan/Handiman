@@ -10,6 +10,8 @@ Route::resource('employee', 'HandymanController');
 
 Route::resource('report', 'ReportsController');
 
+Route::resource('request', 'RequestController');
+
 Route::resource('contact', 'ContactedUsController');
 Route::resource('statistics', 'StatisticsController');
 Route::get('google-piechart', array('as' => 'chart.piechart', 'uses' => 'StatisticsController@pieChart'));
