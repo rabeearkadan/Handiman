@@ -65,7 +65,7 @@ class HandymanController extends Controller
 
         $price = array();
         foreach ($users as $key => $row) {
-            $price[$key] = $row['price'];
+            $price[$key] = $row['rating_object'.$id];
         }
         array_multisort($price, SORT_DESC, $users[]);
 
