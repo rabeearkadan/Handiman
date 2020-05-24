@@ -3,8 +3,6 @@
     <link href="{{asset('css/app.css')}}" rel="stylesheet">
     <link href="{{asset('css/client/buttons.css')}}" rel="stylesheet">
     <link href="{{asset('css/client/common-classes.css')}}" rel="stylesheet">
-    <link href="{{asset('css/client/requests/materialize.css')}}" rel="stylesheet">
-    <link href="{{asset('css/client/requests/file-uploader.css')}}" rel="stylesheet">
     <link href="{{asset('css/client/color-box.css')}}" rel="stylesheet">
     <link href="{{asset('css/client/requests/icons.css')}}" rel="stylesheet" media="screen">
     <link href="{{asset('lib/font-awesome/css/font-awesome.css')}}" rel="stylesheet">
@@ -210,9 +208,7 @@
                                         <input type="file" multiple>
                                     </div>
                                     <div class="file-path-wrapper">
-                                        <label>
-                                            <input class="file-path validate" type="text" placeholder="Upload one or more files" readonly>
-                                        </label>
+                                        <input class="file-path validate" type="text" placeholder="Upload one or more files">
                                     </div>
                                 </div>
                                 <div class="form-group">
@@ -263,7 +259,6 @@
 {{--        <script src="/public/js/client/requests/drop-zone.js"></script>--}}
 {{--        <script src="/public/js/client/requests/file-uploader.js"></script>--}}
         <script src="/public/js/client/requests/date-dropper.pro.min.js"></script>
-<script src="/public/js/materialize.js"></script>
         <script>
             var timepicker = @json($timepicker);
             $(document).ready(function () {
@@ -308,5 +303,6 @@
                     }
                 });
             });
+
         </script>
 @endpush
