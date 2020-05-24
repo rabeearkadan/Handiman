@@ -62,9 +62,12 @@
                     <div class="container">
                         <div class="mySlides">
                             <div class="numbertext">1 / 6</div>
-                            <img    src={{asset('images/avatars/1.jpg')}}   style="width:100%">
+                            <img src={{asset('images/avatars/1.jpg')}}   style="width:100%">
                         </div>
-
+                        <div class="mySlides">
+                            <div class="numbertext">1 / 6</div>
+                            <img src={{asset('images/avatars/2.jpg)}}   style="width:100%">
+                        </div>
 
 
                         <a class="prev" onclick="plusSlides(-1)">❮</a>
@@ -76,14 +79,15 @@
 
                         <div class="row">
                             <div class="column">
-                                <img class="demo cursor"   src={{asset('images/avatars/1.jpg')}}   style="width:100%" onclick="currentSlide(1)" alt="The Woods">
+                                <img class="demo cursor" src={{asset('images/avatars/1.jpg')}}   style="width:100%"
+                                     onclick="currentSlide(1)" alt="The Woods">
                             </div>
-
+                            <div class="column">
+                                <img class="demo cursor" src={{asset('images/avatars/1.jpg')}}   style="width:100%"
+                                     onclick="currentSlide(1)" alt="The Woods">
+                            </div>
                         </div>
                     </div>
-
-
-
 
 
                     <button class="mt-2 btn btn-primary">Sign in</button>
@@ -115,17 +119,21 @@
             var slides = document.getElementsByClassName("mySlides");
             var dots = document.getElementsByClassName("demo");
             var captionText = document.getElementById("caption");
-            if (n > slides.length) {slideIndex = 1}
-            if (n < 1) {slideIndex = slides.length}
+            if (n > slides.length) {
+                slideIndex = 1
+            }
+            if (n < 1) {
+                slideIndex = slides.length
+            }
             for (i = 0; i < slides.length; i++) {
                 slides[i].style.display = "none";
             }
             for (i = 0; i < dots.length; i++) {
                 dots[i].className = dots[i].className.replace(" active", "");
             }
-            slides[slideIndex-1].style.display = "block";
-            dots[slideIndex-1].className += " active";
-            captionText.innerHTML = dots[slideIndex-1].alt;
+            slides[slideIndex - 1].style.display = "block";
+            dots[slideIndex - 1].className += " active";
+            captionText.innerHTML = dots[slideIndex - 1].alt;
         }
     </script>
 
