@@ -16,9 +16,12 @@
                         <thead>
                         <tr>
                             <th>#</th>
-                            <th>Subject</th>
                             <th>Client</th>
-                            <th>Status</th>
+                            <th>Service</th>
+                            <th>Subject</th>
+                            <th>
+                                <button class="btn btn-success waves-effect">Pending</button>
+                            </th>
                             <th>Actions</th>
                             <th>info</th>
                             <th></th>
@@ -28,11 +31,10 @@
                         @foreach($requests as $request)
                             <tr id="row-{{$request->id}}">
                                 <th scope="row">{{$loop->index +1 }}</th>
+                                <td> {{ $request->client['name'] }}</td>
+                                <td> {{ $request->service['name'] }}</td>
                                 <td>{{$request->subject}}</td>
                                 <td>{{$request->status}}</td>
-{{--                                <td hidden> {{$client=json_encode($request->client,true)}}</td>--}}
-                                <td> {{ $request->client['name'] }}</td>
-
                                 <td>
                                     <button class="btn btn-danger waves-effect" type="button"
                                             onclick="deletePost('{{ $request->id }}')">
