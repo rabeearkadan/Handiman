@@ -19,7 +19,7 @@
                             <div class="position-relative form-group"><label for="examplePassword11"
                                                                              class="">Employee</label><input
                                     name="employee" id="examplePassword11"
-                                    value="{{$request->employee->name}} "
+                                    value="{{$request->handyman['name']}} "
                                     class="form-control"></div>
                         </div>
                     </div>
