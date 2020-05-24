@@ -56,40 +56,40 @@
                         </div>
                     </div>
 
-                    {{--                    // here will go the images og the request--}}
+{{--                    --}}{{--                    // here will go the images og the request--}}
 
 
-                    <div class="container">
-                        <div class="mySlides">
-                            <div class="numbertext">1 / 6</div>
-                            <img src={{asset('images/avatars/1.jpg')}}   style="width:100%">
-                        </div>
-                        <div class="mySlides">
-                            <div class="numbertext">1 / 6</div>
-                            <img src={{asset('images/avatars/1.jpg)}}   style="width:100%">
-                        </div>
+{{--                    <div class="container">--}}
+{{--                        <div class="mySlides">--}}
+{{--                            <div class="numbertext">1 / 6</div>--}}
+{{--                            <img src={{asset('images/avatars/1.jpg')}}   style="width:100%">--}}
+{{--                        </div>--}}
+{{--                        <div class="mySlides">--}}
+{{--                            <div class="numbertext">1 / 6</div>--}}
+{{--                            <img src={{asset('images/avatars/1.jpg)}}   style="width:100%">--}}
+{{--                        </div>--}}
 
 
-                        <a class="prev" onclick="plusSlides(-1)">❮</a>
-                        <a class="next" onclick="plusSlides(1)">❯</a>
+{{--                        <a class="prev" onclick="plusSlides(-1)">❮</a>--}}
+{{--                        <a class="next" onclick="plusSlides(1)">❯</a>--}}
 
-                        <div class="caption-container">
-                            <p id="caption"></p>
-                        </div>
+{{--                        <div class="caption-container">--}}
+{{--                            <p id="caption"></p>--}}
+{{--                        </div>--}}
 
-                        <div class="row">
+{{--                        <div class="row">--}}
 {{--                            <div class="column">--}}
 {{--                                <img class="demo cursor" src={{asset('images/avatars/1.jpg)}}  style="width:100%" onclick="currentSlide(1)" alt="The Woods">--}}
 {{--                            </div>--}}
 {{--                            <div class="column">--}}
 {{--                                <img class="demo cursor" src={{asset('images/avatars/1.jpg)}}  style="width:100%" onclick="currentSlide(2)" alt="Cinque Terre">--}}
 {{--                            </div>--}}
-                    </div>
-                    </div>
-
+{{--                    </div>--}}
+{{--                    </div>--}}
 
                     <button class="mt-2 btn btn-primary">Sign in</button>
                 </form>
+
             </div>
         </div>
 
@@ -98,9 +98,7 @@
 
 
 @push('js')
-
-
-    <script type="text/javascript">
+<script type="text/javascript">
         var slideIndex = 1;
         showSlides(slideIndex);
 
