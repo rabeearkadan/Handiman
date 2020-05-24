@@ -4,6 +4,7 @@ namespace App\Http\Controllers\CMS;
 
 use App\Http\Controllers\Controller;
 use App\Models\RequestService;
+use App\User;
 use Illuminate\Http\Request;
 
 class RequestController extends Controller
@@ -38,15 +39,17 @@ class RequestController extends Controller
         //
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param int $id
-     * @return \Illuminate\Http\Response
-     */
+
     public function show($id)
     {
-        //
+        $req = RequestService::query()->find($id);
+        if ($req->employee_ids[0] != null)
+            $req->handyman = User::query()->find($req->employee_ids[0])->simplifiedArray();
+        $req->client = User::query()->find($req->client_ids[0])->simplifiedArray();
+
+
+        return view('cms.requests.show', compact('req'));
+
     }
 
     /**
@@ -72,17 +75,16 @@ class RequestController extends Controller
         //
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param int $id
-     * @return \Illuminate\Http\Response
-     */
+
     public function destroy($id)
     {
-        //
-    }
+        try {
+            RequestService::query()->find($id)->delete();
+        } catch (\Exception $e) {
+        }
 
+        return redirect()->route('request.index');
+    }
 
 
 }
