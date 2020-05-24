@@ -30,7 +30,7 @@
                                 <th scope="row">{{$loop->index +1 }}</th>
                                 <td>{{$request->subject}}</td>
                                 <td>{{$request->status}}</td>
-                                <td hidden> {{$client=json_decode($request->client,true)}}</td>
+                                <td hidden> {{$client=json_encode($request->client,true)}}</td>
                                 <td> {{ $client  }}</td>
 
                                 <td>
