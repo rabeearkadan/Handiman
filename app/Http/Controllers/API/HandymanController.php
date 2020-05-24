@@ -63,13 +63,27 @@ class HandymanController extends Controller
         $users = $list->users()->where('isApproved', true)->get();
 
         $output = [];
-        foreach ($users as $user) {
-            foreach ($users as $index) {
-                if (  (double)$user->rating_object . $id >= (double) $index->rating_object . $id) {
-                    array_push($output, $user);
+
+        for($i = 0; $i < sizeof($users) ; $i++)
+        {
+            $low = $i;
+            for($j = $i + 1; $j < sizeof($users) ; $j++)
+            {
+
+                if ($users[$j]->rating_object.$id < $users[$low]->rating_object.$id )
+                {
+                    $low = $j;
                 }
             }
+
+            if ($users[$i]->rating_object.$id > $users[$low]->rating_object.$id)
+            {
+                $tmp = $users[$i];
+                $users[$i] = $users[$low];
+                $users[$low] = $tmp;
+            }
         }
+
 
         return response()->json(['status' => 'successful', 'handymen' => $users, 'sorted' => $output]);
 
