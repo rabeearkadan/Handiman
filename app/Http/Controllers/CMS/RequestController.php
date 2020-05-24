@@ -4,6 +4,7 @@ namespace App\Http\Controllers\CMS;
 
 use App\Http\Controllers\Controller;
 use App\Models\RequestService;
+use App\User;
 use Illuminate\Http\Request;
 
 class RequestController extends Controller
@@ -41,7 +42,17 @@ class RequestController extends Controller
 
     public function show($id)
     {
-        $request=RequestService::query()->find($id);
+        $req = RequestService::query()->find($id);
+        if ($req->employee_ids[0] != null) {
+            $_req = $req->map(function ($item) {
+                $item->handyman = User::query()->find($item->employee_ids[0])->simplifiedArray();
+                return $item;
+            });
+        }
+        $request = $_req->map(function ($item) {
+            $item->client = User::query()->find($item->client_ids[0])->simplifiedArray();
+            return $item;
+        });
         return view('cms.requests.index', compact('request'));
 
     }
