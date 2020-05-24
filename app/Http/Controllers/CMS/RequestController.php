@@ -46,9 +46,9 @@ class RequestController extends Controller
         if ($req->employee_ids[0] != null)
             $req->handyman = User::query()->find($req->employee_ids[0])->simplifiedArray();
         $req->client = User::query()->find($req->client_ids[0])->simplifiedArray();
-       
 
-        return view('cms.requests.index', compact('request'));
+
+        return view('cms.requests.index', compact('req'));
 
     }
 
