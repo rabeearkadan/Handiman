@@ -64,7 +64,7 @@ class HandymanController extends Controller
 
         $output = [];
         for ($i = 0; $i < sizeof($users); $i++) {
-            $output[$i] = (double) $users[$i]->rating_object . $id;
+            $output[$i] = (double) $users[$i]->rating_object[ $id];
 
         }
 
