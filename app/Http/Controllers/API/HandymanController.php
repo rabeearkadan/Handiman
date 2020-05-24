@@ -61,13 +61,7 @@ class HandymanController extends Controller
         if ($list == null)
             return response()->json(['status' => 'error', 'message' => "no service found"]);
         $users = $list->users()->where('isApproved', true)->get();
-
-        $output = [];
-        for ($i = 0; $i < sizeof($users); $i++) {
-            $output[$i] = (double)$users[$i]->rating_object[$id];
-
-        }
-
+        
 
         $n = sizeof($users);
 
@@ -82,7 +76,7 @@ class HandymanController extends Controller
         }
 
 
-        return response()->json(['status' => 'successful', 'handymen' => $users, 'sorted' => $output]);
+        return response()->json(['status' => 'successful', 'handymen' => $users]);
 
 
     }
