@@ -210,7 +210,9 @@
                                         <input type="file" multiple>
                                     </div>
                                     <div class="file-path-wrapper">
-                                        <input class="file-path validate" type="text" placeholder="Upload one or more files">
+                                        <label>
+                                            <input class="file-path validate" type="text" placeholder="Upload one or more files" readonly>
+                                        </label>
                                     </div>
                                 </div>
                                 <div class="form-group">
