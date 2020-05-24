@@ -202,13 +202,17 @@
                                         </div><!-- /.form-group -->
                                     </div><!-- /.col-* -->
                                 </div><!-- /.row -->
+                                <div class="row">
+                                    <div class="col-sm-12">
                                 <div class="file-field input-field">
                                     <div class="btn">
                                         <span>File</span>
-                                        <input type="file" multiple>
+                                        <input type="file" multiple style="width: max-content">
                                     </div>
-                                    <div class="file-path-wrapper">
+                                    <div class="file-path-wrapper" style="width: fit-content">
                                         <input class="file-path validate" type="text" placeholder="Upload one or more files">
+                                    </div>
+                                </div>
                                     </div>
                                 </div>
                                 <div class="form-group">
