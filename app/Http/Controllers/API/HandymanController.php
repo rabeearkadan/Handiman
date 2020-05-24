@@ -67,7 +67,7 @@ class HandymanController extends Controller
         foreach ($users as $key => $row) {
             $price[$key] = $row['price'];
         }
-        array_multisort($price, SORT_DESC, $users);
+        array_multisort($price, SORT_DESC, $users[]);
 
         return response()->json(['status' => 'successful', 'handymen' => $users, 'sorted' => $price]);
 
