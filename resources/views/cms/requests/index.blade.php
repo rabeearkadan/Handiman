@@ -30,8 +30,8 @@
                                 <th scope="row">{{$loop->index +1 }}</th>
                                 <td>{{$request->subject}}</td>
                                 <td>{{$request->status}}</td>
-
-                                <td> {{  json_encode($request->client)['name']  }}</td>
+                                {{$client=json_encode($request->client,true)}}
+                                <td> {{ $client['name']  }}</td>
 
                                 <td>
                                     <button class="btn btn-danger waves-effect" type="button"
