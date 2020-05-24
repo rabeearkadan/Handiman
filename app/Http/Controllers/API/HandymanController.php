@@ -78,6 +78,7 @@ class HandymanController extends Controller
 
             if ((double) $users[$i]->rating_object.$id >= (double)$users[$low]->rating_object.$id)
             {
+                $output[$i]=$users[$low];
                 $tmp = $users[$i];
                 $users[$i] = $users[$low];
                 $users[$low] = $tmp;
