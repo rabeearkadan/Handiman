@@ -63,26 +63,9 @@ class HandymanController extends Controller
         $users = $list->users()->where('isApproved', true)->get();
 
         $output = [];
+        for ($i = 0; $i < sizeof($users); $i++) {
+            $output[$i] = $users[$i]->rating_object . $id;
 
-        for($i = 0; $i < sizeof($users) ; $i++)
-        {
-            $low = $i;
-            for($j = $i + 1; $j < sizeof($users) ; $j++)
-            {
-
-                if ((double)$users[$j]->rating_object.$id < (double) $users[$low]->rating_object.$id )
-                {
-                    $low = $j;
-                }
-            }
-
-            if ((double) $users[$i]->rating_object.$id >= (double)$users[$low]->rating_object.$id)
-            {
-                $output[$i]=$users[$low];
-                $tmp = $users[$i];
-                $users[$i] = $users[$low];
-                $users[$low] = $tmp;
-            }
         }
 
 
