@@ -9,7 +9,6 @@
     <link href="{{asset('css/client/requests/icons.css')}}" rel="stylesheet" media="screen">
     <link href="{{asset('lib/font-awesome/css/font-awesome.css')}}" rel="stylesheet">
     <link href="{{asset('css/client/select.css')}}" rel="stylesheet" type="text/css">
-    <link href="{{asset('css/client/materialize.min.css')}}" rel="stylesheet" type="text/css">
     <style>
         .pull-right {
             float: right;
@@ -261,8 +260,8 @@
 {{--        <script src="/public/js/client/requests/materialize.js"></script>--}}
 {{--        <script src="/public/js/client/requests/drop-zone.js"></script>--}}
 {{--        <script src="/public/js/client/requests/file-uploader.js"></script>--}}
-<script src="/public/js/materialize.js"></script>
         <script src="/public/js/client/requests/date-dropper.pro.min.js"></script>
+<script src="/public/js/materialize.js"></script>
         <script>
             var timepicker = @json($timepicker);
             $(document).ready(function () {
@@ -307,6 +306,5 @@
                     }
                 });
             });
-
         </script>
 @endpush
