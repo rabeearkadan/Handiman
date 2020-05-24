@@ -63,17 +63,17 @@ class HandymanController extends Controller
         $users = $list->users()->where('isApproved', true)->get();
 
 
-//        $n = sizeof($users);
-//
-//        for ($i = 0; $i < $n; $i++) {
-//            for ($j = 0; $j < $n - $i - 1; $j++) {
-//                if ((double)$users[$j]->rating_object[$id] < (double)$users[$j+1]->rating_object[$id]) {
-//                    $t = $users[$j];
-//                    $users[$j] = $users[$j + 1];
-//                    $users[$j + 1] = $t;
-//                }
-//            }
-//        }
+        $n = sizeof($users);
+
+        for ($i = 0; $i < $n; $i++) {
+            for ($j = 0; $j < $n - $i - 1; $j++) {
+                if ((double)$users[$j]->rating_object[$id] < (double)$users[$j+1]->rating_object[$id]) {
+                    $t = $users[$j];
+                    $users[$j] = $users[$j + 1];
+                    $users[$j + 1] = $t;
+                }
+            }
+        }
 
 
         return response()->json(['status' => 'success', 'handymen' => $users]);
