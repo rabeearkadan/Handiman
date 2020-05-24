@@ -62,15 +62,16 @@ class HandymanController extends Controller
             return response()->json(['status' => 'error', 'message' => "no service found"]);
         $users = $list->users()->where('isApproved', true)->get();
 
-
-        $price = array();
-        foreach ($users as $key => $row) {
-            if(isset($row['rating_object'.$id]))
-            $price[$key] = $row['rating_object'.$id];
+        $output = [];
+        foreach ($users as $user) {
+            foreach ($users as $index) {
+                if ($user->rating_object . $id >= $index->rating_object . $id) {
+                    array_push($output, $user);
+                }
+            }
         }
-        array_multisort($price, SORT_DESC, $users);
 
-        return response()->json(['status' => 'successful', 'handymen' => $users, 'sorted' => $price]);
+        return response()->json(['status' => 'successful', 'handymen' => $users, 'sorted' => $output]);
 
 
     }
