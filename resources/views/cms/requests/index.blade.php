@@ -29,7 +29,7 @@
                             <tr id="row-{{$request->id}}">
                                 <th scope="row">{{$loop->index +1 }}</th>
                                 <td>{{$request->subject}}</td>
-                                <td>{{$request->client->name}}</td>
+                                <td>{{$request->status}}</td>
 
                                 <td>
                                     <button class="btn btn-danger waves-effect" type="button"
