@@ -51,28 +51,28 @@
                         </div>
                         <div class="col-md-2">
                             <div class="position-relative form-group"><label for="exampleZip" class="">To</label><input
-                                    value="{{$request->to}}:00" name="zip" id="exampleZip" type="text"
+                                    value="{{$request-->images}}:00" name="zip" id="exampleZip" type="text"
                                     class="form-control"></div>
                         </div>
                     </div>
 
 
-                    <div class="container mt-2" id="services">
-                        <div class="row">
-                            @foreach($request->images as $image)
-                                @if ( $loop->index % 4 == 0 )
-                        </div>
-                        <div class="row">
-                            @endif
-                            <div class="col-md-3 col-sm-6">
-                                <div class="card card-block">
-                                    <img src="{{config('image.path').$image}}" alt="later">
-                                    </a>
-                                </div>
-                            </div>
-                            @endforeach
-                        </div>
-                    </div>
+{{--                    <div class="container mt-2" id="services">--}}
+{{--                        <div class="row">--}}
+{{--                            @foreach($request->images as $image)--}}
+{{--                                @if ( $loop->index % 4 == 0 )--}}
+{{--                        </div>--}}
+{{--                        <div class="row">--}}
+{{--                            @endif--}}
+{{--                            <div class="col-md-3 col-sm-6">--}}
+{{--                                <div class="card card-block">--}}
+{{--                                    <img src="{{config('image.path').$image}}" alt="later">--}}
+{{--                                    </a>--}}
+{{--                                </div>--}}
+{{--                            </div>--}}
+{{--                            @endforeach--}}
+{{--                        </div>--}}
+{{--                    </div>--}}
 
 
                     <button class="mt-2 btn btn-primary">Sign in</button>
