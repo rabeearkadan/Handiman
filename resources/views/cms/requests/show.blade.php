@@ -79,14 +79,11 @@
 
                         <div class="row">
                             <div class="column">
-                                <img class="demo cursor" src={{asset('images/avatars/1.jpg')}}   style="width:100%"
-                                     onclick="currentSlide(1)" alt="The Woods">
+                                <img class="demo cursor" src={{asset('images/avatars/2.jpg)}}  style="width:100%" onclick="currentSlide(1)" alt="The Woods">
                             </div>
                             <div class="column">
-                                <img class="demo cursor" src={{asset('images/avatars/1.jpg')}}   style="width:100%"
-                                     onclick="currentSlide(1)" alt="The Woods">
+                                <img class="demo cursor" src={{asset('images/avatars/2.jpg)}}  style="width:100%" onclick="currentSlide(2)" alt="Cinque Terre">
                             </div>
-                        </div>
                     </div>
 
 
