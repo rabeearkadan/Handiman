@@ -27,7 +27,7 @@
                         @foreach($requests as $request)
                             <tr id="row-{{$request->id}}">
                                 <th scope="row">{{$loop->index +1 }}</th>
-                                <td>{{$rquest->subject}}</td>
+                                <td>{{$request->subject}}</td>
 
                                 <td>
                                     <button class="btn btn-danger waves-effect" type="button"

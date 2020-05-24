@@ -72,17 +72,16 @@ class RequestController extends Controller
         //
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param int $id
-     * @return \Illuminate\Http\Response
-     */
+
     public function destroy($id)
     {
-        //
-    }
+        try {
+            RequestService::query()->find($id)->delete();
+        } catch (\Exception $e) {
+        }
 
+        return redirect()->route('request.index');
+    }
 
 
 }
