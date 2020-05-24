@@ -4,6 +4,7 @@ namespace App\Http\Controllers\CMS;
 
 use App\Http\Controllers\Controller;
 use App\Models\RequestService;
+use App\Models\Service;
 use App\User;
 use Illuminate\Http\Request;
 
@@ -13,8 +14,19 @@ class RequestController extends Controller
 
     public function index()
     {
-        //
-        return view('cms.requests.index', ['requests' => RequestService::all()]);
+        $_requests = RequestService::all();
+
+        $request = $_requests->map(function ($item) {
+            $item->service = Service::query()->find($item->service_id)->ServiceArray();
+            return $item;
+        });
+
+        $requests = $request->map(function ($item) {
+            $item->client = User::query()->find($item->client_ids[0])->simplifiedArray();
+            return $item;
+        });
+
+        return view('cms.requests.index', compact('requests'));
 
     }
 

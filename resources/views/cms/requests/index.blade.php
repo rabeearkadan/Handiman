@@ -16,10 +16,11 @@
                         <thead>
                         <tr>
                             <th>#</th>
-                            <th>Name</th>
-                            <th>Email</th>
-                            <th>Account Status</th>
+                            <th>Subject</th>
+                            <th>Client</th>
+                            <th>Status</th>
                             <th>Actions</th>
+                            <th>info</th>
                             <th></th>
                         </tr>
                         </thead>
@@ -28,6 +29,7 @@
                             <tr id="row-{{$request->id}}">
                                 <th scope="row">{{$loop->index +1 }}</th>
                                 <td>{{$request->subject}}</td>
+                                <td>{{$request->client}}</td>
 
                                 <td>
                                     <button class="btn btn-danger waves-effect" type="button"
