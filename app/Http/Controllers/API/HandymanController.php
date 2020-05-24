@@ -65,7 +65,7 @@ class HandymanController extends Controller
         $output = [];
         foreach ($users as $user) {
             foreach ($users as $index) {
-                if ($user->rating_object . $id >= $index->rating_object . $id) {
+                if (  (double)$user->rating_object . $id >= (double) $index->rating_object . $id) {
                     array_push($output, $user);
                 }
             }
