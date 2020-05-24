@@ -99,7 +99,7 @@
 @push('js')
 
 
-    <script>
+    <script type="text/javascript">
         var slideIndex = 1;
         showSlides(slideIndex);
 
