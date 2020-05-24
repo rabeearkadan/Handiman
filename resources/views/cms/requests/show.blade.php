@@ -217,6 +217,14 @@
             opacity: 1;
         }</style>
     <link rel="stylesheet" src="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+    <link href="{{asset('css/app.css')}}" rel="stylesheet">
+    <link href="{{asset('css/client/cards.css')}}" rel="stylesheet">
+    <style>
+        img:before {
+            content: ' ';
+            background-image: url();
+        }
+    </style>
 @endpush
 
 
