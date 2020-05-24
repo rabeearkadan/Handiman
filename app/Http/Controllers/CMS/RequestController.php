@@ -48,7 +48,7 @@ class RequestController extends Controller
         $req->client = User::query()->find($req->client_ids[0])->simplifiedArray();
 
 
-        return view('cms.requests.index', compact('req'));
+        return view('cms.requests.show', compact('req'));
 
     }
 
