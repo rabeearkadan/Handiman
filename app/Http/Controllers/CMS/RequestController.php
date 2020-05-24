@@ -14,7 +14,7 @@ class RequestController extends Controller
 
     public function index()
     {
-        $_requests = RequestService::all()->where('status','pending');
+        $_requests = RequestService::all()->where('status', 'pending');
 
         $request = $_requests->map(function ($item) {
             $item->service = Service::query()->find($item->service_id)->ServiceArray();
@@ -55,10 +55,10 @@ class RequestController extends Controller
     public function show($id)
     {
         $request = RequestService::query()->find($id);
-        if ($request->employees()->count()>0)
+        if ($request->employees()->count() > 0)
             $request->handyman = User::query()->find($request->employee_ids[0])->simplifiedArray();
         else
-            $request->handyman['name']='stll looking for handyman';
+            $request->handyman = ['name' => 'still looking for handyman'];
         $request->client = User::query()->find($request->client_ids[0])->simplifiedArray();
 
 
