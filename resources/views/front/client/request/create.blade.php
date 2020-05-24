@@ -1,7 +1,9 @@
 @extends('layouts.client.app')
 @push('css')
-
-
+    <link href="{{asset('css/client/buttons.css')}}" rel="stylesheet">
+    <link href="{{asset('css/client/common-classes.css')}}" rel="stylesheet">
+    <link href="{{asset('css/client/color-box.css')}}" rel="stylesheet">
+    <link href="{{asset('css/client/requests/icons.css')}}" rel="stylesheet" media="screen">
     <link href="{{asset('lib/font-awesome/css/font-awesome.css')}}" rel="stylesheet">
     <link href="{{asset('css/client/select.css')}}" rel="stylesheet" type="text/css">
     <style>
@@ -204,7 +206,7 @@
                                 <div class="file-field input-field">
                                     <div class="btn">
                                         <span>File</span>
-                                        <input type="file" multiple style="width:max-content">
+                                        <input type="file" multiple >
                                     </div>
                                     <div class="file-path-wrapper">
                                         <input class="file-path validate" type="text" placeholder="Upload one or more files">
