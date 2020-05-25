@@ -164,13 +164,13 @@
                             <h3> The more you elaborate, the more we can help!</h3>
                             <div class="contact-form-wrapper clearfix background-white p30">
                                 <div class="row">
-                                    <div class="col-sm-5">
+                                    <div class="col-sm-6">
                                         <div class="form-group">
                                             <label for="subject">Subject</label>
                                             <input type="text" name="subject" id="subject" class="form-control">
                                         </div><!-- /.form-group -->
                                     </div><!-- /.col-* -->
-                                    <div class="col-sm-5">
+                                    <div class="col-sm-6">
                                         <div class="form-group">
                                             <label for="subject"> <i class="fa fa-home" aria-hidden="true"></i> Address</label>
                                             <div class="select-box">
