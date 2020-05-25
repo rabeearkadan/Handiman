@@ -41,15 +41,6 @@
                         </div><!-- /.col-* -->
                     </div><!-- /.row -->
                     <div class="row">
-                        <div class="chip">
-                            <img src="/public/images/client/clock-icon.png" alt="Contact Person">
-                            from to
-                            <i class="fa fa-times"></i>
-                            <input type="hidden" name="availability[]">
-                        </div>
-
-                    </div>
-                    <div class="row">
                         <div class="col-sm-6">
                             <div class="form-group">
                                 <label for="from"> Choose ending time </label>
@@ -68,7 +59,15 @@
                             </div><!-- /.form-group -->
                         </div><!-- /.col-* -->
                     </div>
+                    <div class="row">
+                        <div class="chip">
+                            <img src="/public/images/client/clock-icon.png" alt="Contact Person">
+                            from to
+                            <i class="fa fa-times"></i>
+                            <input type="hidden" name="availability[]">
+                        </div>
 
+                    </div>
 
 
                     <hr>
