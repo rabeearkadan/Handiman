@@ -47,18 +47,17 @@
                                         </form>
                                     @else
 
-                                        {{--                                        <button class="mb-2 mr-2 btn btn-danger">--}}
-                                        {{--                                            Not Approved--}}
+                                        <form
+                                            action="{{ route('employee.deactivate', $employee->id) }}" method="POST"
+                                        >
 
-                                        {{--                                        </button>--}}
-                                        {{--                                        <form--}}
-                                        {{--                                            action="{{ route('activate', $employee->id) }}" method="POST"--}}
-                                        {{--                                            style="display: none;">--}}
-                                        {{--                                            @csrf--}}
-                                        {{--                                            @method('POST')--}}
-                                        {{--                                        </form>--}}
+                                            <button class="mb-2 mr-2 btn btn-success">
 
-
+                                                Approved
+                                            </button>
+                                            @csrf
+                                            @method('POST')
+                                        </form>
                                     @endif
 
                                 </td>
