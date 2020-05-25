@@ -24,7 +24,7 @@
                                     background-image: url('https://mis.bau.edu.lb/web/v12/iConnectV12/admin/ProfileImage.aspx?ID=201801949&Code=F0DC386DD0')">
 
                             </div>
-                            
+
                             @endif
                         </div>
 
@@ -112,23 +112,23 @@
     </div>
 
 
-    <div class="tab-content">
-        <div class="tab-pane tabs-animation fade show active" id="tab-content-1" role="tabpanel">
-            <div class="row">
+{{--    <div class="tab-content">--}}
+{{--        <div class="tab-pane tabs-animation fade show active" id="tab-content-1" role="tabpanel">--}}
+{{--            <div class="row">--}}
 
 
-                <div class="mb-3 text-center card card-body"><h5 class="card-title">Special Title Treatment</h5>With
-                    supporting text below as a natural lead-in to additional content.
-                    <button class="btn btn-danger">Go somewhere</button>
-                </div>
+{{--                <div class="mb-3 text-center card card-body"><h5 class="card-title">Special Title Treatment</h5>With--}}
+{{--                    supporting text below as a natural lead-in to additional content.--}}
+{{--                    <button class="btn btn-danger">Go somewhere</button>--}}
+{{--                </div>--}}
 
-                <div class="mb-3 text-right card card-body"><h5 class="card-title">Special Title Treatment</h5>With
-                    supporting text below as a natural lead-in to additional content.
-                    <button class="btn btn-outline-focus">Go somewhere</button>
-                </div>
-            </div>
-        </div>
-    </div>
+{{--                <div class="mb-3 text-right card card-body"><h5 class="card-title">Special Title Treatment</h5>With--}}
+{{--                    supporting text below as a natural lead-in to additional content.--}}
+{{--                    <button class="btn btn-outline-focus">Go somewhere</button>--}}
+{{--                </div>--}}
+{{--            </div>--}}
+{{--        </div>--}}
+{{--    </div>--}}
 
 
     <div class="row">
