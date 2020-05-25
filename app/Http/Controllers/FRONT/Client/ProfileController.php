@@ -39,13 +39,13 @@ class ProfileController extends Controller
             return view('front.client.profile.edit-profile', compact('user'));
         }
         $user->save();
-        return view('front.client.profile.edit-profile', compact('user'));
+        return redirect()->route('client.profile');
     }
     public function destroyImage(){
         $user = Auth::user();
         $user->image = "";
         $user->save();
-        return view('front.client.profile.edit-profile', compact('user'));
+        return redirect()->route('client.profile');
     }
 
     //Client Contact Iformation
@@ -55,7 +55,7 @@ class ProfileController extends Controller
         $user->email = $request->email;
         $user->phone = $request->phone;
         $user->save();
-        return view('front.client.profile.edit-profile', compact('user'));
+        return redirect()->route('client.profile');
     }
     // functions for Client Addresses
     public function createAddress(Request $request){
@@ -78,7 +78,7 @@ class ProfileController extends Controller
         $user->push('client_addresses',$data);
         $user->save();
         $user = Auth::user();
-        return view('front.client.profile.edit-profile', compact('user'));
+        return redirect()->route('client.profile');
     }
 
     public function editAddress($id){
