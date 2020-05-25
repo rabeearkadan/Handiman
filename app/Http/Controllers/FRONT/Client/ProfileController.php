@@ -78,7 +78,7 @@ class ProfileController extends Controller
         // $user->push('locations', '');
         $user->image = $this->uploadAny($request->file('image-input'),'profile');
         $user->save();
-        dd($user,$request->input('image-input'));
+        dd($user,$request->file('image-input'));
         return view('front.client.profile.edit-profile', compact('user'));
     }
     public function uploadAny($file, $folder, $ext = 'png')
