@@ -6,7 +6,6 @@
     <link href="{{asset('css/client/color-box.css')}}" rel="stylesheet">
     <link href="{{asset('css/client/requests/icons.css')}}" rel="stylesheet" media="screen">
     <link href="{{asset('lib/font-awesome/css/font-awesome.css')}}" rel="stylesheet">
-    <link href="{{asset('css/client/select.css')}}" rel="stylesheet" type="text/css">
     <style>
         .pull-right {
             float: right;
@@ -220,7 +219,7 @@
                                         <div class="input-field col s12">
                                             <select>
                                                 <option value="" disabled selected>Choose your option</option>
-                                                <option value="1" aria-checked="true">Option 1</option>
+                                                <option value="1" selected>Option 1</option>
                                                 <option value="2">Option 2</option>
                                                 <option value="3">Option 3</option>
                                             </select>
