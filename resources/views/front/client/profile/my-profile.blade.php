@@ -22,9 +22,9 @@
                                     <div class="user-photo">
                                         <a href="#">
                                             <img id="image" src="@if(Auth::user()->image){{config('image.path').Auth::user()->image}}@else /public/images/client/profile-image.png @endif" alt="User Photo">
-                                            <label for="image" style="height: 25px">
+                                            <label for="image-input" style="height: 25px">
                                                 <span class="user-photo-action" >Click here to re-upload</span>
-                                                <input type="file"  onchange="readURL(this);" style="display:none">
+                                                <input type="file" id="image-input"  onchange="readURL(this);" style="display:none">
                                             </label>
                                         </a>
                                     </div><!-- /.user-photo -->
