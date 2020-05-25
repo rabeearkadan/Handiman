@@ -46,6 +46,7 @@
                         <div class="chip">
                             <img src="/public/images/client/clock-icon.png" alt="Contact Person">
                             from to
+                            <i class="close material-icons">close</i>
                         </div>
 
                     </div>
