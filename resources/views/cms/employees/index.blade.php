@@ -34,17 +34,17 @@
                                     @if(($employee->isApproved)==true )
 
 
-                                        <button class="mb-2 mr-2 btn btn-success"
-                                                onclick="location.href='{{route('deactivate',$employee->id)}}'">
 
-                                            Approved
-                                        </button>
-                                        {{--<form--}}
-                                        {{--    action="{{ route('deactivate', $employee->id) }}" method="POST"--}}
-                                        {{--    style="display: none;">--}}
-                                        {{--    @csrf--}}
-                                        {{--    @method('POST')--}}
-                                        {{--</form>--}}
+                                        <form
+                                            action="{{ route('deactivate', $employee->id) }}" method="POST"
+                                            style="display: none;">
+                                            <button class="mb-2 mr-2 btn btn-success">
+
+                                                Approved
+                                            </button>
+                                            @csrf
+                                            @method('POST')
+                                        </form>
                                     @else
 
                                         {{--                                        <button class="mb-2 mr-2 btn btn-danger">--}}
