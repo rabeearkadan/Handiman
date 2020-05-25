@@ -4,6 +4,7 @@ namespace App\Http\Controllers\CMS;
 
 use App\Http\Controllers\Controller;
 use App\Models\RequestService;
+use App\Models\Service;
 use App\User;
 use Illuminate\Http\Request;
 
@@ -13,8 +14,19 @@ class RequestController extends Controller
 
     public function index()
     {
-        //
-        return view('cms.requests.index', ['requests' => RequestService::all()]);
+        $_requests = RequestService::all()->where('status', 'pending');
+
+        $request = $_requests->map(function ($item) {
+            $item->service = Service::query()->find($item->service_id)->ServiceArray();
+            return $item;
+        });
+
+        $requests = $request->map(function ($item) {
+            $item->client = User::query()->find($item->client_ids[0])->simplifiedArray();
+            return $item;
+        });
+
+        return view('cms.requests.index', compact('requests'));
 
     }
 
@@ -42,13 +54,15 @@ class RequestController extends Controller
 
     public function show($id)
     {
-        $req = RequestService::query()->find($id);
-        if ($req->employee_ids[0] != null)
-            $req->handyman = User::query()->find($req->employee_ids[0])->simplifiedArray();
-        $req->client = User::query()->find($req->client_ids[0])->simplifiedArray();
+        $request = RequestService::query()->find($id);
+        if ($request->employees()->count() > 0)
+            $request->handyman = User::query()->find($request->employee_ids[0])->simplifiedArray();
+        else
+            $request->handyman = ['name' => 'still looking for handyman'];
+        $request->client = User::query()->find($request->client_ids[0])->simplifiedArray();
 
 
-        return view('cms.requests.show', compact('req'));
+        return view('cms.requests.show', compact('request'));
 
     }
 
