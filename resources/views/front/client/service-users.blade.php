@@ -155,7 +155,7 @@
         }
     </script>
     <script>
-        $('.chips').material_chip();
+        $('.chips').chips();
         $(document).ready(function(){
             $('.datepicker').datepicker();
         });
