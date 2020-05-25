@@ -242,14 +242,14 @@
                                 </div><!--/.row-->
                                 <div class="row">
                                     <div class="input-field col s6 ">
-                                            <select name="from" id="from">
+                                            <select class="icons" name="from" id="from">
                                                 <option value="" disabled selected>Choose your option</option>
 
                                             </select>
                                             <label for="from"> Choose starting time </label>
                                     </div>
                                     <div class="input-field col s6 ">
-                                            <select name="to" id="to">
+                                            <select class="icons" name="to" id="to">
                                                 <option value="" disabled selected>Choose your option</option>
 
                                             </select>
@@ -273,6 +273,13 @@
 {{--        <script src="/public/js/client/requests/file-uploader.js"></script>--}}
 
         <script src="/public/js/client/requests/date-dropper.pro.min.js"></script>
+<script>
+    $(document).ready(function(){
+        $('#service').formSelect();
+        $('#from').formSelect();
+        $('#to').formSelect();
+    });
+</script>
         <script>
             var timepicker = @json($timepicker);
             $(document).ready(function () {
@@ -319,11 +326,4 @@
             });
 
         </script>
-<script>
-    $(document).ready(function(){
-        $('#service').formSelect();
-        $('#from').formSelect();
-        $('#to').formSelect();
-    });
-</script>
 @endpush
