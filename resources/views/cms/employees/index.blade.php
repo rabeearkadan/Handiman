@@ -38,8 +38,6 @@
                                                 onclick="location.href='{{route('deactivate',$employee->id)}}'">
 
                                             Approved
-                                            @csrf
-                                            @method('POST')
                                         </button>
                                         {{--<form--}}
                                         {{--    action="{{ route('deactivate', $employee->id) }}" method="POST"--}}
