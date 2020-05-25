@@ -31,14 +31,14 @@ Route::post('/reviews/create/{invoice_id}','ReviewsController@store')->name('cli
 Route::put('/reviews/edit/{invoice_id}','ReviewsController@update')->name('client.reviews.update');
 
 //Client Profile
-Route::get('/profile','ProfileController@myProfile')->name('client.profile');
+Route::get('/edit-profile','ProfileController@myProfile')->name('client.profile');
 Route::get('/profile/password','ProfileController@editPassword')->name('client.password');
 Route::get('/profile/payment','ProfileController@editPayment')->name('client.payment');
 //Client Contact Information
-Route::put('/profile','ProfileController@updateContact')->name('client.contact.update');
+Route::put('/edit-profile/contact','ProfileController@updateContact')->name('client.contact.update');
 //Client Image
-Route::put('/profile','ProfileController@updateImage')->name('client.image.update');
-Route::delete('/profile','ProfileController@destroyImage')->name('client.image.destroy');
+Route::put('/edit-profile/image/update','ProfileController@updateImage')->name('client.image.update');
+Route::delete('/edit-profile/image/destroy','ProfileController@destroyImage')->name('client.image.destroy');
 //Client Addresses
 Route::get('/profile/address/create','ProfileController@createAddress')->name('client.address.create');
 Route::post('/profile/address/create','ProfileController@storeAddress')->name('client.address.store');
