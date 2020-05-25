@@ -7,7 +7,12 @@ use Illuminate\Http\Request;
 
 class HomeController extends Controller
 {
-    //
+    /** Functions
+     * index()
+     * requests()
+     * reviews()
+     */
+
     public function index( Request $request ){
         return view ('front.employee.home');
     }

@@ -12,6 +12,21 @@ use Illuminate\Support\Str;
 
 class ProfileController extends Controller
 {
+    /** Functions
+     * myProfile()
+     * editPassword()
+     * editPayment()
+     * updateImage()
+     * destroyImage()
+     * updateContact()
+     * createAddress()
+     * storeAddress()
+     * editAddress()
+     * updateAddress()
+     * destroyAddress()
+     * employeeProfile()
+     * allReviews()
+     */
 
     public function myProfile(){
         $user = Auth::user();
@@ -48,7 +63,7 @@ class ProfileController extends Controller
         return redirect()->route('client.profile');
     }
 
-    //Client Contact Iformation
+    //Client Contact Information
     public function updateContact(Request $request){
         $user = Auth::user();
         $user->name = $request->name;

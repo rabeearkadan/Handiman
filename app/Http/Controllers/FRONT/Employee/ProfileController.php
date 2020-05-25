@@ -8,7 +8,14 @@ use Illuminate\Support\Facades\Auth;
 
 class ProfileController extends Controller
 {
-    //
+    /** Functions
+     * myProfile()
+     * editPassword()
+     * editPayment()
+     * editSchedule()
+     * updateSchedule()
+     */
+
     public function myProfile(){
         $user = Auth::user();
         return view('front.employee.profile.edit-profile',compact('user'));

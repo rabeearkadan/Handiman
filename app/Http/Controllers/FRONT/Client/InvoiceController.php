@@ -8,6 +8,10 @@ use Illuminate\Support\Facades\Auth;
 
 class InvoiceController extends Controller
 {
+    /** Functions
+     * index()
+     */
+
     /**
      * Display a listing of the resource.
      *

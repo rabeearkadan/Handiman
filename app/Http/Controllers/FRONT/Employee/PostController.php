@@ -10,6 +10,16 @@ use Illuminate\Support\Facades\Auth;
 
 class PostController extends Controller
 {
+    /** Functions
+     * index()
+     * create()
+     * store()
+     * edit()
+     * update()
+     * destroy()
+     * validatePost()
+     */
+
     /**
      * Display a listing of the resource.
      *
@@ -17,7 +27,6 @@ class PostController extends Controller
      */
     public function index()
     {
-        //
         $user = Auth::user();
         $services = Service::all();
         return view('front.employee.post.index',compact(['user','services']));
@@ -30,7 +39,6 @@ class PostController extends Controller
      */
     public function create()
     {
-        //
         $user = Auth::user();
         return view('front.employee.post.create',compact('user'));
     }
@@ -43,7 +51,6 @@ class PostController extends Controller
      */
     public function store(Request $request)
     {
-        //
         $user = Auth::user();
         $tags = $request->tags;
         $request->request->remove('tags');
@@ -77,7 +84,6 @@ class PostController extends Controller
      */
     public function edit($id)
     {
-        //
         return view('front.employee.post.edit');
     }
 
@@ -90,7 +96,6 @@ class PostController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
         $post = Post::find($id);
         $post->update($this->validatePost($request));
         return view('front.employee.post.index');
@@ -102,21 +107,17 @@ class PostController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
      */
-    public function destroy($id)
-    {
-        //
+    public function destroy($id){
         $post = Post::find($id);
         $post->delete();
         return redirect(route('employee.post.index'));
     }
 
-    public function validatePost(Request $request)
-    {
+    public function validatePost(Request $request){
         return $request->validate([
             'title' => 'required|min:3|max:255',
             'body' => ['required'],
         ]);
     }
-
 
 }

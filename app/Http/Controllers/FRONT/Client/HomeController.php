@@ -9,7 +9,10 @@ use Illuminate\Http\Request;
 
 class HomeController extends Controller
 {
-    //
+    /** Functions
+     * index()
+     * service()
+     */
 
     public function index( Request $request ){
         $posts = Post::orderBy('created_at','desc')->take(3)->get();

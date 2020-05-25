@@ -324,7 +324,7 @@
 <script>
     $(document).ready(function(){
         $('#service').formSelect();
-        
+
     });
 </script>
 @endpush
