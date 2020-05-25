@@ -215,18 +215,15 @@
                                         </div><!-- /.file-path* -->
                                     </div><!-- /.file-field* -->
                                     </div><!-- /.col* -->
-                                    <div class="col-sm-6">
-                                        <div class="form-group">
-                                            <label>Service Type</label>
-                                            <select class = "icons">
-                                                <option value = "" disabled selected>Select Service</option>
-                                                <option value = "1" data-icon = "" class = "circle">
-                                                    111</option>
-                                                <option value = "233">333</option>
-                                                <option value = "333">333</option>
-                                            </select>
-                                        </div><!-- /.form-group -->
-                                    </div><!-- /.col-* -->
+                                    <div class="input-field col s6 ">
+                                        <select class="icons">
+                                            <option value="" disabled selected>Choose your option</option>
+                                            <option value="" data-icon="images/sample-1.jpg">example 1</option>
+                                            <option value="" data-icon="images/office.jpg">example 2</option>
+                                            <option value="" data-icon="images/yuna.jpg">example 3</option>
+                                        </select>
+                                        <label>Images in select</label>
+                                    </div>
                                 </div><!-- /.row -->
 
                                 <div class="form-group">
