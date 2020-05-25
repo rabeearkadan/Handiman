@@ -243,18 +243,16 @@
                                 <div class="row">
                                     <div class="col-sm-6">
                                         <div class="form-group">
-                                            <label for="from"> Choose starting time </label>
                                             <select name="from" id="from">
-
                                             </select>
+                                            <label for="from"> Choose starting time </label>
                                         </div><!-- /.form-group -->
                                     </div>
                                     <div class="col-sm-6">
                                         <div class="form-group">
-                                            <label for="to"> Choose ending time </label>
                                             <select name="to" id="to">
-
                                             </select>
+                                            <label for="to"> Choose ending time </label>
                                         </div><!-- /.form-group -->
                                     </div><!-- /.col-* -->
                                 </div><!-- /.row -->
