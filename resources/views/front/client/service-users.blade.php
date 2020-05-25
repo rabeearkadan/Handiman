@@ -56,24 +56,16 @@
 {{--                    </div><!-- /.row -->--}}
                 </form>
 
-                <h2 class="page-title">
-                    N results matching your query
-                </h2><!-- /.page-title -->
+{{--                <h2 class="page-title">--}}
+{{--                    N results matching your query--}}
+{{--                </h2><!-- /.page-title -->--}}
 
-                <form method="get" action="?" class="filter-sort">
+                <form  class="filter-sort">
                     <div class="form-group">
-                        <select title="Sort by">
-                            <option name="price">price</option>
-                            <option name="rating">rating</option>
-                        </select>
+                        <button class="sort" data-sort="price" name="price">Price </button>
+                        <button class="sort" data-sort="rating" name="rating"> Rating </button>
                     </div><!-- /.form-group -->
 
-                    <div class="form-group">
-                        <select title="Order">
-                            <option name="ASC">Asc</option>
-                            <option name="DESC">Desc</option>
-                        </select>
-                    </div><!-- /.form-group -->
                 </form>
 
                 <div class="cards-row" style="margin-top:75px">
@@ -137,7 +129,6 @@
     <script src="/public/js/client/superlist.js" type="text/javascript"></script>
     <script src="/public/js/client/list.js" type="text/javascript"></script>
     <script>
-
         var options = {
             valueNames: [ 'name', 'price' ],
             fuzzySearch: {
