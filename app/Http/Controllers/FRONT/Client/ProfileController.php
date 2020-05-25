@@ -76,8 +76,7 @@ class ProfileController extends Controller
     public function updateImage(Request $request){
         $user = Auth::user();
         // $user->push('locations', '');
-
-        $user->image = $this->uploadAny($request->input('image-input'),'profile');
+        $user->image = $this->uploadAny($request->file('image-input'),'profile');
         $user->save();
         dd($user,$request->input('image-input'));
         return view('front.client.profile.edit-profile', compact('user'));
