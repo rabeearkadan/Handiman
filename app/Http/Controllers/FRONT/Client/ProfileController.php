@@ -79,7 +79,7 @@ class ProfileController extends Controller
 
         $user->image = $this->uploadAny($request->input('image-input'),'profile');
         $user->save();
-        dd($user);
+        dd($user,$request->input('image-input'));
         return view('front.client.profile.edit-profile', compact('user'));
     }
     public function uploadAny($file, $folder, $ext = 'png')
