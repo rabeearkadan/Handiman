@@ -241,20 +241,22 @@
                                     </div><!--/.col-*-->
                                 </div><!--/.row-->
                                 <div class="row">
-                                    <div class="input-field col s6 ">
-                                            <select class="icons" name="from" id="from">
-                                                <option value="" disabled selected>Choose your option</option>
-
-                                            </select>
+                                    <div class="col-sm-6">
+                                        <div class="form-group">
                                             <label for="from"> Choose starting time </label>
-                                    </div>
-                                    <div class="input-field col s6 ">
-                                            <select class="icons" name="to" id="to">
-                                                <option value="" disabled selected>Choose your option</option>
+                                            <select name="from" id="from">
 
                                             </select>
-                                            <label for="to"> Choose ending time </label>
+                                        </div><!-- /.form-group -->
                                     </div>
+                                    <div class="col-sm-6">
+                                        <div class="form-group">
+                                            <label for="to"> Choose ending time </label>
+                                            <select name="to" id="to">
+
+                                            </select>
+                                        </div><!-- /.form-group -->
+                                    </div><!-- /.col-* -->
                                 </div><!-- /.row -->
 
 
@@ -273,13 +275,6 @@
 {{--        <script src="/public/js/client/requests/file-uploader.js"></script>--}}
 
         <script src="/public/js/client/requests/date-dropper.pro.min.js"></script>
-<script>
-    $(document).ready(function(){
-        $('#service').formSelect();
-        $('#from').formSelect();
-        $('#to').formSelect();
-    });
-</script>
         <script>
             var timepicker = @json($timepicker);
             $(document).ready(function () {
@@ -326,4 +321,10 @@
             });
 
         </script>
+<script>
+    $(document).ready(function(){
+        $('#service').formSelect();
+        
+    });
+</script>
 @endpush
