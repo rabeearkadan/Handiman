@@ -156,11 +156,7 @@
     <script>
         $('.chips').material_chip();
         $(document).ready(function(){
-            $('.datepicker').datepicker(
-                minDate: new Date(2020,5,20),
-                maxDate: new Date(2020,7,20),
-                format: "yyyy/mm/dd"
-        );
+            $('.datepicker').datepicker();
         });
     </script>
 @endpush
