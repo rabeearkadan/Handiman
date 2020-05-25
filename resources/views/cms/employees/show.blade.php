@@ -10,21 +10,21 @@
                     <div class="text-center">
                         <div
                             style="border-radius: 50%; height: 180px; width: 180px; margin-left: auto; margin-right: auto; border: 3px solid #adb5bd">
-                            @if($employee->image!=null){
+                            @if($employee->image!=null)
                             <div
                                 style="border-radius: 50%; height: 174px; width: 174px; background-size: cover;
                                     background-position: center center; border: 3px solid #fff;
                                     background-image: url({{config('image.path').$employee->image}})">
 
                             </div>
-                            }@else{
+                            @else
                             <div
                                 style="border-radius: 50%; height: 174px; width: 174px; background-size: cover;
                                     background-position: center center; border: 3px solid #fff;
                                     background-image: url('https://mis.bau.edu.lb/web/v12/iConnectV12/admin/ProfileImage.aspx?ID=201801949&Code=F0DC386DD0')">
 
                             </div>
-                            }
+                            
                             @endif
                         </div>
 
