@@ -9,7 +9,6 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
-use League\CommonMark\Inline\Element\Image;
 
 class ProfileController extends Controller
 {
@@ -76,30 +75,40 @@ class ProfileController extends Controller
     //end of functions for Client addresses
     public function updateImage(Request $request){
         $user = Auth::user();
-        // $user->push('locations', '');
-        $user->image = $this->uploadAny($request->file('image-input'),'profile');
+        $file = $request->file('image-input');
+        $name = 'image_' . time() . '.' . $file->getClientOriginalExtension();
+
+        if (!Storage::disk('public')->exists('profile')) {
+            Storage::disk('public')->makeDirectory('profile');
+        }
+
+
+        if (Storage::disk('public')->putFileAs('profile', $file, $name)) {
+            $user->image = 'profile/' . $name;
+        } else {
+            return view('front.client.profile.edit-profile', compact('user'));
+        }
         $user->save();
-        dd($user,$request->file('image-input'));
         return view('front.client.profile.edit-profile', compact('user'));
     }
-    public function uploadAny($file, $folder, $ext = 'png')
-    {
-        $path= Image::make($file->getRealPath());
-
-        $file_name = Str::random(25) . '.' . $file->getClientOriginalExtension(); //generating unique file name;
-        if (!Storage::disk('public')->exists($folder)) {
-            Storage::disk('public')->makeDirectory($folder);
-        }
-        $result = false;
-        if ($file != "") { // storing image in storage/app/public Folder
-            $result = Storage::disk('public')->put($folder . '/' . $file_name, $path);
-
-        }
-        if ($result)
-            return $folder . '/' . $file_name;
-        else
-            return null;
-    }
+//    public function uploadAny($file, $folder, $ext = 'png')
+//    {
+//        $file = base64_decode($file);
+//
+//        $file_name = Str::random(25) . '.' . $ext; //generating unique file name;
+//        if (!Storage::disk('public')->exists($folder)) {
+//            Storage::disk('public')->makeDirectory($folder);
+//        }
+//        $result = false;
+//        if ($file != "") { // storing image in storage/app/public Folder
+//            $result = Storage::disk('public')->put($folder . '/' . $file_name, $file);
+//
+//        }
+//        if ($result)
+//            return $folder . '/' . $file_name;
+//        else
+//            return null;
+//    }
 
     public function editProfile(){
 
