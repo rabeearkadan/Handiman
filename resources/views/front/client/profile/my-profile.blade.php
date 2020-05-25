@@ -25,7 +25,7 @@
                                     <div class="user-photo">
                                         <a href="#">
                                             <img id="image" src="@if(Auth::user()->image){{config('image.path').Auth::user()->image}}@else /public/images/client/profile-image.png @endif" alt="User Photo">
-                                            <a href="#" onclick="removeImage()" style="position: absolute">
+                                            <a href="#" onclick="removeImage()" style="position: absolute; @if(!Auth::user()->image) display:none @endif">
                                                 <i class="fa fa-remove"></i>
                                             </a>
                                             <label for="image-input" style="height: 25px">
