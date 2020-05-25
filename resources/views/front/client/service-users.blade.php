@@ -187,9 +187,6 @@
             var from= fromSelect.val();
                     from++;
                     for(var to=from;to<=24;to++) {
-                        if(to===24){
-                            to=0;
-                        }
                         toSelect.append(
                             $('<option></option>').val(to).html(to)
                         );
