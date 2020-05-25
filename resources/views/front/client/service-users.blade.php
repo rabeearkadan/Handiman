@@ -60,13 +60,13 @@
 {{--                    N results matching your query--}}
 {{--                </h2><!-- /.page-title -->--}}
 
-                <form  class="filter-sort">
+
                     <div class="form-group">
                         <button class="sort" data-sort="price" name="price">Price </button>
                         <button class="sort" data-sort="rating" name="rating"> Rating </button>
                     </div><!-- /.form-group -->
 
-                </form>
+             
 
                 <div class="cards-row" style="margin-top:75px">
                     <div class="list">
