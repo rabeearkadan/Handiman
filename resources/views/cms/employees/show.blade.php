@@ -4,6 +4,28 @@
 
     <div class="row">
 
+        <div class="col-lg-3 col-6">
+            <div class="card card-primary card-outline">
+                <div class="card-body box-profile">
+                    <div class="text-center">
+                        <div
+                            style="border-radius: 50%; height: 180px; width: 180px; margin-left: auto; margin-right: auto; border: 3px solid #adb5bd">
+
+                            <div
+                                style="border-radius: 50%; height: 174px; width: 174px; background-size: cover; background-position: center center; border: 3px solid #fff; background-image: url('https://mis.bau.edu.lb/web/v12/iConnectV12/admin/ProfileImage.aspx?ID=201801949&Code=F0DC386DD0')">
+
+                            </div>
+                        </div>
+
+                    </div>
+                    <h3 class="profile-username text-center">
+
+                        <span>tesst </span>
+                    </h3>
+
+                </div>
+            </div>
+        </div>
 
         <div class="col-lg-3 col-6">
 
@@ -99,28 +121,6 @@
 
 
     <div class="row">
-        <div class="col-lg-3 col-6">
-            <div class="card card-primary card-outline">
-                <div class="card-body box-profile">
-                    <div class="text-center">
-                        <div
-                            style="border-radius: 50%; height: 180px; width: 180px; margin-left: auto; margin-right: auto; border: 3px solid #adb5bd">
-
-                            <div
-                                style="border-radius: 50%; height: 174px; width: 174px; background-size: cover; background-position: center center; border: 3px solid #fff; background-image: url('https://mis.bau.edu.lb/web/v12/iConnectV12/admin/ProfileImage.aspx?ID=201801949&Code=F0DC386DD0')">
-
-                            </div>
-                        </div>
-
-                    </div>
-                    <h3 class="profile-username text-center">
-
-                        <span>tesst </span>
-                    </h3>
-
-                </div>
-            </div>
-        </div>
 
         <div class="col-lg-6 col-12">
             <div class="tab-content">
