@@ -9,6 +9,7 @@
     <link href="{{asset('css/client/filter.css')}}" rel="stylesheet">
     <link href="{{asset('css/client/color-box.css')}}" rel="stylesheet">
     <link href="{{asset('css/client/bootstrap-select.min.css')}}" rel="stylesheet">
+    <link href="{{asset('css/client/sorting.css')}}" rel="stylesheet">
 @endpush
 @section('content')
     <div class="page-wrapper">
@@ -60,13 +61,15 @@
 {{--                    N results matching your query--}}
 {{--                </h2><!-- /.page-title -->--}}
 
-
+                <div class="filter-sort">
                     <div class="form-group">
+                        <div class="annotated-list">
                         <button class="sort" data-sort="price" name="price">Price </button>
                         <button class="sort" data-sort="rating" name="rating"> Rating </button>
+                        </div>
                     </div><!-- /.form-group -->
 
-             
+                </div>
 
                 <div class="cards-row" style="margin-top:75px">
                     <div class="list">
