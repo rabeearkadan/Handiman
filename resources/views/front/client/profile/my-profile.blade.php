@@ -21,10 +21,10 @@
                                 <div class="widget">
                                     <div class="user-photo">
                                         <a href="#">
-                                            <img src="@if(Auth::user()->image){{config('image.path').Auth::user()->image}}@else /public/images/client/profile-image.png @endif" alt="User Photo">
+                                            <img id="image" src="@if(Auth::user()->image){{config('image.path').Auth::user()->image}}@else /public/images/client/profile-image.png @endif" alt="User Photo">
                                             <label for="image" style="height: 25px">
-                                                <span class="user-photo-action" aria-hidden="true">Click here to re-upload</span>
-                                                <input type="file" id="image"  onchange="readURL(this);" style="display:none">
+                                                <span class="user-photo-action" >Click here to re-upload</span>
+                                                <input type="file"  onchange="readURL(this);" style="display:none">
                                             </label>
                                         </a>
                                     </div><!-- /.user-photo -->
@@ -58,8 +58,7 @@
                 reader.onload = function (e) {
                     $('#image')
                         .attr('src', e.target.result)
-                        .width(150)
-                        .height(200);
+
                 };
 
                 reader.readAsDataURL(input.files[0]);
