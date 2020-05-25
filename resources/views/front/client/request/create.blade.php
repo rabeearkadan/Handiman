@@ -202,19 +202,20 @@
                                         </div><!-- /.form-group -->
                                     </div><!-- /.col-* -->
                                 </div><!-- /.row -->
-                                <div class="row">
-                                    <div class="col-sm-12">
-                                <div class="file-field input-field">
-                                    <div class="btn">
-                                        <span>File</span>
-                                        <input type="file" multiple style="width: max-content">
-                                    </div>
-                                    <div class="file-path-wrapper" style="width: fit-content">
-                                        <input class="file-path validate" type="text" placeholder="Upload one or more files">
+                                <div class = "row">
+                                    <div class = "file-field input-field">
+                                        <div class = "btn">
+                                            <span>Browse</span>
+                                            <input type = "file" multiple />
+                                        </div>
+
+                                        <div class = "file-path-wrapper">
+                                            <input class = "file-path validate" type = "text"
+                                                   placeholder = "Upload multiple files" />
+                                        </div>
                                     </div>
                                 </div>
-                                    </div>
-                                </div>
+
                                 <div class="form-group">
                                     <label for="description"> Problem Description</label>
                                     <textarea class="form-control" id="description" name="description"
