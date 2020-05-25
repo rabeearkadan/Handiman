@@ -44,11 +44,33 @@
                         <div class="chip">
                             <img src="/public/images/client/clock-icon.png" alt="Contact Person">
                             from to
-                            <i class="fa fa-times">close</i>
+                            <i class="fa fa-times"></i>
                             <input type="hidden" name="availability[]">
                         </div>
 
                     </div>
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                <label for="from"> Choose ending time </label>
+                                <select name="from" id="from">
+                                    @for($from=0;$from<24;$from++)
+                                        <option value="{{$from}}">{{$from}}</option>
+                                    @endfor
+                                </select>
+                            </div><!-- /.form-group -->
+                        </div><!-- /.col-* -->
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                <label for="to"> Choose ending time </label>
+                                <select name="to" id="to">
+                                </select>
+                            </div><!-- /.form-group -->
+                        </div><!-- /.col-* -->
+                    </div>
+
+
+
                     <hr>
 
 {{--                    <div class="row">--}}
@@ -158,6 +180,21 @@
         $('.chips').chips();
         $(document).ready(function(){
             $('.datepicker').datepicker();
+        });
+        var fromSelect = $('#from');
+        var toSelect = $('#to');
+        fromSelect.change(function(){
+            toSelect.find('option').remove().end();
+            var from= fromSelect.val();
+                    from++;
+                    for(var to=from;to<=value["to"];to++) {
+                        if(to===24){
+                            to=0;
+                        }
+                        toSelect.append(
+                            $('<option></option>').val(to).html(to)
+                        );
+                    }
         });
     </script>
 @endpush
