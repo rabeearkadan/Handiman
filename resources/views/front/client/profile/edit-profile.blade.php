@@ -92,6 +92,8 @@
         <h1>Edit Profile</h1>
     </div><!-- /.page-title -->
     <form method="post" action="{{route('client.contact.update')}}">
+        @csrf
+        @method('put')
     <div class="background-white p20 mb30">
         <h4 class="page-title">
             Contact Information
