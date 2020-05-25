@@ -9,6 +9,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
+use League\CommonMark\Inline\Element\Image;
 
 class ProfileController extends Controller
 {
@@ -83,7 +84,7 @@ class ProfileController extends Controller
     }
     public function uploadAny($file, $folder, $ext = 'png')
     {
-        
+        $path= Image::make($file->getRealPath());
 
         $file_name = Str::random(25) . '.' . $file->getClientOriginalExtension(); //generating unique file name;
         if (!Storage::disk('public')->exists($folder)) {
@@ -91,7 +92,7 @@ class ProfileController extends Controller
         }
         $result = false;
         if ($file != "") { // storing image in storage/app/public Folder
-            $result = Storage::disk('public')->put($folder . '/' . $file_name, $file);
+            $result = Storage::disk('public')->put($folder . '/' . $file_name, $path);
 
         }
         if ($result)
