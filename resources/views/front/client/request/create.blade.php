@@ -141,7 +141,7 @@
             <div class="main-inner">
                 <div class="container">
                     <div class="content">
-                        <form class="contact-form" method="post" action="{{route('client.request.store')}}">
+                        <form class="contact-form" method="post" action="{{route('client.request.store')}}" enctype="multipart/form-data">
                             @csrf
                             @if($employee)
                                 <div class="contact-form-wrapper clearfix background-white p30">
@@ -203,18 +203,27 @@
                                     </div><!-- /.col-* -->
                                 </div><!-- /.row -->
                                 <div class = "row">
+                                    <div class="col-sm-6">
                                     <div class = "file-field input-field">
                                         <div class = "btn">
                                             <span>Browse</span>
-                                            <input type = "file" style="width: max-content" multiple />
-                                        </div>
-
+                                            <input type = "file" style="width: max-content" accept="image/jpeg, image/png" multiple />
+                                        </div><!-- /.btn -->
                                         <div class = "file-path-wrapper">
                                             <input class = "file-path validate" type = "text"
                                                    placeholder = "Upload multiple files" />
-                                        </div>
-                                    </div>
-                                </div>
+                                        </div><!-- /.file-path* -->
+                                    </div><!-- /.file-field* -->
+                                    </div><!-- /.col* -->
+                                    <div class="col-sm-6">
+                                        <div class="form-group">
+                                            <label for="to"> Service Type</label>
+                                            <select name="service">
+                                                
+                                            </select>
+                                        </div><!-- /.form-group -->
+                                    </div><!-- /.col-* -->
+                                </div><!-- /.row -->
 
                                 <div class="form-group">
                                     <label for="description"> Problem Description</label>
