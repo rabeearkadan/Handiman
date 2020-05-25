@@ -22,7 +22,7 @@
                                     <div class="user-photo">
                                         <a href="#">
                                             <img src="@if(Auth::user()->image){{config('image.path').Auth::user()->image}}@else /public/images/client/profile-image.png @endif" alt="User Photo">
-                                            <div class="btn">
+                                            <div>
                                                 <span class="user-photo-action">Click here to re-upload</span>
                                                 <input type="file" >
                                             </div>
