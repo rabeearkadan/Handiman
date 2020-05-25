@@ -18,16 +18,27 @@
                     <div class="row">
                         <div class="col-sm-4 col-lg-3">
                             <div class="sidebar">
+                                <form method="post" action="{{route('client.image.update')}}" id="image-form" enctype="multipart/form-data">
+                                    @csrf
+                                    @method('put')
                                 <div class="widget">
                                     <div class="user-photo">
                                         <a href="#">
-                                            <span class="user-photo-action">Click here to re-upload</span>
+                                            <img id="image" src="@if(Auth::user()->image){{config('image.path').Auth::user()->image}}@else /public/images/client/profile-image.png @endif" alt="User Photo">
+                                            <a href="#" onclick="removeImage()" style="position: absolute; @if(!Auth::user()->image) display:none @endif">
+                                                <i class="fa fa-remove"></i>
+                                            </a>
+                                            <label for="image-input" style="height: 25px">
+                                                <span class="user-photo-action" >Click here to change</span>
+                                                <input type="file" id="image-input" name="image-input"  onchange="readURL(this);" style="display:none" accept="image/jpeg, image/png">
+                                            </label>
                                         </a>
                                     </div><!-- /.user-photo -->
                                 </div><!-- /.widget -->
+                                </form>
                                 <div class="widget">
                                     <ul class="menu-advanced">
-                                        <li class="@if(request()->is('client/profile')) {{'active'}} @endif"><a href="{{route('client.profile')}}"><i class="fa fa-user"></i> Edit Profile </a></li>
+                                        <li class="@if(request()->is('client/edit-profile*')) {{'active'}} @endif"><a href="{{route('client.profile')}}"><i class="fa fa-user"></i> Edit Profile </a></li>
                                         <li class="@if(request()->is('client/profile/password')) {{'active'}} @endif"><a href="{{route('client.password')}}"><i class="fa fa-key"></i> Security </a></li>
                                         <li class="@if(request()->is('client/profile/payment')) {{'active'}} @endif"><a href="{{route('client.payment')}}"><i class="fa fa-money"></i> Payment </a></li>
                                     </ul>
@@ -44,6 +55,29 @@
             </div><!-- /.main-inner -->
         </div><!-- /.main -->
     </div><!-- /.page-wrapper -->
+    <form id="image-remove" method="post" action="{{route('client.image.destroy')}}" style="display: none">
+        @csrf
+        @method('delete')
+    </form>
 @endsection
+@push('js')
+    <script>
+        function readURL(input) {
+            if (input.files && input.files[0]) {
+                var reader = new FileReader();
 
-
+                reader.onload = function (e) {
+                    $('#image')
+                        .attr('src', e.target.result)
+                };
+                reader.readAsDataURL(input.files[0]);
+            }
+            var form = document.getElementById('image-form');
+            form.submit();
+        }
+        function removeImage() {
+            var form = document.getElementById('image-remove');
+            form.submit();
+        }
+    </script>
+@endpush

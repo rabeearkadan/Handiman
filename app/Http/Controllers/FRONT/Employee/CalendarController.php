@@ -7,7 +7,11 @@ use Illuminate\Http\Request;
 
 class CalendarController extends Controller
 {
-    //
+    /** Functions
+     * index()
+     * show()
+     */
+
     public function index (Request $request){
         return view('front.employee.calendar');
     }

@@ -10,6 +10,11 @@ use Illuminate\Support\Facades\Auth;
 
 class RequestController extends Controller
 {
+    /** Functions
+     * index()
+     *
+     */
+
     /**
      * Display a listing of the resource.
      *
@@ -17,7 +22,6 @@ class RequestController extends Controller
      */
     public function index()
     {
-        //
         $requests = Auth::user()->employeeRequests()->where('status','pending')->get();
         $requests = $requests->map(function ($item) {
             $item->service_name = Service::find($item->service_id)->name;

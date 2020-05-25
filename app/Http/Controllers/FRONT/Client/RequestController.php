@@ -15,14 +15,24 @@ use Illuminate\Support\Facades\Validator;
 
 class RequestController extends Controller
 {
+    /** Functions
+     * index()
+     * create()
+     * store()
+     * searchForHandyman()
+     * show()
+     * edit()
+     * update()
+     * destroy()
+     * validator()
+     * notification()
+     */
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
-    public function index()
-    {
-        //
+    public function index(){
         $pendingRequests = Auth::user()->clientRequests()->where('status','pending')->get();
         $approvedRequests = Auth::user()->clientRequests()->where('status','approved')->get();
         $pendingRequests = $pendingRequests->map(function ($item) {
@@ -39,9 +49,7 @@ class RequestController extends Controller
      * @param Request $request
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
-    public function create(Request $request)
-    {
-        //
+    public function create(Request $request){
         $user=Auth::user();
         $employee = User::find($request->input('employee_id'));
         $service = Service::find($request->input('service_id'));
@@ -53,15 +61,12 @@ class RequestController extends Controller
         $availableDaysString="";
         $timepicker=array();
         for($x=0;$x<24;$x++) {
-     //       $Days[$date->format('d/m/Y')] = array_fill(0, 24, true);
             $day = date('w', strtotime($date->format('Y-m-d')));
             for ($hour=0;$hour<24;$hour++) {
                 $Days[$date->format('m/d/Y')][$hour] = $employee->timeline[$day][$hour];
-
                if( $Days[$date->format('m/d/Y')][$hour]==true){
                    $bool=true;
                }
-
             }
             foreach ($employee->employeeRequests as $request){
                 if($request->isdone==false & $request->date->format('m/d/Y') == $date->format('m/d/Y') ){
@@ -109,7 +114,6 @@ class RequestController extends Controller
             $bool= false;
             $date->modify('+1 day');
         }
-        //dd($Days,$availableDaysString,$timepicker);
         return view('front.client.request.create',compact(['user','employee','service','availableDaysString','timepicker']));
     }
 
@@ -120,8 +124,7 @@ class RequestController extends Controller
      * @param $employee_id
      * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
      */
-    public function store(Request $req)
-    {
+    public function store(Request $req){
         $user = Auth::user();
        // $this->validator($req->all())->validate();
         $requestHandyman = new RequestService();
@@ -172,7 +175,6 @@ class RequestController extends Controller
                    // $requestHandyman->handyman_to = 'pending';
                     $requestHandyman->to = null;
                 }
-
                 $this->notification($handyman->device_token, Auth::user()->name, 'You received a new request', 'request');
             }
             $requestHandyman->save();
@@ -185,8 +187,7 @@ class RequestController extends Controller
         return redirect(route('client.request.index'));
     }
 
-    private function searchForHandyman($requestHandyman)
-    {
+    private function searchForHandyman($requestHandyman){
         if (Carbon::now($requestHandyman->timezone)->minute > 30) {
             $nowHour = str_pad(Carbon::now($requestHandyman->timezone)->hour + 1, 2, '0', STR_PAD_LEFT) . '00';
             $nowNextHour = str_pad(Carbon::now($requestHandyman->timezone)->hour + 2, 2, '0', STR_PAD_LEFT) . '00';
@@ -194,7 +195,6 @@ class RequestController extends Controller
             $nowHour = str_pad(Carbon::now($requestHandyman->timezone)->hour, 2, '0', STR_PAD_LEFT) . '00';
             $nowNextHour = str_pad(Carbon::now($requestHandyman->timezone)->hour + 1, 2, '0', STR_PAD_LEFT) . '00';
         }
-
         $nowDay = Carbon::now()->dayOfWeek;
         $availableUsers = User::query()
             ->where('timeline.' . $nowDay . '.' . $nowHour, true)
@@ -278,8 +278,6 @@ class RequestController extends Controller
     public function Notification($to, $from, $message, $type)
     {
         $notification = array();
-
-
         $notification['to'] = $to;
         $notification['user'] = $from;
         $notification['message'] = $message;

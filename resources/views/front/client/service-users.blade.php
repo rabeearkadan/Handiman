@@ -9,12 +9,14 @@
     <link href="{{asset('css/client/filter.css')}}" rel="stylesheet">
     <link href="{{asset('css/client/color-box.css')}}" rel="stylesheet">
     <link href="{{asset('css/client/bootstrap-select.min.css')}}" rel="stylesheet">
+    <link href="{{asset('css/client/sorting.css')}}" rel="stylesheet">
 @endpush
 @section('content')
     <div class="page-wrapper">
         <div class="main">
             <div id="employees-list" class="fullscreen-wrapper" style="padding:12px">
-                <form class="filter" method="post" action="?">
+                <form class="filter" method="post" action="">
+                    @csrf
                     <div class="row">
                         <div class="col-sm-12 col-md-4">
                             <div class="form-group">
@@ -24,9 +26,10 @@
 
                         <div class="col-sm-12 col-md-4">
                             <div class="form-group">
-                                <select class="form-control" title="Select Location">
-                                    <option> N</option>
-
+                                <select class="form-control" title="Near" name="address">
+                                    @foreach($user->client_addresses as $address)
+                                    <option value="{{$address['_id']}}">{{$address['name']}}</option>
+                                    @endforeach
                                 </select>
                             </div><!-- /.form-group -->
                         </div><!-- /.col-* -->
@@ -39,7 +42,14 @@
                             </div><!-- /.form-group -->
                         </div><!-- /.col-* -->
                     </div><!-- /.row -->
+                    <div class="row">
+                        <div class="chip">
+                            <img src="/public/images/client/clock-icon.png" alt="Contact Person">
+                            from to
+                            <i class="fa fa-times">close</i>
+                        </div>
 
+                    </div>
                     <hr>
 
 {{--                    <div class="row">--}}
@@ -56,29 +66,24 @@
 {{--                    </div><!-- /.row -->--}}
                 </form>
 
-                <h2 class="page-title">
-                    N results matching your query
-                </h2><!-- /.page-title -->
+{{--                <h2 class="page-title">--}}
+{{--                    N results matching your query--}}
+{{--                </h2><!-- /.page-title -->--}}
 
-                <form method="get" action="?" class="filter-sort">
+                <div class="filter-sort">
                     <div class="form-group">
-                        <select title="Sort by">
-                            <option name="price">price</option>
-                            <option name="rating">rating</option>
-                        </select>
+                        <div class="annotated-list">
+                        <button class="sort" data-sort="price" name="price">Price </button>
+                        <button class="sort" data-sort="rating" name="rating"> Rating </button>
+                        </div>
                     </div><!-- /.form-group -->
 
-                    <div class="form-group">
-                        <select title="Order">
-                            <option name="ASC">Asc</option>
-                            <option name="DESC">Desc</option>
-                        </select>
-                    </div><!-- /.form-group -->
-                </form>
+                </div>
 
-                <div class="cards-row" style="margin-top:75px">
+                <div class="cards-row" style="margin-top:80px">
                     <div class="list">
                     @foreach($service->users as $employee)
+                        @if($employee->id != $user->id)
                         <div class="card-row">
                             <div class="card-row-inner">
                                 <div class="card-row-image"
@@ -123,6 +128,7 @@
                                 </div><!-- /.card-row-properties -->
                             </div><!-- /.card-row-inner -->
                         </div><!-- /.card-row -->
+                            @endif
                     @endforeach
                     </div><!-- /.list -->
                 </div><!-- /.cards-row -->
@@ -137,7 +143,6 @@
     <script src="/public/js/client/superlist.js" type="text/javascript"></script>
     <script src="/public/js/client/list.js" type="text/javascript"></script>
     <script>
-
         var options = {
             valueNames: [ 'name', 'price' ],
             fuzzySearch: {
@@ -148,6 +153,9 @@
         function defaultSort(element){
             employeesList.sort(element.innerHTML, { order: "asc" })
         }
+    </script>
+    <script>
+        $('.chips').material_chip();
     </script>
 @endpush
 

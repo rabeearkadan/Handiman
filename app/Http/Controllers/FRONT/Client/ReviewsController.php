@@ -7,6 +7,10 @@ use Illuminate\Http\Request;
 
 class ReviewsController extends Controller
 {
+    /** Functions
+     *
+     */
+
     /**
      * Display a listing of the resource.
      *

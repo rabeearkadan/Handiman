@@ -141,7 +141,7 @@
             <div class="main-inner">
                 <div class="container">
                     <div class="content">
-                        <form class="contact-form" method="post" action="{{route('client.request.store')}}">
+                        <form class="contact-form" method="post" action="{{route('client.request.store')}}" enctype="multipart/form-data">
                             @csrf
                             @if($employee)
                                 <div class="contact-form-wrapper clearfix background-white p30">
@@ -164,13 +164,13 @@
                             <h3> The more you elaborate, the more we can help!</h3>
                             <div class="contact-form-wrapper clearfix background-white p30">
                                 <div class="row">
-                                    <div class="col-sm-5">
+                                    <div class="col-sm-6">
                                         <div class="form-group">
                                             <label for="subject">Subject</label>
                                             <input type="text" name="subject" id="subject" class="form-control">
                                         </div><!-- /.form-group -->
                                     </div><!-- /.col-* -->
-                                    <div class="col-sm-5">
+                                    <div class="col-sm-6">
                                         <div class="form-group">
                                             <label for="subject"> <i class="fa fa-home" aria-hidden="true"></i> Address</label>
                                             <div class="select-box">
@@ -202,19 +202,30 @@
                                         </div><!-- /.form-group -->
                                     </div><!-- /.col-* -->
                                 </div><!-- /.row -->
-                                <div class="row">
-                                    <div class="col-sm-12">
-                                <div class="file-field input-field">
-                                    <div class="btn">
-                                        <span>File</span>
-                                        <input type="file" multiple style="width: max-content">
+                                <div class = "row">
+                                    <div class="col-sm-6">
+                                    <div class = "file-field input-field">
+                                        <div class = "btn">
+                                            <span>Browse</span>
+                                            <input type = "file" style="width: max-content" accept="image/jpeg, image/png" multiple />
+                                        </div><!-- /.btn -->
+                                        <div class = "file-path-wrapper">
+                                            <input class = "file-path validate" type = "text"
+                                                   placeholder = "Upload multiple files" />
+                                        </div><!-- /.file-path* -->
+                                    </div><!-- /.file-field* -->
+                                    </div><!-- /.col* -->
+                                    <div class="input-field col s6 ">
+                                        <select class="icons" id="service">
+                                            <option value="" disabled selected>Choose your option</option>
+                                            <option value="" data-icon="images/sample-1.jpg">example 1</option>
+                                            <option value="" data-icon="images/office.jpg">example 2</option>
+                                            <option value="" data-icon="images/yuna.jpg">example 3</option>
+                                        </select>
+                                        <label for="service">Images in select</label>
                                     </div>
-                                    <div class="file-path-wrapper" style="width: fit-content">
-                                        <input class="file-path validate" type="text" placeholder="Upload one or more files">
-                                    </div>
-                                </div>
-                                    </div>
-                                </div>
+                                </div><!-- /.row -->
+
                                 <div class="form-group">
                                     <label for="description"> Problem Description</label>
                                     <textarea class="form-control" id="description" name="description"
@@ -262,6 +273,7 @@
 {{--        <script src="/public/js/client/requests/materialize.js"></script>--}}
 {{--        <script src="/public/js/client/requests/drop-zone.js"></script>--}}
 {{--        <script src="/public/js/client/requests/file-uploader.js"></script>--}}
+
         <script src="/public/js/client/requests/date-dropper.pro.min.js"></script>
         <script>
             var timepicker = @json($timepicker);
@@ -309,4 +321,10 @@
             });
 
         </script>
+<script>
+    $(document).ready(function(){
+        $('#service').formSelect();
+
+    });
+</script>
 @endpush
