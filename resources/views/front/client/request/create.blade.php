@@ -216,7 +216,7 @@
                                     </div><!-- /.file-field* -->
                                     </div><!-- /.col* -->
                                     <div class="input-field col s6 ">
-                                        <select class="icons">
+                                        <select class="icons" id="service">
                                             <option value="" disabled selected>Choose your option</option>
                                             <option value="" data-icon="images/sample-1.jpg">example 1</option>
                                             <option value="" data-icon="images/office.jpg">example 2</option>
@@ -323,7 +323,7 @@
         </script>
 <script>
     $(document).ready(function(){
-        $('select').formSelect();
+        $('#service').formSelect();
     });
 </script>
 @endpush
