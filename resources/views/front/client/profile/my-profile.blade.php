@@ -25,14 +25,12 @@
                                     <div class="user-photo">
                                         <a href="#">
                                             <img id="image" src="@if(Auth::user()->image){{config('image.path').Auth::user()->image}}@else /public/images/client/profile-image.png @endif" alt="User Photo">
+                                            <a href="#" onclick="removeImage()">
+                                                <i class="fa fa-remove"></i>
+                                            </a>
                                             <label for="image-input" style="height: 25px">
                                                 <span class="user-photo-action" >Click here to change</span>
                                                 <input type="file" id="image-input" name="image-input"  onchange="readURL(this);" style="display:none" accept="image/jpeg, image/png">
-                                            </label>
-                                        </a>
-                                        <a href="#" onclick="removeImage()">
-                                            <label for="image-input" style="height: 25px">
-                                                <span class="user-photo-action" >Click here to remove</span>
                                             </label>
                                         </a>
                                     </div><!-- /.user-photo -->
