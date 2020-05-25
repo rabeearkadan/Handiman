@@ -243,11 +243,15 @@
                                 <div class="row">
                                     <div class="input-field col s6 ">
                                             <select name="from" id="from">
+                                                <option value="" disabled selected>Choose your option</option>
+
                                             </select>
                                             <label for="from"> Choose starting time </label>
                                     </div>
                                     <div class="input-field col s6 ">
                                             <select name="to" id="to">
+                                                <option value="" disabled selected>Choose your option</option>
+
                                             </select>
                                             <label for="to"> Choose ending time </label>
                                     </div>
