@@ -48,7 +48,7 @@
                                     @else
 
                                         <form
-                                            action="{{ route('employee.deactivate', $employee->id) }}" method="POST"
+                                            action="{{ route('employee.activate', $employee->id) }}" method="POST"
                                         >
 
                                             <button class="mb-2 mr-2 btn btn-danger">
