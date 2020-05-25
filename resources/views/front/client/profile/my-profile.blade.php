@@ -21,6 +21,7 @@
                                 <div class="widget">
                                     <div class="user-photo">
                                         <a href="#">
+                                            <img src="@if(Auth::user()->image){{config('image.path').Auth::user()->image}}@else /public/images/client/profile-image.png @endif" alt="User Photo">
                                             <span class="user-photo-action">Click here to re-upload</span>
                                         </a>
                                     </div><!-- /.user-photo -->
