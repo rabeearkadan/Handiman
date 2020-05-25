@@ -33,15 +33,15 @@
                                 <td>
                                     @if(($employee->isApproved)==true )
 
+                                        <button class="mb-2 mr-2 btn btn-success">
 
+                                            Approved
+                                        </button>
 
                                         <form
                                             action="{{ route('deactivate', $employee->id) }}" method="POST"
                                             style="display: none;">
-                                            <button class="mb-2 mr-2 btn btn-success">
 
-                                                Approved
-                                            </button>
                                             @csrf
                                             @method('POST')
                                         </form>
