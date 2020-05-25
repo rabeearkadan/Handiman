@@ -222,7 +222,7 @@
                                             <option value="" data-icon="images/office.jpg">example 2</option>
                                             <option value="" data-icon="images/yuna.jpg">example 3</option>
                                         </select>
-                                        <label>Images in select</label>
+                                        <label for="service">Images in select</label>
                                     </div>
                                 </div><!-- /.row -->
 
@@ -324,6 +324,8 @@
 <script>
     $(document).ready(function(){
         $('#service').formSelect();
+        $('#from').formSelect();
+        $('#to').formSelect();
     });
 </script>
 @endpush
