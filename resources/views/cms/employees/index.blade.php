@@ -51,9 +51,9 @@
                                             action="{{ route('employee.deactivate', $employee->id) }}" method="POST"
                                         >
 
-                                            <button class="mb-2 mr-2 btn btn-success">
+                                            <button class="mb-2 mr-2 btn btn-danger">
 
-                                                Approved
+                                                Not Approved
                                             </button>
                                             @csrf
                                             @method('POST')
