@@ -186,7 +186,7 @@
             toSelect.find('option').remove().end();
             var from= fromSelect.val();
                     from++;
-                    for(var to=from;to<=value["to"];to++) {
+                    for(var to=from;to<=24;to++) {
                         if(to===24){
                             to=0;
                         }
