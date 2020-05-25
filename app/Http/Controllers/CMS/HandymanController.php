@@ -58,4 +58,14 @@ class HandymanController extends Controller
 
         return redirect()->route('employee.index');
     }
+    public function activate($id){
+        $user=User::query()->find($id);
+        $user->isApproved=true;
+        $user->save();
+    }
+    public function deactivate($id){
+        $user=User::query()->find($id);
+        $user->isApproved=false;
+        $user->save();
+    }
 }

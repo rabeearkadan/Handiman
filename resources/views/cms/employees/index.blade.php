@@ -33,12 +33,22 @@
                                 <td>
                                     @if(($employee->isApproved)==true )
 
-                                        <button class="mb-2 mr-2 btn btn-success">Approved
+
+                                        <button class="mb-2 mr-2 btn btn-success"
+                                                onclick="location.href='{{route('deactivate',$employee->id)}}'">
+                                            Approved
+
+                                        </button>
+
+                                    @else
+
+                                        <button class="mb-2 mr-2 btn btn-danger"
+                                                onclick="location.href='{{route('activate',$employee->id)}}'">
+                                            Not Approved
+
                                         </button>
 
 
-                                    @else
-                                        <button class="mb-2 mr-2 btn btn-danger">Not Approved</button>
 
                                     @endif
 
