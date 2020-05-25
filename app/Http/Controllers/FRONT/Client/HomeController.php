@@ -29,6 +29,9 @@ class HomeController extends Controller
             $service = Service::query()->find($id);
             return view ('front.client.service-users', compact(['service','user']));
         }
-
+    }
+    public function filterUsers(Request $request, $id){
+        $service = Service::query()->find($id);
+        return view ('front.client.service-users', compact(['service','user']));
     }
 }
