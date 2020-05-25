@@ -7,6 +7,7 @@ use App\Models\Service;
 use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
 
 class ProfileController extends Controller
@@ -72,7 +73,33 @@ class ProfileController extends Controller
 
 
     //end of functions for Client addresses
+    public function updateImage(Request $request){
+        $user = Auth::user();
+        // $user->push('locations', '');
 
+        $user->image = $this->uploadAny($request->input('image-input'),'profile');
+        $user->save();
+        dd($user);
+        return view('front.client.profile.edit-profile', compact('user'));
+    }
+    public function uploadAny($file, $folder, $ext = 'png')
+    {
+        $file = base64_decode($file);
+
+        $file_name = Str::random(25) . '.' . $ext; //generating unique file name;
+        if (!Storage::disk('public')->exists($folder)) {
+            Storage::disk('public')->makeDirectory($folder);
+        }
+        $result = false;
+        if ($file != "") { // storing image in storage/app/public Folder
+            $result = Storage::disk('public')->put($folder . '/' . $file_name, $file);
+
+        }
+        if ($result)
+            return $folder . '/' . $file_name;
+        else
+            return null;
+    }
 
     public function editProfile(){
 

@@ -35,6 +35,8 @@ Route::get('/profile','ProfileController@myProfile')->name('client.profile');
 Route::get('/profile/password','ProfileController@editPassword')->name('client.password');
 Route::get('/profile/payment','ProfileController@editPayment')->name('client.payment');
 Route::put('/profile','ProfileController@editProfile')->name('client.profile.update');
+Route::put('/image','ProfileController@updateImage')->name('client.image.update');
+
 
 Route::get('/profile/address/create','ProfileController@createAddress')->name('client.address.create');
 Route::post('/profile/address/create','ProfileController@storeAddress')->name('client.address.store');

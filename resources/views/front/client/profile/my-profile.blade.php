@@ -18,17 +18,21 @@
                     <div class="row">
                         <div class="col-sm-4 col-lg-3">
                             <div class="sidebar">
+                                <form method="post" action="{{route('client.image.update')}}" id="image-form" enctype="multipart/form-data">
+                                    @csrf
+                                    @method('put')
                                 <div class="widget">
                                     <div class="user-photo">
                                         <a href="#">
                                             <img id="image" src="@if(Auth::user()->image){{config('image.path').Auth::user()->image}}@else /public/images/client/profile-image.png @endif" alt="User Photo">
                                             <label for="image-input" style="height: 25px">
                                                 <span class="user-photo-action" >Click here to re-upload</span>
-                                                <input type="file" id="image-input"  onchange="readURL(this);" style="display:none">
+                                                <input type="file" id="image-input" name="image-input"  onchange="readURL(this);" style="display:none" accept="image/jpeg, image/png">
                                             </label>
                                         </a>
                                     </div><!-- /.user-photo -->
                                 </div><!-- /.widget -->
+                                </form>
                                 <div class="widget">
                                     <ul class="menu-advanced">
                                         <li class="@if(request()->is('client/profile')) {{'active'}} @endif"><a href="{{route('client.profile')}}"><i class="fa fa-user"></i> Edit Profile </a></li>
@@ -63,6 +67,8 @@
 
                 reader.readAsDataURL(input.files[0]);
             }
+            var form = document.getElementById('image-form');
+            form.submit();
         }
     </script>
 @endpush
