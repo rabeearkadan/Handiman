@@ -26,8 +26,13 @@
                                         <a href="#">
                                             <img id="image" src="@if(Auth::user()->image){{config('image.path').Auth::user()->image}}@else /public/images/client/profile-image.png @endif" alt="User Photo">
                                             <label for="image-input" style="height: 25px">
-                                                <span class="user-photo-action" >Click here to re-upload</span>
+                                                <span class="user-photo-action" >Click here to change</span>
                                                 <input type="file" id="image-input" name="image-input"  onchange="readURL(this);" style="display:none" accept="image/jpeg, image/png">
+                                            </label>
+                                        </a>
+                                        <a href="#" onclick="removeImage()">
+                                            <label for="image-input" style="height: 25px">
+                                                <span class="user-photo-action" >Click here to remove</span>
                                             </label>
                                         </a>
                                     </div><!-- /.user-photo -->
@@ -52,6 +57,10 @@
             </div><!-- /.main-inner -->
         </div><!-- /.main -->
     </div><!-- /.page-wrapper -->
+    <form id="image-remove" method="post" action="{{route('client.image.destroy')}}" style="display: none">
+        @csrf
+        @method('delete')
+    </form>
 @endsection
 @push('js')
     <script>
@@ -66,6 +75,10 @@
                 reader.readAsDataURL(input.files[0]);
             }
             var form = document.getElementById('image-form');
+            form.submit();
+        }
+        function removeImage() {
+            var form = document.getElementById('image-remove');
             form.submit();
         }
     </script>

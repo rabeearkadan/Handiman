@@ -42,7 +42,10 @@ class ProfileController extends Controller
         return view('front.client.profile.edit-profile', compact('user'));
     }
     public function destroyImage(){
-
+        $user = Auth::user();
+        $user->image = "";
+        $user->save();
+        return view('front.client.profile.edit-profile', compact('user'));
     }
 
     //Client Contact Iformation
