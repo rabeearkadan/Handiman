@@ -203,10 +203,11 @@
                                     </div><!-- /.col-* -->
                                 </div><!-- /.row -->
                                 <div class = "row">
+                                    <div class="col-sm-12">
                                     <div class = "file-field input-field">
                                         <div class = "btn">
                                             <span>Browse</span>
-                                            <input type = "file" multiple />
+                                            <input type = "file" style="width: max-content" multiple />
                                         </div>
 
                                         <div class = "file-path-wrapper">
@@ -215,7 +216,19 @@
                                         </div>
                                     </div>
                                 </div>
+                                    <div class="col-sm-12">
+                                        <div class="input-field col s12">
+                                            <select>
+                                                <option value="" disabled selected>Choose your option</option>
+                                                <option value="1" aria-checked="true">Option 1</option>
+                                                <option value="2">Option 2</option>
+                                                <option value="3">Option 3</option>
+                                            </select>
+                                            <label>Materialize Select</label>
+                                        </div>
 
+                                    </div>
+                                </div>
                                 <div class="form-group">
                                     <label for="description"> Problem Description</label>
                                     <textarea class="form-control" id="description" name="description"
