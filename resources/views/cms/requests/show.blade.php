@@ -27,7 +27,7 @@
                             name="address" id="exampleAddress" value="{{$request->subject}}" type="text"
                             class="form-control"></div>
                     <div class="position-relative form-group"><label for="exampleAddress2" class="">Description
-                            2</label><input name="address2" id="exampleAddress2" value="{{$request->description}}"
+                            </label><input name="address2" id="exampleAddress2" value="{{$request->description}}"
                                             type="text" class="form-control">
                     </div>
                     <div class="form-row">
@@ -77,7 +77,6 @@
                     </div>
 
 
-                    <button class="mt-2 btn btn-primary">Sign in</button>
                 </form>
 
             </div>
