@@ -83,9 +83,9 @@ class ProfileController extends Controller
     }
     public function uploadAny($file, $folder, $ext = 'png')
     {
-        $file = base64_decode($file);
+        
 
-        $file_name = Str::random(25) . '.' . $ext; //generating unique file name;
+        $file_name = Str::random(25) . '.' . $file->getClientOriginalExtension(); //generating unique file name;
         if (!Storage::disk('public')->exists($folder)) {
             Storage::disk('public')->makeDirectory($folder);
         }
