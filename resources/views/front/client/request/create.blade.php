@@ -217,9 +217,13 @@
                                     </div><!-- /.col* -->
                                     <div class="col-sm-6">
                                         <div class="form-group">
-                                            <label for="to"> Service Type</label>
-                                            <select name="service">
-                                                <option>onne</option>
+                                            <label>Service Type</label>
+                                            <select class = "icons">
+                                                <option value = "" disabled selected>Select Service</option>
+                                                <option value = "1" data-icon = "" class = "circle">
+                                                    111</option>
+                                                <option value = "233">333</option>
+                                                <option value = "333">333</option>
                                             </select>
                                         </div><!-- /.form-group -->
                                     </div><!-- /.col-* -->
@@ -319,4 +323,9 @@
             });
 
         </script>
+<script>
+    $(document).ready(function() {
+        $('select').material_select();
+    });
+</script>
 @endpush
