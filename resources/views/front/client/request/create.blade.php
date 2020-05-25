@@ -206,7 +206,7 @@
                                     <div class = "file-field input-field">
                                         <div class = "btn">
                                             <span>Browse</span>
-                                            <input type = "file" style="width: max-content" multiple />
+                                            <input type = "file"  multiple />
                                         </div>
 
                                         <div class = "file-path-wrapper">
