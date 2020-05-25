@@ -22,9 +22,9 @@
                                     <div class="user-photo">
                                         <a href="#">
                                             <img src="@if(Auth::user()->image){{config('image.path').Auth::user()->image}}@else /public/images/client/profile-image.png @endif" alt="User Photo">
-                                            <label for="image">
+                                            <label for="image" style="height: 25px">
                                                 <span class="user-photo-action" aria-hidden="true">Click here to re-upload</span>
-                                                <input type="file" id="image" style="display:none">
+                                                <input type="file" id="image"  onchange="readURL(this);" style="display:none">
                                             </label>
                                         </a>
                                     </div><!-- /.user-photo -->
@@ -56,7 +56,7 @@
                 var reader = new FileReader();
 
                 reader.onload = function (e) {
-                    $('#blah')
+                    $('#image')
                         .attr('src', e.target.result)
                         .width(150)
                         .height(200);
