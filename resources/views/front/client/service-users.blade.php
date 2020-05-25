@@ -20,7 +20,7 @@
                     <div class="row">
                         <div class="col-sm-12 col-md-4">
                             <div class="form-group">
-                                <input type="text" placeholder="Keyword" class="form-control search">
+                                <input type="text" name="keyword" placeholder="Keyword" class="form-control search">
                             </div><!-- /.form-group -->
                         </div><!-- /.col-* -->
 
@@ -34,12 +34,10 @@
                             </div><!-- /.form-group -->
                         </div><!-- /.col-* -->
 
-                        <div class="col-sm-12 col-md-4">
-                            <div class="form-group">
-                                <select class="form-control" title="Select Category">
-                                    <option value=""> N</option>
-                                </select>
-                            </div><!-- /.form-group -->
+                        <div class="col-sm-6">
+                            <input type="text" name="date" class="datepicker">
+                        </div><!-- /.col-* -->
+                        <div class="col-sm-6">
                         </div><!-- /.col-* -->
                     </div><!-- /.row -->
                     <div class="row">
@@ -47,6 +45,7 @@
                             <img src="/public/images/client/clock-icon.png" alt="Contact Person">
                             from to
                             <i class="fa fa-times">close</i>
+                            <input type="hidden" name="availability[]">
                         </div>
 
                     </div>
@@ -156,6 +155,13 @@
     </script>
     <script>
         $('.chips').material_chip();
+        $(document).ready(function(){
+            $('.datepicker').datepicker(
+                minDate: new Date(2020,5,20),
+                maxDate: new Date(2020,7,20),
+                format: "yyyy/mm/dd"
+        );
+        });
     </script>
 @endpush
 
