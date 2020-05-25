@@ -10,17 +10,28 @@
                     <div class="text-center">
                         <div
                             style="border-radius: 50%; height: 180px; width: 180px; margin-left: auto; margin-right: auto; border: 3px solid #adb5bd">
-
+                            @if($employee->image!=null){
                             <div
-                                style="border-radius: 50%; height: 174px; width: 174px; background-size: cover; background-position: center center; border: 3px solid #fff; background-image: url('https://mis.bau.edu.lb/web/v12/iConnectV12/admin/ProfileImage.aspx?ID=201801949&Code=F0DC386DD0')">
+                                style="border-radius: 50%; height: 174px; width: 174px; background-size: cover;
+                                    background-position: center center; border: 3px solid #fff;
+                                    background-image: url({{config('image.path').$employee->image}})">
 
                             </div>
+                            }@else{
+                            <div
+                                style="border-radius: 50%; height: 174px; width: 174px; background-size: cover;
+                                    background-position: center center; border: 3px solid #fff;
+                                    background-image: url('https://mis.bau.edu.lb/web/v12/iConnectV12/admin/ProfileImage.aspx?ID=201801949&Code=F0DC386DD0')">
+
+                            </div>
+                            }
+                            @endif
                         </div>
 
                     </div>
                     <h3 class="profile-username text-center">
 
-                        <span>tesst </span>
+
                     </h3>
 
                 </div>
@@ -174,119 +185,119 @@
                         <tbody>
 
                         @foreach($requests as $request)
-                        <tr>
-                            <td class="text-center text-muted">#345</td>
-                            <td>
-                                <div class="widget-content p-0">
-                                    <div class="widget-content-wrapper">
-                                        <div class="widget-content-left mr-3">
-                                            <div class="widget-content-left">
-                                                <img width="40" class="rounded-circle"
-                                                     src="assets/images/avatars/4.jpg" alt="">
+                            <tr>
+                                <td class="text-center text-muted">#345</td>
+                                <td>
+                                    <div class="widget-content p-0">
+                                        <div class="widget-content-wrapper">
+                                            <div class="widget-content-left mr-3">
+                                                <div class="widget-content-left">
+                                                    <img width="40" class="rounded-circle"
+                                                         src="assets/images/avatars/4.jpg" alt="">
+                                                </div>
+                                            </div>
+                                            <div class="widget-content-left flex2">
+                                                <div class="widget-heading">{{$request->id}}</div>
+                                                <div class="widget-subheading opacity-7">Web Developer</div>
                                             </div>
                                         </div>
-                                        <div class="widget-content-left flex2">
-                                            <div class="widget-heading">{{$request->id}}</div>
-                                            <div class="widget-subheading opacity-7">Web Developer</div>
-                                        </div>
                                     </div>
-                                </div>
-                            </td>
-{{--                            <td class="text-center">Madrid</td>--}}
-                            <td class="text-center">
-                                <div class="badge badge-warning">Pending</div>
-                            </td>
-                            <td class="text-center">
-                                <button type="button" id="PopoverCustomT-1" class="btn btn-primary btn-sm">
-                                    Details
-                                </button>
-                            </td>
-                        </tr>
-{{--                        <tr>--}}
-{{--                            <td class="text-center text-muted">#347</td>--}}
-{{--                            <td>--}}
-{{--                                <div class="widget-content p-0">--}}
-{{--                                    <div class="widget-content-wrapper">--}}
-{{--                                        <div class="widget-content-left mr-3">--}}
-{{--                                            <div class="widget-content-left">--}}
-{{--                                                <img width="40" class="rounded-circle"--}}
-{{--                                                     src="assets/images/avatars/3.jpg" alt="">--}}
-{{--                                            </div>--}}
-{{--                                        </div>--}}
-{{--                                        <div class="widget-content-left flex2">--}}
-{{--                                            <div class="widget-heading">Ruben Tillman</div>--}}
-{{--                                            <div class="widget-subheading opacity-7">Etiam sit amet orci eget--}}
-{{--                                            </div>--}}
-{{--                                        </div>--}}
-{{--                                    </div>--}}
-{{--                                </div>--}}
-{{--                            </td>--}}
-{{--                            <td class="text-center">Berlin</td>--}}
-{{--                            <td class="text-center">--}}
-{{--                                <div class="badge badge-success">Completed</div>--}}
-{{--                            </td>--}}
-{{--                            <td class="text-center">--}}
-{{--                                <button type="button" id="PopoverCustomT-2" class="btn btn-primary btn-sm">--}}
-{{--                                    Details--}}
-{{--                                </button>--}}
-{{--                            </td>--}}
-{{--                        </tr>--}}
-{{--                        <tr>--}}
-{{--                            <td class="text-center text-muted">#321</td>--}}
-{{--                            <td>--}}
-{{--                                <div class="widget-content p-0">--}}
-{{--                                    <div class="widget-content-wrapper">--}}
-{{--                                        <div class="widget-content-left mr-3">--}}
-{{--                                            <div class="widget-content-left">--}}
-{{--                                                <img width="40" class="rounded-circle"--}}
-{{--                                                     src="assets/images/avatars/2.jpg" alt="">--}}
-{{--                                            </div>--}}
-{{--                                        </div>--}}
-{{--                                        <div class="widget-content-left flex2">--}}
-{{--                                            <div class="widget-heading">Elliot Huber</div>--}}
-{{--                                            <div class="widget-subheading opacity-7">Lorem ipsum dolor sic</div>--}}
-{{--                                        </div>--}}
-{{--                                    </div>--}}
-{{--                                </div>--}}
-{{--                            </td>--}}
-{{--                            <td class="text-center">London</td>--}}
-{{--                            <td class="text-center">--}}
-{{--                                <div class="badge badge-danger">In Progress</div>--}}
-{{--                            </td>--}}
-{{--                            <td class="text-center">--}}
-{{--                                <button type="button" id="PopoverCustomT-3" class="btn btn-primary btn-sm">--}}
-{{--                                    Details--}}
-{{--                                </button>--}}
-{{--                            </td>--}}
-{{--                        </tr>--}}
-{{--                        <tr>--}}
-{{--                            <td class="text-center text-muted">#55</td>--}}
-{{--                            <td>--}}
-{{--                                <div class="widget-content p-0">--}}
-{{--                                    <div class="widget-content-wrapper">--}}
-{{--                                        <div class="widget-content-left mr-3">--}}
-{{--                                            <div class="widget-content-left">--}}
-{{--                                                <img width="40" class="rounded-circle"--}}
-{{--                                                     src="assets/images/avatars/1.jpg" alt=""></div>--}}
-{{--                                        </div>--}}
-{{--                                        <div class="widget-content-left flex2">--}}
-{{--                                            <div class="widget-heading">Vinnie Wagstaff</div>--}}
-{{--                                            <div class="widget-subheading opacity-7">UI Designer</div>--}}
-{{--                                        </div>--}}
-{{--                                    </div>--}}
-{{--                                </div>--}}
-{{--                            </td>--}}
-{{--                            <td class="text-center">Amsterdam</td>--}}
-{{--                            <td class="text-center">--}}
-{{--                                <div class="badge badge-info">On Hold</div>--}}
-{{--                            </td>--}}
-{{--                            <td class="text-center">--}}
-{{--                                <button type="button" id="PopoverCustomT-4" class="btn btn-primary btn-sm">--}}
-{{--                                    Details--}}
-{{--                                </button>--}}
-{{--                            </td>--}}
-{{--                        </tr>--}}
-                            @endforeach
+                                </td>
+                                {{--                            <td class="text-center">Madrid</td>--}}
+                                <td class="text-center">
+                                    <div class="badge badge-warning">Pending</div>
+                                </td>
+                                <td class="text-center">
+                                    <button type="button" id="PopoverCustomT-1" class="btn btn-primary btn-sm">
+                                        Details
+                                    </button>
+                                </td>
+                            </tr>
+                            {{--                        <tr>--}}
+                            {{--                            <td class="text-center text-muted">#347</td>--}}
+                            {{--                            <td>--}}
+                            {{--                                <div class="widget-content p-0">--}}
+                            {{--                                    <div class="widget-content-wrapper">--}}
+                            {{--                                        <div class="widget-content-left mr-3">--}}
+                            {{--                                            <div class="widget-content-left">--}}
+                            {{--                                                <img width="40" class="rounded-circle"--}}
+                            {{--                                                     src="assets/images/avatars/3.jpg" alt="">--}}
+                            {{--                                            </div>--}}
+                            {{--                                        </div>--}}
+                            {{--                                        <div class="widget-content-left flex2">--}}
+                            {{--                                            <div class="widget-heading">Ruben Tillman</div>--}}
+                            {{--                                            <div class="widget-subheading opacity-7">Etiam sit amet orci eget--}}
+                            {{--                                            </div>--}}
+                            {{--                                        </div>--}}
+                            {{--                                    </div>--}}
+                            {{--                                </div>--}}
+                            {{--                            </td>--}}
+                            {{--                            <td class="text-center">Berlin</td>--}}
+                            {{--                            <td class="text-center">--}}
+                            {{--                                <div class="badge badge-success">Completed</div>--}}
+                            {{--                            </td>--}}
+                            {{--                            <td class="text-center">--}}
+                            {{--                                <button type="button" id="PopoverCustomT-2" class="btn btn-primary btn-sm">--}}
+                            {{--                                    Details--}}
+                            {{--                                </button>--}}
+                            {{--                            </td>--}}
+                            {{--                        </tr>--}}
+                            {{--                        <tr>--}}
+                            {{--                            <td class="text-center text-muted">#321</td>--}}
+                            {{--                            <td>--}}
+                            {{--                                <div class="widget-content p-0">--}}
+                            {{--                                    <div class="widget-content-wrapper">--}}
+                            {{--                                        <div class="widget-content-left mr-3">--}}
+                            {{--                                            <div class="widget-content-left">--}}
+                            {{--                                                <img width="40" class="rounded-circle"--}}
+                            {{--                                                     src="assets/images/avatars/2.jpg" alt="">--}}
+                            {{--                                            </div>--}}
+                            {{--                                        </div>--}}
+                            {{--                                        <div class="widget-content-left flex2">--}}
+                            {{--                                            <div class="widget-heading">Elliot Huber</div>--}}
+                            {{--                                            <div class="widget-subheading opacity-7">Lorem ipsum dolor sic</div>--}}
+                            {{--                                        </div>--}}
+                            {{--                                    </div>--}}
+                            {{--                                </div>--}}
+                            {{--                            </td>--}}
+                            {{--                            <td class="text-center">London</td>--}}
+                            {{--                            <td class="text-center">--}}
+                            {{--                                <div class="badge badge-danger">In Progress</div>--}}
+                            {{--                            </td>--}}
+                            {{--                            <td class="text-center">--}}
+                            {{--                                <button type="button" id="PopoverCustomT-3" class="btn btn-primary btn-sm">--}}
+                            {{--                                    Details--}}
+                            {{--                                </button>--}}
+                            {{--                            </td>--}}
+                            {{--                        </tr>--}}
+                            {{--                        <tr>--}}
+                            {{--                            <td class="text-center text-muted">#55</td>--}}
+                            {{--                            <td>--}}
+                            {{--                                <div class="widget-content p-0">--}}
+                            {{--                                    <div class="widget-content-wrapper">--}}
+                            {{--                                        <div class="widget-content-left mr-3">--}}
+                            {{--                                            <div class="widget-content-left">--}}
+                            {{--                                                <img width="40" class="rounded-circle"--}}
+                            {{--                                                     src="assets/images/avatars/1.jpg" alt=""></div>--}}
+                            {{--                                        </div>--}}
+                            {{--                                        <div class="widget-content-left flex2">--}}
+                            {{--                                            <div class="widget-heading">Vinnie Wagstaff</div>--}}
+                            {{--                                            <div class="widget-subheading opacity-7">UI Designer</div>--}}
+                            {{--                                        </div>--}}
+                            {{--                                    </div>--}}
+                            {{--                                </div>--}}
+                            {{--                            </td>--}}
+                            {{--                            <td class="text-center">Amsterdam</td>--}}
+                            {{--                            <td class="text-center">--}}
+                            {{--                                <div class="badge badge-info">On Hold</div>--}}
+                            {{--                            </td>--}}
+                            {{--                            <td class="text-center">--}}
+                            {{--                                <button type="button" id="PopoverCustomT-4" class="btn btn-primary btn-sm">--}}
+                            {{--                                    Details--}}
+                            {{--                                </button>--}}
+                            {{--                            </td>--}}
+                            {{--                        </tr>--}}
+                        @endforeach
                         </tbody>
                     </table>
                 </div>
