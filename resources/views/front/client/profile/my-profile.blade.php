@@ -22,7 +22,11 @@
                                     <div class="user-photo">
                                         <a href="#">
                                             <img src="@if(Auth::user()->image){{config('image.path').Auth::user()->image}}@else /public/images/client/profile-image.png @endif" alt="User Photo">
-                                            <span class="user-photo-action">Click here to re-upload</span>
+                                            <div class="btn">
+                                                <span class="user-photo-action">Click here to re-upload</span>
+                                                <input type="file" >
+                                            </div>
+
                                         </a>
                                     </div><!-- /.user-photo -->
                                 </div><!-- /.widget -->
@@ -46,5 +50,21 @@
         </div><!-- /.main -->
     </div><!-- /.page-wrapper -->
 @endsection
+@push('js')
+    <script>
+        function readURL(input) {
+            if (input.files && input.files[0]) {
+                var reader = new FileReader();
 
+                reader.onload = function (e) {
+                    $('#blah')
+                        .attr('src', e.target.result)
+                        .width(150)
+                        .height(200);
+                };
 
+                reader.readAsDataURL(input.files[0]);
+            }
+        }
+    </script>
+@endpush
