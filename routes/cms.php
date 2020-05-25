@@ -14,9 +14,9 @@ Route::resource('request', 'RequestController');
 
 Route::resource('contact', 'ContactedUsController');
 Route::resource('statistics', 'StatisticsController');
-Route::post('activate/{id}','HandymanController@approveHandyman');
 
-Route::post('deactivate/{id}','HandymanController@approveHandyman');
+Route::post('activate/{id}','HandymanController@activate')->name('activate');
+Route::post('deactivate/{id}','HandymanController@deactivate')->name('deactivate');
 Route::get('google-piechart', array('as' => 'chart.piechart', 'uses' => 'StatisticsController@pieChart'));
 
 Route::get('service.test', ['uses' => 'ServiceController@test', 'as' => 'service.test']);
