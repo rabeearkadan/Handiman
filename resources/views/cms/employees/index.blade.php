@@ -39,7 +39,7 @@
                                         </button>
 
                                         <form
-                                            action="{{ route('deactivate', $employee->id) }}" method="POST"
+                                            action="{{ route('employee.deactivate', $employee->id) }}" method="POST"
                                             style="display: none;">
 
                                             @csrf
