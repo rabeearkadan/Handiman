@@ -34,7 +34,7 @@
                             </div><!-- /.form-group -->
                         </div><!-- /.col-* -->
 
-                        <div class="col-sm-6">
+                        <div class="col-sm-6 col-md-4">
                             <input type="text" name="date" class="datepicker">
                         </div><!-- /.col-* -->
                         <div class="col-sm-6">
