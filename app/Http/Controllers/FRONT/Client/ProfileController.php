@@ -12,7 +12,7 @@ use Illuminate\Support\Str;
 
 class ProfileController extends Controller
 {
-    //
+
     public function myProfile(){
         $user = Auth::user();
         return view('front.client.profile.edit-profile', compact('user'));
@@ -25,14 +25,40 @@ class ProfileController extends Controller
     $user = Auth::user();
     return view('front.client.profile.payment', compact('user'));
     }
+    //Client Profile Image
+    public function updateImage(Request $request){
+        $user = Auth::user();
+        $file = $request->file('image-input');
+        $name = 'image_' . time() . '.' . $file->getClientOriginalExtension();
+        if (!Storage::disk('public')->exists('profile')) {
+            Storage::disk('public')->makeDirectory('profile');
+        }
+        if (Storage::disk('public')->putFileAs('profile', $file, $name)) {
+            $user->image = 'profile/' . $name;
+        } else {
+            return view('front.client.profile.edit-profile', compact('user'));
+        }
+        $user->save();
+        return view('front.client.profile.edit-profile', compact('user'));
+    }
+    public function destroyImage(){
 
+    }
+
+    //Client Contact Iformation
+    public function updateContact(Request $request){
+        $user = Auth::user();
+        $user->name = $request->name;
+        $user->email = $request->email;
+        $user->phone = $request->phone;
+        $user->save();
+        return view('front.client.profile.edit-profile', compact('user'));
+    }
     // functions for Client Addresses
     public function createAddress(Request $request){
         $user = Auth::user();
-
         return view('front.client.profile.create-address', compact('user'));
     }
-
     public function storeAddress(Request $request){
         $user = Auth::user();
         $data = [
@@ -63,56 +89,20 @@ class ProfileController extends Controller
 }
         return view('front.client.profile.edit-address', compact(['user','address']));
     }
-
     public function updateAddress($id){
         $user = Auth::user();
        // $user->push('locations', '');
         return view('front.client.profile.edit-profile', compact('user'));
     }
-
-
-
-    //end of functions for Client addresses
-    public function updateImage(Request $request){
+    public function destroyAddress($id){
         $user = Auth::user();
-        $file = $request->file('image-input');
-        $name = 'image_' . time() . '.' . $file->getClientOriginalExtension();
-
-        if (!Storage::disk('public')->exists('profile')) {
-            Storage::disk('public')->makeDirectory('profile');
-        }
-
-
-        if (Storage::disk('public')->putFileAs('profile', $file, $name)) {
-            $user->image = 'profile/' . $name;
-        } else {
-            return view('front.client.profile.edit-profile', compact('user'));
-        }
-        $user->save();
+        // $user->push('locations', '');
         return view('front.client.profile.edit-profile', compact('user'));
     }
-//    public function uploadAny($file, $folder, $ext = 'png')
-//    {
-//        $file = base64_decode($file);
-//
-//        $file_name = Str::random(25) . '.' . $ext; //generating unique file name;
-//        if (!Storage::disk('public')->exists($folder)) {
-//            Storage::disk('public')->makeDirectory($folder);
-//        }
-//        $result = false;
-//        if ($file != "") { // storing image in storage/app/public Folder
-//            $result = Storage::disk('public')->put($folder . '/' . $file_name, $file);
-//
-//        }
-//        if ($result)
-//            return $folder . '/' . $file_name;
-//        else
-//            return null;
-//    }
+    //end of functions for Client addresses
 
-    public function editProfile(){
 
-    }
+    //functions for employee Profiles
 
     public function employeeProfile($id, $employee_id){
         $service = Service::find($id);

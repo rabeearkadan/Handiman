@@ -91,19 +91,16 @@
     <div class="page-title">
         <h1>Edit Profile</h1>
     </div><!-- /.page-title -->
+    <form method="post" action="{{route('client.contact.update')}}">
     <div class="background-white p20 mb30">
         <h4 class="page-title">
             Contact Information
-            <a href="#" class="btn btn-primary btn-xs pull-right">Save</a>
+            <input type="submit" value="Save" class="btn btn-primary btn-xs pull-right"/>
         </h4>
         <div class="row">
-            <div class="form-group col-sm-6">
+            <div class="form-group col-sm-12">
                 <label for="name">Name</label>
                 <input type="text" class="form-control" name="name" id="name" value="{{$user->name}}">
-            </div><!-- /.form-group -->
-            <div class="form-group col-sm-6">
-                <label for="surname">Surname</label>
-                <input type="text" class="form-control" name="surname" id="surname" value="">
             </div><!-- /.form-group -->
             <div class="form-group col-sm-6">
                 <label for="email">E-mail</label>
@@ -115,8 +112,8 @@
                        placeholder="71456789">
             </div><!-- /.form-group -->
         </div><!-- /.row -->
-    </div>
-
+    </div><!--/.background-white p20 mb30-->
+    </form>
     <div class="background-white p20 mb30">
         <h4 class="page-title">
             Addresses

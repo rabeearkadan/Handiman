@@ -34,11 +34,14 @@ Route::put('/reviews/edit/{invoice_id}','ReviewsController@update')->name('clien
 Route::get('/profile','ProfileController@myProfile')->name('client.profile');
 Route::get('/profile/password','ProfileController@editPassword')->name('client.password');
 Route::get('/profile/payment','ProfileController@editPayment')->name('client.payment');
-Route::put('/profile','ProfileController@editProfile')->name('client.profile.update');
-Route::put('/image','ProfileController@updateImage')->name('client.image.update');
-
-
+//Client Contact Information
+Route::put('/profile','ProfileController@updateContact')->name('client.contact.update');
+//Client Image
+Route::put('/profile','ProfileController@updateImage')->name('client.image.update');
+Route::delete('/profile','ProfileController@destroyImage')->name('client.image.destroy');
+//Client Addresses
 Route::get('/profile/address/create','ProfileController@createAddress')->name('client.address.create');
 Route::post('/profile/address/create','ProfileController@storeAddress')->name('client.address.store');
 Route::get('/profile/addresses/{id}/edit','ProfileController@editAddress')->name('client.address.edit');
 Route::put('/profile/addresses/{id}/edit','ProfileController@updateAddress')->name('client.address.update');
+Route::delete('/profile/addresses/{id}/destroy','ProfileController@destroyAddress')->name('client.address.destroy');

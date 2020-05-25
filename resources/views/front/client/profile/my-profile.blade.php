@@ -62,9 +62,7 @@
                 reader.onload = function (e) {
                     $('#image')
                         .attr('src', e.target.result)
-
                 };
-
                 reader.readAsDataURL(input.files[0]);
             }
             var form = document.getElementById('image-form');
