@@ -7,7 +7,6 @@
     <link href="{{asset('css/client/requests/icons.css')}}" rel="stylesheet" media="screen">
     <link href="{{asset('lib/font-awesome/css/font-awesome.css')}}" rel="stylesheet">
     <link href="{{asset('css/client/select.css')}}" rel="stylesheet" type="text/css">
-    <link href="{{asset('css/client/materialize.min.css')}}" rel="stylesheet">
     <style>
         .pull-right {
             float: right;
@@ -204,7 +203,6 @@
                                     </div><!-- /.col-* -->
                                 </div><!-- /.row -->
                                 <div class = "row">
-                                    <div class="col-sm-12">
                                     <div class = "file-field input-field">
                                         <div class = "btn">
                                             <span>Browse</span>
@@ -217,19 +215,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                    <div class="col-sm-12">
-                                        <div class="input-field col s12">
-                                            <select id="service">
-                                                <option value="" disabled selected>Choose your option</option>
-                                                <option value="1" selected>Option 1</option>
-                                                <option value="2">Option 2</option>
-                                                <option value="3">Option 3</option>
-                                            </select>
-                                            <label for="service">Materialize Select</label>
-                                        </div>
 
-                                    </div>
-                                </div>
                                 <div class="form-group">
                                     <label for="description"> Problem Description</label>
                                     <textarea class="form-control" id="description" name="description"
@@ -278,7 +264,6 @@
 {{--        <script src="/public/js/client/requests/drop-zone.js"></script>--}}
 {{--        <script src="/public/js/client/requests/file-uploader.js"></script>--}}
         <script src="/public/js/client/requests/date-dropper.pro.min.js"></script>
-<script src="/public/js/materialize.js"></script>
         <script>
             var timepicker = @json($timepicker);
             $(document).ready(function () {
