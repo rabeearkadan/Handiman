@@ -181,7 +181,10 @@ class User extends Eloquent implements
                 ->where('employee_ids', [$this->_id])
                 ->get();
             foreach ($reqs as $req) {
-                array_push($feedback, $req->feedback);
+                $object = [];
+                $object['feedback'] = $req->feedback;
+                $object['client'] = User::query()->find($req->client_id[0])->simplifiedArray();;
+                array_push($feedback, $object);
             }
 
         }
