@@ -1,6 +1,4 @@
 @extends('front.employee.profile.my-profile')
-@push('css')
-@endpush
 @section('profile-content')
     <div class="page-title">
         <h1>Documents</h1>
@@ -20,7 +18,13 @@
                     </p>
                 </div><!-- /.col* -->
             </div><!-- /.row -->
-
+            @isset($user->cv)
+            <div class="row">
+                <div class="col-sm-12">
+                    <iframe src="{{config('image.path').$user->cv}}" style="width:300px; height:300px;"></iframe>
+                </div><!-- /.col* -->
+            </div><!-- /.row -->
+            @endisset
         <div class="row">
             <div class="col-sm-12">
                 <div class="file-field input-field">
@@ -32,8 +36,8 @@
                         <input class="file-path validate" name="cv" type="text" accept="application/pdf">
                     </div>
                 </div>
-            </div><!-- /.col* -->
-        </div><!-- /.row -->
+            </div>
+        </div>
         </form>
     </div>
     <div class="background-white p20 mb30">
@@ -69,10 +73,8 @@
                             <input class="file-path validate" name="cv" type="text" accept="application/pdf">
                         </div>
                     </div>
-                </div><!-- /.col* -->
-            </div><!-- /.row -->
+                </div>
+            </div>
         </form>
     </div>
 @endsection
-@push('js')
-    @endpush
