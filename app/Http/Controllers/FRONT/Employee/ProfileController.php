@@ -90,6 +90,6 @@ class ProfileController extends Controller
         return redirect(route('employee.schedule.edit'));
     }
     public function editDocuments(){
-        return view('employee.documents');
+        return view('employee.profile.documents');
     }
 }
