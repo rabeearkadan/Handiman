@@ -184,7 +184,7 @@
                     $('<option></option>').val(to).html(to)
                 );
             }
-
+            $('#to').formSelect();
         });
     </script>
 @endpush
