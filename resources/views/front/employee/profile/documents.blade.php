@@ -10,7 +10,7 @@
             @csrf
             @method('put')
         <h3 class="page-title">
-            Resumé
+            Resumé 
             <input type="submit" value="Save" class="btn btn-primary btn-xs pull-right"/>
         </h3>
             <div class="row">
@@ -21,7 +21,7 @@
                 </div>
             </div>
         <div class="row">
-            <div class="col-sm-12"> 
+            <div class="col-sm-12">
                 <div class="file-field input-field">
                     <div class="btn" style="position: static">
                         <span>Select a pdf File</span>
