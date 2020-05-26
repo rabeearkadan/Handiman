@@ -65,7 +65,26 @@ class ProfileController extends Controller
     }
 
     public function updateSchedule(Request $request){
-        dd($request);
+        $user = Auth::user();
+        for ($i = 0; $i <= 23; $i++) {
+            for ($j = 0; $j <= 6; $j++) {
+                $user->timeline[$j][$i] = false;
+            }
+        }
+        $periods=$request->periods;
+        for($day=0;$day<7;$day++){
+            if($periods[$day] != null) {
+                $period = explode(',', $periods[$day]);
+                for ($index=0;$index < sizeof($period);$index++){
+                    for($from=$period[$index];$from<$period[$index+1];$from++) {
+                        $user->timeline[$day][$from]=true;
+                    }
+                    $index++;
+                }
+            }
+        }
+        $user->save();
+        return redirect(route('employee.schedule.edit'));
     }
 
 }
