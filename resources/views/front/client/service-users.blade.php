@@ -75,11 +75,11 @@
 {{--                                <a href="#"><i class="fa fa-save"></i> Save Search</a>--}}
 {{--                            </div><!-- /.filter-actions -->--}}
 {{--                        </div><!-- /.col-* -->--}}
-
-{{--                        <div class="col-sm-4">--}}
-{{--                            <button type="submit" class="btn btn-primary">Redefine Search Result</button>--}}
-{{--                        </div><!-- /.col-* -->--}}
-{{--                    </div><!-- /.row -->--}}
+<div class="row">
+                        <div class="col-sm-4">
+                            <button type="submit" class="btn btn-primary">Redefine Search Result</button>
+                        </div><!-- /.col-* -->
+                    </div><!-- /.row -->
                 </form>
 
 {{--                <h2 class="page-title">--}}
