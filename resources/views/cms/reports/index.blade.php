@@ -29,7 +29,11 @@
                                 <td> {{ $request->service['name'] }}</td>
 
                                 <td>{{$request->subject}}</td>
-                                <td>{{$request->date}}</td>
+                                <td>
+                                    <button class="mb-2 mr-2 btn btn-info"
+                                            onclick="location.href='{{route('report.show',$request->id)}}'">Open Report
+                                    </button>
+                                </td>
 
 
                             </tr>
