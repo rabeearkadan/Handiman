@@ -18,6 +18,8 @@ class ProfileController extends Controller
      * editSchedule()
      * updateSchedule()
      * editDocuments()
+     * updateCV()
+     * updateCR()
      */
 
     public function myProfile(){
@@ -117,6 +119,16 @@ class ProfileController extends Controller
     }
     public function editDocuments(){
         $user = Auth::user();
+        return view('front.employee.profile.documents',compact('user'));
+    }
+    public function updateCV(Request $request){
+        $user = Auth::user();
+
+        return view('front.employee.profile.documents',compact('user'));
+    }
+    public function updateCR(Request $request){
+        $user = Auth::user();
+
         return view('front.employee.profile.documents',compact('user'));
     }
 }

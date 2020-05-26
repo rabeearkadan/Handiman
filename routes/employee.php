@@ -19,6 +19,9 @@ Route::get('/profile/password','ProfileController@editPassword')->name('employee
 //Route::get('/profile/payment','ProfileController@editPayment')->name('employee.payment');
 //Documents
 Route::get('/profile/documents/edit','ProfileController@editDocuments')->name('employee.documents.edit');
+Route::put('/profile/documents/edit/cv','ProfileController@updateCV')->name('employee.cv.update');
+Route::put('/profile/documents/edit/cr','ProfileController@updateCR')->name('employee.cr.update');
+
 //Schedule
 Route::get('/profile/schedule/edit','ProfileController@editSchedule')->name('employee.schedule.edit');
 Route::put('/profile/schedule/edit','ProfileController@updateSchedule')->name('employee.schedule.update');
