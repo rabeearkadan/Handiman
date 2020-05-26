@@ -53,7 +53,8 @@ class HomeController extends Controller
                     '$maxDistance' => 50,
                 ],
             ])->sortBy('dist.calculated')
-            ->get();
+            ->all();
+        dd($employees);
         $availableTimes = $request->availableTimes;
         if(isset($request->date) && isset($request->from) && isset($request->to)){
             array_push($availableTimes,array(
