@@ -3,7 +3,6 @@
 namespace App\Http\Controllers\FRONT\Employee;
 
 use App\Http\Controllers\Controller;
-use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -66,11 +65,11 @@ class ProfileController extends Controller
     }
 
     public function updateSchedule(Request $request){
-        $auth_user = Auth::user();
-        $user = User::find($auth_user->id);
+        $user = Auth::user();
+        $timeline = array();
         for ($i = 0; $i <= 23; $i++) {
             for ($j = 0; $j <= 6; $j++) {
-                $user->timeline[$j][$i] = false;
+               $timeline[$j][$i] = false;
             }
         }
         $periods=$request->periods;
@@ -79,12 +78,13 @@ class ProfileController extends Controller
                 $period = explode(',', $periods[$day]);
                 for ($index=0;$index < sizeof($period);$index++){
                     for($from=$period[$index];$from<$period[$index+1];$from++) {
-                        $user->timeline[$day][$from]=true;
+                        $timeline[$day][$from]=true;
                     }
                     $index++;
                 }
             }
         }
+        $user->timeline = $timeline;
         $user->save();
         return redirect(route('employee.schedule.edit'));
     }
