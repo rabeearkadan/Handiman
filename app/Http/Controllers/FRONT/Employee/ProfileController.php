@@ -64,8 +64,8 @@ class ProfileController extends Controller
         return view('front.employee.profile.schedule',compact(['user','periods']));
     }
 
-    public function updateSchedule(){
-
+    public function updateSchedule(Request $request){
+        dd($request);
     }
 
 }

@@ -38,7 +38,7 @@
                     <div class="col-sm-11" style="margin-top: 12px;margin-bottom: 20px;">
                         <div class="col-sm-12">
                         <div id="slider{{$day}}"></div>
-                        <input type="hidden" id="periods{{$day}}" name="periods{{$day}}" value="">
+                        <input type="hidden" id="periods{{$day}}" name="periods[]">
                         </div><!-- /.col-* -->
                         <div class="col-sm-12">
                             <div class="ticks">
@@ -68,16 +68,16 @@
             @foreach($periods[$day] as $period)
             intervals.addPeriod({{$period['from']}},{{$period['to']}});
             @endforeach
-            // $("#form").submit(function(){
-            //     //...
-            //     // And somewhere later in the code
-            //     var values = intervals.getPeriods().map(function (period) {
-            //         return period.getAbscissas();
-            //     });
-            //
-            //     $('#periods').val(values);
-            //     alert($('#periods').val());
-            // });
+            $("#form").submit(function(){
+                //...
+                // And somewhere later in the code
+                var values = intervals.getPeriods().map(function (period) {
+                    return period.getAbscissas();
+                });
+
+                $('#periods{{$day}}').val(values);
+              //  alert($('#periods').val());
+            });
             intervals.setAddPeriodConfirmCallback(function (period, callback) {
                 callback(function () {
                     return confirm('Add period between ' + period.getAbscissas()[0] + ' and ' + period.getAbscissas()[1]);
