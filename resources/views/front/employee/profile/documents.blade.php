@@ -1,4 +1,6 @@
 @extends('front.employee.profile.my-profile')
+@push('css')
+@endpush
 @section('profile-content')
     <div class="page-title">
         <h1>Documents</h1>
@@ -18,7 +20,7 @@
                     </p>
                 </div><!-- /.col* -->
             </div><!-- /.row -->
-            
+
         <div class="row">
             <div class="col-sm-12">
                 <div class="file-field input-field">
@@ -72,3 +74,5 @@
         </form>
     </div>
 @endsection
+@push('js')
+    @endpush
