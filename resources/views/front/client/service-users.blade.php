@@ -101,6 +101,7 @@
                     <div class="list">
                     @foreach($employees as $employee)
                         @if($employee['_id'] != $user->id)
+                            @dd($employee['_id'])
                         <div class="card-row">
                             <div class="card-row-inner">
                                 <div class="card-row-image" style="background-image: url({{config('image.path').$employee['image']}})">
