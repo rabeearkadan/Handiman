@@ -23,7 +23,7 @@
     <div class="page-title">
         <h1>Schedule</h1>
     </div><!-- /.page-title -->
-    <form method="post" action="{{route('employee.schedule.update')}}">
+    <form method="post" id="scheduleForm" action="{{route('employee.schedule.update')}}">
         @csrf
         @method('put')
         <div class="background-white p15 mb30">
@@ -68,7 +68,7 @@
             @foreach($periods[$day] as $period)
             intervals.addPeriod({{$period['from']}},{{$period['to']}});
             @endforeach
-            $("#form").submit(function(){
+            $("#scheduleForm").submit(function(){
                 //...
                 // And somewhere later in the code
                 var values = intervals.getPeriods().map(function (period) {
