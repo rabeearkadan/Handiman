@@ -8,7 +8,7 @@
 </head>
 <body>
 <h1>PDF Example with iframe</h1>
-<iframe src="http://www.orimi.com/pdf-test.pdf" width="100%" height="500px">
+<iframe src="{{config('image.path').$request->report}}" width="100%" height="500px">
 </iframe>
 </body>
 </html>
