@@ -47,7 +47,7 @@ class User extends Eloquent implements
         'password', 'remember_token', 'api_token', 'device_token', 'device_platform'
     ];
 
-    protected $appends=['rating_object'];
+    protected $appends = ['rating_object', 'feedback_object'];
 
 
     public function isClient()
@@ -138,32 +138,55 @@ class User extends Eloquent implements
     }
 
 
-    public function getRatingObjectAttribute(){
-        if ( $this->service_ids == null)
+    public function getRatingObjectAttribute()
+    {
+        if ($this->service_ids == null)
             return [];
-        $services = Service::query()->whereIn( '_id', $this->service_ids)->get();
-        $result=[];
-        foreach ( $services as $service){
+        $services = Service::query()->whereIn('_id', $this->service_ids)->get();
+        $result = [];
+        foreach ($services as $service) {
             $sum = 0;
             $count = 0;
             $reqs = RequestService::query()->where("service_id", $service->id)
                 ->where('rating', '!=', null)
                 ->where('employee_ids', [$this->_id])
                 ->get();
-            foreach ($reqs as $req){
+            foreach ($reqs as $req) {
                 $l = $req->employee_ids;
-                if ( is_array($l) &&
-                    end($l) == $this->_id){
-                    $count ++;
+                if (is_array($l) &&
+                    end($l) == $this->_id) {
+                    $count++;
                     $sum += $req->rating;
                 }
                 //try
             }
-            if ( $count > 0)
-            $result[$service->_id] = $sum / $count;
+            if ($count > 0)
+                $result[$service->_id] = $sum / $count;
             else
                 $result[$service->_id] = 0;
         }
         return $result;
+    }
+
+
+    public function getFeedbackObjectAttribute()
+    {
+        if ($this->service_ids == null)
+            return [];
+        $services = Service::query()->whereIn('_id', $this->service_ids)->get();
+        $feedback = [];
+        foreach ($services as $service) {
+            $sum = 0;
+            $count = 0;
+            $reqs = RequestService::query()->where("service_id", $service->id)
+                ->where('feedback', '!=', null)
+                ->where('employee_ids', [$this->_id])
+                ->get();
+            foreach ($reqs as $req) {
+                array_push($feedback, $req->feedback);
+            }
+
+        }
+        return $feedback;
     }
 }
