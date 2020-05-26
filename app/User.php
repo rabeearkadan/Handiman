@@ -176,14 +176,15 @@ class User extends Eloquent implements
         $services = Service::query()->whereIn('_id', $this->service_ids)->get();
         $feedback = [];
         foreach ($services as $service) {
-            $sum = 0;
-            $count = 0;
             $reqs = RequestService::query()->where("service_id", $service->id)
                 ->where('feedback', '!=', null)
                 ->where('employee_ids', [$this->_id])
                 ->get();
             foreach ($reqs as $req) {
-                array_push($feedback, $req->feedback);
+                $object = [];
+                $object['feedback'] = $req->feedback;
+                $object['client'] = User::query()->find($req->client_ids[0])->simplifiedArray();;
+                array_push($feedback, $object);
             }
 
         }

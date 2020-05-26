@@ -66,7 +66,7 @@ class RequestController extends Controller
             $requestHandyman->images = $images;
         }
 
-        if ($req->has('is_urgent') ) {
+        if ($req->has('is_urgent')) {
             if (Carbon::now($requestHandyman->timezone)->minute > 30) {
                 $nowHour = str_pad(Carbon::now($requestHandyman->timezone)->hour + 1, 2, '0', STR_PAD_LEFT) . '00';
                 $nowNextHour = str_pad(Carbon::now($requestHandyman->timezone)->hour + 2, 2, '0', STR_PAD_LEFT) . '00';
@@ -336,38 +336,9 @@ class RequestController extends Controller
     public function onRequestDone($id, Request $req)
     {
         $request = RequestService::query()->find($id);
-        $handyman = User::query()->find($request->employee_ids[0]);
         $request->isdone = true;
-        $handyman->feedback = $req->input('feedback');
-        $feedback = $req->input('feedback');
-        $rating = (double)$req->input('rating');
-        $feedbacks = $handyman->feedbacks;
-        $ratings = $handyman->ratings;
-
-        if ($feedbacks != null) {
-
-            array_push($feedbacks, $feedback);
-        } else {
-            $feedbacks = [];
-            array_push($feedbacks, $feedback);
-        }
-        $handyman->feedbacks = $feedbacks;
-
-
-        if ($ratings != null) {
-
-            array_push($ratings, $rating);
-        } else {
-            $ratings = [];
-            array_push($ratings, $rating);
-        }
-        $sum = array_sum($ratings);
-        $handyman->rating = $sum / sizeof($ratings);
-
-        $handyman->ratings = $ratings;
-
-
-        $handyman->save();
+        $request->feedback = $req->input('feedback');
+        $request->rating = (double)$req->input('rating');
         $request->save();
 
 
