@@ -26,7 +26,7 @@
 
                         <div class="col-sm-12 col-md-4">
                             <div class="form-group">
-                                <select class="form-control" title="Near" name="address">
+                                <select class="materialSelect" title="Near" name="address">
                                     @foreach($user->client_addresses as $address)
                                     <option value="{{$address['_id']}}">{{$address['name']}}</option>
                                     @endforeach
@@ -40,8 +40,8 @@
                         <div class="col-sm-6">
                         </div><!-- /.col-* -->
                     </div><!-- /.row -->
-
-                            <div class="input-field col s6">
+<div class="row">
+                            <div class="input-field col s12 m6">
                                 <select name="from" id="from" class="materialSelect">
                                     @for($from=0;$from<24;$from++)
                                         <option value="{{$from}}">{{$from}}</option>
@@ -49,12 +49,12 @@
                                 </select>
                                 <label for="from">Choose Starting time</label>
                             </div>
-                    <div class="input-field col s6">
+                    <div class="input-field col s12 m6">
                         <select name="to" id="to">
                         </select>
                         <label for="to">Choose Ending time</label>
                     </div>
-
+</div>
                     <div class="row">
                         <div class="chip">
                             <img src="/public/images/client/clock-icon.png" alt="Contact Person">
@@ -68,18 +68,16 @@
 
                     <hr>
 
-{{--                    <div class="row">--}}
-{{--                        <div class="col-sm-8">--}}
-{{--                            <div class="filter-actions">--}}
-{{--                                <a href="#"><i class="fa fa-close"></i> Reset Filter</a>--}}
-{{--                                <a href="#"><i class="fa fa-save"></i> Save Search</a>--}}
-{{--                            </div><!-- /.filter-actions -->--}}
-{{--                        </div><!-- /.col-* -->--}}
-
-{{--                        <div class="col-sm-4">--}}
-{{--                            <button type="submit" class="btn btn-primary">Redefine Search Result</button>--}}
-{{--                        </div><!-- /.col-* -->--}}
-{{--                    </div><!-- /.row -->--}}
+                    <div class="row">
+                        <div class="col-sm-8">
+                            <div class="filter-actions">
+                                <a href="#"><i class="fa fa-close"></i> Reset Filter</a>
+                            </div><!-- /.filter-actions -->
+                        </div><!-- /.col-* -->
+                        <div class="col-sm-4">
+                            <button type="submit" class="btn btn-primary">Redefine Search Result</button>
+                        </div><!-- /.col-* -->
+                    </div><!-- /.row -->
                 </form>
 
 {{--                <h2 class="page-title">--}}
@@ -102,8 +100,7 @@
                         @if($employee->id != $user->id)
                         <div class="card-row">
                             <div class="card-row-inner">
-                                <div class="card-row-image"
-                                     data-background-image="{{config('image.path').$employee->image}}">
+                                <div class="card-row-image" style="background-image: url({{config('image.path').$employee->image}})">
                                     <a href="{{route('client.user-profile',[$service->id,$employee->id])}}">
                                         <div class="card-row-label">{{$service->name}} </div><!-- /.card-row-label -->
                                         <div class="card-row-price"> ${{$employee->price}} / hr</div><!-- -->
@@ -153,12 +150,9 @@
     </div><!-- /.page-wrapper -->
 @endsection
 @push('js')
-    <script src="/public/js/client/dropdown.js" type="text/javascript"></script>
     <script src="/public/js/client/jquery.colorbox-min.js" type="text/javascript"></script>
-    <script src="/public/js/client/bootstrap-select.min.js" type="text/javascript"></script>
     <script src="/public/js/client/superlist.js" type="text/javascript"></script>
     <script src="/public/js/client/list.js" type="text/javascript"></script>
-    <script src="/public/js/materialize.js" type="text/javascript"></script>
     <script>
         var options = {
             valueNames: [ 'name', 'price' ],
@@ -188,7 +182,7 @@
                     $('<option></option>').val(to).html(to)
                 );
             }
-            $("#to").formSelect();
+            $('#to').formSelect();
         });
     </script>
 @endpush

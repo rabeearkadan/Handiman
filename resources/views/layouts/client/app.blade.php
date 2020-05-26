@@ -7,7 +7,7 @@
     <!-- Fonts -->
 
     <!-- Styles -->
-    <link href="{{asset('css/client/materialize.min.css')}}" rel="stylesheet">
+    <link href="{{asset('css/client/materialize.css')}}" rel="stylesheet">
     <link href="{{asset('lib/font-awesome/css/font-awesome.css')}}" rel="stylesheet">
     @stack('css')
     @if(request()->route()->getName() != "client.user-profile")
