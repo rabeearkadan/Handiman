@@ -90,6 +90,7 @@ class ProfileController extends Controller
         return redirect(route('employee.schedule.edit'));
     }
     public function editDocuments(){
-        return view('front.employee.profile.documents');
+        $user = Auth::user();
+        return view('front.employee.profile.documents',compact('user'));
     }
 }
