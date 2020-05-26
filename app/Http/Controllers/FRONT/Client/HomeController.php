@@ -50,7 +50,7 @@ class HomeController extends Controller
                         (float)$lat,
                     ],
                     'distanceField' => "dist.calculated",
-                    '$maxDistance' => 50,
+                    '$maxDistance' => 1000,
                 ],
             ])->sortBy('dist.calculated')
             ->all();
