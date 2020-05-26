@@ -65,8 +65,9 @@
         $(function () {
 
             var intervals = new Intervals("#slider{{$day}}");
-            intervals.addPeriod(1, 1);
-            intervals.addPeriod(12, 6);
+            @foreach($periods[$day] as $period)
+            intervals.addPeriod({{$period['from']}},{{$period['to']}});
+            @endforeach
             // $("#form").submit(function(){
             //     //...
             //     // And somewhere later in the code
