@@ -207,18 +207,12 @@
 
 
                                 @if($request->status=='pending')
-                                    @if($request->employees()->count()==0)
-                                        <td class="text-center">
-                                            <div class="badge badge-info">On Hold</div>
-                                        </td>
-                                        @else
+
                                         <td class="text-center">
                                             <div class="badge badge-warning">Pending</div>
                                         </td>
-                                        @endif
 
-
-                                @elseif($request->status=='approved' && $request->isdone=false)
+                                @elseif($request->status=='approved' && $request->isdone==false)
                                     <td class="text-center">
                                         <div class="badge badge-danger">In Progress</div>
 
