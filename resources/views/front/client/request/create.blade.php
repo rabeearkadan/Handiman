@@ -205,7 +205,7 @@
                                 <div class = "row">
                                     <div class="col-sm-6">
                                     <div class = "file-field input-field">
-                                        <div class = "btn">
+                                        <div class = "btn" style="position:static;">
                                             <span>Browse</span>
                                             <input type = "file" style="width: max-content" accept="image/jpeg, image/png" multiple />
                                         </div><!-- /.btn -->

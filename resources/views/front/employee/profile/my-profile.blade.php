@@ -75,6 +75,10 @@
             </div><!-- /.main-inner -->
         </div><!-- /.main -->
     </div><!-- /.page-wrapper -->
+    <form id="image-remove" method="post" action="{{route('employee.image.destroy')}}" style="display: none">
+        @csrf
+        @method('delete')
+    </form>
 @endsection
 @push('js')
     <script>
