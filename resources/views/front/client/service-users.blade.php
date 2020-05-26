@@ -56,7 +56,7 @@
                         <label for="to">Choose Ending time</label>
                     </div>
 </div>
-                    @if($availableTimes)
+                    @isset($availableTimes)
                     <div class="row">
                         @foreach($availableTimes as $available)
                         <div class="chip">
@@ -67,7 +67,7 @@
                         </div><!-- /.chip -->
                         @endforeach
                     </div><!-- /.row -->
-                    @endif
+                    @endisset
 
                     <hr>
 
