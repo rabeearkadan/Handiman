@@ -74,7 +74,7 @@
                     <div class="row">
                         <div class="col-sm-8">
                             <div class="filter-actions">
-                                <a href="#"><i class="fa fa-close"></i> Reset Filter</a>
+                                <a href="{{route('client.service', $service->id)}}"><i class="fa fa-close"></i> Reset Filter</a>
                             </div><!-- /.filter-actions -->
                         </div><!-- /.col-* -->
                         <div class="col-sm-4">
@@ -171,7 +171,11 @@
     <script>
         $('.chips').chips();
         $(document).ready(function(){
-            $('.datepicker').datepicker();
+            var date = $('.datepicker').datepicker();
+            date.pickadate({
+                min: new Date(2020,3,20),
+                max: new Date(2020,7,14)
+            });
             $('select').formSelect();
         });
         var fromSelect = $('#from');
