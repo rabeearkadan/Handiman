@@ -31,7 +31,7 @@
                                 </form>
                                 <div class="widget">
                                     <ul class="menu-advanced">
-                                        <li class="@if(request()->is('employee/profile')) {{'active'}} @endif">
+                                        <li class="@if(request()->is('employee/edit-profile*')) {{'active'}} @endif">
                                             <a href="{{route('employee.profile')}}">
                                                 <i class="fa fa-user"></i>
                                                 Edit Profile

@@ -5,6 +5,7 @@ namespace App\Http\Controllers\FRONT\Employee;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
 
 class ProfileController extends Controller
 {
@@ -12,6 +13,8 @@ class ProfileController extends Controller
      * myProfile()
      * editPassword()
      * editPayment()
+     * updateImage()
+     * destroyImage()
      * editSchedule()
      * updateSchedule()
      * editDocuments()
@@ -28,6 +31,29 @@ class ProfileController extends Controller
         $user = Auth::user();
         return view('front.employee.profile.payment',compact('user'));
     }
+//Client Profile Image
+    public function updateImage(Request $request){
+        $user = Auth::user();
+        $file = $request->file('image-input');
+        $name = 'image_' . time() . '.' . $file->getClientOriginalExtension();
+        if (!Storage::disk('public')->exists('profile')) {
+            Storage::disk('public')->makeDirectory('profile');
+        }
+        if (Storage::disk('public')->putFileAs('profile', $file, $name)) {
+            $user->image = 'profile/' . $name;
+        } else {
+            return view('front.client.profile.edit-profile', compact('user'));
+        }
+        $user->save();
+        return redirect()->route('employee.profile');
+    }
+    public function destroyImage(){
+        $user = Auth::user();
+        $user->image = "";
+        $user->save();
+        return redirect()->route('employee.profile');
+    }
+
 
     public function editProfile(){
 

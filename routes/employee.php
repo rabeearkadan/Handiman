@@ -14,7 +14,7 @@ Route::get("/reviews", 'HomeController@reviews')->name('employee.reviews');
 
 Route::get('/sss','ProfileController@clientProfile')->name('employee.client-profile');
 //Profile
-Route::get('/profile','ProfileController@myProfile')->name('employee.profile');
+Route::get('/edit-profile','ProfileController@myProfile')->name('employee.profile');
 Route::get('/profile/password','ProfileController@editPassword')->name('employee.password');
 Route::get('/profile/payment','ProfileController@editPayment')->name('employee.payment');
 //Documents
@@ -23,7 +23,8 @@ Route::get('/profile/documents/edit','ProfileController@editDocuments')->name('e
 Route::get('/profile/schedule/edit','ProfileController@editSchedule')->name('employee.schedule.edit');
 Route::put('/profile/schedule/edit','ProfileController@updateSchedule')->name('employee.schedule.update');
 //Image
-
+Route::put('/edit-profile/image/update','ProfileController@updateImage')->name('employee.image.update');
+Route::delete('/edit-profile/image/destroy','ProfileController@destroyImage')->name('employee.image.destroy');
 
 //chat
 Route::get("/chat", 'ChatController@index')->name('employee.chat');
