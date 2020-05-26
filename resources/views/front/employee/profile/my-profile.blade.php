@@ -77,4 +77,23 @@
     </div><!-- /.page-wrapper -->
 @endsection
 @push('js')
+    <script>
+        function readURL(input) {
+            if (input.files && input.files[0]) {
+                var reader = new FileReader();
+
+                reader.onload = function (e) {
+                    $('#image')
+                        .attr('src', e.target.result)
+                };
+                reader.readAsDataURL(input.files[0]);
+            }
+            var form = document.getElementById('image-form');
+            form.submit();
+        }
+        function removeImage() {
+            var form = document.getElementById('image-remove');
+            form.submit();
+        }
+    </script>
 @endpush
