@@ -11,19 +11,19 @@
                         <div
                             style="border-radius: 50%; height: 180px; width: 180px; margin-left: auto; margin-right: auto; border: 3px solid #adb5bd">
                             @if($employee->image!=null)
-                            <div
-                                style="border-radius: 50%; height: 174px; width: 174px; background-size: cover;
-                                    background-position: center center; border: 3px solid #fff;
-                                    background-image: url({{config('image.path').$employee->image}})">
+                                <div
+                                    style="border-radius: 50%; height: 174px; width: 174px; background-size: cover;
+                                        background-position: center center; border: 3px solid #fff;
+                                        background-image: url({{config('image.path').$employee->image}})">
 
-                            </div>
+                                </div>
                             @else
-                            <div
-                                style="border-radius: 50%; height: 174px; width: 174px; background-size: cover;
+                                <div
+                                    style="border-radius: 50%; height: 174px; width: 174px; background-size: cover;
                                     background-position: center center; border: 3px solid #fff;
                                     background-image: url('https://mis.bau.edu.lb/web/v12/iConnectV12/admin/ProfileImage.aspx?ID=201801949&Code=F0DC386DD0')">
 
-                            </div>
+                                </div>
 
                             @endif
                         </div>
@@ -112,23 +112,23 @@
     </div>
 
 
-{{--    <div class="tab-content">--}}
-{{--        <div class="tab-pane tabs-animation fade show active" id="tab-content-1" role="tabpanel">--}}
-{{--            <div class="row">--}}
+    {{--    <div class="tab-content">--}}
+    {{--        <div class="tab-pane tabs-animation fade show active" id="tab-content-1" role="tabpanel">--}}
+    {{--            <div class="row">--}}
 
 
-{{--                <div class="mb-3 text-center card card-body"><h5 class="card-title">Special Title Treatment</h5>With--}}
-{{--                    supporting text below as a natural lead-in to additional content.--}}
-{{--                    <button class="btn btn-danger">Go somewhere</button>--}}
-{{--                </div>--}}
+    {{--                <div class="mb-3 text-center card card-body"><h5 class="card-title">Special Title Treatment</h5>With--}}
+    {{--                    supporting text below as a natural lead-in to additional content.--}}
+    {{--                    <button class="btn btn-danger">Go somewhere</button>--}}
+    {{--                </div>--}}
 
-{{--                <div class="mb-3 text-right card card-body"><h5 class="card-title">Special Title Treatment</h5>With--}}
-{{--                    supporting text below as a natural lead-in to additional content.--}}
-{{--                    <button class="btn btn-outline-focus">Go somewhere</button>--}}
-{{--                </div>--}}
-{{--            </div>--}}
-{{--        </div>--}}
-{{--    </div>--}}
+    {{--                <div class="mb-3 text-right card card-body"><h5 class="card-title">Special Title Treatment</h5>With--}}
+    {{--                    supporting text below as a natural lead-in to additional content.--}}
+    {{--                    <button class="btn btn-outline-focus">Go somewhere</button>--}}
+    {{--                </div>--}}
+    {{--            </div>--}}
+    {{--        </div>--}}
+    {{--    </div>--}}
 
 
     <div class="row">
@@ -203,10 +203,28 @@
                                         </div>
                                     </div>
                                 </td>
-                                {{--                            <td class="text-center">Madrid</td>--}}
-                                <td class="text-center">
-                                    <div class="badge badge-warning">Pending</div>
-                                </td>
+
+
+
+                                @if($request->status=='pending')
+
+                                        <td class="text-center">
+                                            <div class="badge badge-warning">Pending</div>
+                                        </td>
+
+                                @elseif($request->status=='approved' && $request->isdone==false)
+                                    <td class="text-center">
+                                        <div class="badge badge-danger">In Progress</div>
+
+                                    </td>
+                                @else
+                                    <td class="text-center">
+                                        <div class="badge badge-success">Completed</div>
+
+                                    </td>
+                                @endif
+
+
                                 <td class="text-center">
                                     <button type="button" id="PopoverCustomT-1" class="btn btn-primary btn-sm">
                                         Details
