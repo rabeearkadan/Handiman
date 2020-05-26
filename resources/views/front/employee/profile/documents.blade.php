@@ -21,7 +21,7 @@
                 </div>
             </div>
         <div class="row">
-            <div class="col-sm-12">
+            <div class="col-sm-12"> 
                 <div class="file-field input-field">
                     <div class="btn" style="position: static">
                         <span>Select a pdf File</span>
