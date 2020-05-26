@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\FRONT\Employee;
 
 use App\Http\Controllers\Controller;
+use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -65,7 +66,8 @@ class ProfileController extends Controller
     }
 
     public function updateSchedule(Request $request){
-        $user = Auth::user();
+        $auth_user = Auth::user();
+        $user = User::find($auth_user->id);
         for ($i = 0; $i <= 23; $i++) {
             for ($j = 0; $j <= 6; $j++) {
                 $user->timeline[$j][$i] = false;
