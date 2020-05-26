@@ -177,7 +177,7 @@
                         <tr>
                             <th class="text-center">#</th>
                             <th>Client Name</th>
-                            <th class="text-center">Date</th>
+                            <th>Date</th>
                             <th class="text-center">Status</th>
                             <th class="text-center">Actions</th>
                         </tr>
