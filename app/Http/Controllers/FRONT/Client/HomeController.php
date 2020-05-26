@@ -52,7 +52,7 @@ class HomeController extends Controller
                     'distanceField' => "dist.calculated",
                     '$maxDistance' => 50,
                 ],
-            ])->orderBy('dist.calculated')
+            ])->sortBy('dist.calculated')
             ->get();
         $availableTimes = $request->availableTimes;
         if(isset($request->date) && isset($request->from) && isset($request->to)){
