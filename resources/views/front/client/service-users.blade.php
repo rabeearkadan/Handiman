@@ -20,11 +20,10 @@
                     <div class="row">
                         <div class="col-sm-12 col-md-4">
                             <div class="form-group">
+                                <label for="Keyword">Keyword</label>
                                 <input type="text" name="keyword" id="Keyword" class="form-control search">
-                                <label for="keyword"> Keyword </label>
                             </div><!-- /.form-group -->
                         </div><!-- /.col-* -->
-
                         <div class="col-sm-12 col-md-4">
                             <div class="form-group">
                                 <select class="materialSelect" title="Near" name="address">
@@ -36,8 +35,8 @@
                         </div><!-- /.col-* -->
 
                         <div class="col-sm-6 col-md-4">
-                            <input type="text" id="date" name="date" class="datepicker">
                             <label for="date">Choose a Day</label>
+                            <input type="text" id="date" name="date" class="datepicker">
                         </div><!-- /.col-* -->
 
                     </div><!-- /.row -->
