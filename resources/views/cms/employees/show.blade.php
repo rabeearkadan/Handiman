@@ -190,7 +190,7 @@
                                 <td>
                                     <div class="widget-content-wrapper flex2">
                                         <div class="widget-heading">
-                                            <img style="width: 2%; height: 2%" src="{{config('image.path').$request->client['image']}}">
+{{--                                            <img style="width: 2%; height: 2%" src="{{config('image.path').$request->client['image']}}">--}}
 
                                             <div
                                                 class="widget-subheading opacity-7"> {{$request->client['name']}}</div>
