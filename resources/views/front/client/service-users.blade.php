@@ -40,8 +40,8 @@
                         <div class="col-sm-6">
                         </div><!-- /.col-* -->
                     </div><!-- /.row -->
-
-                            <div class="input-field col s6">
+<div class="row">
+                            <div class="input-field col s12 m6">
                                 <select name="from" id="from" class="materialSelect">
                                     @for($from=0;$from<24;$from++)
                                         <option value="{{$from}}">{{$from}}</option>
@@ -49,12 +49,12 @@
                                 </select>
                                 <label for="from">Choose Starting time</label>
                             </div>
-                    <div class="input-field col s6">
+                    <div class="input-field col s12 m6">
                         <select name="to" id="to">
                         </select>
                         <label for="to">Choose Ending time</label>
                     </div>
-
+</div>
                     <div class="row">
                         <div class="chip">
                             <img src="/public/images/client/clock-icon.png" alt="Contact Person">
@@ -171,7 +171,7 @@
         $('.chips').chips();
         $(document).ready(function(){
             $('.datepicker').datepicker();
-            $("#to").formSelect();
+            $('select').formSelect();
         });
         // var fromSelect = $('#from');
         // var toSelect = $('#to');
