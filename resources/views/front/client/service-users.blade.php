@@ -104,14 +104,14 @@
                         <div class="card-row">
                             <div class="card-row-inner">
                                 <div class="card-row-image" style="background-image: url({{config('image.path').$employee['image']}})">
-                                    <a href="{{route('client.user-profile',[$service->id,$employee['_id']])}}">
+                                    <a href="{{route('client.user-profile',['id'=>$service->id,'employee_id' =>$employee['_id']])}}">
                                         <div class="card-row-label">{{$service->name}} </div><!-- /.card-row-label -->
                                         <div class="card-row-price"> ${{$employee['price']}} / hr</div><!-- -->
                                     </a>
                                 </div><!-- /.card-row-image -->
                                 <div class="card-row-body">
                                     <h2 class="card-row-title">
-                                        <a href="{{route('client.user-profile',[$service->id,$employee['_id']])}}" class="name">{{$employee['name']}} </a>
+                                        <a href="{{route('client.user-profile',['id'=>$service->id,'employee_id' =>$employee['_id']])}}" class="name">{{$employee['name']}} </a>
                                     </h2>
                                     <div class="card-row-content">
                                         <p class="biography"> {{$employee['biography']}} </p>
