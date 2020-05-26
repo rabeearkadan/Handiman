@@ -15,12 +15,13 @@
     <div class="page-wrapper">
         <div class="main">
             <div id="employees-list" class="fullscreen-wrapper" style="padding:12px">
-                <form class="filter" method="post" action="">
+                <form class="filter" method="post" action="{{route('client.service.filter')}}">
                     @csrf
                     <div class="row">
                         <div class="col-sm-12 col-md-4">
                             <div class="form-group">
-                                <input type="text" name="keyword" placeholder="Keyword" class="form-control search">
+                                <input type="text" name="keyword" id="Keyword" class="form-control search">
+                                <label for="keyword"> Keyword </label>
                             </div><!-- /.form-group -->
                         </div><!-- /.col-* -->
 
@@ -35,10 +36,10 @@
                         </div><!-- /.col-* -->
 
                         <div class="col-sm-6 col-md-4">
-                            <input type="text" name="date" class="datepicker">
+                            <input type="text" id="date" name="date" class="datepicker">
+                            <label for="date">Choose a Day</label>
                         </div><!-- /.col-* -->
-                        <div class="col-sm-6">
-                        </div><!-- /.col-* -->
+
                     </div><!-- /.row -->
 <div class="row">
                             <div class="input-field col s12 m6">
