@@ -99,7 +99,7 @@
 
                 <div class="cards-row" style="margin-top:80px">
                     <div class="list">
-                    @foreach($service->users as $employee)
+                    @foreach($employees as $employee)
                         @if($employee->id != $user->id)
                         <div class="card-row">
                             <div class="card-row-inner">
