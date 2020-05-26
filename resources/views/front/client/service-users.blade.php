@@ -190,6 +190,7 @@
                         $('<option></option>').val(to).html(to)
                     );
                 }
+                $('#to').material_select();
             });
         });
     </script>
