@@ -100,28 +100,27 @@
                 <div class="cards-row" style="margin-top:80px">
                     <div class="list">
                     @foreach($employees as $employee)
-                        @if($employee['_id'] != $user->id)
-                            @dd($employee['_id'])
+                        @if($employee->id != $user->id)
                         <div class="card-row">
                             <div class="card-row-inner">
-                                <div class="card-row-image" style="background-image: url({{config('image.path').$employee['image']}})">
-                                    <a href="{{route('client.user-profile',['id'=>$service->id,'employee_id' =>$employee['_id']])}}">
+                                <div class="card-row-image" style="background-image: url({{config('image.path').$employee->image}})">
+                                    <a href="{{route('client.user-profile',[$service->id,$employee->id])}}">
                                         <div class="card-row-label">{{$service->name}} </div><!-- /.card-row-label -->
-                                        <div class="card-row-price"> ${{$employee['price']}} / hr</div><!-- -->
+                                        <div class="card-row-price"> ${{$employee->price}} / hr</div><!-- -->
                                     </a>
                                 </div><!-- /.card-row-image -->
                                 <div class="card-row-body">
                                     <h2 class="card-row-title">
-                                        <a href="{{route('client.user-profile',['id'=>$service->id,'employee_id' =>$employee['_id']])}}" class="name">{{$employee['name']}} </a>
+                                        <a href="{{route('client.user-profile',[$service->id,$employee->id])}}" class="name">{{$employee->name}} </a>
                                     </h2>
                                     <div class="card-row-content">
-                                        <p class="biography"> {{$employee['biography']}} </p>
+                                        <p class="biography"> {{$employee->biography}} </p>
                                     </div><!-- /.card-row-content -->
                                 </div><!-- /.card-row-body -->
                                 <div class="card-row-properties">
                                     <dl>
                                         <dd>Price</dd>
-                                        <dt class="price"> ${{$employee['price']}} / hr</dt>
+                                        <dt class="price"> ${{$employee->price}} / hr</dt>
                                         <dd>Category</dd>
                                         <dt> Category</dt>
                                         <dd>Location</dd>
@@ -129,14 +128,14 @@
                                         <dd> Rating</dd>
                                         <dt>
                                             <div class="card-row-rating">
-                                                @for($x=$employee['rating'];$x>0;$x--)
+                                                @for($x=$employee->rating;$x>0;$x--)
                                                     @if($x<1)
                                                         <i class="fa fa-star-half-o"></i>
                                                     @else
                                                         <i class="fa fa-star"></i>
                                                     @endif
                                                 @endfor
-                                                @for($x=5-ceil($employee['rating']);$x>0;$x--)
+                                                @for($x=5-ceil($employee->rating);$x>0;$x--)
                                                     <i class="fa fa-star-o"></i>
                                                 @endfor
                                             </div><!-- /.card-row-rating -->
