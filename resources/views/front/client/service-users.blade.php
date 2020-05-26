@@ -26,7 +26,7 @@
 
                         <div class="col-sm-12 col-md-4">
                             <div class="form-group">
-                                <select class="form-control" title="Near" name="address">
+                                <select class="materialSelect" title="Near" name="address">
                                     @foreach($user->client_addresses as $address)
                                     <option value="{{$address['_id']}}">{{$address['name']}}</option>
                                     @endforeach
