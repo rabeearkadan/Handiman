@@ -187,14 +187,18 @@
                         @foreach($requests as $request)
                             <tr>
                                 <td class="text-center text-muted">{{$loop->index}}</td>
-                                <td class="text-center">
-                                    {{$request->client['name']}}
+                                <td>
+                                    <div class="widget-content-wrapper flex2">
+                                        <div class="widget-heading">{{$request->client['name']}}</div>
+                                        <div
+                                            class="widget-subheading opacity-7"> {{$request->client['image']}}</div>
+                                    </div>
 
                                 </td>
 
 
                                 <td>
-                                    <div class="widget-content flex2">
+                                    <div class="widget-content-left flex2">
                                     <div class="widget-heading">{{$request->date}}</div>
 
                                     <div class="widget-subheading opacity-7"> {{$request->from}}:00 -- {{$request->to}}
