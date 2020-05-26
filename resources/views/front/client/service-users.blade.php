@@ -187,6 +187,7 @@
                     $('<option></option>').val(to).html(to)
                 );
             }
+            $("#to").trigger('contentChanged');
         });
     </script>
 @endpush
