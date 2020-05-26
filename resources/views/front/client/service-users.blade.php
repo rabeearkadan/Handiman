@@ -15,7 +15,7 @@
     <div class="page-wrapper">
         <div class="main">
             <div id="employees-list" class="fullscreen-wrapper" style="padding:12px">
-                <form class="filter" method="post" action="{{route('client.service.filter')}}">
+                <form class="filter" method="post" action="{{route('client.service.filter',$service->id)}}">
                     @csrf
                     <div class="row">
                         <div class="col-sm-12 col-md-4">
