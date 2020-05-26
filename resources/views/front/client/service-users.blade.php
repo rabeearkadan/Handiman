@@ -176,6 +176,8 @@
                 onOpen: function () {
                     var instance = M.Datepicker.getInstance($('.datepicker'));
                     instance.options.minDate = new Date('2020-03-12');
+
+                    instance.options.format = 'm/d/Y'
                 }
             });
             $('select').formSelect();
