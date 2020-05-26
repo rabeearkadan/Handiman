@@ -28,6 +28,7 @@ class HomeController extends Controller
         }else{
             $service = Service::query()->find($id);
             $employees = $service->users();
+            dd($employees);
             return view ('front.client.service-users', compact(['service','user','employees']));
         }
     }
