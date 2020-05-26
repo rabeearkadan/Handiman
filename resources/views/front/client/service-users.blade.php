@@ -57,13 +57,12 @@
 </div>
                     <div class="row">
                         <div class="chip">
-                            <img src="/public/images/client/clock-icon.png" alt="Contact Person">
+                            <img src="/public/images/client/clock-icon.png" alt="date">
                             from to
                             <i class="fa fa-times"></i>
                             <input type="hidden" name="availability[]">
-                        </div>
-
-                    </div>
+                        </div><!-- /.chip -->
+                    </div><!-- /.row -->
 
 
                     <hr>

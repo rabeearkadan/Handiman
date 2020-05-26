@@ -37,6 +37,7 @@ class HomeController extends Controller
 //        date
 //        from
 //        to
+        dd($request);
         return view ('front.client.service-users', compact(['service','user']));
     }
 }
