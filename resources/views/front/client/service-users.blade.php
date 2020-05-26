@@ -175,7 +175,7 @@
             $('.datepicker').datepicker({
                 onOpen: function () {
                     var instance = M.Datepicker.getInstance($('.datepicker'));
-                    instance.options.minDate = new Date(YOUR_DATE);
+                    instance.options.minDate = new Date('2020-03-12');
                 }
             });
             $('select').formSelect();
