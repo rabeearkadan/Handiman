@@ -188,7 +188,7 @@
                             <tr>
                                 <td class="text-center text-muted">{{$loop->index}}</td>
                                 <td>
-                                    <div class="widget-content-left flex2">
+                                    <div class="widget-content-wrapper flex2">
                                         <div class="widget-heading">{{$request->client['name']}}</div>
                                         <div
                                             class="widget-subheading opacity-7"> {{$request->client['image']}}</div>
@@ -198,10 +198,12 @@
 
 
                                 <td>
+                                    <div class="widget-content-left flex2">
                                     <div class="widget-heading">{{$request->date}}</div>
 
                                     <div class="widget-subheading opacity-7"> {{$request->from}}:00 -- {{$request->to}}
                                         :00
+                                    </div>
                                     </div>
                                 </td>
                                 @if($request->status=='pending')
