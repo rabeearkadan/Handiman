@@ -26,7 +26,8 @@
                         </div><!-- /.col-* -->
                         <div class="col-sm-12 col-md-4">
                             <div class="form-group">
-                                <select class="materialSelect" title="Near" name="address">
+                                <label for="address">Address</label>
+                                <select class="materialSelect" id="address" name="address">
                                     @foreach($user->client_addresses as $address)
                                     <option value="{{$address['_id']}}">{{$address['name']}}</option>
                                     @endforeach
@@ -55,15 +56,18 @@
                         <label for="to">Choose Ending time</label>
                     </div>
 </div>
+                    @if($availableTimes)
                     <div class="row">
+                        @foreach($availableTimes as $available)
                         <div class="chip">
                             <img src="/public/images/client/clock-icon.png" alt="date">
-                            from to
+                            {{$available['date']}} : {{$available['from']}} -> {{$available['to']}}
                             <i class="fa fa-times"></i>
-                            <input type="hidden" name="availability[]">
+                            <input type="hidden" value="{{$available}}" name="availability[]">
                         </div><!-- /.chip -->
+                        @endforeach
                     </div><!-- /.row -->
-
+                    @endif
 
                     <hr>
 

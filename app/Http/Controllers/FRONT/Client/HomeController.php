@@ -32,12 +32,9 @@ class HomeController extends Controller
     }
     public function filterUsers(Request $request, $id){
         $service = Service::query()->find($id);
-//        address
-//        keyword
-//        date
-//        from
-//        to
+
+
         dd($request);
-        return view ('front.client.service-users', compact(['service','user']));
+        return view ('front.client.service-users', compact(['service','user','keyword','address','availableTimes']));
     }
 }
