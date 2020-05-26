@@ -41,23 +41,22 @@
                         </div><!-- /.col-* -->
                     </div><!-- /.row -->
                     <div class="row">
-                        <div class="col-sm-6">
-                            <div class="form-group">
-                                <label for="from"> Choose ending time </label>
+                            <div class="input-field col s6">
                                 <select name="from" id="from">
                                     @for($from=0;$from<24;$from++)
                                         <option value="{{$from}}">{{$from}}</option>
                                     @endfor
                                 </select>
-                            </div><!-- /.form-group -->
-                        </div><!-- /.col-* -->
-                        <div class="col-sm-6">
-                            <div class="form-group">
-                                <label for="to"> Choose ending time </label>
-                                <select name="to" id="to">
-                                </select>
-                            </div><!-- /.form-group -->
-                        </div><!-- /.col-* -->
+                                <label>Imm</label>
+                            </div>
+                    <div class="input-field col s6">
+                        <select name="to" id="to">
+                            @for($from=0;$from<24;$from++)
+                                <option value="{{$from}}">{{$from}}</option>
+                            @endfor
+                        </select>
+                        <label>Choose</label>
+                    </div>
                     </div>
                     <div class="row">
                         <div class="chip">
@@ -179,7 +178,6 @@
         $('.chips').chips();
         $(document).ready(function(){
             $('.datepicker').datepicker();
-            $('select').formSelect();
         });
         var fromSelect = $('#from');
         var toSelect = $('#to');
