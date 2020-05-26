@@ -158,7 +158,6 @@
     <script src="/public/js/client/bootstrap-select.min.js" type="text/javascript"></script>
     <script src="/public/js/client/superlist.js" type="text/javascript"></script>
     <script src="/public/js/client/list.js" type="text/javascript"></script>
-    <script src="/public/js/materialize.js" type="text/javascript"></script>
     <script>
         var options = {
             valueNames: [ 'name', 'price' ],
