@@ -125,9 +125,8 @@ class ProfileController extends Controller
     }
     public function updateCV(Request $request){
         $user = Auth::user();
-        $user->cv = $this->uploadAny($request->cv, 'cv', 'pdf');
+        $user->cv = $this->uploadAny($request->file('cv'), 'cv', 'pdf');
         $user->save();
-        dd($request->cv);
         return view('front.employee.profile.documents',compact('user'));
     }
     public function updateCR(Request $request){
@@ -138,7 +137,7 @@ class ProfileController extends Controller
     }
     public function uploadAny($file, $folder, $ext = 'png')
     {
-
+        $file = base64_decode($file);
 
         $file_name = Str::random(25) . '.' . $ext; //generating unique file name;
         if (!Storage::disk('public')->exists($folder)) {

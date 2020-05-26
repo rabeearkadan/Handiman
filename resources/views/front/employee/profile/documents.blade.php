@@ -30,10 +30,10 @@
                 <div class="file-field input-field">
                     <div class="btn" style="position: static">
                         <span>Select a pdf File</span>
-                        <input type="file">
+                        <input type="file" name="cv" accept="application/pdf">
                     </div>
                     <div class="file-path-wrapper">
-                        <input class="file-path validate" name="cv" type="text" accept="application/pdf">
+                        <input class="file-path validate" type="text" >
                     </div>
                 </div>
             </div>
@@ -67,10 +67,10 @@
                     <div class="file-field input-field">
                         <div class="btn" style="position: static">
                             <span>Select a pdf File</span>
-                            <input type="file">
+                            <input type="file"  name="criminal_record" accept="application/pdf">
                         </div><!-- /.btn -->
                         <div class="file-path-wrapper">
-                            <input class="file-path validate" name="criminal_record" type="text" accept="application/pdf">
+                            <input class="file-path validate" type="text" >
                         </div>
                     </div>
                 </div>
