@@ -47,15 +47,12 @@
                                         <option value="{{$from}}">{{$from}}</option>
                                     @endfor
                                 </select>
-                                <label>Imm</label>
+                                <label>Choose Starting time</label>
                             </div>
                     <div class="input-field col s6">
                         <select name="to" id="to">
-                            @for($from=0;$from<24;$from++)
-                                <option value="{{$from}}">{{$from}}</option>
-                            @endfor
                         </select>
-                        <label>Choose</label>
+                        <label>Choose Ending time</label>
                     </div>
                     </div>
                     <div class="row">
@@ -190,7 +187,6 @@
                     $('<option></option>').val(to).html(to)
                 );
             }
-            $('#to').formSelect();
         });
     </script>
 @endpush
