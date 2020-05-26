@@ -22,6 +22,8 @@ Route::get('/profile/documents/edit','ProfileController@editDocuments')->name('e
 //Schedule
 Route::get('/profile/schedule/edit','ProfileController@editSchedule')->name('employee.schedule.edit');
 Route::put('/profile/schedule/edit','ProfileController@updateSchedule')->name('employee.schedule.update');
+//Image
+
 
 //chat
 Route::get("/chat", 'ChatController@index')->name('employee.chat');

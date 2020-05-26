@@ -11,14 +11,24 @@
                     <div class="row">
                         <div class="col-sm-4 col-lg-3">
                             <div class="sidebar">
-                                <div class="widget">
-                                    <div class="user-photo">
-                                        <a href="#">
-                                            <img src="" alt="User Photo">
-                                            <span class="user-photo-action">Click here to reupload</span>
-                                        </a>
-                                    </div><!-- /.user-photo -->
-                                </div><!-- /.widget -->
+                                <form method="post" action="{{route('employee.image.update')}}" id="image-form" enctype="multipart/form-data">
+                                    @csrf
+                                    @method('put')
+                                    <div class="widget">
+                                        <div class="user-photo">
+                                            <a href="#">
+                                                <img id="image" src="@if(Auth::user()->image){{config('image.path').Auth::user()->image}}@else /public/images/employee/profile-image.png @endif" alt="User Photo">
+                                                <a href="#" onclick="removeImage()" style="position: absolute; @if(!Auth::user()->image) display:none @endif">
+                                                    <i class="fa fa-remove"></i>
+                                                </a>
+                                                <label for="image-input" style="height: 25px">
+                                                    <span class="user-photo-action" >Click here to change</span>
+                                                    <input type="file" id="image-input" name="image-input"  onchange="readURL(this);" style="display:none" accept="image/jpeg, image/png">
+                                                </label>
+                                            </a>
+                                        </div><!-- /.user-photo -->
+                                    </div><!-- /.widget -->
+                                </form>
                                 <div class="widget">
                                     <ul class="menu-advanced">
                                         <li class="@if(request()->is('employee/profile')) {{'active'}} @endif">
@@ -66,3 +76,5 @@
         </div><!-- /.main -->
     </div><!-- /.page-wrapper -->
 @endsection
+@push('js')
+@endpush
