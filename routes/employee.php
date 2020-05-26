@@ -11,14 +11,17 @@ Route::get("/calendar", 'CalendarController@index')->name('employee.calendar');
 //Reviews
 Route::get("/reviews", 'HomeController@reviews')->name('employee.reviews');
 
-//Profile
+
 Route::get('/sss','ProfileController@clientProfile')->name('employee.client-profile');
+//Profile
 Route::get('/profile','ProfileController@myProfile')->name('employee.profile');
 Route::get('/profile/password','ProfileController@editPassword')->name('employee.password');
 Route::get('/profile/payment','ProfileController@editPayment')->name('employee.payment');
+//Documents
+Route::get('/profile/documents/edit','ProfileController@editDocuments')->name('employee.documents.edit');
+//Schedule
 Route::get('/profile/schedule/edit','ProfileController@editSchedule')->name('employee.schedule.edit');
 Route::put('/profile/schedule/edit','ProfileController@updateSchedule')->name('employee.schedule.update');
-Route::put('/profile','ProfileController@editProfile')->name('employee.edit.profile');
 
 //chat
 Route::get("/chat", 'ChatController@index')->name('employee.chat');

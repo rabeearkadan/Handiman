@@ -14,6 +14,7 @@ class ProfileController extends Controller
      * editPayment()
      * editSchedule()
      * updateSchedule()
+     * editDocuments()
      */
 
     public function myProfile(){
@@ -88,5 +89,7 @@ class ProfileController extends Controller
         $user->save();
         return redirect(route('employee.schedule.edit'));
     }
-
+    public function editDocuments(){
+        return view('');
+    }
 }
