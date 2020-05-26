@@ -177,7 +177,7 @@
                         <tr>
                             <th class="text-center">#</th>
                             <th>Client Name</th>
-                            <th class="text-center">Date</th>
+                            <th>Date</th>
                             <th class="text-center">Status</th>
                             <th class="text-center">Actions</th>
                         </tr>
@@ -189,21 +189,24 @@
                                 <td class="text-center text-muted">{{$loop->index}}</td>
                                 <td>
                                     <div class="widget-content-wrapper flex2">
-                                        <div class="widget-heading">{{$request->client['name']}}</div>
-                                        <div
-                                            class="widget-subheading opacity-7"> {{$request->client['image']}}</div>
-                                    </div>
+                                        <div class="widget-heading">
+{{--                                            <img style="width: 2%; height: 2%" src="{{config('image.path').$request->client['image']}}">--}}
+
+                                            <div
+                                                class="widget-subheading opacity-7"> {{$request->client['name']}}</div>
+                                        </div>
 
                                 </td>
 
 
                                 <td>
                                     <div class="widget-content-left flex2">
-                                    <div class="widget-heading">{{$request->date}}</div>
+                                        <div class="widget-heading">{{$request->date}}</div>
 
-                                    <div class="widget-subheading opacity-7"> {{$request->from}}:00 -- {{$request->to}}
-                                        :00
-                                    </div>
+                                        <div class="widget-subheading opacity-7"> {{$request->from}}:00
+                                            -- {{$request->to}}
+                                            :00
+                                        </div>
                                     </div>
                                 </td>
                                 @if($request->status=='pending')
