@@ -11,13 +11,13 @@
             @method('put')
         <h3 class="page-title">
             Resumé
-            <a href="#" class="btn btn-primary btn-xs pull-right">Save</a>
+            <input type="submit" value="Save" class="btn btn-primary btn-xs pull-right"/>
         </h3>
         <div class="row">
             <div class="col-sm-12">
                 <div class="file-field input-field">
                     <div class="btn" style="position: static">
-                        <span>File</span>
+                        <span>Select a pdf File</span>
                         <input type="file">
                     </div>
                     <div class="file-path-wrapper">
@@ -34,13 +34,13 @@
             @method('put')
             <h3 class="page-title">
                 Criminal Record
-                <a href="#" class="btn btn-primary btn-xs pull-right">Save</a>
+                <input type="submit" value="Save" class="btn btn-primary btn-xs pull-right"/>
             </h3>
             <div class="row">
                 <div class="col-sm-12">
                     <div class="file-field input-field">
                         <div class="btn" style="position: static">
-                            <span>File</span>
+                            <span>Select a pdf File</span>
                             <input type="file">
                         </div>
                         <div class="file-path-wrapper">
