@@ -43,12 +43,12 @@
                                                 Password
                                             </a>
                                         </li>
-                                        <li class="@if(request()->is('employee/profile/payment')) {{'active'}} @endif">
-                                            <a href="{{route('employee.payment')}}">
-                                                <i class="fa fa-money"></i>
-                                                Payment
-                                            </a>
-                                        </li>
+{{--                                        <li class="@if(request()->is('employee/profile/payment')) {{'active'}} @endif">--}}
+{{--                                            <a href="{{route('employee.payment')}}">--}}
+{{--                                                <i class="fa fa-money"></i>--}}
+{{--                                                Payment--}}
+{{--                                            </a>--}}
+{{--                                        </li>--}}
                                         <li class="@if(request()->is('employee/profile/schedule/edit')) {{'active'}} @endif">
                                             <a href="{{route('employee.schedule.edit')}}">
                                                 <i class="fa fa-calendar"></i>
@@ -75,6 +75,10 @@
             </div><!-- /.main-inner -->
         </div><!-- /.main -->
     </div><!-- /.page-wrapper -->
+    <form id="image-remove" method="post" action="{{route('employee.image.destroy')}}" style="display: none">
+        @csrf
+        @method('delete')
+    </form>
 @endsection
 @push('js')
     <script>

@@ -16,7 +16,7 @@ Route::get('/sss','ProfileController@clientProfile')->name('employee.client-prof
 //Profile
 Route::get('/edit-profile','ProfileController@myProfile')->name('employee.profile');
 Route::get('/profile/password','ProfileController@editPassword')->name('employee.password');
-Route::get('/profile/payment','ProfileController@editPayment')->name('employee.payment');
+//Route::get('/profile/payment','ProfileController@editPayment')->name('employee.payment');
 //Documents
 Route::get('/profile/documents/edit','ProfileController@editDocuments')->name('employee.documents.edit');
 //Schedule
