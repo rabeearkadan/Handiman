@@ -103,17 +103,21 @@ class UserController extends Controller
 
         ]);
 
-        if (Arr::has($params, 'addresses')) {
-            $addresses = $user->addresses;
-            if ($addresses == null) {
-                $addresses = [];
-                $addresses[0] = [(double)$request->long, (double)$request->lat];
+        if (Arr::has($params, 'address')) {
 
-            } else {
-                array_push($addresses, [(double)$request->long, (double)$request->lat]);
+            $data = [
+                "_id" => Str::random(24),
+                "name" => $request->name,
+                "floor"=> $request->floor,
+                "type"=>$request->type,
+                "building"=>$request->building,
+                "location" => [(double)$request->lat,(double)$request->lng] ,
+                "street" => $request->street ,
+                "zip" => $request->zip,
+            ];
+            $user->push('client_addresses',$data);
 
-            }
-            $user->addresses = $addresses;
+
         }
         if (Arr::has($params, 'image'))
             $user->image = $this->uploadAny($params['image'], 'profile');
