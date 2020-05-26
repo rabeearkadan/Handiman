@@ -175,6 +175,7 @@
         $('.chips').chips();
         $(document).ready(function(){
             $('.datepicker').datepicker();
+            $('select').formSelect();
         });
         var fromSelect = $('#from');
         var toSelect = $('#to');
@@ -187,7 +188,7 @@
                     $('<option></option>').val(to).html(to)
                 );
             }
-            $("#to").material_select();
+            $("#to").formSelect();
         });
     </script>
 @endpush
