@@ -14,6 +14,7 @@ class ProfileController extends Controller
      * editPayment()
      * editSchedule()
      * updateSchedule()
+     * editDocuments()
      */
 
     public function myProfile(){
@@ -61,11 +62,35 @@ class ProfileController extends Controller
                 }
             }
             }
-        return view('front.employee.profile.schedule',compact('user'));
+        return view('front.employee.profile.schedule',compact(['user','periods']));
     }
 
-    public function updateSchedule(){
-
+    public function updateSchedule(Request $request){
+        $user = Auth::user();
+        $timeline = array();
+        for ($i = 0; $i <= 23; $i++) {
+            for ($j = 0; $j <= 6; $j++) {
+               $timeline[$j][$i] = false;
+            }
+        }
+        $periods=$request->periods;
+        for($day=0;$day<7;$day++){
+            if($periods[$day] != null) {
+                $period = explode(',', $periods[$day]);
+                for ($index=0;$index < sizeof($period);$index++){
+                    for($from=$period[$index];$from<$period[$index+1];$from++) {
+                        $timeline[$day][$from]=true;
+                    }
+                    $index++;
+                }
+            }
+        }
+        $user->timeline = $timeline;
+        $user->save();
+        return redirect(route('employee.schedule.edit'));
     }
-
+    public function editDocuments(){
+        $user = Auth::user();
+        return view('front.employee.profile.documents',compact('user'));
+    }
 }

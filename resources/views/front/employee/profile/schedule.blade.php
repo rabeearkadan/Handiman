@@ -23,7 +23,7 @@
     <div class="page-title">
         <h1>Schedule</h1>
     </div><!-- /.page-title -->
-    <form method="post" action="{{route('employee.schedule.update')}}">
+    <form method="post" id="scheduleForm" action="{{route('employee.schedule.update')}}">
         @csrf
         @method('put')
         <div class="background-white p15 mb30">
@@ -38,7 +38,7 @@
                     <div class="col-sm-11" style="margin-top: 12px;margin-bottom: 20px;">
                         <div class="col-sm-12">
                         <div id="slider{{$day}}"></div>
-                        <input type="hidden" id="periods{{$day}}" name="periods{{$day}}" value="">
+                        <input type="hidden" id="periods{{$day}}" name="periods[]">
                         </div><!-- /.col-* -->
                         <div class="col-sm-12">
                             <div class="ticks">
@@ -65,18 +65,19 @@
         $(function () {
 
             var intervals = new Intervals("#slider{{$day}}");
-            intervals.addPeriod(1, 1);
-            intervals.addPeriod(12, 6);
-            // $("#form").submit(function(){
-            //     //...
-            //     // And somewhere later in the code
-            //     var values = intervals.getPeriods().map(function (period) {
-            //         return period.getAbscissas();
-            //     });
-            //
-            //     $('#periods').val(values);
-            //     alert($('#periods').val());
-            // });
+            @foreach($periods[$day] as $period)
+            intervals.addPeriod({{$period['from']}},{{$period['to']}});
+            @endforeach
+            $("#scheduleForm").submit(function(){
+                //...
+                // And somewhere later in the code
+                var values = intervals.getPeriods().map(function (period) {
+                    return period.getAbscissas();
+                });
+
+                $('#periods{{$day}}').val(values);
+              //  alert($('#periods').val());
+            });
             intervals.setAddPeriodConfirmCallback(function (period, callback) {
                 callback(function () {
                     return confirm('Add period between ' + period.getAbscissas()[0] + ' and ' + period.getAbscissas()[1]);

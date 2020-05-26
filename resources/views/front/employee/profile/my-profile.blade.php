@@ -45,6 +45,12 @@
                                                 Schedule
                                             </a>
                                         </li>
+                                        <li class="@if(request()->is('employee/profile/documents/edit')) {{'active'}} @endif">
+                                            <a href="{{route('employee.documents.edit')}}">
+                                                <i class="fa fa-paperclip"></i>
+                                                Documents
+                                            </a>
+                                        </li>
                                     </ul>
                                 </div><!-- /.widget -->
                             </div><!-- /.sidebar -->

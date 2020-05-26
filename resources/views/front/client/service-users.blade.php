@@ -15,18 +15,19 @@
     <div class="page-wrapper">
         <div class="main">
             <div id="employees-list" class="fullscreen-wrapper" style="padding:12px">
-                <form class="filter" method="post" action="">
+                <form class="filter" method="post" action="{{route('client.service.filter',$service->id)}}">
                     @csrf
                     <div class="row">
                         <div class="col-sm-12 col-md-4">
                             <div class="form-group">
-                                <input type="text" name="keyword" placeholder="Keyword" class="form-control search">
+                                <label for="Keyword">Keyword</label>
+                                <input type="text" name="keyword" id="Keyword" class="form-control search">
                             </div><!-- /.form-group -->
                         </div><!-- /.col-* -->
-
                         <div class="col-sm-12 col-md-4">
                             <div class="form-group">
-                                <select class="materialSelect" title="Near" name="address">
+                                <label for="address">Address</label>
+                                <select class="materialSelect" id="address" name="address">
                                     @foreach($user->client_addresses as $address)
                                     <option value="{{$address['_id']}}">{{$address['name']}}</option>
                                     @endforeach
@@ -35,10 +36,10 @@
                         </div><!-- /.col-* -->
 
                         <div class="col-sm-6 col-md-4">
-                            <input type="text" name="date" class="datepicker">
+                            <label for="date">Choose a Day</label>
+                            <input type="text" id="date" name="date" class="datepicker">
                         </div><!-- /.col-* -->
-                        <div class="col-sm-6">
-                        </div><!-- /.col-* -->
+
                     </div><!-- /.row -->
 <div class="row">
                             <div class="input-field col s12 m6">
@@ -55,23 +56,25 @@
                         <label for="to">Choose Ending time</label>
                     </div>
 </div>
+                    @isset($availableTimes)
                     <div class="row">
+                        @foreach($availableTimes as $available)
                         <div class="chip">
-                            <img src="/public/images/client/clock-icon.png" alt="Contact Person">
-                            from to
+                            <img src="/public/images/client/clock-icon.png" alt="date">
+                            {{$available['date']}} : {{$available['from']}} -> {{$available['to']}}
                             <i class="fa fa-times"></i>
-                            <input type="hidden" name="availability[]">
-                        </div>
-
-                    </div>
-
+                            <input type="hidden" value="{{$available}}" name="availability[]">
+                        </div><!-- /.chip -->
+                        @endforeach
+                    </div><!-- /.row -->
+                    @endisset
 
                     <hr>
 
                     <div class="row">
                         <div class="col-sm-8">
                             <div class="filter-actions">
-                                <a href="#"><i class="fa fa-close"></i> Reset Filter</a>
+                                <a href="{{route('client.service', $service->id)}}"><i class="fa fa-close"></i> Reset Filter</a>
                             </div><!-- /.filter-actions -->
                         </div><!-- /.col-* -->
                         <div class="col-sm-4">
@@ -96,7 +99,7 @@
 
                 <div class="cards-row" style="margin-top:80px">
                     <div class="list">
-                    @foreach($service->users as $employee)
+                    @foreach($employees as $employee)
                         @if($employee->id != $user->id)
                         <div class="card-row">
                             <div class="card-row-inner">
@@ -169,6 +172,14 @@
         $('.chips').chips();
         $(document).ready(function(){
             $('.datepicker').datepicker();
+            $('.datepicker').datepicker({
+                onOpen: function () {
+                    var instance = M.Datepicker.getInstance($('.datepicker'));
+                    instance.options.minDate = new Date('2020-03-12');
+
+                    instance.options.format = 'mm/dd/yyyy'
+                }
+            });
             $('select').formSelect();
         });
         var fromSelect = $('#from');
