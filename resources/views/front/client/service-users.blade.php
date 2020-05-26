@@ -100,7 +100,7 @@
                 <div class="cards-row" style="margin-top:80px">
                     <div class="list">
                     @foreach($employees as $employee)
-                        @if($employee->id != $user->id)
+                        @if($employee['_id'] != $user->id)
                         <div class="card-row">
                             <div class="card-row-inner">
                                 <div class="card-row-image" style="background-image: url({{config('image.path').$employee->image}})">
