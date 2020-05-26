@@ -78,3 +78,6 @@
         </form>
     </div>
 @endsection
+@push('js')
+
+@endpush
