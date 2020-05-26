@@ -21,7 +21,12 @@ class HandymanController extends Controller
     {
 
         $employee = User::query()->find($id);
-        $requests=$employee->employeeRequests()->get();
+        $_requests=$employee->employeeRequests()->get();
+        $requests = $_requests->map(function ($item) {
+            $item->client = User::query()->find($item->client_ids[0])->simplifiedArray();
+            return $item;
+        });
+
 
         return view('cms.employees.show', compact('employee','requests'));
 
