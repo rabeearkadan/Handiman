@@ -18,13 +18,7 @@
                     </p>
                 </div><!-- /.col* -->
             </div><!-- /.row -->
-            @isset($user->cv)
-            <div class="row">
-                <div class="col-sm-12">
-                    <iframe src="{{config('image.path').$user->cv}}" style="width:300px; height:300px;"></iframe>
-                </div><!-- /.col* -->
-            </div><!-- /.row -->
-            @endisset
+            
         <div class="row">
             <div class="col-sm-12">
                 <div class="file-field input-field">
