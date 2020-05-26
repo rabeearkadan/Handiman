@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Str;
 
 class ProfileController extends Controller
 {
@@ -20,6 +21,7 @@ class ProfileController extends Controller
      * editDocuments()
      * updateCV()
      * updateCR()
+     * uploadAny()
      */
 
     public function myProfile(){
@@ -123,12 +125,32 @@ class ProfileController extends Controller
     }
     public function updateCV(Request $request){
         $user = Auth::user();
-
+        $user->cv = $this->uploadAny($request->cv, 'cv', 'pdf');
+        $user->save();
         return view('front.employee.profile.documents',compact('user'));
     }
     public function updateCR(Request $request){
         $user = Auth::user();
-
+        $user->criminal_record = $this->uploadAny($request->criminal_record, 'criminal_records', 'pdf');
+        $user->save();
         return view('front.employee.profile.documents',compact('user'));
+    }
+    public function uploadAny($file, $folder, $ext = 'png')
+    {
+        $file = base64_decode($file);
+
+        $file_name = Str::random(25) . '.' . $ext; //generating unique file name;
+        if (!Storage::disk('public')->exists($folder)) {
+            Storage::disk('public')->makeDirectory($folder);
+        }
+        $result = false;
+        if ($file != "") { // storing image in storage/app/public Folder
+            $result = Storage::disk('public')->put($folder . '/' . $file_name, $file);
+
+        }
+        if ($result)
+            return $folder . '/' . $file_name;
+        else
+            return null;
     }
 }
