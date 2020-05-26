@@ -12,16 +12,20 @@ class ReportsController extends Controller
 
     public function index()
     {
-        $_requests = RequestService::query()->where('isdone', true);
+        $_requests = RequestService::all()->where('isdone', true);
 
-
-        $requests = $_requests->map(function ($item) {
-            $item->client = User::query()->find($item->client_ids[0])->simplifiedArray();
-            $item->handyman = User::query()->find($item->employee_ids[0])->simplifiedArray();
-            $item->service = Service::query()->find($item->service_id)->ServiceArray();
-            return $item;
-        });
-        return view('cms.reports.index', compact('requests'));
+        if ($_requests != null) {
+            $requests = $_requests->map(function ($item) {
+                $item->client = User::query()->find($item->client_ids[0])->simplifiedArray();
+                $item->handyman = User::query()->find($item->employee_ids[0])->simplifiedArray();
+                $item->service = Service::query()->find($item->service_id)->ServiceArray();
+                return $item;
+            });
+            return view('cms.reports.index', compact('requests'));
+        } else {
+            $requests = [];
+            return view('cms.reports.index', compact('requests'));
+        }
     }
 
     public function show($id)
