@@ -190,15 +190,10 @@
                                 <td>
                                     <div class="widget-content p-0">
                                         <div class="widget-content-wrapper">
-                                            <div class="widget-content-left mr-3">
-                                                <div class="widget-content-left">
-                                                    <img width="40" class="rounded-circle"
-                                                         src="assets/images/avatars/4.jpg" alt="">
-                                                </div>
-                                            </div>
+
                                             <div class="widget-content-left flex2">
                                                 <div class="widget-heading">{{$request->client['name']}}</div>
-                                                <div class="widget-subheading opacity-7">Web Developer</div>
+                                                <div class="widget-subheading opacity-7"> {{$request->client['image']}}r</div>
                                             </div>
                                         </div>
                                     </div>
