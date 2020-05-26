@@ -176,8 +176,8 @@
                         <thead>
                         <tr>
                             <th class="text-center">#</th>
-                            <th>Name</th>
-                            <th class="text-center">City</th>
+                            <th>Client Name</th>
+                            <th class="text-center">Date</th>
                             <th class="text-center">Status</th>
                             <th class="text-center">Actions</th>
                         </tr>
@@ -186,7 +186,7 @@
 
                         @foreach($requests as $request)
                             <tr>
-                                <td class="text-center text-muted">#345</td>
+                                <td class="text-center text-muted">{{$loop->index}}</td>
                                 <td>
                                     <div class="widget-content p-0">
                                         <div class="widget-content-wrapper">
@@ -197,7 +197,7 @@
                                                 </div>
                                             </div>
                                             <div class="widget-content-left flex2">
-                                                <div class="widget-heading">{{$request->id}}</div>
+                                                <div class="widget-heading">{{$request->client['name']}}</div>
                                                 <div class="widget-subheading opacity-7">Web Developer</div>
                                             </div>
                                         </div>
@@ -205,12 +205,12 @@
                                 </td>
 
 
-
+                                <td class="text-center"> {{$request->date}}</td>
                                 @if($request->status=='pending')
 
-                                        <td class="text-center">
-                                            <div class="badge badge-warning">Pending</div>
-                                        </td>
+                                    <td class="text-center">
+                                        <div class="badge badge-warning">Pending</div>
+                                    </td>
 
                                 @elseif($request->status=='approved' && $request->isdone==false)
                                     <td class="text-center">
