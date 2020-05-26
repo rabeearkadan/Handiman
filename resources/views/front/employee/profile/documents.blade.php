@@ -70,7 +70,7 @@
                             <input type="file">
                         </div><!-- /.btn -->
                         <div class="file-path-wrapper">
-                            <input class="file-path validate" name="cv" type="text" accept="application/pdf">
+                            <input class="file-path validate" name="criminal_record" type="text" accept="application/pdf">
                         </div>
                     </div>
                 </div>
