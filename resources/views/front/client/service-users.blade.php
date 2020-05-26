@@ -171,10 +171,12 @@
     <script>
         $('.chips').chips();
         $(document).ready(function(){
-            var date = $('.datepicker').datepicker();
-            date.pickadate({
-                min: new Date(2020,3,20),
-                max: new Date(2020,7,14)
+            $('.datepicker').datepicker();
+            $('.datepicker').datepicker({
+                onOpen: function () {
+                    var instance = M.Datepicker.getInstance($('.datepicker'));
+                    instance.options.minDate = new Date(YOUR_DATE);
+                }
             });
             $('select').formSelect();
         });
