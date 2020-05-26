@@ -21,7 +21,7 @@
             @isset($user->cv)
             <div class="row">
                 <div class="col-sm-12">
-                    <iframe src="jj.pdf" style="width:300px; height:300px;"></iframe>
+                    <iframe src="{{config('image.path').$user->cv}}" style="width:300px; height:300px;"></iframe>
                 </div><!-- /.col* -->
             </div><!-- /.row -->
             @endisset
@@ -58,7 +58,7 @@
             @isset($user->criminal_record)
             <div class="row">
                 <div class="col-sm-12">
-                    <iframe src="" style="width:300px; height:300px;"></iframe>
+                    <iframe src="{{config('image.path').$user->criminal_record}}" style="width:300px; height:300px;"></iframe>
                 </div><!-- /.col* -->
             </div><!-- /.row -->
             @endisset
