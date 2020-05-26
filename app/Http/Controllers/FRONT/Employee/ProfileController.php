@@ -125,13 +125,13 @@ class ProfileController extends Controller
     }
     public function updateCV(Request $request){
         $user = Auth::user();
-        $user->cv = $this->uploadAny($request->cv, 'cv', 'pdf');
+        $user->cv = $this->uploadAny($request->file('cv'), 'cv', 'pdf');
         $user->save();
         return view('front.employee.profile.documents',compact('user'));
     }
     public function updateCR(Request $request){
         $user = Auth::user();
-        $user->criminal_record = $this->uploadAny($request->criminal_record, 'criminal_records', 'pdf');
+        $user->criminal_record = $this->uploadAny($request->file('criminal_record'), 'criminal_records', 'pdf');
         $user->save();
         return view('front.employee.profile.documents',compact('user'));
     }
