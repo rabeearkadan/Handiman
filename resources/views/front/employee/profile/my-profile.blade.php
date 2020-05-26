@@ -43,12 +43,12 @@
                                                 Password
                                             </a>
                                         </li>
-                                        <li class="@if(request()->is('employee/profile/payment')) {{'active'}} @endif">
-                                            <a href="{{route('employee.payment')}}">
-                                                <i class="fa fa-money"></i>
-                                                Payment
-                                            </a>
-                                        </li>
+{{--                                        <li class="@if(request()->is('employee/profile/payment')) {{'active'}} @endif">--}}
+{{--                                            <a href="{{route('employee.payment')}}">--}}
+{{--                                                <i class="fa fa-money"></i>--}}
+{{--                                                Payment--}}
+{{--                                            </a>--}}
+{{--                                        </li>--}}
                                         <li class="@if(request()->is('employee/profile/schedule/edit')) {{'active'}} @endif">
                                             <a href="{{route('employee.schedule.edit')}}">
                                                 <i class="fa fa-calendar"></i>
