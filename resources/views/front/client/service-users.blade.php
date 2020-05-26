@@ -42,17 +42,17 @@
                     </div><!-- /.row -->
                     <div class="row">
                             <div class="input-field col s6">
-                                <select name="from" id="from">
+                                <select name="from" id="from" class="materialSelect">
                                     @for($from=0;$from<24;$from++)
                                         <option value="{{$from}}">{{$from}}</option>
                                     @endfor
                                 </select>
-                                <label>Choose Starting time</label>
+                                <label for="from">Choose Starting time</label>
                             </div>
                     <div class="input-field col s6">
                         <select name="to" id="to">
                         </select>
-                        <label>Choose Ending time</label>
+                        <label for="to">Choose Ending time</label>
                     </div>
                     </div>
                     <div class="row">
@@ -187,7 +187,7 @@
                     $('<option></option>').val(to).html(to)
                 );
             }
-            $("#to").trigger('contentChanged');
+            $("#to").material_select();
         });
     </script>
 @endpush
