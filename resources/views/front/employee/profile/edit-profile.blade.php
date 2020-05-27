@@ -213,16 +213,16 @@
                 <input type="submit" value = "Save"  class="btn btn-primary btn-xs pull-right" />
             </h3>
             <div class="row">
-
-                <div class="input-field col s12 m6">
-                    <select id="services" class="icons" >
-                        <option value="" disabled selected>Choose your services</option>
-                        @foreach($services as $service)
-                        <option value="{{$service->id}}"  name="services[]" data-icon="{{config('image.path').$service->image}}">{{$service->name}}</option>
-                            @endforeach
+                <div class="input-field col s6 ">
+                    <select class="icons" id="services">
+                        <option value="" disabled selected>Choose your option</option>
+                        <option value="" data-icon="images/sample-1.jpg">example 1</option>
+                        <option value="" data-icon="images/office.jpg">example 2</option>
+                        <option value="" data-icon="images/yuna.jpg">example 3</option>
                     </select>
-                    <label for="services">Choose you services</label>
+                    <label for="service">Images in select</label>
                 </div>
+
             </div>
         </form>
     </div>
