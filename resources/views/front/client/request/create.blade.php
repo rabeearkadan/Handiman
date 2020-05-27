@@ -253,7 +253,7 @@
                                             <p> is the request Urgent ? (the request time will be the next couple of hours)</p>
                                             <p>
                                                 <label for="urgent">
-                                                    <input name="urgent" id="urgent" type="checkbox" />
+                                                    <input name="is_urgent" id="urgent" type="checkbox" />
                                                     <span>Urgent</span>
                                                 </label>
                                             </p>
@@ -368,13 +368,15 @@
         $('#service').formSelect();
         $('#timezone').val(moment.tz.guess())
     });
-    const checkbox = document.getElementById('urgent')
+    const checkbox = document.getElementById('is_urgent')
 
     checkbox.addEventListener('change', (event) => {
         if (event.target.checked) {
             $('#date-time').hide()
+            $('#is_urgent').val(true)
         } else {
             $('#date-time').show()
+            $('#is_urgent').val(false)
         }
     })
 </script>
