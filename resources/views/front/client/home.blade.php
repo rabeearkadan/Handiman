@@ -73,7 +73,7 @@
     <script src="/public/js/materialize.js"></script>
     <script>
     $('.carousel.carousel-slider').carousel({
-        fullWidth: true
+        
     });
     autoplay();
     function autoplay() {
