@@ -22,6 +22,7 @@ Route::put('/edit-profile/contact','ProfileController@updateContact')->name('emp
 Route::put('/edit-profile/connections','ProfileController@updateConnections')->name('employee.connections.update');
 Route::put('/edit-profile/address','ProfileController@updateAddress')->name('employee.address.update');
 Route::put('/edit-profile/biography','ProfileController@updateBiography')->name('employee.biography.update');
+Route::put('/edit-profile/services','ProfileController@updateServices')->name('employee.services.update');
 
 //Documents
 Route::get('/profile/documents/edit','ProfileController@editDocuments')->name('employee.documents.edit');
