@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\FRONT\Employee;
 
 use App\Http\Controllers\Controller;
+use App\Models\Service;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
@@ -21,12 +22,17 @@ class ProfileController extends Controller
      * editDocuments()
      * updateCV()
      * updateCR()
-     * uploadAny()
+     * updateContact()
+     * updateConnections()
+     * updateAddress()
+     * updateBiography()
+     * updateServices()
      */
 
     public function myProfile(){
         $user = Auth::user();
-        return view('front.employee.profile.edit-profile',compact('user'));
+        $services = Service::all();
+        return view('front.employee.profile.edit-profile',compact(['user','services']));
     }
     public function editPassword(){
 
@@ -154,4 +160,24 @@ class ProfileController extends Controller
         return view('front.employee.profile.documents',compact('user'));
     }
 
+    public function updateContact(Request $request){
+        $user = Auth::user();
+        return redirect(route('employee.profile'));
+    }
+    public function updateConnections(Request $request){
+        $user = Auth::user();
+        return redirect(route('employee.profile'));
+    }
+    public function updateAddress(Request $request){
+        $user = Auth::user();
+        return redirect(route('employee.profile'));
+    }
+    public function updateBiography(Request $request){
+        $user = Auth::user();
+        return redirect(route('employee.profile'));
+    }
+    public function updateServices(Request $request){
+        $user = Auth::user();
+        return redirect(route('employee.profile'));
+    }
 }

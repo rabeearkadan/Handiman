@@ -87,9 +87,12 @@
     </div><!-- /.page-title -->
 
     <div class="background-white p20 mb30">
+        <form method="post" action="{{route('employee.contact.update')}}" >
+            @csrf
+            @method('put')
         <h3 class="page-title">
-            Contact Information
-            <a href="#" class="btn btn-primary btn-xs pull-right">Save</a>
+            General
+            <input type="submit" value="Save" class="btn btn-primary btn-xs pull-right"/>
         </h3>
 
         <div class="row">
@@ -99,8 +102,17 @@
             </div><!-- /.form-group -->
 
             <div class="form-group col-sm-6">
-                <label>Surname</label>
-                <input type="text" name="surname" class="form-control" value="{{$user->surname}}">
+                <label>Gender</label>
+                <p>
+                    <label>
+                        <input class="with-gap" name="gender" type="radio" @if($user->gender=='male') checked @endif />
+                        <span>male</span>
+                    </label>
+                    <label>
+                        <input class="with-gap" name="gender" type="radio" @if($user->gender=='female') checked @endif />
+                        <span>female</span>
+                    </label>
+                </p>
             </div><!-- /.form-group -->
 
             <div class="form-group col-sm-6">
@@ -113,11 +125,15 @@
                 <input type="text" name="phone" class="form-control" value="{{$user->phone}}">
             </div><!-- /.form-group -->
         </div><!-- /.row -->
+        </form>
     </div>
     <div class="background-white p20 mb30">
+        <form method="post" action="{{route('employee.connections.update')}}">
+            @csrf
+            @method('put')
         <h3 class="page-title">
             Social Connections
-            <a href="#" class="btn btn-primary btn-xs pull-right">Save</a>
+            <input type="submit" value="Save" class="btn btn-primary btn-xs pull-right"/>
         </h3>
         <div class="form-horizontal">
             <div class="form-group">
@@ -140,11 +156,15 @@
                 </div><!-- /.col-* -->
             </div><!-- /.form-group -->
         </div><!-- /.form-inline -->
+        </form>
     </div><!-- /.background-white -->
     <div class="background-white p20 mb30">
+        <form method="post" action="{{route('employee.address.update')}}">
+            @csrf
+            @method('put')
         <h3 class="page-title">
             Address
-            <a href="#" class="btn btn-primary btn-xs pull-right">Save</a>
+            <input type="submit" value="Save" class="btn btn-primary btn-xs pull-right"/>
         </h3>
         <div class="map-position">
             <input id="pac-input" name="map-input" class="controls" type="text" placeholder="Search Box">
@@ -166,19 +186,55 @@
                 <input type="text" class="form-control" name="zip" value="{{$user->employee_address['zip']}}">
             </div><!-- /.form-group -->
         </div><!-- /.row -->
+        </form>
     </div>
     <div class="background-white p20 mb30">
+        <form method="post" action="{{route('employee.biography.update')}}" >
+            @csrf
+            @method('put')
         <h3 class="page-title">
             Biography
             <input type="submit" value = "Save"  class="btn btn-primary btn-xs pull-right" />
         </h3>
-        <textarea class="form-control" name="biography" rows="7" form="">
-            {{$user->biography}}
-        </textarea>
-        <div class="textarea-resize"></div>
+            <div class="row">
+                <div class="input-field col s12">
+                    <textarea id="biography" name="biography" class="materialize-textarea">{{$user->biography}}</textarea>
+                    <label for="biography"></label>
+                </div>
+            </div>
+        </form>
+    </div>
+    <div class="background-white p20 mb30">
+        <form method="post" action="{{route('employee.services.update')}}" >
+            @csrf
+            @method('put')
+            <h3 class="page-title">
+                Services
+                <input type="submit" value = "Save"  class="btn btn-primary btn-xs pull-right" />
+            </h3>
+            <div class="row">
+                <div class="input-field col s6 ">
+                    <select class="icons" id="services">
+                        <option value="" disabled selected>Choose your option</option>
+                        <option value="" data-icon="images/sample-1.jpg">example 1</option>
+                        <option value="" data-icon="images/office.jpg">example 2</option>
+                        <option value="" data-icon="images/yuna.jpg">example 3</option>
+                    </select>
+                    <label >Images in select</label>
+                </div>
+
+            </div>
+        </form>
     </div>
 @endsection
 @push('js')
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="/public/js/materialize.js"></script>
+    <script>
+        $(document).ready(function(){
+            $('#services').formSelect();
+        });
+    </script>
     <script>
         // This example adds a search box to a map, using the Google Place Autocomplete
         // feature. People can enter geographical searches. The search box will return a
