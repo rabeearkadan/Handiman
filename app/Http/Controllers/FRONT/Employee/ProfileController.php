@@ -21,7 +21,10 @@ class ProfileController extends Controller
      * editDocuments()
      * updateCV()
      * updateCR()
-     * uploadAny()
+     * updateContact()
+     * updateConnections()
+     * updateAddress()
+     * updateBiography()
      */
 
     public function myProfile(){
@@ -154,4 +157,20 @@ class ProfileController extends Controller
         return view('front.employee.profile.documents',compact('user'));
     }
 
+    public function updateContact(Request $request){
+        $user = Auth::user();
+        return view('front.employee.profile.edit-profile',compact('user'));
+    }
+    public function updateConnections(Request $request){
+        $user = Auth::user();
+        return view('front.employee.profile.edit-profile',compact('user'));
+    }
+    public function updateAddress(Request $request){
+        $user = Auth::user();
+        return view('front.employee.profile.edit-profile',compact('user'));
+    }
+    public function updateBiography(Request $request){
+        $user = Auth::user();
+        return view('front.employee.profile.edit-profile',compact('user'));
+    }
 }

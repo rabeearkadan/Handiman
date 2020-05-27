@@ -87,9 +87,12 @@
     </div><!-- /.page-title -->
 
     <div class="background-white p20 mb30">
+        <form method="post" action="{{route('employee.contact.update')}}" >
+            @csrf
+            @method('put')
         <h3 class="page-title">
-            Contact Information
-            <a href="#" class="btn btn-primary btn-xs pull-right">Save</a>
+            General
+            <input type="submit" value="Save" class="btn btn-primary btn-xs pull-right"/>
         </h3>
 
         <div class="row">
@@ -113,11 +116,15 @@
                 <input type="text" name="phone" class="form-control" value="{{$user->phone}}">
             </div><!-- /.form-group -->
         </div><!-- /.row -->
+        </form>
     </div>
     <div class="background-white p20 mb30">
+        <form method="post" action="{{route('employee.connections.update')}}">
+            @csrf
+            @method('put')
         <h3 class="page-title">
             Social Connections
-            <a href="#" class="btn btn-primary btn-xs pull-right">Save</a>
+            <input type="submit" value="Save" class="btn btn-primary btn-xs pull-right"/>
         </h3>
         <div class="form-horizontal">
             <div class="form-group">
@@ -140,11 +147,15 @@
                 </div><!-- /.col-* -->
             </div><!-- /.form-group -->
         </div><!-- /.form-inline -->
+        </form>
     </div><!-- /.background-white -->
     <div class="background-white p20 mb30">
+        <form method="post" action="{{route('employee.address.update')}}">
+            @csrf
+            @method('put')
         <h3 class="page-title">
             Address
-            <a href="#" class="btn btn-primary btn-xs pull-right">Save</a>
+            <input type="submit" value="Save" class="btn btn-primary btn-xs pull-right"/>
         </h3>
         <div class="map-position">
             <input id="pac-input" name="map-input" class="controls" type="text" placeholder="Search Box">
@@ -166,17 +177,29 @@
                 <input type="text" class="form-control" name="zip" value="{{$user->employee_address['zip']}}">
             </div><!-- /.form-group -->
         </div><!-- /.row -->
+        </form>
     </div>
     <div class="background-white p20 mb30">
+        <form method="post" action="{{route('employee.biography.update')}}" >
+            @csrf
+            @method('put')
         <h3 class="page-title">
             Biography
             <input type="submit" value = "Save"  class="btn btn-primary btn-xs pull-right" />
         </h3>
-        <textarea class="form-control" name="biography" rows="7" form="">
-            {{$user->biography}}
-        </textarea>
-        <div class="textarea-resize"></div>
+            <div class="row">
+                <div class="input-field col s12">
+                    <textarea id="biography" name="biography" class="materialize-textarea">{{$user->biography}}</textarea>
+                    <label for="biography"></label>
+                </div>
+            </div>
+        </form>
     </div>
+
+
+
+
+
 @endsection
 @push('js')
     <script>

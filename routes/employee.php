@@ -17,6 +17,12 @@ Route::get('/sss','ProfileController@clientProfile')->name('employee.client-prof
 Route::get('/edit-profile','ProfileController@myProfile')->name('employee.profile');
 Route::get('/profile/password','ProfileController@editPassword')->name('employee.password');
 //Route::get('/profile/payment','ProfileController@editPayment')->name('employee.payment');
+//Contact
+Route::put('/edit-profile/contact','ProfileController@updateContact')->name('employee.contact.update');
+Route::put('/edit-profile/connections','ProfileController@updateConnections')->name('employee.connections.update');
+Route::put('/edit-profile/address','ProfileController@updateAddress')->name('employee.address.update');
+Route::put('/edit-profile/biography','ProfileController@updateBiography')->name('employee.biography.update');
+
 //Documents
 Route::get('/profile/documents/edit','ProfileController@editDocuments')->name('employee.documents.edit');
 Route::put('/profile/documents/edit/cv','ProfileController@updateCV')->name('employee.cv.update');
