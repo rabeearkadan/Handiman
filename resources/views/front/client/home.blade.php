@@ -12,7 +12,7 @@
             <div class="main-inner">
                 <div class="container">
                     <div class="row">
-                        <a class=" btn-large waves-effect waves-light red" style="margin-left: 53%;position: absolute;">
+                        <a href="{{route('client.request.create')}}" class=" btn-large waves-effect waves-light red" style="margin-left: 53%;position: absolute;">
                             <i class="material-icons">Smart Request</i>
                         </a>
                         <div class="col-sm-12 col-lg-10">

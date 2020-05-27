@@ -51,6 +51,9 @@ class RequestController extends Controller
      */
     public function create(Request $request){
         $user=Auth::user();
+        if($request->input('employee_id')==null){
+            return view('front.client.request.create',compact('user'));
+        }
         $employee = User::find($request->input('employee_id'));
         $service = Service::find($request->input('service_id'));
         $startDate = new DateTime('now') ;
