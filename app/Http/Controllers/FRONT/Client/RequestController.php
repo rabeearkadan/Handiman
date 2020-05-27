@@ -162,7 +162,6 @@ class RequestController extends Controller
             }
             $requestHandyman->images = $images;
         }
-        dd($images,$req->file('images'),$requestHandyman->images);
 
         if(!$req->has('employee_id')) {
             if ($req->is_urgent == true) {
