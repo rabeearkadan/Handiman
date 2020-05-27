@@ -331,6 +331,16 @@
                     }
                 });
             });
+            @else
+            $(document).ready(function () {
+                $('#date-input').dateDropper({
+                    format: 'd-m-Y',
+                    {{--enabledDays: '{{$availableDaysString}}',--}}
+                    maxYear: 2020,
+                    minYear: 2020
+                });
+
+            });
 @endisset
         </script>
 <script>
