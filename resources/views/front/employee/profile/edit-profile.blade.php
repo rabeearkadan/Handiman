@@ -102,8 +102,17 @@
             </div><!-- /.form-group -->
 
             <div class="form-group col-sm-6">
-                <label>Surname</label>
-                <input type="text" name="surname" class="form-control" value="{{$user->surname}}">
+                <label>Gender</label>
+                <p>
+                    <label>
+                        <input class="with-gap" name="gender" type="radio" @if($user->gender=='male')checked@endif />
+                        <span>male</span>
+                    </label>
+                    <label>
+                        <input class="with-gap" name="gender" type="radio" @if($user->gender=='female')checked@endif />
+                        <span>female</span>
+                    </label>
+                </p>
             </div><!-- /.form-group -->
 
             <div class="form-group col-sm-6">
