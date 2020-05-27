@@ -304,6 +304,7 @@
     <script
         src="https://maps.googleapis.com/maps/api/js?key=AIzaSyApA0BZrqcfRauI8W5RLAQYjNJla_AS3gA&libraries=places&callback=initAutocomplete"
         async defer></script>
+    <script src="/public/js/materialize.js"></script>
     <script>
         $(document).ready(function(){
             $('#services').formSelect();
