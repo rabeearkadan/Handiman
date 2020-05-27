@@ -176,7 +176,8 @@ class RequestController extends Controller
                 $request->paid = true;
                 $file_name = Str::random(25);
                 $this->stringToPDF($file_name);
-                $request->report = 'reports/' . $file_name . '.pdf';
+                $request->report = 'reports/pdf/' . $file_name . '/.pdf';
+
 
                 $request->save();
                 $handyman->save();
@@ -357,11 +358,10 @@ class RequestController extends Controller
         }
 
 
-        $pdf->save('storage/' . $file_name );
+        $pdf->save('storage/reports/pdf/' . $file_name . '.pdf');
         return "true";
 
     }
-
 
     public
     function Notification($to, $from, $message, $type)
