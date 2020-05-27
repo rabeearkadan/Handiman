@@ -143,6 +143,7 @@
                     <div class="content">
                         <form class="contact-form" method="post" action="{{route('client.request.store')}}" enctype="multipart/form-data">
                             @csrf
+                            <input type="hidden" name="timezone" id="timezone">
                             @isset($employee)
                                 <div class="contact-form-wrapper clearfix background-white p30">
                                     <div class="row">
@@ -361,7 +362,7 @@
 <script>
     $(document).ready(function(){
         $('#service').formSelect();
-
+        $('#timezone').val(moment.tz.guess())
     });
     const checkbox = document.getElementById('urgent')
 

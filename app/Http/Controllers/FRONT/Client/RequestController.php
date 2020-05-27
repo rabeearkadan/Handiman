@@ -135,6 +135,8 @@ class RequestController extends Controller
         $requestHandyman->description = $req->input('description');
         $requestHandyman->status = 'pending';
         $requestHandyman->isdone = false;
+        $requestHandyman->timezone = $req->timezone;//'Asia\Beirut'
+        $requestHandyman->service_id = $req->input('service');
         //  $requestHandyman->location = explode(',', $req->input('location'));
         $address = null;
         foreach($user->client_addresses as $client_address) {
@@ -144,87 +146,57 @@ class RequestController extends Controller
             }
         }
         $requestHandyman->client_address = $address;
-        $requestHandyman->timezone = $req->timezone;//'Asia\Beirut'
-        $requestHandyman->service_id = $req->input('service');
-        //add attachment if exists
 
-        if ($req->has('is_urgent') && $req->input('is_urgent')) {
-            //search for urgent requests
-            //if its urgent let the system search for a handiman and make a suggestion
-            $requestHandyman->save();
-            $handyman = $this->searchForHandyman($requestHandyman);
-            if ($handyman == null) {
-                // TODO: Implement searchForHandyman() method.
-            } else {
-                $requestHandyman->empolyee_id = $req->input('employee_id');
-                $requestHandyman->type = 'urgent';
-                $requestHandyman->save();
-                $requestHandyman->clients()->attach(Auth::id());
-//                $this->notification($handyman->device_token, Auth::user()->name, 'You received a new request', 'request');
-//                return response()->json(['status' => 'success', 'message' => 'Your urgent request has reached a handyman']);
+        //add attachment if exists
+        if(!$req->has('employee_id')) {
+            if ($req->is_urgent == true) {
+                if (Carbon::now($requestHandyman->timezone)->minute > 30) {
+                    $nowHour = str_pad(Carbon::now($requestHandyman->timezone)->hour + 1, 2, '0', STR_PAD_LEFT) . '00';
+                    $nowNextHour = str_pad(Carbon::now($requestHandyman->timezone)->hour + 2, 2, '0', STR_PAD_LEFT) . '00';
+                } else {
+                    $nowHour = str_pad(Carbon::now($requestHandyman->timezone)->hour, 2, '0', STR_PAD_LEFT) . '00';
+                    $nowNextHour = str_pad(Carbon::now($requestHandyman->timezone)->hour + 1, 2, '0', STR_PAD_LEFT) . '00';
+                }
+                $requestHandyman->from = $nowHour;
+                $requestHandyman->to = $nowNextHour;
+                $requestHandyman->date = Carbon::createFromFormat('Y-m-d', date("Y-m-d"), $requestHandyman->timezone);
 
             }
-        } else {
-            if ($req->has('employee_id')) {
+            else {
+                    $requestHandyman->from = $req->from;
+                    $requestHandyman->to = $req->to;
+                    $requestHandyman->date = Carbon::createFromFormat('Y-m-d', $req->input('date'), $requestHandyman->timezone);
+
+            }
+                $requestHandyman->save();
+                $requestHandyman->clients()->attach(Auth::id());
+
+            return redirect(route('client.request.index'));
+
+        }
+        else {
                 $handyman = User::query()->find($req->input('employee_id'));
-//                $requestHandyman->type = 'specified';
-//                $requestHandyman->date = DateTime::createFromFormat('m/d/Y', $req->input('date'))->format('Y-m-d');//yyyy-mm-dd
                 $requestHandyman->date = Carbon::createFromFormat('Y-m-d', $req->input('date'), $requestHandyman->timezone);
                 if ($req->has('from'))
                     $requestHandyman->from = $req->input('from');
                 if ($req->has('to')) {
                     $requestHandyman->to = $req->input('to');
                 } else {
-                   // $requestHandyman->handyman_to = 'pending';
+                    $requestHandyman->handyman_to = 'pending';
                     $requestHandyman->to = null;
                 }
                 $this->notification($handyman->device_token, Auth::user()->name, 'You received a new request', 'request');
-            }
+
             $requestHandyman->save();
             $requestHandyman->clients()->attach(Auth::id());
-            if ($req->has('employee_id')) {
                 $handyman = User::query()->find($req->input('employee_id'));
                 $requestHandyman->employees()->attach($handyman->id);
-            }
+
         }
         return redirect(route('client.request.index'));
     }
 
-    private function searchForHandyman($requestHandyman){
-        if (Carbon::now($requestHandyman->timezone)->minute > 30) {
-            $nowHour = str_pad(Carbon::now($requestHandyman->timezone)->hour + 1, 2, '0', STR_PAD_LEFT) . '00';
-            $nowNextHour = str_pad(Carbon::now($requestHandyman->timezone)->hour + 2, 2, '0', STR_PAD_LEFT) . '00';
-        } else {
-            $nowHour = str_pad(Carbon::now($requestHandyman->timezone)->hour, 2, '0', STR_PAD_LEFT) . '00';
-            $nowNextHour = str_pad(Carbon::now($requestHandyman->timezone)->hour + 1, 2, '0', STR_PAD_LEFT) . '00';
-        }
-        $nowDay = Carbon::now()->dayOfWeek;
-        $availableUsers = User::query()
-            ->where('timeline.' . $nowDay . '.' . $nowHour, true)
-            ->where('timeline.' . $nowDay . '.' . $nowNextHour, true)
-            ->where('service_id', $requestHandyman->service_id)->where('location', 'near', [
-                '$geometry' => [
-                    'type' => 'Point',
-                    'coordinates' => [
-                        $requestHandyman->location[0],
-                        $requestHandyman->location[1],
-                    ],
-                    'distanceField'=> "dist.calculated",
-                    '$maxDistance' => 50000000 ,
-                ],
-            ])->orderBy('dist.calculated')
-            ->get()->filter(function ($item) use ($requestHandyman, $nowNextHour, $nowHour, $nowDay) {
-                $userRequests = RequestService::query()
-                    ->where('date', $nowDay)
-                    ->where('from', $nowHour)
-                    ->where('from', $nowNextHour)
-                    ->where('employee_id', $item->id)
-                    ->count();
-                return $userRequests == 0;
 
-            });
-        return $availableUsers->first();
-    }
     /**
      * Display the specified resource.
      *
