@@ -245,6 +245,19 @@
                                 <div class="row">
                                     <div class="col-sm-5">
                                         <div class="form-group">
+                                            <p>
+                                                <label>
+                                                    <input type="checkbox" />
+                                                    <span>Urgent</span>
+                                                </label>
+                                            </p>
+
+                                        </div><!--/.form-group-->
+                                    </div><!--/.col-*-->
+                                </div>
+                                <div class="row">
+                                    <div class="col-sm-5">
+                                        <div class="form-group">
                                             <label for="date-input"> Pick a day </label>
                                             <input id="date-input" name="date" type="text" data-dd-theme="leaf"
                                                    data-dd-format="m/d/Y">
