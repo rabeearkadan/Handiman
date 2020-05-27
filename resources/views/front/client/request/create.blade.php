@@ -300,7 +300,8 @@
 {{--        <script src="/public/js/client/requests/materialize.js"></script>--}}
 {{--        <script src="/public/js/client/requests/drop-zone.js"></script>--}}
 {{--        <script src="/public/js/client/requests/file-uploader.js"></script>--}}
-
+        <script src="/public/js/moment.min.js"></script>
+        <script src="/public/js/moment-timezone-with-data-2012-2022.min.js"></script>
         <script src="/public/js/client/requests/date-dropper.pro.min.js"></script>
         <script>
             @isset($employee)
