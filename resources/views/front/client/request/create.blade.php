@@ -247,8 +247,8 @@
                                         <div class="form-group">
                                             <p> is the request Urgent ? (the request time will be the next couple of hours)</p>
                                             <p>
-                                                <label>
-                                                    <input type="checkbox" />
+                                                <label for="urgent" onclick="alert('isUrgent')">
+                                                    <input name="urgent" type="checkbox" />
                                                     <span>Urgent</span>
                                                 </label>
                                             </p>
