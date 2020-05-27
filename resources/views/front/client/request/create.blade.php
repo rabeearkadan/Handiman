@@ -243,7 +243,7 @@
                                               rows="6"></textarea>
                                 </div><!-- /.form-group -->
                                 <div class="row">
-                                    <div class="col-sm-5">
+                                    <div class="col-sm-12">
                                         <div class="form-group">
                                             <p> is the request Urgent ? (the request time will be the next couple of hours)</p>
                                             <p>
