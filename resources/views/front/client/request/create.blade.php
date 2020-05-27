@@ -218,11 +218,11 @@
                                     </div><!-- /.file-field* -->
                                     </div><!-- /.col* -->
                                     <div class="input-field col s6 ">
-                                        <select class="icons" id="service">
+                                        <select class="icons" id="service" name="service">
                                             <option value="" disabled >Choose your service type</option>
                                             @isset($employee)
                                             @foreach($employee->services as $s)
-                                                <option value="{{$s->id}}"  name="service" data-icon="{{config('image.path').$s->image}}"
+                                                <option value="{{$s->id}}"   data-icon="{{config('image.path').$s->image}}"
                                                 @if($s->id == $service->id)
                                                     selected
                                                         @endif
@@ -232,7 +232,7 @@
                                             @endforeach
                                             @else
                                                 @foreach($services as $service)
-                                                    <option value="{{$service->id}}"  name="service" data-icon="{{config('image.path').$service->image}}">
+                                                    <option value="{{$service->id}}"   data-icon="{{config('image.path').$service->image}}">
                                                         {{$service->name}}
                                                     </option>
                                                 @endforeach
