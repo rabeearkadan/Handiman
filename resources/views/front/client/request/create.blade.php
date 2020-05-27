@@ -231,7 +231,10 @@
                                                 </option>
                                             @endforeach
                                             @else
-                                                <option>oo</option>
+                                                @foreach($services as $service)
+                                                    <option value="{{$service->id}}"  name="service" data-icon="{{config('image.path').$service->image}}">
+                                                        {{$service->name}}
+                                                    </option>
                                             @endisset
                                         </select>
                                         <label for="service">Services</label>
