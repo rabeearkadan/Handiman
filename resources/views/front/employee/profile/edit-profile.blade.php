@@ -214,7 +214,7 @@
             </h3>
             <div class="row">
                 <div class="input-field col s6 ">
-                    <select  id="services">
+                    <select class="icons" id="services">
                         <option value="" disabled selected>Choose your option</option>
                         <option value="" data-icon="images/sample-1.jpg">example 1</option>
                         <option value="" data-icon="images/office.jpg">example 2</option>
@@ -229,8 +229,9 @@
 @endsection
 @push('js')
     <script>
-        $(document).ready(function(){
-            $('#services').formSelect();
+        document.addEventListener('DOMContentLoaded', function() {
+            var elems = document.querySelectorAll('select');
+            var instances = M.FormSelect.init(elems, options);
         });
     </script>
     <script>
