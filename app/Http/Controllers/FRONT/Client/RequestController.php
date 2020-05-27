@@ -11,6 +11,7 @@ use Carbon\Carbon;
 use DateTime;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Validator;
 
 class RequestController extends Controller
@@ -146,8 +147,21 @@ class RequestController extends Controller
             }
         }
         $requestHandyman->client_address = $address;
+        if ($req->has('images')) {
+            $imagesParam = $req->file('images');
+            $images = [];
+            foreach ($imagesParam as $image) {
+                $name = 'image_' . time() . '.' . $image->getClientOriginalExtension();
+                if (!Storage::disk('public')->exists('requests')) {
+                    Storage::disk('public')->makeDirectory('requests');
+                }
+                if (Storage::disk('public')->putFileAs('requests', $image, $name)) {
+                    $user->image = 'requests/' . $name;
+                }
+            }
+            $requestHandyman->images = $images;
+        }
 
-        //add attachment if exists
         if(!$req->has('employee_id')) {
             if ($req->is_urgent == true) {
                 if (Carbon::now($requestHandyman->timezone)->minute > 30) {

@@ -213,7 +213,7 @@
                                         </div><!-- /.btn -->
                                         <div class = "file-path-wrapper">
                                             <input class = "file-path validate" type = "text"
-                                                   placeholder = "Upload multiple files" />
+                                                   placeholder = "Upload multiple images" />
                                         </div><!-- /.file-path* -->
                                     </div><!-- /.file-field* -->
                                     </div><!-- /.col* -->
@@ -313,7 +313,6 @@
                     maxYear: 2020,
                     minYear: 2020
                 });
-
             });
             var fromSelect = $('#from');
             var toSelect = $('#to');
