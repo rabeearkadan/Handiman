@@ -247,7 +247,7 @@
                                         <div class="form-group">
                                             <p> is the request Urgent ? (the request time will be the next couple of hours)</p>
                                             <p>
-                                                <label for="urgent" onclick="alert('isUrgent')">
+                                                <label for="urgent">
                                                     <input name="urgent" id="urgent" type="checkbox" />
                                                     <span>Urgent</span>
                                                 </label>
@@ -256,6 +256,7 @@
                                         </div><!--/.form-group-->
                                     </div><!--/.col-*-->
                                 </div>
+                                <div id="date-time">
                                 <div class="row">
                                     <div class="col-sm-5">
                                         <div class="form-group">
@@ -283,7 +284,7 @@
                                         </div><!-- /.form-group -->
                                     </div><!-- /.col-* -->
                                 </div><!-- /.row -->
-
+                                </div>
 
                                 <button type="submit" class="btn btn-primary pull-right"> Request</button>
                             </div><!-- /.wrapper -->
@@ -362,5 +363,14 @@
         $('#service').formSelect();
 
     });
+    const checkbox = document.getElementById('urgent')
+
+    checkbox.addEventListener('change', (event) => {
+        if (event.target.checked) {
+            $('#date-time').hide()
+        } else {
+            $('#date-time').show()
+        }
+    })
 </script>
 @endpush
