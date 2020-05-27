@@ -143,7 +143,7 @@
                     <div class="content">
                         <form class="contact-form" method="post" action="{{route('client.request.store')}}" enctype="multipart/form-data">
                             @csrf
-                            @if($employee)
+                            @isset($employee)
                                 <div class="contact-form-wrapper clearfix background-white p30">
                                     <div class="row">
                                         <div class="col-sm-2">
@@ -161,7 +161,7 @@
                                         </div>
                                     </div>
                                 </div>
-                            @endif
+                            @endisset
                             <h3> The more you elaborate, the more we can help!</h3>
                             <div class="contact-form-wrapper clearfix background-white p30">
                                 <div class="row">
@@ -219,6 +219,7 @@
                                     <div class="input-field col s6 ">
                                         <select class="icons" id="service">
                                             <option value="" disabled >Choose your service type</option>
+                                            @isset($employee)
                                             @foreach($employee->services as $s)
                                                 <option value="{{$s->id}}"  name="service" data-icon="{{config('image.path').$s->image}}"
                                                 @if($s->id == $service->id)
@@ -228,6 +229,9 @@
                                                     {{$s->name}}
                                                 </option>
                                             @endforeach
+                                            @else
+                                                <option>oo</option>
+                                            @endisset
                                         </select>
                                         <label for="service">Services</label>
                                     </div>
