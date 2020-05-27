@@ -209,7 +209,7 @@
                                     <div class = "file-field input-field">
                                         <div class = "btn" style="position:static;">
                                             <span>Browse</span>
-                                            <input type = "file" name="images" accept="image/jpeg, image/png" multiple />
+                                            <input type = "file" name="images[]" accept="image/jpeg, image/png" multiple />
                                         </div><!-- /.btn -->
                                         <div class = "file-path-wrapper">
                                             <input class = "file-path validate" type = "text"
