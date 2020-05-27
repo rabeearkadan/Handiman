@@ -138,12 +138,12 @@
                 <ul class="collapsible">
                     <li>
                         <div class="collapsible-header">
-                            <h3> <i class="fa fa-map-marker" aria-hidden="true"></i>
+                            <h3> <i class="fa fa-map-marker" aria-hidden="true" style="width: 100%"></i>
                                 {{ $address['name'] }}
                                 <a href="{{route('client.address.edit',$address['_id'])}}"> <i
                                         class="fa fa-edit"></i> </a>
                                 <a href="#" onclick="document.getElementById('{{$address['_id']}}').submit();">
-                                    <i class="fa fa-trash"></i> </a>
+                                    <i class="fa fa-trash" style="float: right"></i> </a>
                             </h3>
                         </div>
                         <div class="collapsible-body"><span>info</span></div>
