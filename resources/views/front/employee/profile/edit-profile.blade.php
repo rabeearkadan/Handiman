@@ -214,7 +214,7 @@
             </h3>
             <div class="row">
                 <div class="input-field col s6 ">
-                    <select class="icons" id="services">
+                    <select  id="services">
                         <option value="" disabled selected>Choose your option</option>
                         <option value="" data-icon="images/sample-1.jpg">example 1</option>
                         <option value="" data-icon="images/office.jpg">example 2</option>
@@ -228,8 +228,6 @@
     </div>
 @endsection
 @push('js')
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-    <script src="/public/js/materialize.js"></script>
     <script>
         $(document).ready(function(){
             $('#services').formSelect();
