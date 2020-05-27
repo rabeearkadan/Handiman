@@ -125,32 +125,33 @@ class ProfileController extends Controller
     }
     public function updateCV(Request $request){
         $user = Auth::user();
-        $user->cv = $this->uploadAny($request->file('cv'), 'cv', 'pdf');
+        $file = $request->file('cv');
+        $name = 'cv' . time() . '.' . $file->getClientOriginalExtension();
+        if (!Storage::disk('public')->exists('cv')) {
+            Storage::disk('public')->makeDirectory('cv');
+        }
+        if (Storage::disk('public')->putFileAs('cv', $file, $name)) {
+            $user->criminal_record = 'criminal_records/' . $name;
+        } else {
+            return view('front.employee.profile.documents',compact('user'));
+        }
         $user->save();
         return view('front.employee.profile.documents',compact('user'));
     }
     public function updateCR(Request $request){
         $user = Auth::user();
-        $user->criminal_record = $this->uploadAny($request->file('criminal_record'), 'criminal_records', 'pdf');
+        $file = $request->file('criminal_record');
+        $name = 'record_' . time() . '.' . $file->getClientOriginalExtension();
+        if (!Storage::disk('public')->exists('criminal_records')) {
+            Storage::disk('public')->makeDirectory('criminal_records');
+        }
+        if (Storage::disk('public')->putFileAs('criminal_records', $file, $name)) {
+            $user->criminal_record = 'criminal_records/' . $name;
+        } else {
+            return view('front.employee.profile.documents',compact('user'));
+        }
         $user->save();
         return view('front.employee.profile.documents',compact('user'));
     }
-    public function uploadAny($file, $folder, $ext = 'png')
-    {
-       
-
-        $file_name = Str::random(25) . '.' . $ext; //generating unique file name;
-        if (!Storage::disk('public')->exists($folder)) {
-            Storage::disk('public')->makeDirectory($folder);
-        }
-        $result = false;
-        if ($file != "") { // storing image in storage/app/public Folder
-            $result = Storage::disk('public')->put($folder . '/' . $file_name, $file);
-
-        }
-        if ($result)
-            return $folder . '/' . $file_name;
-        else
-            return null;
-    }
+   
 }
