@@ -357,7 +357,7 @@ class RequestController extends Controller
         }
 
 
-        $pdf->save('storage/' . $file_name . '.pdf');
+        $pdf->save('storage/' . $file_name );
         return "true";
 
     }
