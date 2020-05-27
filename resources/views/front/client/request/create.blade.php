@@ -253,7 +253,7 @@
                                             <p> is the request Urgent ? (the request time will be the next couple of hours)</p>
                                             <p>
                                                 <label for="urgent">
-                                                    <input name="is_urgent" id="urgent" type="checkbox" />
+                                                    <input name="is_urgent" id="is_urgent" type="checkbox" />
                                                     <span>Urgent</span>
                                                 </label>
                                             </p>
