@@ -170,18 +170,19 @@ class RequestController extends Controller
 
             ]);
 
+            if ($charge != null) {
 
                 $handyman->balance = $handyman->balance + $total;
                 $request->paid = true;
-                $file_name = Str::random(25);
-                $this->stringToPDF($file_name);
-                $request->report = 'reports/pdf/' . $file_name . '/.pdf';
-
+                $data = $request->receipt;
+                $pdf = Pdf::loadView('cms.requests.report-pdf', compact('data'));
+                $request->report = $this->uploadAny($pdf . 'reports', 'pdf');
 
                 $request->save();
                 $handyman->save();
                 return response()->json(['status' => 'success']);
-            
+            }
+
             return response()->json(['status' => 'error', 'message' => __('api.something-went-wrong')]);
         } catch (CardException $exception) {
             return response()->json(['status' => 'error', 'message' => __('api.card-decline')]);
