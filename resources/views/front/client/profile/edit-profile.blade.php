@@ -96,7 +96,7 @@
         @method('put')
     <div class="background-white p20 mb30">
         <h4 class="page-title">
-            Contact Information
+            General Information
             <input type="submit" value="Save" class="btn btn-primary btn-xs pull-right"/>
         </h4>
         <div class="row">
@@ -135,17 +135,20 @@
         </h4>
     @if($user->client_addresses !=  null)
     @foreach($user->client_addresses as $address)
-
-                <div class="row">
-                    <h3> <i class="fa fa-map-marker" aria-hidden="true"></i>
-                    {{ $address['name'] }}
-                    <a href="{{route('client.address.edit',$address['_id'])}}"> <i
-                            class="fa fa-edit"></i> </a>
-                        <a href="#" onclick="document.getElementById('{{$address['_id']}}').submit();">
-                            <i class="fa fa-trash"></i> </a>
-                    </h3>
-                </div><!-- /.row -->
-
+                <ul class="collapsible">
+                    <li>
+                        <div class="collapsible-header"><i class="material-icons">place</i>
+                            <h3> <i class="fa fa-map-marker" aria-hidden="true"></i>
+                                {{ $address['name'] }}
+                                <a href="{{route('client.address.edit',$address['_id'])}}"> <i
+                                        class="fa fa-edit"></i> </a>
+                                <a href="#" onclick="document.getElementById('{{$address['_id']}}').submit();">
+                                    <i class="fa fa-trash"></i> </a>
+                            </h3>
+                        </div>
+                        <div class="collapsible-body"><span>info</span></div>
+                    </li>
+                </ul>
     @endforeach
     @endif
         <div class="row">
