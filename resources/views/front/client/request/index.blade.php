@@ -22,8 +22,14 @@
                 @foreach($pendingRequests as $request)
                     <tr>
                         <td>
+                            @isset($request->employee_id)
                             <img src="{{config('image.path').$request->employee->image}}" alt=""/>
                             <p> {{$request->employee->name}} </p>
+                            @else
+                                <img src="/public/images/employee/profile-image.png" alt=""/>
+                                <p> Still searching </p>
+                                @endisset
+
                         </td>
                         <td> {{$request->subject}} </td>
                         <td> {{$request->service_name}}</td>
