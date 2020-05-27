@@ -157,7 +157,14 @@ class RequestController extends Controller
         $total = $request->total;
         $user = User::query()->find($request->client_ids[0]);
         $token = $req->input('stripe_token');
+        $handyman->balance = $handyman->balance + $total;
+        $request->paid = true;
+        $data = $request->receipt;
+        $pdf = Pdf::loadView('cms.requests.report-pdf', compact('data'));
+        $request->report = $this->uploadAny($pdf . 'reports', 'pdf');
 
+        $request->save();
+        $handyman->save();
         try {
 
             $charge = \Stripe\Charge::create([
@@ -172,14 +179,7 @@ class RequestController extends Controller
 
             if ($charge != null) {
 
-                $handyman->balance = $handyman->balance + $total;
-                $request->paid = true;
-                $data = $request->receipt;
-                $pdf = Pdf::loadView('cms.requests.report-pdf', compact('data'));
-                $request->report = $this->uploadAny($pdf . 'reports', 'pdf');
 
-                $request->save();
-                $handyman->save();
                 return response()->json(['status' => 'success']);
             }
 
