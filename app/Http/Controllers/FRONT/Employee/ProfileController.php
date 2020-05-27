@@ -131,7 +131,7 @@ class ProfileController extends Controller
             Storage::disk('public')->makeDirectory('cv');
         }
         if (Storage::disk('public')->putFileAs('cv', $file, $name)) {
-            $user->criminal_record = 'criminal_records/' . $name;
+            $user->cv = 'cv/' . $name;
         } else {
             return view('front.employee.profile.documents',compact('user'));
         }
@@ -153,5 +153,5 @@ class ProfileController extends Controller
         $user->save();
         return view('front.employee.profile.documents',compact('user'));
     }
-   
+
 }
