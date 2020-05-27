@@ -154,9 +154,10 @@
                                             </h2>
                                         </div>
                                         <div class="col-sm-10">
-                                            <h3>will put employee info later here</h3>
+                                            <h3>Address:</h3>
+                                            <h3>Rating:</h3>
                                             <input type="hidden" name="employee_id" value="{{$employee->id}}">
-                                            <input type="hidden" name="service_id" value="{{$service->id}}">
+{{--                                            <input type="hidden" name="service_id" value="{{$service->id}}">--}}
                                         </div>
                                     </div>
                                 </div>
@@ -217,9 +218,15 @@
                                     </div><!-- /.col* -->
                                     <div class="input-field col s6 ">
                                         <select class="icons" id="service">
-                                            <option value="" disabled selected>Choose your service type</option>
-                                            @foreach($employee->services as $service)
-                                                <option value="{{$service->id}}"  name="service" data-icon="{{config('image.path').$service->image}}">{{$service->name}}</option>
+                                            <option value="" disabled >Choose your service type</option>
+                                            @foreach($employee->services as $s)
+                                                <option value="{{$s->id}}"  name="service" data-icon="{{config('image.path').$service->image}}"
+                                                @if($s->id == $service->id)
+                                                    selected
+                                                        @endif
+                                                >
+                                                    {{$service->name}}
+                                                </option>
                                             @endforeach
                                         </select>
                                         <label for="service">Services</label>
