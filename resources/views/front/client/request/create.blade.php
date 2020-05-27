@@ -207,7 +207,7 @@
                                     <div class = "file-field input-field">
                                         <div class = "btn" style="position:static;">
                                             <span>Browse</span>
-                                            <input type = "file" style="width: max-content" accept="image/jpeg, image/png" multiple />
+                                            <input type = "file" accept="image/jpeg, image/png" multiple />
                                         </div><!-- /.btn -->
                                         <div class = "file-path-wrapper">
                                             <input class = "file-path validate" type = "text"
@@ -217,10 +217,10 @@
                                     </div><!-- /.col* -->
                                     <div class="input-field col s6 ">
                                         <select class="icons" id="service">
-                                            <option value="" disabled selected>Choose your option</option>
-                                            <option value="" data-icon="images/sample-1.jpg">example 1</option>
-                                            <option value="" data-icon="images/office.jpg">example 2</option>
-                                            <option value="" data-icon="images/yuna.jpg">example 3</option>
+                                            <option value="" disabled selected>Choose your service type</option>
+                                            @foreach($services as $service)
+                                                <option value="{{$service->id}}"  name="service" data-icon="{{config('image.path').$service->image}}">{{$service->name}}</option>
+                                            @endforeach
                                         </select>
                                         <label for="service">Images in select</label>
                                     </div>

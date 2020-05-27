@@ -7,16 +7,16 @@
     transition: background-color .15s linear;
 }
 
-.btn:after, .detail-gallery .owl-next:after, .detail-gallery .owl-prev:after {
-    background-color: rgba(0, 0, 0, 0.15);
-    bottom: 0px;
-    content: '';
-    display: block;
-    height: 2px;
-    left: 0px;
-    position: absolute;
-    width: 100%;
-}
+/*.btn:after, .detail-gallery .owl-next:after, .detail-gallery .owl-prev:after {*/
+/*    background-color: rgba(0, 0, 0, 0.15);*/
+/*    bottom: 0px;*/
+/*    content: '';*/
+/*    display: block;*/
+/*    height: 2px;*/
+/*    left: 0px;*/
+/*    position: absolute;*/
+/*    width: 100%;*/
+/*}*/
 
 .btn-primary, .fileinput-upload-button, .detail-gallery .owl-next, .detail-gallery .owl-prev {
     background-color: #009f8b;
