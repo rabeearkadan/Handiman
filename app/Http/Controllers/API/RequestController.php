@@ -152,19 +152,11 @@ class RequestController extends Controller
         Stripe::setApiKey('sk_test_rPUYuVgziB8APOOSyd9q4zgT00rtI4Hhat');
         $request = RequestService::query()->find($id);
         $handyman = User::query()->find($request->employee_ids[0]);
-        $this->notification($handyman->employee_device_token, 'Genie', 'check receipt', 'request');
 
         $total = $request->total;
         $user = User::query()->find($request->client_ids[0]);
         $token = $req->input('stripe_token');
-        $handyman->balance = $handyman->balance + $total;
-        $request->paid = true;
-        $data = $request->receipt;
-        $pdf = Pdf::loadView('cms.requests.report-pdf', compact('data'));
-        $request->report = $this->uploadAny($pdf . 'reports', 'pdf');
 
-        $request->save();
-        $handyman->save();
         try {
 
             $charge = \Stripe\Charge::create([
@@ -178,8 +170,16 @@ class RequestController extends Controller
             ]);
 
             if ($charge != null) {
+                $this->notification($handyman->employee_device_token, 'Genie', 'check receipt', 'request');
 
+                $handyman->balance = $handyman->balance + $total;
+                $request->paid = true;
+                $data = $request->receipt;
+                $pdf = Pdf::loadView('cms.requests.report-pdf', compact('data'));
+                $request->report = $this->uploadAny($pdf . 'reports', 'pdf');
 
+                $request->save();
+                $handyman->save();
                 return response()->json(['status' => 'success']);
             }
 
