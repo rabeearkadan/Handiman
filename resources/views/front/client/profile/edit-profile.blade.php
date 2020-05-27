@@ -100,10 +100,23 @@
             <input type="submit" value="Save" class="btn btn-primary btn-xs pull-right"/>
         </h4>
         <div class="row">
-            <div class="form-group col-sm-12">
+            <div class="form-group col-sm-6">
                 <label for="name">Name</label>
                 <input type="text" class="form-control" name="name" id="name" value="{{$user->name}}">
             </div><!-- /.form-group -->
+            <div class="form-group col-sm-6">
+                <label>Gender</label>
+                <p>
+                    <label>
+                        <input class="with-gap" name="gender" type="radio" @if($user->gender=='male') checked @endif />
+                        <span>male</span>
+                    </label>
+                    <label>
+                        <input class="with-gap" name="gender" type="radio" @if($user->gender=='female') checked @endif />
+                        <span>female</span>
+                    </label>
+                </p>
+            </div>
             <div class="form-group col-sm-6">
                 <label for="email">E-mail</label>
                 <input type="text" class="form-control" name="email" id="email" value="{{$user->email}}">
