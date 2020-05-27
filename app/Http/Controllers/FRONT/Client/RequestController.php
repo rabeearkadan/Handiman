@@ -157,7 +157,8 @@ class RequestController extends Controller
                     Storage::disk('public')->makeDirectory('requests');
                 }
                 if (Storage::disk('public')->putFileAs('requests', $image, $name)) {
-                    $user->image = 'requests/' . $name;
+                    $element= 'requests/' . $name;
+                    array_push($images,$element );
                 }
             }
             $requestHandyman->images = $images;
