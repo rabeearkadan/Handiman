@@ -204,6 +204,27 @@
             </div>
         </form>
     </div>
+    <div class="background-white p20 mb30">
+        <form method="post" action="{{route('employee.services.update')}}" >
+            @csrf
+            @method('put')
+            <h3 class="page-title">
+                Services
+                <input type="submit" value = "Save"  class="btn btn-primary btn-xs pull-right" />
+            </h3>
+            <div class="row">
+                <div class="input-field col s12 m6">
+                    <select id="services" class="icons" multiple>
+                        <option value="" disabled selected>Choose your services</option>
+                        @foreach($services as $service)
+                        <option value="{{$service->id}}"  name="services[]" data-icon="{{config(image.path).$service->image}}">{{$service->name}}</option>
+                            @endforeach
+                    </select>
+                    <label>Choose you services</label>
+                </div>
+            </div>
+        </form>
+    </div>
 @endsection
 @push('js')
     <script>
@@ -283,4 +304,9 @@
     <script
         src="https://maps.googleapis.com/maps/api/js?key=AIzaSyApA0BZrqcfRauI8W5RLAQYjNJla_AS3gA&libraries=places&callback=initAutocomplete"
         async defer></script>
+    <script>
+        $(document).ready(function(){
+            $('#services').formSelect();
+        });
+    </script>
 @endpush
