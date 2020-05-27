@@ -213,6 +213,7 @@
                 <input type="submit" value = "Save"  class="btn btn-primary btn-xs pull-right" />
             </h3>
             <div class="row">
+
                 <div class="input-field col s12 m6">
                     <select id="services" class="icons" >
                         <option value="" disabled selected>Choose your services</option>
@@ -227,6 +228,13 @@
     </div>
 @endsection
 @push('js')
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="/public/js/materialize.js"></script>
+    <script>
+        $(document).ready(function(){
+            $('#services').formSelect();
+        });
+    </script>
     <script>
         // This example adds a search box to a map, using the Google Place Autocomplete
         // feature. People can enter geographical searches. The search box will return a
@@ -304,10 +312,4 @@
     <script
         src="https://maps.googleapis.com/maps/api/js?key=AIzaSyApA0BZrqcfRauI8W5RLAQYjNJla_AS3gA&libraries=places&callback=initAutocomplete"
         async defer></script>
-    <script src="/public/js/materialize.js"></script>
-    <script>
-        $(document).ready(function(){
-            $('#services').formSelect();
-        });
-    </script>
 @endpush
