@@ -27,7 +27,7 @@
                 <a  href="{{route('employee.reviews')}}" class="@if(request()->is('employee/reviews')) {{'active'}} @endif"> Reviews</a>
             </li>
             <li class="nav-item">
-                <a  href="{{route('employee.profile')}}" class="@if(request()->is('employee/profile*')) {{'active'}} @endif"> Profile </a>
+                <a  href="{{route('employee.profile')}}" class="@if(request()->is('employee/profile*') || request()->is('employee/edit-profile*')) {{'active'}} @endif"> Profile </a>
             </li>
             <li class="nav-item">
                 <a  href="{{route('client.home')}}"> Switch </a>
