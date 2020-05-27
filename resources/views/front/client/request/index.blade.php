@@ -26,7 +26,7 @@
                             <img src="{{config('image.path').$request->employee->image}}" alt=""/>
                             <p> {{$request->employee->name}} </p>
                             @else
-                                <img src="/public/images/employee/profile-image.png" alt=""/>
+                                <img src="/public/images/employee/profile.png" alt=""/>
                                 <p> Still searching </p>
                                 @endisset
 
