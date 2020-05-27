@@ -220,12 +220,12 @@
                                         <select class="icons" id="service">
                                             <option value="" disabled >Choose your service type</option>
                                             @foreach($employee->services as $s)
-                                                <option value="{{$s->id}}"  name="service" data-icon="{{config('image.path').$service->image}}"
+                                                <option value="{{$s->id}}"  name="service" data-icon="{{config('image.path').$s->image}}"
                                                 @if($s->id == $service->id)
                                                     selected
                                                         @endif
                                                 >
-                                                    {{$service->name}}
+                                                    {{$s->name}}
                                                 </option>
                                             @endforeach
                                         </select>
