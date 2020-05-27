@@ -148,9 +148,8 @@ class RequestController extends Controller
             }
         }
         $requestHandyman->client_address = $address;
-        if ($req->has('images')) {
-            $imagesParam = $req->file('images');
-            $images = [];
+        if($imagesParam=$req->file('images')){
+            $images = array();
             foreach ($imagesParam as $image) {
                 $name = 'image_' . time() . '.' . $image->getClientOriginalExtension();
                 if (!Storage::disk('public')->exists('requests')) {
@@ -163,6 +162,7 @@ class RequestController extends Controller
             }
             $requestHandyman->images = $images;
         }
+        dd($images,$req->file('images'),$requestHandyman->images);
 
         if(!$req->has('employee_id')) {
             if ($req->is_urgent == true) {
