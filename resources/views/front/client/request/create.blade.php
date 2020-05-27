@@ -245,6 +245,7 @@
                                 <div class="row">
                                     <div class="col-sm-5">
                                         <div class="form-group">
+                                            <p> is the request Urgent ? (the request time will be the next couple of hours)</p>
                                             <p>
                                                 <label>
                                                     <input type="checkbox" />
