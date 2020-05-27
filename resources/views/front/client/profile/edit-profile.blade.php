@@ -137,7 +137,7 @@
     @foreach($user->client_addresses as $address)
                 <ul class="collapsible">
                     <li>
-                        <div class="collapsible-header"><i class="material-icons">place</i>
+                        <div class="collapsible-header">
                             <h3> <i class="fa fa-map-marker" aria-hidden="true"></i>
                                 {{ $address['name'] }}
                             </h3>
