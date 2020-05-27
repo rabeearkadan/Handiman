@@ -174,9 +174,9 @@ class RequestController extends Controller
 
                 $handyman->balance = $handyman->balance + $total;
                 $request->paid = true;
-                $data = $request->receipt;
-                $pdf = Pdf::loadView('cms.requests.report-pdf', compact('data'));
-                $request->report = $this->uploadAny($pdf . 'reports', 'pdf');
+//                $data = $request->receipt;
+//                $pdf = Pdf::loadView('cms.requests.report-pdf', compact('data'));
+//                $request->report = $this->uploadAny($pdf . 'reports', 'pdf');
 
                 $request->save();
                 $handyman->save();
