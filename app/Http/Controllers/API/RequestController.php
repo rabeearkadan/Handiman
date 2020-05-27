@@ -170,7 +170,6 @@ class RequestController extends Controller
 
             ]);
 
-            if ($charge != null) {
 
                 $handyman->balance = $handyman->balance + $total;
                 $request->paid = true;
@@ -182,7 +181,7 @@ class RequestController extends Controller
                 $request->save();
                 $handyman->save();
                 return response()->json(['status' => 'success']);
-            }
+            
             return response()->json(['status' => 'error', 'message' => __('api.something-went-wrong')]);
         } catch (CardException $exception) {
             return response()->json(['status' => 'error', 'message' => __('api.card-decline')]);
