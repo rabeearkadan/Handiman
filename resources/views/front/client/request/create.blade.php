@@ -218,11 +218,11 @@
                                     <div class="input-field col s6 ">
                                         <select class="icons" id="service">
                                             <option value="" disabled selected>Choose your service type</option>
-                                            @foreach($user->services as $service)
+                                            @foreach($employee->services as $service)
                                                 <option value="{{$service->id}}"  name="service" data-icon="{{config('image.path').$service->image}}">{{$service->name}}</option>
                                             @endforeach
                                         </select>
-                                        <label for="service">Images in select</label>
+                                        <label for="service">Services</label>
                                     </div>
                                 </div><!-- /.row -->
 
