@@ -12,6 +12,7 @@
             <div class="main-inner">
                 <div class="container">
                     <div class="row">
+                        <a class=" btn-large waves-effect waves-light red"><i class="material-icons">Smart Request</i></a>
                         <div class="col-sm-12 col-lg-10">
                             <div class="content">
                                 <div class="page-title">

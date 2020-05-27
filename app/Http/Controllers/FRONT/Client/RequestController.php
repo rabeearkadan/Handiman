@@ -142,7 +142,7 @@ class RequestController extends Controller
         }
         $requestHandyman->client_address = $address;
         $requestHandyman->timezone = $req->timezone;//'Asia\Beirut'
-        $requestHandyman->service_id = $req->input('service_id');
+        $requestHandyman->service_id = $req->input('service');
         //add attachment if exists
 
         if ($req->has('is_urgent') && $req->input('is_urgent')) {
