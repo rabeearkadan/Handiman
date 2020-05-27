@@ -217,7 +217,7 @@
                     <select id="services" class="icons" multiple>
                         <option value="" disabled selected>Choose your services</option>
                         @foreach($services as $service)
-                        <option value="{{$service->id}}"  name="services[]" data-icon="{{config(image.path).$service->image}}">{{$service->name}}</option>
+                        <option value="{{$service->id}}"  name="services[]" data-icon="{{config('image.path').$service->image}}">{{$service->name}}</option>
                             @endforeach
                     </select>
                     <label>Choose you services</label>
