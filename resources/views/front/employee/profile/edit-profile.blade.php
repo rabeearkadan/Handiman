@@ -220,7 +220,7 @@
                         <option value="" data-icon="images/office.jpg">example 2</option>
                         <option value="" data-icon="images/yuna.jpg">example 3</option>
                     </select>
-                    <label for="service">Images in select</label>
+                    <label >Images in select</label>
                 </div>
 
             </div>
