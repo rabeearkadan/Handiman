@@ -287,6 +287,7 @@
 
         <script src="/public/js/client/requests/date-dropper.pro.min.js"></script>
         <script>
+            @isset($employee)
             var timepicker = @json($timepicker);
             $(document).ready(function () {
                 $('#date-input').dateDropper({
@@ -330,7 +331,7 @@
                     }
                 });
             });
-
+@endisset
         </script>
 <script>
     $(document).ready(function(){
