@@ -32,7 +32,7 @@
                     <a class="carousel-item" href="#one!"><img src="/public/images/client-home.png"></a>
                     <a class="carousel-item" href="#two!"><img src="/public/images/employee/profile.png"></a>
                     <a class="carousel-item" href="#three!"><img src="/public/images/employee-home.png"></a>
-                    
+
                 </div>
             </div>
         </div>
@@ -57,4 +57,10 @@
 {{--            });--}}
 {{--        }--}}
 {{--    </script>--}}
+<script>
+    $(document).ready(function(){
+        $('.tabs').tabs();
+    });
+
+</script>
 @endpush
