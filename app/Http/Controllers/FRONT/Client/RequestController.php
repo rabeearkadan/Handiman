@@ -165,6 +165,7 @@ class RequestController extends Controller
 
         if(!$req->has('employee_id')) {
             if ($req->is_urgent == true) {
+                $requestHandyman->is_urgent = true;
                 if (Carbon::now($requestHandyman->timezone)->minute > 30) {
                     $nowHour = str_pad(Carbon::now($requestHandyman->timezone)->hour + 1, 2, '0', STR_PAD_LEFT) . '00';
                     $nowNextHour = str_pad(Carbon::now($requestHandyman->timezone)->hour + 2, 2, '0', STR_PAD_LEFT) . '00';
@@ -187,7 +188,6 @@ class RequestController extends Controller
                 $requestHandyman->clients()->attach(Auth::id());
 
             return redirect(route('client.request.index'));
-
         }
         else {
                 $handyman = User::query()->find($req->input('employee_id'));
