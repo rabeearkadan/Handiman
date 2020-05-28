@@ -33,10 +33,56 @@
                         </td>
                         <td> {{$request->subject}} </td>
                         <td> {{$request->service_name}}</td>
-                        <td> Time </td>
+                        <td> {{$request->date->format('d/m/Y')}} </td>
                         <td style="text-align:left"> {{$request->description}} </td>
-                        <td><a href="#" class="view-button"> View </a></td>
+                        <td><a href="{{$request->id}}" class="view-button"> View </a></td>
                     </tr>
+                    <div id="{{$request->id}}" class="modal bottom-sheet modal-fixed-footer" style="overflow:scroll;">
+                        <div class="modal-content">
+                            <h3 class="header">Request Details</h3>
+                            <ul class="collection" style="overflow:scroll">
+                                <li class="collection-item avatar">
+                                    @isset($request->employee_id)
+                                    <img src="" alt="" class="circle">
+                                    <span class="title">{{$request->employee->name}}</span>
+                                    <p>rating
+                                        <br> Second Line
+                                    </p>
+                                    <a href="#!" class="secondary-content">
+                                        <i class="material-icons">grade</i>
+                                    </a>
+                                    @else
+                                        <img src="/public/images/employee/profile.png" alt="" class="circle">
+                                        <span class="title">Searching for employee</span>
+                                    @endisset
+                                </li>
+                                <li class="collection-item avatar">
+                                    <i class="material-icons circle">folder</i>
+                                    <span class="title">Service</span>
+                                    <p>First Line
+                                        <br> Second Line
+                                    </p>
+                                </li>
+                                <li class="collection-item avatar">
+                                    <i class="material-icons circle green">assessment</i>
+                                    <span class="title">Date Time</span>
+                                    <p>Date:
+                                        <br>{{$request->date->format('d/m/Y')}}
+                                    </p>
+                                </li>
+                                <li class="collection-item avatar">
+                                    <i class="material-icons circle red">play_arrow</i>
+                                    <span class="title">Address</span>
+                                    <p>First Line
+                                        <br> Second Line
+                                    </p>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="modal-footer">
+                            <a href="#!" class="modal-close waves-effect waves-green btn-flat">close</a>
+                        </div>
+                    </div>
                 @endforeach
             </table>
         </div>
@@ -62,7 +108,7 @@
                         </td>
                         <td> {{$request->subject}} </td>
                         <td> {{$request->service_name}} </td>
-                        <td> Time</td>
+                        <td> {{$request->date->format('d/m/Y')}}</td>
                         <td style="text-align:left;"> {{$request->description}} </td>
                         <td><a href="#" class="view-button approved"> View </a></td>
                     </tr>
@@ -70,6 +116,7 @@
             </table>
         </div>
     </div>
+
 @endsection
 @push('js')
     <script src="/public/js/client/tabs.js" type="text/javascript"></script>
