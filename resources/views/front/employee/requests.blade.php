@@ -1,6 +1,7 @@
 @extends('layouts.employee.app')
 @push('css')
 {{--    <link href="{{asset('css/employee/collapsible.css')}}" rel="stylesheet" type="text/css">--}}
+<link href="{{asset('css/employee/bootstrap.css')}}" rel="stylesheet">
 @endpush
 @section('content')
     <p>Urgent Requests:</p>
