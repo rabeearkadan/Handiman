@@ -12,8 +12,8 @@ class RequestController extends Controller
 {
     /** Functions
      * index()
-     *accept()
-     * reject
+     * accept()
+     * reject()
      */
 
     /**
