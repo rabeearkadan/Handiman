@@ -21,7 +21,7 @@
                 <li class="tab" ><a class="active" href="#test4">Client</a></li>
                 <li class="tab"><a  href="#test5">Address</a></li>
                 <li class="tab"><a href="#test6">Date</a></li>
-                <li class="tab"><a href="#test6">Images</a></li>
+                <li class="tab"><a href="#test7">Images</a></li>
             </ul>
         </div>
         <div class="card-content grey lighten-4">
@@ -35,6 +35,7 @@
 
                 </div>
             </div>
+            <div id="test7">Test 2</div>
         </div>
     </div>
     </div>
