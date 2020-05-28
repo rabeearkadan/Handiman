@@ -8313,7 +8313,21 @@ input[type=range]::-ms-thumb {
 .slider .slides li img {
   height: 100%;
   background-size: cover;
-  background-position: center;
+}
+@media only screen and (max-width: 420px){
+    .slider .slides li img{
+        height: 86%;
+    }
+}
+@media only screen and (max-width: 375px){
+    .slider .slides li img{
+        height: 77%;
+    }
+}
+@media only screen and (max-width: 330px){
+    .slider .slides li img{
+        height: 60%;
+    }
 }
 
 .slider .slides li .caption {
