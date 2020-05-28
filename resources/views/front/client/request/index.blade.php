@@ -35,7 +35,7 @@
                         <td> {{$request->service_name}}</td>
                         <td> {{$request->date->format('d/m/Y')}} </td>
                         <td style="text-align:left"> {{$request->description}} </td>
-                        <td><a href="{{$request->id}}" class="view-button"> View </a></td>
+                        <td><a href="#{{$request->id}}" class="view-button"> View </a></td>
                     </tr>
                     <div id="{{$request->id}}" class="modal bottom-sheet modal-fixed-footer" style="overflow:scroll;">
                         <div class="modal-content">
