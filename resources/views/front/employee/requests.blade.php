@@ -28,12 +28,7 @@
             <div id="test4">Test 1</div>
             <div id="test5">Test 2</div>
             <div id="test6">
-                <div class="carousel">
-                    <a class="carousel-item" href="#one!"><img src="/public/images/client-home.png"></a>
-                    <a class="carousel-item" href="#two!"><img src="/public/images/employee/profile.png"></a>
-                    <a class="carousel-item" href="#three!"><img src="/public/images/employee-home.png"></a>
-
-                </div>
+                test6
             </div>
             <div id="test7">Test 2</div>
         </div>
@@ -63,6 +58,7 @@
 <script>
     $(document).ready(function(){
         $('.tabs').tabs();
+
     });
 
 </script>
