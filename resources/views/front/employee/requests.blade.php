@@ -56,10 +56,7 @@
 <script src="/public/js/materialize.js"></script>
 
 <script>
-    $(document).ready(function(){
-        $('.tabs').tabs();
-
-    });
-
+    var el = document.querySelector('.tabs');
+    var instance = M.Tabs.init(el, {});
 </script>
 @endpush
