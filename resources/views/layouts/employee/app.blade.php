@@ -11,7 +11,7 @@
     <script src="{{ asset('js/app.js') }}" defer></script>
     @endif
     <!-- Styles -->
-
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     @if(request()->route()->getName() != "employee.post.create" )
     <link href="{{asset('css/app.css')}}" rel="stylesheet">
     @endif

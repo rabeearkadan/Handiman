@@ -24,7 +24,41 @@
             </ul>
         </div>
         <div class="card-content grey lighten-4">
-            <div id="client">client </div>
+            <div id="client">
+                <ul class="collection" style="overflow:scroll">
+                    <li class="collection-item avatar">
+                            <img src="/public/images/employee-home.png" alt="" class="circle">
+                            <span class="title">nnn</span>
+                            <p>rating
+                                <br> Second Line
+                            </p>
+                            <a href="#!" class="secondary-content">
+                                <i class="material-icons">grade</i>
+                            </a>
+                    </li>
+                    <li class="collection-item avatar">
+                        <i class="material-icons circle">folder</i>
+                        <span class="title">Service</span>
+                        <p>First Line
+                            <br> Second Line
+                        </p>
+                    </li>
+                    <li class="collection-item avatar">
+                        <i class="material-icons circle green">assessment</i>
+                        <span class="title">Date Time</span>
+                        <p>Date:
+                            <br>
+                        </p>
+                    </li>
+                    <li class="collection-item avatar">
+                        <i class="material-icons circle red">play_arrow</i>
+                        <span class="title">Address</span>
+                        <p>First Line
+                            <br> Second Line
+                        </p>
+                    </li>
+                </ul>
+            </div>
             <div id="address">address </div>
             <div id="images">
                 <div class="slider">
