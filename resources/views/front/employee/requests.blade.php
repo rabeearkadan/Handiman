@@ -18,16 +18,15 @@
         </div>
         <div class="card-tabs">
             <ul class="tabs tabs-fixed-width">
-                <li class="tab" ><a class="active" href="#test4">Client</a></li>
-                <li class="tab"><a  href="#test5">Address</a></li>
-                <li class="tab"><a href="#test6">Date</a></li>
-                <li class="tab"><a href="#test7">Images</a></li>
+                <li class="tab" ><a class="active" href="#client">Client</a></li>
+                <li class="tab"><a  href="#address">Address</a></li>
+                <li class="tab"><a href="#images">Images</a></li>
             </ul>
         </div>
         <div class="card-content grey lighten-4">
-            <div id="test4">Test 1</div>
-            <div id="test5">Test 2</div>
-            <div id="test6">
+            <div id="client">client </div>
+            <div id="address">address </div>
+            <div id="images">
                 <div class="slider">
                     <ul class="slides">
                         <li>
@@ -47,7 +46,6 @@
                     </ul>
                 </div>
             </div>
-            <div id="test7">Test 2</div>
         </div>
     </div>
     </div>
