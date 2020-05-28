@@ -8270,6 +8270,8 @@ input[type=range]::-ms-thumb {
   position: relative;
   height: 400px;
   width: 100%;
+  display: flex;
+  text-align: center;
 }
 
 .slider.fullscreen {
@@ -8310,7 +8312,6 @@ input[type=range]::-ms-thumb {
 
 .slider .slides li img {
   height: 100%;
-  width: 100%;
   background-size: cover;
   background-position: center;
 }
