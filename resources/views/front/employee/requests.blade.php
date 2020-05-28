@@ -28,9 +28,24 @@
             <div id="test4">Test 1</div>
             <div id="test5">Test 2</div>
             <div id="test6">
-                <img class="materialboxed" width="350" src="/public/images/employee-home.png">
-                <img class="materialboxed" width="350" src="/public/images/employee/profile.png">
-                <img class="materialboxed" width="350" src="/public/images/client-home.png">
+                <div class="slider">
+                    <ul class="slides">
+                        <li>
+                            <img src="/public/images/employee-home.png"> <!-- random image -->
+
+                        </li>
+                        <li>
+                            <img src="/public/images/employee/profile.png"> <!-- random image -->
+
+                        </li>
+                        <li>
+                            <img src="/public/images/client/profile-image.png"> <!-- random image -->
+                        </li>
+                        <li>
+                            <img src="/public/images/employee/profile-image.png"> <!-- random image -->
+                        </li>
+                    </ul>
+                </div>
             </div>
             <div id="test7">Test 2</div>
         </div>
@@ -59,6 +74,10 @@
 <script>
     var el = document.querySelector('.tabs');
     var instance = M.Tabs.init(el, {});
+    document.addEventListener('DOMContentLoaded', function() {
+        var elems = document.querySelectorAll('.slider');
+        var instances = M.Slider.init(elems);
+    });
 
 </script>
 @endpush
