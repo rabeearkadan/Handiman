@@ -58,7 +58,6 @@
 {{--            });--}}
 {{--        }--}}
 {{--    </script>--}}
-<script src="/public/js/materialize.js"></script>
 
 <script>
     var el = document.querySelector('.tabs');
