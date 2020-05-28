@@ -7,12 +7,12 @@
     <!-- Fonts -->
 
     <!-- Scripts -->
-    @if(request()->route()->getName() != "employee.post.create"  && request()->route()->getName() != "employee.requests")
+    @if(request()->route()->getName() != "employee.post.create")
     <script src="{{ asset('js/app.js') }}" defer></script>
     @endif
     <!-- Styles -->
 
-    @if(request()->route()->getName() != "employee.post.create"   && request()->route()->getName() != "employee.requests")
+    @if(request()->route()->getName() != "employee.post.create" )
     <link href="{{asset('css/app.css')}}" rel="stylesheet">
     @endif
     <link href="{{asset('css/employee/materialize.css')}}" rel="stylesheet">
