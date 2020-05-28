@@ -8,7 +8,7 @@
 <ul id="slide-out" class="sidenav">
     <li><div class="user-view">
             <div class="background">
-                <img src="/public/images/client/sidenav-background.png" width="300px" height="176px">
+                <img src="/public/images/client/sidenav-background.png" style="width:300px; height:176px; border-radius: 0">
             </div>
             <a href="#user"><img class="circle" src="@if(Auth::user()->image){{config('image.path').Auth::user()->image}}@else /public/images/employee/profile-image.png @endif" alt="User"></a>
             <a href="#name"><span class="black-text name">{{ Auth::user()->name }}</span></a>
