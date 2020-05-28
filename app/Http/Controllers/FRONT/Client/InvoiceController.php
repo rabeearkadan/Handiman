@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\FRONT\Client;
 use App\Http\Controllers\Controller;
+use App\Models\Service;
 use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -21,8 +22,9 @@ class InvoiceController extends Controller
     {
         //
         $user = Auth::user();
-        $invoices = $user->invoices;
-        return view ('front.client.invoice.index', compact('invoices'));
+        $invoices = $user->clientRequests->where('paid',true);
+        $services = Service::all();
+        return view ('front.client.invoice.index', compact(['invoices','services']));
     }
 
     /**
@@ -55,6 +57,7 @@ class InvoiceController extends Controller
     public function show($id)
     {
         //
+        $invoice = Request::find($id);
         return view ('front.client.invoice.show', compact('invoice'));
     }
 

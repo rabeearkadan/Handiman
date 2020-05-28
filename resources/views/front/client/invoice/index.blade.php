@@ -22,18 +22,11 @@
                                 <div class="widget">
                                     <h2 class="widgettitle">Categories</h2>
                                     <ul class="menu">
-                                        <li><a href="#">Automotive <strong class="pull-right">12</strong></a></li>
+                                        @foreach($services as $service)
+                                        <li><a href="#"> {{$service->name}} <strong class="pull-right">.</strong></a></li>
+                                        @endforeach
                                     </ul><!-- /.menu -->
                                 </div><!-- /.wifget -->
-                                <div class="widget">
-                                    <h2 class="widgettitle">Archives</h2>
-                                    <ul class="menu">
-                                        <li><a href="#">August <strong class="pull-right">12</strong></a></li>
-                                        <li><a href="#">July <strong class="pull-right">23</strong></a></li>
-                                        <li><a href="#">June <strong class="pull-right">53</strong></a></li>
-                                    </ul><!-- /.menu -->
-                                </div><!-- /.wifget -->
-
                             </div><!-- /.sidebar -->
                         </div><!-- /.col-* -->
                         <div class="col-sm-8 col-lg-9">
@@ -42,23 +35,27 @@
                                     <h1> Invoice list </h1>
                                 </div><!-- /.page-title -->
                                 <div class="posts posts-condensed">
+                                    @foreach($invoices as $invoice)
                                     <div class="post">
-                                        <div class="post-date">08/24/2015</div><!-- /.post-date -->
+                                        <div class="post-date">{{$invoice->date->format('d/m/Y')}}</div><!-- /.post-date -->
                                         <div class="post-image">
                                             <a href="">
-                                                <img src="" alt="A Clockwork Origin">
+                                                <img src="" alt="service image">
                                             </a>
                                         </div><!-- /.post-image -->
                                         <div class="post-content">
-                                            <h2><a href="blog-detail.html">A Clockwork Origin</a></h2>
-                                            <p>And from now on you're all named Bender Jr. The...</p>
+                                            <h2><a href=""></a></h2>
+                                            <p>{{$invoice->description}}...</p>
                                         </div><!-- /.post-content -->
 
                                         <div class="post-more">
-                                            <a href="blog-detail.html">Read More</a>
+                                            <a href="{{route('client.invoice.show',$invoice->id)}}">Show More</a>
                                         </div><!-- /.post-date -->
                                     </div><!-- /.post -->
+                                    @endforeach
                                 </div><!-- /.posts -->
+
+
                                 <div class="pager">
                                     <ul>
                                         <li><a href="#">Prev</a></li>
