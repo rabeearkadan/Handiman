@@ -58,6 +58,8 @@
 {{--            });--}}
 {{--        }--}}
 {{--    </script>--}}
+<script src="/public/js/materialize.js"></script>
+
 <script>
     $(document).ready(function(){
         $('.tabs').tabs();
