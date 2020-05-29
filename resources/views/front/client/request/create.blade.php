@@ -247,6 +247,8 @@
                                     <textarea class="form-control" id="description" name="description"
                                               rows="6"></textarea>
                                 </div><!-- /.form-group -->
+                                @isset($employee)
+                                @else
                                 <div class="row">
                                     <div class="col-sm-12">
                                         <div class="form-group">
@@ -257,10 +259,10 @@
                                                     <span>Urgent</span>
                                                 </label>
                                             </p>
-
                                         </div><!--/.form-group-->
                                     </div><!--/.col-*-->
                                 </div>
+                                @endisset
                                 <div id="date-time">
                                 <div class="row">
                                     <div class="col-sm-5">
