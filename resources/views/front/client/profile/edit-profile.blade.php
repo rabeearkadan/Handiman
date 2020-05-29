@@ -148,7 +148,13 @@
                                 </a>
                             </h3>
                         </div>
-                        <div class="collapsible-body"><span>info</span></div>
+                        <div class="collapsible-body">
+                            <span>Street: {{$address['street']}}</span>
+                            <span>Building:{{$address['house']}}</span>
+                            <span>Zip:{{$address['zip']}}</span>
+                            <span>property type:{{$address['property_type']}}</span>
+                            <span>contract type:{{$address['contract_type']}}</span>
+                        </div>
                     </li>
                 </ul>
     @endforeach
