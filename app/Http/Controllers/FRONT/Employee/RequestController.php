@@ -31,14 +31,14 @@ class RequestController extends Controller
             $item->client = User::find($item->client_ids[0]);
             return $item;
         });
-        $urgent_requests = Auth::user()->employeeRequests()->where('status','pending')->where('is_urgent',true)->get();
-        $urgent_requests = $requests->map(function ($item) {
+        $urgentRequests = Auth::user()->employeeRequests()->where('status','pending')->where('is_urgent',true)->get();
+        $urgentRequests = $requests->map(function ($item) {
             $item->service_name = Service::find($item->service_id)->name;
             $item->client = User::find($item->client_ids[0]);
             return $item;
         });
         //
-        return view('front.employee.requests',compact(['requests','urgent_requests']));
+        return view('front.employee.requests',compact(['requests','urgentRequests']));
     }
 
     /**
