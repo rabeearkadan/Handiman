@@ -3,7 +3,7 @@
 {{--    <link href="{{asset('css/employee/collapsible.css')}}" rel="stylesheet" type="text/css">--}}
 @endpush
 @section('content')
-    <h3>Urgent Requests:</h3>
+    <h4 style="color: darkred">Urgent Requests:</h4>
     @foreach($urgentRequests as $request)
         <div class="row">
             <div class="col-sm-12">
@@ -85,7 +85,7 @@
         </div>
     @endforeach
 
-<h3>Requests:</h3>
+<h4>Requests:</h4>
     @foreach($requests as $request)
     <div class="row">
     <div class="col-sm-12">
