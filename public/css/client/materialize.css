@@ -6035,13 +6035,14 @@ body.keyboard-focused .dropdown-content li:focus {
 }
 
 .materialboxed {
-  display: block;
-  cursor: -webkit-zoom-in;
-  cursor: zoom-in;
-  position: relative;
-  -webkit-transition: opacity .4s;
-  transition: opacity .4s;
-  -webkit-backface-visibility: hidden;
+    float: left;
+  display: block !important;
+  cursor: -webkit-zoom-in !important;
+  cursor: zoom-in !important;
+  position: relative !important;
+  -webkit-transition: opacity .4s !important;
+  transition: opacity .4s !important;
+  -webkit-backface-visibility: hidden !important;
 }
 
 .materialboxed:hover:not(.active) {

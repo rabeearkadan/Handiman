@@ -45,7 +45,7 @@
                                     @isset($request->employee_id)
                                     <img src="" alt="" class="circle">
                                     <span class="title">{{$request->employee->name}}</span>
-                                  
+
                                         <a class="btn-floating btn-large red">
                                             <i class="large material-icons">chat</i>
                                         </a>
@@ -184,6 +184,9 @@
         document.addEventListener('DOMContentLoaded', function() {
             var elems = document.querySelectorAll('.modal');
             var instances = M.Modal.init(elems);
+        });
+        $(document).ready(function(){
+            $('.materialboxed').materialbox();
         });
     </script>
 @endpush
