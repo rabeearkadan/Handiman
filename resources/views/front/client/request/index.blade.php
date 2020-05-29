@@ -73,7 +73,7 @@
                                 <li class="collection-item avatar">
                                     <i class="material-icons circle red">place</i>
                                     <span class="title">Address</span>
-                                    <p> {{$request->client_address->name}}
+                                    <p> {{$request->client_address['name']}}
                                         <br> Second Line
                                     </p>
                                 </li>
@@ -148,7 +148,7 @@
                                 <li class="collection-item avatar">
                                     <i class="material-icons circle red">place</i>
                                     <span class="title">Address</span>
-                                    <p>{{$request->client_address->name}}
+                                    <p>{{$request->client_address['name']}}
                                         <br> Second Line
                                     </p>
                                 </li>
