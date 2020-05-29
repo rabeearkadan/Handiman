@@ -22,7 +22,7 @@
                 @foreach($pendingRequests as $request)
                     <tr>
                         <td>
-                            @isset($request->employee_id)
+                            @isset($request->employee)
                             <img src="{{config('image.path').$request->employee->image}}" alt=""/>
                             <p> {{$request->employee->name}} </p>
                             @else
@@ -42,7 +42,7 @@
                             <h3 class="header">Request Details</h3>
                             <ul class="collection" >
                                 <li class="collection-item avatar">
-                                    @isset($request->employee_id)
+                                    @isset($request->employee)
                                     <img src="" alt="" class="circle">
                                     <span class="title">{{$request->employee->name}}</span>
 
@@ -132,7 +132,7 @@
                             <h3 class="header">Request Details</h3>
                             <ul class="collection" >
                                 <li class="collection-item avatar">
-                                    @isset($request->employee_id)
+                                    @isset($request->employee)
                                         <img src="" alt="" class="circle">
                                         <span class="title">{{$request->employee->name}}</span>
 
