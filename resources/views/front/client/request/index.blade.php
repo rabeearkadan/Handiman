@@ -63,18 +63,19 @@
                                 <li class="collection-item avatar">
                                     <i class="material-icons circle green">date_range</i>
                                     <span class="title">Date Time</span>
-                                    <p>Date:
-                                        <br>{{$request->date->format('d/m/Y')}}
+                                    <p>Date:{{$request->date->format('d/m/Y')}}
+                                        <br>Time: {{$request->from}} -> {{$request->to}}
                                     </p>
                                 </li>
                                 <li class="collection-item avatar">
                                     <i class="material-icons circle red">place</i>
                                     <span class="title">Address</span>
                                     <p> {{$request->client_address['name']}}
-                                        <br> Street:
-                                        <br> zip:
-                                        <br> property type:
-                                        <br> contract type:
+                                        <br> Street:{{$request->client_address['street']}}
+                                        <br> Building: {{$request->client_address['house']}}
+                                        <br> zip: {{$request->client_address['zip']}}
+                                        <br> property type: {{$request->client_address['property_type']}}
+                                        <br> contract type: {{$request->client_address['contract_type']}}
                                     </p>
                                 </li>
                                 <li class="collection-item avatar">
@@ -145,18 +146,19 @@
                                 <li class="collection-item avatar">
                                     <i class="material-icons circle green">date_range</i>
                                     <span class="title">Date and Time</span>
-                                    <p>Date:
-                                        <br>{{$request->date->format('d/m/Y')}}
+                                    <p>Date:{{$request->date->format('d/m/Y')}}
+                                        <br>Time: {{$request->from}} -> {{$request->to}}
                                     </p>
                                 </li>
                                 <li class="collection-item avatar">
                                     <i class="material-icons circle red">place</i>
                                     <span class="title">Address</span>
-                                    <p>{{$request->client_address['name']}}
-                                        <br> Street:
-                                        <br> zip:
-                                        <br> property type:
-                                        <br> contract type:
+                                    <p> {{$request->client_address['name']}}
+                                        <br> Street:{{$request->client_address['street']}}
+                                        <br> Building: {{$request->client_address['house']}}
+                                        <br> zip: {{$request->client_address['zip']}}
+                                        <br> property type: {{$request->client_address['property_type']}}
+                                        <br> contract type: {{$request->client_address['contract_type']}}
                                     </p>
                                 </li>
                                 <li class="collection-item avatar">
