@@ -40,7 +40,7 @@
                     <div id="{{$request->id}}" class="modal bottom-sheet modal-fixed-footer" style="overflow:scroll;">
                         <div class="modal-content">
                             <h3 class="header">Request Details</h3>
-                            <ul class="collection" style="overflow:scroll">
+                            <ul class="collection" >
                                 <li class="collection-item avatar">
                                     @isset($request->employee_id)
                                     <img src="" alt="" class="circle">
@@ -122,7 +122,7 @@
                     <div id="{{$request->id}}" class="modal bottom-sheet modal-fixed-footer" style="overflow:scroll;">
                         <div class="modal-content">
                             <h3 class="header">Request Details</h3>
-                            <ul class="collection" style="overflow:scroll">
+                            <ul class="collection" >
                                 <li class="collection-item avatar">
                                     @isset($request->employee_id)
                                         <img src="" alt="" class="circle">
