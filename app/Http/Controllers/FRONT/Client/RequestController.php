@@ -191,7 +191,7 @@ class RequestController extends Controller
         }
         else {
                 $handyman = User::query()->find($req->input('employee_id'));
-                $requestHandyman->date = Carbon::createFromFormat('d-m-Y', $req->input('date'), $requestHandyman->timezone);
+                $requestHandyman->date = Carbon::createFromFormat('d/m/Y', $req->input('date'), $requestHandyman->timezone);
                 if ($req->has('from'))
                     $requestHandyman->from = $req->input('from');
                 if ($req->has('to')) {
