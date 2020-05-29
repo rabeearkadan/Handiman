@@ -43,10 +43,10 @@
                             <ul class="collection" >
                                 <li class="collection-item avatar">
                                     @isset($request->employee)
-                                    <img src="" alt="" class="circle">
+                                    <img src="{{config('image.path').$request->employee->image}}" alt="employye image" class="circle">
                                     <span class="title">{{$request->employee->name}}</span>
 
-                                        <a class="btn-floating btn-large red">
+                                        <a class="btn-floating btn-large blue" style="float:right">
                                             <i class="large material-icons">chat</i>
                                         </a>
                                     @else
@@ -133,10 +133,10 @@
                             <ul class="collection" >
                                 <li class="collection-item avatar">
                                     @isset($request->employee)
-                                        <img src="" alt="" class="circle">
+                                        <img src="{{config('image.path').$request->employee->image}}" alt="employee image" class="circle">
                                         <span class="title">{{$request->employee->name}}</span>
 
-                                        <a class="btn-floating btn-large red">
+                                        <a class="btn-floating btn-large blue" style="float:right">
                                             <i class="large material-icons">chat</i>
                                         </a>
                                     @else
