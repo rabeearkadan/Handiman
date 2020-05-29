@@ -68,6 +68,13 @@
                                     </p>
                                 </li>
                                 <li class="collection-item avatar">
+                                    <i class="material-icons circle green">info</i>
+                                    <span class="title">Request</span>
+                                    <p>Subject:{{$request->subject}}
+                                        <br>Description: {{$request->description}}
+                                    </p>
+                                </li>
+                                <li class="collection-item avatar">
                                     <i class="material-icons circle red">place</i>
                                     <span class="title">Address</span>
                                     <p> {{$request->client_address['name']}}
@@ -88,7 +95,7 @@
                             </ul>
                         </div>
                         <div class="modal-footer">
-                            <a href="#!" class="modal-close waves-effect waves-green btn-flat">close</a>
+                            <a href="#!" class="modal-close waves-effect waves-red btn-flat">close</a>
                         </div>
                     </div>
                 @endforeach
@@ -151,6 +158,13 @@
                                     </p>
                                 </li>
                                 <li class="collection-item avatar">
+                                    <i class="material-icons circle green">info</i>
+                                    <span class="title">Request</span>
+                                    <p>Subject:{{$request->subject}}
+                                        <br>Description: {{$request->description}}
+                                    </p>
+                                </li>
+                                <li class="collection-item avatar">
                                     <i class="material-icons circle red">place</i>
                                     <span class="title">Address</span>
                                     <p> {{$request->client_address['name']}}
@@ -171,7 +185,7 @@
                             </ul>
                         </div>
                         <div class="modal-footer">
-                            <a href="#!" class="modal-close waves-effect waves-green btn-flat">close</a>
+                            <a href="#!" class="modal-close waves-effect waves-red btn-flat">close</a>
                         </div>
                     </div>
                 @endforeach
