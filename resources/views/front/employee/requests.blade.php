@@ -41,7 +41,7 @@
                                 </li>
                                 <li class="collection-item avatar">
                                     <i class="material-icons circle green">date_range</i>
-                                    <span class="title">Date Time</span>
+                                    <span class="title">Date and Time</span>
                                     <p>Date:{{$request->date->format('d/m/Y')}}
                                         <br>Time: {{$request->from}}->{{$request->to}}
                                     </p>

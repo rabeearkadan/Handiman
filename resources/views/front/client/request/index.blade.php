@@ -48,32 +48,32 @@
                                     <p>rating
                                         <br> Second Line
                                     </p>
-                                    <a href="#!" class="secondary-content">
-                                        <i class="material-icons">grade</i>
-                                    </a>
+                                        <a class="btn-floating btn-large red">
+                                            <i class="large material-icons">chat</i>
+                                        </a>
                                     @else
                                         <img src="/public/images/employee/profile.png" alt="" class="circle">
                                         <span class="title">Searching for employee</span>
                                     @endisset
                                 </li>
                                 <li class="collection-item avatar">
-                                    <i class="material-icons circle">folder</i>
+                                    <i class="material-icons circle">work</i>
                                     <span class="title">Service</span>
-                                    <p>First Line
+                                    <p>{{$request->service_name}}
                                         <br> Second Line
                                     </p>
                                 </li>
                                 <li class="collection-item avatar">
-                                    <i class="material-icons circle green">assessment</i>
+                                    <i class="material-icons circle green">date_range</i>
                                     <span class="title">Date Time</span>
                                     <p>Date:
                                         <br>{{$request->date->format('d/m/Y')}}
                                     </p>
                                 </li>
                                 <li class="collection-item avatar">
-                                    <i class="material-icons circle red">play_arrow</i>
+                                    <i class="material-icons circle red">place</i>
                                     <span class="title">Address</span>
-                                    <p>First Line
+                                    <p> {{$request->client_address->name}}
                                         <br> Second Line
                                     </p>
                                 </li>
@@ -123,8 +123,8 @@
                                         <p>rating
                                             <br> Second Line
                                         </p>
-                                        <a href="#!" class="secondary-content">
-                                            <i class="material-icons">grade</i>
+                                        <a class="btn-floating btn-large red">
+                                            <i class="large material-icons">chat</i>
                                         </a>
                                     @else
                                         <img src="/public/images/employee/profile.png" alt="" class="circle">
@@ -132,23 +132,23 @@
                                     @endisset
                                 </li>
                                 <li class="collection-item avatar">
-                                    <i class="material-icons circle">folder</i>
+                                    <i class="material-icons circle">work</i>
                                     <span class="title">Service</span>
-                                    <p>First Line
+                                    <p>{{$request->service_name}}
                                         <br> Second Line
                                     </p>
                                 </li>
                                 <li class="collection-item avatar">
-                                    <i class="material-icons circle green">assessment</i>
-                                    <span class="title">Date Time</span>
+                                    <i class="material-icons circle green">date_range</i>
+                                    <span class="title">Date and Time</span>
                                     <p>Date:
                                         <br>{{$request->date->format('d/m/Y')}}
                                     </p>
                                 </li>
                                 <li class="collection-item avatar">
-                                    <i class="material-icons circle red">play_arrow</i>
+                                    <i class="material-icons circle red">place</i>
                                     <span class="title">Address</span>
-                                    <p>First Line
+                                    <p>{{$request->client_address->name}}
                                         <br> Second Line
                                     </p>
                                 </li>
