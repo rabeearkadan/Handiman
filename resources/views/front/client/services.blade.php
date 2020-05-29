@@ -23,7 +23,7 @@
                             <img src="{{config('image.path').$service->image}}" alt="later">
                         </a>
                         <h5 class="card-title  mt-3 mb-3"> {{ $service->name }} </h5>
-                        <p class="card-text">Somethinggggggg</p>
+                        <p class="card-text"></p>
                     </div>
                 </div>
             @endforeach
