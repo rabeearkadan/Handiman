@@ -181,7 +181,7 @@ class RequestController extends Controller
             else {
                     $requestHandyman->from = $req->from;
                     $requestHandyman->to = $req->to;
-                    $requestHandyman->date = Carbon::createFromFormat('d-m-Y', $req->input('date'), $requestHandyman->timezone);
+                    $requestHandyman->date = Carbon::createFromFormat('d/m/Y', $req->input('date'), $requestHandyman->timezone);
 
             }
                 $requestHandyman->save();
