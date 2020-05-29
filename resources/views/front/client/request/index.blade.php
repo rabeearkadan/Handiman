@@ -45,9 +45,7 @@
                                     @isset($request->employee_id)
                                     <img src="" alt="" class="circle">
                                     <span class="title">{{$request->employee->name}}</span>
-                                    <p>rating
-                                        <br> Second Line
-                                    </p>
+                                  
                                         <a class="btn-floating btn-large red">
                                             <i class="large material-icons">chat</i>
                                         </a>
@@ -60,7 +58,6 @@
                                     <i class="material-icons circle">work</i>
                                     <span class="title">Service</span>
                                     <p>{{$request->service_name}}
-                                        <br> Second Line
                                     </p>
                                 </li>
                                 <li class="collection-item avatar">
@@ -74,8 +71,18 @@
                                     <i class="material-icons circle red">place</i>
                                     <span class="title">Address</span>
                                     <p> {{$request->client_address['name']}}
-                                        <br> Second Line
+                                        <br> Street:
+                                        <br> zip:
+                                        <br> property type:
+                                        <br> contract type:
                                     </p>
+                                </li>
+                                <li class="collection-item avatar">
+                                    <i class="material-icons circle red">image</i>
+                                    <span class="title">Images</span>
+                                    @foreach($request->images as $image)
+                                        <img class="materialboxed"  width="250" src="{{config('image.path').$image}}">
+                                    @endforeach
                                 </li>
                             </ul>
                         </div>
@@ -120,9 +127,7 @@
                                     @isset($request->employee_id)
                                         <img src="" alt="" class="circle">
                                         <span class="title">{{$request->employee->name}}</span>
-                                        <p>rating
-                                            <br> Second Line
-                                        </p>
+
                                         <a class="btn-floating btn-large red">
                                             <i class="large material-icons">chat</i>
                                         </a>
@@ -135,7 +140,6 @@
                                     <i class="material-icons circle">work</i>
                                     <span class="title">Service</span>
                                     <p>{{$request->service_name}}
-                                        <br> Second Line
                                     </p>
                                 </li>
                                 <li class="collection-item avatar">
@@ -149,8 +153,18 @@
                                     <i class="material-icons circle red">place</i>
                                     <span class="title">Address</span>
                                     <p>{{$request->client_address['name']}}
-                                        <br> Second Line
+                                        <br> Street:
+                                        <br> zip:
+                                        <br> property type:
+                                        <br> contract type:
                                     </p>
+                                </li>
+                                <li class="collection-item avatar">
+                                    <i class="material-icons circle red">image</i>
+                                    <span class="title">Images</span>
+                                    @foreach($request->images as $image)
+                                    <img class="materialboxed"  width="250" src="{{config('image.path').$image}}">
+                                    @endforeach
                                 </li>
                             </ul>
                         </div>
