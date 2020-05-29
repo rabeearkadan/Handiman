@@ -179,6 +179,7 @@ class RequestController extends Controller
 
             }
             else {
+                $requestHandyman->is_urgent = false;
                     $requestHandyman->from = $req->from;
                     $requestHandyman->to = $req->to;
                     $requestHandyman->date = Carbon::createFromFormat('d/m/Y', $req->input('date'), $requestHandyman->timezone);
@@ -192,6 +193,7 @@ class RequestController extends Controller
         else {
                 $handyman = User::query()->find($req->input('employee_id'));
                 $requestHandyman->date = Carbon::createFromFormat('d/m/Y', $req->input('date'), $requestHandyman->timezone);
+                $requestHandyman->is_urgent = false;
                 if ($req->has('from'))
                     $requestHandyman->from = $req->input('from');
                 if ($req->has('to')) {
