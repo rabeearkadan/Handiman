@@ -177,13 +177,7 @@ class UserController extends Controller
             $user->timeline = $test;
 
         }
-
-        if (Arr::has($params, 'address')) {
-            $data = json_decode($params['address']);
-            $user->push('client_addresses', $data);
-        }
-
-
+        
         $user->save();
         if ($user->image != null &&
             $user->biography != null &&
