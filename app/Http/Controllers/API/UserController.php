@@ -22,7 +22,7 @@ class UserController extends Controller
     public function addRating(Request $request)
     {
         $request_id = $request->input('request');
-        $rate=(double)$request->input('rating');
+        $rate = (double)$request->input('rating');
         $requestService = RequestService::query()->find($request_id);
         $requestService->rating = $rate;
         $requestService->save();
@@ -108,14 +108,15 @@ class UserController extends Controller
             $data = [
                 "_id" => Str::random(24),
                 "name" => $request->name,
-                "floor"=> $request->floor,
-                "type"=>$request->type,
-                "building"=>$request->building,
-                "location" => [(double)$request->lat,(double)$request->lng] ,
-                "street" => $request->street ,
+                "floor" => $request->floor,
+                "type" => $request->type,
+                "building" => $request->building,
+                "location" => [(double)$request->lat, (double)$request->lng],
+                "street" => $request->street,
                 "zip" => $request->zip,
+
             ];
-            $user->push('client_addresses',$data);
+            $user->push('client_addresses', $data);
 
 
         }
