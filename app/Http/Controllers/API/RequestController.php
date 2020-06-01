@@ -334,6 +334,9 @@ class RequestController extends Controller
         $request->date = Carbon::createFromFormat('Y-m-d', $req->input('date'), $request->timezone);
         $request->from = $req->input('from');
         $request->to = $req->input('to');
+        $client = User::query()->find($request->client_ids[0]);
+        $this->notification(($client->client_device_token), (Auth::user()->name), 'The Handyman requested a reschedule', 'request');
+
         $request->save();
     }
 
