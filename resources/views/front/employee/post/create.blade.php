@@ -45,10 +45,10 @@
                                     <div class="background-white p30 mb30">
                                         <h3 class="page-title"> Tags </h3>
                                         <ul class="amenities">
-                                            @foreach($user->services() as $service)
+                                            @foreach($user->services as $service)
                                                 <li class="checkbox">
-                                                    <input type="checkbox" name="tags[]" value="{{$service['id']}}" id="{{$service['id']}}">
-                                                    <label for="{{$service['id']}}"> {{$service['name']}} </label>
+                                                    <input type="checkbox" name="tags[]" value="{{$service->_id}}" id="{{$service->_id}}">
+                                                    <label for="{{$service->_id}}"> {{$service->name}} </label>
                                                 </li>
                                             @endforeach
                                         </ul>

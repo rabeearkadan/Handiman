@@ -40,6 +40,7 @@ class PostController extends Controller
     public function create()
     {
         $user = Auth::user();
+        dd($user->services);
         return view('front.employee.post.create',compact('user'));
     }
 
