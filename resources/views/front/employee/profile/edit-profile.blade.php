@@ -128,14 +128,14 @@
         </form>
     </div>
     <div class="background-white p20 mb30">
-        <form method="post" action="{{route('employee.connections.update')}}">
+        <form method="post" action="{{route('employee.connections.update')}}" style="position: relative">
             @csrf
             @method('put')
         <h3 class="page-title">
             Social Connections
             <input type="submit" value="Save" class="btn btn-primary btn-xs pull-right"/>
         </h3>
-            <div class="fixed-action-btn click-to-toggle direction-top direction-left" style="position:relative;">
+            <div class="fixed-action-btn" style="position:absolute;">
                 <a class="btn-floating btn-large red">
                     <i class="large material-icons">mode_edit</i>
                 </a>
