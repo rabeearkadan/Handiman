@@ -37,7 +37,7 @@ Route::middleware(['auth:api', 'employee'])->prefix('employee')->group(function 
     Route::post('post', 'PostController@addPost');
     Route::get('chat-requests', 'ChatController@employeeRequests');
     Route::post('receipt/{id}', 'RequestController@addReceipt');
-
+    Route::post('reschedule/{id}', 'RequestController@reschedule');
 
 });
 

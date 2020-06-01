@@ -63,11 +63,11 @@ class RequestController extends Controller
         if ($req->has('is_urgent')) {
             if ($req->input('is_urgent') == "true") {
                 if (Carbon::now($requestHandyman->timezone)->minute > 30) {
-                    $nowHour = (Carbon::now($requestHandyman->timezone)->hour+1);
-                    $nowNextHour = (Carbon::now($requestHandyman->timezone)->hour+3);
+                    $nowHour = (Carbon::now($requestHandyman->timezone)->hour + 1);
+                    $nowNextHour = (Carbon::now($requestHandyman->timezone)->hour + 3);
                 } else {
                     $nowHour = (Carbon::now($requestHandyman->timezone)->hour);
-                    $nowNextHour = (Carbon::now($requestHandyman->timezone)->hour+2);
+                    $nowNextHour = (Carbon::now($requestHandyman->timezone)->hour + 2);
                 }
                 $requestHandyman->from = $nowHour;
                 $requestHandyman->to = $nowNextHour;
@@ -326,6 +326,15 @@ class RequestController extends Controller
 
 
         return response()->json(['status' => 'success']);
+    }
+
+    public function reschedule($id, Request $req)
+    {
+        $request = RequestService::query()->find($id);
+        $request->date = Carbon::createFromFormat('Y-m-d', $req->input('date'), $request->timezone);
+        $request->from = $req->input('from');
+        $request->to = $req->input('to');
+        $request->save();
     }
 
     public function onRequestDone($id, Request $req)
