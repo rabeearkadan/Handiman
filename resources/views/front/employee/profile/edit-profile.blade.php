@@ -214,7 +214,7 @@
             </h3>
             <div class="row">
                 <div class="input-field col s6 ">
-                    <select class="icons"  name="services[]" id="services" multiple>
+                    <select class="icons"  name="services[]" id="services" multiple="multiple">
                         <option value="" disabled >Choose your services</option>
                         @foreach($services as $service)
                             <option value="{{$service->id}}"  data-icon="{{config('image.path').$service->image}}"
