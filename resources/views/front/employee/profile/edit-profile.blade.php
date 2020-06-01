@@ -250,6 +250,13 @@
             var elems = document.querySelectorAll('select');
             var instances = M.FormSelect.init(elems);
         });
+        $(document).on('change', '#services', function() {
+            var servicesArr = $(this).val();
+            if (servicesArr.length > 4) {
+                servicesArr = servicesArr.slice(0, 4);
+                $('#services').val(servicesArr).FormSelect();
+            }
+        });
         document.addEventListener('DOMContentLoaded', function() {
             var elems = document.querySelectorAll('.fixed-action-btn');
             var instances = M.FloatingActionButton.init(elems, {
