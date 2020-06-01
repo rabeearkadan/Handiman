@@ -38,7 +38,7 @@
                                         <div class="col-sm-12">
                                             <div class="background-white p30 mb30">
                                                 <h3 class="page-title">Gallery</h3>
-                                                <input type="file" id="input-file">
+                                                <input type="file" name="images" id="input-file" multiple="multiple">
                                             </div><!-- /.box -->
                                         </div>
                                     </div><!-- /.row -->
