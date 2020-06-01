@@ -221,9 +221,7 @@
                             @if(in_array($service->id,$user->service_ids))
                                 selected
                                 @endif
-                            >
-                                {{$service->name}}
-                            </option>
+                            >{{$service->name}}</option>
                         @endforeach
                     </select>
                     <label for="services">Choose your type of services</label>
