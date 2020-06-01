@@ -180,17 +180,18 @@ class User extends Eloquent implements
                 ->where('feedback', '!=', null)
                 ->where('employee_ids', [$this->_id])
                 ->get();
+            $_feedback = [];
             foreach ($reqs as $req) {
-                $feedbacks = [];
+
                 $object = [];
                 $object['feedback'] = $req->feedback;
                 $object['client'] = User::query()->find($req->client_ids[0])->simplifiedArray();
 
-                array_push($feedbacks, $object);
+                array_push($_feedback, $object);
 
 
             }
-            $feedback[$service->id] = $feedbacks;
+            $feedback[$service->id] = $_feedback;
 
         }
         return $feedback;
