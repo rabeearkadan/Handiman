@@ -135,7 +135,7 @@
             Social Connections
             <input type="submit" value="Save" class="btn btn-primary btn-xs pull-right"/>
         </h3>
-            <div class="fixed-action-btn">
+            <div class="fixed-action-btn" style="position:relative;">
                 <a class="btn-floating btn-large red">
                     <i class="large material-icons">mode_edit</i>
                 </a>
@@ -251,7 +251,7 @@
         document.addEventListener('DOMContentLoaded', function() {
             var elems = document.querySelectorAll('.fixed-action-btn');
             var instances = M.FloatingActionButton.init(elems, {
-                direction: 'left'
+                direction: 'right'
             });
         });
     </script>
