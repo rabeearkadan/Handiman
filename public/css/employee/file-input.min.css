@@ -194,10 +194,7 @@
     background-color: #f0f0f0
 }
 
-.file-uploading {
-    background: url(../img/loading-sm.gif) center bottom 10px no-repeat;
-    opacity: .6
-}
+
 
 .file-input .btn.disabled, .file-input .btn.disabled *, .file-input .btn[disabled], .file-input .btn[disabled] * {
     cursor: not-allowed

@@ -10,6 +10,11 @@
     <link href="{{asset('css/employee/file-input.min.css')}}" rel="stylesheet">
     <link href="{{asset('css/employee/bootstrap-select.min.css')}}" rel="stylesheet">
     <link href="{{asset('css/employee/submit-button-post.css')}}" rel="stylesheet">
+    <style>
+        .fileinput-upload-button{
+            display: none;
+        }
+    </style>
 @endpush
 @section('content')
     <div class="page-wrapper">
