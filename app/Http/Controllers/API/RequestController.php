@@ -328,6 +328,20 @@ class RequestController extends Controller
         }
         $request->receipt = $invoice->receipt = $receipt_items;
         $request->total = (double)$invoice->total = (double)$req->input('total');
+        if ($req->has('images'))
+        {
+            $imagesParam = $request->input('images');
+            $images = [];
+            foreach ($imagesParam as $image) {
+                try {
+                    $images[] = $this->uploadAny($image, 'receipt', 'png');
+                } catch (\Exception $e) {
+                    return response()->json(['status' => 'error', 'message' => "error uploading image"]);
+                }
+            }
+            $request->receipt_images = $images;
+        }
+
         $request->save();
         $invoice->save();
         $this->notification(($client->client_device_token), (Auth::user()->name), 'You received a receipt', 'request');
