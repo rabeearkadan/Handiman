@@ -135,6 +135,17 @@
             Social Connections
             <input type="submit" value="Save" class="btn btn-primary btn-xs pull-right"/>
         </h3>
+            <div class="fixed-action-btn">
+                <a class="btn-floating btn-large red">
+                    <i class="large material-icons">mode_edit</i>
+                </a>
+                <ul>
+                    <li><a class="btn-floating red"><i class="material-icons">insert_chart</i></a></li>
+                    <li><a class="btn-floating green"><i class="material-icons">facebook</i></a></li>
+                    <li><a class="btn-floating blue"><i class="material-icons">twitter</i></a></li>
+                    <li><a class="btn-floating yellow darken-1"><i class="material-icons">instagram</i></a></li>
+                </ul>
+            </div>
         <div class="form-horizontal">
             <div class="form-group">
                 <label for="facebook" class="col-sm-2 control-label">Facebook</label>
@@ -236,6 +247,12 @@
         document.addEventListener('DOMContentLoaded', function() {
             var elems = document.querySelectorAll('select');
             var instances = M.FormSelect.init(elems);
+        });
+        document.addEventListener('DOMContentLoaded', function() {
+            var elems = document.querySelectorAll('.fixed-action-btn');
+            var instances = M.FloatingActionButton.init(elems, {
+                direction: 'left'
+            });
         });
     </script>
     <script>

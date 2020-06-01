@@ -174,6 +174,9 @@ class ProfileController extends Controller
     }
     public function updateConnections(Request $request){
         $user = Auth::user();
+        $user->facebook = $request->facebook;
+        $user->twitter = $request->twitter;
+        $user->instagram = $request->instagram;
         return redirect(route('employee.profile'));
     }
     public function updateAddress(Request $request){
