@@ -63,11 +63,11 @@ class RequestController extends Controller
         if ($req->has('is_urgent')) {
             if ($req->input('is_urgent') == "true") {
                 if (Carbon::now($requestHandyman->timezone)->minute > 30) {
-                    $nowHour = (Carbon::now($requestHandyman->timezone)->hour);
-                    $nowNextHour = (Carbon::now($requestHandyman->timezone)->hour);
+                    $nowHour = (Carbon::now($requestHandyman->timezone)->hour+1);
+                    $nowNextHour = (Carbon::now($requestHandyman->timezone)->hour+3);
                 } else {
                     $nowHour = (Carbon::now($requestHandyman->timezone)->hour);
-                    $nowNextHour = (Carbon::now($requestHandyman->timezone)->hour);
+                    $nowNextHour = (Carbon::now($requestHandyman->timezone)->hour+2);
                 }
                 $requestHandyman->from = $nowHour;
                 $requestHandyman->to = $nowNextHour;
@@ -95,7 +95,7 @@ class RequestController extends Controller
                     $requestHandyman->from = $req->input('from');
                 if ($req->has('to')) {
                     $requestHandyman->to = $req->input('to');
-                } 
+                }
                 $this->notification(($handyman->employee_device_token), (Auth::user()->name), 'You received a new request', 'request');
             }
             $requestHandyman->save();
