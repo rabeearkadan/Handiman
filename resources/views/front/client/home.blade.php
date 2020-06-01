@@ -13,7 +13,7 @@
                 <div class="container">
                     <div class="row">
                         <a href="{{route('client.request.create')}}" class=" btn-large waves-effect waves-light red" style="margin-left: 53%;position: absolute;">
-                            <i class="material-icons">Smart Request</i>
+                            Smart Request
                         </a>
                         <div class="col-sm-12 col-lg-10">
                             <div class="content">
@@ -49,10 +49,10 @@
                                                 <a href=""> {{$tag->name}} </a>
                                                 @endforeach
                                             </div><!-- /.post-meta-categories -->
-                                            <div class="post-meta-comments">
-                                                <i class="fa fa-comments"></i>
+{{--                                            <div class="post-meta-comments">--}}
+{{--                                                <i class="fa fa-comments"></i>--}}
 {{--                                                <a href="">3 comments</a>--}}
-                                            </div><!-- /.post-meta-comments -->
+{{--                                            </div><!-- /.post-meta-comments -->--}}
 {{--                                            <div class="post-meta-more">--}}
 {{--                                                <a href="">Read More <i class="fa fa-chevron-right"></i></a>--}}
 {{--                                            </div><!-- /.post-meta-more -->--}}

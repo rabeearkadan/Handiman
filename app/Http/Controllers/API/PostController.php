@@ -50,7 +50,6 @@ class PostController extends Controller
 
         $post->title = $request->input('title');
         $post->body = $request->input('body');
-        $post->users()->attach(Auth::id());
 //        dd($request->input('images'));
         if ($request->has('images')) {
             $imagesParam = $request->input('images');
@@ -66,7 +65,7 @@ class PostController extends Controller
         }
 
         $post->save();
-
+        $post->users()->attach(Auth::id());
         return response()->json(['status' => 'success', 'post' => $post]);
     }
 

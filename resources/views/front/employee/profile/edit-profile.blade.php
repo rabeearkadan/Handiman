@@ -217,7 +217,13 @@
                     <select class="icons" id="services" multiple>
                         <option value="" disabled >Choose your services</option>
                         @foreach($services as $service)
-                            <option value="{{$service->id}}"  name="services[]" data-icon="{{config('image.path').$service->image}}">{{$service->name}}</option>
+                            <option value="{{$service->id}}"  name="services[]" data-icon="{{config('image.path').$service->image}}"
+                            @if(in_array($service->id,$user->service_ids))
+                                selected
+                                @endif
+                            >
+                                {{$service->name}}
+                            </option>
                         @endforeach
                     </select>
                     <label for="services">Choose your type of services</label>
