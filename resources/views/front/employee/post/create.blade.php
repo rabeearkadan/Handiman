@@ -47,8 +47,8 @@
                                         <ul class="amenities">
                                             @foreach($user->services() as $service)
                                                 <li class="checkbox">
-                                                    <input type="checkbox" name="tags[]" value="{{$service->id}}" id="{{$service->id}}">
-                                                    <label for="{{$service->id}}"> {{$service->name}} </label>
+                                                    <input type="checkbox" name="tags[]" value="{{$service['id']}}" id="{{$service['id']}}">
+                                                    <label for="{{$service['id']}}"> {{$service['name']}} </label>
                                                 </li>
                                             @endforeach
                                         </ul>
