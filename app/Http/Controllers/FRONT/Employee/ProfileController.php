@@ -197,8 +197,10 @@ class ProfileController extends Controller
             'services' => 'required|max:3',
         ]);
         $user->services()->detach();
-        foreach($request->services as $service)
-        $user->services()->attach($service);
+        foreach($request->services as $service) {
+            $service = Service::find($service);
+            $user->services()->attach($service);
+        }
         return redirect(route('employee.profile'));
     }
 }
