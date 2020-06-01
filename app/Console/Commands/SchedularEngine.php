@@ -63,8 +63,8 @@ class SchedularEngine extends Command
                 '$geometry' => [
                     'type' => 'Point',
                     'coordinates' => [
-                        (float)$requestHandyman->locaation[0],
-                        (float)$requestHandyman->location[1],
+                        (float)$requestHandyman->client_address['location'][0],
+                        (float)$requestHandyman->client_address['location'][1],
                     ],
                     'distanceField' => "dist.calculated",
                     '$maxDistance' => 50000,
