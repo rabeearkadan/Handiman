@@ -37,15 +37,23 @@ class RequestController extends Controller
 
     public function makeRequest(Request $req)
     {
+        $client=User::query()->find(Auth::id());
         $this->validator($req->all())->validate();
         $requestHandyman = new RequestService();
         $requestHandyman->subject = $req->input('subject');
         $requestHandyman->description = $req->input('description');
         $requestHandyman->status = 'pending';
         $requestHandyman->isdone = false;
-        $requestHandyman->address = $req->input('address');
         $requestHandyman->timezone = $req->timezone;
         $requestHandyman->service_id = $req->service_id;
+        $address = null;
+        foreach($client->client_addresses as $client_address) {
+            if ($client_address['_id'] == $req->address) {
+                $address = $client_address;
+                break;
+            }
+        }
+        $requestHandyman->client_address = $address;
 
         if ($req->has('images')) {
             $imagesParam = $req->input('images');
