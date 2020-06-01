@@ -247,15 +247,15 @@
 @push('js')
     <script>
         document.addEventListener('DOMContentLoaded', function() {
-            var elems = document.querySelectorAll('select');
-            var instances = M.FormSelect.init(elems);
+            var select = document.querySelector('#services');
+            var instance = M.FormSelect.init(select);
         });
         $(document).on('change', '#services', function() {
             var servicesArr = $(this).val();
-            if (servicesArr.length > 4) {
+            if (servicesArr.length > 3) {
                 alert('maximum of 3 services is allowed')
-                servicesArr = servicesArr.slice(0, 4);
-                $('#services').val(servicesArr).FormSelect();
+                servicesArr = servicesArr.slice(0, 3);
+                $('#services').val(servicesArr);
                 var select = document.querySelector('#services');
                 var instance = M.FormSelect.init(select);
             }
