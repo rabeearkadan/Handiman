@@ -253,6 +253,7 @@
         $(document).on('change', '#services', function() {
             var servicesArr = $(this).val();
             if (servicesArr.length > 4) {
+                alert('maximum of 3 services is allowed')
                 servicesArr = servicesArr.slice(0, 4);
                 $('#services').val(servicesArr).FormSelect();
             }
