@@ -128,13 +128,14 @@
         </form>
     </div>
     <div class="background-white p20 mb30">
-        <form method="post" action="{{route('employee.connections.update')}}" style="position: relative">
+        <form method="post" action="{{route('employee.connections.update')}}">
             @csrf
             @method('put')
         <h3 class="page-title">
             Social Connections
             <input type="submit" value="Save" class="btn btn-primary btn-xs pull-right"/>
         </h3>
+            <div class="row" style="position:relative;">
             <div class="fixed-action-btn" style="position:absolute;">
                 <a class="btn-floating btn-large red">
                     <i class="large material-icons">mode_edit</i>
@@ -145,6 +146,7 @@
                     <li><a class="btn-floating blue"><i class="material-icons">twitter</i></a></li>
                     <li><a class="btn-floating yellow darken-1"><i class="material-icons">instagram</i></a></li>
                 </ul>
+            </div>
             </div>
         <div class="form-horizontal">
             <div class="form-group">
