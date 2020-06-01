@@ -105,24 +105,24 @@
                 <label>Gender</label>
                 <p>
                     <label>
-                        <input class="with-gap" name="gender" type="radio" @if($user->gender=='male') checked @endif />
+                        <input class="with-gap" name="gender" type="radio" value="male" @if($user->gender=='male') checked @endif />
                         <span>male</span>
                     </label>
                     <label>
-                        <input class="with-gap" name="gender" type="radio" @if($user->gender=='female') checked @endif />
+                        <input class="with-gap" name="gender" type="radio" value="female" @if($user->gender=='female') checked @endif />
                         <span>female</span>
                     </label>
                 </p>
             </div><!-- /.form-group -->
 
             <div class="form-group col-sm-6">
-                <label>E-mail</label>
-                <input type="text" name="email" class="form-control" value="{{$user->email}}">
+                <label for="email">E-mail</label>
+                <input type="text" name="email" id="email" class="form-control" value="{{$user->email}}">
             </div><!-- /.form-group -->
 
             <div class="form-group col-sm-6">
-                <label>Phone</label>
-                <input type="text" name="phone" class="form-control" value="{{$user->phone}}">
+                <label for="phone">Phone</label>
+                <input type="text" name="phone" id="phone" class="form-control" value="{{$user->phone}}">
             </div><!-- /.form-group -->
         </div><!-- /.row -->
         </form>

@@ -162,6 +162,14 @@ class ProfileController extends Controller
 
     public function updateContact(Request $request){
         $user = Auth::user();
+        $user->name= $request->name;
+        $user->email= $request->email;
+        if($request->gender == "male")
+            $user->gender = $request->gender;
+        if($request->gender == "female")
+            $user->gender = $request->gender;
+        $user->phone = $user->phone;
+        $user->save();
         return redirect(route('employee.profile'));
     }
     public function updateConnections(Request $request){
