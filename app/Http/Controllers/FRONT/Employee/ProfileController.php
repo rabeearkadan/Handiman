@@ -189,6 +189,9 @@ class ProfileController extends Controller
     }
     public function updateServices(Request $request){
         $user = Auth::user();
+        $validatedData = $request->validate([
+            'services' => 'min:1|max:3',
+        ]);
         $user->services()->detach();
         foreach($request->services as $service)
         $user->services()->attach($service);
