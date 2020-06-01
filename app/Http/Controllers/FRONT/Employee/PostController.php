@@ -51,7 +51,9 @@ class PostController extends Controller
      */
     public function store(Request $request)
     {
+        dd($request->file('images'));
         $user = Auth::user();
+
         $tags = $request->tags;
         $request->request->remove('tags');
         $post = Post::create( $this->validatePost($request));

@@ -27,7 +27,7 @@
                                 <div class="page-title">
                                     <h1>Add post</h1>
                                 </div>
-                                <form action="{{route('employee.post.store')}}" method="post" id="new_post">
+                                <form action="{{route('employee.post.store')}}" method="post" id="new_post" enctype="multipart/form-data">
                                     @csrf
                                     <div class="background-white p30 mb30">
                                         <h3 class="page-title">Description</h3>
@@ -43,7 +43,7 @@
                                         <div class="col-sm-12">
                                             <div class="background-white p30 mb30">
                                                 <h3 class="page-title">Gallery</h3>
-                                                <input type="file" name="images" id="input-file" multiple="multiple">
+                                                <input type="file" name="images[]" id="input-file" accept="image/jpeg, image/png" multiple="multiple">
                                             </div><!-- /.box -->
                                         </div>
                                     </div><!-- /.row -->
