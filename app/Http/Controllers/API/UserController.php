@@ -111,7 +111,7 @@ class UserController extends Controller
                 "floor" => $request->floor,
                 "type" => $request->type,
                 "building" => $request->building,
-                "location" => [(double)$request->lat, (double)$request->lng],
+                "location" => [(double)$request->lng, (double)$request->lat],
                 "street" => $request->street,
                 "zip" => $request->zip,
 
@@ -177,7 +177,7 @@ class UserController extends Controller
             $user->timeline = $test;
 
         }
-        
+
         $user->save();
         if ($user->image != null &&
             $user->biography != null &&
