@@ -198,6 +198,15 @@ class UserController extends Controller
 
     }
 
+    public function getHandymanFeedback()
+    {
+        $requests = Auth::user()->employeeRequests()->where('feedback', '!=', null)->get();
+        if ($requests != null)
+            return response()->json(['status' => 'success', 'requests' => $requests]);
+        else
+            return response()->json(['status' => 'success', 'requests' => 'you have no feedbacks yet']);
+    }
+
     public function forgotPassword(Request $request)
     {
         Auth::user()->password = Hash::make($request->input('password'));
