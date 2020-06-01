@@ -256,6 +256,8 @@
                 alert('maximum of 3 services is allowed')
                 servicesArr = servicesArr.slice(0, 4);
                 $('#services').val(servicesArr).FormSelect();
+                var select = document.querySelector('#services');
+                var instance = M.FormSelect.init(select);
             }
         });
         document.addEventListener('DOMContentLoaded', function() {
