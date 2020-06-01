@@ -185,11 +185,15 @@ class ProfileController extends Controller
     }
     public function updateBiography(Request $request){
         $user = Auth::user();
+        $request->validate([
+            'biography' => 'required|min:20|max:1500'
+        ]);
+        $user->biography = $request->biography;
         return redirect(route('employee.profile'));
     }
     public function updateServices(Request $request){
         $user = Auth::user();
-        $validatedData = $request->validate([
+        $request->validate([
             'services' => 'required|max:3',
         ]);
         $user->services()->detach();

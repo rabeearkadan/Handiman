@@ -87,152 +87,161 @@
     </div><!-- /.page-title -->
 
     <div class="background-white p20 mb30">
-        <form method="post" action="{{route('employee.contact.update')}}" >
+        <form method="post" action="{{route('employee.contact.update')}}">
             @csrf
             @method('put')
-        <h3 class="page-title">
-            General
-            <input type="submit" value="Save" class="btn btn-primary btn-xs pull-right"/>
-        </h3>
+            <h3 class="page-title">
+                General
+                <input type="submit" value="Save" class="btn btn-primary btn-xs pull-right"/>
+            </h3>
 
-        <div class="row">
-            <div class="form-group col-sm-6">
-                <label>Name</label>
-                <input type="text" name="name" class="form-control" value="{{$user->name}}">
-            </div><!-- /.form-group -->
+            <div class="row">
+                <div class="form-group col-sm-6">
+                    <label for="name">Name</label>
+                    <input type="text" id="name" name="name" class="form-control" value="{{$user->name}}">
+                </div><!-- /.form-group -->
 
-            <div class="form-group col-sm-6">
-                <label>Gender</label>
-                <p>
-                    <label>
-                        <input class="with-gap" name="gender" type="radio" value="male" @if($user->gender=='male') checked @endif />
-                        <span>male</span>
-                    </label>
-                    <label>
-                        <input class="with-gap" name="gender" type="radio" value="female" @if($user->gender=='female') checked @endif />
-                        <span>female</span>
-                    </label>
-                </p>
-            </div><!-- /.form-group -->
+                <div class="form-group col-sm-6">
+                    <label>Gender</label>
+                    <p>
+                        <label>
+                            <input class="with-gap" name="gender" type="radio" value="male"
+                                   @if($user->gender=='male') checked @endif />
+                            <span>male</span>
+                        </label>
+                        <label>
+                            <input class="with-gap" name="gender" type="radio" value="female"
+                                   @if($user->gender=='female') checked @endif />
+                            <span>female</span>
+                        </label>
+                    </p>
+                </div><!-- /.form-group -->
 
-            <div class="form-group col-sm-6">
-                <label for="email">E-mail</label>
-                <input type="text" name="email" id="email" class="form-control" value="{{$user->email}}">
-            </div><!-- /.form-group -->
+                <div class="form-group col-sm-6">
+                    <label for="email">E-mail</label>
+                    <input type="text" name="email" id="email" class="form-control" value="{{$user->email}}">
+                </div><!-- /.form-group -->
 
-            <div class="form-group col-sm-6">
-                <label for="phone">Phone</label>
-                <input type="text" name="phone" id="phone" class="form-control" value="{{$user->phone}}">
-            </div><!-- /.form-group -->
-        </div><!-- /.row -->
+                <div class="form-group col-sm-6">
+                    <label for="phone">Phone</label>
+                    <input type="text" name="phone" id="phone" class="form-control" value="{{$user->phone}}">
+                </div><!-- /.form-group -->
+            </div><!-- /.row -->
         </form>
     </div>
     <div class="background-white p20 mb30">
         <form method="post" action="{{route('employee.connections.update')}}">
             @csrf
             @method('put')
-        <h3 class="page-title">
-            Social Connections
-            <input type="submit" value="Save" class="btn btn-primary btn-xs pull-right"/>
-        </h3>
-            <div class="row" style="position:relative;">
-            <div class="fixed-action-btn" style="position:absolute;">
-                <a class="btn-floating btn-large red">
-                    <i class="large material-icons">mode_edit</i>
-                </a>
-                <ul>
-                    <li><a class="btn-floating red"><i class="material-icons">insert_chart</i></a></li>
-                    <li><a class="btn-floating green"><i class="material-icons">facebook</i></a></li>
-                    <li><a class="btn-floating blue"><i class="material-icons">twitter</i></a></li>
-                    <li><a class="btn-floating yellow darken-1"><i class="material-icons">instagram</i></a></li>
-                </ul>
-            </div>
-            </div>
-        <div class="form-horizontal">
-            <div class="form-group">
-                <label for="facebook" class="col-sm-2 control-label">Facebook</label>
-                <div class="col-sm-9">
-                    <input type="text" class="form-control" name="facebook" id="facebook" value="@if($user->facebook){{$user->facebook}}@else http://facebook.com/@endif">
-                </div><!-- /.col-* -->
-            </div><!-- /.form-group -->
+            <h3 class="page-title">
+                Social Connections
+                <input type="submit" value="Save" class="btn btn-primary btn-xs pull-right"/>
+            </h3>
+            {{--            <div class="row" style="position:relative;">--}}
+            {{--            <div class="fixed-action-btn" style="position:absolute;">--}}
+            {{--                <a class="btn-floating btn-large red">--}}
+            {{--                    <i class="large material-icons">mode_edit</i>--}}
+            {{--                </a>--}}
+            {{--                <ul>--}}
+            {{--                    <li><a class="btn-floating red"><i class="material-icons">insert_chart</i></a></li>--}}
+            {{--                    <li><a class="btn-floating green"><i class="material-icons">facebook</i></a></li>--}}
+            {{--                    <li><a class="btn-floating blue"><i class="material-icons">twitter</i></a></li>--}}
+            {{--                    <li><a class="btn-floating yellow darken-1"><i class="material-icons">instagram</i></a></li>--}}
+            {{--                </ul>--}}
+            {{--            </div>--}}
+            {{--            </div>--}}
+            <div class="form-horizontal">
+                <div class="form-group">
+                    <label for="facebook" class="col-sm-2 control-label">Facebook</label>
+                    <div class="col-sm-9">
+                        <input type="text" class="form-control" name="facebook" id="facebook"
+                               value="@if($user->facebook){{$user->facebook}}@else http://facebook.com/@endif">
+                    </div><!-- /.col-* -->
+                </div><!-- /.form-group -->
 
-            <div class="form-group">
-                <label for="twitter" class="col-sm-2 control-label">Twitter</label>
-                <div class="col-sm-9">
-                    <input type="text" id="twitter" name="twitter" class="form-control" value="@if($user->twitter){{$user->twitter}}@else http://twitter.com/@endif">
-                </div><!-- /.col-* -->
-            </div><!-- /.form-group -->
-            <div class="form-group">
-                <label for="instagram" class="col-sm-2 control-label">Instagram</label>
-                <div class="col-sm-9">
-                    <input type="text" class="form-control" name="instagram" id="instagram" value="@if($user->instagram){{$user->instagram}}@else http://instagram.com/@endif">
-                </div><!-- /.col-* -->
-            </div><!-- /.form-group -->
-        </div><!-- /.form-inline -->
+                <div class="form-group">
+                    <label for="twitter" class="col-sm-2 control-label">Twitter</label>
+                    <div class="col-sm-9">
+                        <input type="text" id="twitter" name="twitter" class="form-control"
+                               value="@if($user->twitter){{$user->twitter}}@else http://twitter.com/@endif">
+                    </div><!-- /.col-* -->
+                </div><!-- /.form-group -->
+                <div class="form-group">
+                    <label for="instagram" class="col-sm-2 control-label">Instagram</label>
+                    <div class="col-sm-9">
+                        <input type="text" class="form-control" name="instagram" id="instagram"
+                               value="@if($user->instagram){{$user->instagram}}@else http://instagram.com/@endif">
+                    </div><!-- /.col-* -->
+                </div><!-- /.form-group -->
+            </div><!-- /.form-inline -->
         </form>
     </div><!-- /.background-white -->
     <div class="background-white p20 mb30">
         <form method="post" action="{{route('employee.address.update')}}">
             @csrf
             @method('put')
-        <h3 class="page-title">
-            Address
-            <input type="submit" value="Save" class="btn btn-primary btn-xs pull-right"/>
-        </h3>
-        <div class="map-position">
-            <input id="pac-input" name="map-input" class="controls" type="text" placeholder="Search Box">
-            <input type="hidden" name="lat" id="lat">
-            <input type="hidden" name="lng" id="lng">
-            <div id="map"></div>
-        </div><!-- /.map-property -->
-        <div class="row">
-            <div class="form-group col-sm-6">
-                <label>Street</label>
-                <input type="text" class="form-control" name="street" value="{{$user->employee_address['street']}}">
-            </div><!-- /.form-group -->
-            <div class="form-group col-sm-3">
-                <label>Building Number/Name</label>
-                <input type="text" class="form-control" name="building" value="{{$user->employee_address['building']}}">
-            </div><!-- /.form-group -->
-            <div class="form-group col-sm-3">
-                <label>ZIP</label>
-                <input type="text" class="form-control" name="zip" value="{{$user->employee_address['zip']}}">
-            </div><!-- /.form-group -->
-        </div><!-- /.row -->
+            <h3 class="page-title">
+                Address
+                <input type="submit" value="Save" class="btn btn-primary btn-xs pull-right"/>
+            </h3>
+            <div class="map-position">
+                <input id="pac-input" name="map-input" class="controls" type="text" placeholder="Search Box">
+                <input type="hidden" name="lat" id="lat">
+                <input type="hidden" name="lng" id="lng">
+                <div id="map"></div>
+            </div><!-- /.map-property -->
+            <div class="row">
+                <div class="form-group col-sm-6">
+                    <label for="street">Street</label>
+                    <input type="text" class="form-control" id="street" name="street"
+                           value="{{$user->employee_address['street']}}">
+                </div><!-- /.form-group -->
+                <div class="form-group col-sm-3">
+                    <label for="building">Building Number/Name</label>
+                    <input type="text" class="form-control" id="building" name="building"
+                           value="{{$user->employee_address['building']}}">
+                </div><!-- /.form-group -->
+                <div class="form-group col-sm-3">
+                    <label for="zip">ZIP</label>
+                    <input type="text" class="form-control" id="zip" name="zip"
+                           value="{{$user->employee_address['zip']}}">
+                </div><!-- /.form-group -->
+            </div><!-- /.row -->
         </form>
     </div>
     <div class="background-white p20 mb30">
-        <form method="post" action="{{route('employee.biography.update')}}" >
+        <form method="post" action="{{route('employee.biography.update')}}">
             @csrf
             @method('put')
-        <h3 class="page-title">
-            Biography
-            <input type="submit" value = "Save"  class="btn btn-primary btn-xs pull-right" />
-        </h3>
+            <h3 class="page-title">
+                Biography
+                <input type="submit" value="Save" class="btn btn-primary btn-xs pull-right"/>
+            </h3>
             <div class="row">
                 <div class="input-field col s12">
-                    <textarea id="biography" name="biography" class="materialize-textarea">{{$user->biography}}</textarea>
+                    <textarea id="biography" name="biography"
+                              class="materialize-textarea">{{$user->biography}}</textarea>
                     <label for="biography"></label>
                 </div>
             </div>
         </form>
     </div>
     <div class="background-white p20 mb30">
-        <form method="post" action="{{route('employee.services.update')}}" >
+        <form method="post" action="{{route('employee.services.update')}}">
             @csrf
             @method('put')
             <h3 class="page-title">
                 Services
-                <input type="submit" value = "Save"  class="btn btn-primary btn-xs pull-right" />
+                <input type="submit" value="Save" class="btn btn-primary btn-xs pull-right"/>
             </h3>
             <div class="row">
                 <div class="input-field col s6 ">
-                    <select class="icons"  name="services[]" id="services" multiple="multiple">
-                        <option value="" disabled >Choose your services</option>
+                    <select class="icons" name="services[]" id="services" multiple="multiple">
+                        <option value="" disabled>Choose your services</option>
                         @foreach($services as $service)
-                            <option value="{{$service->id}}"  data-icon="{{config('image.path').$service->image}}"
-                            @if(in_array($service->id,$user->service_ids))
-                                selected
+                            <option value="{{$service->id}}" data-icon="{{config('image.path').$service->image}}"
+                                    @if(in_array($service->id,$user->service_ids))
+                                    selected
                                 @endif
                             >{{$service->name}}</option>
                         @endforeach
@@ -246,11 +255,11 @@
 @endsection
 @push('js')
     <script>
-        document.addEventListener('DOMContentLoaded', function() {
+        document.addEventListener('DOMContentLoaded', function () {
             var select = document.querySelector('#services');
             var instance = M.FormSelect.init(select);
         });
-        $(document).on('change', '#services', function() {
+        $(document).on('change', '#services', function () {
             var servicesArr = $(this).val();
             if (servicesArr.length > 3) {
                 alert('maximum of 3 services is allowed')
@@ -260,12 +269,12 @@
                 var instance = M.FormSelect.init(select);
             }
         });
-        document.addEventListener('DOMContentLoaded', function() {
-            var elems = document.querySelectorAll('.fixed-action-btn');
-            var instances = M.FloatingActionButton.init(elems, {
-                direction: 'left'
-            });
-        });
+        // document.addEventListener('DOMContentLoaded', function() {
+        //     var elems = document.querySelectorAll('.fixed-action-btn');
+        //     var instances = M.FloatingActionButton.init(elems, {
+        //         direction: 'left'
+        //     });
+        // });
     </script>
     <script>
         // This example adds a search box to a map, using the Google Place Autocomplete
