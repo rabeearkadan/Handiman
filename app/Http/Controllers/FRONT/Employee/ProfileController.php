@@ -179,7 +179,8 @@ class ProfileController extends Controller
     public function updateServices(Request $request){
         $user = Auth::user();
         $user->services()->detach();
-        $user->services()->attach($request->services);
+        foreach($request->services as $service)
+        $user->services()->attach($service);
         return redirect(route('employee.profile'));
     }
 }
