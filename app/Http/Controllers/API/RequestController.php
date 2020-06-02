@@ -177,7 +177,7 @@ class RequestController extends Controller
                 $handyman->balance = $handyman->balance + $total;
                 $request->paid = true;
                 $file_name = Str::random(25);
-                $this->stringToPDF($file_name);
+                $this->stringToPDF($file_name,$request);
                 $request->report = 'reports/pdf/' . $file_name . '.pdf';
 
                 $request->save();
@@ -377,9 +377,8 @@ class RequestController extends Controller
         return response()->json(['status' => 'success']);
     }
 
-    function stringToPDF($file_name)
+    function stringToPDF($file_name,$data)
     {
-        $data = 'foo1';
 
         $pdf = Pdf::loadView('cms.requests.report-pdf', compact('data'));
 
