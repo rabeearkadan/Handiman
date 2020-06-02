@@ -42,6 +42,8 @@ class SchedularEngine extends Command
 
                     $this->Notification($user->client_device_token, 'Admin', $var . ' no results found, search on large area', 'notification');
                 } else {
+                    $this->Notification($user->client_device_token, 'Admin', $var . 'result is found', 'notification');
+
                     $req->employees()->attach($result->id);
                     $req->updated_at = Carbon::now();
                     $req->save();
