@@ -30,6 +30,10 @@ class SchedularEngine extends Command
         foreach ($request as $req) {
 
             if ($req->employees()->count() == 0) {
+                $user = User::query()->find($req->client_ids[0]);
+                $var = Carbon::createFromFormat('Y-m-d H:i:s', $req->date, $req->timezone)->dayOfWeek;
+
+                $this->Notification($user->client_device_token, 'Admin', $var . ' no results found, search on large area', 'notification');
 
                 $result = $this->searchForHandyman($req);
                 if ($result == null) {
