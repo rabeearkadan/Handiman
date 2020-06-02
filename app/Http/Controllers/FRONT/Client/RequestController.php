@@ -33,15 +33,16 @@ class RequestController extends Controller
      *
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
-    public function index(){
-        $pendingRequests = Auth::user()->clientRequests()->where('status','pending')->get();
-        $approvedRequests = Auth::user()->clientRequests()->where('status','approved')->get();
+    public function index()
+    {
+        $pendingRequests = Auth::user()->clientRequests()->where('status', 'pending')->get();
+        $approvedRequests = Auth::user()->clientRequests()->where('status', 'approved')->get();
         $pendingRequests = $pendingRequests->map(function ($item) {
-                $item->service_name = Service::find($item->service_id)->name;
-                $item->employee = User::find($item->employee_ids[0]);
-                return $item;
-            });
-        return view('front.client.request.index',compact(['pendingRequests','approvedRequests']));
+            $item->service_name = Service::find($item->service_id)->name;
+            $item->employee = User::find($item->employee_ids[0]);
+            return $item;
+        });
+        return view('front.client.request.index', compact(['pendingRequests', 'approvedRequests']));
     }
 
     /**
@@ -50,76 +51,73 @@ class RequestController extends Controller
      * @param Request $request
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
-    public function create(Request $request){
-        $user=Auth::user();
-        if($request->input('employee_id')==null){
+    public function create(Request $request)
+    {
+        $user = Auth::user();
+        if ($request->input('employee_id') == null) {
             $services = Service::all();
-            return view('front.client.request.create',compact(['user','services']));
+            return view('front.client.request.create', compact(['user', 'services']));
         }
         $employee = User::find($request->input('employee_id'));
         $service = Service::find($request->input('service_id'));
-        $startDate = new DateTime('now') ;
-       //date("d/m/Y");
+        $startDate = new DateTime('now');
         $Days = array();
         $date = $startDate;
-        $bool= false;
-        $availableDaysString="";
-        $timepicker=array();
-        for($x=0;$x<24;$x++) {
+        $bool = false;
+        $availableDaysString = "";
+        $timepicker = array();
+        for ($x = 0; $x < 24; $x++) {
             $day = date('w', strtotime($date->format('Y-m-d')));
-            for ($hour=0;$hour<24;$hour++) {
+            for ($hour = 0; $hour < 24; $hour++) {
                 $Days[$date->format('m/d/Y')][$hour] = $employee->timeline[$day][$hour];
-               if( $Days[$date->format('m/d/Y')][$hour]==true){
-                   $bool=true;
-               }
-            }
-            foreach ($employee->employeeRequests as $request){
-                if($request->isdone==false & $request->date->format('m/d/Y') == $date->format('m/d/Y') ){
-                    for($from=$request->from; $from<$request->to;$from++) {
-                        $Days[$date->format('m/d/Y')][$from]=false;
-                    }
-                }
-            }
-            for ($hour=0;$hour<24;$hour++) {
                 if ($Days[$date->format('m/d/Y')][$hour] == true) {
                     $bool = true;
                 }
             }
-            if($bool==false){
-                unset($Days[$date->format('m/d/Y')]);
-            }
-            else{
-                if($availableDaysString==""){
-                    $availableDaysString = $date->format('m/d/Y');
+            foreach ($employee->employeeRequests as $request) {
+                if ($request->isdone == false & $request->date->format('m/d/Y') == $date->format('m/d/Y')) {
+                    for ($from = $request->from; $from < $request->to; $from++) {
+                        $Days[$date->format('m/d/Y')][$from] = false;
+                    }
                 }
-                else {
+            }
+            for ($hour = 0; $hour < 24; $hour++) {
+                if ($Days[$date->format('m/d/Y')][$hour] == true) {
+                    $bool = true;
+                }
+            }
+            if ($bool == false) {
+                unset($Days[$date->format('m/d/Y')]);
+            } else {
+                if ($availableDaysString == "") {
+                    $availableDaysString = $date->format('m/d/Y');
+                } else {
                     $availableDaysString = $availableDaysString . ',' . $date->format('m/d/Y');
                 }
-                $timepicker[$date->format('m/d/Y')]=array();
-                $break=false;
-                $index=0;
-                $from=0;
-                for ($hour=0;$hour<24;$hour++) {
-                   if($Days[$date->format('m/d/Y')][$hour]==true) {
-                       if($break==true && !empty($timepicker[$date->format('m/d/Y')])){
-                           $index++;
-                       }
-                       $break=false;
-                       $timepicker[$date->format('m/d/Y')][$index] = array(
-                           'from'=>$from,
-                           'to'=>$hour+1
-                       );
+                $timepicker[$date->format('m/d/Y')] = array();
+                $break = false;
+                $index = 0;
+                $from = 0;
+                for ($hour = 0; $hour < 24; $hour++) {
+                    if ($Days[$date->format('m/d/Y')][$hour] == true) {
+                        if ($break == true && !empty($timepicker[$date->format('m/d/Y')])) {
+                            $index++;
                         }
-                   else{
-                       $break=true;
-                       $from=$hour+1;
-                   }
+                        $break = false;
+                        $timepicker[$date->format('m/d/Y')][$index] = array(
+                            'from' => $from,
+                            'to' => $hour + 1
+                        );
+                    } else {
+                        $break = true;
+                        $from = $hour + 1;
                     }
+                }
             }
-            $bool= false;
+            $bool = false;
             $date->modify('+1 day');
         }
-        return view('front.client.request.create',compact(['user','employee','service','availableDaysString','timepicker']));
+        return view('front.client.request.create', compact(['user', 'employee', 'service', 'availableDaysString', 'timepicker']));
     }
 
     /**
@@ -129,9 +127,10 @@ class RequestController extends Controller
      * @param $employee_id
      * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
      */
-    public function store(Request $req){
+    public function store(Request $req)
+    {
         $user = Auth::user();
-       // $this->validator($req->all())->validate();
+        // $this->validator($req->all())->validate();
         $requestHandyman = new RequestService();
         $requestHandyman->subject = $req->input('subject');
         $requestHandyman->description = $req->input('description');
@@ -141,14 +140,14 @@ class RequestController extends Controller
         $requestHandyman->service_id = $req->input('service');
         //  $requestHandyman->location = explode(',', $req->input('location'));
         $address = null;
-        foreach($user->client_addresses as $client_address) {
+        foreach ($user->client_addresses as $client_address) {
             if ($client_address['_id'] == $req->address) {
                 $address = $client_address;
                 break;
             }
         }
         $requestHandyman->client_address = $address;
-        if($imagesParam=$req->file('images')){
+        if ($imagesParam = $req->file('images')) {
             $images = array();
             foreach ($imagesParam as $image) {
                 $name = 'image_' . time() . '.' . $image->getClientOriginalExtension();
@@ -156,14 +155,14 @@ class RequestController extends Controller
                     Storage::disk('public')->makeDirectory('requests');
                 }
                 if (Storage::disk('public')->putFileAs('requests', $image, $name)) {
-                    $element= 'requests/' . $name;
-                    array_push($images,$element );
+                    $element = 'requests/' . $name;
+                    array_push($images, $element);
                 }
             }
             $requestHandyman->images = $images;
         }
 
-        if(!$req->has('employee_id')) {
+        if (!$req->has('employee_id')) {
             if ($req->is_urgent == true) {
                 $requestHandyman->is_urgent = true;
                 if (Carbon::now($requestHandyman->timezone)->minute > 30) {
@@ -177,37 +176,35 @@ class RequestController extends Controller
                 $requestHandyman->to = $nowNextHour;
                 $requestHandyman->date = Carbon::createFromFormat('Y-m-d', date("Y-m-d"), $requestHandyman->timezone);
 
-            }
-            else {
+            } else {
                 $requestHandyman->is_urgent = false;
-                    $requestHandyman->from = $req->from;
-                    $requestHandyman->to = $req->to;
-                    $requestHandyman->date = Carbon::createFromFormat('d/m/Y', $req->input('date'), $requestHandyman->timezone);
+                $requestHandyman->from = $req->from;
+                $requestHandyman->to = $req->to;
+                $requestHandyman->date = Carbon::createFromFormat('d/m/Y', $req->input('date'), $requestHandyman->timezone);
 
             }
-                $requestHandyman->save();
-                $requestHandyman->clients()->attach(Auth::id());
+            $requestHandyman->save();
+            $requestHandyman->clients()->attach(Auth::id());
 
             return redirect(route('client.request.index'));
-        }
-        else {
-                $handyman = User::query()->find($req->input('employee_id'));
-                $requestHandyman->date = Carbon::createFromFormat('d/m/Y', $req->input('date'), $requestHandyman->timezone);
-                $requestHandyman->is_urgent = false;
-                if ($req->has('from'))
-                    $requestHandyman->from = $req->input('from');
-                if ($req->has('to')) {
-                    $requestHandyman->to = $req->input('to');
-                } else {
-                    $requestHandyman->handyman_to = 'pending';
-                    $requestHandyman->to = null;
-                }
-                $this->notification($handyman->device_token, Auth::user()->name, 'You received a new request', 'request');
+        } else {
+            $handyman = User::query()->find($req->input('employee_id'));
+            $requestHandyman->date = Carbon::createFromFormat('d/m/Y', $req->input('date'), $requestHandyman->timezone);
+            $requestHandyman->is_urgent = false;
+            if ($req->has('from'))
+                $requestHandyman->from = $req->input('from');
+            if ($req->has('to')) {
+                $requestHandyman->to = $req->input('to');
+            } else {
+                $requestHandyman->handyman_to = 'pending';
+                $requestHandyman->to = null;
+            }
+            $this->notification($handyman->device_token, Auth::user()->name, 'You received a new request', 'request');
 
             $requestHandyman->save();
             $requestHandyman->clients()->attach(Auth::id());
-                $handyman = User::query()->find($req->input('employee_id'));
-                $requestHandyman->employees()->attach($handyman->id);
+            $handyman = User::query()->find($req->input('employee_id'));
+            $requestHandyman->employees()->attach($handyman->id);
 
         }
         return redirect(route('client.request.index'));
@@ -217,7 +214,7 @@ class RequestController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param int $id
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
     public function show($id)
@@ -229,7 +226,7 @@ class RequestController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param int $id
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
     public function edit($id)
@@ -241,8 +238,8 @@ class RequestController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param \Illuminate\Http\Request $request
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
@@ -253,7 +250,7 @@ class RequestController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)
@@ -267,6 +264,7 @@ class RequestController extends Controller
             'description' => ['required', 'string', 'min:15']
         ]);
     }
+
     public function Notification($to, $from, $message, $type)
     {
         $notification = array();

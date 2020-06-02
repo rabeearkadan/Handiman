@@ -188,7 +188,7 @@ class ProfileController extends Controller
             $user->gender = $request->gender;
         if ($request->gender == "female")
             $user->gender = $request->gender;
-        $user->phone = $user->phone;
+        $user->phone = $request->phone;
         $user->save();
         return redirect(route('employee.profile'));
     }

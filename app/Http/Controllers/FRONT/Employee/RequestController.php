@@ -25,20 +25,20 @@ class RequestController extends Controller
     {
         //pending urgent
 
-        $requests = Auth::user()->employeeRequests()->where('status','pending')->where('is_urgent',false)->get();
+        $requests = Auth::user()->employeeRequests()->where('status', 'pending')->where('is_urgent', false)->get();
         $requests = $requests->map(function ($item) {
             $item->service_name = Service::find($item->service_id)->name;
             $item->client = User::find($item->client_ids[0]);
             return $item;
         });
-        $urgentRequests = Auth::user()->employeeRequests()->where('status','pending')->where('is_urgent',true)->get();
+        $urgentRequests = Auth::user()->employeeRequests()->where('status', 'pending')->where('is_urgent', true)->get();
         $urgentRequests = $requests->map(function ($item) {
             $item->service_name = Service::find($item->service_id)->name;
             $item->client = User::find($item->client_ids[0]);
             return $item;
         });
         //
-        return view('front.employee.requests',compact(['requests','urgentRequests']));
+        return view('front.employee.requests', compact(['requests', 'urgentRequests']));
     }
 
     /**
@@ -54,7 +54,7 @@ class RequestController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
@@ -65,7 +65,7 @@ class RequestController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function show($id)
@@ -76,7 +76,7 @@ class RequestController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
@@ -87,8 +87,8 @@ class RequestController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param \Illuminate\Http\Request $request
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
@@ -99,7 +99,7 @@ class RequestController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)
