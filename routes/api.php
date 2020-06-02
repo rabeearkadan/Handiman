@@ -23,10 +23,9 @@ Route::get('getHandymanSortedByPrice', 'HandymanController@getHandymanOrderedByP
 Route::middleware(['auth:api', 'employee'])->prefix('employee')->group(function () {
 
 // api route with auth and employee middleware the route is starts with api/empolyee
-
+    Route::get('feedback', 'UserController@getHandymanFeedback');
     Route::delete('post/{id}', 'PostController@deletePost');
     Route::get('post', 'PostController@getPosts');
-
     Route::get('pending-requests', 'RequestController@getHandymanRequests');
     Route::get('post-id/{id}', 'PostController@getPostById');
     Route::get('request/{id}', 'RequestController@getRequestById');

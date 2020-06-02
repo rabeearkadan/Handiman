@@ -37,7 +37,7 @@ class RequestController extends Controller
 
     public function makeRequest(Request $req)
     {
-        $client=User::query()->find(Auth::id());
+        $client = User::query()->find(Auth::id());
         $this->validator($req->all())->validate();
         $requestHandyman = new RequestService();
         $requestHandyman->subject = $req->input('subject');
@@ -47,7 +47,7 @@ class RequestController extends Controller
         $requestHandyman->timezone = $req->timezone;
         $requestHandyman->service_id = $req->service_id;
         $address = null;
-        foreach($client->client_addresses as $client_address) {
+        foreach ($client->client_addresses as $client_address) {
             if ($client_address['_id'] == $req->address) {
                 $address = $client_address;
                 break;
@@ -317,17 +317,34 @@ class RequestController extends Controller
         }
     }
 
+
+
     public function addReceipt($id, Request $req)
     {
         $request = RequestService::query()->find($id);
         $client = User::query()->find($request->client_ids[0]);
         $invoice = new Invoice();
-        $receipt_items = [];
-        foreach ($req->input('receipt') as $item) {
-            array_push($receipt_items, json_decode($item));
+        if ($req->has('receipt') && $req->has('total')) {
+            $receipt_items = [];
+            foreach ($req->input('receipt') as $item) {
+                array_push($receipt_items, json_decode($item));
+            }
+            $request->receipt = $invoice->receipt = $receipt_items;
+            $request->total = (double)$invoice->total = (double)$req->input('total');
         }
-        $request->receipt = $invoice->receipt = $receipt_items;
-        $request->total = (double)$invoice->total = (double)$req->input('total');
+
+        if ($req->has('images')) {
+            $imagesParam = $req->input('images');
+            $images = [];
+            foreach ($imagesParam as $image) {
+                try {
+                    $images[] = $this->uploadAny($image, 'receipt', 'png');
+                } catch (\Exception $e) {
+                    return response()->json(['status' => 'error', 'message' => "error uploading image"]);
+                }
+            }
+            $request->receipt_images = $images;
+        }
         $request->save();
         $invoice->save();
         $this->notification(($client->client_device_token), (Auth::user()->name), 'You received a receipt', 'request');

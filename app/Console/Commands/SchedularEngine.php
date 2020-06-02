@@ -30,6 +30,10 @@ class SchedularEngine extends Command
         foreach ($request as $req) {
 
             if ($req->employees()->count() == 0) {
+                $user = User::query()->find($req->client_ids[0]);
+                $var = Carbon::createFromFormat('Y-m-d H:i:s', $req->date, $req->timezone)->dayOfWeek;
+
+                $this->Notification($user->client_device_token, 'Admin', $var . ' .', 'notification');
 
                 $result = $this->searchForHandyman($req);
                 if ($result == null) {
@@ -38,6 +42,8 @@ class SchedularEngine extends Command
 
                     $this->Notification($user->client_device_token, 'Admin', $var . ' no results found, search on large area', 'notification');
                 } else {
+                    $this->Notification($user->client_device_token, 'Admin', $var . 'result is found', 'notification');
+
                     $req->employees()->attach($result->id);
                     $req->updated_at = Carbon::now();
                     $req->save();
@@ -57,14 +63,14 @@ class SchedularEngine extends Command
         $list = Service::query()->where('_id', $requestHandyman->service_id)->first();
         if ($list == null)
             return response()->json(['status' => 'error', 'message' => "no service found"]);
-        $availableUsers = $list->users()
+        $availableUsers = $list->users()->whereNotIn('_id', $requestHandyman->rejected_employees)
             ->where('isApproved', true)
             ->where('location', 'near', [
                 '$geometry' => [
                     'type' => 'Point',
                     'coordinates' => [
-                        (float)$requestHandyman->locaation[0],
-                        (float)$requestHandyman->location[1],
+                        (float)$requestHandyman->client_address['location'][0],
+                        (float)$requestHandyman->client_address['location'][1],
                     ],
                     'distanceField' => "dist.calculated",
                     '$maxDistance' => 50000,
