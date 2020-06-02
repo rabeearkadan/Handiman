@@ -57,7 +57,7 @@ class SchedularEngine extends Command
         $list = Service::query()->where('_id', $requestHandyman->service_id)->first();
         if ($list == null)
             return response()->json(['status' => 'error', 'message' => "no service found"]);
-        $availableUsers = $list->users()
+        $availableUsers = $list->users()->whereNotIn('_id', $requestHandyman->prevented_employees)
             ->where('isApproved', true)
             ->where('location', 'near', [
                 '$geometry' => [

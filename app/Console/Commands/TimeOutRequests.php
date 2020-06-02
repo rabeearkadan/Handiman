@@ -58,6 +58,9 @@ class TimeOutRequests extends Command
                 $handyman_device = $handyman->employee_device_token;
 
                 if ($duration > 30) {
+
+
+                    $req->push('rejected_employees', $req->employee_ids[0]);
                     //$this->Notification($client_device, 'Admin', $duration, 'notification');
                     $this->Notification($handyman_device, 'Admin', $duration, 'notification');
 
