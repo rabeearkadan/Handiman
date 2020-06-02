@@ -9,17 +9,13 @@
     <link href="{{asset('css/employee/widgets.css')}}" rel="stylesheet">
     <link href="{{asset('css/employee/add-post-button.css')}}" rel="stylesheet">
     <style>
-        .img-container
-        {
-            width:170px;
-        }
+
         .img-container img {
 
             left: 0;
             object-fit: cover;
             object-position: center;
             opacity: 0;
-            position: absolute;
             top: 0;
 
             z-index: -1;
