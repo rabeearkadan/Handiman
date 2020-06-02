@@ -29,7 +29,7 @@ class SchedularEngine extends Command
         $request = RequestService::query()->where('status', 'pending')->get();
         foreach ($request as $req) {
 
-            if ($req->employees()->count() == 0) {
+            if ($req->employees()->count() == 0 ) {
                 $user = User::query()->find($req->client_ids[0]);
                 $var = Carbon::createFromFormat('Y-m-d H:i:s', $req->date, $req->timezone)->dayOfWeek;
 
