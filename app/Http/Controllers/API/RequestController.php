@@ -319,7 +319,7 @@ class RequestController extends Controller
   public function  addReceiptImages($id, Request $req){
       $request = RequestService::query()->find($id);
 
-          $imagesParam = $request->input('images');
+          $imagesParam = $req->input('images');
           $images = [];
           foreach ($imagesParam as $image) {
               try {
