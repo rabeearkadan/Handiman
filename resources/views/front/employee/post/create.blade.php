@@ -35,7 +35,7 @@
                                             <input class="form-control" type="text" name="title" placeholder="Title">
                                         </div><!-- /.form-group -->
                                         <div class="form-group">
-                                            <textarea class="form-control" name="description" placeholder="Body" rows="8"></textarea>
+                                            <textarea class="form-control" name="body" placeholder="Body" rows="8"></textarea>
                                         </div><!-- /.form-group -->
                                     </div><!-- /.box -->
 
