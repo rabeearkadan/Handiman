@@ -94,6 +94,7 @@ class UserController extends Controller
             'apartment_details',
 // employee extra info
             'cv',
+            'price',
             'certificate',
             'timeline',
             'criminal_record',
@@ -122,6 +123,9 @@ class UserController extends Controller
         }
         if (Arr::has($params, 'image'))
             $user->image = $this->uploadAny($params['image'], 'profile');
+
+        if (Arr::has($params, 'price'))
+            $user->price=(double)$request->input('price');
 
         if (Arr::has($params, 'biography'))
             $user->biography = $params['biography'];
