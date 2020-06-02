@@ -29,20 +29,27 @@ class ProfileController extends Controller
      * updateServices()
      */
 
-    public function myProfile(){
+    public function myProfile()
+    {
         $user = Auth::user();
         $services = Service::all();
-        return view('front.employee.profile.edit-profile',compact(['user','services']));
+        return view('front.employee.profile.edit-profile', compact(['user', 'services']));
     }
-    public function editPassword(){
+
+    public function editPassword()
+    {
 
     }
-    public function editPayment(){
+
+    public function editPayment()
+    {
         $user = Auth::user();
-        return view('front.employee.profile.payment',compact('user'));
+        return view('front.employee.profile.payment', compact('user'));
     }
+
 //Client Profile Image
-    public function updateImage(Request $request){
+    public function updateImage(Request $request)
+    {
         $user = Auth::user();
         $file = $request->file('image-input');
         $name = 'image_' . time() . '.' . $file->getClientOriginalExtension();
@@ -57,7 +64,9 @@ class ProfileController extends Controller
         $user->save();
         return redirect()->route('employee.profile');
     }
-    public function destroyImage(){
+
+    public function destroyImage()
+    {
         $user = Auth::user();
         $user->image = "";
         $user->save();
@@ -65,57 +74,61 @@ class ProfileController extends Controller
     }
 
 
-    public function editProfile(){
+    public function editProfile()
+    {
 
     }
 
 
-    public function clientProfile($id){
+    public function clientProfile($id)
+    {
 
     }
-    public function editSchedule(){
+
+    public function editSchedule()
+    {
         $user = Auth::user();
-        $periods=array();
-        for($day=0;$day<7;$day++) {
-            $periods[$day]=array();
-            $break=false;
-            $index=0;
-            $from=0;
-            for($hour=0;$hour<24;$hour++){
-                if($user->timeline[$day][$hour]==true) {
-                    if($break==true && !empty($periods[$day])){
+        $periods = array();
+        for ($day = 0; $day < 7; $day++) {
+            $periods[$day] = array();
+            $break = false;
+            $index = 0;
+            $from = 0;
+            for ($hour = 0; $hour < 24; $hour++) {
+                if ($user->timeline[$day][$hour] == true) {
+                    if ($break == true && !empty($periods[$day])) {
                         $index++;
                     }
-                    $break=false;
+                    $break = false;
                     $periods[$day][$index] = array(
-                        'from'=>$from,
-                        'to'=>$hour+1-$from
+                        'from' => $from,
+                        'to' => $hour + 1 - $from
                     );
-                }
-                else{
-                    $break=true;
-                    $from=$hour+1;
+                } else {
+                    $break = true;
+                    $from = $hour + 1;
                 }
             }
-            }
-        return view('front.employee.profile.schedule',compact(['user','periods']));
+        }
+        return view('front.employee.profile.schedule', compact(['user', 'periods']));
     }
 
-    public function updateSchedule(Request $request){
+    public function updateSchedule(Request $request)
+    {
         $user = Auth::user();
         $timeline = array();
         for ($i = 0; $i <= 23; $i++) {
             for ($j = 0; $j <= 6; $j++) {
-               $timeline[$j][$i] = false;
+                $timeline[$j][$i] = false;
             }
         }
-        $periods=$request->periods;
-        for($day=0;$day<7;$day++){
-            if($periods[$day] != null) {
+        $periods = $request->periods;
+        for ($day = 0; $day < 7; $day++) {
+            if ($periods[$day] != null) {
                 $period = explode(',', $periods[$day]);
-                for ($index=0;$index < sizeof($period);$index++){
-                    for($from=$period[$index];$from<$period[$index+1];$from++) {
-                        $timeline[$day][$from]=true;
+                for ($index = 0; $index < sizeof($period); $index++) {
+                    for ($from = $period[$index]; $from < $period[$index + 1]; $from++) {
+                        $timeline[$day][$from] = true;
                     }
                     $index++;
                 }
@@ -125,11 +138,15 @@ class ProfileController extends Controller
         $user->save();
         return redirect(route('employee.schedule.edit'));
     }
-    public function editDocuments(){
+
+    public function editDocuments()
+    {
         $user = Auth::user();
-        return view('front.employee.profile.documents',compact('user'));
+        return view('front.employee.profile.documents', compact('user'));
     }
-    public function updateCV(Request $request){
+
+    public function updateCV(Request $request)
+    {
         $user = Auth::user();
         $file = $request->file('cv');
         $name = 'cv' . time() . '.' . $file->getClientOriginalExtension();
@@ -139,12 +156,14 @@ class ProfileController extends Controller
         if (Storage::disk('public')->putFileAs('cv', $file, $name)) {
             $user->cv = 'cv/' . $name;
         } else {
-            return view('front.employee.profile.documents',compact('user'));
+            return view('front.employee.profile.documents', compact('user'));
         }
         $user->save();
-        return view('front.employee.profile.documents',compact('user'));
+        return view('front.employee.profile.documents', compact('user'));
     }
-    public function updateCR(Request $request){
+
+    public function updateCR(Request $request)
+    {
         $user = Auth::user();
         $file = $request->file('criminal_record');
         $name = 'record_' . time() . '.' . $file->getClientOriginalExtension();
@@ -154,36 +173,43 @@ class ProfileController extends Controller
         if (Storage::disk('public')->putFileAs('criminal_records', $file, $name)) {
             $user->criminal_record = 'criminal_records/' . $name;
         } else {
-            return view('front.employee.profile.documents',compact('user'));
+            return view('front.employee.profile.documents', compact('user'));
         }
         $user->save();
-        return view('front.employee.profile.documents',compact('user'));
+        return view('front.employee.profile.documents', compact('user'));
     }
 
-    public function updateContact(Request $request){
+    public function updateContact(Request $request)
+    {
         $user = Auth::user();
-        $user->name= $request->name;
-        $user->email= $request->email;
-        if($request->gender == "male")
+        $user->name = $request->name;
+        $user->email = $request->email;
+        if ($request->gender == "male")
             $user->gender = $request->gender;
-        if($request->gender == "female")
+        if ($request->gender == "female")
             $user->gender = $request->gender;
         $user->phone = $user->phone;
         $user->save();
         return redirect(route('employee.profile'));
     }
-    public function updateConnections(Request $request){
+
+    public function updateConnections(Request $request)
+    {
         $user = Auth::user();
         $user->facebook = $request->facebook;
         $user->twitter = $request->twitter;
         $user->instagram = $request->instagram;
         return redirect(route('employee.profile'));
     }
-    public function updateAddress(Request $request){
+
+    public function updateAddress(Request $request)
+    {
         $user = Auth::user();
         return redirect(route('employee.profile'));
     }
-    public function updateBiography(Request $request){
+
+    public function updateBiography(Request $request)
+    {
         $user = Auth::user();
         $request->validate([
             'biography' => 'required|min:20|max:1500'
@@ -191,13 +217,15 @@ class ProfileController extends Controller
         $user->biography = $request->biography;
         return redirect(route('employee.profile'));
     }
-    public function updateServices(Request $request){
+
+    public function updateServices(Request $request)
+    {
         $user = Auth::user();
         $request->validate([
             'services' => 'required|max:3',
         ]);
         $user->services()->detach();
-        foreach($request->services as $service) {
+        foreach ($request->services as $service) {
             $service = Service::find($service);
             $user->services()->attach($service);
         }
