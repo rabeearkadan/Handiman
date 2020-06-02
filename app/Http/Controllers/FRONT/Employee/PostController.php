@@ -56,7 +56,7 @@ class PostController extends Controller
         $post = new Post();
         $request->validate([
             'title' => 'required|min:3',
-            'description' => 'required|min:15',
+            'body' => 'required|min:15',
             'images' => 'required',
             'tags' => 'required'
         ]);
@@ -73,7 +73,7 @@ class PostController extends Controller
             }
         }
         $post->title = $request->title;
-        $post->description = $request->description;
+        $post->body = $request->body;
         $post->images = $images;
         $post->save();
         $post->users()->attach($user->id);
