@@ -317,25 +317,7 @@ class RequestController extends Controller
         }
     }
 
-    public function addReceiptImages($id, Request $req)
-    {
-        $request = RequestService::query()->find($id);
 
-        $imagesParam = $req->input('images');
-        $images = [];
-        foreach ($imagesParam as $image) {
-            try {
-                $images[] = $this->uploadAny($image, 'receipt', 'png');
-            } catch (\Exception $e) {
-                return response()->json(['status' => 'error', 'message' => "error uploading image"]);
-            }
-        }
-        $request->receipt_images = $images;
-
-        $request->save();
-
-
-    }
 
     public function addReceipt($id, Request $req)
     {
