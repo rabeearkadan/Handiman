@@ -69,7 +69,7 @@
                                             <div class="post-image">
                                                 <div class="img-container" data-slideshow>
                                                     @foreach($post->images as $image)
-                                                <img src="{{config('image.path').$post->image}}"
+                                                <img src="{{config('image.path').$image}}"
                                                      alt="">
                                                         @endforeach
                                                 </div>
