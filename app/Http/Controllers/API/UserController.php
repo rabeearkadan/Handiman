@@ -208,7 +208,7 @@ class UserController extends Controller
         $addresses = [];
         foreach ($user->client_addresses as $address) {
             if ($address['_id'] != $id)
-                $addresses [] = $addresses;
+               array_push($addresses,$address);
         }
         $user->client_addresses = $addresses;
         $user->save();
