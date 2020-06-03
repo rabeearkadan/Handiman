@@ -80,7 +80,6 @@ class PostController extends Controller
                 array_push($images, $element);
             }
         }
-        dd($requestImages,$images);
         $post->title = $request->title;
         $post->body = $request->body;
         $post->images = $images;
