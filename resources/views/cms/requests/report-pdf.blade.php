@@ -106,7 +106,7 @@
                 <table>
                     <tr>
                         <td class="title">
-                            <img src="../../../../public/img/logo.png">
+                            <img src="https:handiman.club/public/img/logo.png">
                         </td>
 
                         <td>
