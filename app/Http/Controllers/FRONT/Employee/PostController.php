@@ -37,7 +37,6 @@ class PostController extends Controller
             $slideIndex[$index] = 1 ;
             $slideId[$index] = "mySlide".$index;
         }
-        dd($postCount,$slideId,$slideIndex);
         return view('front.employee.post.index', compact(['user', 'services', 'slideIndex', 'slideId','postCount']));
     }
 
