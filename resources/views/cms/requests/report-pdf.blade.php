@@ -105,9 +105,7 @@
             <td colspan="2">
                 <table>
                     <tr>
-                        <td class="title">
-                        Receipt Report
-                        </td>
+
 
                         <td>
                             Invoice <br>
