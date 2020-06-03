@@ -382,6 +382,7 @@ class RequestController extends Controller
         $request->client = User::query()->find($request->client_ids[0])->simplifiedArray();
         $request->handyman = User::query()->find($request->employee_ids[0])->simplifiedArray();
         $request->service = Service::query()->find($request->service_id)->ServiceArray();
+
         $pdf = Pdf::loadView('cms.requests.report-pdf', compact('request'));
 
 
