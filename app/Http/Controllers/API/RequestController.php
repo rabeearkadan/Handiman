@@ -177,7 +177,7 @@ class RequestController extends Controller
                 $handyman->balance = $handyman->balance + $total;
                 $request->paid = true;
                 $file_name = Str::random(25);
-                $this->stringToPDF($file_name,$request);
+                $this->stringToPDF($file_name, $request);
                 $request->report = 'reports/pdf/' . $file_name . '.pdf';
 
                 $request->save();
@@ -318,7 +318,6 @@ class RequestController extends Controller
     }
 
 
-
     public function addReceipt($id, Request $req)
     {
         $request = RequestService::query()->find($id);
@@ -377,8 +376,11 @@ class RequestController extends Controller
         return response()->json(['status' => 'success']);
     }
 
-    function stringToPDF($file_name,$request)
+    function stringToPDF($file_name, $request)
     {
+        $request->client = User::query()->find($request->client_ids[0])->simplifiedArray();
+        $request->handyman = User::query()->find($request->employee_ids[0])->simplifiedArray();
+        $request->service = Service::query()->find($request->service_id)->simplifiedArray();
 
         $pdf = Pdf::loadView('cms.requests.report-pdf', compact('request'));
 

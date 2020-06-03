@@ -106,13 +106,13 @@
                 <table>
                     <tr>
                         <td class="title">
-                            <img src="https://www.sparksuite.com/images/logo.png" style="width:100%; max-width:300px;">
+                            <img src="../../../../public/img/logo.png">
                         </td>
 
                         <td>
                             Invoice <br>
-                            Created:{{$request->created_at}}<br>
-                            Due: {{$request->date}}
+                            Request Created at: {{$request->created_at}}<br>
+                            Request Due: {{$request->date}}
                         </td>
                     </tr>
                 </table>
@@ -124,17 +124,21 @@
                 <table>
                     <tr>
                         <td>
-                            Sparksuite, Inc.<br>
-                            12345 Sunny Road<br>
-                            Sunnyville, CA 12345
+                            Client Name:<br>
+                            Employee Name:<br>
+                            Service Provided:
                         </td>
 
                         <td>
-                            Acme Corp.<br>
-                            John Doe<br>
-                            john@example.com
+                            {{$request->client->name}}<br>
+                            {{$request->handyman->name}}<br>
+                            {{$request->service->name}}
+
                         </td>
                     </tr>
+                    <tr>Address: {{$rquest->client_address['street']}},
+                        {{$request->client_address['building']}}
+                        {{$request->client_address['floor']}}</tr>
                 </table>
             </td>
         </tr>
@@ -145,17 +149,17 @@
             </td>
 
             <td>
-                Check #
+                Online
             </td>
         </tr>
 
         <tr class="details">
             <td>
-                Check
+                Third Party
             </td>
 
             <td>
-                1000
+                Stripe
             </td>
         </tr>
 
@@ -167,46 +171,64 @@
             <td>
                 Price
             </td>
-        </tr>
-
-        <tr class="item">
             <td>
-                Website design
-            </td>
-
-            <td>
-                $300.00
+                Quantity
             </td>
         </tr>
+        @foreach($request->receipt as $item)
 
-        <tr class="item">
-            <td>
-                Hosting (3 months)
-            </td>
+            <tr class="item">
+                <td>
+                    {{$item['name']}}
+                </td>
 
-            <td>
-                $75.00
-            </td>
-        </tr>
+                <td>
+                    {{$item['price']}}
+                </td>
+                <td>{{$item['qty']}}</td>
+            </tr>
+            @if ( $loop->index ==sizeof($request->receipt) )
+                <tr class="item last">
+                    <td>
+                        {{$item['name']}}
+                    </td>
 
-        <tr class="item last">
-            <td>
-                Domain name (1 year)
-            </td>
+                    <td>
+                        {{$item['price']}}
+                    </td>
+                    <td>{{$item['qty']}}</td>
+                </tr>
+            @endif
+        @endforeach
 
-            <td>
-                $10.00
-            </td>
-        </tr>
 
         <tr class="total">
             <td></td>
 
             <td>
-                Total: $385.00
+                Total: {{$request->total}}
             </td>
         </tr>
     </table>
+    <div class="container mt-2" id="services">
+        <div class="row">
+            @if($request->receipt_images!=null)
+                @foreach($request->images as $image)
+                    @if ( $loop->index % 4 == 0 )
+        </div>
+        <div class="row">
+            @endif
+            <div class="col-md-3 col-sm-6">
+                <div class="card card-block">
+                    <img src="{{config('image.path').$image}}" alt="later">
+                    </a>
+                </div>
+            </div>
+            @endforeach
+        </div>
+        @endif
+    </div>
+
 </div>
 </body>
 </html>
