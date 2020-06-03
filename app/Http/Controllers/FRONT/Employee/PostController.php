@@ -105,7 +105,8 @@ class PostController extends Controller
      */
     public function edit($id)
     {
-        return view('front.employee.post.edit');
+        $post = Post::find($id);
+        return view('front.employee.post.edit', compact('post'));
     }
 
     /**
@@ -118,7 +119,12 @@ class PostController extends Controller
     public function update(Request $request, $id)
     {
         $post = Post::find($id);
-        $post->update($this->validatePost($request));
+        $request->validate([
+            'title' => 'required|min:3',
+            'body' => 'required|min:15',
+            'images' => 'required',
+            'tags' => 'required'
+        ]);
         return view('front.employee.post.index');
     }
 
@@ -133,14 +139,6 @@ class PostController extends Controller
         $post = Post::find($id);
         $post->delete();
         return redirect(route('employee.post.index'));
-    }
-
-    public function validatePost(Request $request)
-    {
-        return $request->validate([
-            'title' => 'required|min:3|max:255',
-            'body' => ['required'],
-        ]);
     }
 
 }

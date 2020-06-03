@@ -30,13 +30,6 @@
             opacity: 1;
             z-index: 2;
         }
-
-        .img-container img.fade-out {
-            opacity: 0;
-            transition: visibility 0s .5s, opacity .5s linear;
-            visibility: hidden;
-        }
-
     </style>
 @endpush
 @section('content')
