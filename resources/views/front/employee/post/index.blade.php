@@ -9,7 +9,9 @@
     <link href="{{asset('css/employee/widgets.css')}}" rel="stylesheet">
     <link href="{{asset('css/employee/add-post-button.css')}}" rel="stylesheet">
     <style>
-        img {vertical-align: middle;}
+        img {
+            vertical-align: middle;
+        }
 
         /* Slideshow container */
         .slideshow-container {
@@ -75,13 +77,22 @@
                                                 <div class="post post-boxed">
                                                     <div class="post-image">
                                                         <div class="slideshow-container">
+                                                            {{$bool=false}}
                                                             @foreach($post->images as $image)
                                                                 <div class="mySlides{{$loop->parent->index}}">
-                                                                    <img src="{{config('image.path').$image}}" style="width:100%" alt="">
+                                                                    <img src="{{config('image.path').$image}}"
+                                                                         style="width:100%" alt="">
                                                                 </div>
+                                                                @if($loop->index>0)
+                                                                    {{$bool=true}}
+                                                                @endif
                                                             @endforeach
-                                                                <a class="prev" onclick="plusSlides(-1, {{$loop->index}})">&#10094;</a>
-                                                                <a class="next" onclick="plusSlides(1, {{$loop->index}})">&#10095;</a>
+                                                            @if($bool==true)
+                                                                <a class="prev"
+                                                                   onclick="plusSlides(-1, {{$loop->index}})">&#10094;</a>
+                                                                <a class="next"
+                                                                   onclick="plusSlides(1, {{$loop->index}})">&#10095;</a>
+                                                            @endif
                                                         </div>
                                                     </div><!-- /.post-image -->
                                                     <div class="post-content">
@@ -151,29 +162,30 @@
 @endsection
 @push('js')
     <script src="/public/js/list.js" type="text/javascript"></script>
-{{--    <script>--}}
-{{--        var options = {--}}
-{{--            valueNames: ['categories'],--}}
-{{--            page: 10,--}}
-{{--            pagination: true--}}
-{{--        };--}}
-{{--        var postsList = new List('posts-list', options);--}}
+    {{--    <script>--}}
+    {{--        var options = {--}}
+    {{--            valueNames: ['categories'],--}}
+    {{--            page: 10,--}}
+    {{--            pagination: true--}}
+    {{--        };--}}
+    {{--        var postsList = new List('posts-list', options);--}}
 
-{{--        function filter(category) {--}}
-{{--            postsList.filter(function (item) {--}}
+    {{--        function filter(category) {--}}
+    {{--            postsList.filter(function (item) {--}}
 
-{{--            });--}}
-{{--        }--}}
+    {{--            });--}}
+    {{--        }--}}
 
-{{--        function removeFilters() {--}}
-{{--            postsList.filter();--}}
-{{--        }--}}
-{{--    </script>--}}
+    {{--        function removeFilters() {--}}
+    {{--            postsList.filter();--}}
+    {{--        }--}}
+    {{--    </script>--}}
     <script>
         var slideIndex = @json($slideIndex);
         var slideId = @json($slideId);
         @for($index=0;$index<$postCount;$index++)
         showSlides(1, {{$index}});
+
         @endfor
         function plusSlides(n, no) {
             showSlides(slideIndex[no] += n, no);
@@ -182,12 +194,16 @@
         function showSlides(n, no) {
             var i;
             var x = document.getElementsByClassName(slideId[no]);
-            if (n > x.length) {slideIndex[no] = 1}
-            if (n < 1) {slideIndex[no] = x.length}
+            if (n > x.length) {
+                slideIndex[no] = 1
+            }
+            if (n < 1) {
+                slideIndex[no] = x.length
+            }
             for (i = 0; i < x.length; i++) {
                 x[i].style.display = "none";
             }
-            x[slideIndex[no]-1].style.display = "block";
+            x[slideIndex[no] - 1].style.display = "block";
         }
     </script>
 @endpush
