@@ -183,7 +183,6 @@
                         return false;
                     }
                 });
-            });
             }
 
             function removeFilters() {
