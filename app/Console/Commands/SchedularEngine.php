@@ -29,7 +29,7 @@ class SchedularEngine extends Command
         $request = RequestService::query()->where('status', 'pending')->get();
         foreach ($request as $req) {
 
-            if ($req->employees()->count() == 0 ) {
+            if ($req->employees()->count() == 0) {
                 $user = User::query()->find($req->client_ids[0]);
                 $var = Carbon::createFromFormat('Y-m-d H:i:s', $req->date, $req->timezone)->dayOfWeek;
 
@@ -64,6 +64,7 @@ class SchedularEngine extends Command
         if ($list == null)
             return response()->json(['status' => 'error', 'message' => "no service found"]);
         $availableUsers = $list->users()->whereNotIn('_id', $requestHandyman->rejected_employees)
+            ->where('_id', '!=', $requestHandyman->client_ids[0])
             ->where('isApproved', true)
             ->where('location', 'near', [
                 '$geometry' => [

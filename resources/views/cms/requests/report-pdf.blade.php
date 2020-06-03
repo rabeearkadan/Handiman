@@ -106,7 +106,7 @@
                 <table>
                     <tr>
                         <td class="title">
-                            <img src="https:handiman.club/public/img/logo.png" style="width:100%; max-width:300px;">
+                        Receipt Report
                         </td>
 
                         <td>
@@ -199,24 +199,24 @@
             </td>
         </tr>
     </table>
-    {{--    <div class="container mt-2" id="services">--}}
-    {{--        <div class="row">--}}
-    {{--            @if($request->receipt_images!=null)--}}
-    {{--                @foreach($request->receipt_image as $image)--}}
-    {{--                    @if ( $loop->index % 4 == 0 )--}}
-    {{--        </div>--}}
-    {{--        <div class="row">--}}
-    {{--            @endif--}}
-    {{--            <div class="col-md-3 col-sm-6">--}}
-    {{--                <div class="card card-block">--}}
-    {{--                    <img src="{{config('image.path').$image}}" alt="later">--}}
-    {{--                    </a>--}}
-    {{--                </div>--}}
-    {{--            </div>--}}
-    {{--            @endforeach--}}
-    {{--        </div>--}}
-    {{--        @endif--}}
-    {{--    </div>--}}
+        <div class="container mt-2" id="services">
+            <div class="row">
+                @if($request->receipt_images!=null)
+                    @foreach($request->receipt_image as $image)
+                        @if ( $loop->index % 4 == 0 )
+            </div>
+            <div class="row">
+                @endif
+                <div class="col-md-3 col-sm-6">
+                    <div class="card card-block">
+                        <img src="{{config('image.path').$image}}" alt="later">
+                        </a>
+                    </div>
+                </div>
+                @endforeach
+            </div>
+            @endif
+        </div>
 
 </div>
 </body>
