@@ -13,7 +13,6 @@
     width: -webkit-fill-available;
     position: relative;
     overflow: hidden;
-    height: fit-content;
 }
 
 
@@ -94,7 +93,7 @@
 }
 
 .post-image img {
-    max-height: -webkit-fill-available;
+    height: fit-content;
     object-fit: contain;
 }
 
