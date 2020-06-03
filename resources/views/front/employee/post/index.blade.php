@@ -153,7 +153,7 @@
 
                                     <ul class="menu">
                                         @foreach($services as $service)
-                                            <li><a href="#"> {{$service->name}} </a></li>
+                                            <li><a href="#" onclick="filter('{{$service->name}}')"> {{$service->name}} </a></li>
                                         @endforeach
                                     </ul><!-- /.menu -->
                                 </div><!-- /.wifget -->
@@ -167,24 +167,29 @@
 @endsection
 @push('js')
     <script src="/public/js/list.js" type="text/javascript"></script>
-    {{--    <script>--}}
-    {{--        var options = {--}}
-    {{--            valueNames: ['categories'],--}}
-    {{--            page: 10,--}}
-    {{--            pagination: true--}}
-    {{--        };--}}
-    {{--        var postsList = new List('posts-list', options);--}}
+        <script>
+            var options = {
+                valueNames: ['categories'],
+                page: 10,
+                pagination: true
+            };
+            var postsList = new List('posts-list', options);
 
-    {{--        function filter(category) {--}}
-    {{--            postsList.filter(function (item) {--}}
+            function filter(category) {
+                postsList.filter(function (item) {
+                    if (item.values().categories.includes(category)) {
+                        return true;
+                    } else {
+                        return false;
+                    }
+                });
+            });
+            }
 
-    {{--            });--}}
-    {{--        }--}}
-
-    {{--        function removeFilters() {--}}
-    {{--            postsList.filter();--}}
-    {{--        }--}}
-    {{--    </script>--}}
+            function removeFilters() {
+                postsList.filter();
+            }
+        </script>
     <script>
         var slideIndex = @json($slideIndex);
         var slideId = @json($slideId);
