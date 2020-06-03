@@ -77,14 +77,18 @@
                                                 <div class="post post-boxed">
                                                     <div class="post-image">
                                                         <div class="slideshow-container">
-                                                            {{$bool=false}}
+                                                            @php
+                                                                $bool=false;
+                                                            @endphp
                                                             @foreach($post->images as $image)
                                                                 <div class="mySlides{{$loop->parent->index}}">
                                                                     <img src="{{config('image.path').$image}}"
                                                                          style="width:100%" alt="">
                                                                 </div>
                                                                 @if($loop->index>0)
-                                                                    {{$bool=true}}
+                                                                    @php
+                                                                    $bool=true;
+                                                                    @endphp
                                                                 @endif
                                                             @endforeach
                                                             @if($bool==true)
