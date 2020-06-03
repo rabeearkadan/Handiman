@@ -102,8 +102,8 @@
                                                     <div class="post-content">
                                                         <h2><a href=""> {{$post->title}} </a>
                                                             <div style="position:absolute; right: 3%">
-                                                                <a href="{{route('employee.post.edit',$post->id)}}"> <i
-                                                                        class="fa fa-edit"></i> </a>
+{{--                                                                <a href="{{route('employee.post.edit',$post->id)}}"> <i--}}
+{{--                                                                        class="fa fa-edit"></i> </a>--}}
                                                                 <a href="#"
                                                                    onclick="document.getElementById('{{$post->_id}}').submit();">
                                                                     <i class="fa fa-trash"></i> </a>

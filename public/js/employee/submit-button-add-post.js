@@ -47,6 +47,6 @@ $(document).ready(function () {
             var form =  $('#new_post');
             setTimeout(function () {
                 form.submit();
-            }, 5000);
+            }, 3000);
     });
 });

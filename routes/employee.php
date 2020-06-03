@@ -43,6 +43,4 @@ Route::get("/chat", 'ChatController@index')->name('employee.chat');
 Route::get('posts','PostController@index')->name('employee.post.index');
 Route::get('post/create','PostController@create')->name('employee.post.create');
 Route::post('post/create','PostController@store')->name('employee.post.store');
-Route::get('post/edit/{id}','PostController@edit')->name('employee.post.edit');
-Route::put('post/edit/{id}','PostController@update')->name('employee.post.update');
 Route::delete('post/destroy/{id}','PostController@destroy')->name('employee.post.destroy');
