@@ -9,26 +9,43 @@
     <link href="{{asset('css/employee/widgets.css')}}" rel="stylesheet">
     <link href="{{asset('css/employee/add-post-button.css')}}" rel="stylesheet">
     <style>
-        .img-container img {
+        img {vertical-align: middle;}
 
-            left: 0;
-            object-fit: cover;
-            object-position: center;
-            opacity: 0;
-            top: 0;
-
-            z-index: -1;
+        /* Slideshow container */
+        .slideshow-container {
+            max-width: 1000px;
+            position: relative;
+            margin: auto;
         }
 
-        .img-container img.next {
-            opacity: 1;
-            z-index: 1;
+        /* Next & previous buttons */
+        .prev, .next {
+            cursor: pointer;
+            position: absolute;
+            top: 50%;
+            width: auto;
+            padding: 16px;
+            margin-top: -22px;
+            color: white;
+            font-weight: bold;
+            font-size: 18px;
+            transition: 0.6s ease;
+            border-radius: 0 3px 3px 0;
+            user-select: none;
         }
 
-        .img-container img.prev {
-            opacity: 1;
-            z-index: 2;
+        /* Position the "next button" to the right */
+        .next {
+            right: 0;
+            border-radius: 3px 0 0 3px;
         }
+
+        /* On hover, add a grey background color */
+        .prev:hover, .next:hover {
+            background-color: #f1f1f1;
+            color: black;
+        }
+
     </style>
 @endpush
 @section('content')
@@ -57,11 +74,14 @@
                                             @foreach($user->posts as $post)
                                                 <div class="post post-boxed">
                                                     <div class="post-image">
-                                                        <div class="img-container" data-slideshow>
+                                                        <div class="slideshow-container">
                                                             @foreach($post->images as $image)
-                                                                <img src="{{config('image.path').$image}}"
-                                                                     alt="">
+                                                                <div class="mySlides{{$loop->index}}">
+                                                                    <img src="{{config('image.path').$image}}" style="width:100%" alt="">
+                                                                </div>
                                                             @endforeach
+                                                                <a class="prev" onclick="plusSlides(-1, {{$loop->index}})">&#10094;</a>
+                                                                <a class="next" onclick="plusSlides(1, {{$loop->index}})">&#10095;</a>
                                                         </div>
                                                         <a class="read-more" href="">View</a>
                                                     </div><!-- /.post-image -->
@@ -219,11 +239,32 @@
         function filter(category) {
             postsList.filter(function (item) {
 
-            }
+            });
         }
 
         function removeFilters() {
             postsList.filter();
+        }
+    </script>
+    <script>
+        var slideIndex = {{$slideIndex}};
+        var slideId = {{$slideId}}
+        @for($index=0;$index<$postCount;$index)
+        showSlides(1, {{$index}});
+        @endfor
+        function plusSlides(n, no) {
+            showSlides(slideIndex[no] += n, no);
+        }
+
+        function showSlides(n, no) {
+            var i;
+            var x = document.getElementsByClassName(slideId[no]);
+            if (n > x.length) {slideIndex[no] = 1}
+            if (n < 1) {slideIndex[no] = x.length}
+            for (i = 0; i < x.length; i++) {
+                x[i].style.display = "none";
+            }
+            x[slideIndex[no]-1].style.display = "block";
         }
     </script>
 @endpush

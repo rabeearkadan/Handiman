@@ -30,7 +30,14 @@ class PostController extends Controller
     {
         $user = Auth::user();
         $services = Service::all();
-        return view('front.employee.post.index', compact(['user', 'services']));
+        $postCount = $user->posts->count();
+        $slideIndex = array();
+        $slideId = array();
+        for($index=0;$index<$postCount;$index++){
+            $slideIndex[$index] = 1 ;
+            $slideId[$index] = "mySlide".$index;
+        }
+        return view('front.employee.post.index', compact(['user', 'services', 'slideIndex', 'slideId','$postCount']));
     }
 
     /**

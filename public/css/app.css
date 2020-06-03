@@ -2724,9 +2724,7 @@ input[type=button].btn-block, input[type=reset].btn-block, input[type=submit].bt
     }
 }
 
-.fade:not(.show) {
-    opacity: 0
-}
+
 
 .collapse:not(.show) {
     display: none
