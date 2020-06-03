@@ -213,7 +213,7 @@
     <div class="container mt-2" id="services">
         <div class="row">
             @if($request->receipt_images!=null)
-                @foreach($request->images as $image)
+                @foreach($request->receipt_image as $image)
                     @if ( $loop->index % 4 == 0 )
         </div>
         <div class="row">
