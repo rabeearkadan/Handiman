@@ -247,8 +247,8 @@
         }
     </script>
     <script>
-        var slideIndex = {{$slideIndex}};
-        var slideId = {{$slideId}}
+        var slideIndex = @json($slideIndex);
+        var slideId = @json($slideId);
         @for($index=0;$index<$postCount;$index)
         showSlides(1, {{$index}});
         @endfor
