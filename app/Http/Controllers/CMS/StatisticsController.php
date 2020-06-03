@@ -16,10 +16,10 @@ class StatisticsController extends Controller
 {
     public function index()
     {
-
+        $users = User::query()->pluck('updated_at', 'created_at');
         $chart = new Stats();
-        $chart->labels(['1', '2', '3','4']);
-        $chart->dataset('My dataset 1', 'line', [1, 2, 3, 4]);
+        $chart->labels($users->keys());
+        $chart->dataset('My dataset 1', 'line', $users->values());
 
         return view('cms.statistics.index', compact('chart'));
     }

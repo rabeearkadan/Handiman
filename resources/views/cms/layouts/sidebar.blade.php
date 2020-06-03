@@ -84,7 +84,20 @@
                 <li>
                     <a href="{{route('statistics.index')}}" class="mm">
                         <i class="metismenu-icon pe-7s-rocket"></i>
+                        Users
+                    </a>
+                </li>
+                <li>
+                    <a href="{{route('statistics.index')}}" class="mm">
+                        <i class="metismenu-icon pe-7s-rocket"></i>
                         Services
+                    </a>
+                </li>
+
+                <li>
+                    <a href="{{route('statistics.index')}}" class="mm">
+                        <i class="metismenu-icon pe-7s-rocket"></i>
+                        Requests
                     </a>
                 </li>
                 <li class="app-sidebar__heading">Contacted Us</li>
