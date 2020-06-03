@@ -130,9 +130,9 @@
                         </td>
 
                         <td>
-{{--                            {{$request->client['name']}}<br>--}}
-{{--                            {{$request->handyman['name']}}<br>--}}
-{{--                            {{$request->service['name']}}--}}
+                            {{$request->client['name']}}<br>
+                            {{$request->handyman['name']}}<br>
+                            {{$request->service['name']}}
 
                         </td>
                     </tr>
