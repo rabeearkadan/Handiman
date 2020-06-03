@@ -121,13 +121,13 @@
                                                         <div class="post-meta-date">
                                                             {{$post->created_at}}
                                                         </div><!-- /.post-meta-date -->
-                                                        <div class="post-meta-categories">
+                                                        <div class="post-meta-categories categories">
                                                             <i class="fa fa-tags"></i>
                                                                 @foreach($post->tags as $tag)
                                                                     @if($loop->index !=0)
                                                                         ,
                                                                     @endif
-                                                                    <a href="{{$tag->id}}" class="categories"> {{$tag->name}} </a>
+                                                                    <a href="{{$tag->id}}"> {{$tag->name}} </a>
                                                                 @endforeach
                                                         </div>
                                                         <!-- /.post-meta-categories -->
