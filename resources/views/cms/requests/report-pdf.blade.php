@@ -187,18 +187,18 @@
                 </td>
                 <td>{{$item['qty']}}</td>
             </tr>
-            @if ( $loop->index ==sizeof($request->receipt) )
-                <tr class="item last">
-                    <td>
-                        {{$item['name']}}
-                    </td>
+{{--            @if ( $loop->index ==sizeof($request->receipt) )--}}
+{{--                <tr class="item last">--}}
+{{--                    <td>--}}
+{{--                        {{$item['name']}}--}}
+{{--                    </td>--}}
 
-                    <td>
-                        {{$item['price']}}
-                    </td>
-                    <td>{{$item['qty']}}</td>
-                </tr>
-            @endif
+{{--                    <td>--}}
+{{--                        {{$item['price']}}--}}
+{{--                    </td>--}}
+{{--                    <td>{{$item['qty']}}</td>--}}
+{{--                </tr>--}}
+{{--            @endif--}}
         @endforeach
 
 
@@ -210,24 +210,24 @@
             </td>
         </tr>
     </table>
-    <div class="container mt-2" id="services">
-        <div class="row">
-            @if($request->receipt_images!=null)
-                @foreach($request->receipt_image as $image)
-                    @if ( $loop->index % 4 == 0 )
-        </div>
-        <div class="row">
-            @endif
-            <div class="col-md-3 col-sm-6">
-                <div class="card card-block">
-                    <img src="{{config('image.path').$image}}" alt="later">
-                    </a>
-                </div>
-            </div>
-            @endforeach
-        </div>
-        @endif
-    </div>
+{{--    <div class="container mt-2" id="services">--}}
+{{--        <div class="row">--}}
+{{--            @if($request->receipt_images!=null)--}}
+{{--                @foreach($request->receipt_image as $image)--}}
+{{--                    @if ( $loop->index % 4 == 0 )--}}
+{{--        </div>--}}
+{{--        <div class="row">--}}
+{{--            @endif--}}
+{{--            <div class="col-md-3 col-sm-6">--}}
+{{--                <div class="card card-block">--}}
+{{--                    <img src="{{config('image.path').$image}}" alt="later">--}}
+{{--                    </a>--}}
+{{--                </div>--}}
+{{--            </div>--}}
+{{--            @endforeach--}}
+{{--        </div>--}}
+{{--        @endif--}}
+{{--    </div>--}}
 
 </div>
 </body>
