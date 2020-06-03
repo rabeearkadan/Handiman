@@ -76,7 +76,7 @@
                                                     <div class="post-image">
                                                         <div class="slideshow-container">
                                                             @foreach($post->images as $image)
-                                                                <div class="mySlides{{$loop->index}}">
+                                                                <div class="mySlides{{$loop->parent->index}}">
                                                                     <img src="{{config('image.path').$image}}" style="width:100%" alt="">
                                                                 </div>
                                                             @endforeach
