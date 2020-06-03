@@ -152,7 +152,8 @@
                                     <h2 class="widgettitle">Categories</h2>
 
                                     <ul class="menu">
-                                        @foreach($services as $service)
+                                        <li><a href="#" onclick="removeFilters()"> All categories </a></li>
+                                    @foreach($services as $service)
                                             <li><a href="#" onclick="filter('{{$service->name}}')"> {{$service->name}} </a></li>
                                         @endforeach
                                     </ul><!-- /.menu -->
