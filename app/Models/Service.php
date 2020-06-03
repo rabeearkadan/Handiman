@@ -23,6 +23,10 @@ class Service extends Eloquent
             'indicator'=>$this->indicator,
         ];
     }
+    public function posts()
+    {
+        return $this->belongsToMany(Post::class);
+    }
 
 
 }
