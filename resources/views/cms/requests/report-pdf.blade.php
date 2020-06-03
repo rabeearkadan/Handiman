@@ -55,7 +55,7 @@
             padding-bottom: 20px;
         }
 
-        .invoice-box table tr.item td{
+        .invoice-box table tr.item td {
             border-bottom: 1px solid #eee;
         }
 
@@ -100,19 +100,17 @@
 
 <body>
 <div class="invoice-box rtl">
-    <table  style="border-collapse: separate; border-spacing: 10px;">
+    <table style="border-collapse: separate; border-spacing: 10px;">
         <tr class="top">
             <td colspan="2">
                 <table>
                     <tr>
-                        <td class="title">
-                            <img src="https://www.sparksuite.com/images/logo.png" style="width:100%; max-width:300px;">
-                        </td>
+
 
                         <td>
-                            Invoice #: 123<br>
-                            Created: January 1, 2015<br>
-                            Due: February 1, 2015
+                            Invoice <br>
+                            Request Created at: {{$request->created_at}}<br>
+                            Request Due: {{$request->date}}
                         </td>
                     </tr>
                 </table>
@@ -124,17 +122,21 @@
                 <table>
                     <tr>
                         <td>
-                            Sparksuite, Inc.<br>
-                            12345 Sunny Road<br>
-                            Sunnyville, CA 12345
+                            Client Name:<br>
+                            Employee Name:<br>
+                            Service Provided:
                         </td>
 
                         <td>
-                            Acme Corp.<br>
-                            John Doe<br>
-                            john@example.com
+                            {{$request->client['name']}}<br>
+                            {{$request->handyman['name']}}<br>
+                            {{$request->service['name']}}
+
                         </td>
                     </tr>
+{{--                                        <tr>Address: {{$rquest->client_address['street']}},--}}
+{{--                                            {{$request->client_address['building']}}--}}
+{{--                                            {{$request->client_address['floor']}}</tr>--}}
                 </table>
             </td>
         </tr>
@@ -145,17 +147,17 @@
             </td>
 
             <td>
-                Check #
+                Online
             </td>
         </tr>
 
         <tr class="details">
             <td>
-                Check
+                Third Party
             </td>
 
             <td>
-                1000
+                Stripe
             </td>
         </tr>
 
@@ -167,46 +169,50 @@
             <td>
                 Price
             </td>
-        </tr>
-
-        <tr class="item">
             <td>
-                Website design
-            </td>
-
-            <td>
-                $300.00
+                Quantity
             </td>
         </tr>
+        @foreach($request->receipt as $item)
 
-        <tr class="item">
-            <td>
-                Hosting (3 months)
-            </td>
+            <tr class="item">
+                <td>
+                    {{$item['name']}}
+                </td>
 
-            <td>
-                $75.00
-            </td>
-        </tr>
+                <td>
+                    {{$item['price']}}
+                </td>
+                <td>{{$item['qty']}}</td>
+            </tr>
 
-        <tr class="item last">
-            <td>
-                Domain name (1 year)
-            </td>
+        @endforeach
 
-            <td>
-                $10.00
-            </td>
-        </tr>
 
         <tr class="total">
             <td></td>
 
             <td>
-                Total: $385.00
+                Total: {{$request->total}}
             </td>
         </tr>
     </table>
+{{--        <div class="container mt-2" id="services">--}}
+{{--            <div class="row">--}}
+{{--                @if($request->receipt_images!=null)--}}
+{{--                    @foreach($request->receipt_image as $image)--}}
+{{--                        @if ( $loop->index % 4 == 0 )--}}
+{{--            </div>--}}
+{{--            <div class="row">--}}
+{{--                @endif--}}
+{{--                <div>--}}
+{{--                        <img src="{{config('image.path').$image}}" alt="later">--}}
+{{--                </div>--}}
+{{--                @endforeach--}}
+{{--            </div>--}}
+{{--            @endif--}}
+{{--        </div>--}}
+
 </div>
 </body>
 </html>

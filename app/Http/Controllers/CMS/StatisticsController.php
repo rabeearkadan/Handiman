@@ -4,10 +4,10 @@
 namespace App\Http\Controllers\CMS;
 
 
+use App\Charts\Stats;
 use App\Http\Controllers\Controller;
 use App\User;
 use Illuminate\Support\Facades\DB;
-
 use Illuminate\Http\Request;
 use Redirect, Response;
 use Carbon\Carbon;
@@ -16,22 +16,18 @@ class StatisticsController extends Controller
 {
     public function index()
     {
+        $users = User::query()->where('role', 'user_employee' || 'employee')
+            ->pluck('gender', 'created_at');
+        $chart = new Stats();
+        $chart->labels($users->keys());
+        $chart->dataset('My dataset 1', 'line', $users->values());
 
-
-        $dataPoints = array(
-            array("label" => "Chrome", "y" => 64.02),
-            array("label" => "Firefox", "y" => 12.55),
-            array("label" => "IE", "y" => 8.47),
-            array("label" => "Safari", "y" => 6.08),
-            array("label" => "Edge", "y" => 4.29),
-            array("label" => "Others", "y" => 4.59)
-        );
-        return view('cms.statistics.index', compact($dataPoints));
+        return view('cms.statistics.index', compact('chart'));
     }
 
     public function pieChart()
     {
-        $record = User::select(DB::raw("COUNT(*) as count"), DB::raw("DAYNAME(created_at) as day_name"),DB::raw("DAY(created_at) as day"))
+        $record = User::select(DB::raw("COUNT(*) as count"), DB::raw("DAYNAME(created_at) as day_name"), DB::raw("DAY(created_at) as day"))
             ->where('created_at', '>', Carbon::today()->subDay(6))
             ->groupBy('day_name', 'day')
             ->orderBy('day')
