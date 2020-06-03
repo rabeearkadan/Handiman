@@ -8,6 +8,7 @@ use App\Models\Service;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Str;
 
 class PostController extends Controller
 {
@@ -70,7 +71,7 @@ class PostController extends Controller
         $requestImages = $request->file('images');
         $images = array();
         foreach ($requestImages as $image) {
-            $name = 'post_' . time() . '.' . $image->getClientOriginalExtension();
+            $name = 'post_' . time() . Str::random(16). '.' . $image->getClientOriginalExtension();
             if (!Storage::disk('public')->exists('posts')) {
                 Storage::disk('public')->makeDirectory('posts');
             }
