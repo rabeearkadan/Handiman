@@ -136,9 +136,9 @@
 
                         </td>
                     </tr>
-                                        <tr>Address: {{$rquest->client_address['street']}},
-                                            {{$request->client_address['building']}}
-                                            {{$request->client_address['floor']}}</tr>
+{{--                                        <tr>Address: {{$rquest->client_address['street']}},--}}
+{{--                                            {{$request->client_address['building']}}--}}
+{{--                                            {{$request->client_address['floor']}}</tr>--}}
                 </table>
             </td>
         </tr>
@@ -175,20 +175,20 @@
                 Quantity
             </td>
         </tr>
-{{--        @foreach($request->receipt as $item)--}}
+        @foreach($request->receipt as $item)
 
-{{--            <tr class="item">--}}
-{{--                <td>--}}
-{{--                    {{$item['name']}}--}}
-{{--                </td>--}}
+            <tr class="item">
+                <td>
+                    {{$item['name']}}
+                </td>
 
-{{--                <td>--}}
-{{--                    {{$item['price']}}--}}
-{{--                </td>--}}
-{{--                <td>{{$item['qty']}}</td>--}}
-{{--            </tr>--}}
+                <td>
+                    {{$item['price']}}
+                </td>
+                <td>{{$item['qty']}}</td>
+            </tr>
 
-{{--        @endforeach--}}
+        @endforeach
 
 
         <tr class="total">
