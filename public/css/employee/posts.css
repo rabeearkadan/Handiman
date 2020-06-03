@@ -10,6 +10,7 @@
 }
 
 .posts .post-image {
+    width: -webkit-fill-available;
     position: relative;
     overflow: hidden;
 }
@@ -125,7 +126,8 @@
 }
 
 .post-image img {
-    width: 180px;
+    max-height: -webkit-fill-available;
+    object-fit: contain;
 }
 
 @media (max-width: 1199px) {
