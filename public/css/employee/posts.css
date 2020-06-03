@@ -13,7 +13,7 @@
     width: -webkit-fill-available;
     position: relative;
     overflow: hidden;
-    height: -webkit-fill-available;
+    height: fit-content;
 }
 
 
