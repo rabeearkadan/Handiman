@@ -199,21 +199,21 @@
             </td>
         </tr>
     </table>
-        <div class="container mt-2" id="services">
-            <div class="row">
-                @if($request->receipt_images!=null)
-                    @foreach($request->receipt_image as $image)
-                        @if ( $loop->index % 4 == 0 )
-            </div>
-            <div class="row">
-                @endif
-                <div>
-                        <img src="{{config('image.path').$image}}" alt="later">
-                </div>
-                @endforeach
-            </div>
-            @endif
-        </div>
+{{--        <div class="container mt-2" id="services">--}}
+{{--            <div class="row">--}}
+{{--                @if($request->receipt_images!=null)--}}
+{{--                    @foreach($request->receipt_image as $image)--}}
+{{--                        @if ( $loop->index % 4 == 0 )--}}
+{{--            </div>--}}
+{{--            <div class="row">--}}
+{{--                @endif--}}
+{{--                <div>--}}
+{{--                        <img src="{{config('image.path').$image}}" alt="later">--}}
+{{--                </div>--}}
+{{--                @endforeach--}}
+{{--            </div>--}}
+{{--            @endif--}}
+{{--        </div>--}}
 
 </div>
 </body>
