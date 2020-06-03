@@ -55,7 +55,7 @@
             padding-bottom: 20px;
         }
 
-        .invoice-box table tr.item td{
+        .invoice-box table tr.item td {
             border-bottom: 1px solid #eee;
         }
 
@@ -100,7 +100,7 @@
 
 <body>
 <div class="invoice-box rtl">
-    <table  style="border-collapse: separate; border-spacing: 10px;">
+    <table style="border-collapse: separate; border-spacing: 10px;">
         <tr class="top">
             <td colspan="2">
                 <table>
@@ -110,9 +110,9 @@
                         </td>
 
                         <td>
-                            Invoice #: 123<br>
-                            Created: January 1, 2015<br>
-                            Due: February 1, 2015
+                            Invoice <br>
+                            Created:{{$request->created_at}}<br>
+                            Due: {{$request->date}}
                         </td>
                     </tr>
                 </table>

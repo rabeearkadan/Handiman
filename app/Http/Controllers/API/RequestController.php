@@ -377,10 +377,10 @@ class RequestController extends Controller
         return response()->json(['status' => 'success']);
     }
 
-    function stringToPDF($file_name,$data)
+    function stringToPDF($file_name,$request)
     {
 
-        $pdf = Pdf::loadView('cms.requests.report-pdf', compact('data'));
+        $pdf = Pdf::loadView('cms.requests.report-pdf', compact('request'));
 
 
         if (!Storage::disk('public')->exists('reports')) {
