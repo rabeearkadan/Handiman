@@ -83,7 +83,6 @@
                                                                 <a class="prev" onclick="plusSlides(-1, {{$loop->index}})">&#10094;</a>
                                                                 <a class="next" onclick="plusSlides(1, {{$loop->index}})">&#10095;</a>
                                                         </div>
-                                                        <a class="read-more" href="">View</a>
                                                     </div><!-- /.post-image -->
                                                     <div class="post-content">
                                                         <h2><a href=""> {{$post->title}} </a>
