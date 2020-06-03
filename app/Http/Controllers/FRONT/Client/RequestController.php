@@ -13,6 +13,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Str;
 
 class RequestController extends Controller
 {
@@ -150,7 +151,7 @@ class RequestController extends Controller
         if ($imagesParam = $req->file('images')) {
             $images = array();
             foreach ($imagesParam as $image) {
-                $name = 'image_' . time() . '.' . $image->getClientOriginalExtension();
+                $name = 'image_' . time(). Str::random(16) . '.' . $image->getClientOriginalExtension();
                 if (!Storage::disk('public')->exists('requests')) {
                     Storage::disk('public')->makeDirectory('requests');
                 }
