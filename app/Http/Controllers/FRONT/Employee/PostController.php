@@ -77,10 +77,10 @@ class PostController extends Controller
         $post->images = $images;
         $post->save();
         $post->users()->attach($user->id);
-        $user->posts()->attach($post->id);
         if (isset($tags)) {
             foreach ($tags as $tagId) {
-                $post->tags()->attach($tagId);
+                $service = Service::find($tagId);
+                $post->tags()->attach($service);
             }
         }
         return redirect(route('employee.post.index'));
