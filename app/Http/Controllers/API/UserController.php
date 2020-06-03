@@ -207,7 +207,7 @@ class UserController extends Controller
         $user = User::query()->find(Auth::id());
         $addresses = [];
         foreach ($user->client_addresses as $address) {
-            if ($address['id'] != $id)
+            if ($address['_id'] != $id)
                 $addresses [] = $addresses;
         }
         $user->client_addresses = $addresses;
