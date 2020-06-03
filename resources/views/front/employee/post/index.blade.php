@@ -32,54 +32,57 @@
                                 <div class="posts">
                                     <div id="posts-list">
                                         <div class="list">
-                                    @foreach($user->posts as $post)
-                                        <div class="post post-boxed">
-                                            <div class="post-image">
-                                                <div class="img-container" data-slideshow>
-                                                    @foreach($post->images as $image)
-                                                        <img src="{{config('image.path').$image}}"
-                                                             alt="">
-                                                    @endforeach
-                                                </div>
-                                                <a class="read-more" href="">View</a>
-                                            </div><!-- /.post-image -->
-                                            <div class="post-content">
-                                                <h2><a href=""> {{$post->title}} </a>
-                                                    <div style="position:absolute; right: 3%">
-                                                        <a href="{{route('employee.post.edit',$post->id)}}"> <i
-                                                                class="fa fa-edit"></i> </a>
-                                                        <a href="#"
-                                                           onclick="document.getElementById('{{$post->_id}}').submit();">
-                                                            <i class="fa fa-trash"></i> </a>
-                                                        <form action="{{route('employee.post.destroy', $post->id)}}"
-                                                              method="post" id="{{$post->_id}}">
-                                                            @csrf
-                                                            @method('delete')
-                                                        </form>
-                                                    </div>
-                                                </h2>
-                                                <p> {{$post->body}} </p>
-                                            </div><!-- /.post-content -->
-                                            <div class="post-meta clearfix">
-                                                <div class="post-meta-date">
-                                                    {{$post->created_at}}
-                                                </div><!-- /.post-meta-date -->
-                                                <div class="post-meta-categories">
-                                                    <i class="fa fa-tags"></i>
-                                                    @foreach($post->tags as $tag)
-                                                        <a href="{{$tag->id}}"> {{$tag->name}} </a>,
-                                                    @endforeach
-                                                </div>
-                                                <!-- /.post-meta-categories -->
-                                            {{--                                                <div class="post-meta-comments"><i class="fa fa-comments"></i> <a--}}
-                                            {{--                                                        href="">3 comments</a></div>--}}
-                                            <!-- /.post-meta-comments -->
-                                                <div class="post-meta-more"><a href="">Read More <i
-                                                            class="fa fa-chevron-right"></i></a></div>
-                                                <!-- /.post-meta-more -->
-                                            </div><!-- /.post-meta -->
-                                        </div><!-- /.post -->
-                                    @endforeach
+                                            @foreach($user->posts as $post)
+                                                <div class="post post-boxed">
+                                                    <div class="post-image">
+                                                        <div class="img-container" data-slideshow>
+                                                            @foreach($post->images as $image)
+                                                                <img src="{{config('image.path').$image}}"
+                                                                     alt="">
+                                                            @endforeach
+                                                        </div>
+                                                        <a class="read-more" href="">View</a>
+                                                    </div><!-- /.post-image -->
+                                                    <div class="post-content">
+                                                        <h2><a href=""> {{$post->title}} </a>
+                                                            <div style="position:absolute; right: 3%">
+                                                                <a href="{{route('employee.post.edit',$post->id)}}"> <i
+                                                                        class="fa fa-edit"></i> </a>
+                                                                <a href="#"
+                                                                   onclick="document.getElementById('{{$post->_id}}').submit();">
+                                                                    <i class="fa fa-trash"></i> </a>
+                                                                <form
+                                                                    action="{{route('employee.post.destroy', $post->id)}}"
+                                                                    method="post" id="{{$post->_id}}">
+                                                                    @csrf
+                                                                    @method('delete')
+                                                                </form>
+                                                            </div>
+                                                        </h2>
+                                                        <p> {{$post->body}} </p>
+                                                    </div><!-- /.post-content -->
+                                                    <div class="post-meta clearfix">
+                                                        <div class="post-meta-date">
+                                                            {{$post->created_at}}
+                                                        </div><!-- /.post-meta-date -->
+                                                        <div class="post-meta-categories">
+                                                            <i class="fa fa-tags"></i>
+                                                            <div class="categories">
+                                                                @foreach($post->tags as $tag)
+                                                                    <a href="{{$tag->id}}"> {{$tag->name}} </a>,
+                                                                @endforeach
+                                                            </div>
+                                                        </div>
+                                                        <!-- /.post-meta-categories -->
+                                                    {{--                                                <div class="post-meta-comments"><i class="fa fa-comments"></i> <a--}}
+                                                    {{--                                                        href="">3 comments</a></div>--}}
+                                                    <!-- /.post-meta-comments -->
+                                                        <div class="post-meta-more"><a href="">Read More <i
+                                                                    class="fa fa-chevron-right"></i></a></div>
+                                                        <!-- /.post-meta-more -->
+                                                    </div><!-- /.post-meta -->
+                                                </div><!-- /.post -->
+                                            @endforeach
                                         </div><!-- /.posts-lists -->
                                         <ul class="pagination"></ul>
                                     </div><!-- /.list -->
@@ -185,17 +188,18 @@
     <script src="/public/js/list.js" type="text/javascript"></script>
     <script>
         var options = {
-            valueNames: ['price'],
+            valueNames: ['categories'],
             page: 10,
             pagination: true
         };
         var postsList = new List('posts-list', options);
 
         function filter(category) {
-            postsList.filter(function(item) {
+            postsList.filter(function (item) {
 
+            }
         }
-        }
+
         function removeFilters() {
             postsList.filter();
         }
