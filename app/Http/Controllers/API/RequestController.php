@@ -177,6 +177,10 @@ class RequestController extends Controller
                 $handyman->balance = $handyman->balance + $total;
                 $request->paid = true;
                 $file_name = Str::random(25);
+                $request->client = User::query()->find($request->client_ids[0])->simplifiedArray();
+                $request->handyman = User::query()->find($request->employee_ids[0])->simplifiedArray();
+                $request->service = Service::query()->find($request->service_id)->simplifiedArray();
+                $request->flag = true;
                 $this->stringToPDF($file_name, $request);
                 $request->report = 'reports/pdf/' . $file_name . '.pdf';
 
@@ -378,9 +382,6 @@ class RequestController extends Controller
 
     function stringToPDF($file_name, $request)
     {
-        $request->client = User::query()->find($request->client_ids[0])->simplifiedArray();
-        $request->handyman = User::query()->find($request->employee_ids[0])->simplifiedArray();
-        $request->service = Service::query()->find($request->service_id)->simplifiedArray();
 
         $pdf = Pdf::loadView('cms.requests.report-pdf', compact('request'));
 
