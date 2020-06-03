@@ -207,11 +207,8 @@
             </div>
             <div class="row">
                 @endif
-                <div class="col-md-3 col-sm-6">
-                    <div class="card card-block">
+                <div>
                         <img src="{{config('image.path').$image}}" alt="later">
-                        </a>
-                    </div>
                 </div>
                 @endforeach
             </div>
