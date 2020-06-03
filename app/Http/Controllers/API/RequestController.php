@@ -179,7 +179,7 @@ class RequestController extends Controller
                 $file_name = Str::random(25);
                 $request->client = User::query()->find($request->client_ids[0])->simplifiedArray();
                 $request->handyman = User::query()->find($request->employee_ids[0])->simplifiedArray();
-                $request->service = Service::query()->find($request->service_id)->simplifiedArray();
+                $request->service = Service::query()->find($request->service_id)->ServiceArray();
                 $request->flag = true;
                 $this->stringToPDF($file_name, $request);
                 $request->report = 'reports/pdf/' . $file_name . '.pdf';
