@@ -75,7 +75,11 @@
                                                 <div class="post post-boxed">
                                                     <div class="post-image">
                                                         <div class="slideshow-container">
-                                                           
+                                                            @foreach($post->images as $image)
+                                                                <div class="mySlides{{$loop->index}}">
+                                                                    <img src="{{config('image.path').$image}}" style="width:100%" alt="">
+                                                                </div>
+                                                            @endforeach
                                                                 <a class="prev" onclick="plusSlides(-1, {{$loop->index}})">&#10094;</a>
                                                                 <a class="next" onclick="plusSlides(1, {{$loop->index}})">&#10095;</a>
                                                         </div>
@@ -224,24 +228,24 @@
         });
     </script>
     <script src="/public/js/list.js" type="text/javascript"></script>
-    <script>
-        var options = {
-            valueNames: ['categories'],
-            page: 10,
-            pagination: true
-        };
-        var postsList = new List('posts-list', options);
+{{--    <script>--}}
+{{--        var options = {--}}
+{{--            valueNames: ['categories'],--}}
+{{--            page: 10,--}}
+{{--            pagination: true--}}
+{{--        };--}}
+{{--        var postsList = new List('posts-list', options);--}}
 
-        function filter(category) {
-            postsList.filter(function (item) {
+{{--        function filter(category) {--}}
+{{--            postsList.filter(function (item) {--}}
 
-            });
-        }
+{{--            });--}}
+{{--        }--}}
 
-        function removeFilters() {
-            postsList.filter();
-        }
-    </script>
+{{--        function removeFilters() {--}}
+{{--            postsList.filter();--}}
+{{--        }--}}
+{{--    </script>--}}
     <script>
         var slideIndex = @json($slideIndex);
         var slideId = @json($slideId);
