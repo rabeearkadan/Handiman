@@ -212,7 +212,7 @@ class UserController extends Controller
         }
         $user->client_addresses = $addresses;
         $user->save();
-
+        return response()->json(['status' => 'success']);
     }
 
     public function getHandymanFeedback()
