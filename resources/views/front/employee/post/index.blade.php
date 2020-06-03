@@ -105,11 +105,11 @@
 {{--                                                                <a href="{{route('employee.post.edit',$post->id)}}"> <i--}}
 {{--                                                                        class="fa fa-edit"></i> </a>--}}
                                                                 <a href="#"
-                                                                   onclick="document.getElementById('{{$post->_id}}').submit();">
+                                                                   onclick="deletePost('{{$post->id}}')">
                                                                     <i class="fa fa-trash"></i> </a>
                                                                 <form
                                                                     action="{{route('employee.post.destroy', $post->id)}}"
-                                                                    method="post" id="{{$post->_id}}">
+                                                                    method="post" id="{{$post->id}}">
                                                                     @csrf
                                                                     @method('delete')
                                                                 </form>
@@ -169,6 +169,12 @@
 @push('js')
     <script src="/public/js/list.js" type="text/javascript"></script>
         <script>
+            function deletePost(id){
+                var result = confirm("Want to delete this post?");
+                if (result) {
+                    document.getElementById(id).submit();
+                }
+            }
             var options = {
                 valueNames: ['categories'],
                 page: 10,
