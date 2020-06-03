@@ -123,11 +123,12 @@
                                                         </div><!-- /.post-meta-date -->
                                                         <div class="post-meta-categories">
                                                             <i class="fa fa-tags"></i>
-                                                            <div class="categories">
                                                                 @foreach($post->tags as $tag)
-                                                                    <a href="{{$tag->id}}"> {{$tag->name}} </a>,
+                                                                    @if($loop->index !=0)
+                                                                        ,
+                                                                    @endif
+                                                                    <a href="{{$tag->id}}" class="categories"> {{$tag->name}} </a>
                                                                 @endforeach
-                                                            </div>
                                                         </div>
                                                         <!-- /.post-meta-categories -->
                                                     {{--                                                <div class="post-meta-comments"><i class="fa fa-comments"></i> <a--}}
