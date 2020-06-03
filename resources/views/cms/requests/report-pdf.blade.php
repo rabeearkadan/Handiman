@@ -175,31 +175,31 @@
                 Quantity
             </td>
         </tr>
-        @foreach($request->receipt as $item)
+{{--        @foreach($request->receipt as $item)--}}
 
-            <tr class="item">
-                <td>
-                    {{$item['name']}}
-                </td>
+{{--            <tr class="item">--}}
+{{--                <td>--}}
+{{--                    {{$item['name']}}--}}
+{{--                </td>--}}
 
-                <td>
-                    {{$item['price']}}
-                </td>
-                <td>{{$item['qty']}}</td>
-            </tr>
-                        @if ( $loop->index ==sizeof($request->receipt) )
-                            <tr class="item last">
-                                <td>
-                                    {{$item['name']}}
-                                </td>
+{{--                <td>--}}
+{{--                    {{$item['price']}}--}}
+{{--                </td>--}}
+{{--                <td>{{$item['qty']}}</td>--}}
+{{--            </tr>--}}
+{{--                        @if ( $loop->index ==sizeof($request->receipt) )--}}
+{{--                            <tr class="item last">--}}
+{{--                                <td>--}}
+{{--                                    {{$item['name']}}--}}
+{{--                                </td>--}}
 
-                                <td>
-                                    {{$item['price']}}
-                                </td>
-                                <td>{{$item['qty']}}</td>
-                            </tr>
-                        @endif
-        @endforeach
+{{--                                <td>--}}
+{{--                                    {{$item['price']}}--}}
+{{--                                </td>--}}
+{{--                                <td>{{$item['qty']}}</td>--}}
+{{--                            </tr>--}}
+{{--                        @endif--}}
+{{--        @endforeach--}}
 
 
         <tr class="total">
