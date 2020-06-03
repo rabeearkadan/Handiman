@@ -93,7 +93,7 @@
 }
 
 .post-image img {
-    height: fit-content;
+    height: -webkit-fill-available;
     object-fit: contain;
 }
 
