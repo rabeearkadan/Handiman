@@ -75,11 +75,7 @@
                                                 <div class="post post-boxed">
                                                     <div class="post-image">
                                                         <div class="slideshow-container">
-                                                            @foreach($post->images as $image)
-                                                                <div class="mySlides{{$loop->index}}">
-                                                                    <img src="{{config('image.path').$image}}" style="width:100%" alt="">
-                                                                </div>
-                                                            @endforeach
+                                                           
                                                                 <a class="prev" onclick="plusSlides(-1, {{$loop->index}})">&#10094;</a>
                                                                 <a class="next" onclick="plusSlides(1, {{$loop->index}})">&#10095;</a>
                                                         </div>
