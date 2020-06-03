@@ -121,11 +121,16 @@ class RequestController extends Controller
     public function cancelRequest($id)
     {
         $request = RequestService::query()->find($id);
-        $handyman = User::query()->find($request->employee_ids[0]);
+        if ($request->employees()->count > 0) {
+            $handyman = User::query()->find($request->employee_ids[0]);
+            $employee_request_ids = [];
+            foreach ($handyman->employee_request_ids as $s) {
+                $employee_request_ids[] = $s;
+            }
+            $this->notification($handyman->employee_device_token, Auth::user()->name, 'request has been canceled' .
+                $request->subject, 'request');
 
-        $this->notification($handyman->employee_device_token, Auth::user()->name, 'request has been canceled' .
-            $request->subject, 'request');
-
+        }
         $user = User::query()->find(Auth::id());
 
         $client_request_ids = [];
@@ -133,10 +138,7 @@ class RequestController extends Controller
             if ($s != $id)
                 $client_request_ids [] = $s;
         }
-        $employee_request_ids = [];
-        foreach ($handyman->employee_request_ids as $s) {
-            $employee_request_ids[] = $s;
-        }
+
         $user->employeeRequests()->sync($employee_request_ids);
         $user->clientRequests()->sync($client_request_ids);
 

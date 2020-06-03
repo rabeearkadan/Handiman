@@ -125,7 +125,7 @@ class UserController extends Controller
             $user->image = $this->uploadAny($params['image'], 'profile');
 
         if (Arr::has($params, 'price'))
-            $user->price=(double)$request->input('price');
+            $user->price = (double)$request->input('price');
 
         if (Arr::has($params, 'biography'))
             $user->biography = $params['biography'];
@@ -200,6 +200,19 @@ class UserController extends Controller
         $user->save();
         return response()->json(['status' => 'success', 'user' => $user]);
 
+    }
+
+    public function deleteAddress($id)
+    {
+        $user = User::query()->find(Auth::id());
+        $addresses = [];
+        foreach ($user->client_addresses as $address) {
+            if ($address['_id'] != $id)
+               array_push($addresses,$address);
+        }
+        $user->client_addresses = $addresses;
+        $user->save();
+        return response()->json(['status' => 'success']);
     }
 
     public function getHandymanFeedback()
