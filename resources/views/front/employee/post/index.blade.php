@@ -86,9 +86,8 @@
                                                         <a class="read-more" href="">View</a>
                                                     </div><!-- /.post-image -->
                                                     <div class="post-content">
-                                                        <h2><a href=""> {{$post->title}} </a>                       </h2>
-
-                                                        <div style="position:absolute; right: 3%">
+                                                        <h2><a href=""> {{$post->title}} </a>
+                                                            <div style="position:absolute; right: 3%">
                                                                 <a href="{{route('employee.post.edit',$post->id)}}"> <i
                                                                         class="fa fa-edit"></i> </a>
                                                                 <a href="#"
@@ -101,6 +100,7 @@
                                                                     @method('delete')
                                                                 </form>
                                                             </div>
+                                                        </h2>
                                                         <p> {{$post->body}} </p>
                                                     </div><!-- /.post-content -->
                                                     <div class="post-meta clearfix">
