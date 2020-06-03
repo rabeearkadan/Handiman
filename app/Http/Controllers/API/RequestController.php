@@ -178,11 +178,12 @@ class RequestController extends Controller
                 $request->paid = true;
                 $file_name = Str::random(25);
 
-                $this->stringToPDF($file_name, $request);
+
                 $request->report = 'reports/pdf/' . $file_name . '.pdf';
 
                 $request->save();
                 $handyman->save();
+                $this->stringToPDF($file_name, $request);
                 return response()->json(['status' => 'success']);
             }
 
