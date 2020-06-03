@@ -8,6 +8,28 @@
     <link href="{{asset('css/employee/common-classes.css')}}" rel="stylesheet">
     <link href="{{asset('css/employee/widgets.css')}}" rel="stylesheet">
     <link href="{{asset('css/employee/add-post-button.css')}}" rel="stylesheet">
+    <style>
+        .img-container img {
+
+            left: 0;
+            object-fit: cover;
+            object-position: center;
+            opacity: 0;
+            top: 0;
+
+            z-index: -1;
+        }
+
+        .img-container img.next {
+            opacity: 1;
+            z-index: 1;
+        }
+
+        .img-container img.prev {
+            opacity: 1;
+            z-index: 2;
+        }
+    </style>
 @endpush
 @section('content')
     <div class="page-wrapper">
