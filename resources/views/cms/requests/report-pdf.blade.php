@@ -136,9 +136,9 @@
 
                         </td>
                     </tr>
-                    <tr>Address: {{$rquest->client_address['street']}},
-                        {{$request->client_address['building']}}
-                        {{$request->client_address['floor']}}</tr>
+{{--                    <tr>Address: {{$rquest->client_address['street']}},--}}
+{{--                        {{$request->client_address['building']}}--}}
+{{--                        {{$request->client_address['floor']}}</tr>--}}
                 </table>
             </td>
         </tr>
