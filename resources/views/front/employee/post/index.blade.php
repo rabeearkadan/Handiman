@@ -23,21 +23,23 @@
                                         <a href="{{route('employee.post.create')}}" class="header-action-inner">
                                             <i class="fa fa-plus" style="margin-top:15px;"></i>
                                         </a>
-                                        <div class="tooltip fade bottom"  style="margin-left:-6px;">
+                                        <div class="tooltip fade bottom" style="margin-left:-6px;">
                                             <div class="tooltip-arrow"></div>
                                             <div class="tooltip-inner"> New Post</div>
                                         </div>
                                     </div>
                                 </div><!-- /.page-title -->
                                 <div class="posts">
+                                    <div id="posts-list">
+                                        <div class="list">
                                     @foreach($user->posts as $post)
                                         <div class="post post-boxed">
                                             <div class="post-image">
                                                 <div class="img-container" data-slideshow>
                                                     @foreach($post->images as $image)
-                                                <img src="{{config('image.path').$image}}"
-                                                     alt="">
-                                                        @endforeach
+                                                        <img src="{{config('image.path').$image}}"
+                                                             alt="">
+                                                    @endforeach
                                                 </div>
                                                 <a class="read-more" href="">View</a>
                                             </div><!-- /.post-image -->
@@ -46,7 +48,8 @@
                                                     <div style="position:absolute; right: 3%">
                                                         <a href="{{route('employee.post.edit',$post->id)}}"> <i
                                                                 class="fa fa-edit"></i> </a>
-                                                        <a href="#" onclick="document.getElementById('{{$post->_id}}').submit();">
+                                                        <a href="#"
+                                                           onclick="document.getElementById('{{$post->_id}}').submit();">
                                                             <i class="fa fa-trash"></i> </a>
                                                         <form action="{{route('employee.post.destroy', $post->id)}}"
                                                               method="post" id="{{$post->_id}}">
@@ -68,25 +71,19 @@
                                                     @endforeach
                                                 </div>
                                                 <!-- /.post-meta-categories -->
-{{--                                                <div class="post-meta-comments"><i class="fa fa-comments"></i> <a--}}
-{{--                                                        href="">3 comments</a></div>--}}
-                                                <!-- /.post-meta-comments -->
+                                            {{--                                                <div class="post-meta-comments"><i class="fa fa-comments"></i> <a--}}
+                                            {{--                                                        href="">3 comments</a></div>--}}
+                                            <!-- /.post-meta-comments -->
                                                 <div class="post-meta-more"><a href="">Read More <i
                                                             class="fa fa-chevron-right"></i></a></div>
                                                 <!-- /.post-meta-more -->
                                             </div><!-- /.post-meta -->
                                         </div><!-- /.post -->
                                     @endforeach
+                                        </div><!-- /.posts-lists -->
+                                        <ul class="pagination"></ul>
+                                    </div><!-- /.list -->
                                 </div><!-- /.posts -->
-                                <div class="pager">
-                                    <ul>
-                                        <li><a href="#">Prev</a></li>
-                                        <li><a href="#">5</a></li>
-                                        <li class="active"><a>6</a></li>
-                                        <li><a href="#">7</a></li>
-                                        <li><a href="#">Next</a></li>
-                                    </ul>
-                                </div><!-- /.pagination -->
                             </div><!-- /.content -->
                         </div><!-- /.col-* -->
                         <div class="col-sm-4 col-lg-3">
@@ -139,12 +136,16 @@
             // so, start the slideshow.
             loadImage() {
                 this.imagesLoaded++;
-                if (this.imagesLoaded >= this.slides.length) { this.playSlideshow() }
+                if (this.imagesLoaded >= this.slides.length) {
+                    this.playSlideshow()
+                }
             }
 
             // Start the slideshow.
             playSlideshow() {
-                this.slideshow = window.setInterval(() => { this.performSlide() }, 3500);
+                this.slideshow = window.setInterval(() => {
+                    this.performSlide()
+                }, 3500);
             }
 
             // 1. Previous slide is unset.
@@ -152,14 +153,18 @@
             // 3. New index and appropriate next slide are set.
             // 4. Fade out action.
             performSlide() {
-                if (this.prevSlide) { this.prevSlide.removeClass('prev fade-out') }
+                if (this.prevSlide) {
+                    this.prevSlide.removeClass('prev fade-out')
+                }
 
                 this.nextSlide.removeClass('next');
                 this.prevSlide = this.nextSlide;
                 this.prevSlide.addClass('prev');
 
                 this.currentIndex++;
-                if (this.currentIndex >= this.slides.length) { this.currentIndex = 0 }
+                if (this.currentIndex >= this.slides.length) {
+                    this.currentIndex = 0
+                }
 
                 this.setNextSlide();
 
@@ -173,8 +178,26 @@
 
         }
 
-        $(document).ready(function() {
+        $(document).ready(function () {
             new Slideshow;
         });
+    </script>
+    <script src="/public/js/list.js" type="text/javascript"></script>
+    <script>
+        var options = {
+            valueNames: ['price'],
+            page: 10,
+            pagination: true
+        };
+        var postsList = new List('posts-list', options);
+
+        function filter(category) {
+            postsList.filter(function(item) {
+
+        }
+        }
+        function removeFilters() {
+            postsList.filter();
+        }
     </script>
 @endpush
