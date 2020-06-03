@@ -8,29 +8,6 @@
     <link href="{{asset('css/employee/common-classes.css')}}" rel="stylesheet">
     <link href="{{asset('css/employee/widgets.css')}}" rel="stylesheet">
     <link href="{{asset('css/employee/add-post-button.css')}}" rel="stylesheet">
-    <style>
-
-        .img-container img {
-
-            left: 0;
-            object-fit: cover;
-            object-position: center;
-            opacity: 0;
-            top: 0;
-
-            z-index: -1;
-        }
-
-        .img-container img.next {
-            opacity: 1;
-            z-index: 1;
-        }
-
-        .img-container img.prev {
-            opacity: 1;
-            z-index: 2;
-        }
-    </style>
 @endpush
 @section('content')
     <div class="page-wrapper">
@@ -91,10 +68,10 @@
                                                     @endforeach
                                                 </div>
                                                 <!-- /.post-meta-categories -->
-                                                <div class="post-meta-comments"><i class="fa fa-comments"></i> <a
-                                                        href="blog-detail.html">3 comments</a></div>
+{{--                                                <div class="post-meta-comments"><i class="fa fa-comments"></i> <a--}}
+{{--                                                        href="">3 comments</a></div>--}}
                                                 <!-- /.post-meta-comments -->
-                                                <div class="post-meta-more"><a href="blog-detail.html">Read More <i
+                                                <div class="post-meta-more"><a href="">Read More <i
                                                             class="fa fa-chevron-right"></i></a></div>
                                                 <!-- /.post-meta-more -->
                                             </div><!-- /.post-meta -->
