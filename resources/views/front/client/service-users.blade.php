@@ -63,10 +63,10 @@
                                     <img src="/public/images/client/clock-icon.png" alt="date">
                                     {{$available['date']}} : {{$available['from']}} -> {{$available['to']}}
                                     <i class="fa fa-times"></i>
-                                    <input type="hidden" value="@json($available)" name="availability[]">
                                 </div><!-- /.chip -->
                             @endforeach
                         </div><!-- /.row -->
+                        <input type="hidden" value="@json($availableTimes)" name="availability[]">
                     @endisset
 
                     <hr>
