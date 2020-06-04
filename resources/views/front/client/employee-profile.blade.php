@@ -248,7 +248,7 @@
                                                 <div class="we-clamp ember-view">
                                                     <p>Review</p>
                                                 </div>
-                                                <button onclick="more()" class="we-truncate__button link">
+                                                <button onclick="more(@json($feedback)" class="we-truncate__button link">
                                                     more
                                                 </button>
                                             </blockquote>
@@ -470,9 +470,28 @@
 
     </script>
     <script>
-        function more() {
+        function more(array) {
+            var arr = array;
             document.documentElement.style.overflow = 'hidden';
-            document.getElementById('modal-container').innerHTML = ' <div class="we-modal  we-modal--open" role="dialog"><div class="we-modal__content large-10 medium-12 we-modal__content--review" ><div class="we-modal__content__wrapper"><div aria-labelledby="we-customer-review-21" class="we-customer-review lockup ember-view"><figure aria-label="3 out of 5" class="we-star-rating ember-view we-customer-review__rating we-star-rating--large"><span class="we-star-rating-stars-outlines"><span class="we-star-rating-stars we-star-rating-stars-3"></span></span></figure><div class="we-customer-review__header we-customer-review__header--user"><span class="we-truncate we-truncate--single-line ember-view we-customer-review__user"> Client Name</span><span class="we-customer-review__separator">, </span><time class="we-customer-review__date">00/00/2020</time></div><h3 class="we-truncate we-truncate--single-line ember-view we-customer-review__title">  Title</h3><blockquote class="we-customer-review__body--modal"><p>Review</p></blockquote></div></div><button class="we-modal__close" onclick="less()" aria-label="Close" ></button></div><button class="we-modal__close--overlay" id="close-div" aria-label="Close" ></button></div><div class="overlay"></div>';
+            document.getElementById('modal-container').innerHTML = ' <div class="we-modal  we-modal--open" role="dialog">' +
+                '<div class="we-modal__content large-10 medium-12 we-modal__content--review" >' +
+                '<div class="we-modal__content__wrapper">' +
+                '<div aria-labelledby="we-customer-review-21" class="we-customer-review lockup ember-view">' +
+                '<figure aria-label="'+arr["rating"]+'out of 5" class="we-star-rating ember-view we-customer-review__rating we-star-rating--large">' +
+                '<span class="we-star-rating-stars-outlines">' +
+                '<span class="we-star-rating-stars we-star-rating-stars-'+arr["rating"]+'"></span></span>' +
+                '</figure>' +
+                '<div class="we-customer-review__header we-customer-review__header--user">' +
+                '<span class="we-truncate we-truncate--single-line ember-view we-customer-review__user"> ' +
+                'Client '+arr["client"]["name"]+'</span>' +
+                '<span class="we-customer-review__separator">, </span>' +
+                '<time class="we-customer-review__date">00/00/2020</time>' +
+                '</div><h3 class="we-truncate we-truncate--single-line ember-view we-customer-review__title">  Title</h3>' +
+                '<blockquote class="we-customer-review__body--modal">' +
+                '<p>Review</p></blockquote></div></div>' +
+                '<button class="we-modal__close" onclick="less()" aria-label="Close" ></button>' +
+                '</div><button class="we-modal__close--overlay" id="close-div" aria-label="Close" ></button>' +
+                '</div><div class="overlay"></div>';
         }
 
         function less() {
