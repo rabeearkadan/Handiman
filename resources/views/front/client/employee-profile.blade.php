@@ -496,13 +496,13 @@
                 '<div class="we-modal__content large-10 medium-12 we-modal__content--review" >' +
                 '<div class="we-modal__content__wrapper">' +
                 '<div aria-labelledby="we-customer-review-21" class="we-customer-review lockup ember-view">' +
-                '<figure aria-label="'+feedbacks['serviceId']['index']["rating"]+'out of 5" class="we-star-rating ember-view we-customer-review__rating we-star-rating--large">' +
+                '<figure aria-label="'+feedbacks[serviceId][index]["rating"]+'out of 5" class="we-star-rating ember-view we-customer-review__rating we-star-rating--large">' +
                 '<span class="we-star-rating-stars-outlines">' +
-                '<span class="we-star-rating-stars we-star-rating-stars-'+feedbacks['serviceId']['index']["rating"]+'"></span></span>' +
+                '<span class="we-star-rating-stars we-star-rating-stars-'+feedbacks[serviceId][index]["rating"]+'"></span></span>' +
                 '</figure>' +
                 '<div class="we-customer-review__header we-customer-review__header--user">' +
                 '<span class="we-truncate we-truncate--single-line ember-view we-customer-review__user"> ' +
-                'Client '+feedbacks['serviceId']['index']["client"]["name"]+'</span>' +
+                'Client '+feedbacks[serviceId][index]["client"]["name"]+'</span>' +
                 '<span class="we-customer-review__separator">, </span>' +
                 '<time class="we-customer-review__date">00/00/2020</time>' +
                 '</div><h3 class="we-truncate we-truncate--single-line ember-view we-customer-review__title">  Title</h3>' +
