@@ -135,123 +135,131 @@
 
 
     <section class="l-content-width section section--bordered">
-            <div class="portfolioFilter clearfix margin-b-80">
-                <a href="#"><b>ALL</b></a>
-                @foreach($employee->services as $service)
-                    <a href="#"><b> {{$service->name}} </b></a>
-                @endforeach
-            </div>
+        <div class="portfolioFilter clearfix margin-b-80">
+            <a href="#"><b>ALL</b></a>
+            @foreach($employee->services as $service)
+                <a href="#"><b> {{$service->name}} </b></a>
+            @endforeach
+        </div>
         <div id="reviews-list">
             <div class="list">
                 @foreach($employee->services as $service)
                     @isset($service_rating[$service->id])
-                    <div class="review-service" style="display: none">{{$service->id}}</div>
-                    <div class="section__nav">
-                        <h2 class="section__headline">
-                            Ratings and Reviews
-                        </h2>
-                        <a href="{{route('client.user-profile.all.reviews',[$service->id,$employee->id])}}"
-                           class="link section__nav__see-all-link ember-view"> See All</a>
-                    </div>
+                        <div class="review-service" style="display: none">{{$service->id}}</div>
+                        <div class="section__nav">
+                            <h2 class="section__headline">
+                                Ratings and Reviews
+                            </h2>
+                            <a href="{{route('client.user-profile.all.reviews',[$service->id,$employee->id])}}"
+                               class="link section__nav__see-all-link ember-view"> See All</a>
+                        </div>
                         @if($service_rating[$service->id][0]!=0)
-                        <div class="we-customer-ratings lockup ember-view">
-                            <div class="l-row">
-                                <div class="we-customer-ratings__stats l-column small-4 medium-6 large-4">
-                                    <div class="we-customer-ratings__averages">
+                            <div class="we-customer-ratings lockup ember-view">
+                                <div class="l-row">
+                                    <div class="we-customer-ratings__stats l-column small-4 medium-6 large-4">
+                                        <div class="we-customer-ratings__averages">
                                         <span
                                             class="we-customer-ratings__averages__display">{{$service_rating[$service->id][0]}}</span>
-                                        out of 5
+                                            out of 5
+                                        </div>
+                                        <div
+                                            class="we-customer-ratings__count small-hide medium-show"> {{$service_rating[$service->id][6]}}
+                                            Ratings
+                                        </div>
                                     </div>
-                                    <div class="we-customer-ratings__count small-hide medium-show"> {{$service_rating[$service->id][6]}} Ratings
+                                    <div class=" l-column small-8 medium-6 large-4">
+                                        <figure class="we-star-bar-graph">
+                                            <div class="we-star-bar-graph__row">
+                                                <span
+                                                    class="we-star-bar-graph__stars we-star-bar-graph__stars--5"></span>
+                                                <div class="we-star-bar-graph__bar">
+                                                    <div class="we-star-bar-graph__bar__foreground-bar"
+                                                         style="width: {{($service_rating[$service->id][5]/$service_rating[$service->id][6])*100}}%;"></div>
+                                                </div>
+                                            </div>
+                                            <div class="we-star-bar-graph__row">
+                                                <span
+                                                    class="we-star-bar-graph__stars we-star-bar-graph__stars--4"></span>
+                                                <div class="we-star-bar-graph__bar">
+                                                    <div class="we-star-bar-graph__bar__foreground-bar"
+                                                         style="width:{{($service_rating[$service->id][4]/$service_rating[$service->id][6])*100}}%;"></div>
+                                                </div>
+                                            </div>
+                                            <div class="we-star-bar-graph__row">
+                                                <span
+                                                    class="we-star-bar-graph__stars we-star-bar-graph__stars--3"></span>
+                                                <div class="we-star-bar-graph__bar">
+                                                    <div class="we-star-bar-graph__bar__foreground-bar"
+                                                         style="width:{{($service_rating[$service->id][3]/$service_rating[$service->id][6])*100}}%;"></div>
+                                                </div>
+                                            </div>
+                                            <div class="we-star-bar-graph__row">
+                                                <span
+                                                    class="we-star-bar-graph__stars we-star-bar-graph__stars--2"></span>
+                                                <div class="we-star-bar-graph__bar">
+                                                    <div class="we-star-bar-graph__bar__foreground-bar"
+                                                         style="width:{{($service_rating[$service->id][2]/$service_rating[$service->id][6])*100}}%;"></div>
+                                                </div>
+                                            </div>
+                                            <div class="we-star-bar-graph__row">
+                                                <span class="we-star-bar-graph__stars "></span>
+                                                <div class="we-star-bar-graph__bar">
+                                                    <div class="we-star-bar-graph__bar__foreground-bar"
+                                                         style="width:{{($service_rating[$service->id][1]/$service_rating[$service->id][6])*100}}%;"></div>
+                                                </div>
+                                            </div>
+                                        </figure>
+                                        <p class="we-customer-ratings__count medium-hide"> {{$service_rating[$service->id][6]}}
+                                            Ratings</p>
                                     </div>
-                                </div>
-                                <div class=" l-column small-8 medium-6 large-4">
-                                    <figure class="we-star-bar-graph">
-                                        <div class="we-star-bar-graph__row">
-                                            <span class="we-star-bar-graph__stars we-star-bar-graph__stars--5"></span>
-                                            <div class="we-star-bar-graph__bar">
-                                                <div class="we-star-bar-graph__bar__foreground-bar"
-                                                     style="width: {{($service_rating[$service->id][5]/$service_rating[$service->id][6])*100}}%;"></div>
-                                            </div>
-                                        </div>
-                                        <div class="we-star-bar-graph__row">
-                                            <span class="we-star-bar-graph__stars we-star-bar-graph__stars--4"></span>
-                                            <div class="we-star-bar-graph__bar">
-                                                <div class="we-star-bar-graph__bar__foreground-bar"
-                                                     style="width:{{($service_rating[$service->id][4]/$service_rating[$service->id][6])*100}}%;"></div>
-                                            </div>
-                                        </div>
-                                        <div class="we-star-bar-graph__row">
-                                            <span class="we-star-bar-graph__stars we-star-bar-graph__stars--3"></span>
-                                            <div class="we-star-bar-graph__bar">
-                                                <div class="we-star-bar-graph__bar__foreground-bar"
-                                                     style="width:{{($service_rating[$service->id][3]/$service_rating[$service->id][6])*100}}%;"></div>
-                                            </div>
-                                        </div>
-                                        <div class="we-star-bar-graph__row">
-                                            <span class="we-star-bar-graph__stars we-star-bar-graph__stars--2"></span>
-                                            <div class="we-star-bar-graph__bar">
-                                                <div class="we-star-bar-graph__bar__foreground-bar"
-                                                     style="width:{{($service_rating[$service->id][2]/$service_rating[$service->id][6])*100}}%;"></div>
-                                            </div>
-                                        </div>
-                                        <div class="we-star-bar-graph__row">
-                                            <span class="we-star-bar-graph__stars "></span>
-                                            <div class="we-star-bar-graph__bar">
-                                                <div class="we-star-bar-graph__bar__foreground-bar"
-                                                     style="width:{{($service_rating[$service->id][1]/$service_rating[$service->id][6])*100}}%;"></div>
-                                            </div>
-                                        </div>
-                                    </figure>
-                                    <p class="we-customer-ratings__count medium-hide"> {{$service_rating[$service->id][6]}} Ratings</p>
                                 </div>
                             </div>
-                        </div>
                             <div class="l-row l-row--peek">
-                        @foreach($feedbacks[$service->id] as $feedback)
-                            @if($loop->index > 2)
-                                @break
-                            @endif
-                                <div
-                                    class="ember-view small-valign-top l-column--equal-height l-column small-4 medium-6 large-4">
-                                    <div class="ember-view">
-                                    </div>
-                                    <div class="we-customer-review lockup ember-view">
-                                        <figure aria-label="{{$feedback['rating']}} out of 5"
-                                                class="we-star-rating ember-view we-customer-review__rating we-star-rating--large">
+                                @foreach($feedbacks[$service->id] as $feedback)
+                                    @if($loop->index > 2)
+                                        @break
+                                    @endif
+                                    <div
+                                        class="ember-view small-valign-top l-column--equal-height l-column small-4 medium-6 large-4">
+                                        <div class="ember-view">
+                                        </div>
+                                        <div class="we-customer-review lockup ember-view">
+                                            <figure aria-label="{{$feedback['rating']}} out of 5"
+                                                    class="we-star-rating ember-view we-customer-review__rating we-star-rating--large">
                                             <span class="we-star-rating-stars-outlines">
                                                <span
                                                    class="we-star-rating-stars we-star-rating-stars-{{$feedback['rating']}}"></span>
                                             </span>
-                                            <!----></figure>
-                                        <div class="we-customer-review__header we-customer-review__header--user">
+                                                <!----></figure>
+                                            <div class="we-customer-review__header we-customer-review__header--user">
          <span class="we-truncate we-truncate--single-line ember-view we-customer-review__user">  {{$feedback['client']['name']}}
        </span>
-                                            <span class="we-customer-review__separator">, </span>
-                                            <time aria-label="May 00, 2020" class="we-customer-review__date">
-                                                00/00/2020
-                                            </time>
-                                        </div>
-                                        <h3 class="we-truncate we-truncate--single-line ember-view we-customer-review__title">
-                                            Title
-                                        </h3>
-                                        <blockquote
-                                            class="we-truncate we-truncate--multi-line we-truncate--interactive we-truncate--truncated ember-view we-customer-review__body">
-                                            <div class="we-clamp ember-view">
-                                                <p>Review</p>
+                                                <span class="we-customer-review__separator">, </span>
+                                                <time aria-label="May 00, 2020" class="we-customer-review__date">
+                                                    00/00/2020
+                                                </time>
                                             </div>
-                                            <button onclick="more()" class="we-truncate__button link">
-                                                more
-                                            </button>
-                                        </blockquote>
-                                        <!----></div>
-                                </div>
+                                            <h3 class="we-truncate we-truncate--single-line ember-view we-customer-review__title">
+                                                Title
+                                            </h3>
+                                            <blockquote
+                                                class="we-truncate we-truncate--multi-line we-truncate--interactive we-truncate--truncated ember-view we-customer-review__body">
+                                                <div class="we-clamp ember-view">
+                                                    <p>Review</p>
+                                                </div>
+                                                <button onclick="more()" class="we-truncate__button link">
+                                                    more
+                                                </button>
+                                            </blockquote>
+                                            <!----></div>
+                                    </div>
 
-                        @endforeach
+                                @endforeach
                             </div>
-@endisset
+                        @endif
+                    @endisset
                 @endforeach
-                    @endif
+
             </div><!-- /.list -->
         </div><!-- /#reviews-list -->
 
