@@ -209,8 +209,8 @@
                                 </div>
                             </div>
                         </div>
-                        @foreach($feedbacks[$service->id] as $feedback)
                             <div class="l-row l-row--peek">
+                        @foreach($feedbacks[$service->id] as $feedback)
                                 <div
                                     class="ember-view small-valign-top l-column--equal-height l-column small-4 medium-6 large-4">
                                     <div class="ember-view">
@@ -245,8 +245,9 @@
                                         </blockquote>
                                         <!----></div>
                                 </div>
-                            </div>
+
                         @endforeach
+                            </div>
 @endisset
                     @endif
                 @endforeach
