@@ -57,18 +57,17 @@ class HomeController extends Controller
                 ],
             ])->orderBy('dist.calculated')
             ->get();
-        if($request->input('availableTimes') != null) {
+        $availableTimes = array();
+        if($request->availableTimes != null) {
             foreach($request->availableTimes  as $availableTime) {
                 $elements = explode(', ',$availableTime );
-                $availableTimes = array([
+                array_push($availableTimes,array(
                     'date' => $elements[0],
                     'from' => $elements[1],
                     'to' => $elements[2]
-                ]);
+                )
+                );
             }
-        }
-        else{
-            $availableTimes = array();
         }
         if(isset($request->date) && isset($request->from) && isset($request->to)){
             array_push($availableTimes,array(
