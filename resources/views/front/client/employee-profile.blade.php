@@ -248,7 +248,7 @@
                                                 <div class="we-clamp ember-view">
                                                     <p>Review</p>
                                                 </div>
-                                                <button onclick="more(@json($feedback)" class="we-truncate__button link">
+                                                <button onclick="more('{{$service->id}}','{{$loop->index}}')" class="we-truncate__button link">
                                                     more
                                                 </button>
                                             </blockquote>
@@ -470,20 +470,34 @@
 
     </script>
     <script>
-        function more(array) {
-            var arr = array;
+        var feedbacks = new Array();
+        @foreach($employee->services as $service)
+            @isset($service_rating[$service->id])
+        @if($service_rating[$service->id][0]!=0)
+        @foreach($feedbacks[$service->id] as $feedback)
+        @if($loop->index > 2)
+        @break
+        @endif
+             feedbacks[{{$service->id}}][{{$loop->index}}] = @json($feedback)
+        @endforeach
+        @endif
+        @endisset
+        @endforeach
+
+
+        function more(serviceId,index) {
             document.documentElement.style.overflow = 'hidden';
             document.getElementById('modal-container').innerHTML = ' <div class="we-modal  we-modal--open" role="dialog">' +
                 '<div class="we-modal__content large-10 medium-12 we-modal__content--review" >' +
                 '<div class="we-modal__content__wrapper">' +
                 '<div aria-labelledby="we-customer-review-21" class="we-customer-review lockup ember-view">' +
-                '<figure aria-label="'+arr["rating"]+'out of 5" class="we-star-rating ember-view we-customer-review__rating we-star-rating--large">' +
+                '<figure aria-label="'+feedbacks[serviceId][index]["rating"]+'out of 5" class="we-star-rating ember-view we-customer-review__rating we-star-rating--large">' +
                 '<span class="we-star-rating-stars-outlines">' +
-                '<span class="we-star-rating-stars we-star-rating-stars-'+arr["rating"]+'"></span></span>' +
+                '<span class="we-star-rating-stars we-star-rating-stars-'+feedbacks[serviceId][index]["rating"]+'"></span></span>' +
                 '</figure>' +
                 '<div class="we-customer-review__header we-customer-review__header--user">' +
                 '<span class="we-truncate we-truncate--single-line ember-view we-customer-review__user"> ' +
-                'Client '+arr["client"]["name"]+'</span>' +
+                'Client '+feedbacks[serviceId][index]["client"]["name"]+'</span>' +
                 '<span class="we-customer-review__separator">, </span>' +
                 '<time class="we-customer-review__date">00/00/2020</time>' +
                 '</div><h3 class="we-truncate we-truncate--single-line ember-view we-customer-review__title">  Title</h3>' +
