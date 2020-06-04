@@ -145,13 +145,14 @@
             <div class="list">
                 @foreach($employee->services as $service)
                     @isset($service_rating[$service->id])
-                        <div class="review-service" style="display: none">{{$service->name}}</div>
                         <div class="section__nav">
                             <h2 class="section__headline">
                                 Ratings and Reviews
                             </h2>
                             <a href="{{route('client.user-profile.all.reviews',[$service->id,$employee->id])}}"
                                class="link section__nav__see-all-link ember-view"> See All</a>
+                            <div class="review-service" style="display: none">{{$service->name}}</div>
+
                         </div>
                         @if($service_rating[$service->id][0]!=0)
                             <div class="we-customer-ratings lockup ember-view">
@@ -464,9 +465,7 @@
             });
         }
 
-        function removeFilters() {
-            postsList.filter();
-        }
+
 
     </script>
     <script>
