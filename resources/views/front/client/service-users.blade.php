@@ -13,7 +13,7 @@
 @endpush
 @section('content')
     <div class="page-wrapper">
-        <div class="main">
+        <div class="main" id="employees-list">
             <div class="fullscreen-wrapper" style="padding:12px">
                 <form class="filter" method="post" action="{{route('client.service.filter',$service->id)}}">
                     @csrf
@@ -99,7 +99,7 @@
                 </div>
 
                 <div class="cards-row" style="margin-top:80px">
-                    <div id="employees-list">
+
                     <div class="list">
                         @foreach($employees as $employee)
                             @if($employee->id != $user->id)
@@ -154,7 +154,6 @@
                         @endforeach
                     </div><!-- /.list -->
                         <ul class="pagination"></ul>
-                    </div><!-- /#employees-list -->
                 </div><!-- /.cards-row -->
             </div><!-- /.fullscreen-wrapper -->
         </div><!-- /.main -->
@@ -175,9 +174,7 @@
         };
         var employeesList = new List('employees-list', options);
 
-        function defaultSort(element) {
-            employeesList.sort(element.innerHTML, {order: "asc"})
-        }
+
     </script>
     <script>
         $('.chips').chips();
