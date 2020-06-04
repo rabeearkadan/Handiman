@@ -216,8 +216,7 @@ class UserController extends Controller
     }
     public function employeeTags(){
         $user=User::query()->find(Auth::id());
-
-        return response()->json(['status' => 'success','tags'=>$user->services()]);
+        return response()->json(['status' => 'success','tags'=>$user->services]);
     }
 
     public function getHandymanFeedback()
