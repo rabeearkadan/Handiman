@@ -172,22 +172,22 @@ class ProfileController extends Controller
                         $total += $request->rating;
                         $index++;
                         if ($request->rating > 4) {
-                            $rs[$service->id][5]++;
+                            $rs[(string)$service->id][5]++;
                         } elseif ($request->rating > 3) {
-                            $rs[$service->id][4]++;
+                            $rs[(string)$service->id][4]++;
                         } elseif ($request->rating > 2) {
-                            $rs[$service->id][3]++;
+                            $rs[(string)$service->id][3]++;
                         } elseif ($request->rating > 1) {
-                            $rs[$service->id][2]++;
+                            $rs[(string)$service->id][2]++;
                         } else {
-                            $rs[$service->id][1]++;
+                            $rs[(string)$service->id][1]++;
                         }
                     }
                 }
             }
             if ($bool == true) {
-                $rs[$service->id][0] += $total / $index;
-                $rs[$service->id][6] += $index;
+                $rs[(string)$service->id][0] += $total / $index;
+                $rs[(string)$service->id][6] += $index;
             }
         }
 $feedbacks = $rf;
