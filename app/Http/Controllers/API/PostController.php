@@ -66,9 +66,9 @@ class PostController extends Controller
         }
 
 
+        $post->save();
         if ($request->has('tags')) {
-            $imagesParam = $request->input('tags');
-            $tags = [];
+            $tags = $request->input('tags');
             foreach ($tags as $tag) {
                 try {
                     $post->tags()->attach($tag);
@@ -78,7 +78,6 @@ class PostController extends Controller
             }
         }
 
-        $post->save();
         $post->users()->attach(Auth::id());
         return response()->json(['status' => 'success', 'post' => $post]);
     }
