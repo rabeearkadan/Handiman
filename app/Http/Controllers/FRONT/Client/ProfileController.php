@@ -125,6 +125,7 @@ class ProfileController extends Controller
     public function employeeProfile($id, $employee_id){
         $service = Service::find($id);
         $employee = User::find($employee_id);
+        dd($employee,$employee->rating_object,$employee->feedback_object);
         return view('front.client.employee-profile', compact(['employee','service']));
     }
     public function allReviews($id, $employee_id){
