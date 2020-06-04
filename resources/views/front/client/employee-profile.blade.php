@@ -470,7 +470,9 @@
 
     </script>
     <script>
-        var feedbacks = new Array();
+        var feedbacks = {};
+
+
         @foreach($employee->services as $service)
             @isset($service_rating[$service->id])
         @if($service_rating[$service->id][0]!=0)
