@@ -138,14 +138,14 @@
         <div class="portfolioFilter clearfix margin-b-80">
             <a href="#"><b>ALL</b></a>
             @foreach($employee->services as $service)
-                <a href="#"><b> {{$service->name}} </b></a>
+                <a href="#" onclick="filter('{{$service->name}}')"><b> {{$service->name}} </b></a>
             @endforeach
         </div>
         <div id="reviews-list">
             <div class="list">
                 @foreach($employee->services as $service)
                     @isset($service_rating[$service->id])
-                        <div class="review-service" style="display: none">{{$service->id}}</div>
+                        <div class="review-service" style="display: none">{{$service->name}}</div>
                         <div class="section__nav">
                             <h2 class="section__headline">
                                 Ratings and Reviews
@@ -448,6 +448,27 @@
 
 @endsection
 @push('js')
+    <script src="/public/js/list.js" type="text/javascript"></script>
+    <script>
+        var options = {
+            valueNames: ['review-service'],
+        };
+        var reviewsList = new List('reviews-list', options);
+        function filter(service) {
+            reviewsList.filter(function (item) {
+                if (item.values().review-service.includes(service)) {
+                    return true;
+                } else {
+                    return false;
+                }
+            });
+        }
+
+        function removeFilters() {
+            postsList.filter();
+        }
+
+    </script>
     <script>
         function more() {
             document.documentElement.style.overflow = 'hidden';
