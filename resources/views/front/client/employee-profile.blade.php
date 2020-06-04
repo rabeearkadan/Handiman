@@ -146,6 +146,7 @@
         <div id="reviews-list">
             <div class="list">
                 @foreach($employee->services as $service)
+                    @if($service->id == "5ecd92a7e8deab7c2f7962b2")
                     @isset($service_rating[$service->id])
                     <div class="review-service" style="display: none">{{$service->id}}</div>
                     <div class="section__nav">
@@ -247,6 +248,7 @@
                             </div>
                         @endforeach
 @endisset
+                    @endif
                 @endforeach
             </div><!-- /.list -->
         </div><!-- /#reviews-list -->
