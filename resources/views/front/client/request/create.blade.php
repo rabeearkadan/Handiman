@@ -169,7 +169,10 @@
                                     <div class="col-sm-6">
                                         <div class="form-group">
                                             <label for="subject">Subject</label>
-                                            <input type="text" name="subject" id="subject" class="form-control">
+                                            <input type="text" name="subject" id="subject" class="form-control @error('subject') is-danger @enderror" value="{{old('subject')}}">
+                                            @error('subject')
+                                            <p class="help is-danger">{{ $errors->first('subject') }}</p>
+                                            @enderror
                                         </div><!-- /.form-group -->
                                     </div><!-- /.col-* -->
                                     <div class="col-sm-6">
@@ -181,7 +184,7 @@
                                                     <div class="select-box__value">
                                                         @foreach($user->client_addresses as $address)
                                                         <input class="select-box__input" type="radio" id="{{$address['_id']}}" value="{{$address['_id']}}"
-                                                               name="address" checked="checked"/>
+                                                               name="address" />
                                                         <p class="select-box__input-text">{{$address['name']}}</p>
                                                             @endforeach
                                                     </div>
@@ -244,8 +247,11 @@
 
                                 <div class="form-group">
                                     <label for="description"> Problem Description</label>
-                                    <textarea class="form-control" id="description" name="description"
-                                              rows="6"></textarea>
+                                    <textarea class="form-control @error('description') is-danger @enderror" id="description" name="description"
+                                              rows="6">{{old('description')}}</textarea>
+                                    @error('description')
+                                    <p class="help is-danger">{{ $errors->first('description') }}</p>
+                                    @enderror
                                 </div><!-- /.form-group -->
                                 @isset($employee)
                                 @else
@@ -280,6 +286,9 @@
                                             <select name="from" id="from">
 
                                             </select>
+                                            @error('from')
+                                            <p class="help is-danger">{{ $errors->first('from') }}</p>
+                                            @enderror
                                         </div><!-- /.form-group -->
                                     </div>
                                     <div class="col-sm-6">
@@ -288,6 +297,9 @@
                                             <select name="to" id="to">
 
                                             </select>
+                                            @error('to')
+                                            <p class="help is-danger">{{ $errors->first('to') }}</p>
+                                            @enderror
                                         </div><!-- /.form-group -->
                                     </div><!-- /.col-* -->
                                 </div><!-- /.row -->

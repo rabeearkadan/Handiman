@@ -32,10 +32,16 @@
                                     <div class="background-white p30 mb30">
                                         <h3 class="page-title">Description</h3>
                                         <div class="form-group">
-                                            <input class="form-control" type="text" name="title" placeholder="Title">
+                                            <input class="form-control @error('title') is-danger @enderror" type="text" name="title" placeholder="Title">
+                                            @error('title')
+                                            <p class="help is-danger">{{ $errors->first('title') }}</p>
+                                            @enderror
                                         </div><!-- /.form-group -->
                                         <div class="form-group">
-                                            <textarea class="form-control" name="body" placeholder="Body" rows="8"></textarea>
+                                            <textarea class="form-control @error('body') is-danger @enderror" name="body" placeholder="Body" rows="8"></textarea>
+                                            @error('body')
+                                            <p class="help is-danger">{{ $errors->first('body') }}</p>
+                                            @enderror
                                         </div><!-- /.form-group -->
                                     </div><!-- /.box -->
 
@@ -57,6 +63,9 @@
                                                 </li>
                                             @endforeach
                                         </ul>
+                                        @error('tags')
+                                        <p class="help is-danger">{{ $errors->first('tags') }}</p>
+                                        @enderror
                                     </div>
                                 </form>
                                 <div class="center">

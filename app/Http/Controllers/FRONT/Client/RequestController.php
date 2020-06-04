@@ -131,7 +131,10 @@ class RequestController extends Controller
     public function store(Request $req)
     {
         $user = Auth::user();
-        // $this->validator($req->all())->validate();
+        $req->validate([
+            'subject' => 'required:min:3',
+            'description' => 'required|min:15'
+        ]);
         $requestHandyman = new RequestService();
         $requestHandyman->subject = $req->input('subject');
         $requestHandyman->description = $req->input('description');

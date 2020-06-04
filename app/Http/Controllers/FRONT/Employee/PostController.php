@@ -5,6 +5,7 @@ namespace App\Http\Controllers\FRONT\Employee;
 use App\Http\Controllers\Controller;
 use App\Models\Post;
 use App\Models\Service;
+use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
@@ -16,10 +17,7 @@ class PostController extends Controller
      * index()
      * create()
      * store()
-     * edit()
-     * update()
      * destroy()
-     * validatePost()
      */
 
     /**
@@ -86,53 +84,19 @@ class PostController extends Controller
         $post->save();
         $post->users()->attach($user->id);
             foreach ($request->tags as $tagId) {
-                $service = Service::find($tagId);
+                try
+                {
+                    $service = Service::findOrFail($tagId);
+                }
+                catch(ModelNotFoundException $e)
+                {
+                    dd('later');
+                }
                 $post->tags()->attach($service);
             }
         return redirect(route('employee.post.index'));
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param int $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param int $id
-     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
-     */
-    public function edit($id)
-    {
-        $post = Post::find($id);
-        return view('front.employee.post.edit', compact('post'));
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param \Illuminate\Http\Request $request
-     * @param int $id
-     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
-     */
-    public function update(Request $request, $id)
-    {
-        $post = Post::find($id);
-        $request->validate([
-            'title' => 'required|min:3',
-            'body' => 'required|min:15',
-            'images' => 'required',
-            'tags' => 'required'
-        ]);
-        return view('front.employee.post.index');
-    }
 
     /**
      * Remove the specified resource from storage.
@@ -142,7 +106,14 @@ class PostController extends Controller
      */
     public function destroy($id)
     {
-        $post = Post::find($id);
+        try
+        {
+            $post = Post::findorFail($id);
+        }
+        catch(ModelNotFoundException $e)
+        {
+            dd('later');
+        }
         $post->delete();
         return redirect(route('employee.post.index'));
     }
