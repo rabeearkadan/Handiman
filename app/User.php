@@ -183,7 +183,7 @@ class User extends Eloquent implements
 
 
 
-                $result[$service->_id][0] = $sum / $count;
+                $result[$service->_id][0] = $sum ;
                 $result[$service->_id][1] = $counter1;
                 $result[$service->_id][2] = $counter2;
                 $result[$service->_id][3] = $counter3;
