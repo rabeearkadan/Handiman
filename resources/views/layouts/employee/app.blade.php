@@ -20,6 +20,17 @@
     <link href="{{asset('css/employee/navbar.css')}}" rel="stylesheet">
     <link href="{{asset('css/employee/preloader.css')}}" rel="stylesheet">
     @stack('priority-css')
+    <style>
+        .is-danger{
+            border-color: #ff3860;
+            color: #ff3860;
+        }
+        .help {
+            display: block;
+            font-size: 0.75rem;
+            margin-top: 0.25rem;
+        }
+    </style>
 </head>
 <body>
     @include('front.employee.partials.preloader')

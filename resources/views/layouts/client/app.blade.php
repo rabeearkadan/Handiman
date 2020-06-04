@@ -17,6 +17,17 @@
     @endif
     <link href="{{asset('css/client/navbar.css')}}" rel="stylesheet">
     <link href="{{asset('css/client/preloader.css')}}" rel="stylesheet">
+    <style>
+        .is-danger{
+            border-color: #ff3860;
+            color: #ff3860;
+        }
+        .help {
+            display: block;
+            font-size: 0.75rem;
+            margin-top: 0.25rem;
+        }
+    </style>
 </head>
 
 <body>
