@@ -129,8 +129,6 @@ class ProfileController extends Controller
     }
     public function allReviews($id, $employee_id){
         $employee = User::find($employee_id);
-        //$employee->getRatingObjectAttribute();
-        dd($employee);
         return view('front.client.see-all-reviews',compact('employee'));
     }
 }

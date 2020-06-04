@@ -12,430 +12,427 @@
     <link href="{{asset('css/client/employee-profile/cv-portfolio/responsive.css')}}" rel="stylesheet">
 @endpush
 @section('content')
-<header>
-    <div class="container">
-        <div class="heading-wrapper">
+    <header>
+        <div class="container">
+            <div class="heading-wrapper">
+                <div class="row">
+                    <div class="col-sm-6 col-md-6 col-lg-4">
+                        <div class="info">
+                            <i class="icon ion-ios-location-outline"></i>
+                            <div class="right-area">
+                                <h5>3008 Sarah Drive</h5>
+                                <h5>Franklin,LA 70538</h5>
+                            </div><!-- right-area -->
+                        </div><!-- info -->
+                    </div><!-- col-sm-4 -->
+
+                    <div class="col-sm-6 col-md-6 col-lg-4">
+                        <div class="info">
+                            <i class="icon ion-ios-telephone-outline"></i>
+                            <div class="right-area">
+                                <h5> {{$employee->phone}} </h5>
+                                <h6>MIN - FRI,8AM - 7PM</h6>
+                            </div><!-- right-area -->
+                        </div><!-- info -->
+                    </div><!-- col-sm-4 -->
+
+                    <div class="col-sm-6 col-md-6 col-lg-4">
+                        <div class="info">
+                            <i class="icon ion-ios-chatboxes-outline"></i>
+                            <div class="right-area">
+                                <h5>{{$employee->email}}</h5>
+                                {{--                            <h6> replies IN N HOURS</h6>--}}
+                            </div><!-- right-area -->
+                        </div><!-- info -->
+                    </div><!-- col-sm-4 -->
+                </div><!-- row -->
+            </div><!-- heading-wrapper -->
+            <a class="downlad-btn"
+               href="{{route('client.request.create',['service_id'=>$service->id,'employee_id'=>$employee->id])}}">
+                Request </a>
+
+        </div><!-- container -->
+    </header>
+
+    <section class="intro-section">
+        <div class="container">
             <div class="row">
-                <div class="col-sm-6 col-md-6 col-lg-4">
-                    <div class="info">
-                        <i class="icon ion-ios-location-outline"></i>
-                        <div class="right-area">
-                            <h5>3008 Sarah Drive</h5>
-                            <h5>Franklin,LA 70538</h5>
-                        </div><!-- right-area -->
-                    </div><!-- info -->
-                </div><!-- col-sm-4 -->
-
-                <div class="col-sm-6 col-md-6 col-lg-4">
-                    <div class="info">
-                        <i class="icon ion-ios-telephone-outline"></i>
-                        <div class="right-area">
-                            <h5> {{$employee->phone}} </h5>
-                            <h6>MIN - FRI,8AM - 7PM</h6>
-                        </div><!-- right-area -->
-                    </div><!-- info -->
-                </div><!-- col-sm-4 -->
-
-                <div class="col-sm-6 col-md-6 col-lg-4">
-                    <div class="info">
-                        <i class="icon ion-ios-chatboxes-outline"></i>
-                        <div class="right-area">
-                            <h5>{{$employee->email}}</h5>
-{{--                            <h6> replies IN N HOURS</h6>--}}
-                        </div><!-- right-area -->
-                    </div><!-- info -->
-                </div><!-- col-sm-4 -->
+                <div class="col-md-1 col-lg-2"></div>
+                <div class="col-md-10 col-lg-8">
+                    <div class="intro">
+                        <div class="profile-img"><img src="{{config('image.path').$employee->image}}" alt=""></div>
+                        <h2><b> {{$employee->name}} </b></h2>
+                        @foreach($employee->services as $service)
+                            <h4 class="font-yellow"> {{$service->name}} </h4>
+                        @endforeach
+                        <ul class="information margin-tb-30">
+                            <li><b>BORN : </b>August 25, 1987</li>
+                            <li><b>Price : </b>${{$employee->price}}/hr</li>
+                        </ul>
+                        <ul class="social-icons">
+                            <li><a href="#"><i class="ion-social-instagram"></i></a></li>
+                            <li><a href="#"><i class="ion-social-facebook"></i></a></li>
+                            <li><a href="#"><i class="ion-social-twitter"></i></a></li>
+                        </ul>
+                    </div><!-- intro -->
+                </div><!-- col-sm-8 -->
             </div><!-- row -->
-        </div><!-- heading-wrapper -->
-        <a class="downlad-btn" href="{{route('client.request.create',['service_id'=>$service->id,'employee_id'=>$employee->id])}}"> Request </a>
+        </div><!-- container -->
+    </section><!-- intro-section -->
 
-    </div><!-- container -->
-</header>
+    <section class="portfolio-section section">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-4">
+                    <div class="heading">
+                        <h3><b>Posts</b></h3>
+                        <h6 class="font-lite-black"><b> Most Recent </b></h6>
+                    </div>
+                </div><!-- col-sm-4 -->
+                <div class="col-sm-8">
+                    <div class="portfolioFilter clearfix margin-b-80">
+                        <a href="#" data-filter="*" class="current"><b>ALL</b></a>
+                        @foreach($employee->services as $service)
+                            <a href="#" data-filter=".{{$service->name}}"><b> {{$service->name}} </b></a>
+                        @endforeach
+                    </div><!-- portfolioFilter -->
+                </div><!-- col-sm-8 -->
+            </div><!-- row -->
+        </div><!-- container -->
 
-<section class="intro-section">
-    <div class="container">
-        <div class="row">
-            <div class="col-md-1 col-lg-2"></div>
-            <div class="col-md-10 col-lg-8">
-                <div class="intro">
-                    <div class="profile-img"><img src="{{config('image.path').$employee->image}}" alt=""></div>
-                    <h2><b> {{$employee->name}} </b></h2>
-                    @foreach($employee->services as $service)
-                    <h4 class="font-yellow"> {{$service->name}} </h4>
-                    @endforeach
-                    <ul class="information margin-tb-30">
-                        <li><b>BORN : </b>August 25, 1987</li>
-                        <li><b>Price : </b>${{$employee->price}}/hr</li>
-                    </ul>
-                    <ul class="social-icons">
-                        <li><a href="#"><i class="ion-social-instagram"></i></a></li>
-                        <li><a href="#"><i class="ion-social-facebook"></i></a></li>
-                        <li><a href="#"><i class="ion-social-twitter"></i></a></li>
-                    </ul>
-                </div><!-- intro -->
-            </div><!-- col-sm-8 -->
-        </div><!-- row -->
-    </div><!-- container -->
-</section><!-- intro-section -->
-
-<section class="portfolio-section section">
-    <div class="container">
-        <div class="row">
-            <div class="col-sm-4">
-                <div class="heading">
-                    <h3><b>Posts</b></h3>
-                    <h6 class="font-lite-black"><b> Most Recent </b></h6>
-                </div>
-            </div><!-- col-sm-4 -->
-            <div class="col-sm-8">
-                <div class="portfolioFilter clearfix margin-b-80">
-                    <a href="#" data-filter="*" class="current"><b>ALL</b></a>
-                    @foreach($employee->services as $service)
-                        <a href="#" data-filter=".{{$service->name}}"><b> {{$service->name}} </b></a>
-                    @endforeach
-                </div><!-- portfolioFilter -->
-            </div><!-- col-sm-8 -->
-        </div><!-- row -->
-    </div><!-- container -->
-
-    <div class="portfolioContainer">
-        @foreach($employee->posts as $post)
-            <div class="p-item @foreach($post->tags as $tag) {{$tag->name }} @endforeach">
-                <div class="card">
-                    <div class="card-image">
+        <div class="portfolioContainer">
+            @foreach($employee->posts as $post)
+                <div class="p-item @foreach($post->tags as $tag) {{$tag->name }} @endforeach">
+                    <div class="card">
+                        <div class="card-image">
                             <img class="img-responsive" src="{{config('image.path').$post->image}}" alt="">
-                        <span class="card-title"> {{$post->title}} </span>
+                            <span class="card-title"> {{$post->title}} </span>
+                        </div>
+                        <div class="card-content">
+                            <p> {{$post->body}} </p>
+                        </div>
                     </div>
-                    <div class="card-content">
-                        <p> {{$post->body}} </p>
+                </div><!-- p-item -->
+            @endforeach
+        </div><!-- portfolioContainer -->
+    </section><!-- portfolio-section -->
+    <section class="about-section section">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-4">
+                    <div class="heading">
+                        <h3><b>About me</b></h3>
+                        <h6 class="font-lite-black"><b> Biography </b></h6>
                     </div>
-                </div>
-            </div><!-- p-item -->
+                </div><!-- col-sm-4 -->
+                <div class="col-sm-8">
+                    <p class="margin-b-50"> {{$employee->biography}} </p>
+
+                </div><!-- col-sm-8 -->
+            </div><!-- row -->
+        </div><!-- container -->
+    </section><!-- about-section -->
+
+
+    <section class="l-content-width section section--bordered">
+        @foreach($employee->services as $service)
+            <div class="portfolioFilter clearfix margin-b-80">
+                <a href="#"><b>ALL</b></a>
+                @foreach($employee->services as $service)
+                    <a href="#"><b> {{$service->name}} </b></a>
+                @endforeach
+            </div>
         @endforeach
-    </div><!-- portfolioContainer -->
-</section><!-- portfolio-section -->
-<section class="about-section section">
-    <div class="container">
-        <div class="row">
-            <div class="col-sm-4">
-                <div class="heading">
-                    <h3><b>About me</b></h3>
-                    <h6 class="font-lite-black"><b> Biography </b></h6>
-                </div>
-            </div><!-- col-sm-4 -->
-            <div class="col-sm-8">
-                <p class="margin-b-50"> {{$employee->biography}} </p>
-
-            </div><!-- col-sm-8 -->
-        </div><!-- row -->
-    </div><!-- container -->
-</section><!-- about-section -->
-
-
-<section class="l-content-width section section--bordered">
-    <div class="section__nav">
-        <h2 class="section__headline">
-            Ratings and Reviews
-        </h2>
-        <a href="{{route('client.user-profile.all.reviews',[$service->id,$employee->id])}}" class="link section__nav__see-all-link ember-view"> See All</a>
-    </div>
-    <div class="we-customer-ratings lockup ember-view">
-        <div class="l-row">
-            <div class="we-customer-ratings__stats l-column small-4 medium-6 large-4">
-                <div class="we-customer-ratings__averages">
-                    <span class="we-customer-ratings__averages__display">N.M</span> out of 5
-                </div>
-                <div class="we-customer-ratings__count small-hide medium-show"> N Ratings</div>
-            </div>
-            <div class=" l-column small-8 medium-6 large-4">
-                <figure class="we-star-bar-graph">
-                    <div class="we-star-bar-graph__row">
-                        <span class="we-star-bar-graph__stars we-star-bar-graph__stars--5"></span>
-                        <div class="we-star-bar-graph__bar">
-                            <div class="we-star-bar-graph__bar__foreground-bar" style="width: 0%;"></div>
-                        </div>
+        <div id="reviews-list">
+            <div class="list">
+                @foreach($employee->services as $service)
+                    <div class="review-service" style="display: none">{{$service->id}}</div>
+                    <div class="section__nav">
+                        <h2 class="section__headline">
+                            Ratings and Reviews
+                        </h2>
+                        <a href="{{route('client.user-profile.all.reviews',[$service->id,$employee->id])}}"
+                           class="link section__nav__see-all-link ember-view"> See All</a>
                     </div>
-                    <div class="we-star-bar-graph__row">
-                        <span class="we-star-bar-graph__stars we-star-bar-graph__stars--4"></span>
-                        <div class="we-star-bar-graph__bar">
-                            <div class="we-star-bar-graph__bar__foreground-bar" style="width: 0%;"></div>
+                    @if($service->rating_object[$service->id] != 0)
+                        @php
+                            for($index=1;$index<6;$index++){
+                               $total = $service->rating_object[$service->id][$index];
+                               }
+                        @endphp
+                        <div class="we-customer-ratings lockup ember-view">
+                            <div class="l-row">
+                                <div class="we-customer-ratings__stats l-column small-4 medium-6 large-4">
+                                    <div class="we-customer-ratings__averages">
+                                        <span
+                                            class="we-customer-ratings__averages__display">{{$service->rating_object[$service->id][0]}}</span>
+                                        out of 5
+                                    </div>
+                                    <div class="we-customer-ratings__count small-hide medium-show"> {{$total}}Ratings
+                                    </div>
+                                </div>
+                                <div class=" l-column small-8 medium-6 large-4">
+                                    <figure class="we-star-bar-graph">
+                                        <div class="we-star-bar-graph__row">
+                                            <span class="we-star-bar-graph__stars we-star-bar-graph__stars--5"></span>
+                                            <div class="we-star-bar-graph__bar">
+                                                <div class="we-star-bar-graph__bar__foreground-bar"
+                                                     style="width: {{($service->rating_object[$service->id][5]%$total)*100}}%;"></div>
+                                            </div>
+                                        </div>
+                                        <div class="we-star-bar-graph__row">
+                                            <span class="we-star-bar-graph__stars we-star-bar-graph__stars--4"></span>
+                                            <div class="we-star-bar-graph__bar">
+                                                <div class="we-star-bar-graph__bar__foreground-bar"
+                                                     style="width: {{($service->rating_object[$service->id][4]%$total)*100}}%;"></div>
+                                            </div>
+                                        </div>
+                                        <div class="we-star-bar-graph__row">
+                                            <span class="we-star-bar-graph__stars we-star-bar-graph__stars--3"></span>
+                                            <div class="we-star-bar-graph__bar">
+                                                <div class="we-star-bar-graph__bar__foreground-bar"
+                                                     style="width: {{($service->rating_object[$service->id][3]%$total)*100}}%;"></div>
+                                            </div>
+                                        </div>
+                                        <div class="we-star-bar-graph__row">
+                                            <span class="we-star-bar-graph__stars we-star-bar-graph__stars--2"></span>
+                                            <div class="we-star-bar-graph__bar">
+                                                <div class="we-star-bar-graph__bar__foreground-bar"
+                                                     style="width: {{($service->rating_object[$service->id][2]%$total)*100}}%;"></div>
+                                            </div>
+                                        </div>
+                                        <div class="we-star-bar-graph__row">
+                                            <span class="we-star-bar-graph__stars "></span>
+                                            <div class="we-star-bar-graph__bar">
+                                                <div class="we-star-bar-graph__bar__foreground-bar"
+                                                     style="width: {{($service->rating_object[$service->id][1]%$total)*100}}%;"></div>
+                                            </div>
+                                        </div>
+                                    </figure>
+                                    <p class="we-customer-ratings__count medium-hide"> {{$total}} Ratings</p>
+                                </div>
+                            </div>
                         </div>
-                    </div>
-                    <div class="we-star-bar-graph__row">
-                        <span class="we-star-bar-graph__stars we-star-bar-graph__stars--3"></span>
-                        <div class="we-star-bar-graph__bar">
-                            <div class="we-star-bar-graph__bar__foreground-bar" style="width: 0%;"></div>
-                        </div>
-                    </div>
-                    <div class="we-star-bar-graph__row">
-                        <span class="we-star-bar-graph__stars we-star-bar-graph__stars--2"></span>
-                        <div class="we-star-bar-graph__bar">
-                            <div class="we-star-bar-graph__bar__foreground-bar" style="width: 0%;"></div>
-                        </div>
-                    </div>
-                    <div class="we-star-bar-graph__row">
-                        <span class="we-star-bar-graph__stars "></span>
-                        <div class="we-star-bar-graph__bar">
-                            <div class="we-star-bar-graph__bar__foreground-bar" style="width: 0%;"></div>
-                        </div>
-                    </div>
-                </figure>
-                <p class="we-customer-ratings__count medium-hide"> N Ratings</p>
-            </div>
-        </div>
-    </div>
-
-    <div class="l-row l-row--peek">
-
-        <div class="ember-view small-valign-top l-column--equal-height l-column small-4 medium-6 large-4">
-            <div class="ember-view">
-            </div>
-            <div class="we-customer-review lockup ember-view">
-                <figure aria-label="4 out of 5" class="we-star-rating ember-view we-customer-review__rating we-star-rating--large"><span class="we-star-rating-stars-outlines">
-         <span class="we-star-rating-stars we-star-rating-stars-4"></span>
+                        @foreach($employee->feedback_object[$service] as $feedback)
+                            <div class="l-row l-row--peek">
+                                <div
+                                    class="ember-view small-valign-top l-column--equal-height l-column small-4 medium-6 large-4">
+                                    <div class="ember-view">
+                                    </div>
+                                    <div class="we-customer-review lockup ember-view">
+                                        <figure aria-label="{{$feedback['rating']}} out of 5"
+                                                class="we-star-rating ember-view we-customer-review__rating we-star-rating--large">
+                                            <span class="we-star-rating-stars-outlines">
+                                               <span
+                                                   class="we-star-rating-stars we-star-rating-stars-{{$feedback['rating']}}"></span>
+                                            </span>
+                                            <!----></figure>
+                                        <div class="we-customer-review__header we-customer-review__header--user">
+         <span class="we-truncate we-truncate--single-line ember-view we-customer-review__user">  {{$feedback['client']['name']}}
        </span>
-                    <!----></figure>
+                                            <span class="we-customer-review__separator">, </span>
+                                            <time aria-label="May 00, 2020" class="we-customer-review__date">
+                                                00/00/2020
+                                            </time>
+                                        </div>
+                                        <h3 class="we-truncate we-truncate--single-line ember-view we-customer-review__title">
+                                            Title
+                                        </h3>
+                                        <blockquote
+                                            class="we-truncate we-truncate--multi-line we-truncate--interactive we-truncate--truncated ember-view we-customer-review__body">
+                                            <div class="we-clamp ember-view">
+                                                <p>Review</p>
+                                            </div>
+                                            <button onclick="more()" class="we-truncate__button link">
+                                                more
+                                            </button>
+                                        </blockquote>
+                                        <!----></div>
+                                </div>
+                            </div>
+                        @endforeach
+                    @endif
+                @endforeach
 
-                <div class="we-customer-review__header we-customer-review__header--user">
-         <span class="we-truncate we-truncate--single-line ember-view we-customer-review__user">  Client Name
-       </span>
+            </div><!-- /.list -->
+        </div><!-- /#reviews-list -->
 
-                    <span class="we-customer-review__separator">, </span>
+        <div class="l-row l-row--margin-top medium-hide">
 
-                    <time aria-label="May 00, 2020" class="we-customer-review__date">00/00/2020</time>
-                </div>
+            <!---->
 
-                <h3 class="we-truncate we-truncate--single-line ember-view we-customer-review__title"> Title
-                </h3>
+            <!---->
 
-                <blockquote class="we-truncate we-truncate--multi-line we-truncate--interactive we-truncate--truncated ember-view we-customer-review__body">
+            <!---->
 
-                    <div class="we-clamp ember-view">
-                        <p>Review</p>
-                    </div>
+            <!---->
 
+            <!---->
 
+            <!---->
 
+            <!---->
 
-                    <button onclick="more()" class="we-truncate__button link">
-                        more
-                    </button>
-                </blockquote>
+            <!---->
 
-                <!----></div>
+            <!---->
 
-        </div>
-
-
-        <div  class="ember-view small-valign-top l-column--equal-height l-column small-4 medium-6 large-4">
-            <div  class="ember-view">
-            </div>
-            <div class="we-customer-review lockup ember-view">
-                <figure aria-label="4 out of 5"  class="we-star-rating ember-view we-customer-review__rating we-star-rating--large"><span class="we-star-rating-stars-outlines">
-         <span class="we-star-rating-stars we-star-rating-stars-4"></span>
-       </span>
-                    <!----></figure>
-
-                <div class="we-customer-review__header we-customer-review__header--user">
-         <span class="we-truncate we-truncate--single-line ember-view we-customer-review__user">  Client Name
-       </span>
-
-                    <span class="we-customer-review__separator">, </span>
-
-                    <time  aria-label="May 00, 2020" class="we-customer-review__date">00/00/2020</time>
-                </div>
-
-                <h3  class="we-truncate we-truncate--single-line ember-view we-customer-review__title"> Title
-                </h3>
-
-                <blockquote  class="we-truncate we-truncate--multi-line we-truncate--interactive we-truncate--truncated ember-view we-customer-review__body">
-
-                    <div  class="we-clamp ember-view">
-                        <p >Review</p>
-                    </div>
-
-
-
-
-                    <button onclick="more()" class="we-truncate__button link">
-                        more
-                    </button>
-                </blockquote>
-
-                <!----></div>
+            <!---->
 
         </div>
+    </section>
 
 
 
-    </div>
-
-
-
-    <div class="l-row l-row--margin-top medium-hide">
-
-        <!---->
-
-        <!---->
-
-        <!---->
-
-        <!---->
-
-        <!---->
-
-        <!---->
-
-        <!---->
-
-        <!---->
-
-        <!---->
-
-        <!---->
+    <div id="modal-container">
 
     </div>
-</section>
-
-
-
-<div id="modal-container">
-
-</div>
 
 
 
 
 
-<section class="experience-section section">
-    <div class="container">
-        <div class="row">
-            <div class="col-sm-4">
-                <div class="heading">
-                    <h3><b>Work Experience</b></h3>
-                    <h6 class="font-lite-black"><b>PREVIOUS JOBS</b></h6>
-                </div>
-            </div><!-- col-sm-4 -->
-            <div class="col-sm-8">
+    <section class="experience-section section">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-4">
+                    <div class="heading">
+                        <h3><b>Work Experience</b></h3>
+                        <h6 class="font-lite-black"><b>PREVIOUS JOBS</b></h6>
+                    </div>
+                </div><!-- col-sm-4 -->
+                <div class="col-sm-8">
 
-                <div class="experience margin-b-50">
-                    <h4><b>JUNIOR PROJECT MANAGER</b></h4>
-                    <h5 class="font-yellow"><b>DESIGN STUDIO</b></h5>
-                    <h6 class="margin-t-10">MARCH 2015 - PRESENT</h6>
-                    <p class="font-semi-white margin-tb-30">Duis non volutpat arcu, eu mollis tellus. Sed finibus aliquam neque sit amet sodales.
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla maximus pellentes que velit,
-                        quis consequat nulla effi citur at. Maecenas sed massa tristique.Duis non volutpat arcu,
-                        eu mollis tellus. Sed finibus aliquam neque sit amet sodales. </p>
-                    <ul class="list margin-b-30">
-                        <li>Duis non volutpat arcu, eu mollis tellus.</li>
-                        <li>Quis consequat nulla effi citur at.</li>
-                        <li>Sed finibus aliquam neque sit.</li>
-                    </ul>
-                </div><!-- experience -->
-
-                <div class="experience margin-b-50">
-                    <h4><b>WEB MASTER/WEB DEVELOPER</b></h4>
-                    <h5 class="font-yellow"><b>DESIGN & WEB STUDIO</b></h5>
-                    <h6 class="margin-t-10">APRIL 2014 - FEBRUARY 2015</h6>
-                    <p class="font-semi-white margin-tb-30">Duis non volutpat arcu, eu mollis tellus. Sed finibus aliquam neque sit amet sodales.
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla maximus pellentes que velit,
-                        quis consequat nulla effi citur at. Maecenas sed massa tristique.Duis non volutpat arcu,
-                        eu mollis tellus. Sed finibus aliquam neque sit amet sodales. </p>
-                    <ul class="list margin-b-30">
-                        <li>Duis non volutpat arcu, eu mollis tellus.</li>
-                        <li>Quis consequat nulla effi citur at.</li>
-                        <li>Sed finibus aliquam neque sit.</li>
-                    </ul>
-                </div><!-- experience -->
-
-            </div><!-- col-sm-8 -->
-        </div><!-- row -->
-    </div><!-- container -->
-
-</section><!-- experience-section -->
-
-<section class="education-section section">
-    <div class="container">
-        <div class="row">
-            <div class="col-sm-4">
-                <div class="heading">
-                    <h3><b>Education</b></h3>
-                    <h6 class="font-lite-black"><b>ACADEMIC CAREER</b></h6>
-                </div>
-            </div><!-- col-sm-4 -->
-            <div class="col-sm-8">
-                <div class="education-wrapper">
-                    <div class="education margin-b-50">
-                        <h4><b>MASTER DEGREE IN SCIENCE</b></h4>
-                        <h5 class="font-yellow"><b>UCLA - SCIENCE AND ENGINEERING</b></h5>
-                        <h6 class="font-lite-black margin-t-10">GRADUATED IN MAY 2010(2 YEARS)</h6>
-                        <p class="margin-tb-30">Duis non volutpat arcu, eu mollis tellus. Sed finibus aliquam neque sit amet sodales.
+                    <div class="experience margin-b-50">
+                        <h4><b>JUNIOR PROJECT MANAGER</b></h4>
+                        <h5 class="font-yellow"><b>DESIGN STUDIO</b></h5>
+                        <h6 class="margin-t-10">MARCH 2015 - PRESENT</h6>
+                        <p class="font-semi-white margin-tb-30">Duis non volutpat arcu, eu mollis tellus. Sed finibus
+                            aliquam neque sit amet sodales.
                             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla maximus pellentes que velit,
                             quis consequat nulla effi citur at. Maecenas sed massa tristique.Duis non volutpat arcu,
                             eu mollis tellus. Sed finibus aliquam neque sit amet sodales. </p>
-                    </div><!-- education -->
+                        <ul class="list margin-b-30">
+                            <li>Duis non volutpat arcu, eu mollis tellus.</li>
+                            <li>Quis consequat nulla effi citur at.</li>
+                            <li>Sed finibus aliquam neque sit.</li>
+                        </ul>
+                    </div><!-- experience -->
 
-                    <div class="education margin-b-50">
-                        <h4><b>COURSE ON COMPUTER SCIENCE</b></h4>
-                        <h5 class="font-yellow"><b>NEW YORK PUBLIC UNIVERSITY</b></h5>
-                        <h6 class="font-lite-black margin-t-10">GRADUATED IN MAY 2009(6 MONTHS)</h6>
-                        <p class="margin-tb-30">Duis non volutpat arcu, eu mollis tellus. Sed finibus aliquam neque sit amet sodales.
+                    <div class="experience margin-b-50">
+                        <h4><b>WEB MASTER/WEB DEVELOPER</b></h4>
+                        <h5 class="font-yellow"><b>DESIGN & WEB STUDIO</b></h5>
+                        <h6 class="margin-t-10">APRIL 2014 - FEBRUARY 2015</h6>
+                        <p class="font-semi-white margin-tb-30">Duis non volutpat arcu, eu mollis tellus. Sed finibus
+                            aliquam neque sit amet sodales.
                             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla maximus pellentes que velit,
                             quis consequat nulla effi citur at. Maecenas sed massa tristique.Duis non volutpat arcu,
                             eu mollis tellus. Sed finibus aliquam neque sit amet sodales. </p>
-                    </div><!-- education -->
+                        <ul class="list margin-b-30">
+                            <li>Duis non volutpat arcu, eu mollis tellus.</li>
+                            <li>Quis consequat nulla effi citur at.</li>
+                            <li>Sed finibus aliquam neque sit.</li>
+                        </ul>
+                    </div><!-- experience -->
 
-                    <div class="education margin-b-50">
-                        <h4><b>GRADUATED VALEDICTERIAN</b></h4>
-                        <h5 class="font-yellow"><b>PUBLIC COLLEGE</b></h5>
-                        <h6 class="font-lite-black margin-t-10">GRADUATED IN MAY 2008(4 YEARS)</h6>
-                        <p class="margin-tb-30">Duis non volutpat arcu, eu mollis tellus. Sed finibus aliquam neque sit amet sodales.
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla maximus pellentes que velit,
-                            quis consequat nulla effi citur at. Maecenas sed massa tristique.Duis non volutpat arcu,
-                            eu mollis tellus. Sed finibus aliquam neque sit amet sodales. </p>
-                    </div><!-- education -->
-                </div><!-- education-wrapper -->
-            </div><!-- col-sm-8 -->
-        </div><!-- row -->
-    </div><!-- container -->
+                </div><!-- col-sm-8 -->
+            </div><!-- row -->
+        </div><!-- container -->
 
-</section><!-- about-section -->
+    </section><!-- experience-section -->
 
-<section class="counter-section" id="counter">
-    <div class="container">
-        <div class="row">
+    <section class="education-section section">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-4">
+                    <div class="heading">
+                        <h3><b>Education</b></h3>
+                        <h6 class="font-lite-black"><b>ACADEMIC CAREER</b></h6>
+                    </div>
+                </div><!-- col-sm-4 -->
+                <div class="col-sm-8">
+                    <div class="education-wrapper">
+                        <div class="education margin-b-50">
+                            <h4><b>MASTER DEGREE IN SCIENCE</b></h4>
+                            <h5 class="font-yellow"><b>UCLA - SCIENCE AND ENGINEERING</b></h5>
+                            <h6 class="font-lite-black margin-t-10">GRADUATED IN MAY 2010(2 YEARS)</h6>
+                            <p class="margin-tb-30">Duis non volutpat arcu, eu mollis tellus. Sed finibus aliquam neque
+                                sit amet sodales.
+                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla maximus pellentes que
+                                velit,
+                                quis consequat nulla effi citur at. Maecenas sed massa tristique.Duis non volutpat arcu,
+                                eu mollis tellus. Sed finibus aliquam neque sit amet sodales. </p>
+                        </div><!-- education -->
 
-            <div class="col-sm-6 col-md-6 col-lg-3">
-                <div class="counter margin-b-30">
-                    <h1 class="title"><b><span class="counter-value" data-duration="400" data-count="3">0</span></b></h1>
-                    <h5 class="desc"><b>Coder Degrees</b></h5>
-                </div><!-- counter -->
-            </div><!-- col-md-3-->
+                        <div class="education margin-b-50">
+                            <h4><b>COURSE ON COMPUTER SCIENCE</b></h4>
+                            <h5 class="font-yellow"><b>NEW YORK PUBLIC UNIVERSITY</b></h5>
+                            <h6 class="font-lite-black margin-t-10">GRADUATED IN MAY 2009(6 MONTHS)</h6>
+                            <p class="margin-tb-30">Duis non volutpat arcu, eu mollis tellus. Sed finibus aliquam neque
+                                sit amet sodales.
+                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla maximus pellentes que
+                                velit,
+                                quis consequat nulla effi citur at. Maecenas sed massa tristique.Duis non volutpat arcu,
+                                eu mollis tellus. Sed finibus aliquam neque sit amet sodales. </p>
+                        </div><!-- education -->
 
-            <div class="col-sm-6 col-md-6 col-lg-3">
-                <div class="counter margin-b-30">
-                    <h1 class="title"><b><span class="counter-value" data-duration="1400" data-count="25">0</span></b></h1>
-                    <h5 class="desc"><b>Nb of jobs</b></h5>
-                </div><!-- counter -->
-            </div><!-- col-md-3-->
+                        <div class="education margin-b-50">
+                            <h4><b>GRADUATED VALEDICTERIAN</b></h4>
+                            <h5 class="font-yellow"><b>PUBLIC COLLEGE</b></h5>
+                            <h6 class="font-lite-black margin-t-10">GRADUATED IN MAY 2008(4 YEARS)</h6>
+                            <p class="margin-tb-30">Duis non volutpat arcu, eu mollis tellus. Sed finibus aliquam neque
+                                sit amet sodales.
+                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla maximus pellentes que
+                                velit,
+                                quis consequat nulla effi citur at. Maecenas sed massa tristique.Duis non volutpat arcu,
+                                eu mollis tellus. Sed finibus aliquam neque sit amet sodales. </p>
+                        </div><!-- education -->
+                    </div><!-- education-wrapper -->
+                </div><!-- col-sm-8 -->
+            </div><!-- row -->
+        </div><!-- container -->
 
-            <div class="col-sm-6 col-md-6 col-lg-3">
-                <div class="counter margin-b-30">
-                    <h1 class="title"><b><span class="counter-value" data-duration="700" data-count="311">0</span></b></h1>
-                    <h5 class="desc"><b>Satisfied Clients</b></h5>
-                </div><!-- counter -->
-            </div><!-- col-md-3-->
+    </section><!-- about-section -->
 
-            <div class="col-sm-6 col-md-6 col-lg-3">
-                <div class="counter margin-b-30">
-                    <h1 class="title"><b><span class="counter-value" data-duration="2000" data-count="732">0</span></b></h1>
-                    <h5 class="desc"><b>NNb of Requests</b></h5>
-                </div><!-- margin-b-30 -->
-            </div><!-- col-md-3-->
+    <section class="counter-section" id="counter">
+        <div class="container">
+            <div class="row">
 
-        </div><!-- row-->
-    </div><!-- container-->
-</section><!-- counter-section-->
+                <div class="col-sm-6 col-md-6 col-lg-3">
+                    <div class="counter margin-b-30">
+                        <h1 class="title"><b><span class="counter-value" data-duration="400" data-count="3">0</span></b>
+                        </h1>
+                        <h5 class="desc"><b>Coder Degrees</b></h5>
+                    </div><!-- counter -->
+                </div><!-- col-md-3-->
+
+                <div class="col-sm-6 col-md-6 col-lg-3">
+                    <div class="counter margin-b-30">
+                        <h1 class="title"><b><span class="counter-value" data-duration="1400"
+                                                   data-count="25">0</span></b></h1>
+                        <h5 class="desc"><b>Nb of jobs</b></h5>
+                    </div><!-- counter -->
+                </div><!-- col-md-3-->
+
+                <div class="col-sm-6 col-md-6 col-lg-3">
+                    <div class="counter margin-b-30">
+                        <h1 class="title"><b><span class="counter-value" data-duration="700"
+                                                   data-count="311">0</span></b></h1>
+                        <h5 class="desc"><b>Satisfied Clients</b></h5>
+                    </div><!-- counter -->
+                </div><!-- col-md-3-->
+
+                <div class="col-sm-6 col-md-6 col-lg-3">
+                    <div class="counter margin-b-30">
+                        <h1 class="title"><b><span class="counter-value" data-duration="2000" data-count="732">0</span></b>
+                        </h1>
+                        <h5 class="desc"><b>NNb of Requests</b></h5>
+                    </div><!-- margin-b-30 -->
+                </div><!-- col-md-3-->
+
+            </div><!-- row-->
+        </div><!-- container-->
+    </section><!-- counter-section-->
 
 
 
@@ -446,10 +443,11 @@
 @endsection
 @push('js')
     <script>
-        function more(){
+        function more() {
             document.documentElement.style.overflow = 'hidden';
             document.getElementById('modal-container').innerHTML = ' <div class="we-modal  we-modal--open" role="dialog"><div class="we-modal__content large-10 medium-12 we-modal__content--review" ><div class="we-modal__content__wrapper"><div aria-labelledby="we-customer-review-21" class="we-customer-review lockup ember-view"><figure aria-label="3 out of 5" class="we-star-rating ember-view we-customer-review__rating we-star-rating--large"><span class="we-star-rating-stars-outlines"><span class="we-star-rating-stars we-star-rating-stars-3"></span></span></figure><div class="we-customer-review__header we-customer-review__header--user"><span class="we-truncate we-truncate--single-line ember-view we-customer-review__user"> Client Name</span><span class="we-customer-review__separator">, </span><time class="we-customer-review__date">00/00/2020</time></div><h3 class="we-truncate we-truncate--single-line ember-view we-customer-review__title">  Title</h3><blockquote class="we-customer-review__body--modal"><p>Review</p></blockquote></div></div><button class="we-modal__close" onclick="less()" aria-label="Close" ></button></div><button class="we-modal__close--overlay" id="close-div" aria-label="Close" ></button></div><div class="overlay"></div>';
         }
+
         function less() {
             document.documentElement.style.overflow = 'scroll';
             const e = document.getElementById("modal-container");
@@ -459,7 +457,7 @@
                 child = e.lastElementChild;
             }
         }
- </script>
+    </script>
     <script src="/public/common-js/jquery-3.2.1.min.js"></script>
     <script src="/public/common-js/tether.min.js"></script>
     <script src="/public/common-js/bootstrap.js"></script>
