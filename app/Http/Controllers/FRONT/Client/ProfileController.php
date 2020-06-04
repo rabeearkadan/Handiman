@@ -125,7 +125,53 @@ class ProfileController extends Controller
     public function employeeProfile($id, $employee_id){
         $service = Service::find($id);
         $employee = User::find($employee_id);
-        dd($employee,$employee->rating_object,$employee->feedback_object);
+        $rf=array();
+        $rs=array();
+        foreach($employee->services as $service) {
+            for($index=0;$index<7;$index++) {
+                $rs[$service->id][$index] = 0;
+            }
+        }
+        foreach($employee->services as $service){
+            $index=0;
+            $total=0;
+        foreach($employee->employeeRequests as $request){
+            if($request->id == $service->id){
+                if($request->rating != null){
+                    $client = User::find($request->client_ids[0]);
+                    $rf[$service->id][$index]= array([
+                        'rating' => $request->rating,
+                        'feedback' => $request->feedback,
+                        'client'  => array([
+                            'name' => $client->name,
+                            'image' => $client->image,
+                        ])
+                    ]);
+                    $total += $request->rating;
+                    $index++;
+                    if($request->rating > 4){
+                        $rf[$service->id][5]++;
+                    }
+                    elseif ($request->rating > 3){
+                        $rf[$service->id][4]++;
+                    }
+                    elseif ($request->rating > 2){
+                        $rf[$service->id][3]++;
+                    }elseif ($request->rating > 1){
+                        $rf[$service->id][2]++;
+                    }else {
+                        $rf[$service->id][1]++;
+                    }
+                }
+            }
+        }
+            $rs[$service->id][0] += $total/$index;
+            $rs[$service->id][6] += $index;
+        }
+
+
+
+        dd($employee,$rf,$rs);
         return view('front.client.employee-profile', compact(['employee','service']));
     }
     public function allReviews($id, $employee_id){
