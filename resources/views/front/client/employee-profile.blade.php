@@ -478,7 +478,12 @@
         @if($loop->index > 2)
         @break
         @endif
-             feedbacks[{{$service->id}}][{{$loop->index}}] = {{$feedback}};
+             feedbacks[{{$service->id}}][{{$loop->index}}] = {
+            rating:{{$feedback['rating']}},
+            client:{
+                name:{{$feedback['client']['name']}}
+            },
+        };
         @endforeach
         @endif
         @endisset
