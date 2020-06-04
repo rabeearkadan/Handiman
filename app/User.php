@@ -146,7 +146,6 @@ class User extends Eloquent implements
         $result = [];
         foreach ($services as $service) {
             $sum = 0;
-            $count = 0;
 
             $counter1 = 0;
             $counter2 = 0;
@@ -159,9 +158,7 @@ class User extends Eloquent implements
                 ->get();
             foreach ($reqs as $req) {
                 $l = $req->employee_ids;
-                if (is_array($l) &&
-                    end($l) == $this->_id) {
-                    $count++;
+
                     $sum += $req->rating;
                     switch ($req->rating) {
                         case 1:
@@ -184,17 +181,15 @@ class User extends Eloquent implements
                     }
                 }
 
-            }
-            if ($count > 0) {
+
+
                 $result[$service->_id][0] = $sum / $count;
                 $result[$service->_id][1] = $counter1;
                 $result[$service->_id][2] = $counter2;
                 $result[$service->_id][3] = $counter3;
                 $result[$service->_id][4] = $counter4;
                 $result[$service->_id][5] = $counter5;
-            } else
-                $result[$service->_id] = 0;
-        }
+
         return $result;
     }
 
