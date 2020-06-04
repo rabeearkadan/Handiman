@@ -35,10 +35,13 @@ class HomeController extends Controller
     public function filterUsers(Request $request, $id){
         $user = Auth::user();
         $service = Service::query()->find($id);
+        $client_address=null;
         foreach ($user->client_addresses as $address){
             if ($address['_id']==$request->address){
                 $lng= $address['location']['0'];
                 $lat= $address['location']['1'];
+                $client_address=$address;
+                break;
             }
         }
         $employees = User::query()
@@ -104,6 +107,6 @@ class HomeController extends Controller
         }
         $keyword = $request->keyword;
         $address=$request->address;
-        return view ('front.client.service-users', compact(['service','user','keyword','address','availableTimes','employees']));
+        return view ('front.client.service-users', compact(['service','user','keyword','client_address','availableTimes','employees']));
     }
 }

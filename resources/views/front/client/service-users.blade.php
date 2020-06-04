@@ -29,7 +29,15 @@
                                 <label for="address">Address</label>
                                 <select class="materialSelect" id="address" name="address">
                                     @foreach($user->client_addresses as $address)
-                                        <option value="{{$address['_id']}}">{{$address['name']}}</option>
+                                        <option value="{{$address['_id']}}"
+                                        @isset($client_address)
+    @if($address->id == $client_address)
+        selected
+@endif
+@endisset
+>
+{{$address['name']}}
+</option>
                                     @endforeach
                                 </select>
                             </div><!-- /.form-group -->
