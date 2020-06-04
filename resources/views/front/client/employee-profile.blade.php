@@ -153,6 +153,7 @@
                         <a href="{{route('client.user-profile.all.reviews',[$service->id,$employee->id])}}"
                            class="link section__nav__see-all-link ember-view"> See All</a>
                     </div>
+                        @if($service_rating[$service->id][0]!=0)
                         <div class="we-customer-ratings lockup ember-view">
                             <div class="l-row">
                                 <div class="we-customer-ratings__stats l-column small-4 medium-6 large-4">
@@ -250,6 +251,7 @@
                             </div>
 @endisset
                 @endforeach
+                    @endif
             </div><!-- /.list -->
         </div><!-- /#reviews-list -->
 
