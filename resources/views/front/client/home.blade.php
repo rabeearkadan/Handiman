@@ -24,7 +24,7 @@
                                 <div class="posts">
                                     @foreach($posts as $post)
                                     <div class="post">
-                                            <div class="carousel carousel-slider" style="float: left">
+                                            <div class="carousel carousel-slider">
                                                 @foreach($post->images as $image)
                                                 <a class="carousel-item" href="#"><img src="{{config('image.path').$image}}" alt="Post Images"></a>
                                                 @endforeach
