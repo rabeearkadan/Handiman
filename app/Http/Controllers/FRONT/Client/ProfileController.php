@@ -139,7 +139,7 @@ class ProfileController extends Controller
             $bool=false;
         foreach($employee->employeeRequests as $request){
             echo "request";
-            if($request->id == $service->id){
+            if($request->service_id == $service->id){
                 echo "request = service";
                 if($request->rating != null){
                     echo "rating not null";
