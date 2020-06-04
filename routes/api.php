@@ -37,6 +37,7 @@ Route::middleware(['auth:api', 'employee'])->prefix('employee')->group(function 
     Route::get('chat-requests', 'ChatController@employeeRequests');
     Route::post('receipt/{id}', 'RequestController@addReceipt');
     Route::post('reschedule/{id}', 'RequestController@reschedule');
+    Route::get('tags', 'UserController@employeeTags');
 
 });
 
@@ -50,7 +51,7 @@ Route::middleware(['auth:api', 'client'])->prefix('client')->group(function () {
     Route::post('request-done/{id}', 'RequestController@onRequestDone');
     Route::post('request-cancel/{id}', 'RequestController@cancelRequest');
     Route::post('payment/{id}', 'RequestController@setPayment');
-Route::post('remove-address/{id}','UserController@deleteAddress');
+    Route::post('remove-address/{id}', 'UserController@deleteAddress');
     Route::get('chat-requests', 'ChatController@clientRequests');
 
 });

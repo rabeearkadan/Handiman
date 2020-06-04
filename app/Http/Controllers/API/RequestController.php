@@ -327,18 +327,19 @@ class RequestController extends Controller
         $request = RequestService::query()->find($id);
         $client = User::query()->find($request->client_ids[0]);
         $invoice = new Invoice();
-        if ($req->has('receipt') && $req->has('total')) {
-            $receipt_items = [];
-
-            for ($i = 0; $i < sizeof($req->receipt); $i++) {
-                $receipt_items[$i] = json_decode($req->receipt[$i]);
-            }
-            //   foreach ($req->receipt as $item) {
-          //  array_push($receipt_items, json_decode($req->receipt));
-            // }
-            $request->receipt = $invoice->receipt = $receipt_items;
-            $request->total = (double)$invoice->total = (double)$req->input('total');
+        $receipt_items = [];
+        foreach ($req->input('receipt') as $item) {
+            array_push($receipt_items, json_decode($item));
         }
+        $request->receipt = $invoice->receipt = $receipt_items;
+        $request->total = (double)$invoice->total = (double)$req->input('total');
+        $request->save();
+        $invoice->save();
+        $this->notification(($client->client_device_token), (Auth::user()->name), 'You received a receipt', 'request');
+
+
+        return response()->json(['status' => 'success']);
+    }
 
         if ($req->has('images')) {
             $imagesParam = $req->input('images');
