@@ -213,7 +213,7 @@
                                 </div>
                             </div>
                         </div>
-                        @foreach($employee->feedback_object[$service] as $feedback)
+                        @foreach($employee->feedback_object[$service->id] as $feedback)
                             <div class="l-row l-row--peek">
                                 <div
                                     class="ember-view small-valign-top l-column--equal-height l-column small-4 medium-6 large-4">
