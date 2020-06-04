@@ -5,6 +5,7 @@ namespace App\Http\Controllers\FRONT\Client;
 use App\Http\Controllers\Controller;
 use App\Models\Post;
 use App\Models\Service;
+use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -36,11 +37,13 @@ class HomeController extends Controller
         $service = Service::query()->find($id);
         foreach ($user->client_addresses as $address){
             if ($address['_id']==$request->address){
-                $lat= $address['location']['0'];
-                $lng= $address['location']['1'];
+                $lng= $address['location']['0'];
+                $lat= $address['location']['1'];
             }
         }
-        $employees = $service->users
+        $employees = User::query()
+            ->where('role', 'user_employee')
+            ->orWhere('role', 'employee')
             ->where('isApproved', true)
             ->where('location', 'near', [
                 '$geometry' => [
@@ -50,10 +53,10 @@ class HomeController extends Controller
                         (float)$lat,
                     ],
                     'distanceField' => "dist.calculated",
-                    '$maxDistance' => 1000,
+                    '$maxDistance' => 50,
                 ],
-            ])->sortBy('dist.calculated')
-            ->all();
+            ])->orderBy('dist.calculated')
+            ->get();
         dd($employees);
         $availableTimes = $request->availableTimes;
         if(isset($request->date) && isset($request->from) && isset($request->to)){

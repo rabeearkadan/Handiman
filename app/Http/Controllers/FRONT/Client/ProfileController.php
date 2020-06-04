@@ -97,7 +97,7 @@ class ProfileController extends Controller
             "_id" => Str::random(24),
             "name" => $request->name,
             "type" => $request->type,
-            "location" => [$request->lat, $request->lng],
+            "location" => [$request->lng, $request->lat],
             "street" => $request->street,
             "house" => $request->house,
             "zip" => $request->zip,

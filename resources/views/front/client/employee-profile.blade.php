@@ -135,14 +135,12 @@
 
 
     <section class="l-content-width section section--bordered">
-        @foreach($employee->services as $service)
             <div class="portfolioFilter clearfix margin-b-80">
                 <a href="#"><b>ALL</b></a>
                 @foreach($employee->services as $service)
                     <a href="#"><b> {{$service->name}} </b></a>
                 @endforeach
             </div>
-        @endforeach
         <div id="reviews-list">
             <div class="list">
                 @foreach($employee->services as $service)
