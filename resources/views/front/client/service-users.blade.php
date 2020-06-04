@@ -66,7 +66,7 @@
                                 </div><!-- /.chip -->
                             @endforeach
                         </div><!-- /.row -->
-                        <input type="hidden" value="@json($availableTimes)" name="availableTimes[]">
+                        <input type="hidden" value='@json($availableTimes)' name="availableTimes[]">
                     @endisset
 
                     <hr>
