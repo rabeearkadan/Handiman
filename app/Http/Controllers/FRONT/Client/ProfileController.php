@@ -135,9 +135,11 @@ class ProfileController extends Controller
         foreach($employee->services as $service){
             $index=0;
             $total=0;
+            $bool=false;
         foreach($employee->employeeRequests as $request){
             if($request->id == $service->id){
                 if($request->rating != null){
+                    $bool=true;
                     $client = User::find($request->client_ids[0]);
                     $rf[$service->id][$index]= array([
                         'rating' => $request->rating,
@@ -165,8 +167,11 @@ class ProfileController extends Controller
                 }
             }
         }
-            $rs[$service->id][0] += $total/$index;
+        if($bool==true) {
+            $rs[$service->id][0] += $total / $index;
             $rs[$service->id][6] += $index;
+        }
+        
         }
 
 
