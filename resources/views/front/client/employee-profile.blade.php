@@ -248,7 +248,7 @@
                                                 <div class="we-clamp ember-view">
                                                     <p>Review</p>
                                                 </div>
-                                                <button onclick="more('{{$service->id}}','{{$loop->index}}')" class="we-truncate__button link">
+                                                <button onclick="more({{$service->id}},{{$loop->index}})" class="we-truncate__button link">
                                                     more
                                                 </button>
                                             </blockquote>
