@@ -478,7 +478,7 @@
         @if($loop->index > 2)
         @break
         @endif
-             feedbacks[{{$service->id}}][{{$loop->index}}] = @json($feedback)
+             feedbacks[{{$service->id}}][{{$loop->index}}] = @json($feedback);
         @endforeach
         @endif
         @endisset
