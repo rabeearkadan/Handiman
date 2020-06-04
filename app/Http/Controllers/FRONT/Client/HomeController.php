@@ -71,6 +71,7 @@ class HomeController extends Controller
                 )
             );
         }
+
         if(!empty($availableTimes)){
             $index = 0;
             foreach($employees as $employee) {
