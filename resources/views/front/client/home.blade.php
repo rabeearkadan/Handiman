@@ -11,6 +11,10 @@
                 float: left;
             }
         }
+        .carousel .carousel-item {
+            
+            max-height:300px;
+            width:300px !important;}
     </style>
 @endpush
 @section('content')
