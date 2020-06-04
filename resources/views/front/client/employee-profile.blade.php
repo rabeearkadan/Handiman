@@ -154,7 +154,8 @@
                         <a href="{{route('client.user-profile.all.reviews',[$service->id,$employee->id])}}"
                            class="link section__nav__see-all-link ember-view"> See All</a>
                     </div>
-                    @if($employee->rating_object[$service->id] != 0)
+                    @if($employee->rating_object->$service->id != 0)
+                        {{trueeee}}
                         @php
                             for($index=1;$index<6;$index++){
                                $total = $service->rating_object[$service->id][$index];
