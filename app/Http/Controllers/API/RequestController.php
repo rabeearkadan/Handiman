@@ -329,7 +329,7 @@ class RequestController extends Controller
         $invoice = new Invoice();
         if ($req->has('receipt') && $req->has('total')) {
             $receipt_items = [];
-            foreach ($req->input('receipt') as $item) {
+            foreach ($req->receipt as $item) {
                 array_push($receipt_items, json_decode($item));
             }
             $request->receipt = $invoice->receipt = $receipt_items;
