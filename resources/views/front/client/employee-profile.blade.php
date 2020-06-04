@@ -470,9 +470,7 @@
 
     </script>
     <script>
-        var feedbacks = {};
-
-
+        var feedbacks = new Array();
         @foreach($employee->services as $service)
             @isset($service_rating[$service->id])
         @if($service_rating[$service->id][0]!=0)
@@ -480,10 +478,10 @@
         @if($loop->index > 2)
         @break
         @endif
-             feedbacks.{{$service->id}}.{{$loop->index}} = {
+             feedbacks['{{$service->id}}']['{{$loop->index}}'] = {
             rating:{{$feedback['rating']}},
             client:{
-                name:'{{$feedback['client']['name']}}'
+                name:{{$feedback['client']['name']}}
             },
         };
         @endforeach
