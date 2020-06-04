@@ -155,8 +155,9 @@
                            class="link section__nav__see-all-link ember-view"> See All</a>
                     </div>
                         @php
+                        $total=0;
                             for($index=1;$index<6;$index++){
-                               $total = $service->rating_object[$service->id][$index];
+                               $total += $service->rating_object[$service->id][$index];
                                }
                         @endphp
                         <div class="we-customer-ratings lockup ember-view">
