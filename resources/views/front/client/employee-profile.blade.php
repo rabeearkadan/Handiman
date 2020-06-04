@@ -154,21 +154,16 @@
                         <a href="{{route('client.user-profile.all.reviews',[$service->id,$employee->id])}}"
                            class="link section__nav__see-all-link ember-view"> See All</a>
                     </div>
-                        @php
-                        $total=1;
-                            for($index=1;$index<6;$index++){
-                               $total += $service->rating_object[$service->id][$index];
-                               }
-                        @endphp
+
                         <div class="we-customer-ratings lockup ember-view">
                             <div class="l-row">
                                 <div class="we-customer-ratings__stats l-column small-4 medium-6 large-4">
                                     <div class="we-customer-ratings__averages">
                                         <span
-                                            class="we-customer-ratings__averages__display">{{$employee->rating_object[$service->id][0]}}</span>
+                                            class="we-customer-ratings__averages__display">{{$employee->service_rating[$service->id][0]}}</span>
                                         out of 5
                                     </div>
-                                    <div class="we-customer-ratings__count small-hide medium-show"> {{$total}}Ratings
+                                    <div class="we-customer-ratings__count small-hide medium-show"> {{$employee->service_rating[$service->id][6]}} Ratings
                                     </div>
                                 </div>
                                 <div class=" l-column small-8 medium-6 large-4">
@@ -177,43 +172,43 @@
                                             <span class="we-star-bar-graph__stars we-star-bar-graph__stars--5"></span>
                                             <div class="we-star-bar-graph__bar">
                                                 <div class="we-star-bar-graph__bar__foreground-bar"
-                                                     style="width: {{($employee->rating_object[$service->id][5]/$total)*100}}%;"></div>
+                                                     style="width: {{($employee->service_rating[$service->id][5]/$employee->service_rating[$service->id][6])*100}}%;"></div>
                                             </div>
                                         </div>
                                         <div class="we-star-bar-graph__row">
                                             <span class="we-star-bar-graph__stars we-star-bar-graph__stars--4"></span>
                                             <div class="we-star-bar-graph__bar">
                                                 <div class="we-star-bar-graph__bar__foreground-bar"
-                                                     style="width: {{($employee->rating_object[$service->id][4]/$total)*100}}%;"></div>
+                                                     style="width:{{($employee->service_rating[$service->id][4]/$employee->service_rating[$service->id][6])*100}}%;"></div>
                                             </div>
                                         </div>
                                         <div class="we-star-bar-graph__row">
                                             <span class="we-star-bar-graph__stars we-star-bar-graph__stars--3"></span>
                                             <div class="we-star-bar-graph__bar">
                                                 <div class="we-star-bar-graph__bar__foreground-bar"
-                                                     style="width: {{($employee->rating_object[$service->id][3]/$total)*100}}%;"></div>
+                                                     style="width:{{($employee->service_rating[$service->id][3]/$employee->service_rating[$service->id][6])*100}}%;"></div>
                                             </div>
                                         </div>
                                         <div class="we-star-bar-graph__row">
                                             <span class="we-star-bar-graph__stars we-star-bar-graph__stars--2"></span>
                                             <div class="we-star-bar-graph__bar">
                                                 <div class="we-star-bar-graph__bar__foreground-bar"
-                                                     style="width: {{($employee->rating_object[$service->id][2]/$total)*100}}%;"></div>
+                                                     style="width:{{($employee->service_rating[$service->id][2]/$employee->service_rating[$service->id][6])*100}}%;"></div>
                                             </div>
                                         </div>
                                         <div class="we-star-bar-graph__row">
                                             <span class="we-star-bar-graph__stars "></span>
                                             <div class="we-star-bar-graph__bar">
                                                 <div class="we-star-bar-graph__bar__foreground-bar"
-                                                     style="width: {{($employee->rating_object[$service->id][1]/$total)*100}}%;"></div>
+                                                     style="width:{{($employee->service_rating[$service->id][1]/$employee->service_rating[$service->id][6])*100}}%;"></div>
                                             </div>
                                         </div>
                                     </figure>
-                                    <p class="we-customer-ratings__count medium-hide"> {{$total}} Ratings</p>
+                                    <p class="we-customer-ratings__count medium-hide"> {{$employee->service_rating[$service->id][6]}} Ratings</p>
                                 </div>
                             </div>
                         </div>
-                        @foreach($employee->feedback_object[$service->id] as $feedback)
+                        @foreach($feedbacks[$service->id] as $feedback)
                             <div class="l-row l-row--peek">
                                 <div
                                     class="ember-view small-valign-top l-column--equal-height l-column small-4 medium-6 large-4">
