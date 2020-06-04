@@ -159,7 +159,7 @@
                                     <div class="we-customer-ratings__stats l-column small-4 medium-6 large-4">
                                         <div class="we-customer-ratings__averages">
                                         <span
-                                            class="we-customer-ratings__averages__display">{{$service_rating[$service->id][0]}}</span>
+                                            class="we-customer-ratings__averages__display">{{round($service_rating[$service->id][0],2)}}</span>
                                             out of 5
                                         </div>
                                         <div
