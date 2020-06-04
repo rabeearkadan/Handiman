@@ -31,7 +31,7 @@
                                     @foreach($user->client_addresses as $address)
                                         <option value="{{$address['_id']}}"
                                         @isset($client_address)
-    @if($address->id == $client_address)
+    @if($address['_id'] == $client_address)
         selected
 @endif
 @endisset
