@@ -82,6 +82,7 @@ class HomeController extends Controller
             foreach($employees as $employee) {
                 foreach ($availableTimes as $available) {
                     $day = date('w', strtotime($available['date']));
+                    dd($day);
                     $day++;
                     if($day==7){
                         $day=0;
