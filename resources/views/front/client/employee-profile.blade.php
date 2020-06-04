@@ -154,7 +154,7 @@
                         <a href="{{route('client.user-profile.all.reviews',[$service->id,$employee->id])}}"
                            class="link section__nav__see-all-link ember-view"> See All</a>
                     </div>
-                    @if($service->rating_object[$service->id] != 0)
+                    @if($employee->rating_object[$service->id] != 0)
                         @php
                             for($index=1;$index<6;$index++){
                                $total = $service->rating_object[$service->id][$index];
@@ -165,7 +165,7 @@
                                 <div class="we-customer-ratings__stats l-column small-4 medium-6 large-4">
                                     <div class="we-customer-ratings__averages">
                                         <span
-                                            class="we-customer-ratings__averages__display">{{$service->rating_object[$service->id][0]}}</span>
+                                            class="we-customer-ratings__averages__display">{{$employee->rating_object[$service->id][0]}}</span>
                                         out of 5
                                     </div>
                                     <div class="we-customer-ratings__count small-hide medium-show"> {{$total}}Ratings
@@ -177,35 +177,35 @@
                                             <span class="we-star-bar-graph__stars we-star-bar-graph__stars--5"></span>
                                             <div class="we-star-bar-graph__bar">
                                                 <div class="we-star-bar-graph__bar__foreground-bar"
-                                                     style="width: {{($service->rating_object[$service->id][5]%$total)*100}}%;"></div>
+                                                     style="width: {{($employee->rating_object[$service->id][5]%$total)*100}}%;"></div>
                                             </div>
                                         </div>
                                         <div class="we-star-bar-graph__row">
                                             <span class="we-star-bar-graph__stars we-star-bar-graph__stars--4"></span>
                                             <div class="we-star-bar-graph__bar">
                                                 <div class="we-star-bar-graph__bar__foreground-bar"
-                                                     style="width: {{($service->rating_object[$service->id][4]%$total)*100}}%;"></div>
+                                                     style="width: {{($employee->rating_object[$service->id][4]%$total)*100}}%;"></div>
                                             </div>
                                         </div>
                                         <div class="we-star-bar-graph__row">
                                             <span class="we-star-bar-graph__stars we-star-bar-graph__stars--3"></span>
                                             <div class="we-star-bar-graph__bar">
                                                 <div class="we-star-bar-graph__bar__foreground-bar"
-                                                     style="width: {{($service->rating_object[$service->id][3]%$total)*100}}%;"></div>
+                                                     style="width: {{($employee->rating_object[$service->id][3]%$total)*100}}%;"></div>
                                             </div>
                                         </div>
                                         <div class="we-star-bar-graph__row">
                                             <span class="we-star-bar-graph__stars we-star-bar-graph__stars--2"></span>
                                             <div class="we-star-bar-graph__bar">
                                                 <div class="we-star-bar-graph__bar__foreground-bar"
-                                                     style="width: {{($service->rating_object[$service->id][2]%$total)*100}}%;"></div>
+                                                     style="width: {{($employee->rating_object[$service->id][2]%$total)*100}}%;"></div>
                                             </div>
                                         </div>
                                         <div class="we-star-bar-graph__row">
                                             <span class="we-star-bar-graph__stars "></span>
                                             <div class="we-star-bar-graph__bar">
                                                 <div class="we-star-bar-graph__bar__foreground-bar"
-                                                     style="width: {{($service->rating_object[$service->id][1]%$total)*100}}%;"></div>
+                                                     style="width: {{($employee->rating_object[$service->id][1]%$total)*100}}%;"></div>
                                             </div>
                                         </div>
                                     </figure>
