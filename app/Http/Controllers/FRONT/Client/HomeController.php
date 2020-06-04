@@ -57,7 +57,12 @@ class HomeController extends Controller
                 ],
             ])->orderBy('dist.calculated')
             ->get();
-        $availableTimes = $request->availableTimes;
+        if($request->availableTimes != null) {
+            $availableTimes = $request->availableTimes;
+        }
+        else{
+            $availableTimes = array();
+        }
         if(isset($request->date) && isset($request->from) && isset($request->to)){
             array_push($availableTimes,array(
                 'date'=>$request->date,
