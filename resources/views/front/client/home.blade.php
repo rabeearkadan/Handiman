@@ -90,14 +90,16 @@
 @push('js')
     <script src="/public/js/materialize.js"></script>
     <script>
-        $('.carousel.carousel-slider').carousel({
-            fullWidth: true
-        });
-        autoplay();
+        $( document ).ready(function() {
+            $('.carousel.carousel-slider').carousel({
+                fullWidth: true
+            });
+            autoplay();
 
-        function autoplay() {
-            $('.carousel').carousel('next');
-            setTimeout(autoplay, 4500);
-        }
+            function autoplay() {
+                $('.carousel').carousel('next');
+                setTimeout(autoplay, 4500);
+            }
+        });
     </script>
 @endpush
