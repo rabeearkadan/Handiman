@@ -211,6 +211,9 @@
                         </div>
                             <div class="l-row l-row--peek">
                         @foreach($feedbacks[$service->id] as $feedback)
+                            @if($loop->index > 3)
+                                @break
+                            @endif
                                 <div
                                     class="ember-view small-valign-top l-column--equal-height l-column small-4 medium-6 large-4">
                                     <div class="ember-view">
