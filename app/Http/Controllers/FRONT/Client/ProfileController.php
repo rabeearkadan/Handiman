@@ -133,12 +133,16 @@ class ProfileController extends Controller
             }
         }
         foreach($employee->services as $service){
+            echo "service";
             $index=0;
             $total=0;
             $bool=false;
         foreach($employee->employeeRequests as $request){
+            echo "request";
             if($request->id == $service->id){
+                echo "request = service";
                 if($request->rating != null){
+                    echo "rating not null";
                     $bool=true;
                     $client = User::find($request->client_ids[0]);
                     $rf[$service->id][$index]= array([
@@ -168,10 +172,11 @@ class ProfileController extends Controller
             }
         }
         if($bool==true) {
+            echo "changing values";
             $rs[$service->id][0] += $total / $index;
             $rs[$service->id][6] += $index;
         }
-        
+
         }
 
 
