@@ -161,10 +161,10 @@
                                 <div class="we-customer-ratings__stats l-column small-4 medium-6 large-4">
                                     <div class="we-customer-ratings__averages">
                                         <span
-                                            class="we-customer-ratings__averages__display">{{$employee->service_rating[$service->id][0]}}</span>
+                                            class="we-customer-ratings__averages__display">{{$service_rating[$service->id][0]}}</span>
                                         out of 5
                                     </div>
-                                    <div class="we-customer-ratings__count small-hide medium-show"> {{$employee->service_rating[$service->id][6]}} Ratings
+                                    <div class="we-customer-ratings__count small-hide medium-show"> {{$service_rating[$service->id][6]}} Ratings
                                     </div>
                                 </div>
                                 <div class=" l-column small-8 medium-6 large-4">
@@ -173,39 +173,39 @@
                                             <span class="we-star-bar-graph__stars we-star-bar-graph__stars--5"></span>
                                             <div class="we-star-bar-graph__bar">
                                                 <div class="we-star-bar-graph__bar__foreground-bar"
-                                                     style="width: {{($employee->service_rating[$service->id][5]/$employee->service_rating[$service->id][6])*100}}%;"></div>
+                                                     style="width: {{($service_rating[$service->id][5]/$service_rating[$service->id][6])*100}}%;"></div>
                                             </div>
                                         </div>
                                         <div class="we-star-bar-graph__row">
                                             <span class="we-star-bar-graph__stars we-star-bar-graph__stars--4"></span>
                                             <div class="we-star-bar-graph__bar">
                                                 <div class="we-star-bar-graph__bar__foreground-bar"
-                                                     style="width:{{($employee->service_rating[$service->id][4]/$employee->service_rating[$service->id][6])*100}}%;"></div>
+                                                     style="width:{{($service_rating[$service->id][4]/$service_rating[$service->id][6])*100}}%;"></div>
                                             </div>
                                         </div>
                                         <div class="we-star-bar-graph__row">
                                             <span class="we-star-bar-graph__stars we-star-bar-graph__stars--3"></span>
                                             <div class="we-star-bar-graph__bar">
                                                 <div class="we-star-bar-graph__bar__foreground-bar"
-                                                     style="width:{{($employee->service_rating[$service->id][3]/$employee->service_rating[$service->id][6])*100}}%;"></div>
+                                                     style="width:{{($service_rating[$service->id][3]/$service_rating[$service->id][6])*100}}%;"></div>
                                             </div>
                                         </div>
                                         <div class="we-star-bar-graph__row">
                                             <span class="we-star-bar-graph__stars we-star-bar-graph__stars--2"></span>
                                             <div class="we-star-bar-graph__bar">
                                                 <div class="we-star-bar-graph__bar__foreground-bar"
-                                                     style="width:{{($employee->service_rating[$service->id][2]/$employee->service_rating[$service->id][6])*100}}%;"></div>
+                                                     style="width:{{($service_rating[$service->id][2]/$service_rating[$service->id][6])*100}}%;"></div>
                                             </div>
                                         </div>
                                         <div class="we-star-bar-graph__row">
                                             <span class="we-star-bar-graph__stars "></span>
                                             <div class="we-star-bar-graph__bar">
                                                 <div class="we-star-bar-graph__bar__foreground-bar"
-                                                     style="width:{{($employee->service_rating[$service->id][1]/$employee->service_rating[$service->id][6])*100}}%;"></div>
+                                                     style="width:{{($service_rating[$service->id][1]/$service_rating[$service->id][6])*100}}%;"></div>
                                             </div>
                                         </div>
                                     </figure>
-                                    <p class="we-customer-ratings__count medium-hide"> {{$employee->service_rating[$service->id][6]}} Ratings</p>
+                                    <p class="we-customer-ratings__count medium-hide"> {{$service_rating[$service->id][6]}} Ratings</p>
                                 </div>
                             </div>
                         </div>
