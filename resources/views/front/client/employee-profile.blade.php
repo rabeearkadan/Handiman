@@ -138,14 +138,14 @@
         <div class="portfolioFilter clearfix margin-b-80">
             <a href="#"><b>ALL</b></a>
             @foreach($employee->services as $service)
-                <a href="#" onclick="filter('{{$service->name}}')"><b> {{$service->name}} </b></a>
+                <a href="#" onclick="filter('{{$service->name}}')"><b>{{$service->name}}</b></a>
             @endforeach
         </div>
         <div id="reviews-list">
             <div class="list">
                 @foreach($employee->services as $service)
                     <div>
-                        <div class="review-service" style="display: none">{{$service->name}}</div>
+                        <div class="reviewservice" style="display: none">{{$service->name}}</div>
                     @isset($service_rating[$service->id])
                         <div class="section__nav">
                             <h2 class="section__headline">
@@ -453,12 +453,12 @@
     <script src="/public/js/list.js" type="text/javascript"></script>
     <script>
         var options = {
-            valueNames: ['review-service'],
+            valueNames: ['reviewservice']
         };
         var reviewsList = new List('reviews-list', options);
         function filter(service) {
             reviewsList.filter(function (item) {
-                if (item.values().review-service.includes(service)) {
+                if (item.values().reviewservice.includes(service)) {
                     return true;
                 } else {
                     return false;
