@@ -57,7 +57,6 @@ class HomeController extends Controller
                 ],
             ])->orderBy('dist.calculated')
             ->get();
-        dd($employees);
         $availableTimes = $request->availableTimes;
         if(isset($request->date) && isset($request->from) && isset($request->to)){
             array_push($availableTimes,array(
