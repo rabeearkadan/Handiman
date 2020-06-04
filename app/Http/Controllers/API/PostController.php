@@ -39,6 +39,11 @@ class PostController extends Controller
 
         return response()->json(['status' => 'success']);
     }
+    public function employeeTags(){
+        $user=User::query()->find(Auth::id());
+
+        return response()->json(['status' => 'success','tags'=>$user->services()]);
+    }
 
     public function addPost(Request $request)
     {
