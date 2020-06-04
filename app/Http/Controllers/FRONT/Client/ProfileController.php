@@ -145,14 +145,14 @@ class ProfileController extends Controller
                     echo "rating not null";
                     $bool=true;
                     $client = User::find($request->client_ids[0]);
-                    $rf[$service->id][$index]= array([
+                    $rf[$service->id][$index]= [
                         'rating' => $request->rating,
                         'feedback' => $request->feedback,
-                        'client'  => array([
+                        'client'  => [
                             'name' => $client->name,
                             'image' => $client->image,
-                        ])
-                    ]);
+                        ]
+                    ];
                     $total += $request->rating;
                     $index++;
                     if($request->rating > 4){
