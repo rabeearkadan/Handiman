@@ -192,7 +192,7 @@ class ProfileController extends Controller
         }
 $feedbacks = $rf;
         $service_rating=$rs;
-        dd($feedbacks,$service_rating,$employee->service_rating['5ecd92a7e8deab7c2f7962b2'][6]);
+        dd($feedbacks,$service_rating,$service_rating['5ecd92a7e8deab7c2f7962b2'][6]);
         return view('front.client.employee-profile', compact(['employee', 'service', 'feedbacks', 'service_rating']));
     }
 
