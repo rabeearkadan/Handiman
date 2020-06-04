@@ -211,7 +211,7 @@
                         </div>
                             <div class="l-row l-row--peek">
                         @foreach($feedbacks[$service->id] as $feedback)
-                            @if($loop->index > 3)
+                            @if($loop->index > 2)
                                 @break
                             @endif
                                 <div
