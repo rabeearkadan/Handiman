@@ -65,6 +65,19 @@ class PostController extends Controller
             $post->images = $images;
         }
 
+
+        if ($request->has('tags')) {
+            $imagesParam = $request->input('tags');
+            $tags = [];
+            foreach ($tags as $tag) {
+                try {
+                    $post->tags()->attach($tag);
+                } catch (\Exception $e) {
+                    return response()->json(['status' => 'error', 'message' => "error uploading image"]);
+                }
+            }
+        }
+
         $post->save();
         $post->users()->attach(Auth::id());
         return response()->json(['status' => 'success', 'post' => $post]);
