@@ -156,17 +156,17 @@ class ProfileController extends Controller
                     $total += $request->rating;
                     $index++;
                     if($request->rating > 4){
-                        $rf[$service->id][5]++;
+                        $rs[$service->id][5]++;
                     }
                     elseif ($request->rating > 3){
-                        $rf[$service->id][4]++;
+                        $rs[$service->id][4]++;
                     }
                     elseif ($request->rating > 2){
-                        $rf[$service->id][3]++;
+                        $rs[$service->id][3]++;
                     }elseif ($request->rating > 1){
-                        $rf[$service->id][2]++;
+                        $rs[$service->id][2]++;
                     }else {
-                        $rf[$service->id][1]++;
+                        $rs[$service->id][1]++;
                     }
                 }
             }
