@@ -321,8 +321,29 @@ class RequestController extends Controller
         }
     }
 
+    public function addReceiptImages(Request $req, $id)
+    {
+        $request = RequestService::query()->find($id);
+        if ($req->has('images')) {
+            $imagesParam = $req->input('images');
+            $images = [];
+            foreach ($imagesParam as $image) {
+                try {
+                    $images[] = $this->uploadAny($image, 'receipt', 'png');
+                } catch (\Exception $e) {
+                    return response()->json(['status' => 'error', 'message' => "error uploading image"]);
+                }
+            }
+            $request->receipt_images = $images;
+        }
+        $request->save();
 
-    public function addReceipt($id, Request $req)
+        return response()->json(['status' => 'success']);
+
+    }
+
+    public
+    function addReceipt($id, Request $req)
     {
         $request = RequestService::query()->find($id);
         $client = User::query()->find($request->client_ids[0]);
@@ -341,27 +362,9 @@ class RequestController extends Controller
         return response()->json(['status' => 'success']);
     }
 
-        if ($req->has('images')) {
-            $imagesParam = $req->input('images');
-            $images = [];
-            foreach ($imagesParam as $image) {
-                try {
-                    $images[] = $this->uploadAny($image, 'receipt', 'png');
-                } catch (\Exception $e) {
-                    return response()->json(['status' => 'error', 'message' => "error uploading image"]);
-                }
-            }
-            $request->receipt_images = $images;
-        }
-        $request->save();
-        $invoice->save();
-        $this->notification(($client->client_device_token), (Auth::user()->name), 'You received a receipt', 'request');
 
-
-        return response()->json(['status' => 'success']);
-    }
-
-    public function reschedule($id, Request $req)
+    public
+    function reschedule($id, Request $req)
     {
         $request = RequestService::query()->find($id);
         $request->date = Carbon::createFromFormat('Y-m-d', $req->input('date'), $request->timezone);
@@ -373,7 +376,8 @@ class RequestController extends Controller
         $request->save();
     }
 
-    public function onRequestDone($id, Request $req)
+    public
+    function onRequestDone($id, Request $req)
     {
         $request = RequestService::query()->find($id);
         $request->isdone = true;
