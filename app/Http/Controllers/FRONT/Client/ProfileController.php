@@ -192,7 +192,6 @@ class ProfileController extends Controller
         }
 $feedbacks = $rf;
         $service_rating=$rs;
-
         return view('front.client.employee-profile', compact(['employee', 'service', 'feedbacks', 'service_rating']));
     }
 
