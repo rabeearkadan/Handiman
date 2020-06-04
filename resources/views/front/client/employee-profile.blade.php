@@ -30,7 +30,7 @@
                     <div class="info">
                         <i class="icon ion-ios-telephone-outline"></i>
                         <div class="right-area">
-                            <h5> phone </h5>
+                            <h5> {{$employee->phone}} </h5>
                             <h6>MIN - FRI,8AM - 7PM</h6>
                         </div><!-- right-area -->
                     </div><!-- info -->
@@ -40,8 +40,8 @@
                     <div class="info">
                         <i class="icon ion-ios-chatboxes-outline"></i>
                         <div class="right-area">
-                            <h5>contact@colorlib.com</h5>
-                            <h6> replies IN N HOURS</h6>
+                            <h5>{{$employee->email}}</h5>
+{{--                            <h6> replies IN N HOURS</h6>--}}
                         </div><!-- right-area -->
                     </div><!-- info -->
                 </div><!-- col-sm-4 -->
@@ -60,10 +60,12 @@
                 <div class="intro">
                     <div class="profile-img"><img src="{{config('image.path').$employee->image}}" alt=""></div>
                     <h2><b> {{$employee->name}} </b></h2>
-                    <h4 class="font-yellow"> Services </h4>
+                    @foreach($employee->services as $service)
+                    <h4 class="font-yellow"> {{$service->name}} </h4>
+                    @endforeach
                     <ul class="information margin-tb-30">
                         <li><b>BORN : </b>August 25, 1987</li>
-                        <li><b>Price : </b>$7/hr</li>
+                        <li><b>Price : </b>${{$employee->price}}/hr</li>
                     </ul>
                     <ul class="social-icons">
                         <li><a href="#"><i class="ion-social-instagram"></i></a></li>
