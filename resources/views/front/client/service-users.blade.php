@@ -64,7 +64,7 @@
                                     {{$available['date']}} : {{$available['from']}} -> {{$available['to']}}
                                     <i class="fa fa-times"></i>
 
-                                    <input type="hidden" value="{{$available->implode(', ')}}" name="availableTimes[]">
+                                    <input type="hidden" value="{{implode(', ',$available)}}" name="availableTimes[]">
                                 </div><!-- /.chip -->
                             @endforeach
                         </div><!-- /.row -->
