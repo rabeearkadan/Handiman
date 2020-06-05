@@ -97,7 +97,7 @@
                 $('#{{$post->id}}').carousel({
                     fullWidth:true
                 });
-                autoplay({{$post->id}});
+                autoplay('{{$post->id}}');
             });
                 @endforeach
             function autoplay(id) {
