@@ -176,25 +176,25 @@
                                         <div class="we-star-bar-graph__row">
                                                 <span class="we-star-bar-graph__stars we-star-bar-graph__stars--4"></span>
                                             <div class="we-star-bar-graph__bar">
-                                                <div class="we-star-bar-graph__bar__foreground-bar" style="width:{{($all_rating[4]}}%;"></div>
+{{--                                                <div class="we-star-bar-graph__bar__foreground-bar" style="width:{{($all_rating[4]}}%;"></div>--}}
                                             </div>
                                         </div>
                                         <div class="we-star-bar-graph__row">
                                                 <span class="we-star-bar-graph__stars we-star-bar-graph__stars--3"></span>
                                             <div class="we-star-bar-graph__bar">
-                                                <div class="we-star-bar-graph__bar__foreground-bar" style="width:{{($all_rating[3]}}%;"></div>
+{{--                                                <div class="we-star-bar-graph__bar__foreground-bar" style="width:{{($all_rating[3]}}%;"></div>--}}
                                             </div>
                                         </div>
                                         <div class="we-star-bar-graph__row">
                                                 <span class="we-star-bar-graph__stars we-star-bar-graph__stars--2"></span>
                                             <div class="we-star-bar-graph__bar">
-                                                <div class="we-star-bar-graph__bar__foreground-bar" style="width:{{($all_rating[2]}}%;"></div>
+{{--                                                <div class="we-star-bar-graph__bar__foreground-bar" style="width:{{($all_rating[2]}}%;"></div>--}}
                                             </div>
                                         </div>
                                         <div class="we-star-bar-graph__row">
                                             <span class="we-star-bar-graph__stars"></span>
                                             <div class="we-star-bar-graph__bar">
-                                                <div class="we-star-bar-graph__bar__foreground-bar" style="width:{{($all_rating[1]}}%;"></div>
+{{--                                                <div class="we-star-bar-graph__bar__foreground-bar" style="width:{{($all_rating[1]}}%;"></div>--}}
                                             </div>
                                         </div>
                                     </figure>
