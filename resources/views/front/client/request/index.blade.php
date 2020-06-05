@@ -3,6 +3,12 @@
     <link href="{{asset('css/app.css')}}" rel="stylesheet">
     <link href="{{asset('css/client/tabs.css')}}" rel="stylesheet">
     <link href="{{asset('css/client/requests-table.css')}}" rel="stylesheet">
+    <style>
+        .material-placeholder{
+            float: left;
+            margin: 7px;
+        }
+    </style>
 @endpush
 @section('content')
     <button class="tablink" onclick="openPage('Pending', this)" id="defaultOpen"> Pending</button>

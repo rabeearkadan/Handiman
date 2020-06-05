@@ -6041,9 +6041,7 @@ body.keyboard-focused .dropdown-content li:focus {
 }
 
 .materialboxed {
-    margin: 7px;
     border-radius: 0 !important;
-    float: left;
   display: block !important;
   cursor: -webkit-zoom-in !important;
   cursor: zoom-in !important;
