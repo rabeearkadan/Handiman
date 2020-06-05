@@ -145,7 +145,6 @@ class ProfileController extends Controller
     public function employeeProfile($id, $employee_id)
     {
         $service = Service::find($id);
-        dd($service);
         $employee = User::find($employee_id);
         $feedbacks = array();
         $latest_feedbacks = array();
@@ -230,7 +229,7 @@ class ProfileController extends Controller
                 }
             }
         }
-
+dd($service);
         return view('front.client.employee-profile', compact(['employee', 'service', 'feedbacks', 'all_rating', 'service_rating', 'latest_feedbacks']));
     }
 
