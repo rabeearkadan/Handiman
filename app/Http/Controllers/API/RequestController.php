@@ -44,6 +44,7 @@ class RequestController extends Controller
         $requestHandyman->description = $req->input('description');
         $requestHandyman->status = 'pending';
         $requestHandyman->isdone = false;
+        $requestHandyman->rejected_employees= [];
         $requestHandyman->timezone = $req->timezone;
         $requestHandyman->service_id = $req->service_id;
         $address = null;
