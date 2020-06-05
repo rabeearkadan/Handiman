@@ -32,7 +32,7 @@
                                     <div class="posts">
                                         @foreach($posts as $post)
                                             <div class="post">
-                                                <div class="carousel carousel-slider">
+                                                <div class="carousel carousel-slider" id="{{$post->id}}">
                                                     @foreach($post->images as $image)
                                                         <a class="carousel-item" href="#"><img
                                                                 src="{{config('image.path').$image}}" alt="Post Images"></a>
@@ -92,7 +92,7 @@
     <script src="/public/js/jquery.waituntilexists.min.js"></script>
     <script>
         $( document ).ready(function() {
-            $('.carousel-item img').waitUntilExists(function () {
+            $('.carousel.carousel-slider').waitUntilExists(function () {
                 $('.carousel.carousel-slider').carousel({});
                 autoplay();
                 function autoplay() {
