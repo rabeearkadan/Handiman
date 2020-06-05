@@ -10464,7 +10464,7 @@ $jscomp.polyfill = function (e, r, p, m) {
     shift: 0, // spacing for center image
     padding: 0, // Padding between non center items
     numVisible: 5, // Number of visible items in carousel
-    fullWidth: true, // Change to full width styles
+    fullWidth: false, // Change to full width styles
     indicators: false, // Toggle indicators
     noWrap: false, // Don't wrap around and cycle through items.
     onCycleTo: null // Callback for when a new slide is cycled to.
@@ -11090,7 +11090,7 @@ $jscomp.polyfill = function (e, r, p, m) {
         el.style[this.xform] = transform;
         el.style.zIndex = zIndex;
         el.style.opacity = opacity;
-        el.style.visibility = 'visible';
+        // el.style.visibility = 'visible';
       }
 
       /**
