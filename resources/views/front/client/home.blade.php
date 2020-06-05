@@ -49,7 +49,7 @@
                                                                      class="circle responsive-img"
                                                                      src="{{config('image.path').$user->image}}">
                                                             </a>
-                                                            <a href=""> {{$user->name}} </a>
+                                                            <a href="{{route('client.user-profile',$employee->id)}}"> {{$user->name}} </a>
                                                         @endforeach
                                                     </div><!-- /.post-meta-author -->
                                                     <div class="post-meta-date"> {{$post->created_at}} </div>
@@ -60,7 +60,7 @@
                                                             @if($loop->index !=0)
                                                                 ,
                                                             @endif
-                                                            <a href=""> {{$tag->name}} </a>
+                                                            <a href="{{route('client.service', $tag->id)}}"> {{$tag->name}} </a>
                                                         @endforeach
                                                     </div><!-- /.post-meta-categories -->
                                                     {{--                                            <div class="post-meta-comments">--}}
