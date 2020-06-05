@@ -8,7 +8,7 @@ Route::get('/home','HomeController@index')->name('client.home');
 
 //Services and employee profile
 Route::get('/services/{id?}','HomeController@service')->name('client.service');
-Route::get('/services/{id}/employee/{employee_id}','ProfileController@employeeProfile')->name('client.user-profile');
+Route::get('/services/{id?}/employee/{employee_id}','ProfileController@employeeProfile')->name('client.user-profile');
 Route::get('/services/{id?}/employee/{employee_id}/see-all-reviews','ProfileController@allReviews')->name('client.user-profile.all.reviews');
 //Services:filters
 Route::post('/services/{id?}','HomeController@filterUsers')->name('client.service.filter');
