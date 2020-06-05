@@ -94,14 +94,12 @@
         $( document ).ready(function() {
             $('.carousel.carousel-slider').carousel({});
             $('.carousel.carousel-slider').waitUntilExists(function () {
-                $('.carousel-item').waitUntilExists(function () {
                 autoplay();
                 function autoplay() {
                     $('.carousel').carousel('next');
                     setTimeout(autoplay, 4500);
                 }
             });
-        });
         });
     </script>
 @endpush
