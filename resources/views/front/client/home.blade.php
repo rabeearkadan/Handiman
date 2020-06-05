@@ -94,7 +94,7 @@
         $( document ).ready(function() {
             @foreach($posts as $post)
                 $('#{{$post->id}}').carousel({
-                    fullWidth:true
+                    full_width:true
                 });
                 autoplay('{{$post->id}}');
                 @endforeach
