@@ -166,8 +166,8 @@
                                     </div>
                                 </div>
                                 <div class=" l-column small-8 medium-6 large-4">
-                                    @for($index=5;$index>0;$index--)
                                     <figure class="we-star-bar-graph">
+                                    @for($index=5;$index>0;$index--)
                                         <div class="we-star-bar-graph__row">
                                                 <span class="we-star-bar-graph__stars we-star-bar-graph__stars--{{$index}}"></span>
                                             <div class="we-star-bar-graph__bar">
@@ -247,40 +247,14 @@
                                     </div>
                                     <div class=" l-column small-8 medium-6 large-4">
                                         <figure class="we-star-bar-graph">
+                                            @for($index=5;$index>0;$index--)
                                             <div class="we-star-bar-graph__row">
-                                                <span
-                                                    class="we-star-bar-graph__stars we-star-bar-graph__stars--5"></span>
+                                                <span class="we-star-bar-graph__stars we-star-bar-graph__stars--{{$index}}"></span>
                                                 <div class="we-star-bar-graph__bar">
-                                                    <div class="we-star-bar-graph__bar__foreground-bar" style="width: {{($service_rating[$service->id][5]/$service_rating[$service->id][6])*100}}%;"></div>
+                                                    <div class="we-star-bar-graph__bar__foreground-bar" style="width: {{($service_rating[$service->id][$index]/$service_rating[$service->id][6])*100}}%;"></div>
                                                 </div>
                                             </div>
-                                            <div class="we-star-bar-graph__row">
-                                                <span
-                                                    class="we-star-bar-graph__stars we-star-bar-graph__stars--4"></span>
-                                                <div class="we-star-bar-graph__bar">
-                                                    <div class="we-star-bar-graph__bar__foreground-bar" style="width:{{($service_rating[$service->id][4]/$service_rating[$service->id][6])*100}}%;"></div>
-                                                </div>
-                                            </div>
-                                            <div class="we-star-bar-graph__row">
-                                                <span
-                                                    class="we-star-bar-graph__stars we-star-bar-graph__stars--3"></span>
-                                                <div class="we-star-bar-graph__bar">
-                                                    <div class="we-star-bar-graph__bar__foreground-bar" style="width:{{($service_rating[$service->id][3]/$service_rating[$service->id][6])*100}}%;"></div>
-                                                </div>
-                                            </div>
-                                            <div class="we-star-bar-graph__row">
-                                                <span
-                                                    class="we-star-bar-graph__stars we-star-bar-graph__stars--2"></span>
-                                                <div class="we-star-bar-graph__bar">
-                                                    <div class="we-star-bar-graph__bar__foreground-bar" style="width:{{($service_rating[$service->id][2]/$service_rating[$service->id][6])*100}}%;"></div>
-                                                </div>
-                                            </div>
-                                            <div class="we-star-bar-graph__row">
-                                                <span class="we-star-bar-graph__stars"></span>
-                                                <div class="we-star-bar-graph__bar">
-                                                    <div class="we-star-bar-graph__bar__foreground-bar" style="width:{{($service_rating[$service->id][1]/$service_rating[$service->id][6])*100}}%;"></div>
-                                                </div>
-                                            </div>
+                                           @endfor
                                         </figure>
                                         <p class="we-customer-ratings__count medium-hide">
                                             {{$service_rating[$service->id][6]}} Ratings
