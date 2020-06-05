@@ -234,9 +234,9 @@
                                             <div class="we-clamp ember-view">
                                                 <p>Review</p>
                                             </div>
-                                            <button onclick="more('{{$service->id}}',{{$loop->index}})" class="we-truncate__button link">
-                                                more
-                                            </button>
+{{--                                            <button onclick="more('{{$service->id}}',{{$loop->index}})" class="we-truncate__button link">--}}
+{{--                                                more--}}
+{{--                                            </button>--}}
                                         </blockquote><!---->
                                     </div>
                                 </div>
@@ -510,13 +510,13 @@
 @push('js')
     <script src="/public/js/list.js" type="text/javascript"></script>
     <script>
-        $(document).ready(function () {
-            @isset($service)
-                filter('{{$service->name}}');
-            @else
-            filter('all');
-            @endisset
-        });
+        {{--$(document).ready(function () {--}}
+        {{--    @isset($service)--}}
+        {{--        filter('{{$service->name}}');--}}
+        {{--    @else--}}
+        {{--    filter('all');--}}
+        {{--    @endisset--}}
+        {{--});--}}
         var options = {
             valueNames: ['reviewservice']
         };
