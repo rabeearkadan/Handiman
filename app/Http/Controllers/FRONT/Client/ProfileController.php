@@ -235,13 +235,14 @@ class ProfileController extends Controller
         return view('front.client.employee-profile', compact(['employee', 'service', 'feedbacks', 'all_rating', 'service_rating', 'latest_feedbacks']));
     }
 
-    public function allReviews($id, $employee_id)
+    public function allReviews(Request $request, $employee_id)
     {
         try {
             $employee = User::findorFail($employee_id);
         } catch (ModelNotFoundException $e) {
             dd('failed laterszz');
         }
+
 //        $feedbacks = array();
 //        $counter=0;
 //        foreach ($employee->employeeRequests as $request) {

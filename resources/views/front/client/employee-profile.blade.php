@@ -146,9 +146,11 @@
             <a href="#" onclick="filter('all')" @isset($service)@else class="current" @endisset><b>ALL</b></a>
             @foreach($employee->services as $employee_service)
                 <a href="#" onclick="filter('{{$employee_service->name}}')"
+                   @isset($service)
                    @if($employee_service->id == $service->id)
                        class="current"
-                   @endif>
+                   @endif
+                @endisset>
                     <b>{{$employee_service->name}}</b></a>
             @endforeach
         </div>
@@ -156,7 +158,13 @@
             <h2 class="section__headline">
                 Ratings and Reviews
             </h2>
-            <a href="{{route('client.user-profile.all.reviews',[$service->id,$employee->id])}}" class="link section__nav__see-all-link ember-view"> See All</a>
+            <a href="
+            @isset($service)
+{{route('client.user-profile.all.reviews',[$service->id,$employee->id])}}
+            @else
+            {{route('client.user-profile.all.reviews',['employee_id'=>$employee->id])}}
+            @endisset
+                " class="link section__nav__see-all-link ember-view"> See All</a>
         </div>
 
 
