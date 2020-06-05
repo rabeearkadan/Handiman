@@ -43,6 +43,11 @@ class RequestController extends Controller
             $item->employee = User::find($item->employee_ids[0]);
             return $item;
         });
+        $approvedRequests = $approvedRequests->map(function ($item) {
+            $item->service_name = Service::find($item->service_id)->name;
+            $item->employee = User::find($item->employee_ids[0]);
+            return $item;
+        });
         return view('front.client.request.index', compact(['pendingRequests', 'approvedRequests']));
     }
 
