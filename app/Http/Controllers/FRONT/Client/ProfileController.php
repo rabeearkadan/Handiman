@@ -128,7 +128,7 @@ class ProfileController extends Controller
     {
         $user = Auth::user();
         // $user->push('locations', '');
-        return view('front.client.profile.edit-profile', compact('user'));
+        return redirect()->route('client.profile');
     }
 
     public function destroyAddress($id)
@@ -140,7 +140,7 @@ class ProfileController extends Controller
             }
         }
         $user->save();
-        return view('front.client.profile.edit-profile', compact('user'));
+        return redirect()->route('client.profile');
     }
     //end of functions for Client addresses
 
