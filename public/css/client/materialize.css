@@ -7644,6 +7644,7 @@ input[type=range]::-ms-thumb {
 }
 
 .sidenav .user-view > a {
+    display: block !important;
   height: auto !important;
   padding: 0 !important;
 }
@@ -7673,7 +7674,7 @@ input[type=range]::-ms-thumb {
 
 .sidenav .user-view .name,
 .sidenav .user-view .email {
-    display: block !important;
+
     font-family: sans-serif !important;
   font-size: 14px !important;
   line-height: 24px !important;
