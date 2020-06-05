@@ -214,7 +214,7 @@
                                         <h3 class="we-truncate we-truncate--single-line ember-view we-customer-review__title">
                                             Title
                                         </h3>
-                                        <blockquote class="we-truncate we-truncate--multi-line we-truncate--interactive we-truncate--truncated ember-view we-customer-review__body">
+                                        <blockquote class="we-truncate we-truncate--multi-line we-truncate--interactive we-truncate--truncated ember-view we-customer-review__body" @if($feedback['rating']>=3)style="border-left:2px solid #5c9a6f"@endif>
                                             <div class="we-clamp ember-view">
                                                 <p>Review</p>
                                             </div>
@@ -295,7 +295,7 @@
                                             <h3 class="we-truncate we-truncate--single-line ember-view we-customer-review__title">
                                                 Title
                                             </h3>
-                                            <blockquote class="we-truncate we-truncate--multi-line we-truncate--interactive we-truncate--truncated ember-view we-customer-review__body">
+                                            <blockquote class="we-truncate we-truncate--multi-line we-truncate--interactive we-truncate--truncated ember-view we-customer-review__body"  @if($feedback['rating']>=3)style="border-left:2px solid #5c9a6f"@endif>
                                                 <div class="we-clamp ember-view">
                                                     <p>Review</p>
                                                 </div>
@@ -510,6 +510,9 @@
                 '<button class="we-modal__close" onclick="less()" aria-label="Close" ></button>' +
                 '</div><button class="we-modal__close--overlay" id="close-div" aria-label="Close" ></button>' +
                 '</div><div class="overlay"></div>';
+            if(feedbacks[serviceId][index]["rating"]>=3){
+                $('#modal-container > blockquote').css('border-left', 'border-left:2px solid #5c9a6f');
+            }
         }
 
         function less() {
