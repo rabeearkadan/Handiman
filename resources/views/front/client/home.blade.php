@@ -92,7 +92,10 @@
     <script src="/public/js/jquery.waituntilexists.min.js"></script>
     <script>
         $( document ).ready(function() {
-            $('.carousel.carousel-slider').carousel({});
+            document.addEventListener('DOMContentLoaded', function() {
+                var elems = document.querySelectorAll('.carousel.carousel-slider');
+                var instances = M.Carousel.init(elems);
+            });
             $('.carousel.carousel-slider').waitUntilExists(function () {
                 autoplay();
                 function autoplay() {
