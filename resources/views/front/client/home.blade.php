@@ -91,14 +91,16 @@
     <script src="/public/js/materialize.js"></script>
     <script>
         $( document ).ready(function() {
-                $('.carousel.carousel-slider').carousel({
+            @foreach($posts as $post)
+                $('#{{$post->id}}').carousel({
                     fullWidth:true
                 });
+                @endforeach
                 autoplay();
-                function autoplay() {
-                    $('.carousel').carousel('next');
-                    setTimeout(autoplay, 4500);
-                }
+            function autoplay() {
+                $('.carousel').carousel('next');
+                setTimeout(autoplay, 4500);
+            }
         });
     </script>
 @endpush
