@@ -134,7 +134,12 @@ class ProfileController extends Controller
     public function destroyAddress($id)
     {
         $user = Auth::user();
-        // $user->push('locations', '');
+        foreach ($user->client_addresses as $address){
+            if($address['id'] == $id){
+                $user->pull('client_addresses', $address);
+            }
+        }
+        $user->save();
         return view('front.client.profile.edit-profile', compact('user'));
     }
     //end of functions for Client addresses
