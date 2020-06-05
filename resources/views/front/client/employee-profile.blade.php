@@ -153,29 +153,6 @@
             <div class="list">
 
                 <div class="reviewservice" style="display: none">all</div>
-                    @php
-                        $all_rating=array();
-                        for($index=0;$index<7;$index++){
-                            $all_rating[$index]=0;
-                        }
-                        for($index=1;$index<7;$index++){
-                            foreach($employee->services as $service){
-                                if($service_rating[$service->id][0]!=0){
-                                $all_rating[$index] +=  $service_rating[$service->id][$index];
-                                }
-                            }
-                        }
-                        foreach($employee->services as $service){
-                            if($service_rating[$service->id][0]!=0){
-                            $all_rating[0] +=  $service_rating[$service->id][0]*($service_rating[$service->id][6]/$all_rating[6]);
-                            for($index=1;$index<6;$index++){
-                                $all_rating[$index] = ($all_rating[$index]/$all_rating[6])*100;
-                            }
-                            }
-                        }
-
-                    @endphp
-
                     @if($all_rating[0]!=0)
                         <div class="we-customer-ratings lockup ember-view">
                             <div class="l-row">
@@ -222,7 +199,7 @@
                                         </div>
                                     </figure>
                                     <p class="we-customer-ratings__count medium-hide">
-                                        {{$service_rating[$service->id][6]}} Ratings
+                                        {{$all_rating[6]}} Ratings
                                     </p>
                                 </div>
                             </div>

@@ -148,24 +148,24 @@ class ProfileController extends Controller
         $employee = User::find($employee_id);
         $feedbacks = array();
         $latest_feedbacks = array();
-        $counter=0;
+        $counter = 0;
         foreach ($employee->employeeRequests as $request) {
-            if($counter>2){
+            if ($counter > 2) {
                 break;
             }
-                if ($request->rating != null && $request->feedback != null && $request->isdone == true) {
-                    $client = User::find($request->client_ids[0]);
-                    array_push($latest_feedbacks,[
-                        'rating' => $request->rating,
-                        'feedback' => $request->feedback,
-                        'client' => [
-                            'name' => $client->name,
-                            'image' => $client->image,
-                        ]
-                    ]);
-                    $counter++;
-                }
+            if ($request->rating != null && $request->feedback != null && $request->isdone == true) {
+                $client = User::find($request->client_ids[0]);
+                array_push($latest_feedbacks, [
+                    'rating' => $request->rating,
+                    'feedback' => $request->feedback,
+                    'client' => [
+                        'name' => $client->name,
+                        'image' => $client->image,
+                    ]
+                ]);
+                $counter++;
             }
+        }
         $service_rating = array();
         foreach ($employee->services as $service) {
             for ($index = 0; $index < 7; $index++) {
@@ -210,18 +210,34 @@ class ProfileController extends Controller
                 $service_rating[$service->id][6] += $index;
             }
         }
+        $all_rating = array();
+        for ($index = 0; $index < 7; $index++) {
+            $all_rating[$index] = 0;
+        }
+        for ($index = 1; $index < 7; $index++) {
+            foreach ($employee->services as $service) {
+                if ($service_rating[$service->id][0] != 0) {
+                    $all_rating[$index] += $service_rating[$service->id][$index];
+                }
+            }
+        }
+        foreach ($employee->services as $service) {
+            if ($service_rating[$service->id][0] != 0) {
+                $all_rating[0] += $service_rating[$service->id][0] * ($service_rating[$service->id][6] / $all_rating[6]);
+                for ($index = 1; $index < 6; $index++) {
+                    $all_rating[$index] = ($all_rating[$index] / $all_rating[6]) * 100;
+                }
+            }
+        }
 
-        return view('front.client.employee-profile', compact(['employee', 'service', 'feedbacks', 'service_rating','latest_feedbacks']));
+        return view('front.client.employee-profile', compact(['employee', 'service', 'feedbacks', 'all_rating', 'service_rating', 'latest_feedbacks']));
     }
 
     public function allReviews($id, $employee_id)
     {
-        try
-        {
+        try {
             $employee = User::findorFail($employee_id);
-        }
-        catch(ModelNotFoundException $e)
-        {
+        } catch (ModelNotFoundException $e) {
             dd('failed laterszz');
         }
 //        $feedbacks = array();
