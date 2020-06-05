@@ -152,6 +152,7 @@
         <div id="reviews-list">
             <div class="list">
 
+                <div>
                 <div class="reviewservice" style="display: none">all</div>
                     @if($all_rating[0]!=0)
                         <div class="we-customer-ratings lockup ember-view">
@@ -227,9 +228,10 @@
                             </p>
                         </div>
                     @endif
-
+                </div>
 
                 @foreach($employee->services as $service)
+                    <div>
                     <div class="reviewservice" style="display: none">{{$service->name}}</div>
                     @isset($service_rating[$service->id])
                         @if($service_rating[$service->id][0]!=0)
@@ -308,6 +310,7 @@
                             </div>
                         @endif
                     @endisset
+                    </div>
                 @endforeach
             </div><!-- /.list -->
         </div><!-- /#reviews-list -->
