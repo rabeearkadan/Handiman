@@ -93,12 +93,10 @@
     <script>
         $( document ).ready(function() {
             @foreach($posts as $post)
-            $('#{{$post->id}}').waitUntilExists(function(){
                 $('#{{$post->id}}').carousel({
                     fullWidth:true
                 });
                 autoplay('{{$post->id}}');
-            });
                 @endforeach
             function autoplay(id) {
                 $('#'+id).carousel('next');
