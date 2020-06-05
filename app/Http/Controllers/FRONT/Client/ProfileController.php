@@ -151,6 +151,7 @@ class ProfileController extends Controller
         $feedbacks = array();
         $latest_feedbacks = array();
         $counter = 0;
+        dd($employee,$employee_id,$request->input('service_id'));
         foreach ($employee->employeeRequests as $request) {
             if ($counter > 2) {
                 break;
