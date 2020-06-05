@@ -233,9 +233,11 @@
                                                 @foreach($employee->services as $s)
                                                     <option value="{{$s->id}}"
                                                             data-icon="{{config('image.path').$s->image}}"
+                                                            @isset($service)
                                                             @if($s->id == $service->id)
                                                             selected
-                                                        @endif>
+                                                        @endif
+                                                    @endisset>
                                                         {{$s->name}}
                                                     </option>
                                                 @endforeach
