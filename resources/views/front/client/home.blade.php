@@ -49,7 +49,7 @@
                                                                      class="circle responsive-img"
                                                                      src="{{config('image.path').$user->image}}">
                                                             </a>
-                                                            <a href="{{route('client.user-profile',$user->id)}}"> {{$user->name}} </a>
+                                                            <a href="{{route('client.user-profile',['employee_id' => $user->id])}}"> {{$user->name}} </a>
                                                         @endforeach
                                                     </div><!-- /.post-meta-author -->
                                                     <div class="post-meta-date"> {{$post->created_at}} </div>
