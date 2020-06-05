@@ -148,6 +148,7 @@ class ProfileController extends Controller
             $service = Service::find($service_id);
         }
         $employee = User::find($employee_id);
+        dd($employee,$employee_id,$service_id);
         $feedbacks = array();
         $latest_feedbacks = array();
         $counter = 0;
