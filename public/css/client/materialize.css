@@ -8377,8 +8377,8 @@ input[type=range]::-ms-thumb {
   right: 0;
   bottom: 20px;
   z-index: 1;
-    height: available !important;
-    width: available !important;
+    height: -webkit-fill-available !important;
+    width: -webkit-fill-available !important;
 }
 
 .carousel.carousel-slider .carousel-fixed-item.with-indicators {
