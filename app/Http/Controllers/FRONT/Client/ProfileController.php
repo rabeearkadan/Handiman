@@ -135,7 +135,7 @@ class ProfileController extends Controller
     {
         $user = Auth::user();
         foreach ($user->client_addresses as $address){
-            if($address['id'] == $id){
+            if($address['_id'] == $id){
                 $user->pull('client_addresses', $address);
             }
         }
