@@ -188,7 +188,7 @@
                                                         @foreach($user->client_addresses as $address)
                                                             <input class="select-box__input" type="radio"
                                                                    id="{{$address['_id']}}" value="{{$address['_id']}}"
-                                                                   name="address"/>
+                                                                   name="address" @if($loop->index==0)checked @endif/>
                                                             <p class="select-box__input-text">{{$address['name']}}</p>
                                                         @endforeach
                                                     </div>
