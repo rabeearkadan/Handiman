@@ -116,7 +116,7 @@
                                     <div class="card-row-inner">
                                         <div class="card-row-image"
                                              style="background-image: url({{config('image.path').$employee->image}})">
-                                            <a href="{{route('client.user-profile',['service_id'=>$service->id,'employee_id'=>$employee->id])}}">
+                                            <a href="{{route('client.user-profile',['employee_id'=>$employee->id,'service_id'=>$service->id])}}">
                                                 <div class="card-row-label">{{$service->name}} </div>
                                                 <!-- /.card-row-label -->
                                                 <div class="card-row-price"> ${{$employee->price}} / hr</div><!-- -->
