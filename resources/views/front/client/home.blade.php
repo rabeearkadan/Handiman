@@ -32,10 +32,9 @@
                                     <div class="posts">
                                         @foreach($posts as $post)
                                             <div class="post">
-                                                <div class="carousel carousel-slider">
+                                                <div class="carousel carousel-slider" id="{{$post->id}}">
                                                     @foreach($post->images as $image)
-                                                        <a class="carousel-item" href="#"><img
-                                                                src="{{config('image.path').$image}}" alt="Post Images"></a>
+                                                        <img class="carousel-item" src="{{config('image.path').$image}}" alt="Post Images">
                                                     @endforeach
                                                 </div>
                                                 <div class="post-content">
@@ -50,7 +49,7 @@
                                                                      class="circle responsive-img"
                                                                      src="{{config('image.path').$user->image}}">
                                                             </a>
-                                                            <a href=""> {{$user->name}} </a>
+                                                            <a href="{{route('client.user-profile',['employee_id' => $user->id])}}"> {{$user->name}} </a>
                                                         @endforeach
                                                     </div><!-- /.post-meta-author -->
                                                     <div class="post-meta-date"> {{$post->created_at}} </div>
@@ -61,7 +60,7 @@
                                                             @if($loop->index !=0)
                                                                 ,
                                                             @endif
-                                                            <a href=""> {{$tag->name}} </a>
+                                                            <a href="{{route('client.service', $tag->id)}}"> {{$tag->name}} </a>
                                                         @endforeach
                                                     </div><!-- /.post-meta-categories -->
                                                     {{--                                            <div class="post-meta-comments">--}}
@@ -89,13 +88,15 @@
 @endsection
 @push('js')
     <script src="/public/js/materialize.js"></script>
+    <script src="/public/js/jquery.waituntilexists.min.js"></script>
     <script>
         $( document ).ready(function() {
-            $('.carousel.carousel-slider').carousel({
-                fullWidth: true
-            });
-            autoplay();
-
+            @foreach($posts as $post)
+                $('#{{$post->id}}').carousel({
+                    full_width:true
+                });
+                @endforeach
+                autoplay();
             function autoplay() {
                 $('.carousel').carousel('next');
                 setTimeout(autoplay, 4500);

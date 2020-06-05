@@ -14,6 +14,7 @@ class HomeController extends Controller
     /** Functions
      * index()
      * service()
+     * filterUsers()
      */
 
     public function index( Request $request ){

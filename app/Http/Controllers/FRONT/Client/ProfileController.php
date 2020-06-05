@@ -5,6 +5,7 @@ namespace App\Http\Controllers\FRONT\Client;
 use App\Http\Controllers\Controller;
 use App\Models\Service;
 use App\User;
+use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
@@ -141,27 +142,48 @@ class ProfileController extends Controller
 
     //functions for employee Profiles
 
-    public function employeeProfile($id, $employee_id)
+    public function employeeProfile($employee_id,Request $request)
     {
-        $service = Service::find($id);
+        if($request->input('id') != null) {
+            $service = Service::find($request->input('id'));
+        }
         $employee = User::find($employee_id);
-        $rf = array();
-        $rs = array();
-        foreach ($employee->services as $service) {
-            for ($index = 0; $index < 7; $index++) {
-                $rs[$service->id][$index] = 0;
+        $feedbacks = array();
+        $latest_feedbacks = array();
+        $counter = 0;
+        foreach ($employee->employeeRequests as $request) {
+            if ($counter > 2) {
+                break;
+            }
+            if ($request->rating != null && $request->feedback != null && $request->isdone == true) {
+                $client = User::find($request->client_ids[0]);
+                array_push($latest_feedbacks, [
+                    'rating' => $request->rating,
+                    'feedback' => $request->feedback,
+                    'client' => [
+                        'name' => $client->name,
+                        'image' => $client->image,
+                    ]
+                ]);
+                $counter++;
             }
         }
-        foreach ($employee->services as $service) {
+        $service_rating = array();
+        foreach ($employee->services as $employee_service) {
+            for ($index = 0; $index < 7; $index++) {
+                $service_rating[$employee_service->id][$index] = 0;
+            }
+        }
+        foreach ($employee->services as $employee_service) {
             $index = 0;
             $total = 0;
             $bool = false;
             foreach ($employee->employeeRequests as $request) {
-                if ($request->service_id == $service->id) {
+                if ($request->service_id == $employee_service->id) {
                     if ($request->rating != null) {
                         $bool = true;
                         $client = User::find($request->client_ids[0]);
-                        $rf[$service->id][$index] = [
+                        $feedbacks[$employee_service->id][$index] = [
                             'rating' => $request->rating,
                             'feedback' => $request->feedback,
                             'client' => [
@@ -172,32 +194,71 @@ class ProfileController extends Controller
                         $total += $request->rating;
                         $index++;
                         if ($request->rating > 4) {
-                            $rs[$service->id][5]++;
+                            $service_rating[$employee_service->id][5]++;
                         } elseif ($request->rating > 3) {
-                            $rs[$service->id][4]++;
+                            $service_rating[$employee_service->id][4]++;
                         } elseif ($request->rating > 2) {
-                            $rs[$service->id][3]++;
+                            $service_rating[$employee_service->id][3]++;
                         } elseif ($request->rating > 1) {
-                            $rs[$service->id][2]++;
+                            $service_rating[$employee_service->id][2]++;
                         } else {
-                            $rs[$service->id][1]++;
+                            $service_rating[$employee_service->id][1]++;
                         }
                     }
                 }
             }
             if ($bool == true) {
-                $rs[$service->id][0] += $total / $index;
-                $rs[$service->id][6] += $index;
+                $service_rating[$employee_service->id][0] += $total / $index;
+                $service_rating[$employee_service->id][6] += $index;
             }
         }
-$feedbacks = $rf;
-        $service_rating=$rs;
-        return view('front.client.employee-profile', compact(['employee', 'service', 'feedbacks', 'service_rating']));
+        $all_rating = array();
+        for ($index = 0; $index < 7; $index++) {
+            $all_rating[$index] = 0;
+        }
+        for ($index = 1; $index < 7; $index++) {
+            foreach ($employee->services as $employee_service) {
+                if ($service_rating[$employee_service->id][0] != 0) {
+                    $all_rating[$index] += $service_rating[$employee_service->id][$index];
+                }
+            }
+        }
+        foreach ($employee->services as $employee_service) {
+            if ($service_rating[$employee_service->id][0] != 0) {
+                $all_rating[0] += $service_rating[$employee_service->id][0] * ($service_rating[$employee_service->id][6] / $all_rating[6]);
+                for ($index = 1; $index < 6; $index++) {
+                    $all_rating[$index] = ($all_rating[$index] / $all_rating[6]) * 100;
+                }
+            }
+        }
+
+        return view('front.client.employee-profile', compact(['employee', 'service', 'feedbacks', 'all_rating', 'service_rating', 'latest_feedbacks']));
     }
 
-    public function allReviews($id, $employee_id)
+    public function allReviews(Request $request, $employee_id)
     {
-        $employee = User::find($employee_id);
+        try {
+            $employee = User::findorFail($employee_id);
+        } catch (ModelNotFoundException $e) {
+            dd('failed laterszz');
+        }
+
+//        $feedbacks = array();
+//        $counter=0;
+//        foreach ($employee->employeeRequests as $request) {
+//            if ($request->rating != null && $request->feedback != null && $request->isdone == true) {
+//                $client = User::find($request->client_ids[0]);
+//                array_push($feedbacks,[
+//                    'rating' => $request->rating,
+//                    'feedback' => $request->feedback,
+//                    'client' => [
+//                        'name' => $client->name,
+//                        'image' => $client->image,
+//                    ]
+//                ]);
+//                $counter++;
+//            }
+//        }
         return view('front.client.see-all-reviews', compact('employee'));
     }
 }
