@@ -170,7 +170,7 @@
                                         <div class="we-star-bar-graph__row">
                                                 <span class="we-star-bar-graph__stars we-star-bar-graph__stars--5"></span>
                                             <div class="we-star-bar-graph__bar">
-                                                <div class="we-star-bar-graph__bar__foreground-bar" style="width: {{($all_rating[5]}}%;"></div>
+{{--                                                <div class="we-star-bar-graph__bar__foreground-bar" style="width: {{($all_rating[5]}}%;"></div>--}}
                                             </div>
                                         </div>
                                         <div class="we-star-bar-graph__row">
