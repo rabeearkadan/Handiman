@@ -229,7 +229,6 @@ class ProfileController extends Controller
                 }
             }
         }
-        dd($all_rating);
 
         return view('front.client.employee-profile', compact(['employee', 'service', 'feedbacks', 'all_rating', 'service_rating', 'latest_feedbacks']));
     }
