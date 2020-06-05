@@ -96,10 +96,10 @@
                 $('#{{$post->id}}').carousel({
                     full_width:true
                 });
-                autoplay('{{$post->id}}');
                 @endforeach
-            function autoplay(id) {
-                $('#'+id).carousel('next');
+                autoplay();
+            function autoplay() {
+                $('.carousel').carousel('next');
                 setTimeout(autoplay, 4500);
             }
         });
