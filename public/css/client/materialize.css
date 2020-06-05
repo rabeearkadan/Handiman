@@ -8401,7 +8401,7 @@ input[type=range]::-ms-thumb {
 }
 .carousel-item{
     width: 100%;
-    object-fit: revert;
+    object-fit: scale-down;
 }
 .carousel.carousel-slider .carousel-item h2 {
   font-size: 24px;
