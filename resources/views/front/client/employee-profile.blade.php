@@ -50,7 +50,13 @@
                     </div><!-- col-sm-4 -->
                 </div><!-- row -->
             </div><!-- heading-wrapper -->
-            <a class="downlad-btn" href="{{route('client.request.create',['service_id'=>$service->id,'employee_id'=>$employee->id])}}">
+            <a class="downlad-btn" href="
+@isset($service)
+            {{route('client.request.create',['service_id'=>$service->id,'employee_id'=>$employee->id])}}
+            @else
+                    {{route('client.request.create',['employee_id'=>$employee->id])}}
+                @endisset
+                ">
                 Request
             </a>
         </div><!-- container -->
