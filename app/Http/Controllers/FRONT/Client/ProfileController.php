@@ -144,7 +144,7 @@ class ProfileController extends Controller
 
     public function employeeProfile($employee_id,Request $request)
     {
-        if($request->input('id') != null) {
+        if($request->input('service_id') != null) {
             $service = Service::find($request->input('id'));
         }
         $employee = User::find($employee_id);
