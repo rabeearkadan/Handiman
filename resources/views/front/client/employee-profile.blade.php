@@ -10,6 +10,11 @@
     <link href="{{asset('css/client/employee-profile/common-css/fluidbox.min.css')}}" rel="stylesheet">
     <link href="{{asset('css/client/employee-profile/cv-portfolio/styles.css')}}" rel="stylesheet">
     <link href="{{asset('css/client/employee-profile/cv-portfolio/responsive.css')}}" rel="stylesheet">
+    <style>
+        .current{
+            color:#FFA804;
+        }
+    </style>
 @endpush
 @section('content')
     <header>
