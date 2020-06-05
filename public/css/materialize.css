@@ -7574,7 +7574,6 @@ input[type=range]::-ms-thumb {
 }
 
 .sidenav li > a {
-    font-family: 'Nunito', serif !important;
   color: rgba(0, 0, 0, 0.87);
   display: block;
   font-size: 14px;
@@ -7582,6 +7581,7 @@ input[type=range]::-ms-thumb {
   height: 48px;
   line-height: 48px;
   padding: 0 32px;
+  font-family: sans-serif !important;
 }
 
 .sidenav li > a:hover {
@@ -7643,7 +7643,6 @@ input[type=range]::-ms-thumb {
 }
 
 .sidenav .user-view > a {
-    font-family: 'Nunito', serif !important;
   height: auto;
   padding: 0;
 }
@@ -7673,7 +7672,7 @@ input[type=range]::-ms-thumb {
 
 .sidenav .user-view .name,
 .sidenav .user-view .email {
-    font-family: 'Nunito', serif !important;
+  font-family: sans-serif !important;
   font-size: 14px;
   line-height: 24px;
 }
