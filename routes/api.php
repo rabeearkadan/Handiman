@@ -20,6 +20,7 @@ Route::get('getHandymenByService/{id}', 'HandymanController@getHandymenByService
 Route::post('getHandymanSortedByLocation', 'HandymanController@getHandymanByLocation');
 Route::get('getHandymanSortedByPrice', 'HandymanController@getHandymanOrderedByPrice');
 
+
 Route::middleware(['auth:api', 'employee'])->prefix('employee')->group(function () {
 
 // api route with auth and employee middleware the route is starts with api/empolyee
@@ -54,6 +55,7 @@ Route::middleware(['auth:api', 'client'])->prefix('client')->group(function () {
     Route::post('payment/{id}', 'RequestController@setPayment');
     Route::post('remove-address/{id}', 'UserController@deleteAddress');
     Route::get('chat-requests', 'ChatController@clientRequests');
+    Route::get('employee-profile/{id}','HandymanController@getHandymanById');
 
 });
 
