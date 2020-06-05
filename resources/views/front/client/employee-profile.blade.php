@@ -272,7 +272,7 @@
                                             <div class="we-star-bar-graph__row">
                                                 <span class="we-star-bar-graph__stars we-star-bar-graph__stars--{{$index}}"></span>
                                                 <div class="we-star-bar-graph__bar">
-                                                    <div class="we-star-bar-graph__bar__foreground-bar" style="width: {{($service_rating[$employee_service->id][$index]/$service_rating[$service->id][6])*100}}%;"></div>
+                                                    <div class="we-star-bar-graph__bar__foreground-bar" style="width: {{($service_rating[$employee_service->id][$index]/$service_rating[$employee_service->id][6])*100}}%;"></div>
                                                 </div>
                                             </div>
                                            @endfor
