@@ -93,7 +93,7 @@
                                 </li>
                                 <li class="collection-item avatar">
                                     <i class="material-icons circle red">image</i>
-                                    <span class="title">Images</span>
+{{--                                    <span class="title">Images</span>--}}
                                     @foreach($request->images as $image)
                                         <img class="materialboxed"  width="250" src="{{config('image.path').$image}}">
                                     @endforeach
