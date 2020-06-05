@@ -34,8 +34,7 @@
                                             <div class="post">
                                                 <div class="carousel carousel-slider" id="{{$post->id}}">
                                                     @foreach($post->images as $image)
-                                                        <a class="carousel-item" href="#"><img
-                                                                src="{{config('image.path').$image}}" alt="Post Images"></a>
+                                                        <img class="carousel-item" src="{{config('image.path').$image}}" alt="Post Images">
                                                     @endforeach
                                                 </div>
                                                 <div class="post-content">
