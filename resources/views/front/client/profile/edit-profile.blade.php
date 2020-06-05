@@ -140,8 +140,14 @@
                         <div class="collapsible-header">
                             <h3 style="width: 100%"> <i class="fa fa-map-marker" aria-hidden="true" ></i>
                                 {{ $address['name'] }}
-                                <a href="#" onclick="document.getElementById('{{$address['_id']}}').submit();">
+                                <a href="#" onclick="deleteAddress('{{$address['_id']}}')">
                                     <i class="fa fa-trash" style="float: right"></i>
+                                    <form
+                                        action="{{route('client.address.destroy', $address['_id'])}}"
+                                        method="post" id="{{$address['_id']}}">
+                                        @csrf
+                                        @method('delete')
+                                    </form>
                                 </a>
                                 <a href="{{route('client.address.edit',$address['_id'])}}">
                                     <i class="fa fa-edit" style="float: right"></i>
@@ -200,6 +206,12 @@
             var elems = document.querySelectorAll('.collapsible');
             var instances = M.Collapsible.init(elems);
         });
+        function deleteAddress(id){
+            var result = confirm("Are you sure you want to delete this address?");
+            if (result) {
+                document.getElementById(id).submit();
+            }
+        }
     </script>
     <script>
         // This example adds a search box to a map, using the Google Place Autocomplete
