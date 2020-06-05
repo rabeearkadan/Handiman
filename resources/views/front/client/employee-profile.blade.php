@@ -158,8 +158,8 @@
                             <div class="l-row">
                                 <div class="we-customer-ratings__stats l-column small-4 medium-6 large-4">
                                     <div class="we-customer-ratings__averages">
-                                        <span class="we-customer-ratings__averages__display"></span>
-                                       {{$all_rating[0]}} out of 5
+                                        <span class="we-customer-ratings__averages__display">{{round($all_rating[0],2)}}</span>
+                                         out of 5
                                     </div>
                                     <div class="we-customer-ratings__count small-hide medium-show"> {{$all_rating[6]}}
                                         Ratings
@@ -462,13 +462,13 @@
 @push('js')
     <script src="/public/js/list.js" type="text/javascript"></script>
     <script>
-        {{--$(document).ready(function () {--}}
-        {{--    @isset($service)--}}
-        {{--        filter('{{$service->name}}');--}}
-        {{--    @else--}}
-        {{--    filter('all');--}}
-        {{--    @endisset--}}
-        {{--});--}}
+        $(document).ready(function () {
+            @isset($service)
+                filter('{{$service->name}}');
+            @else
+            filter('all');
+            @endisset
+        });
         var options = {
             valueNames: ['reviewservice']
         };
