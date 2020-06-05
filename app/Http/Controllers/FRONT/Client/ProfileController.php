@@ -167,21 +167,21 @@ class ProfileController extends Controller
             }
         }
         $service_rating = array();
-        foreach ($employee->services as $service) {
+        foreach ($employee->services as $employee_service) {
             for ($index = 0; $index < 7; $index++) {
-                $service_rating[$service->id][$index] = 0;
+                $service_rating[$employee_service->id][$index] = 0;
             }
         }
-        foreach ($employee->services as $service) {
+        foreach ($employee->services as $employee_service) {
             $index = 0;
             $total = 0;
             $bool = false;
             foreach ($employee->employeeRequests as $request) {
-                if ($request->service_id == $service->id) {
+                if ($request->service_id == $employee_service->id) {
                     if ($request->rating != null) {
                         $bool = true;
                         $client = User::find($request->client_ids[0]);
-                        $feedbacks[$service->id][$index] = [
+                        $feedbacks[$employee_service->id][$index] = [
                             'rating' => $request->rating,
                             'feedback' => $request->feedback,
                             'client' => [
@@ -192,22 +192,22 @@ class ProfileController extends Controller
                         $total += $request->rating;
                         $index++;
                         if ($request->rating > 4) {
-                            $service_rating[$service->id][5]++;
+                            $service_rating[$employee_service->id][5]++;
                         } elseif ($request->rating > 3) {
-                            $service_rating[$service->id][4]++;
+                            $service_rating[$employee_service->id][4]++;
                         } elseif ($request->rating > 2) {
-                            $service_rating[$service->id][3]++;
+                            $service_rating[$employee_service->id][3]++;
                         } elseif ($request->rating > 1) {
-                            $service_rating[$service->id][2]++;
+                            $service_rating[$employee_service->id][2]++;
                         } else {
-                            $service_rating[$service->id][1]++;
+                            $service_rating[$employee_service->id][1]++;
                         }
                     }
                 }
             }
             if ($bool == true) {
-                $service_rating[$service->id][0] += $total / $index;
-                $service_rating[$service->id][6] += $index;
+                $service_rating[$employee_service->id][0] += $total / $index;
+                $service_rating[$employee_service->id][6] += $index;
             }
         }
         $all_rating = array();
@@ -215,21 +215,21 @@ class ProfileController extends Controller
             $all_rating[$index] = 0;
         }
         for ($index = 1; $index < 7; $index++) {
-            foreach ($employee->services as $service) {
-                if ($service_rating[$service->id][0] != 0) {
-                    $all_rating[$index] += $service_rating[$service->id][$index];
+            foreach ($employee->services as $employee_service) {
+                if ($service_rating[$employee_service->id][0] != 0) {
+                    $all_rating[$index] += $service_rating[$employee_service->id][$index];
                 }
             }
         }
-        foreach ($employee->services as $service) {
-            if ($service_rating[$service->id][0] != 0) {
-                $all_rating[0] += $service_rating[$service->id][0] * ($service_rating[$service->id][6] / $all_rating[6]);
+        foreach ($employee->services as $employee_service) {
+            if ($service_rating[$employee_service->id][0] != 0) {
+                $all_rating[0] += $service_rating[$employee_service->id][0] * ($service_rating[$employee_service->id][6] / $all_rating[6]);
                 for ($index = 1; $index < 6; $index++) {
                     $all_rating[$index] = ($all_rating[$index] / $all_rating[6]) * 100;
                 }
             }
         }
-dd($service);
+
         return view('front.client.employee-profile', compact(['employee', 'service', 'feedbacks', 'all_rating', 'service_rating', 'latest_feedbacks']));
     }
 

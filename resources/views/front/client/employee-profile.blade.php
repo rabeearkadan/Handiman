@@ -59,8 +59,8 @@
                     <div class="intro">
                         <div class="profile-img"><img src="{{config('image.path').$employee->image}}" alt=""></div>
                         <h2><b> {{$employee->name}} </b></h2>
-                        @foreach($employee->services as $service)
-                            <h4 class="font-yellow"> {{$service->name}} </h4>
+                        @foreach($employee->services as $employee_service)
+                            <h4 class="font-yellow"> {{$employee_service->name}} </h4>
                         @endforeach
                         <ul class="information margin-tb-30">
                             <li><b>BORN : </b>August 25, 1987</li>
@@ -89,8 +89,8 @@
                 <div class="col-sm-8">
                     <div class="portfolioFilter clearfix margin-b-80">
                         <a href="#" data-filter="*" class="current"><b>ALL</b></a>
-                        @foreach($employee->services as $service)
-                            <a href="#" data-filter=".{{$service->name}}"><b> {{$service->name}} </b></a>
+                        @foreach($employee->services as $employee_service)
+                            <a href="#" data-filter=".{{$employee_service->name}}"><b> {{$employee_service->name}} </b></a>
                         @endforeach
                     </div><!-- portfolioFilter -->
                 </div><!-- col-sm-8 -->
@@ -230,20 +230,20 @@
                     @endif
                 </div>
 
-                @foreach($employee->services as $service)
+                @foreach($employee->services as $employee_service)
                     <div>
-                    <div class="reviewservice" style="display: none">{{$service->name}}</div>
-                    @isset($service_rating[$service->id])
-                        @if($service_rating[$service->id][0]!=0)
+                    <div class="reviewservice" style="display: none">{{$employee_service->name}}</div>
+                    @isset($service_rating[$employee_service->id])
+                        @if($service_rating[$employee_service->id][0]!=0)
                             <div class="we-customer-ratings lockup ember-view">
                                 <div class="l-row">
                                     <div class="we-customer-ratings__stats l-column small-4 medium-6 large-4">
                                         <div class="we-customer-ratings__averages">
-                                        <span class="we-customer-ratings__averages__display">{{round($service_rating[$service->id][0],2)}}</span>
+                                        <span class="we-customer-ratings__averages__display">{{round($service_rating[$employee_service->id][0],2)}}</span>
                                             out of 5
                                         </div>
                                         <div
-                                            class="we-customer-ratings__count small-hide medium-show"> {{$service_rating[$service->id][6]}}
+                                            class="we-customer-ratings__count small-hide medium-show"> {{$service_rating[$employee_service->id][6]}}
                                             Ratings
                                         </div>
                                     </div>
@@ -253,19 +253,19 @@
                                             <div class="we-star-bar-graph__row">
                                                 <span class="we-star-bar-graph__stars we-star-bar-graph__stars--{{$index}}"></span>
                                                 <div class="we-star-bar-graph__bar">
-                                                    <div class="we-star-bar-graph__bar__foreground-bar" style="width: {{($service_rating[$service->id][$index]/$service_rating[$service->id][6])*100}}%;"></div>
+                                                    <div class="we-star-bar-graph__bar__foreground-bar" style="width: {{($service_rating[$employee_service->id][$index]/$service_rating[$service->id][6])*100}}%;"></div>
                                                 </div>
                                             </div>
                                            @endfor
                                         </figure>
                                         <p class="we-customer-ratings__count medium-hide">
-                                            {{$service_rating[$service->id][6]}} Ratings
+                                            {{$service_rating[$employee_service->id][6]}} Ratings
                                         </p>
                                     </div>
                                 </div>
                             </div>
                             <div class="l-row l-row--peek">
-                                @foreach($feedbacks[$service->id] as $feedback)
+                                @foreach($feedbacks[$employee_service->id] as $feedback)
                                     @if($loop->index > 2)
                                         @break
                                     @endif
@@ -294,7 +294,7 @@
                                                 <div class="we-clamp ember-view">
                                                     <p>Review</p>
                                                 </div>
-                                                <button onclick="more('{{$service->id}}',{{$loop->index}})" class="we-truncate__button link">
+                                                <button onclick="more('{{$employee_service->id}}',{{$loop->index}})" class="we-truncate__button link">
                                                     more
                                                 </button>
                                             </blockquote><!---->
