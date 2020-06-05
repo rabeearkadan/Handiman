@@ -144,7 +144,7 @@
                                     <i class="fa fa-trash" style="float: right"></i>
                                     <form
                                         action="{{route('client.address.destroy', $address['_id'])}}"
-                                        method="post" id="{{$address['_id']}}">
+                                        method="post" id="{{$address['_id']}}" style="display: none">
                                         @csrf
                                         @method('delete')
                                     </form>

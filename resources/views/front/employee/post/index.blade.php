@@ -109,7 +109,7 @@
                                                                     <i class="fa fa-trash"></i> </a>
                                                                 <form
                                                                     action="{{route('employee.post.destroy', $post->id)}}"
-                                                                    method="post" id="{{$post->id}}">
+                                                                    method="post" id="{{$post->id}}" style="display: none">
                                                                     @csrf
                                                                     @method('delete')
                                                                 </form>
