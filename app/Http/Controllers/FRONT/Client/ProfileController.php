@@ -145,6 +145,7 @@ class ProfileController extends Controller
     public function employeeProfile($id, $employee_id)
     {
         $service = Service::find($id);
+        dd($service);
         $employee = User::find($employee_id);
         $feedbacks = array();
         $latest_feedbacks = array();
