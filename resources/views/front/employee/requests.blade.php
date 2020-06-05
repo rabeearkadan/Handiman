@@ -28,7 +28,7 @@
                                     <p> <i class="material-icons">call</i> {{$request->client->phone}}
                                         <br> Second Line
                                     </p>
-                                    <a class="btn-floating btn-large red">
+                                    <a class="btn-floating btn-large red" style="float: right">
                                         <i class="large material-icons">chat</i>
                                     </a>
                                 </li>
@@ -110,7 +110,7 @@
                             <p> <i class="material-icons">call</i> {{$request->client->phone}}
                                 <br> Second Line
                             </p>
-                        <a class="btn-floating btn-large red">
+                        <a class="btn-floating btn-large red" style="float: right">
                             <i class="large material-icons">chat</i>
                         </a>
                     </li>
