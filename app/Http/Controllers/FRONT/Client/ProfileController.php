@@ -142,16 +142,15 @@ class ProfileController extends Controller
 
     //functions for employee Profiles
 
-    public function employeeProfile($employee_id,Request $request)
+    public function employeeProfile($employee_id,$service_id=null)
     {
-        if($request->input('service_id') != null) {
-            $service = Service::find($request->input('id'));
+        if($service_id != null) {
+            $service = Service::find($service_id);
         }
         $employee = User::find($employee_id);
         $feedbacks = array();
         $latest_feedbacks = array();
         $counter = 0;
-        dd($employee,$employee_id,$request->input('service_id'));
         foreach ($employee->employeeRequests as $request) {
             if ($counter > 2) {
                 break;
@@ -236,7 +235,7 @@ class ProfileController extends Controller
         return view('front.client.employee-profile', compact(['employee', 'service', 'feedbacks', 'all_rating', 'service_rating', 'latest_feedbacks']));
     }
 
-    public function allReviews(Request $request, $employee_id)
+    public function allReviews($service_id=null, $employee_id)
     {
         try {
             $employee = User::findorFail($employee_id);

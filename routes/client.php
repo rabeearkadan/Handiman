@@ -11,8 +11,8 @@ Route::get('/home','HomeController@index')->name('client.home');
 Route::get('/services/{id?}','HomeController@service')->name('client.service');
 Route::post('/services/{id?}','HomeController@filterUsers')->name('client.service.filter');
 //Services: employee profile
-Route::get('/employee/{employee_id}','ProfileController@employeeProfile')->name('client.user-profile');
-Route::get('/employee/{employee_id}/see-all-reviews','ProfileController@allReviews')->name('client.user-profile.all.reviews');
+Route::get('/employee/{employee_id}/services/{service_id?}','ProfileController@employeeProfile')->name('client.user-profile');
+Route::get('/employee/{employee_id}/see-all-reviews/services/{service_id?}','ProfileController@allReviews')->name('client.user-profile.all.reviews');
 
 
 
