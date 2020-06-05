@@ -93,6 +93,7 @@
     <script>
         $( document ).ready(function() {
             $('.carousel.carousel-slider').waitUntilExists(function () {
+                $('.carousel-item').waitUntilExists(function () {
                 $('.carousel.carousel-slider').carousel({});
                 autoplay();
                 function autoplay() {
@@ -100,6 +101,7 @@
                     setTimeout(autoplay, 4500);
                 }
             });
+        });
         });
     </script>
 @endpush
