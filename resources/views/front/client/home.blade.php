@@ -89,13 +89,16 @@
 @endsection
 @push('js')
     <script src="/public/js/materialize.js"></script>
+    <script src="/public/js/jquery.waituntilexists.min.js"></script>
     <script>
         $( document ).ready(function() {
             @foreach($posts as $post)
+            $('#{{$post->id}}').waitUntilExists(function(){
                 $('#{{$post->id}}').carousel({
                     fullWidth:true
                 });
-            autoplay({{$post->id}});
+                autoplay({{$post->id}});
+            });
                 @endforeach
             function autoplay(id) {
                 $('#'+id).carousel('next');
