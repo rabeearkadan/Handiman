@@ -5515,6 +5515,12 @@ button.btn-floating {
   font-size: 15px;
   padding: 0 28px;
 }
+@media only screen and (max-width: 340px)   {
+    .btn-large {
+        font-size: 8px;
+        padding: 0 28px;
+    }
+}
 
 .btn-large i {
   font-size: 0.8rem;
@@ -8365,7 +8371,11 @@ input[type=range]::-ms-thumb {
     -webkit-transform-origin: 0% 50%;
     transform-origin: 0% 50%;
 }
-
+@media only screen and (max-width: 340px) {
+    .carousel {
+        width: 291px;
+    }
+}
 .carousel.carousel-slider {
   top: 0;
   left: 0;
