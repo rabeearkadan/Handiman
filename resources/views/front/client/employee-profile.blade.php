@@ -171,7 +171,7 @@
                                         <div class="we-star-bar-graph__row">
                                                 <span class="we-star-bar-graph__stars we-star-bar-graph__stars--{{$index}}"></span>
                                             <div class="we-star-bar-graph__bar">
-                                                <div class="we-star-bar-graph__bar__foreground-bar" style="width: {{($all_rating[$index]}}%;"></div>
+                                                <div class="we-star-bar-graph__bar__foreground-bar" style="width:{{$all_rating[$index]}}%;"></div>
                                             </div>
                                         </div>
                                        @endfor
