@@ -141,7 +141,8 @@
             <div class="main-inner">
                 <div class="container">
                     <div class="content">
-                        <form class="contact-form" method="post" action="{{route('client.request.store')}}" enctype="multipart/form-data">
+                        <form class="contact-form" method="post" action="{{route('client.request.store')}}"
+                              enctype="multipart/form-data">
                             @csrf
                             <input type="hidden" name="timezone" id="timezone">
                             @isset($employee)
@@ -158,7 +159,7 @@
                                             <h3>Address:</h3>
                                             <h3>Rating:</h3>
                                             <input type="hidden" name="employee_id" value="{{$employee->id}}">
-{{--                                            <input type="hidden" name="service_id" value="{{$service->id}}">--}}
+                                            {{--                                            <input type="hidden" name="service_id" value="{{$service->id}}">--}}
                                         </div>
                                     </div>
                                 </div>
@@ -169,7 +170,9 @@
                                     <div class="col-sm-6">
                                         <div class="form-group">
                                             <label for="subject">Subject</label>
-                                            <input type="text" name="subject" id="subject" class="form-control @error('subject') is-danger @enderror" value="{{old('subject')}}">
+                                            <input type="text" name="subject" id="subject"
+                                                   class="form-control @error('subject') is-danger @enderror"
+                                                   value="{{old('subject')}}">
                                             @error('subject')
                                             <p class="help is-danger">{{ $errors->first('subject') }}</p>
                                             @enderror
@@ -183,10 +186,11 @@
 
                                                     <div class="select-box__value">
                                                         @foreach($user->client_addresses as $address)
-                                                        <input class="select-box__input" type="radio" id="{{$address['_id']}}" value="{{$address['_id']}}"
-                                                               name="address" />
-                                                        <p class="select-box__input-text">{{$address['name']}}</p>
-                                                            @endforeach
+                                                            <input class="select-box__input" type="radio"
+                                                                   id="{{$address['_id']}}" value="{{$address['_id']}}"
+                                                                   name="address"/>
+                                                            <p class="select-box__input-text">{{$address['name']}}</p>
+                                                        @endforeach
                                                     </div>
 
                                                     <img class="select-box__icon"
@@ -195,11 +199,12 @@
                                                 </div>
                                                 <ul class="select-box__list">
                                                     @foreach($user->client_addresses as $address)
-                                                    <li>
-                                                        <label class="select-box__option" for="{{$address['_id']}}" aria-hidden="true">
-                                                        {{$address['name']}}
-                                                        </label>
-                                                    </li>
+                                                        <li>
+                                                            <label class="select-box__option" for="{{$address['_id']}}"
+                                                                   aria-hidden="true">
+                                                                {{$address['name']}}
+                                                            </label>
+                                                        </li>
                                                     @endforeach
                                                 </ul>
                                             </div>
@@ -207,35 +212,37 @@
                                         </div><!-- /.form-group -->
                                     </div><!-- /.col-* -->
                                 </div><!-- /.row -->
-                                <div class = "row">
+                                <div class="row">
                                     <div class="col-sm-6">
-                                    <div class = "file-field input-field">
-                                        <div class = "btn" style="position:static;">
-                                            <span>Browse</span>
-                                            <input type = "file" name="images[]" accept="image/jpeg, image/png" multiple />
-                                        </div><!-- /.btn -->
-                                        <div class = "file-path-wrapper">
-                                            <input class = "file-path validate" type = "text"
-                                                   placeholder = "Upload multiple images" />
-                                        </div><!-- /.file-path* -->
-                                    </div><!-- /.file-field* -->
+                                        <div class="file-field input-field">
+                                            <div class="btn" style="position:static;">
+                                                <span>Browse</span>
+                                                <input type="file" name="images[]" accept="image/jpeg, image/png"
+                                                       multiple/>
+                                            </div><!-- /.btn -->
+                                            <div class="file-path-wrapper">
+                                                <input class="file-path validate" type="text"
+                                                       placeholder="Upload multiple images"/>
+                                            </div><!-- /.file-path* -->
+                                        </div><!-- /.file-field* -->
                                     </div><!-- /.col* -->
                                     <div class="input-field col s6 ">
                                         <select class="icons" id="service" name="service">
-                                            <option value="" disabled >Choose your service type</option>
+                                            <option value="" disabled>Choose your service type</option>
                                             @isset($employee)
-                                            @foreach($employee->services as $s)
-                                                <option value="{{$s->id}}"   data-icon="{{config('image.path').$s->image}}"
-                                                @if($s->id == $service->id)
-                                                    selected
-                                                        @endif
-                                                >
-                                                    {{$s->name}}
-                                                </option>
-                                            @endforeach
+                                                @foreach($employee->services as $s)
+                                                    <option value="{{$s->id}}"
+                                                            data-icon="{{config('image.path').$s->image}}"
+                                                            @if($s->id == $service->id)
+                                                            selected
+                                                        @endif>
+                                                        {{$s->name}}
+                                                    </option>
+                                                @endforeach
                                             @else
                                                 @foreach($services as $service)
-                                                    <option value="{{$service->id}}"   data-icon="{{config('image.path').$service->image}}">
+                                                    <option value="{{$service->id}}"
+                                                            data-icon="{{config('image.path').$service->image}}">
                                                         {{$service->name}}
                                                     </option>
                                                 @endforeach
@@ -247,7 +254,8 @@
 
                                 <div class="form-group">
                                     <label for="description"> Problem Description</label>
-                                    <textarea class="form-control @error('description') is-danger @enderror" id="description" name="description"
+                                    <textarea class="form-control @error('description') is-danger @enderror"
+                                              id="description" name="description"
                                               rows="6">{{old('description')}}</textarea>
                                     @error('description')
                                     <p class="help is-danger">{{ $errors->first('description') }}</p>
@@ -255,54 +263,55 @@
                                 </div><!-- /.form-group -->
                                 @isset($employee)
                                 @else
-                                <div class="row">
-                                    <div class="col-sm-12">
-                                        <div class="form-group">
-                                            <p> is the request Urgent ? (the request time will be the next couple of hours)</p>
-                                            <p>
-                                                <label for="is_urgent">
-                                                    <input name="is_urgent" id="is_urgent" type="checkbox" />
-                                                    <span>Urgent</span>
-                                                </label>
-                                            </p>
-                                        </div><!--/.form-group-->
-                                    </div><!--/.col-*-->
-                                </div>
+                                    <div class="row">
+                                        <div class="col-sm-12">
+                                            <div class="form-group">
+                                                <p> is the request Urgent ? (the request time will be the next couple of
+                                                    hours)</p>
+                                                <p>
+                                                    <label for="is_urgent">
+                                                        <input name="is_urgent" id="is_urgent" type="checkbox"/>
+                                                        <span>Urgent</span>
+                                                    </label>
+                                                </p>
+                                            </div><!--/.form-group-->
+                                        </div><!--/.col-*-->
+                                    </div>
                                 @endisset
                                 <div id="date-time">
-                                <div class="row">
-                                    <div class="col-sm-5">
-                                        <div class="form-group">
-                                            <label for="date-input"> Pick a day </label>
-                                            <input id="date-input" name="date" type="text" data-dd-theme="leaf"
-                                                   data-dd-format="m/d/Y">
-                                        </div><!--/.form-group-->
-                                    </div><!--/.col-*-->
-                                </div><!--/.row-->
-                                <div class="row">
-                                    <div class="col-sm-6">
-                                        <div class="form-group">
-                                            <label for="from"> Choose starting time </label>
-                                            <select name="from" id="from">
+                                    <div class="row">
+                                        <div class="col-sm-5">
+                                            <div class="form-group">
+                                                <label for="date-input"> Pick a day </label>
+                                                <input id="date-input" name="date" type="text" data-dd-theme="leaf"
+                                                       data-dd-format="m/d/Y">
+                                            </div><!--/.form-group-->
+                                        </div><!--/.col-*-->
+                                    </div><!--/.row-->
+                                    <div class="row">
+                                        <div class="col-sm-6">
+                                            <div class="form-group">
+                                                <label for="from"> Choose starting time </label>
+                                                <select name="from" id="from">
 
-                                            </select>
-                                            @error('from')
-                                            <p class="help is-danger">{{ $errors->first('from') }}</p>
-                                            @enderror
-                                        </div><!-- /.form-group -->
-                                    </div>
-                                    <div class="col-sm-6">
-                                        <div class="form-group">
-                                            <label for="to"> Choose ending time </label>
-                                            <select name="to" id="to">
+                                                </select>
+                                                @error('from')
+                                                <p class="help is-danger">{{ $errors->first('from') }}</p>
+                                                @enderror
+                                            </div><!-- /.form-group -->
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <div class="form-group">
+                                                <label for="to"> Choose ending time </label>
+                                                <select name="to" id="to">
 
-                                            </select>
-                                            @error('to')
-                                            <p class="help is-danger">{{ $errors->first('to') }}</p>
-                                            @enderror
-                                        </div><!-- /.form-group -->
-                                    </div><!-- /.col-* -->
-                                </div><!-- /.row -->
+                                                </select>
+                                                @error('to')
+                                                <p class="help is-danger">{{ $errors->first('to') }}</p>
+                                                @enderror
+                                            </div><!-- /.form-group -->
+                                        </div><!-- /.col-* -->
+                                    </div><!-- /.row -->
                                 </div>
 
                                 <button type="submit" class="btn btn-primary pull-right"> Request</button>
@@ -313,16 +322,16 @@
             </div><!-- /.main-inner -->
         </div><!-- /.main -->
     </div><!-- /.page-wrapper -->
-@endsection
-@push('js')
-{{--        <script src="/public/js/client/requests/materialize.js"></script>--}}
-{{--        <script src="/public/js/client/requests/drop-zone.js"></script>--}}
-{{--        <script src="/public/js/client/requests/file-uploader.js"></script>--}}
+    @endsection
+    @push('js')
+        {{--        <script src="/public/js/client/requests/materialize.js"></script>--}}
+        {{--        <script src="/public/js/client/requests/drop-zone.js"></script>--}}
+        {{--        <script src="/public/js/client/requests/file-uploader.js"></script>--}}
         <script src="/public/js/moment.min.js"></script>
         <script src="/public/js/moment-timezone-with-data-2012-2022.min.js"></script>
         <script src="/public/js/client/requests/date-dropper.pro.min.js"></script>
         <script>
-            @isset($employee)
+                @isset($employee)
             var timepicker = @json($timepicker);
             $(document).ready(function () {
                 $('#date-input').dateDropper({
@@ -334,29 +343,29 @@
             });
             var fromSelect = $('#from');
             var toSelect = $('#to');
-            $("#date-input").change(function(){
-               fromSelect.find('option').remove().end();
-               toSelect.find('option').remove().end();
-                 $.each( timepicker[$("#date-input").val()], function( key, value ) {
-                     // alert( key + ": " + value["from"] );
-                     for(var from=value["from"];from<value["to"];from++) {
-                         fromSelect.append(
-                             $('<option></option>').val(from).html(from)
-                         );
-                     }
-                 });
-            fromSelect.trigger('change')
-            });
-            fromSelect.change(function(){
+            $("#date-input").change(function () {
+                fromSelect.find('option').remove().end();
                 toSelect.find('option').remove().end();
-              var from= fromSelect.val();
-                $.each( timepicker[$("#date-input").val()], function( key, value ) {
+                $.each(timepicker[$("#date-input").val()], function (key, value) {
                     // alert( key + ": " + value["from"] );
-                    if(from >= value["from"] && from <=value["to"]){
+                    for (var from = value["from"]; from < value["to"]; from++) {
+                        fromSelect.append(
+                            $('<option></option>').val(from).html(from)
+                        );
+                    }
+                });
+                fromSelect.trigger('change')
+            });
+            fromSelect.change(function () {
+                toSelect.find('option').remove().end();
+                var from = fromSelect.val();
+                $.each(timepicker[$("#date-input").val()], function (key, value) {
+                    // alert( key + ": " + value["from"] );
+                    if (from >= value["from"] && from <= value["to"]) {
                         from++;
-                        for(var to=from;to<=value["to"];to++) {
-                            if(to===24){
-                                to=0;
+                        for (var to = from; to <= value["to"]; to++) {
+                            if (to === 24) {
+                                to = 0;
                             }
                             toSelect.append(
                                 $('<option></option>').val(to).html(to)
@@ -375,23 +384,23 @@
                 });
 
             });
-@endisset
+            @endisset
         </script>
-<script>
-    $(document).ready(function(){
-        $('#service').formSelect();
-        $('#timezone').val(moment.tz.guess())
-    });
-    const checkbox = document.getElementById('is_urgent')
+        <script>
+            $(document).ready(function () {
+                $('#service').formSelect();
+                $('#timezone').val(moment.tz.guess())
+            });
+            const checkbox = document.getElementById('is_urgent')
 
-    checkbox.addEventListener('change', (event) => {
-        if (event.target.checked) {
-            $('#date-time').hide()
-            $('#is_urgent').val(true)
-        } else {
-            $('#date-time').show()
-            $('#is_urgent').val(false)
-        }
-    })
-</script>
-@endpush
+            checkbox.addEventListener('change', (event) => {
+                if (event.target.checked) {
+                    $('#date-time').hide()
+                    $('#is_urgent').val(true)
+                } else {
+                    $('#date-time').show()
+                    $('#is_urgent').val(false)
+                }
+            })
+        </script>
+    @endpush
