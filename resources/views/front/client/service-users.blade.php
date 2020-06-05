@@ -124,7 +124,7 @@
                                         </div><!-- /.card-row-image -->
                                         <div class="card-row-body">
                                             <h2 class="card-row-title">
-                                                <a href="{{route('client.user-profile',[$service->id,$employee->id])}}"
+                                                <a href="{{route('client.user-profile',['employee_id'=>$employee->id,'service_id'=>$service->id])}}"
                                                    class="name">{{$employee->name}} </a>
                                             </h2>
                                             <div class="card-row-content">
