@@ -11090,7 +11090,7 @@ $jscomp.polyfill = function (e, r, p, m) {
         el.style[this.xform] = transform;
         el.style.zIndex = zIndex;
         el.style.opacity = opacity;
-        // el.style.visibility = 'visible';
+        el.style.visibility = 'visible';
       }
 
       /**

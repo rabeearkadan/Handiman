@@ -8354,6 +8354,7 @@ input[type=range]::-ms-thumb {
 }
 
 .carousel {
+    overflow: hidden;
     position: relative;
     max-height: 235px;
     width: 180px;
