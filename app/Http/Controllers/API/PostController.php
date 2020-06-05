@@ -4,6 +4,7 @@ namespace App\Http\Controllers\API;
 
 use App\Http\Controllers\Controller;
 use App\Models\Post;
+use App\Models\Service;
 use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -28,7 +29,16 @@ class PostController extends Controller
             $item->handyman = User::query()->find($item->user_ids[0])->SimplifiedArray();
             return $item;
         });
-        return response()->json(['status' => 'success', 'posts' => $post]);
+        $_posts = $post->map(function ($item) {
+            $services=[];
+            foreach ($item->service_ids as $service){
+              array_push($services,(Service::query()->find($service)->ServiceArray()));
+            }
+            $item->services=$services;
+            return $item;
+        });
+
+        return response()->json(['status' => 'success', 'posts' => $_posts]);
 
     }
 
