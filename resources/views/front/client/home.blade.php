@@ -68,9 +68,9 @@
                                                     {{--                                                <i class="fa fa-comments"></i>--}}
                                                     {{--                                                <a href="">3 comments</a>--}}
                                                     {{--                                            </div><!-- /.post-meta-comments -->--}}
-                                                    <div class="post-meta-more">
-                                                        <a href="">View <i class="fa fa-chevron-right"></i></a>
-                                                    </div><!-- /.post-meta-more -->
+                                                                                                <div class="post-meta-more">
+                                                                                                    <a href="">View <i class="fa fa-chevron-right"></i></a>
+                                                                                                </div><!-- /.post-meta-more -->
                                                 </div><!-- /.post-meta -->
                                             </div><!-- /.post -->
                                         @endforeach
@@ -90,15 +90,13 @@
 @push('js')
     <script src="/public/js/materialize.js"></script>
     <script>
-        $(document).ready(function () {
-            @foreach($posts as $post)
-            $('#{{$post->id}}').carousel({});
-            autoplay();
-            function autoplay() {
-                $('.carousel').carousel('next');
-                setTimeout(autoplay, 4500);
-            }
-            @endforeach
+        $( document ).ready(function() {
+                $('.carousel.carousel-slider').carousel({});
+                autoplay();
+                function autoplay() {
+                    $('.carousel').carousel('next');
+                    setTimeout(autoplay, 4500);
+                }
         });
     </script>
 @endpush
