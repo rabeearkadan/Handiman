@@ -91,7 +91,9 @@
     <script src="/public/js/materialize.js"></script>
     <script>
         $( document ).ready(function() {
-                $('.carousel.carousel-slider').carousel({});
+                $('.carousel.carousel-slider').carousel({
+                    fullWidth:true
+                });
                 autoplay();
                 function autoplay() {
                     $('.carousel').carousel('next');
