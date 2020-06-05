@@ -169,6 +169,7 @@
                                 $all_rating[$index] = ($all_rating[$index]/$all_rating[6])*100;
                             }
                         }
+                        dd($all_rating);
                     @endphp
 
                     @if($all_rating[0]!=0)
