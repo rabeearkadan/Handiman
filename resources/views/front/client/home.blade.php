@@ -29,6 +29,8 @@
                                     <h1> Posts </h1>
                                 </div><!-- /.page-title -->
                                 <div class="chips chips-autocomplete"></div>
+                                <div id="posts-list">
+                                    <div class="list">
                                 @if(!$posts->isEmpty())
                                     <div class="posts">
                                         @foreach($posts as $post)
@@ -80,6 +82,8 @@
                                     <h3> No posts yet</h3>
                                     <img class="img-fluid" src="/public/images/client/no-posts.png" alt="no posts">
                                 @endif
+                                    </div>
+                                </div>
                             </div><!-- /.content -->
                         </div><!-- /.col-* -->
                     </div><!-- /.row -->
