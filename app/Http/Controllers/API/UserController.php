@@ -32,7 +32,9 @@ class UserController extends Controller
     public function visited($id)
     {
         $user = User::query()->find($id);
-        $user->visits = (Integer)($user->visits++);
+        $visits=(Integer)$user->visits;
+        $visits++;
+        $user->visits = $visits;
         $user->save();
         return response()->json(['status' => 'success']);
     }
