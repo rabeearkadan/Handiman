@@ -28,6 +28,7 @@ class RequestController extends Controller
      * destroy()
      * validator()
      * notification()
+     * smart_wordwrap()
      */
     /**
      * Display a listing of the resource.
@@ -201,7 +202,7 @@ class RequestController extends Controller
         } else {
             $handyman = User::query()->find($req->input('employee_id'));
             $requestHandyman->date = Carbon::createFromFormat('d/m/Y', $req->input('date'), $requestHandyman->timezone);
-            $requestHandyman->is_urgent = false;
+            $requestHandyman->isurgent = false;
             if ($req->has('from'))
                 $requestHandyman->from = $req->input('from');
             if ($req->has('to')) {
