@@ -144,7 +144,7 @@ class RequestController extends Controller
         ]);
         $requestHandyman = new RequestService();
         $requestHandyman->subject = $req->input('subject');
-        $requestHandyman->description = $req->input('description');
+        $requestHandyman->description = $this->smart_wordwrap($req->input('description'), 37)." ";
         $requestHandyman->status = 'pending';
         $requestHandyman->isdone = false;
         $requestHandyman->timezone = $req->timezone;//'Asia\Beirut'
@@ -289,5 +289,23 @@ class RequestController extends Controller
 
         return response()->json(['status' => 'success', 'notification' => $notification]);
     }
+    function smart_wordwrap($string, $width = 40, $break = "\n") {
+        $pattern = sprintf('/([^ ]{%d,})/', $width);
+        $output = '';
+        $words = preg_split($pattern, $string, -1, PREG_SPLIT_NO_EMPTY | PREG_SPLIT_DELIM_CAPTURE);
+        foreach ($words as $word) {
+            if (false !== strpos($word, ' ')) {
+                $output .= $word;
+            } else {
+                $wrapped = explode($break, wordwrap($output, $width, $break));
+                $count = $width - (strlen(end($wrapped)) % $width);
 
+                $output .= substr($word, 0, $count) . $break;
+
+                $output .= wordwrap(substr($word, $count), $width, $break, true);
+            }
+        }
+        return wordwrap($output, $width, $break);
+    }
 }
+
