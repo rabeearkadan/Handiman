@@ -145,8 +145,8 @@
         }
         function removeFilter() {
             const chips = document.querySelectorAll('.chip');
-            for (const chip of chips) {
-                filter(chip.innerText.replace('close',''));
+            for (var i = 0; i < chips.length-1; i++) {
+                filter(chip[i].innerText.replace('close',''));
             }
         }
     </script>
