@@ -28,6 +28,7 @@
                                 <div class="page-title">
                                     <h1> Posts </h1>
                                 </div><!-- /.page-title -->
+                                <div class="chips chips-autocomplete"></div>
                                 @if(!$posts->isEmpty())
                                     <div class="posts">
                                         @foreach($posts as $post)
@@ -101,6 +102,20 @@
                 $('.carousel').carousel('next');
                 setTimeout(autoplay, 4500);
             }
+
+            $('.chips-autocomplete').chips({
+                placeholder: 'Enter a filter',
+                secondaryPlaceholder: '+Filter',
+                autocompleteOptions: {
+                    data: {
+                        @foreach($services as $service)
+                        {{$service->name}}:{{$service->image}},
+                        @endforeach
+                    },
+                    limit: Infinity,
+                    minLength: 1
+                }
+            })
         });
     </script>
 @endpush

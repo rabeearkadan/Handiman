@@ -19,7 +19,8 @@ class HomeController extends Controller
 
     public function index( Request $request ){
         $posts = Post::orderBy('created_at','desc')->take(3)->get();
-        return view ('front.client.home',compact('posts'));
+        $services = Service::all();
+        return view ('front.client.home',compact(['posts','services']));
     }
 
     public function service( Request $request , $id = null){
