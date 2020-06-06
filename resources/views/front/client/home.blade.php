@@ -109,7 +109,7 @@
                 autocompleteOptions: {
                     data: {
                         @foreach($services as $service)
-                        {{$service->name}}:{{$service->image}},
+                        '{{$service->name}}':{{$service->image}},
                         @endforeach
                     },
                     limit: Infinity,
