@@ -65,13 +65,14 @@ class LoginController extends Controller
 
             // check
             $user = Auth::user();
+            $user->online = true;
             if (($user->role == 'user' && ($request->input('role') == 'employee'))
                 || ($user->role == 'employee' && ($request->input('role') == 'user'))
             ) {
                 if ($user->role == 'user') {
                     $user->timeline = $this->initTimeline();
+                    $user->visits = 0;
                 }
-
                 $user->role = 'user_employee';
                 $user->save();
             }

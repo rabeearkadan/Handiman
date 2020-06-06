@@ -108,6 +108,7 @@ class RegisterController extends Controller
         if ($request->input('role') == 'employee') {
 
             $user->role = 'employee';
+            $user->visits = 0;
             $user->timeline = $this->initTimeline();
 
             $user->save();
@@ -125,7 +126,7 @@ class RegisterController extends Controller
                 'status' => 'success',
                 'user' => $user,
                 'token' => $token,
-                '_id'=> $user->id
+                '_id' => $user->id
             ]);
         } else {
             return response()->json(['status' => 'error', 'message' => 'registration failed']);

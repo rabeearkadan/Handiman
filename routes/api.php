@@ -3,6 +3,7 @@
 use Illuminate\Http\Request;
 
 // api route without authantication
+
 Route::post('rate', 'UserController@addRating');
 Route::post('pdf/{file_name}', 'RequestController@stringToPDF');
 Route::post('login', 'LoginController@login');
@@ -14,7 +15,7 @@ Route::get('getHandymanSortedByLocation', 'HandymanController@getHandymanOrdered
 Route::get('getHandymanSortedByPrice', 'HandymanController@getHandymanOrderedByPrice');
 
 Route::get('getServices', 'ServiceController@getServices');
-
+Route::post('visit/{id}', 'UserController@visited');
 Route::get('getHandymanList', 'HandymanController@getHandyman');
 Route::get('getHandymenByService/{id}', 'HandymanController@getHandymenByService');
 Route::post('getHandymanSortedByLocation', 'HandymanController@getHandymanByLocation');
@@ -55,7 +56,7 @@ Route::middleware(['auth:api', 'client'])->prefix('client')->group(function () {
     Route::post('payment/{id}', 'RequestController@setPayment');
     Route::post('remove-address/{id}', 'UserController@deleteAddress');
     Route::get('chat-requests', 'ChatController@clientRequests');
-    Route::get('employee-profile/{id}','HandymanController@getHandymanById');
+    Route::get('employee-profile/{id}', 'HandymanController@getHandymanById');
 
 });
 
