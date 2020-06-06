@@ -1,12 +1,14 @@
 @component('mail::message')
-# Introduction
-
-The body of your message.
+#Dear,{{$content['name']}}
+You are receiving this email because we received a signup request for your this mail account.
 
 @component('mail::button', ['url' => ''])
-Button Text
+Verify Email
 @endcomponent
 
-Thanks,<br>
+
+If you did not send a sigup request, no further action is required.<br>
+Regards,
 {{ config('app.name') }}
+
 @endcomponent

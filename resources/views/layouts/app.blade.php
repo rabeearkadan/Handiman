@@ -15,6 +15,7 @@
 
     <!-- Styles -->
     <link href="{{asset('css/app.css')}}" rel="stylesheet">
+    <link href="{{asset('css/footer.css')}}" rel="stylesheet">
     <link href="{{asset('css/navbar.css')}}" rel="stylesheet">
     @stack('css')
 
@@ -60,6 +61,54 @@
         <div id="preloader"></div>
         @yield('content')
     </div>
+<footer class="footer">
+    <div class="footer-top">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-4">
+                    <h2>About Handiman.club</h2>
+
+                    <p>A Service-based platform to connect Handymen with their clients providing Smart Scheduling, easy payments...  </p>
+                </div><!-- /.col-* -->
+
+                <div class="col-sm-4">
+                    <h2>Contact Information</h2>
+
+                    <p>
+                        Street 123, Beirut, Lebanon<br>
+                        +961-71-123-456-, <a href="#">handiman@gmail.com</a>
+                    </p>
+                </div><!-- /.col-* -->
+
+                <div class="col-sm-4">
+                    <h2>Stay Connected</h2>
+
+                    <ul class="social-links nav nav-pills">
+                        <li><a href="#"><i class="fa fa-twitter"></i></a></li>
+                        <li><a href="#"><i class="fa fa-facebook"></i></a></li>
+                        <li><a href="#"><i class="fa fa-instagram"></i></a></li>
+                    </ul><!-- /.header-nav-social -->
+                </div><!-- /.col-* -->
+            </div><!-- /.row -->
+        </div><!-- /.container -->
+    </div><!-- /.footer-top -->
+
+    <div class="footer-bottom">
+        <div class="container">
+            <div class="footer-bottom-left">
+                © 2020 All rights reserved.
+            </div><!-- /.footer-bottom-left -->
+
+            <div class="footer-bottom-right">
+                <ul class="nav nav-pills">
+                    <li><a href="">Home</a></li>
+                    <li><a href="">Terms &amp; Conditions</a></li>
+                    <li><a href="">Contact</a></li>
+                </ul><!-- /.nav -->
+            </div><!-- /.footer-bottom-right -->
+        </div><!-- /.container -->
+    </div>
+</footer><!-- /.footer -->
 @stack('script')
 <script>
     $('.navTrigger').click(function(){

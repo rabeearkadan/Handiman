@@ -49,6 +49,9 @@ class User extends Eloquent implements
 
     protected $appends = ['rating_object', 'feedback_object'];
 
+    
+
+
 
     public function isClient()
     {

@@ -63,18 +63,18 @@
                             <div class="slider">
                                 <ul class="slides">
                                     <li>
-                                        <img src="/public/images/employee-home.png"> <!-- random image -->
+                                        <img src="/public/images/employee-home.png">
 
                                     </li>
                                     <li>
-                                        <img src="/public/images/employee/profile.png"> <!-- random image -->
+                                        <img src="/public/images/employee/profile.png">
 
                                     </li>
                                     <li>
-                                        <img src="/public/images/client/profile-image.png"> <!-- random image -->
+                                        <img src="/public/images/client/profile-image.png">
                                     </li>
                                     <li>
-                                        <img src="/public/images/employee/profile-image.png"> <!-- random image -->
+                                        <img src="/public/images/employee/profile-image.png">
                                     </li>
                                 </ul>
                             </div>
@@ -145,18 +145,18 @@
                 <div class="slider">
                     <ul class="slides">
                         <li>
-                            <img src="/public/images/employee-home.png"> <!-- random image -->
+                            <img src="/public/images/employee-home.png">
 
                         </li>
                         <li>
-                            <img src="/public/images/employee/profile.png"> <!-- random image -->
+                            <img src="/public/images/employee/profile.png">
 
                         </li>
                         <li>
-                            <img src="/public/images/client/profile-image.png"> <!-- random image -->
+                            <img src="/public/images/client/profile-image.png">
                         </li>
                         <li>
-                            <img src="/public/images/employee/profile-image.png"> <!-- random image -->
+                            <img src="/public/images/employee/profile-image.png"> 
                         </li>
                     </ul>
                 </div>
