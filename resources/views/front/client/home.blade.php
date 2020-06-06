@@ -127,7 +127,7 @@
                     filter(chip.innerText.replace('close',''));
                 },
                 onChipDelete: function(e,chip) {
-                    removeFilter(chip.innerText.replace('close',''));
+                    removeFilter();
                 }
             })
         });
@@ -143,10 +143,11 @@
                 return !!item.values().categories.includes(category);
             });
         }
-        function removeFilter(category) {
-            postsList.filter(function (item) {
-                return !item.values().categories.includes(category);
-            });
+        function removeFilter() {
+            const chips = document.querySelectorAll('.chip');
+            for (const chip of chips) {
+                filter(chip.innerText.replace('close',''));
+            }
         }
     </script>
 @endpush
