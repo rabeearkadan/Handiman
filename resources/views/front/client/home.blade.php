@@ -148,6 +148,9 @@
             for (var i = 0; i < chips.length; i++) {
                 filter(chips[i].innerText.replace('close',''));
             }
+            if(chips.length===0){
+                postsList.filter();
+            }
         }
     </script>
 @endpush
