@@ -70,9 +70,14 @@
                     <div class="intro">
                         <div class="profile-img"><img src="{{config('image.path').$employee->image}}" alt=""></div>
                         <h2><b> {{$employee->name}} </b></h2>
+                        <h5 class="font-yellow">
                         @foreach($employee->services as $employee_service)
-                            <h4 class="font-yellow"> {{$employee_service->name}} </h4>
+                            @if($loop->index != 0)
+                                ,
+                             @endif
+                            {{$employee_service->name}}
                         @endforeach
+                        </h5>
                         <ul class="information margin-tb-30">
                             <li><b>BORN : </b>August 25, 1987</li>
                             <li><b>Price : </b>${{$employee->price}}/hr</li>
