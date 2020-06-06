@@ -145,7 +145,7 @@
         }
         function removeFilter() {
             const chips = document.querySelectorAll('.chip');
-            for (var i = 0; i < chips.length-1; i++) {
+            for (var i = 0; i < chips.length; i++) {
                 filter(chip[i].innerText.replace('close',''));
             }
         }
