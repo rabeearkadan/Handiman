@@ -29,6 +29,14 @@ class UserController extends Controller
         return response()->json(['status' => 'success']);
     }
 
+    public function visited($id)
+    {
+        $user = User::query()->find($id);
+        $user->visits = (Integer)($user->visits++);
+        $user->save();
+        return response()->json(['status' => 'success']);
+    }
+
     public function setDeviceToken(Request $request)
     {
         $user = Auth::user();
@@ -208,15 +216,17 @@ class UserController extends Controller
         $addresses = [];
         foreach ($user->client_addresses as $address) {
             if ($address['_id'] != $id)
-               array_push($addresses,$address);
+                array_push($addresses, $address);
         }
         $user->client_addresses = $addresses;
         $user->save();
         return response()->json(['status' => 'success']);
     }
-    public function employeeTags(){
-        $user=User::query()->find(Auth::id());
-        return response()->json(['status' => 'success','tags'=>$user->services]);
+
+    public function employeeTags()
+    {
+        $user = User::query()->find(Auth::id());
+        return response()->json(['status' => 'success', 'tags' => $user->services]);
     }
 
     public function getHandymanFeedback()
