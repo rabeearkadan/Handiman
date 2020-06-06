@@ -85,7 +85,7 @@
         </div>
         <div class="card-tabs">
             <ul class="tabs tabs-fixed-width">
-                <li class="tab" ><a class="active" href="#{{$request->id}}client">Client</a></li>
+                <li class="tab"><a class="active" href="#{{$request->id}}client">Client</a></li>
                 <li class="tab"><a  href="#{{$request->id}}address">Address</a></li>
                 <li class="tab"><a href="#{{$request->id}}images">Images</a></li>
             </ul>
@@ -135,17 +135,6 @@
                     <ul class="slides">
                         <li>
                             <img src="/public/images/employee-home.png">
-
-                        </li>
-                        <li>
-                            <img src="/public/images/employee/profile.png">
-
-                        </li>
-                        <li>
-                            <img src="/public/images/client/profile-image.png">
-                        </li>
-                        <li>
-                            <img src="/public/images/employee/profile-image.png">
                         </li>
                     </ul>
                 </div>
@@ -175,8 +164,10 @@
 {{--    </script>--}}
 
 <script>
-    var el = document.querySelector('.tabs');
-    var instance = M.Tabs.init(el, {});
+
+    $(document).ready(function(){
+        $('.tabs').tabs();
+    });
     document.addEventListener('DOMContentLoaded', function() {
         var elems = document.querySelectorAll('.slider');
         var instances = M.Slider.init(elems);
