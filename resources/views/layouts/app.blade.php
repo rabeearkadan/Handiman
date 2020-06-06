@@ -16,9 +16,16 @@
     <!-- Styles -->
     <link href="{{asset('css/app.css')}}" rel="stylesheet">
     <link href="{{asset('css/footer.css')}}" rel="stylesheet">
+    <link href="{{asset('css/social-buttons.css')}}" rel="stylesheet">
     <link href="{{asset('css/navbar.css')}}" rel="stylesheet">
     @stack('css')
-
+    <style>
+        .footer {
+            width: -webkit-fill-available;
+            bottom: 20px;
+            position: absolute;
+        }
+    </style>
 </head>
 <body>
 <nav class="navbar navbar-expand-md bg-dark navbar-dark">
