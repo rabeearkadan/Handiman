@@ -165,9 +165,9 @@
 
 <script>
 
-    $(document).ready(function(){
-        $('.tabs').tabs();
-    });
+    var el = document.querySelectorAll('.tabs');
+    var instance = M.Tabs.init(el, {});
+
     document.addEventListener('DOMContentLoaded', function() {
         var elems = document.querySelectorAll('.slider');
         var instances = M.Slider.init(elems);
