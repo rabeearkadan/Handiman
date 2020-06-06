@@ -17,6 +17,7 @@
     <link href="{{asset('css/app.css')}}" rel="stylesheet">
     <link href="{{asset('css/footer.css')}}" rel="stylesheet">
     <link href="{{asset('css/social-buttons.css')}}" rel="stylesheet">
+    <link href="{{asset('lib/font-awesome/css/font-awesome.css')}}" rel="stylesheet">
     <link href="{{asset('css/navbar.css')}}" rel="stylesheet">
     @stack('css')
     <style>
