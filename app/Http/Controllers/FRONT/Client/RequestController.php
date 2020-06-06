@@ -289,7 +289,7 @@ class RequestController extends Controller
 
         return response()->json(['status' => 'success', 'notification' => $notification]);
     }
-    function smart_wordwrap($string, $width = 40, $break = "\n") {
+    function smart_wordwrap($string, $width = 40, $break = " ") {
         $pattern = sprintf('/([^ ]{%d,})/', $width);
         $output = '';
         $words = preg_split($pattern, $string, -1, PREG_SPLIT_NO_EMPTY | PREG_SPLIT_DELIM_CAPTURE);
