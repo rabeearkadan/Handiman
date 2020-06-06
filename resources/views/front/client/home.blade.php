@@ -35,7 +35,8 @@
                                             <div class="post">
                                                 <div class="carousel carousel-slider" id="{{$post->id}}">
                                                     @foreach($post->images as $image)
-                                                        <img class="carousel-item" src="{{config('image.path').$image}}" alt="Post Images">
+                                                        <img class="carousel-item" src="{{config('image.path').$image}}"
+                                                             alt="Post Images">
                                                     @endforeach
                                                 </div>
                                                 <div class="post-content">
@@ -48,14 +49,14 @@
                                                             <a href="">
                                                                 <img style="width:35px; height:35px"
                                                                      class="circle responsive-img"
-                                                                     src="{{config('image.path').$user->image}}">
+                                                                     src="{{config('image.path').$user->image}}" alt="post images">
                                                             </a>
                                                             <a href="{{route('client.user-profile',['employee_id' => $user->id])}}"> {{$user->name}} </a>
                                                         @endforeach
                                                     </div><!-- /.post-meta-author -->
                                                     <div class="post-meta-date"> {{$post->created_at}} </div>
                                                     <!-- /.post-meta-date -->
-                                                    <div class="post-meta-categories">
+                                                    <div class="post-meta-categories categories">
                                                         <i class="fa fa-tags"></i>
                                                         @foreach($post->tags as $tag)
                                                             @if($loop->index !=0)
@@ -68,9 +69,9 @@
                                                     {{--                                                <i class="fa fa-comments"></i>--}}
                                                     {{--                                                <a href="">3 comments</a>--}}
                                                     {{--                                            </div><!-- /.post-meta-comments -->--}}
-                                                                                                <div class="post-meta-more">
-                                                                                                    <a href="">View <i class="fa fa-chevron-right"></i></a>
-                                                                                                </div><!-- /.post-meta-more -->
+                                                    <div class="post-meta-more">
+                                                        <a href="">View <i class="fa fa-chevron-right"></i></a>
+                                                    </div><!-- /.post-meta-more -->
                                                 </div><!-- /.post-meta -->
                                             </div><!-- /.post -->
                                         @endforeach
@@ -89,15 +90,17 @@
 @endsection
 @push('js')
     <script src="/public/js/materialize.js"></script>
-    <script src="/public/js/jquery.waituntilexists.min.js"></script>
+    {{--    <script src="/public/js/jquery.waituntilexists.min.js"></script>--}}
+    <script src="/public/js/list.js" type="text/javascript"></script>
     <script>
-        $( document ).ready(function() {
+        $(document).ready(function () {
             @foreach($posts as $post)
-                $('#{{$post->id}}').carousel({
-                    full_width:true
-                });
-                @endforeach
-                autoplay();
+            $('#{{$post->id}}').carousel({
+                full_width: true
+            });
+            @endforeach
+            autoplay();
+
             function autoplay() {
                 $('.carousel').carousel('next');
                 setTimeout(autoplay, 4500);
@@ -109,13 +112,36 @@
                 autocompleteOptions: {
                     data: {
                         @foreach($services as $service)
-                        '{{$service->name}}':'{{config('image.path').$service->image}}',
+                        '{{$service->name}}': '{{config('image.path').$service->image}}',
                         @endforeach
                     },
                     limit: Infinity,
                     minLength: 1
+                },
+                onChipAdd: function(e,chip) {
+                    filter(chip.innerText.replace('close',''));
+                },
+                onChipDelete: function(e,chip) {
+                    removeFilter(chip.innerText.replace('close',''));
                 }
             })
         });
+
+
+        var options = {
+            valueNames: ['categories'],
+        };
+        var postsList = new List('posts-list', options);
+
+        function filter(category) {
+            postsList.filter(function (item) {
+                return !!item.values().categories.includes(category);
+            });
+        }
+        function removeFilter(category) {
+            postsList.filter(function (item) {
+                return !item.values().categories.includes(category);
+            });
+        }
     </script>
 @endpush

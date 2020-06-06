@@ -184,11 +184,7 @@
 
             function filter(category) {
                 postsList.filter(function (item) {
-                    if (item.values().categories.includes(category)) {
-                        return true;
-                    } else {
-                        return false;
-                    }
+                    return !!item.values().categories.includes(category);
                 });
             }
 
