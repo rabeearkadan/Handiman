@@ -109,9 +109,9 @@
 
             <div class="footer-bottom-right">
                 <ul class="nav nav-pills">
-                    <li><a href="">Home</a></li>
+                    <li><a href="{{route('welcome')}}">Home</a></li>
                     <li><a href="">Terms &amp; Conditions</a></li>
-                    <li><a href="">Contact</a></li>
+                    <li><a href="{{url('/#contact')}}">Contact</a></li>
                 </ul><!-- /.nav -->
             </div><!-- /.footer-bottom-right -->
         </div><!-- /.container -->
