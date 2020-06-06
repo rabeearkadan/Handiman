@@ -64,7 +64,6 @@
                                 <ul class="slides">
                                     <li>
                                         <img src="/public/images/employee-home.png">
-
                                     </li>
                                 </ul>
                             </div>

@@ -175,7 +175,7 @@ class RequestController extends Controller
 
         if (!$req->has('employee_id')) {
             if ($req->is_urgent == true) {
-                $requestHandyman->is_urgent = true;
+                $requestHandyman->isurgent = true;
                 if (Carbon::now($requestHandyman->timezone)->minute > 30) {
                     $nowHour = str_pad(Carbon::now($requestHandyman->timezone)->hour + 1, 2, '0', STR_PAD_LEFT) . '00';
                     $nowNextHour = str_pad(Carbon::now($requestHandyman->timezone)->hour + 2, 2, '0', STR_PAD_LEFT) . '00';
@@ -188,7 +188,7 @@ class RequestController extends Controller
                 $requestHandyman->date = Carbon::createFromFormat('Y-m-d', date("Y-m-d"), $requestHandyman->timezone);
 
             } else {
-                $requestHandyman->is_urgent = false;
+                $requestHandyman->isurgent = false;
                 $requestHandyman->from = $req->from;
                 $requestHandyman->to = $req->to;
                 $requestHandyman->date = Carbon::createFromFormat('d/m/Y', $req->input('date'), $requestHandyman->timezone);

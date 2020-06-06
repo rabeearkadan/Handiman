@@ -25,14 +25,14 @@ class RequestController extends Controller
     {
 
         //requests
-        $requests = Auth::user()->employeeRequests()->where('status', 'pending')->where('is_urgent', false)->get();
+        $requests = Auth::user()->employeeRequests()->where('status', 'pending')->where('isurgent', false)->get();
         $requests = $requests->map(function ($item) {
             $item->service_name = Service::find($item->service_id)->name;
             $item->client = User::find($item->client_ids[0]);
             return $item;
         });
         //urgent requests
-        $urgentRequests = Auth::user()->employeeRequests()->where('status', 'pending')->where('is_urgent', true)->get();
+        $urgentRequests = Auth::user()->employeeRequests()->where('status', 'pending')->where('isurgent', true)->get();
         $urgentRequests = $requests->map(function ($item) {
             $item->service_name = Service::find($item->service_id)->name;
             $item->client = User::find($item->client_ids[0]);
