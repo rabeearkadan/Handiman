@@ -23,7 +23,9 @@
     <style>
         .footer {
             width: -webkit-fill-available;
-            position: -webkit-sticky;
+            position: absolute;
+            bottom: 0;
+
         }
     </style>
 </head>
@@ -64,7 +66,7 @@
         </ul>
     </div>
 </nav>
-    <div id="app"  style="margin-top: 30px;height: 100vh">
+    <div id="app"  style="position:relative;margin-top: 30px;height: 100vh">
         <div id="preloader"></div>
         @yield('content')
     </div>
