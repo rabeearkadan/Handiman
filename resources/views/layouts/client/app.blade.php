@@ -18,9 +18,6 @@
     <link href="{{asset('css/client/navbar.css')}}" rel="stylesheet">
     <link href="{{asset('css/client/preloader.css')}}" rel="stylesheet">
     <style>
-        *{
-            border: none;
-        }
         .is-danger{
             border-color: #ff3860;
             color: #ff3860;
