@@ -145,7 +145,7 @@
                 const chips = document.querySelectorAll('.chip');
                 for (var i = 0; i < chips.length; i++) {
                     if(item.values().categories.includes(chips[i].innerText.replace('close',''))) {
-                        bool = true
+                        bool = true;
                     }
                 }
                 return bool;
