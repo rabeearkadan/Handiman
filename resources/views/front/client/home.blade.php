@@ -144,7 +144,7 @@
                 var bool = false;
                 const chips = document.querySelectorAll('.chip');
                 for (var i = 0; i < chips.length; i++) {
-                    if(item.values().categories.includes(chips[i].innerText.replace('close',''))) {
+                    if(item.values().categories.indexOf(chips[i].innerText.replace('close','')) !== -1) {
                         bool = true;
                     }
                 }
