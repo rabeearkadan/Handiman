@@ -295,7 +295,9 @@
                                             <div class="form-group">
                                                 <label for="from"> Choose starting time </label>
                                                 <select name="from" id="from">
-
+                                                @for($index=0;$index<24;$index++)
+                                                    <option>{{$index}}</option>
+                                                 @endfor
                                                 </select>
                                                 @error('from')
                                                 <p class="help is-danger">{{ $errors->first('from') }}</p>
@@ -366,9 +368,6 @@
                     if (from >= value["from"] && from <= value["to"]) {
                         from++;
                         for (var to = from; to <= value["to"]; to++) {
-                            if (to === 24) {
-                                to = 0;
-                            }
                             toSelect.append(
                                 $('<option></option>').val(to).html(to)
                             );
