@@ -51,7 +51,7 @@
                                     @isset($request->employee)
                                     <img src="{{config('image.path').$request->employee->image}}" alt="employye image" class="circle">
                                     <span class="title">{{$request->employee->name}}</span>
-                                        <a class="btn-floating btn-large red" style="float:right">
+                                        <a class="btn-floating btn-large red" style="float:right;margin: 20px">
                                             <i class="large material-icons">cancel</i>
                                         </a>
                                         <a class="btn-floating btn-large blue" style="float:right">
