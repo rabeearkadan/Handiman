@@ -128,7 +128,7 @@
                 </div><!-- p-item -->
             @endforeach
             @if($employee->posts == null)
-                <p>no posts yet</p>
+                <p style="margin: 20px">no posts yet</p>
                 @endif
         </div><!-- portfolioContainer -->
     </section><!-- portfolio-section -->
@@ -250,7 +250,7 @@
                         </div>
                         @else
                         <div>
-                            <p>
+                            <p style="margin: 20px">
                                 Hasn't received enough rating
                             </p>
                         </div>
@@ -331,7 +331,7 @@
                             </div>
                         @else
                             <div>
-                                <p>
+                                <p style="margin: 20px">
                                     Hasn't received enough rating
                                 </p>
                             </div>
