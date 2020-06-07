@@ -295,9 +295,12 @@
                                             <div class="form-group">
                                                 <label for="from"> Choose starting time </label>
                                                 <select name="from" id="from">
+                                                    @isset($employee)
+                                                    @else
                                                 @for($index=0;$index<24;$index++)
                                                     <option>{{$index}}</option>
                                                  @endfor
+                                                        @endisset
                                                 </select>
                                                 @error('from')
                                                 <p class="help is-danger">{{ $errors->first('from') }}</p>
@@ -308,7 +311,12 @@
                                             <div class="form-group">
                                                 <label for="to"> Choose ending time </label>
                                                 <select name="to" id="to">
-
+                                                    @isset($employee)
+                                                    @else
+                                                        @for($index=1;$index<=24;$index++)
+                                                            <option>{{$index}}</option>
+                                                        @endfor
+                                                    @endisset
                                                 </select>
                                                 @error('to')
                                                 <p class="help is-danger">{{ $errors->first('to') }}</p>
@@ -385,6 +393,17 @@
                 });
 
             });
+                fromSelect.change(function () {
+                    toSelect.find('option').remove().end();
+                    var from = fromSelect.val();
+                            for (var to = from; to <= 24; to++) {
+                                toSelect.append(
+                                    $('<option></option>').val(to).html(to)
+                                );
+                            }
+
+                });
+
             @endisset
         </script>
         <script>
