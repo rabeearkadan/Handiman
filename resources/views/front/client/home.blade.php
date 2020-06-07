@@ -153,6 +153,7 @@
         }
 
         function removeFilter() {
+            const chips = document.querySelectorAll('.chip');
             if(chips.length===0){
                 postsList.filter();
             }
