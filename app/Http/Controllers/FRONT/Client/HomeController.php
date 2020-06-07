@@ -108,7 +108,6 @@ class HomeController extends Controller
             }
         }
         $keyword = $request->keyword;
-        dd($request,$keyword,$client_address);
         return view ('front.client.service-users', compact(['service','user','keyword','client_address','availableTimes','employees']));
     }
 }
