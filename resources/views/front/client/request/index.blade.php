@@ -51,12 +51,11 @@
                                     @isset($request->employee)
                                     <img src="{{config('image.path').$request->employee->image}}" alt="employye image" class="circle">
                                     <span class="title">{{$request->employee->name}}</span>
-
-                                        <a class="btn-floating btn-large blue" style="float:right">
-                                            <i class="large material-icons">chat</i>
-                                        </a>
                                         <a class="btn-floating btn-large red" style="float:right">
                                             <i class="large material-icons">cancel</i>
+                                        </a>
+                                        <a class="btn-floating btn-large blue" style="float:right">
+                                            <i class="large material-icons">chat</i>
                                         </a>
                                     @else
                                         <img src="/public/images/employee/profile.png" alt="" class="circle">
