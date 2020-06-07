@@ -91,9 +91,9 @@ class HomeController extends Controller
                     if($day==-1){
                         $day=6;
                     }
-                    foreach ($employee->employeeRequests as $request){
-                        if($request->isdone==false & $request->date->format('m/d/Y') == $available['date'] ){
-                            for($from=$request->from; $from<$request->to;$from++) {
+                    foreach ($employee->employeeRequests as $employeeRequest){
+                        if($employeeRequest->isdone==false & $employeeRequest->date->format('m/d/Y') == $available['date'] ){
+                            for($from=$employeeRequest->from; $from<$employeeRequest->to;$from++) {
                                 $employee->timeline[$day][$from]=false;
                             }
                         }
