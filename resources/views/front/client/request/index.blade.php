@@ -55,6 +55,9 @@
                                         <a class="btn-floating btn-large blue" style="float:right">
                                             <i class="large material-icons">chat</i>
                                         </a>
+                                        <a class="btn-floating btn-large red" style="float:right">
+                                            <i class="large material-icons">cancel</i>
+                                        </a>
                                     @else
                                         <img src="/public/images/employee/profile.png" alt="" class="circle">
                                         <span class="title">Searching for employee</span>
