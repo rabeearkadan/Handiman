@@ -25,7 +25,6 @@
             width: -webkit-fill-available;
             position: absolute;
             bottom: 0;
-
         }
     </style>
 </head>
@@ -66,7 +65,7 @@
         </ul>
     </div>
 </nav>
-    <div id="app"  style="position:relative;margin-top: 30px;height: 100vh">
+    <div id="app"  style="position:relative;margin-top: 30px;">
         <div id="preloader"></div>
         @yield('content')
     </div>
