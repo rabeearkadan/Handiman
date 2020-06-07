@@ -6,8 +6,8 @@
     <div class="row">
         <div class="col s12">
             <ul class="tabs">
-                <li class="tab col s3"><a class="active" href="#urgent">Urgent Requests</a></li>
-                <li class="tab col s3"><a  href="#requests">Requests</a></li>
+                <li class="tab col s6"><a class="active" href="#urgent">Urgent Requests</a></li>
+                <li class="tab col s6"><a  href="#requests">Requests</a></li>
             </ul>
         </div>
     </div>
