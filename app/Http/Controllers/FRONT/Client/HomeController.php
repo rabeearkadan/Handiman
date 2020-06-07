@@ -115,6 +115,10 @@ class HomeController extends Controller
                 $index++;
             }
         }
+        $employees = $employees->map(function ($item) use ($service) {
+            $item->rating = $this->rating($item,$service->id);
+            return $item;
+        });
         $keyword = $request->keyword;
         return view('front.client.service-users', compact(['service', 'user', 'keyword', 'client_address', 'availableTimes', 'employees']));
     }
