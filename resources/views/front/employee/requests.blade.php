@@ -178,9 +178,8 @@
 {{--    </script>--}}
 
 <script>
-    $(document).ready(function(){
-        $('.tabz').tabs();
-    });
+    var ell = document.querySelectorAll('.tabz');
+    var ins = M.Tabs.init(ell);
     var el = document.querySelectorAll('.tabs');
     var instance = M.Tabs.init(el, {swipeable:true});
 
