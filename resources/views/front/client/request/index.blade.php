@@ -41,7 +41,7 @@
                         <td> {{$request->service_name}}</td>
                         <td> {{$request->date->format('d/m/Y')}} </td>
                         <td style="text-align:left"> {{$request->description}} </td>
-                        <td><a href="#{{$request->id}}" class="waves-effect waves-light btn modal-trigger"> View </a></td>
+                        <td><a href="#{{$request->id}}" class="waves-effect waves btn modal-trigger"> View </a></td>
                     </tr>
                     <div id="{{$request->id}}" class="modal bottom-sheet modal-fixed-footer" style="overflow:scroll;">
                         <div class="modal-content">
@@ -137,7 +137,7 @@
                         <td> {{$request->service_name}} </td>
                         <td> {{$request->date->format('d/m/Y')}}</td>
                         <td style="text-align:left;"> {{$request->description}} </td>
-                        <td><a href="#{{$request->id}}" class="waves-effect waves-light btn modal-trigger"> View </a></td>
+                        <td><a href="#{{$request->id}}" class="waves-effect waves btn modal-trigger" style="background-color: #219230"> View </a></td>
                     </tr>
                     <div id="{{$request->id}}" class="modal bottom-sheet modal-fixed-footer" style="overflow:scroll;">
                         <div class="modal-content">
@@ -147,7 +147,9 @@
                                     @isset($request->employee)
                                         <img src="{{config('image.path').$request->employee->image}}" alt="employee image" class="circle">
                                         <span class="title">{{$request->employee->name}}</span>
-
+                                        <a class="btn-floating btn-large red" style="float:right;margin-left: 30px">
+                                            <i class="large material-icons">cacel</i>
+                                        </a>
                                         <a class="btn-floating btn-large blue" style="float:right">
                                             <i class="large material-icons">chat</i>
                                         </a>
@@ -220,5 +222,11 @@
         $(document).ready(function(){
             $('.materialboxed').materialbox();
         });
+        function cancelRequest(id){
+            var result = confirm("Want to cancel this request?");
+            if (result) {
+                document.getElementById(id).submit();
+            }
+        }
     </script>
 @endpush
