@@ -5,12 +5,12 @@
 @section('content')
     <div class="row">
         <div class="col s12">
-            <ul class="tabs tabs-transparent">
+            <ul class="tabs tabs-fixed-width">
                 <li class="tab col s6"><a class="active" href="#urgent">Urgent Requests</a></li>
                 <li class="tab col s6"><a  href="#normalrequests">Requests</a></li>
             </ul>
         </div>
-
+    </div>
 
 
     <div id="urgent">
@@ -157,7 +157,7 @@
     </div>
     @endforeach
     </div>
-    </div>
+
 @endsection
 @push('js')
 {{--    <script>--}}
