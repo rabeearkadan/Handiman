@@ -35,7 +35,7 @@
                                                         <div class="carousel carousel-slider" id="{{$post->id}}">
                                                             @foreach($post->images as $image)
                                                                 <img class="carousel-item" src="{{config('image.path').$image}}"
-                                                                     alt="Post Images">
+                                                                     alt="Post Images" style="object-fit: contain">
                                                             @endforeach
                                                         </div>
                                                         <div class="post-content">
@@ -50,6 +50,7 @@
                                                                              class="circle responsive-img"
                                                                              src="{{config('image.path').$user->image}}" alt="post images">
                                                                     </a>
+{{--                                                                dscnjkddklsncmkdsnc--}}
                                                                     <a href="{{route('client.user-profile',['employee_id' => $user->id])}}"> {{$user->name}} </a>
                                                                 @endforeach
                                                             </div><!-- /.post-meta-author -->
@@ -61,7 +62,7 @@
                                                                     @if($loop->index !=0)
                                                                         ,
                                                                     @endif
-                                                                    <a class="categories" href="{{route('client.service', $tag->id)}}"> {{$tag->name}} </a>
+                                                                    <p class="categories"> {{$tag->name}} </p>
                                                                 @endforeach
                                                             </div><!-- /.post-meta-categories -->
                                                             {{--                                            <div class="post-meta-comments">--}}
@@ -69,7 +70,7 @@
                                                             {{--                                                <a href="">3 comments</a>--}}
                                                             {{--                                            </div><!-- /.post-meta-comments -->--}}
                                                             <div class="post-meta-more">
-                                                                <a href="">View <i class="fa fa-chevron-right"></i></a>
+{{--                                                                <a href="">View <i class="fa fa-chevron-right"></i></a>--}}
                                                             </div><!-- /.post-meta-more -->
                                                         </div><!-- /.post-meta -->
                                                     </div><!-- /.post -->

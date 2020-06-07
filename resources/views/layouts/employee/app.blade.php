@@ -7,8 +7,8 @@
     <!-- Fonts -->
 
     <!-- Scripts -->
-    @if(request()->route()->getName() != "employee.post.create")
-{{--    <script src="{{ asset('js/app.js') }}" defer></script>--}}
+    @if(request()->route()->getName() != "employee.post.create" && request()->route()->getName() != "employee.home")
+    <script src="{{ asset('js/app.js') }}" defer></script>
     @endif
     <!-- Styles -->
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
