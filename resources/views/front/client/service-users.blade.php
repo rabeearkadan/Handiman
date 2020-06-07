@@ -15,13 +15,13 @@
     <div class="page-wrapper">
         <div class="main" id="employees-list">
             <div class="fullscreen-wrapper" style="padding:12px">
-                <form class="filter" method="post" action="{{route('client.service.filter',$service->id)}}">
+                <form class="filter" id="filterForm" method="post" action="{{route('client.service.filter',$service->id)}}">
                     @csrf
                     <div class="row">
                         <div class="col-sm-12 col-md-4">
                             <div class="form-group">
                                 <label for="Keyword">Keyword</label>
-                                <input type="text" name="keyword" id="Keyword" class="form-control search">
+                                <input type="text" name="keyword" id="Keyword" @isset($keyword) value="{{$keyword}}" @endisset class="form-control search">
                             </div><!-- /.form-group -->
                         </div><!-- /.col-* -->
                         <div class="col-sm-12 col-md-4">
@@ -67,10 +67,10 @@
                     @isset($availableTimes)
                         <div class="row">
                             @foreach($availableTimes as $available)
-                                <div class="chip">
+                                <div class="chip" id="{{$loop->index}}">
                                     <img src="/public/images/client/clock-icon.png" alt="date">
                                     {{$available['date']}} : {{$available['from']}} -> {{$available['to']}}
-                                    <i class="fa fa-times"></i>
+                                    <i class="fa fa-times" onclick="removeDateFilter({{$loop->index}})"></i>
 
                                     <input type="hidden" value="{{implode(', ',$available)}}" name="availableTimes[]">
                                 </div><!-- /.chip -->
@@ -101,7 +101,7 @@
                     <div class="form-group">
                         <div class="annotated-list">
                             <button class="sort" data-sort="price" name="price">Price</button>
-                            <button class="sort" data-sort="rating" name="rating"> Rating</button>
+                            <button class="sort" data-sort="rating" name="rating">Rating</button>
                         </div>
                     </div><!-- /.form-group -->
 
@@ -212,6 +212,11 @@
             }
             $('#to').formSelect();
         });
+        function removeDateFilter(id) {
+            $('#'+id).remove();
+            $('#filterForm').submit();
+
+        }
     </script>
 @endpush
 

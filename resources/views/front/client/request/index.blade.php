@@ -101,7 +101,7 @@
                             </ul>
                         </div>
                         <div class="modal-footer">
-                            <a href="#!" class="modal-close waves-effect waves-red btn-flat">close</a>
+                            <a href="#" class="modal-close waves-effect waves-red btn-flat">close</a>
                         </div>
                     </div>
                 @endforeach
@@ -195,7 +195,7 @@
                             </ul>
                         </div>
                         <div class="modal-footer">
-                            <a href="#!" class="modal-close waves-effect waves-red btn-flat">close</a>
+                            <a href="#" class="modal-close waves-effect waves-red btn-flat">close</a>
                         </div>
                     </div>
                 @endforeach
