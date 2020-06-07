@@ -67,7 +67,7 @@
             <h2>We provide <span class="rotating">handyman Scheduling, services availability</span>
             </h2>
             <div class="actions">
-                <a href="#about" class="btn-get-started">Get Strated</a>
+                <a href="{{ route('register') }}" class="btn-get-started">Get Strated</a>
                 <a href="#services" class="btn-services">Our Services</a>
             </div>
         </div>
