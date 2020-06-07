@@ -114,14 +114,14 @@
                             @if($employee->id != $user->id)
                                 <div class="card-row">
                                     <div class="card-row-inner">
+                                        <a href="{{route('client.user-profile',['employee_id'=>$employee->id,'service_id'=>$service->id])}}">
                                         <div class="card-row-image"
                                              style="background-image: url({{config('image.path').$employee->image}})">
-                                            <a href="{{route('client.user-profile',['employee_id'=>$employee->id,'service_id'=>$service->id])}}">
                                                 <div class="card-row-label">{{$service->name}} </div>
                                                 <!-- /.card-row-label -->
                                                 <div class="card-row-price"> ${{$employee->price}} / hr</div><!-- -->
-                                            </a>
                                         </div><!-- /.card-row-image -->
+                                        </a>
                                         <div class="card-row-body">
                                             <h2 class="card-row-title">
                                                 <a href="{{route('client.user-profile',['employee_id'=>$employee->id,'service_id'=>$service->id])}}"
@@ -136,7 +136,7 @@
                                                 <dd>Price</dd>
                                                 <dt class="price"> ${{$employee->price}} / hr</dt>
                                                 <dd>Category</dd>
-                                                <dt> Category</dt>
+                                                <dt> {{$service->name}}</dt>
                                                 <dd>Location</dd>
                                                 <dt>Location</dt>
                                                 <dd> Rating</dd>
