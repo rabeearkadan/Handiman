@@ -19,10 +19,6 @@
             <div class="main-inner">
                 <div class="container">
                     <div class="row">
-                        <a href="{{route('client.request.create')}}" class=" btn-large waves-effect waves-light red"
-                           style="margin-left: 53%;position: absolute;">
-                            Smart Request
-                        </a>
                         <div class="col-sm-12 col-lg-10">
                             <div class="content">
                                 <div class="page-title">
