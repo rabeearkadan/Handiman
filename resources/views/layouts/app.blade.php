@@ -24,7 +24,6 @@
         .footer {
             width: -webkit-fill-available;
             position: absolute;
-            bottom: 0;
         }
     </style>
 </head>
