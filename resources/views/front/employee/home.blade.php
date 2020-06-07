@@ -90,7 +90,6 @@
     </div><!-- /.page-wrapper -->
 @endsection
 @push('js')
-    <script src="/public/js/materialize.js"></script>
     <script src="/public/js/list.js" type="text/javascript"></script>
     <script>
         $(document).ready(function () {
