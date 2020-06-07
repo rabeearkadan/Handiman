@@ -42,6 +42,7 @@ class RequestController extends Controller
         if(empty($pendingRequests)){
             dd($pendingRequests);
         }
+        dd($pendingRequests,$approvedRequests);
         $pendingRequests = $pendingRequests->map(function ($item) {
             $item->service_name = Service::find($item->service_id)->name;
             $item->employee = User::find($item->employee_ids[0]);
