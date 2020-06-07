@@ -107,6 +107,11 @@
                 @endforeach
             </table>
         </div>
+        @if($pendingRequests == null)
+            <div class="container" style="background-image:url('/public/images/client/pending-empty.png');">
+                <p>Wow, such empty</p>
+            </div>
+        @endif
     </div>
 
     <div id="Approved" class="tabcontent">
@@ -197,6 +202,11 @@
                 @endforeach
             </table>
         </div>
+        @if($approvedRequests == null)
+            <div class="container" style="background-image:url('/public/images/client/approved-empty.png');">
+                <p>Wow, such empty</p>
+            </div>
+        @endif
     </div>
 
 @endsection
