@@ -32,7 +32,7 @@ class UserController extends Controller
     public function visited($id)
     {
         $user = User::query()->find($id);
-        $visits=(Integer)$user->visits;
+        $visits = (Integer)$user->visits;
         $visits++;
         $user->visits = $visits;
         $user->save();
@@ -246,10 +246,10 @@ class UserController extends Controller
         return response()->json(['status' => 'success', 'message' => 'Password Changed']);
     }
 
-    public function logout(Request $request)
+    public function setOffline()
     {
-        auth::logout();
-
+        $user = User::query()->find(Auth::id());
+        $user->online = false;
         return response()->json(['status' => 'success', 'message' => 'logged out']);
     }
 

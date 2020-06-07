@@ -72,7 +72,7 @@ Route::middleware(['auth:api'])->group(function () {
     Route::get('message/{id}', 'ChatController@loadMessages');
     Route::post('credit-card', 'PaymentController@setCreditCard');
     Route::get('credit-card', 'PaymentController@getCreditCard');
-
+    Route::post('offline', 'UserController@setOffline');
     Route::get('jobs/{id}', 'RequestController@getHandymanJobs');
 
 

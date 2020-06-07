@@ -32,18 +32,13 @@ class SchedularEngine extends Command
             if ($req->employees()->count() == 0) {
                 $user = User::query()->find($req->client_ids[0]);
                 $var = Carbon::createFromFormat('Y-m-d H:i:s', $req->date, $req->timezone)->dayOfWeek;
-
-                $this->Notification($user->client_device_token, 'Admin', $var . ' .', 'notification');
-
                 $result = $this->searchForHandyman($req);
                 if ($result == null) {
                     $user = User::query()->find($req->client_ids[0]);
                     $var = Carbon::createFromFormat('Y-m-d H:i:s', $req->date, $req->timezone)->dayOfWeek;
-
-                    $this->Notification($user->client_device_token, 'Admin', $var . ' no results found, search on large area', 'notification');
+                    $this->Notification($user->client_device_token, 'Admin', ' no results found, search on large area', 'notification');
                 } else {
-                    $this->Notification($user->client_device_token, 'Admin', $var . 'result is found', 'notification');
-
+                    $this->Notification($user->client_device_token, 'Admin', 'result is found', 'notification');
                     $req->employees()->attach($result->id);
                     $req->updated_at = Carbon::now();
                     $req->save();
@@ -76,11 +71,7 @@ class SchedularEngine extends Command
                     'distanceField' => "dist.calculated",
                     '$maxDistance' => 50000,
                 ],
-            ])->orderBy('dist.calculated')
-            ->get();
-
-        $user = User::query()->find($requestHandyman->client_ids[0]);
-        $this->Notification($user->client_device_token, 'Admin', $availableUsers, 'notification');
+            ])->orderBy('dist.calculated')->get();
 
         $matchingHandyman = null;
         if (Carbon::now($requestHandyman->timezone)->minute > 30) {
@@ -101,15 +92,12 @@ class SchedularEngine extends Command
             if ($requestHandyman->date == null) {
                 $requestHandyman->date = Carbon::now()->dayOfWeek;
             }
-            $user = User::query()->find($requestHandyman->client_ids[0]);
             $var = Carbon::createFromFormat('Y-m-d H:i:s', $requestHandyman->date, $requestHandyman->timezone)->dayOfWeek;
-
             if ($var == 0) {
                 $var = 6;
             } else {
                 $var--;
             }
-            $this->Notification($user->employee_device_token, 'Admin', $var, 'notification');
 
             $flag1 = $this->checkTimeline($requestHandyman->from, $requestHandyman->to, $var, $handyman);
 //            $flag2 = $this->checkRequests($handyman, $requestHandyman->date, $requestHandyman->from, $requestHandyman->to);
@@ -131,7 +119,7 @@ class SchedularEngine extends Command
         $notification['to'] = $to;
         $notification['user'] = $from;
         $notification['message'] = $message;
-        $notification['type'] = $type;// maybe "notification", "comment(message)", "request","message"
+        $notification['type'] = $type;
         $notification['object'] = [];
 
         event(new NotificationSenderEvent($notification));
@@ -141,8 +129,6 @@ class SchedularEngine extends Command
 
     public function checkTimeline($from, $to, $day, $handyman)
     {
-
-
         $flag = true;
         for ($i = (int)$from; $i < (int)$to; $i++) {
             if ($handyman->timeline[$day][$i] == false) {
@@ -155,12 +141,12 @@ class SchedularEngine extends Command
 
     public function checkRequests(User $handyman, $day, $from, $to)
     {
-        $requestsq = RequestService::query()->whereHas('employees', function ($q) use ($handyman) {
+        $employee_requests = RequestService::query()->whereHas('employees', function ($q) use ($handyman) {
             $q->where('_id', $handyman->_id);
         })->where('day', $day)->where('isdone', false);
         for ($i = (int)$from; $i < (int)$to; $i++) {
-            $requestsq->where('from', $i);
+            $employee_requests->where('from', $i);
         }
-        return $requestsq->count() == 0;
+        return $employee_requests->count() == 0;
     }
 }
