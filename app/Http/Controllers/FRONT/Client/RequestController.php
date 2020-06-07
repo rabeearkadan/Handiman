@@ -42,7 +42,9 @@ class RequestController extends Controller
 
         $pendingRequests = $pendingRequests->map(function ($item) {
             $item->service_name = Service::find($item->service_id)->name;
-            $item->employee = User::find($item->employee_ids[0]);
+            if(!empty($item->employee_ids)) {
+                $item->employee = User::find($item->employee_ids[0]);
+            }
             return $item;
         });
         $approvedRequests = $approvedRequests->map(function ($item) {
