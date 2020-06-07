@@ -3,6 +3,17 @@
 {{--    <link href="{{asset('css/employee/collapsible.css')}}" rel="stylesheet" type="text/css">--}}
 @endpush
 @section('content')
+    <div class="row">
+        <div class="col s12">
+            <ul class="tabs">
+                <li class="tab col s3"><a class="active" href="#urgent">Urgent Requests</a></li>
+                <li class="tab col s3"><a  href="#requests">Requests</a></li>
+            </ul>
+        </div>
+    </div>
+
+
+    <div id="urgent">
     <h4 style="color: darkred">Urgent Requests:</h4>
     @foreach($urgentRequests as $urgentRequest)
         <div class="row">
@@ -73,7 +84,8 @@
             </div>
         </div>
     @endforeach
-
+    </div>
+    <div id="requests">
 <h4>Requests:</h4>
     @foreach($requests as $request)
     <div class="row">
@@ -144,6 +156,7 @@
     </div>
     </div>
     @endforeach
+    </div>
 @endsection
 @push('js')
 {{--    <script>--}}
