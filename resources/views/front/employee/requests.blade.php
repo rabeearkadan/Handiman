@@ -4,13 +4,11 @@
 @endpush
 @section('content')
 
-        <div class="container-fluid" >
             <ul class="tabs tabs-fixed-width">
                 <li class="tab col s6"><a  href="#urgent">Urgent Requests</a></li>
                 <li class="tab col s6"><a class="active" href="#normalrequests">Requests</a></li>
             </ul>
-        </div>
-    
+
 
 
     <div id="urgent">
