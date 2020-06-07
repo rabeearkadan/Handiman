@@ -4,7 +4,7 @@
 @endpush
 @section('content')
     <div class="row">
-        <div class="col l12" >
+        <div class="col l12" style="position: fixed">
             <ul class="tabs tabs-fixed-width">
                 <li class="tab col s6"><a  href="#urgent">Urgent Requests</a></li>
                 <li class="tab col s6"><a class="active" href="#normalrequests">Requests</a></li>
