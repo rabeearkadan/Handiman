@@ -10,7 +10,7 @@
                 <li class="tab col s6"><a  href="#requests">Requests</a></li>
             </ul>
         </div>
-    </div>
+
 
 
     <div id="urgent">
@@ -156,6 +156,7 @@
     </div>
     </div>
     @endforeach
+    </div>
     </div>
 @endsection
 @push('js')
