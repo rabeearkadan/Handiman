@@ -123,10 +123,10 @@
                     limit: Infinity,
                     minLength: 1
                 },
-                onChipAdd: function(e,chip) {
-                    filter(chip.innerText.replace('close',''));
+                onChipAdd: () => {
+                    filter();
                 },
-                onChipDelete: function(e,chip) {
+                onChipDelete:() => {
                     removeFilter();
                 }
             })
@@ -138,18 +138,26 @@
         };
         var postsList = new List('posts-list', options);
 
-        function filter(category) {
+
+        function filter() {
             postsList.filter(function (item) {
-                return !!item.values().categories.includes(category);
+                var bool = false;
+                const chips = document.querySelectorAll('.chip');
+                for (var i = 0; i < chips.length; i++) {
+                    if(item.values().categories.includes(chips[i].innerText.replace('close',''))) {
+                        bool = true
+                    }
+                }
+                return bool;
             });
         }
+
         function removeFilter() {
-            const chips = document.querySelectorAll('.chip');
-            for (var i = 0; i < chips.length; i++) {
-                filter(chips[i].innerText.replace('close',''));
-            }
             if(chips.length===0){
                 postsList.filter();
+            }
+            else{
+                filter();
             }
         }
     </script>
