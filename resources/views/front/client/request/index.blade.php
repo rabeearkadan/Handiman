@@ -109,7 +109,6 @@
         </div>
         @if($pendingRequests->count() == 0)
             <div class="container" style=" background-repeat: no-repeat; background-position: center;height: -webkit-fill-available;background-image:url('/public/images/client/pending-empty.png');">
-                <p>Wow, such empty</p>
             </div>
         @endif
     </div>
@@ -204,7 +203,6 @@
         </div>
         @if($approvedRequests->count() == 0)
             <div class="container" style=" background-repeat: no-repeat;background-position: center;height: -webkit-fill-available;background-image:url('/public/images/client/approved-empty.png');">
-                <p>Wow, such empty</p>
             </div>
         @endif
     </div>
