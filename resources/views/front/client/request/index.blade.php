@@ -107,11 +107,11 @@
                 @endforeach
             </table>
         </div>
-        @empty($pendingRequests)
+        @if($pendingRequests->count() == 0)
             <div class="container" style="background-image:url('/public/images/client/pending-empty.png');">
                 <p>Wow, such empty</p>
             </div>
-        @endempty
+        @endif
     </div>
 
     <div id="Approved" class="tabcontent">
@@ -202,11 +202,11 @@
                 @endforeach
             </table>
         </div>
-        @empty($approvedRequests)
+        @if($approvedRequests->count() == 0)
             <div class="container" style="background-image:url('/public/images/client/approved-empty.png');">
                 <p>Wow, such empty</p>
             </div>
-        @endempty
+        @endif
     </div>
 
 @endsection
