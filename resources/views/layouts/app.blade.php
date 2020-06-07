@@ -23,7 +23,6 @@
     <style>
         .footer {
             width: -webkit-fill-available;
-            bottom: 20px;
             position: absolute;
         }
     </style>
