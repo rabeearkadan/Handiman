@@ -5,9 +5,9 @@
 @section('content')
     <div class="row">
         <div class="col s12">
-            <ul class="tabz">
+            <ul class="tabs tabs-transparent">
                 <li class="tab col s6"><a class="active" href="#urgent">Urgent Requests</a></li>
-                <li class="tab col s6"><a  href="#requests">Requests</a></li>
+                <li class="tab col s6"><a  href="#normalrequests">Requests</a></li>
             </ul>
         </div>
 
@@ -85,7 +85,7 @@
         </div>
     @endforeach
     </div>
-    <div id="requests">
+    <div id="normalrequests">
 <h4>Requests:</h4>
     @foreach($requests as $request)
     <div class="row">
@@ -178,8 +178,6 @@
 {{--    </script>--}}
 
 <script>
-    var ell = document.querySelectorAll('.tabz');
-    var ins = M.Tabs.init(ell);
     var el = document.querySelectorAll('.tabs');
     var instance = M.Tabs.init(el, {swipeable:true});
 
