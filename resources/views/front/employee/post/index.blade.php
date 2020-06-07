@@ -140,11 +140,11 @@
                                                     </div><!-- /.post-meta -->
                                                 </div><!-- /.post -->
                                             @endforeach
-                                                @if($user->posts->count() == 0)
-                                                    <div class="container" style="background-size:contain;background-repeat: no-repeat;background-position: center;height:400px;background-image:url('/public/images/employee/posts-empty.gif');">
-                                                    </div>
-                                                @endif
                                         </div><!-- /.posts-lists -->
+                                        @if($user->posts->count() == 0)
+                                            <div class="container" style="background-size:contain;background-repeat: no-repeat;background-position: center;height:400px;background-image:url('/public/images/employee/posts-empty.gif');">
+                                            </div>
+                                        @endif
                                         <ul class="pagination"></ul>
                                     </div><!-- /.list -->
                                 </div><!-- /.posts -->
