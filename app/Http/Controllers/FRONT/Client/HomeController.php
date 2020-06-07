@@ -42,7 +42,7 @@ class HomeController extends Controller
             if ($address['_id']==$request->address){
                 $lng= $address['location']['0'];
                 $lat= $address['location']['1'];
-                $client_address=$address;
+                $client_address=$address['_id'];
                 break;
             }
         }
