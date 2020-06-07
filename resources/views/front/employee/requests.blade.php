@@ -84,6 +84,10 @@
             </div>
         </div>
     @endforeach
+        @if($urgentRequests->count() == 0)
+            <div class="container" style="background-size:contain;background-repeat: no-repeat; background-position: center;height: 400px;background-image:url('/public/images/employee/urgent-empty.png');">
+            </div>
+        @endif
     </div>
     <div id="normalrequests">
 <h4>Requests:</h4>
@@ -156,6 +160,10 @@
     </div>
     </div>
     @endforeach
+        @if($requests->count() == 0)
+            <div class="container" style="background-size:contain;background-repeat: no-repeat; background-position: center;height: 400px;background-image:url('/public/images/employee/request-empty.png');">
+            </div>
+        @endif
     </div>
 
 @endsection
