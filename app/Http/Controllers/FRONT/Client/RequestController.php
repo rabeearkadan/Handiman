@@ -39,7 +39,7 @@ class RequestController extends Controller
     {
         $pendingRequests = Auth::user()->clientRequests()->where('status', 'pending')->where('isdone',false)->get();
         $approvedRequests = Auth::user()->clientRequests()->where('status', 'approved')->where('isdone',false)->get();
-        if(empty($pendingRequests)){
+        if($pendingRequests == []){
             dd($pendingRequests);
         }
         dd($pendingRequests,$approvedRequests);
