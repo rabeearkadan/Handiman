@@ -62,7 +62,7 @@
                                                                     @if($loop->index !=0)
                                                                         ,
                                                                     @endif
-                                                                    <p class="categories"> {{$tag->name}} </p>
+                                                                    <a class="categories"> {{$tag->name}} </a>
                                                                 @endforeach
                                                             </div><!-- /.post-meta-categories -->
                                                             {{--                                            <div class="post-meta-comments">--}}
