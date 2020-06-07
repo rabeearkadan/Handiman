@@ -8,9 +8,6 @@
             float: left;
             margin: 7px;
         }
-        *{
-            outline: none;
-        }
     </style>
 @endpush
 @section('content')
