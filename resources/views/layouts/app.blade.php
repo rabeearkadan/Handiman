@@ -23,6 +23,7 @@
     <style>
         .footer {
             width: -webkit-fill-available;
+            position: -webkit-sticky;
         }
     </style>
 </head>
