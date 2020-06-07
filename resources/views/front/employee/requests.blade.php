@@ -5,7 +5,7 @@
 @section('content')
     <div class="row">
         <div class="col s12">
-            <ul class="tabs">
+            <ul class="tabz">
                 <li class="tab col s6"><a class="active" href="#urgent">Urgent Requests</a></li>
                 <li class="tab col s6"><a  href="#requests">Requests</a></li>
             </ul>
@@ -178,7 +178,9 @@
 {{--    </script>--}}
 
 <script>
-
+    $(document).ready(function(){
+        $('.tabz').tabs();
+    });
     var el = document.querySelectorAll('.tabs');
     var instance = M.Tabs.init(el, {swipeable:true});
 
