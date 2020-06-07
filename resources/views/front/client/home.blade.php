@@ -59,13 +59,13 @@
                                                     </div><!-- /.post-meta-author -->
                                                     <div class="post-meta-date"> {{$post->created_at}} </div>
                                                     <!-- /.post-meta-date -->
-                                                    <div class="post-meta-categories categories">
+                                                    <div class="post-meta-categories">
                                                         <i class="fa fa-tags"></i>
                                                         @foreach($post->tags as $tag)
                                                             @if($loop->index !=0)
                                                                 ,
                                                             @endif
-                                                            <a href="{{route('client.service', $tag->id)}}"> {{$tag->name}} </a>
+                                                            <a class="categories" href="{{route('client.service', $tag->id)}}"> {{$tag->name}} </a>
                                                         @endforeach
                                                     </div><!-- /.post-meta-categories -->
                                                     {{--                                            <div class="post-meta-comments">--}}
@@ -144,8 +144,8 @@
                 var bool = false;
                 const chips = document.querySelectorAll('.chip');
                 for (var i = 0; i < chips.length; i++) {
-                    if(item.values().categories.indexOf(chips[i].innerText.replace('close','')) != -1) {
-                        bool = true;
+                    if(item.values().categories.includes(chips[i].innerText.replace('close',''))) {
+                        bool = true
                     }
                 }
                 return bool;
