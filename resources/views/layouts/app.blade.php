@@ -64,7 +64,7 @@
         </ul>
     </div>
 </nav>
-    <div id="app"  style="margin-top: 30px;height: 90vh">
+    <div id="app"  style="margin-top: 30px;height: 100vh">
         <div id="preloader"></div>
         @yield('content')
     </div>
