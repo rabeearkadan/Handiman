@@ -61,13 +61,17 @@
                                                     <!-- /.post-meta-date -->
                                                     <div class="post-meta-categories">
                                                         <i class="fa fa-tags"></i>
-                                                        <div class="categories">
+
                                                         @foreach($post->tags as $tag)
                                                             @if($loop->index !=0)
                                                                 ,
                                                             @endif
                                                             <a href="{{route('client.service', $tag->id)}}"> {{$tag->name}} </a>
                                                         @endforeach
+                                                        <div class="categories" style="display: none">
+                                                            @foreach($post->tags as $tag)
+                                                                {{$tag->name }}
+                                                            @endforeach
                                                         </div>
                                                     </div><!-- /.post-meta-categories -->
                                                     {{--                                            <div class="post-meta-comments">--}}
