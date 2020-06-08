@@ -266,19 +266,23 @@ class RequestController extends Controller
     function replyToRequest($id, Request $req)
     {
         $request = RequestService::query()->find($id);
+        $handyman = User::query()->find(Auth::id());
         try {
             $client = $request->clients()->first();
         } catch (ModelNotFoundException $e) {
 
         }
         if ($req->status == "rejected") {
-            $request->delete();
+            if ($request->isurgent == true) {
+                $request->employees()->detach($handyman);
+            } else {
+                $request->delete();
+            }
         } elseif ($req->status == "accepted") {
 
             $request->status = $req->input('status');
             $request->save();
             if ($request->isurgent == true) {
-                $handyman = User::query()->find(Auth::id());
                 $request->employees()->detach();
                 $request->employees()->attach($handyman);
             }
