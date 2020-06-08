@@ -7,7 +7,7 @@
     <!-- Fonts -->
 
     <!-- Scripts -->
-    @if(request()->route()->getName() != "employee.post.create" && request()->route()->getName() != "employee.home" && request()->route()->getName() != "employee.requests")
+    @if(request()->route()->getName() != "employee.post.create" && request()->route()->getName() != "employee.home")
     <script src="{{ asset('js/app.js') }}" defer></script>
     @endif
     <!-- Styles -->
