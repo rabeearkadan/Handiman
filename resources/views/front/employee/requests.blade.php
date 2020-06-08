@@ -78,6 +78,8 @@
                                 </ul>
                             </div>
                         </div>
+                        <a class="waves-effect waves-light btn-small" style="float:right"><i class="material-icons left">reject</i>Accept</a>
+                        <a class="waves-effect waves-light btn-small" style="float:right"><i class="material-icons left">accept</i>Reject</a>
                     </div>
                 </div>
             </div>
