@@ -104,7 +104,7 @@ class ProfileController extends Controller
             "type" => $request->type,
             "location" => [$request->lng, $request->lat],
             "street" => $request->street,
-            "house" => $request->house,
+            "building" => $request->house,
             "zip" => $request->zip,
             "property_type" => $request->property,
             "contract_type" => $request->contract,

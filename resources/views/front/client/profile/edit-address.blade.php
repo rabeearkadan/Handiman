@@ -112,7 +112,7 @@
                         </div><!-- /.form-group -->
                         <div class="form-group col-sm-3">
                             <label for="house"> House Number/Name </label>
-                            <input type="text" class="form-control" name="house" id="house" value="{{$address['house']}}" placeholder="">
+                            <input type="text" class="form-control" name="house" id="house" value="{{$address['building']}}" placeholder="">
                         </div><!-- /.form-group -->
                         <div class="form-group col-sm-3">
                             <label for="zip"> ZIP </label>
