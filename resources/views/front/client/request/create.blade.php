@@ -393,6 +393,8 @@
                 });
 
             });
+                var fromSelect = $('#from');
+                var toSelect = $('#to');
                 fromSelect.change(function () {
                     toSelect.find('option').remove().end();
                     var from = fromSelect.val();

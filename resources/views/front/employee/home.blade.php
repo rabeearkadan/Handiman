@@ -56,14 +56,20 @@
                                                             </div><!-- /.post-meta-author -->
                                                             <div class="post-meta-date"> {{$post->created_at}} </div>
                                                             <!-- /.post-meta-date -->
-                                                            <div class="post-meta-categories">
+                                                            <div class="post-meta-categories categories">
                                                                 <i class="fa fa-tags"></i>
+
                                                                 @foreach($post->tags as $tag)
                                                                     @if($loop->index !=0)
                                                                         ,
                                                                     @endif
-                                                                    <a class="categories"> {{$tag->name}} </a>
+                                                                    <a > {{$tag->name}} </a>
                                                                 @endforeach
+                                                                <div class="categories" style="display: none">
+                                                                    @foreach($post->tags as $tag)
+                                                                        {{$tag->name }}
+                                                                    @endforeach
+                                                                </div>
                                                             </div><!-- /.post-meta-categories -->
                                                             {{--                                            <div class="post-meta-comments">--}}
                                                             {{--                                                <i class="fa fa-comments"></i>--}}
