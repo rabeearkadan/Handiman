@@ -183,7 +183,7 @@
 
 <script>
     var el = document.querySelectorAll('.tabs');
-    var instance = M.Tabs.init(el, {swipeable:true});
+    var instance = M.Tabs.init(el);
 
     document.addEventListener('DOMContentLoaded', function() {
         var elems = document.querySelectorAll('.slider');
