@@ -13,7 +13,6 @@
 {{--    </div>--}}
 
 
-    <div id="urgent">
     <h4 style="color: darkred">Urgent Requests:</h4>
     @foreach($urgentRequests as $urgentRequest)
         <div class="row">
@@ -88,8 +87,6 @@
             <div class="container" style="background-size:contain;background-repeat: no-repeat; background-position: center;height: 300px;background-image:url('/public/images/employee/urgent-empty.png');">
             </div>
         @endif
-    </div>
-    <div id="normalrequests">
 <h4>Requests:</h4>
     @foreach($requests as $request)
     <div class="row">
@@ -164,7 +161,6 @@
             <div class="container" style="background-size:contain;background-repeat: no-repeat; background-position: center;height: 300px;background-image:url('/public/images/employee/request-empty.png');">
             </div>
         @endif
-    </div>
 
 @endsection
 @push('js')
