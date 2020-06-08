@@ -22,9 +22,9 @@ class StatisticsController extends Controller
             array_push($chart->labels, $user->name);
             array_push($chart->datasets, $user->visits);
         }
-        $chart->color("rgb(255, 99, 132)");
-        $chart->backgroundcolor("rgb(255, 99, 132)");
-        
+//        $chart->color("rgb(255, 99, 132)");
+//        $chart->backgroundcolor("rgb(255, 99, 132)");
+
         return view('cms.statistics.index', compact('chart'));
     }
 
