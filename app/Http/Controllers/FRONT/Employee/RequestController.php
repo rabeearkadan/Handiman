@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\FRONT\Employee;
 
 use App\Http\Controllers\Controller;
+use App\Models\RequestService;
 use App\Models\Service;
 use App\User;
 use Illuminate\Http\Request;
@@ -43,7 +44,7 @@ class RequestController extends Controller
     }
 
     public function accept($id){
-        $request = RequestService::findorFail($id);
+        $request = RequestService::findOrFail($id);
         dd($request->clients()->first());
         if($req->status == "rejected"){
             $request->delete();
