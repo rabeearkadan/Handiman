@@ -61,21 +61,9 @@ class TimeOutRequests extends Command
 
 
                     $req->push('rejected_employees', $req->employee_ids[0]);
-                    //$this->Notification($client_device, 'Admin', $duration, 'notification');
                     $this->Notification($handyman_device, 'Admin', $duration, 'notification');
-
-
-//                    $employee_ids = [];
-//                    $employee_ids[0] = "";
-//                    $req->employee_ids = $employee_ids;
-//                    $req->employees()->sync($employee_ids);
-
-
-//                    $employee_request_ids = [];
                     $employee = User::find($req->employee_ids[0]);
                     $req->employees()->detach($employee);
-
-
 
                     foreach ($handyman->employee_request_ids as $s) {
                         if ($s != $req->id)
