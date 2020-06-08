@@ -51,7 +51,7 @@
                                     @isset($request->employee)
                                     <img src="{{config('image.path').$request->employee->image}}" alt="employye image" class="circle">
                                     <span class="title">{{$request->employee->name}}</span>
-                                        <a class="btn-floating btn-large red" style="float:right;margin-left: 30px">
+                                        <a class="btn-floating btn-large red" style="float:right;margin-left: 30px" onclick="cancelRequest({{$request->id}})">
                                             <i class="large material-icons">cancel</i>
                                         </a>
                                     <form method="post" id="{{$request->id}}" action="{{route('client.request.destroy',$request->id)}}" style="display: none">
