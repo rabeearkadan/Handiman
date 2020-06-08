@@ -21,9 +21,11 @@ class StatisticsController extends Controller
         $arr = [];
         foreach ($users as $user) {
             array_push($chart->labels, $user->name);
-            array_push($arr, $users->created_at);
+            array_push($arr,$user->created_at);
         }
-        $chart->dataset( $arr);
+        $chart->dataset('My Dataset', 'line',$arr);
+
+        //$chart->dataset( $arr);
 //        $chart->color("rgb(255, 99, 132)");
 //        $chart->backgroundcolor("rgb(255, 99, 132)");
 
