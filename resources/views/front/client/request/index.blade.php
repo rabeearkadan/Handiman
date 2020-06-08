@@ -98,7 +98,7 @@
                                     <span class="title">Address</span>
                                     <p> {{$request->client_address['name']}}
                                         <br> Street:{{$request->client_address['street']}}
-                                        <br> Building: {{$request->client_address['house']}}
+                                        <br> Building: {{$request->client_address['building']}}
                                         <br> zip: {{$request->client_address['zip']}}
                                         <br> property type: {{$request->client_address['property_type']}}
                                         <br> contract type: {{$request->client_address['contract_type']}}
