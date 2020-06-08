@@ -17,7 +17,7 @@ class StatisticsController extends Controller
     public function index()
     {
         $users = User::query()->where('role', 'user_employee' || 'employee')
-            ->pluck('visits', 'created_at')->where('id', '5e7d3968e8deab6cd0066972');
+            ->pluck('visits', 'created_at')->where('_id', '5e7d3968e8deab6cd0066972');
         $chart = new Stats();
         $chart->labels($users->keys());
         $chart->dataset('My dataset 2', 'line', $users->values());
