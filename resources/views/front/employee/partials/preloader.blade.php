@@ -11,7 +11,7 @@
         //     $('#preloader-wrapper').hide();
         // });
         setInterval(function(){
-            $('#preloader-wrapper').hide();
+            $('#preloader-wrapper').fadeOut("slow");
         },3000);
 
         // $(window).ready(hideLoader);
