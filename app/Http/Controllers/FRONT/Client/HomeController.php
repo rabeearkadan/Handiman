@@ -71,8 +71,7 @@ class HomeController extends Controller
                 ],
             ])->orderBy('dist.calculated')
             ->get();
-        $employeez = $service->users
-            ->where('isApproved', true)
+        $employeez = $service->users()
             ->where('location', 'near', [
                 '$geometry' => [
                     'type' => 'Point',
@@ -83,7 +82,7 @@ class HomeController extends Controller
                     'distanceField' => "dist.calculated",
                     '$maxDistance' => 50,
                 ],
-            ])
+            ])->orderBy('dist.calculated')
             ->get();
         $availableTimes = array();
         if ($request->availableTimes != null) {
