@@ -15,6 +15,16 @@ Route::get('/employee/{employee_id}/services/{service_id?}','ProfileController@e
 Route::get('/employee/{employee_id}/see-all-reviews/services/{service_id?}','ProfileController@allReviews')->name('client.user-profile.all.reviews');
 
 
+
+//Requests
+Route::get('/requests','RequestController@index')->name('client.request.index');
+Route::get('/requests/{id}','RequestControlller@show')->name('client.request.show');
+Route::get('/request/create','RequestController@create')->name('client.request.create');
+Route::post('/request/create','RequestController@store')->name('client.request.store');
+Route::get('/requests/{id}/edit','RequestController@edit')->name('client.request.edit');
+Route::put('/requests/{id}/edit','RequestController@update')->name('client.request.update');
+Route::delete('/requests/{id}/destroy','RequestController@destroy')->name('client.request.destroy');
+
 //Invoices
 Route::get('/invoice','InvoiceController@index')->name('client.invoice.index');
 Route::get('/invoice/{id}','InvoiceController@show')->name('client.invoice.show');
