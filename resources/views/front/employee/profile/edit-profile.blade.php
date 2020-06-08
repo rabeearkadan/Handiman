@@ -235,7 +235,7 @@
                 <input type="submit" value="Save" class="btn btn-primary btn-xs pull-right"/>
             </h3>
             <div class="row">
-                <div class="input-field col s6 ">
+                <div class="input-field col l6 ">
                     <select class="icons" name="services[]" id="services" multiple="multiple">
                         <option value="" disabled>Choose your services</option>
                         @foreach($services as $service)
@@ -248,7 +248,7 @@
                     </select>
                     <label for="services">Choose your type of services</label>
                 </div>
-                <div class="input-field col s6 ">
+                <div class="input-field col l6 ">
                     <label for="price">How much do you get paid per hour?</label>
                     <input type="text" class="form-control" id="price" name="price" value="{{$user->price}}">
                 </div>
