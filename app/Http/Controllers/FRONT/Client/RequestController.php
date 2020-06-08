@@ -80,10 +80,7 @@ class RequestController extends Controller
         $timepicker = array();
         for ($x = 0; $x < 24; $x++) {
             $day = date('w', strtotime($date->format('Y-m-d')));
-            $day++;
-            if($day==7){
-                $day=0;
-            }
+            
             for ($hour = 0; $hour < 24; $hour++) {
                 $Days[$date->format('m/d/Y')][$hour] = $employee->timeline[$day][$hour];
                 if ($Days[$date->format('m/d/Y')][$hour] == true) {
