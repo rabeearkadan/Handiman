@@ -134,6 +134,7 @@ class RequestController extends Controller
             $this->notification($handyman->employee_device_token, Auth::user()->name, 'request has been canceled' .
                 $request->subject, 'request');
 
+            $handyman->employeeRequests()->sync($employee_request_ids);
         }
         $user = User::query()->find(Auth::id());
 
@@ -143,7 +144,6 @@ class RequestController extends Controller
                 $client_request_ids [] = $s;
         }
 
-        $user->employeeRequests()->sync($employee_request_ids);
         $user->clientRequests()->sync($client_request_ids);
 
 
