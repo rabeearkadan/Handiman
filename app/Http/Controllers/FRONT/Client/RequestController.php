@@ -280,7 +280,7 @@ class RequestController extends Controller
         $request->clients()->detach($user->id);
         if($request->employees()->count() > 0) {
             $employee = User::find($request->employee_ids[0]);
-            $request->employees->detach($employee);
+            $request->employees()->detach($employee);
             }
         $request->delete();
         return redirect(route('client.request.index'));
