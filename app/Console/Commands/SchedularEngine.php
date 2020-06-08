@@ -70,14 +70,14 @@ class SchedularEngine extends Command
                     if ($requestHandyman->isurgent == true) {
                         $employee = User::query()->find($handyman->id);
                         $requestHandyman->employees()->attach($employee);
-                        $this->Notification($employee->employee_device_token, 'Admin', 'You received a new request', 'request');
-                        $count = -1;
-                        break;
-                    } else {
                         $count++;
+                        $this->Notification($employee->employee_device_token, 'Admin', 'You received a new request', 'request');
+                    } else {
                         $requestHandyman->employees()->attach($handyman);
                         $employee = User::query()->find($handyman->id);
                         $this->Notification($employee->employee_device_token, 'Admin', 'You received an urgent request', 'request');
+                        $count = -1;
+                        break;
                     }
                 }
             }
