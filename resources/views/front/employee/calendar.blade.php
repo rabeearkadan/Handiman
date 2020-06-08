@@ -42,6 +42,17 @@
                     ]
                 }
             },
+        2020: {
+            04: {
+                03: [
+                    {
+                        startTime: "00:00",
+                        endTime: "1-:00",
+                        text: "job1"
+                    }
+                ]
+            }
+        },
         };
         var organizer = new Organizer("organizerContainer", calendar, data);
     </script>
