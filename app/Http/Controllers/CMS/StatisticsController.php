@@ -18,9 +18,8 @@ class StatisticsController extends Controller
     {
         $users = User::query()->where('role', 'user_employee' || 'employee');
         $chart = new Stats();
-        $chart->labels($users->keys());
-        $chart->dataset('My dataset 2', 'line', [$users, $users->created_at]);
-
+        $chart->labels(['Jan', 'Feb', 'Mar']);
+        $chart->dataset('Users by trimester', 'line', [10, 25, 13]);
         return view('cms.statistics.index', compact('chart'));
     }
 
