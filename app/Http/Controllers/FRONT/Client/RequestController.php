@@ -133,6 +133,7 @@ class RequestController extends Controller
             $bool = false;
             $date->modify('+1 day');
         }
+        dd($availableDaysString,$timepicker);
         return view('front.client.request.create', compact(['user', 'employee', 'service', 'availableDaysString', 'timepicker']));
     }
 
