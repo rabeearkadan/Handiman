@@ -3,16 +3,16 @@
 {{--    <link href="{{asset('css/employee/collapsible.css')}}" rel="stylesheet" type="text/css">--}}
 @endpush
 @section('content')
-{{--    <div class="row">--}}
-{{--        <div class="col l12" >--}}
-{{--            <ul class="tabs tabs-fixed-width">--}}
-{{--                <li class="tab col s6"><a class="active" href="#urgent">Urgent Requests</a></li>--}}
-{{--                <li class="tab col s6"><a  href="#normalrequests">Requests</a></li>--}}
-{{--            </ul>--}}
-{{--        </div>--}}
-{{--    </div>--}}
+    <div class="row">
+        <div class="col l12" >
+            <ul class="tabs tabs-fixed-width">
+                <li class="tab col s6"><a class="active" href="#urgent">Urgent Requests</a></li>
+                <li class="tab col s6"><a  href="#normalrequests">Requests</a></li>
+            </ul>
+        </div>
+    </div>
 
-
+<div id="urgents">
     <h4 style="color: darkred">Urgent Requests:</h4>
     @foreach($urgentRequests as $urgentRequest)
         <div class="row">
@@ -87,6 +87,8 @@
             <div class="container" style="background-size:contain;background-repeat: no-repeat; background-position: center;height: 300px;background-image:url('/public/images/employee/urgent-empty.png');">
             </div>
         @endif
+</div>
+    <div id="normalrequests">
 <h4>Requests:</h4>
     @foreach($requests as $request)
     <div class="row">
@@ -161,7 +163,7 @@
             <div class="container" style="background-size:contain;background-repeat: no-repeat; background-position: center;height: 300px;background-image:url('/public/images/employee/request-empty.png');">
             </div>
         @endif
-
+    </div>
 @endsection
 @push('js')
 {{--    <script>--}}
