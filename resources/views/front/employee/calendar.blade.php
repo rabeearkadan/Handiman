@@ -11,7 +11,8 @@
     <script>
         var calendar = new Calendar("calendarContainer", "large",
             [ "Monday", 3 ],
-            [ "#ffc107", "#ffa000", "#ffffff", "#ffecb3" ],
+            [ "#469CDB", "#4179cf", "#ffffff", "#97bffe" ],
+
             {
                 days: [ "Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday",  "Saturday" ],
                 months: [ "January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December" ],
