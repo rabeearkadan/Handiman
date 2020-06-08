@@ -130,7 +130,7 @@ class HomeController extends Controller
             return $item;
         });
         $keyword = $request->keyword;
-        dd($service,$id);
+        dd($service,$id,$employees);
         return view('front.client.service-users', compact(['service', 'user', 'keyword', 'client_address', 'availableTimes', 'employees']));
     }
 
