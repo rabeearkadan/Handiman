@@ -71,7 +71,7 @@ class HomeController extends Controller
                 ],
             ])->orderBy('dist.calculated')
             ->get();
-        $employeez = $service->users()
+        $employeez = $service->users
             ->where('role', 'user_employee')
             ->orWhere('role', 'employee')
             ->where('isApproved', true)
