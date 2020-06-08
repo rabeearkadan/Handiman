@@ -90,9 +90,9 @@ class RequestController extends Controller
                     $bool = true;
                 }
             }
-            foreach ($employee->employeeRequests as $request) {
-                if ($request->isdone == false & $request->date->format('m/d/Y') == $date->format('m/d/Y')) {
-                    for ($from = $request->from; $from < $request->to; $from++) {
+            foreach ($employee->employeeRequests as $employeeRequest) {
+                if ($employeeRequest->isdone == false && $employeeRequest->date->format('m/d/Y') == $date->format('m/d/Y')) {
+                    for ($from = $employeeRequest->from; $from < $employeeRequest->to; $from++) {
                         $Days[$date->format('m/d/Y')][$from] = false;
                     }
                 }
