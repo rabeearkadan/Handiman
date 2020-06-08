@@ -80,6 +80,10 @@ class ProfileController extends Controller
         $user->name = $request->name;
         $user->email = $request->email;
         $user->phone = $request->phone;
+        if($request->gender == 'male')
+            $user->gender = 'male';
+        if($request->gender == 'female')
+            $user->gender = 'female';
         $user->save();
         return redirect()->route('client.profile');
     }

@@ -7,7 +7,7 @@
     <link href="{{asset('css/employee/color-box.css')}}" rel="stylesheet">
 @endpush
 @section('content')
-    <div class="page-wrapper">
+    <div class="page-wrapper" style="background-color: white">
         <div class="main">
             <div class="main-inner">
                 <div class="container">
@@ -40,6 +40,9 @@
                                 </div><!-- /.col-* -->
                                 @endforeach
                             </div>
+                            @if($feedbacks->count() ==0)
+
+                                @endif
                         </div><!-- mt-80 -->
                     </div><!-- /.content -->
                 </div><!-- /.container -->
