@@ -56,7 +56,7 @@ class RequestController extends Controller
         $request->employees()->detach($user);
         $client = $request->clients()->first();
         $request->clients()->detach($client);
-        $request->save();
+        $request->delete();
         return redirect(route('employee.requests'));
     }
 
