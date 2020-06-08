@@ -20,7 +20,7 @@ class StatisticsController extends Controller
             ->pluck('visits', 'created_at');
         $chart = new Stats();
         $chart->labels($users->keys());
-        $chart->dataset('My dataset 1', 'line', $users->values());
+        $chart->dataset('My dataset 2', 'line', $users->values());
 
         return view('cms.statistics.index', compact('chart'));
     }
