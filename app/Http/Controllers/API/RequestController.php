@@ -267,7 +267,7 @@ class RequestController extends Controller
     {
         $request = RequestService::query()->find($id);
         try {
-            $client = User::findOrFail($request->client_ids[0]);
+            $client = $request->clients()->first();
         }
         catch (ModelNotFoundException $e){
 
