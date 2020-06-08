@@ -23,7 +23,7 @@ class StatisticsController extends Controller
             array_push($chart->labels, $user->name);
             array_push($arr, $users->created_at);
         }
-        $chart->datasets = $arr;
+        $chart->dataset( $arr);
 //        $chart->color("rgb(255, 99, 132)");
 //        $chart->backgroundcolor("rgb(255, 99, 132)");
 
