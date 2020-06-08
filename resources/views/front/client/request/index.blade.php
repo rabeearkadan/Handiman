@@ -232,7 +232,7 @@
         function cancelRequest(id){
             var result = confirm("Want to cancel this request?");
             if (result) {
-                document.getElementById(''+id).submit();
+                $('#'+id).submit();
             }
         }
     </script>
