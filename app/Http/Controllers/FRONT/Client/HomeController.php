@@ -54,24 +54,9 @@ class HomeController extends Controller
                 break;
             }
         }
-        $employees = User::query()
-            ->where('role', 'user_employee')
-            ->orWhere('role', 'employee')
+
+        $employees = $service->users()
             ->where('isApproved', true)
-            ->where('service_ids', 'like', "%\"{$id}\"%")
-            ->where('location', 'near', [
-                '$geometry' => [
-                    'type' => 'Point',
-                    'coordinates' => [
-                        (float)$lng,
-                        (float)$lat,
-                    ],
-                    'distanceField' => "dist.calculated",
-                    '$maxDistance' => 50,
-                ],
-            ])->orderBy('dist.calculated')
-            ->get();
-        $employeez = $service->users()
             ->where('location', 'near', [
                 '$geometry' => [
                     'type' => 'Point',
@@ -135,7 +120,6 @@ class HomeController extends Controller
             return $item;
         });
         $keyword = $request->keyword;
-        dd($service,$id,$employees,$employeez);
         return view('front.client.service-users', compact(['service', 'user', 'keyword', 'client_address', 'availableTimes', 'employees']));
     }
 
