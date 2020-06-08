@@ -9,7 +9,7 @@
         // setInterval(function(){
         //     $('#preloader-wrapper').hide();
         // },5000);
-        $(window).load(function () {
+        $( window ).on("load",function () {
             $('#preloader-wrapper').hide();
         });
         // $(window).ready(hideLoader);
