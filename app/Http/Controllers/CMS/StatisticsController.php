@@ -21,8 +21,10 @@ class StatisticsController extends Controller
         $arr = [];
         $arr2 = [];
         foreach ($users as $user) {
-            array_push($arr2, $user->name);
-            array_push($arr, $user->created_at);
+            if ($user->visits != null) {
+                array_push($arr2, $user->name);
+                array_push($arr, $user->visits);
+            }
         }
         $chart->labels($arr2);
         $chart->dataset('My Dataset', 'line', $arr);
