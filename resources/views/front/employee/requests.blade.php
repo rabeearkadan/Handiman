@@ -10,7 +10,7 @@
                 <li class="tab col s6"><a  href="#normalrequests">Requests</a></li>
             </ul>
         </div>
-    </div>
+
 
 <div id="urgents">
     <h4 style="color: darkred">Urgent Requests:</h4>
@@ -164,6 +164,7 @@
             </div>
         @endif
     </div>
+    </div
 @endsection
 @push('js')
 {{--    <script>--}}
