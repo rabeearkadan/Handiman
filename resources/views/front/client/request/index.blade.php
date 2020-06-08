@@ -54,7 +54,7 @@
                                         <a class="btn-floating btn-large red" style="float:right;margin-left: 30px" onclick="cancelRequest('{{$request->id}}')">
                                             <i class="large material-icons">cancel</i>
                                         </a>
-                                    <form method="post" id="{{$request->id}}" action="{{route('client.request.destroy',$request->id)}}" style="display: none">
+                                    <form method="post" id="cancel{{$request->id}}" action="{{route('client.request.destroy',$request->id)}}" style="display: none">
                                         @csrf
                                         @method('delete')
                                     </form>
@@ -232,7 +232,7 @@
         function cancelRequest(id){
             var result = confirm("Want to cancel this request?");
             if (result) {
-                $('#'+id).submit();
+                $("#cancel"+id).submit();
             }
         }
     </script>
