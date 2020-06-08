@@ -58,12 +58,14 @@
                                                             <!-- /.post-meta-date -->
                                                             <div class="post-meta-categories categories">
                                                                 <i class="fa fa-tags"></i>
+                                                                <div class="categories">
                                                                 @foreach($post->tags as $tag)
                                                                     @if($loop->index !=0)
                                                                         ,
                                                                     @endif
                                                                     <a > {{$tag->name}} </a>
                                                                 @endforeach
+                                                                </div>
                                                             </div><!-- /.post-meta-categories -->
                                                             {{--                                            <div class="post-meta-comments">--}}
                                                             {{--                                                <i class="fa fa-comments"></i>--}}
