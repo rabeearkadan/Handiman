@@ -93,6 +93,16 @@ class HomeController extends Controller
         if (!empty($availableTimes)) {
             $index = 0;
             foreach ($employees as $employee) {
+                $serviceExists = false;
+                foreach ($employee->serices as $service){
+                    if($service->id == $id ){
+                        $serviceExists=true;
+                    }
+                }
+                if($serviceExists==false){
+                    unset($employees[$index]);
+                    break;
+                }
                 foreach ($availableTimes as $available) {
                     $day = date('w', strtotime($available['date']));
                     $day--;
