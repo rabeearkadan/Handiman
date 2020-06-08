@@ -44,7 +44,7 @@ class RequestController extends Controller
     }
 
     public function accept($id){
-        $request = RequestService::findOrFail($id);
+        $request = RequestService::find($id);
         dd($request->clients()->first());
         if($req->status == "rejected"){
             $request->delete();
