@@ -22,14 +22,16 @@
         var data = {
             2020: {
                 04: {
-                    03: [
+                    02: [
                         {
                             startTime: "00:00",
                             endTime: "1-:00",
                             text: "job1"
                         }
                     ]
-                },
+                }
+            },
+            2020: {
                 06: {
                     09: [
                         {
@@ -39,7 +41,7 @@
                         }
                     ]
                 }
-            }
+            },
         };
         var organizer = new Organizer("organizerContainer", calendar, data);
     </script>
