@@ -229,6 +229,8 @@ class ProfileController extends Controller
             $service = Service::find($service);
             $user->services()->attach($service);
         }
+        $user->price = $request->price;
+        $user->save();
         return redirect(route('employee.profile'));
     }
 }
