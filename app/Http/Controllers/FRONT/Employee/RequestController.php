@@ -56,7 +56,7 @@ class RequestController extends Controller
     }
 
     public function reject($id){
-
+dd();
     }
 
     /**
