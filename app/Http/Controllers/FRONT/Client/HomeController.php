@@ -32,7 +32,7 @@ class HomeController extends Controller
             return view('front.client.services', compact('services'));
         } else {
             $service = Service::query()->find($id);
-            $employees = $service->users;
+            $employees = $service->users->where('isApproved', true);
             $employees = $employees->map(function ($item) use ($service) {
                 $item->rating = $this->rating($item,$service->id);
                 return $item;
