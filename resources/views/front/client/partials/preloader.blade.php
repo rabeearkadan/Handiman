@@ -6,10 +6,10 @@
         function hideLoader() {
             $('#preloader-wrapper').hide();
         }
-        setInterval(function(){
-            $('#preloader-wrapper').hide();
-        },5000);
-
+        $(window).load(function() {
+            // Animate loader off screen
+            $('#preloader-wrapper').fadeOut("slow");
+        });
         // $(window).ready(hideLoader);
         // setTimeout(hideLoader, 10 * 1000);
     </script>

@@ -40,7 +40,7 @@
                                 </div><!-- /.col-* -->
                                 @endforeach
                             </div>
-                            @if(count($feedbacks) ==0)
+                            @if(count($feedbacks) == 0)
                                 <div class="container" style="background-size:contain;background-repeat: no-repeat;background-position: center;height:400px;background-image:url('/public/images/employee/reviews-empty.gif');">
                                 </div>
                                 @endif
