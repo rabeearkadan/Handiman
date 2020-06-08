@@ -20,7 +20,7 @@ class StatisticsController extends Controller
         $chart = new Stats();
         foreach ($users as $user) {
             array_push($chart->labels, $user->name);
-            array_push($chart->datasets, $user->visits);
+            array_push($chart->datasets, $user->created_at);
         }
 //        $chart->color("rgb(255, 99, 132)");
 //        $chart->backgroundcolor("rgb(255, 99, 132)");
