@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\RequestService;
 use App\Models\Service;
 use App\User;
+use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -44,7 +45,13 @@ class RequestController extends Controller
     }
 
     public function accept($id){
-        $request = RequestService::find($id);
+        try{
+            $request = RequestService::findOrFail($id);
+        }
+        catch(ModelNotFoundException $e)
+        {
+            dd('laterzx');
+        }
         $request->status = "approved";
         $request->save();
         return redirect(route('employee.requests'));
@@ -52,7 +59,13 @@ class RequestController extends Controller
 
     public function reject($id){
         $user = Auth::user();
-        $request = RequestService::find($id);
+        try{
+            $request = RequestService::findOrFail($id);
+        }
+        catch(ModelNotFoundException $e)
+        {
+            dd('laterzx');
+        }
         $request->employees()->detach($user);
         $client = $request->clients()->first();
         $request->clients()->detach($client);
