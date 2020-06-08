@@ -54,6 +54,10 @@
                                         <a class="btn-floating btn-large red" style="float:right;margin-left: 30px">
                                             <i class="large material-icons">cancel</i>
                                         </a>
+                                    <form method="post" id="{{$request->id}}" action="{{route('client.request.destroy',$request->id)}}" style="display: none">
+                                        @csrf
+                                        @method('delete')
+                                    </form>
                                         <a class="btn-floating btn-large blue" style="float:right">
                                             <i class="large material-icons">chat</i>
                                         </a>

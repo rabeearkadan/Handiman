@@ -275,6 +275,15 @@ class RequestController extends Controller
     public function destroy($id)
     {
         //
+        $user = Auth::user();
+        $request = RequestService::find($id);
+        $request->clients()->detach($user->id);
+        if($request->employees()->count() > 0) {
+            $employee = User::find($request->employee_ids[0]);
+            $request->employees->detach($employee);
+            }
+        $request->delete();
+        return redirect(route('client.request.index'));
     }
 
     protected function validator(array $data)
