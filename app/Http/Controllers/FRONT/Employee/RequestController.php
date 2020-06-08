@@ -42,8 +42,16 @@ class RequestController extends Controller
         return view('front.employee.requests', compact(['requests', 'urgentRequests']));
     }
 
-    public function accept(){
-
+    public function accept($id){
+        $request = RequestService::findorFail($id);
+        dd($request->clients()->first());
+        if($req->status == "rejected"){
+            $request->delete();
+        }
+        elseif ($req->status == "accepted"){
+            $request->status = $req->input('status');
+            $request->save();
+        }
     }
 
     public function reject(){

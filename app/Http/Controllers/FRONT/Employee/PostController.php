@@ -114,6 +114,7 @@ class PostController extends Controller
         {
             dd('later');
         }
+
         $post->delete();
         return redirect(route('employee.post.index'));
     }

@@ -11,6 +11,7 @@ use App\Models\Service;
 use App\User;
 use Barryvdh\DomPDF\Facade as PDF;
 use Carbon\Carbon;
+use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Date;
@@ -265,7 +266,12 @@ class RequestController extends Controller
     function replyToRequest($id, Request $req)
     {
         $request = RequestService::query()->find($id);
-        $client = User::query()->find($request->client_ids[0]);
+        try {
+            $client = User::findOrFail($request->client_ids[0]);
+        }
+        catch (ModelNotFoundException $e){
+
+        }
         if($req->status == "rejected"){
             $request->delete();
         }
