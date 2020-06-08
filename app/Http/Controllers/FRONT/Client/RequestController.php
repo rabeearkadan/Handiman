@@ -75,6 +75,7 @@ class RequestController extends Controller
         $startDate = new DateTime('now');
         $Days = array();
         $date = $startDate;
+        $bool = false;
         $availableDaysString = "";
         $timepicker = array();
         for ($x = 0; $x < 24; $x++) {
@@ -85,7 +86,9 @@ class RequestController extends Controller
             }
             for ($hour = 0; $hour < 24; $hour++) {
                 $Days[$date->format('m/d/Y')][$hour] = $employee->timeline[$day][$hour];
-
+                if ($Days[$date->format('m/d/Y')][$hour] == true) {
+                    $bool = true;
+                }
             }
             foreach ($employee->employeeRequests as $employeeRequest) {
                 if ($employeeRequest->isdone == false && $employeeRequest->date->format('m/d/Y') == $date->format('m/d/Y')) {
@@ -94,12 +97,9 @@ class RequestController extends Controller
                     }
                 }
             }
-            $bool=false;
             for ($hour = 0; $hour < 24; $hour++) {
                 if ($Days[$date->format('m/d/Y')][$hour] == true) {
                     $bool = true;
-                    echo $hour;
-                    echo $date->format('m/d/Y');
                 }
             }
             if ($bool == false) {
@@ -130,9 +130,9 @@ class RequestController extends Controller
                     }
                 }
             }
+            $bool = false;
             $date->modify('+1 day');
         }
-        dd($availableDaysString,$timepicker);
         return view('front.client.request.create', compact(['user', 'employee', 'service', 'availableDaysString', 'timepicker']));
     }
 
