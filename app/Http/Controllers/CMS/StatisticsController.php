@@ -18,10 +18,12 @@ class StatisticsController extends Controller
     {
         $users = User::query()->where('role', 'user_employee' || 'employee');
         $chart = new Stats();
+        $arr = [];
         foreach ($users as $user) {
             array_push($chart->labels, $user->name);
-            $chart->dataset =$user->created_at;
+            array_push($arr, $users->created_at);
         }
+        $chart->datasets = $arr;
 //        $chart->color("rgb(255, 99, 132)");
 //        $chart->backgroundcolor("rgb(255, 99, 132)");
 
