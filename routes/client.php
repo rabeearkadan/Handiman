@@ -18,7 +18,7 @@ Route::get('/employee/{employee_id}/see-all-reviews/services/{service_id?}','Pro
 
 //Requests
 Route::get('/requests','RequestController@index')->name('client.request.index');
-Route::get('/requests/{id}','RequestControlller@show')->name('client.request.show');
+Route::get('/requests/{id}','RequestController@show')->name('client.request.show');
 Route::get('/request/create','RequestController@create')->name('client.request.create');
 Route::post('/request/create','RequestController@store')->name('client.request.store');
 Route::get('/requests/{id}/edit','RequestController@edit')->name('client.request.edit');
