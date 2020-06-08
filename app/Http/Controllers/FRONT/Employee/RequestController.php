@@ -55,7 +55,7 @@ class RequestController extends Controller
         }
     }
 
-    public function reject(){
+    public function reject($id){
 
     }
 
