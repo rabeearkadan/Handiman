@@ -266,18 +266,26 @@ class RequestController extends Controller
     function replyToRequest($id, Request $req)
     {
         $request = RequestService::query()->find($id);
+        $handyman = User::query()->find(Auth::id());
         try {
             $client = $request->clients()->first();
-        }
-        catch (ModelNotFoundException $e){
+        } catch (ModelNotFoundException $e) {
 
         }
-        if($req->status == "rejected"){
-            $request->delete();
-        }
-        elseif ($req->status == "accepted"){
+        if ($req->status == "rejected") {
+            if ($request->isurgent == true) {
+                $request->employees()->detach($handyman);
+            } else {
+                $request->delete();
+            }
+        } elseif ($req->status == "accepted") {
+
             $request->status = $req->input('status');
             $request->save();
+            if ($request->isurgent == true) {
+                $request->employees()->detach();
+                $request->employees()->attach($handyman);
+            }
         }
         $this->notification($client->client_device_token, Auth::user()->name, 'Your request has been' . $request->status, 'request');
         return response()->json(['status' => 'success']);
@@ -346,7 +354,7 @@ class RequestController extends Controller
             $request->receipt_images = $images;
         }
 
-        if ($req->has('result')){
+        if ($req->has('result')) {
             $imagesParam = $req->input('result');
             $images = [];
             foreach ($imagesParam as $image) {
