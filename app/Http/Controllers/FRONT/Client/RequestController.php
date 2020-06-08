@@ -203,7 +203,7 @@ class RequestController extends Controller
 
             }
             $requestHandyman->save();
-            $requestHandyman->clients()->attach(Auth::id());
+            $requestHandyman->clients()->attach($user);
 
             return redirect(route('client.request.index'));
         } else {
@@ -221,9 +221,9 @@ class RequestController extends Controller
             $this->notification($handyman->device_token, Auth::user()->name, 'You received a new request', 'request');
 
             $requestHandyman->save();
-            $requestHandyman->clients()->attach(Auth::id());
+            $requestHandyman->clients()->attach($user);
             $handyman = User::query()->find($req->input('employee_id'));
-            $requestHandyman->employees()->attach($handyman->id);
+            $requestHandyman->employees()->attach($handyman);
 
         }
         return redirect(route('client.request.index'));
