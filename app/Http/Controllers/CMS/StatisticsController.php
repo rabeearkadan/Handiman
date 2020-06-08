@@ -11,12 +11,13 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 use Redirect, Response;
 use Carbon\Carbon;
+use function GuzzleHttp\Promise\all;
 
 class StatisticsController extends Controller
 {
     public function index()
     {
-        $users = User::query()->where('role', 'user_employee' || 'employee');
+        $users = User::all();
         $chart = new Stats();
         $arr = [];
         $arr2 = [];
