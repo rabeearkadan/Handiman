@@ -265,10 +265,14 @@ class RequestController extends Controller
     function replyToRequest($id, Request $req)
     {
         $request = RequestService::query()->find($id);
-        $request->status = $req->input('status');
-        $request->isdone = false;
         $client = User::query()->find($request->client_ids[0]);
-        $request->save();
+        if($req->status == "rejected"){
+            $request->delete();
+        }
+        elseif ($req->status == "accepted"){
+            $request->status = $req->input('status');
+            $request->save();
+        }
         $this->notification($client->client_device_token, Auth::user()->name, 'Your request has been' . $request->status, 'request');
         return response()->json(['status' => 'success']);
     }

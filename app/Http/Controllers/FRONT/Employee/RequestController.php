@@ -42,6 +42,14 @@ class RequestController extends Controller
         return view('front.employee.requests', compact(['requests', 'urgentRequests']));
     }
 
+    public function accept(){
+
+    }
+
+    public function reject(){
+
+    }
+
     /**
      * Show the form for creating a new resource.
      *

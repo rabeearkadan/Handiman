@@ -6,6 +6,9 @@ Route::get("/home", 'HomeController@index')->name('employee.home');
 
 //Requests
 Route::get("/requests", 'RequestController@index')->name('employee.requests');
+Route::get('/requests/{$id}/accept','RequestController@accept')->name('employee.request.accept');
+Route::get('/requests/{$id}/reject','RequestController@reject')->name('employee.request.reject');
+
 //Calendar
 Route::get("/calendar", 'CalendarController@index')->name('employee.calendar');
 //Reviews

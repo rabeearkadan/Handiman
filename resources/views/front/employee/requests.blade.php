@@ -78,8 +78,8 @@
                                 </ul>
                             </div>
                         </div>
-                        <a class="waves-effect waves-light btn-small" style="float:right"><i class="material-icons left">reject</i>Accept</a>
-                        <a class="waves-effect waves-light btn-small" style="float:right"><i class="material-icons left">accept</i>Reject</a>
+                        <a  href="{{route('employee.request.reject',$request->id)}}" class="waves-effect waves-light btn-small red" style="float:right;margin:20px"><i class="material-icons left">cancel</i>Reject</a>
+                        <a href="{{route('employee.request.accept'),$request->id}}" class="waves-effect waves-light btn-small" style="float:right;margin:20px"><i class="material-icons left">check</i>Accept</a>
                     </div>
                 </div>
             </div>
@@ -156,8 +156,8 @@
                     </ul>
                 </div>
             </div>
-            <a class="waves-effect waves-light btn-small" style="float:right"><i class="material-icons left">reject</i>Accept</a>
-            <a class="waves-effect waves-light btn-small" style="float:right"><i class="material-icons left">accept</i>Reject</a>
+            <a href="{{route('employee.request.reject')}}" class="waves-effect waves-light btn-small red" style="float:right;margin:20px"><i class="material-icons left">cancel</i>Reject</a>
+            <a href="{{route('employee.request.accept')}}" class="waves-effect waves-light btn-small" style="float:right;margin:20px"><i class="material-icons left">check</i>Accept</a>
         </div>
     </div>
     </div>
