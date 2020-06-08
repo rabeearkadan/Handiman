@@ -10,10 +10,9 @@
         // $(window).load(function () {
         //     $('#preloader-wrapper').hide();
         // });
-        $( window ).on( "load",function () {
+        setInterval(function(){
             $('#preloader-wrapper').hide();
-        });
-
+        },3000);
 
         // $(window).ready(hideLoader);
         // setTimeout(hideLoader, 10 * 1000);

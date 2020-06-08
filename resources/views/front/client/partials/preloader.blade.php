@@ -11,11 +11,13 @@
         // },5000);
 
         setInterval(function(){
-            $( window ).on("load",function () {
-                $('#preloader-wrapper').hide();
-            });
+            $('#preloader-wrapper').hide();
         },3000);
 
+
+        // $( window ).on("load",function () {
+        //     $('#preloader-wrapper').hide();
+        // });
         // $(window).ready(hideLoader);
         // setTimeout(hideLoader, 10 * 1000);
     </script>
