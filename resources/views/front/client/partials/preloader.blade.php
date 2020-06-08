@@ -11,7 +11,7 @@
         // },5000);
 
         setInterval(function(){
-            $('#preloader-wrapper').hide();
+            $('#preloader-wrapper').fadeOut("slow");
         },3000);
 
 
