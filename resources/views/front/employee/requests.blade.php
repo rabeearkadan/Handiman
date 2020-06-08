@@ -34,13 +34,14 @@
                             <ul class="collection" style="overflow:scroll">
                                 <li class="collection-item avatar">
                                     <img src="{{config('image.path').$urgentRequest->client->image}}" alt="" class="circle">
-                                    <span class="title">{{$urgentRequest->client->name}}</span>
-                                    <p> <i class="material-icons">call</i> {{$urgentRequest->client->phone}}
-                                        <br> Second Line
-                                    </p>
+                                    <span class="title">{{$urgentRequest->client->name}}
                                     <a class="btn-floating btn-large red" style="float: right">
                                         <i class="large material-icons">chat</i>
                                     </a>
+                                    </span>
+                                    <p> <i class="material-icons">call</i> {{$urgentRequest->client->phone}}
+                                        <br> Second Line
+                                    </p>
                                 </li>
                                 <li class="collection-item avatar">
                                     <i class="material-icons circle">work</i>
@@ -112,13 +113,14 @@
                 <ul class="collection" style="overflow:scroll">
                     <li class="collection-item avatar">
                             <img src="{{config('image.path').$request->client->image}}" alt="" class="circle">
-                            <span class="title">{{$request->client->name}}</span>
+                            <span class="title">{{$request->client->name}}
+                            <a class="btn-floating btn-large red" style="float: right">
+                            <i class="large material-icons">chat</i>
+                        </a>
+                            </span>
                             <p> <i class="material-icons">call</i> {{$request->client->phone}}
                                 <br> Second Line
                             </p>
-                        <a class="btn-floating btn-large red" style="float: right">
-                            <i class="large material-icons">chat</i>
-                        </a>
                     </li>
                     <li class="collection-item avatar">
                         <i class="material-icons circle">work</i>
