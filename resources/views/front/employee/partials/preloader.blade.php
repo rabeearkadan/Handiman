@@ -7,9 +7,8 @@
             $('#preloader-wrapper').hide();
         }
 
-        $(window).load(function() {
-            // Animate loader off screen
-            $('#preloader-wrapper').fadeOut("slow");
+        $(window).load(function () {
+            $('#preloader-wrapper').hide();
         });
         // $(window).ready(hideLoader);
         // setTimeout(hideLoader, 10 * 1000);

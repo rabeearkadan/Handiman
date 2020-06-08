@@ -6,16 +6,12 @@
         function hideLoader() {
             $('#preloader-wrapper').hide();
         }
-        $(window).load(function() {
-            // Animate loader off screen
-            $('#preloader-wrapper').fadeOut();
+        // setInterval(function(){
+        //     $('#preloader-wrapper').hide();
+        // },5000);
+        $(window).load(function () {
+            $('#preloader-wrapper').hide();
         });
-
-        document.addEventListener('DOMContentLoaded', function() {
-            $('#preloader-wrapper').fadeOut();
-        });
-
-
         // $(window).ready(hideLoader);
         // setTimeout(hideLoader, 10 * 1000);
     </script>
