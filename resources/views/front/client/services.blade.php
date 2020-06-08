@@ -13,7 +13,7 @@
     <div class="container mt-2" id="services">
         <div class="row">
             @foreach($services as $service)
-                @if ( $loop->index % 4 == 0 )
+                @if ( $loop->index % 4 == 0 && $loop->index !=0)
                   </div>
                   <div class="row">
                 @endif

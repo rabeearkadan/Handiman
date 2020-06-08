@@ -18,30 +18,28 @@
                                 <p>Read what your clients say about your services and products.</p>
                             </div><!-- /.page-header -->
                             <div class="row">
+                                @foreach($feedbacks as $feedback)
                                 <div class="col-sm-6">
                                     <div class="testimonial">
                                         <div class="testimonial-image">
-                                            <img src="{{config('image.path')}}" alt="">
+                                            <img src="{{config('image.path')}}.{{$feedback['client']['image']}}" alt="client">
                                         </div><!-- /.testimonial-image -->
                                         <div class="testimonial-inner">
                                             <div class="testimonial-title">
                                                 <h2> Title </h2>
                                                 <div class="testimonial-rating">
+                                                    @for($index=0;$index<$feedback['rating'];$index++)
                                                     <i class="fa fa-star"></i>
-                                                    <i class="fa fa-star"></i>
-                                                    <i class="fa fa-star"></i>
-                                                    <i class="fa fa-star"></i>
-                                                    <i class="fa fa-star"></i>
+                                                    @endfor
                                                 </div><!-- /.testimonial-rating -->
                                             </div><!-- /.testimonial-title -->
                                             Content
-                                            <div class="testimonial-sign">- Name</div><!-- /.testimonial-sign -->
+                                            <div class="testimonial-sign">- {{$feedback['client']['name']}}</div><!-- /.testimonial-sign -->
                                         </div><!-- /.testimonial-inner -->
                                     </div><!-- /.testimonial -->
                                 </div><!-- /.col-* -->
-                                <div class="col-sm-6">
-                                </div><!-- /.col-* -->
-                            </div><!-- row -->
+                                @endforeach
+                            </div>
                         </div><!-- mt-80 -->
                     </div><!-- /.content -->
                 </div><!-- /.container -->
