@@ -12,7 +12,7 @@
         </div>
     </div>
 
-<div id="urgents">
+<div id="urgent">
     <h4 style="color: darkred">Urgent Requests:</h4>
     @foreach($urgentRequests as $urgentRequest)
         <div class="row">
