@@ -44,7 +44,8 @@ class RequestController extends Controller
         $requestHandyman->description = $req->input('description');
         $requestHandyman->status = 'pending';
         $requestHandyman->isdone = false;
-        $requestHandyman->rejected_employees= [];
+        $requestHandyman->isurgent = false;
+        $requestHandyman->rejected_employees = [];
         $requestHandyman->timezone = $req->timezone;
         $requestHandyman->service_id = $req->service_id;
         $address = null;
@@ -80,6 +81,7 @@ class RequestController extends Controller
                 }
                 $requestHandyman->from = $nowHour;
                 $requestHandyman->to = $nowNextHour;
+                $requestHandyman->isurgent = true;
                 $requestHandyman->date = Carbon::createFromFormat('Y-m-d', date("Y-m-d"), $requestHandyman->timezone);
 
             } else {
@@ -176,14 +178,10 @@ class RequestController extends Controller
 
             if ($charge != null) {
                 $this->notification($handyman->employee_device_token, 'Genie', 'check receipt', 'request');
-
                 $handyman->balance = $handyman->balance + $total;
                 $request->paid = true;
                 $file_name = Str::random(25);
-
-
                 $request->report = 'reports/pdf/' . $file_name . '.pdf';
-
                 $request->save();
                 $handyman->save();
                 $this->stringToPDF($file_name, $request);
@@ -337,6 +335,20 @@ class RequestController extends Controller
             }
             $request->receipt_images = $images;
         }
+
+        if ($req->has('result')){
+            $imagesParam = $req->input('result');
+            $images = [];
+            foreach ($imagesParam as $image) {
+                try {
+                    $images[] = $this->uploadAny($image, 'receipt', 'png');
+                } catch (\Exception $e) {
+                    return response()->json(['status' => 'error', 'message' => "error uploading image"]);
+                }
+            }
+            $request->result = $images;
+        }
+
         $request->save();
 
         return response()->json(['status' => 'success']);

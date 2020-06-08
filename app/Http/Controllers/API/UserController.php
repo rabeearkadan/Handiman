@@ -177,18 +177,15 @@ class UserController extends Controller
             $user->criminal_record = $this->uploadAny($params['criminal_record'], 'criminal_records', 'pdf');
 
         if (Arr::has($params, 'timeline')) {
-            $test = [];
-
-
-            $test[0] = json_decode($params['timeline'][0]);
-            $test[1] = json_decode($params['timeline'][1]);
-            $test[2] = json_decode($params['timeline'][2]);
-            $test[3] = json_decode($params['timeline'][3]);
-            $test[4] = json_decode($params['timeline'][4]);
-            $test[5] = json_decode($params['timeline'][5]);
-            $test[6] = json_decode($params['timeline'][6]);
-            $user->test_timeline = $test;
-            $user->timeline = $test;
+            $timeline = [];
+            $timeline[0] = json_decode($params['timeline'][0]);
+            $timeline[1] = json_decode($params['timeline'][1]);
+            $timeline[2] = json_decode($params['timeline'][2]);
+            $timeline[3] = json_decode($params['timeline'][3]);
+            $timeline[4] = json_decode($params['timeline'][4]);
+            $timeline[5] = json_decode($params['timeline'][5]);
+            $timeline[6] = json_decode($params['timeline'][6]);
+            $user->timeline = $timeline;
 
         }
 
@@ -201,7 +198,8 @@ class UserController extends Controller
             $this->checkTimeline($user) &&
             $user->certificate != null &&
             $user->criminal_record != null &&
-            $user->cv != null
+            $user->cv != null &&
+            $user->price != null
         ) {
             $user->isApproved = true;
         } else {
