@@ -12,5 +12,6 @@ class HomeController extends Controller
 
     public function users(){
         return response()->json(['status'=>"success",'users'=>User::all()]);
+        
     }
 }
