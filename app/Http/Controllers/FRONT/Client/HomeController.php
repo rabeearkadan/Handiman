@@ -45,6 +45,7 @@ class HomeController extends Controller
     {
         $user = Auth::user();
         $service = Service::query()->find($id);
+        dd($service,$id);
         $client_address = null;
         foreach ($user->client_addresses as $address) {
             if ($address['_id'] == $request->address) {
