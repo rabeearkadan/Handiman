@@ -75,7 +75,6 @@ class RequestController extends Controller
         $startDate = new DateTime('now');
         $Days = array();
         $date = $startDate;
-        $bool = false;
         $availableDaysString = "";
         $timepicker = array();
         for ($x = 0; $x < 24; $x++) {
@@ -99,6 +98,8 @@ class RequestController extends Controller
             for ($hour = 0; $hour < 24; $hour++) {
                 if ($Days[$date->format('m/d/Y')][$hour] == true) {
                     $bool = true;
+                    echo $hour;
+                    echo $date->format('m/d/Y');
                 }
             }
             if ($bool == false) {
