@@ -45,18 +45,19 @@ class RequestController extends Controller
 
     public function accept($id){
         $request = RequestService::find($id);
-        dd($request->clients()->first());
-        if($req->status == "rejected"){
-            $request->delete();
-        }
-        elseif ($req->status == "accepted"){
-            $request->status = $req->input('status');
-            $request->save();
-        }
+        $request->status = "approved";
+        $request->save();
+        return redirect(route('employee.requests'));
     }
 
     public function reject($id){
-dd();
+        $user = Auth::user();
+        $request = RequestService::find($id);
+        $request->employees()->detach($user);
+        $client = $request->clients()->first();
+        $request->clients()->detach($client);
+        $request->save();
+        return redirect(route('employee.requests'));
     }
 
     /**
