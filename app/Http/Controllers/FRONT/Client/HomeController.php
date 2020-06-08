@@ -58,6 +58,7 @@ class HomeController extends Controller
             ->where('role', 'user_employee')
             ->orWhere('role', 'employee')
             ->where('isApproved', true)
+            ->where('jobs', 'like', "%\"{$id}\"%")
             ->where('location', 'near', [
                 '$geometry' => [
                     'type' => 'Point',
@@ -93,16 +94,7 @@ class HomeController extends Controller
         if (!empty($availableTimes)) {
             $index = 0;
             foreach ($employees as $employee) {
-                $serviceExists = false;
-                foreach ($employee->services as $employee_service){
-                    if($employee_service->id == $id ){
-                        $serviceExists=true;
-                    }
-                }
-                if($serviceExists==false){
-                    unset($employees[$index]);
-                    continue;
-                }
+
                 foreach ($availableTimes as $available) {
                     $day = date('w', strtotime($available['date']));
                     $day--;
