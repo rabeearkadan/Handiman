@@ -108,11 +108,11 @@
                 <label>Gender</label>
                 <p>
                     <label>
-                        <input class="with-gap" name="gender" type="radio" @if($user->gender=='male') checked @endif />
+                        <input class="with-gap" name="gender" type="radio" value="male" @if($user->gender=='male') checked @endif />
                         <span>male</span>
                     </label>
                     <label>
-                        <input class="with-gap" name="gender" type="radio" @if($user->gender=='female') checked @endif />
+                        <input class="with-gap" name="gender" type="radio" value="female" @if($user->gender=='female') checked @endif />
                         <span>female</span>
                     </label>
                 </p>
