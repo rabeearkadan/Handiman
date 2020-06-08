@@ -8,11 +8,11 @@
         }
         $(window).load(function() {
             // Animate loader off screen
-            $('#preloader-wrapper').fadeOut("slow");
+            $('#preloader-wrapper').fadeOut();
         });
 
         document.addEventListener('DOMContentLoaded', function() {
-            $('#preloader-wrapper').fadeOut("slow");
+            $('#preloader-wrapper').fadeOut();
         });
 
 
