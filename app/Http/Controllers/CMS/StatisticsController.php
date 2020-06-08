@@ -16,32 +16,13 @@ class StatisticsController extends Controller
 {
     public function index()
     {
-        $users = User::query()->where('role', 'user_employee' || 'employee')
-            ->pluck('visits', 'created_at')->where('_id', '5e7d3968e8deab6cd0066972');
+        $users = User::query()->where('role', 'user_employee' || 'employee');
         $chart = new Stats();
         $chart->labels($users->keys());
-        $chart->dataset('My dataset 2', 'line', $users->values());
+        $chart->dataset('My dataset 2', 'line', [$users, $users->created_at]);
 
         return view('cms.statistics.index', compact('chart'));
     }
 
-    public function pieChart()
-    {
-        $record = User::select(DB::raw("COUNT(*) as count"), DB::raw("DAYNAME(created_at) as day_name"), DB::raw("DAY(created_at) as day"))
-            ->where('created_at', '>', Carbon::today()->subDay(6))
-            ->groupBy('day_name', 'day')
-            ->orderBy('day')
-            ->get();
 
-        $data = [];
-
-        foreach ($record as $row) {
-            $data['label'][] = $row->day_name;
-            $data['data'][] = (int)$row->count;
-        }
-
-        $data['chart_data'] = json_encode($data);
-        return view('cms.statistics.index', $data);
-
-    }
 }
