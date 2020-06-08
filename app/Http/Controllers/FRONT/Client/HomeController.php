@@ -94,8 +94,8 @@ class HomeController extends Controller
             $index = 0;
             foreach ($employees as $employee) {
                 $serviceExists = false;
-                foreach ($employee->services as $service){
-                    if($service->id == $id ){
+                foreach ($employee->services as $employee_service){
+                    if($employee_service->id == $id ){
                         $serviceExists=true;
                     }
                 }
