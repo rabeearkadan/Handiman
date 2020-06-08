@@ -10,6 +10,12 @@
             // Animate loader off screen
             $('#preloader-wrapper').fadeOut("slow");
         });
+
+        document.addEventListener('DOMContentLoaded', function() {
+            $('#preloader-wrapper').fadeOut("slow");
+        });
+
+
         // $(window).ready(hideLoader);
         // setTimeout(hideLoader, 10 * 1000);
     </script>
