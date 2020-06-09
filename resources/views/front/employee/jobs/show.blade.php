@@ -1,7 +1,15 @@
 @extends('layouts.employee.app')
 @push('css')
+    <link href="{{asset('lib/font-awesome/css/font-awesome.css')}}" rel="stylesheet">
+    <link href="{{asset('css/employee/bootstrap.css')}}" rel="stylesheet">
+    <link href="{{asset('css/employee/buttons.css')}}" rel="stylesheet">
+    <link href="{{asset('css/employee/common-classes.css')}}" rel="stylesheet">
+    <link href="{{asset('css/employee/forms.css')}}" rel="stylesheet">
+    <link href="{{asset('css/employee/listing-detail.css')}}" rel="stylesheet">
     <link href="{{asset('css/employee/color-box.css')}}" rel="stylesheet">
     <link href="{{asset('css/employee/file-input.min.css')}}" rel="stylesheet">
+    <link href="{{asset('css/employee/bootstrap-select.min.css')}}" rel="stylesheet">
+    <link href="{{asset('css/employee/submit-button-post.css')}}" rel="stylesheet">
 @endpush
 @section('content')
     <ul class="collapsible popout">
@@ -67,9 +75,12 @@
         </a>
 
     </div>
-    </body>
 @endsection
 @push('js')
+    <script src="/public/js/employee/collapse.js" type="text/javascript"></script>
+    <script src="/public/js/employee/dropdown.js" type="text/javascript"></script>
+    <script src="/public/js/employee/jquery.colorbox-min.js" type="text/javascript"></script>
+    <script src="/public/js/employee/bootstrap-select.min.js" type="text/javascript"></script>
     <script src="/public/js/employee/fileinput.min.js" type="text/javascript"></script>
     <script src="/public/js/employee/superlist.js" type="text/javascript"></script>
     <script src="/public/js/materialize.js" type="text/javascript"></script>
@@ -84,8 +95,9 @@
             var elems = document.querySelectorAll('.fixed-action-btn');
             var instances = M.FloatingActionButton.init(elems);
         });
-        $(document).ready(function(){
-            $('.materialboxed').materialbox();
+        document.addEventListener('DOMContentLoaded', function() {
+            var elems = document.querySelectorAll('.materialboxed');
+            var instances = M.Materialbox.init(elems);
         });
 
     </script>
