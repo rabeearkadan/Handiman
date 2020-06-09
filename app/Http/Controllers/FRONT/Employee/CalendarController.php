@@ -31,6 +31,7 @@ class CalendarController extends Controller
                 'link' => "link"
             ]);
             $jobs = array_merge_recursive($jobs, ${"jobsArray" . $counter});
+            dd($jobs);
             $counter++;
         }
         return view('front.employee.calendar',compact('jobs'));
