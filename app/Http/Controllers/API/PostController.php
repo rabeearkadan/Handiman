@@ -54,6 +54,7 @@ class PostController extends Controller
         $post = Post::query()->find($id);
         $post->users()->detach($user);
         $user->posts()->detach($post);
+        $post->tags()->detach();
         try {
             Post::query()->find($id)->delete();
         } catch (\Exception $e) {
