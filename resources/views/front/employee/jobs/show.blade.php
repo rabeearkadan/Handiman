@@ -92,8 +92,8 @@
                         </td>
                     </tr>
                     </tbody>
-                    <a href="#" id="addButton0" onclick="addItem()">
-                        <i class="material-icons prefix">add</i>
+                    <a href="#" id="addButton" onclick="addItem()">
+                        <i class="material-icons">add</i>
                     </a>
                 </table>
                 <span>images.</span>
