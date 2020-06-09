@@ -40,7 +40,7 @@ class PostController extends Controller
             foreach ($item->service_ids as $service) {
                 array_push($services, (Service::query()->find($service)->ServiceArray()));
             }
-            $item->services=$services;
+            $item->services = $services;
             return $item;
         });
 
