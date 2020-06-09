@@ -14,9 +14,21 @@ class CalendarController extends Controller
      */
 
     public function index (Request $request){
-//        $user = Auth::user();
-//        $jobs = $user->employeeRequests()->where('isApproved',true);
-//        $jobs = $jobs->map(function ($item) {
+        $user = Auth::user();
+        $requests = $user->employeeRequests()->where('isApproved',true);
+        $jobs=array();
+        foreach ($requests as $request){
+            array_push( $jobs[$request->date->format('YY')][$request->date->format('mm')][$request->date->format('dd')],
+            array([
+                'startTime' => $request->from,
+                            'endTime' => $request->to,
+                            'text' => $request->subject
+            ])
+            );
+        }
+        dd($jobs);
+
+//        $request = $jobs->map(function ($item) {
 //            $item->service_name = Service::find($item->service_id)->name;
 //            $item->client = User::find($item->client_ids[0]);
 //            return $item;
