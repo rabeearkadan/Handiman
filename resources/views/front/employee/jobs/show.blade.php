@@ -75,19 +75,17 @@
                     <tr>
                         <td>
                             <div class="input-field col s4">
-                                <i class="material-icons prefix">mode_edit</i>
+                                <i class="material-icons prefix">delete</i>
                                 <textarea  class="materialize-textarea"></textarea>
                             </div>
                         </td>
                         <td>
                             <div class="input-field col s4">
-                                <i class="material-icons prefix">mode_edit</i>
                                 <textarea  class="materialize-textarea"></textarea>
                             </div>
                         </td>
                         <td>
                             <div class="input-field col s4">
-                                <i class="material-icons prefix">mode_edit</i>
                                 <textarea  class="materialize-textarea"></textarea>
                             </div>
                         </td>
