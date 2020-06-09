@@ -280,7 +280,7 @@ class RequestController extends Controller
             }
         } elseif ($req->status == "accepted") {
 
-            $request->status = $req->input('status');
+            $request->status ="approved";
             $request->save();
             if ($request->isurgent == true) {
                 $request->employees()->detach();
