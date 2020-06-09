@@ -199,7 +199,7 @@ class RequestController extends Controller
                 $requestHandyman->isurgent = false;
                 $requestHandyman->from = $req->from;
                 $requestHandyman->to = $req->to;
-                $requestHandyman->date = Carbon::createFromFormat('d/m/Y', $req->input('date'), $requestHandyman->timezone);
+                $requestHandyman->date = Carbon::createFromFormat('Y-m-d', $req->input('date'), $requestHandyman->timezone);
 
             }
             $requestHandyman->save();
@@ -208,7 +208,8 @@ class RequestController extends Controller
             return redirect(route('client.request.index'));
         } else {
             $handyman = User::query()->find($req->input('employee_id'));
-            $requestHandyman->date = Carbon::createFromFormat('d/m/Y', $req->input('date'), $requestHandyman->timezone);
+            $requestHandyman->date = Carbon::createFromFormat('Y-m-d',$req->input('date'),$requestHandyman->timezone);
+           dd($requestHandyman->date,$req->input('date'),$requestHandyman->timezone);
             $requestHandyman->isurgent = false;
             if ($req->has('from'))
                 $requestHandyman->from = $req->input('from');
