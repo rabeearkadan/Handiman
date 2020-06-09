@@ -33,7 +33,7 @@
                     {
                         startTime: "{{$job['startTime']}}",
                         endTime: "{{$job['endTime']}}",
-                        text: "{{$job['text']}}",
+                        text: "{{!!$job['text']!!}}",
                         link: "{{$job['link']}}"
                     },
                     @endforeach
