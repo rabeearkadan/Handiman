@@ -27,13 +27,14 @@ class CalendarController extends Controller
                 'text' => $userRequest->subject,
                 'link' => "link"
             ]);
+            $jobs = array_merge_recursive($jobs, ${"jobsArray" . $counter});
 //            $jobs[$userRequest->date->format('Y')][$userRequest->date->format('m')][$userRequest->date->format('d')];
             $counter++;
         }
-            for ($index = 0; $index < $counter; $index++) {
-                ${"jobsArray" ."0"} = array_merge_recursive( ${"jobsArray" ."0"}, ${"jobsArray" . $index});
-            }
-            $jobs = ${"jobsArray" ."0"};
+//            for ($index = 0; $index < $counter; $index++) {
+//                ${"jobsArray" ."0"} = array_merge_recursive( ${"jobsArray" ."0"}, ${"jobsArray" . $index});
+//            }
+//            $jobs = ${"jobsArray" ."0"};
 
         dd($jobs);
         return view('front.employee.calendar');
