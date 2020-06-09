@@ -78,6 +78,7 @@
     </body>
 @endsection
 @push('js')
+    <script src="/public/js/employee/jquery.colorbox-min.js" type="text/javascript"></script>
     <script src="/public/js/employee/fileinput.min.js" type="text/javascript"></script>
     <script src="/public/js/employee/superlist.js" type="text/javascript"></script>
     <script src="/public/js/materialize.js" type="text/javascript"></script>
