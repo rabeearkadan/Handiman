@@ -28,19 +28,20 @@
             {
                 @foreach($jobMonth as $day => $jobDay)
                 {{ $day }}:
-                [@foreach($jobDay as  $job)
+                [
+                        @foreach($jobDay as  $job)
                     {
                         startTime: "{{$job['startTime']}}",
                         endTime: "{{$job['endTime']}}",
                         text: "{{$job['text']}}",
                         link: "{{$job['link']}}"
-                    }
+                    },
                     @endforeach
-                ]
+                ],
                 @endforeach
-            }
+            },
             @endforeach
-        }
+        },
         @endforeach
         };
 
