@@ -1,5 +1,7 @@
 @extends('layouts.employee.app')
 @push('css')
+    <link href="{{asset('css/employee/buttons.css')}}" rel="stylesheet">
+    <link href="{{asset('css/employee/common-classes.css')}}" rel="stylesheet">
     <link href="{{asset('css/employee/forms.css')}}" rel="stylesheet">
     <link href="{{asset('css/employee/bootstrap-select.min.css')}}" rel="stylesheet">
     <link href="{{asset('css/employee/color-box.css')}}" rel="stylesheet">
@@ -86,8 +88,9 @@
             var elems = document.querySelectorAll('.fixed-action-btn');
             var instances = M.FloatingActionButton.init(elems);
         });
-        $(document).ready(function(){
-            $('.materialboxed').materialbox();
+        document.addEventListener('DOMContentLoaded', function() {
+            var elems = document.querySelectorAll('.materialboxed');
+            var instances = M.Materialbox.init(elems, options);
         });
 
     </script>
