@@ -13,7 +13,10 @@ class CalendarController extends Controller
      * show()
      */
 
-    public function index (Request $request){
+    /**
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
+    public function index (){
         $user = Auth::user();
         $userRequests = $user->employeeRequests->where('status','approved');
         $jobs=array();
@@ -28,14 +31,8 @@ class CalendarController extends Controller
                 'link' => "link"
             ]);
             $jobs = array_merge_recursive($jobs, ${"jobsArray" . $counter});
-//            $jobs[$userRequest->date->format('Y')][$userRequest->date->format('m')][$userRequest->date->format('d')];
             $counter++;
         }
-//            for ($index = 0; $index < $counter; $index++) {
-//                ${"jobsArray" ."0"} = array_merge_recursive( ${"jobsArray" ."0"}, ${"jobsArray" . $index});
-//            }
-//            $jobs = ${"jobsArray" ."0"};
-
         dd($jobs);
         return view('front.employee.calendar');
     }
