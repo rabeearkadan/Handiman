@@ -18,7 +18,7 @@ class CalendarController extends Controller
         $userRequests = $user->employeeRequests()->where('status',"approved");
         $jobs=array();
         foreach ($userRequests as $userRequest){
-            array_push( $jobs[$userRequest->date->format('YY')][$userRequest->date->format('mm')][$userRequest->date->format('dd')],
+            array_push( $jobs[$userRequest['date']->format('YY')][$userRequest['date']->format('mm')][$userRequest['date']->format('dd')],
             array([
                 'startTime' => $userRequest->from,
                             'endTime' => $userRequest->to,
