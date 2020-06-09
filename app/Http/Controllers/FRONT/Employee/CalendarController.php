@@ -16,7 +16,6 @@ class CalendarController extends Controller
     public function index (Request $request){
         $user = Auth::user();
         $userRequests = $user->employeeRequests->where('status','approved');
-        dd($userRequests);
         $jobs=array();
         $jobsArray = array();
         $counter=0;
@@ -31,7 +30,7 @@ class CalendarController extends Controller
             $counter++;
         }
         for($index=0;$index<$counter;$index++){
-            $jobs = array_merge_recursive($jobs,${"jobsArray".$counter});
+            $jobs = array_merge_recursive($jobs,${"jobsArray".$index});
         }
         dd($jobs);
         return view('front.employee.calendar');
