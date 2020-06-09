@@ -134,7 +134,7 @@
             itemsTable.append(
                '<tr id="'+id+'">' +
                 ' <td>' +
-                ' <div class="input-field col s4" id="row'+id+'">' +
+                ' <div class="input-field col s4">' +
                 ' <a href="#" onclick="addItem('+id+')" id="addButton'+id+'">' +
                 '<i class="material-icons prefix">add</i>' +
                 '</a>' +
@@ -160,9 +160,11 @@
         function deleteItem(id) {
             $('#'+id).remove();
             id--;
-            $('#'+id).append(' <a href="#" onclick="addItem('+id+')" id="addButton'+id+'">' +
-                '<i class="material-icons prefix">add</i>' +
-                '</a>');
+            if(id===0) {
+                $('#row' + id).prepend(' <a href="#" onclick="addItem(' + id + ')" id="addButton' + id + '">' +
+                    '<i class="material-icons prefix">add</i>' +
+                    '</a>');
+            }
         }
     </script>
 @endpush
