@@ -24,16 +24,16 @@ class CalendarController extends Controller
         $counter=0;
         foreach ($userRequests as $userRequest) {
             ${"jobsArray".$counter} = array();
-            ${"jobsArray".$counter}[''.$userRequest->date->format('Y')][''.$userRequest->date->format('m')][''.$userRequest->date->format('d')] = array([
+            ${"jobsArray".$counter}[' '.$userRequest->date->format('Y')][$userRequest->date->format('m')][$userRequest->date->format('d')] = array([
                 'startTime' => $userRequest->from,
                 'endTime' => $userRequest->to,
                 'text' => $userRequest->subject,
                 'link' => "link"
             ]);
             $jobs = array_merge_recursive($jobs, ${"jobsArray" . $counter});
-            dd($jobs);
             $counter++;
         }
+        dd($jobs);
         return view('front.employee.calendar',compact('jobs'));
     }
     public function show (Request $request){
