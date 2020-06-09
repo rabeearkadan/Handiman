@@ -29,11 +29,10 @@ class CalendarController extends Controller
             ]);
             $counter++;
         }
-        $counter--;
-        dd( ${"jobsArray".$counter});
         for($index=0;$index<$counter;$index++){
             $jobs = array_merge_recursive($jobs,${"jobsArray".$counter});
         }
+        dd($jobs);
         return view('front.employee.calendar');
     }
     public function show (Request $request){
