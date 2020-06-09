@@ -20,14 +20,15 @@
                 placeholder: "<span> No Jobs </span>"
             });
         var data = {
-        @foreach($jobs as $year => $job)
+        @foreach($jobs as $year => $jobYear)
+        {{ $year }}:
         {
-            @foreach($jobs[' '.$year] as $month => $job)
+            @foreach($jobYear as $month => $jobMonth)
             {{ $month }}:
             {
-                @foreach($jobs[' '.$year][' '.$month] as $day => $job)
+                @foreach($jobMonth as $day => $jobDay)
                 {{ $day }}:
-                [@foreach($jobs[' '.$year][' '.$month][' '.$day] as  $job)
+                [@foreach($jobDay as  $job)
                     {
                         startTime: "{{$job['startTime']}}",
                         endTime: "{{$job['endTime']}}",
