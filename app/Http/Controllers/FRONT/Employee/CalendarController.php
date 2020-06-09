@@ -15,14 +15,15 @@ class CalendarController extends Controller
 
     public function index (Request $request){
         $user = Auth::user();
-        $requests = $user->employeeRequests()->where('isApproved',true);
+        $userRequests = $user->employeeRequests()->where('isApproved',true);
+        dd($userRequests);
         $jobs=array();
-        foreach ($requests as $request){
-            array_push( $jobs[$request['date']->format('YY')][$request['date']->format('mm')][$request['date']->format('dd')],
+        foreach ($userRequests as $userRequest){
+            array_push( $jobs[$userRequest['date']->format('YY')][$userRequest['date']->format('mm')][$userRequest['date']->format('dd')],
             array([
-                'startTime' => $request->from,
-                            'endTime' => $request->to,
-                            'text' => $request->subject
+                'startTime' => $userRequest->from,
+                            'endTime' => $userRequest->to,
+                            'text' => $userRequest->subject
             ])
             );
         }
