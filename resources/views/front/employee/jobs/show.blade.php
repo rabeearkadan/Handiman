@@ -75,7 +75,6 @@
         </a>
 
     </div>
-    </body>
 @endsection
 @push('js')
     <script src="/public/js/employee/collapse.js" type="text/javascript"></script>
