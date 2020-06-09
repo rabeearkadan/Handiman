@@ -6573,7 +6573,7 @@ textarea.materialize-textarea + label:after, .select-wrapper + label:after {
 }
 
 .input-field .prefix {
-    right:-38px;
+  left:-38px;
   position: absolute;
   width: 3rem;
   font-size: 2rem;
