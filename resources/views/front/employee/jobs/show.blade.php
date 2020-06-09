@@ -77,9 +77,6 @@
                     <tr id="0">
                         <td>
                             <div class="input-field col s4" id="row0">
-                                <a href="#" id="addButton0" onclick="addItem(0)">
-                                <i class="material-icons prefix">add</i>
-                                </a>
                                 <textarea name="itemsName[]" placeholder="Item name" class="materialize-textarea"></textarea>
                             </div>
                         </td>
@@ -95,6 +92,9 @@
                         </td>
                     </tr>
                     </tbody>
+                    <a href="#" id="addButton0" onclick="addItem()">
+                        <i class="material-icons prefix">add</i>
+                    </a>
                 </table>
                 <span>images.</span>
                 <input type="file" name="images[]" id="input-file" accept="image/jpeg, image/png" multiple="multiple">
@@ -128,16 +128,13 @@
             var instances = M.Materialbox.init(elems);
         });
         var itemsTable = $('#tablebody');
-        function addItem(id,) {
-            $('#addButton'+id).remove();
+        function addItem() {
+            var id = $('table tr:last').attr('id');
             id++;
             itemsTable.append(
                '<tr id="'+id+'">' +
                 ' <td>' +
                 ' <div class="input-field col s4">' +
-                ' <a href="#" onclick="addItem('+id+')" id="addButton'+id+'">' +
-                '<i class="material-icons prefix">add</i>' +
-                '</a>' +
                 '<textarea name="itemsName[]"  placeholder="Item name" class="materialize-textarea"></textarea>' +
                 '</div>' +
                 '</td>' +
@@ -159,12 +156,6 @@
         }
         function deleteItem(id) {
             $('#'+id).remove();
-            id--;
-            if(id===0) {
-                $('#row' + id).prepend(' <a href="#" onclick="addItem(' + id + ')" id="addButton' + id + '">' +
-                    '<i class="material-icons prefix">add</i>' +
-                    '</a>');
-            }
         }
     </script>
 @endpush
