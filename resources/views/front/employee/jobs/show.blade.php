@@ -1,6 +1,7 @@
 @extends('layouts.employee.app')
 @push('css')
     <link href="{{asset('lib/font-awesome/css/font-awesome.css')}}" rel="stylesheet">
+    <link href="{{asset('css/employee/bootstrap.css')}}" rel="stylesheet">
     <link href="{{asset('css/employee/buttons.css')}}" rel="stylesheet">
     <link href="{{asset('css/employee/common-classes.css')}}" rel="stylesheet">
     <link href="{{asset('css/employee/forms.css')}}" rel="stylesheet">
