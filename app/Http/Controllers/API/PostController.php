@@ -51,8 +51,10 @@ class PostController extends Controller
     public function deletePost($id)
 
     {
-        Post::query()->find()->delete($id);
-
+        try {
+            Post::query()->find($id)->delete();
+        } catch (\Exception $e) {
+        }
         $user = User::query()->find(Auth::id());
         $post = Post::query()->find($id);
         $post->users()->detach(Auth::id());
