@@ -286,7 +286,7 @@
                                             <div class="form-group">
                                                 <label for="date-input"> Pick a day </label>
                                                 <input id="date-input" name="date" type="text" data-dd-theme="leaf"
-                                                       data-dd-format="d/m/Y">
+                                                       data-dd-format="m/d/Y">
                                             </div><!--/.form-group-->
                                         </div><!--/.col-*-->
                                     </div><!--/.row-->
