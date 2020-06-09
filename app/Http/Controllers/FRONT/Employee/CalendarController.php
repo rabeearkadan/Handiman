@@ -15,7 +15,7 @@ class CalendarController extends Controller
 
     public function index (Request $request){
         $user = Auth::user();
-        $userRequests = $user->employeeRequests();
+        $userRequests = $user->employeeRequests;
         foreach ($userRequests as $userRequest) {
             dd($userRequest);
         }
