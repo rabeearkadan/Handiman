@@ -59,7 +59,9 @@ class LoginController extends Controller
 
     public function login(Request $request)
     {
+        $flag = false;
         $res = $this->validateLogin($request);
+        $flag = true;
         Log::info($res);
         if ($this->attemptLogin($request)) {
 
@@ -88,7 +90,14 @@ class LoginController extends Controller
 
             ]);
         }
-        return $this->sendFailedLoginResponse($request);
+        if ($flag) {
+            return response()->json([
+                'status' => 'failed',
+                'errors' => "Login password or email"
+            ]);
+        } else {
+            return $this->sendFailedLoginResponse($request);
+        }
     }
 
 
