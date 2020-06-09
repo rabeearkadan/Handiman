@@ -54,6 +54,8 @@
         <li>
             <div class="collapsible-header"><i class="material-icons">payment</i>
                 bill</div>
+            <form method="post" action="" >
+                @csrf
             <div class="collapsible-body">
                 <div class="row">
                     <form class="col s12">
@@ -78,17 +80,17 @@
                                 <a href="#" id="addButton0" onclick="addItem(0)">
                                 <i class="material-icons prefix">add</i>
                                 </a>
-                                <textarea name="itemsName[]" class="materialize-textarea"></textarea>
+                                <textarea name="itemsName[]" placeholder="Item name" class="materialize-textarea"></textarea>
                             </div>
                         </td>
                         <td>
                             <div class="input-field col s4">
-                                <textarea name="itemsPrice[]" class="materialize-textarea"></textarea>
+                                <textarea name="itemsPrice[]"  placeholder="Item price" class="materialize-textarea"></textarea>
                             </div>
                         </td>
                         <td>
                             <div class="input-field col s4">
-                                <textarea name="itemsQuantity[]" class="materialize-textarea"></textarea>
+                                <textarea name="itemsQuantity[]"  placeholder="Item quantity" class="materialize-textarea"></textarea>
                             </div>
                         </td>
                     </tr>
@@ -97,6 +99,7 @@
                 <span>images.</span>
                 <input type="file" name="images[]" id="input-file" accept="image/jpeg, image/png" multiple="multiple">
             </div>
+            </form>
         </li>
     </ul>
     <div class="fixed-action-btn">
@@ -135,17 +138,17 @@
                 ' <a href="#" onclick="addItem('+id+')" id="addButton'+id+'">' +
                 '<i class="material-icons prefix">add</i>' +
                 '</a>' +
-                '<textarea name="itemsName[]" class="materialize-textarea"></textarea>' +
+                '<textarea name="itemsName[]"  placeholder="Item name" class="materialize-textarea"></textarea>' +
                 '</div>' +
                 '</td>' +
                 '<td>' +
                 '<div class="input-field col s4">' +
-                '<textarea name="itemsPrice[]" class="materialize-textarea"></textarea>' +
+                '<textarea name="itemsPrice[]"  placeholder="Item price" class="materialize-textarea"></textarea>' +
                 '</div>' +
                 '</td>' +
                 '<td>' +
                 '<div class="input-field col s4">' +
-                '<textarea name="itemsQuantity[]" class="materialize-textarea"></textarea>' +
+                '<textarea name="itemsQuantity[]"  placeholder="Item quantity" class="materialize-textarea"></textarea>' +
                 '<a href="#" onclick="deleteItem('+id+')">' +
                 '<i class="material-icons postfix">delete</i>' +
                 '</a>' +
