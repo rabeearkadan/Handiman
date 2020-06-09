@@ -26,9 +26,9 @@
             @foreach($jobs[' '.$year] as $month => $job)
             {{ $month }}:
             {
-                @foreach($jobs[' '.$year][$month] as $day => $job)
+                @foreach($jobs[' '.$year][' '.$month] as $day => $job)
                 {{ $day }}:
-                [@foreach($jobs[' '.$year][$month][$day] as  $job)
+                [@foreach($jobs[' '.$year][' '.$month][' '.$day] as  $job)
                     {
                         startTime: "{{$job['startTime']}}",
                         endTime: "{{$job['endTime']}}",
