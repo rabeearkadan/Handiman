@@ -23,7 +23,7 @@
         @foreach($jobs as $year => $job)
         {{ $year }}:
         {
-            @foreach($jobs[' '.$year] as $month => $job)
+            @foreach($jobs[(string)' '.$year] as $month => $job)
             {{ $month }}:
             {
                 @foreach($jobs[' '.$year][' '.$month] as $day => $job)
