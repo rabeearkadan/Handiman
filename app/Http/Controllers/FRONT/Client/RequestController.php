@@ -214,7 +214,6 @@ class RequestController extends Controller
             $requestDate = $dateArray[2].'-'.$dateArray[0].'-'.$dateArray[1];
             $requestHandyman->date = Carbon::createFromFormat('Y-m-d',$requestDate, $requestHandyman->timezone);
             $requestHandyman->isurgent = false;
-            dd( $requestHandyman->date,$requestDate,$req->date);
             if ($req->has('from'))
                 $requestHandyman->from = $req->input('from');
             if ($req->has('to')) {
