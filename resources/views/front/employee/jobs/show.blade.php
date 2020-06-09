@@ -54,9 +54,9 @@
         <li>
             <div class="collapsible-header"><i class="material-icons">payment</i>
                 bill</div>
-            <form method="post" action="" >
-                @csrf
             <div class="collapsible-body">
+                <form method="post" action="" >
+                    @csrf
                 <div class="row">
                     <form class="col s12">
                         <div class="row">
@@ -98,8 +98,8 @@
                 </table>
                 <span>images.</span>
                 <input type="file" name="images[]" id="input-file" accept="image/jpeg, image/png" multiple="multiple">
-            </div>
             </form>
+            </div>
         </li>
     </ul>
     <div class="fixed-action-btn">
