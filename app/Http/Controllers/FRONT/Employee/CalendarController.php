@@ -33,6 +33,8 @@ class CalendarController extends Controller
             $jobs = array_merge_recursive($jobs, ${"jobsArray" . $counter});
             $counter++;
         }
+        $year=2020;
+        dd($jobs[' '.$year]);
         return view('front.employee.calendar',compact('jobs'));
     }
     public function show (Request $request){
