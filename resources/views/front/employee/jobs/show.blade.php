@@ -76,7 +76,7 @@
                     <tbody id="tablebody">
                     <tr id="0">
                         <td>
-                            <div class="input-field col s4">
+                            <div class="input-field col s4" id="row0">
                                 <a href="#" id="addButton0" onclick="addItem(0)">
                                 <i class="material-icons prefix">add</i>
                                 </a>
@@ -134,7 +134,7 @@
             itemsTable.append(
                '<tr id="'+id+'">' +
                 ' <td>' +
-                ' <div class="input-field col s4">' +
+                ' <div class="input-field col s4" id="row'+id+'">' +
                 ' <a href="#" onclick="addItem('+id+')" id="addButton'+id+'">' +
                 '<i class="material-icons prefix">add</i>' +
                 '</a>' +
@@ -159,6 +159,10 @@
         }
         function deleteItem(id) {
             $('#'+id).remove();
+            id--;
+            $('#'+id).append(' <a href="#" onclick="addItem('+id+')" id="addButton'+id+'">' +
+                '<i class="material-icons prefix">add</i>' +
+                '</a>');
         }
     </script>
 @endpush
