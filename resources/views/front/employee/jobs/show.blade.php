@@ -71,23 +71,24 @@
                         <th>Quantity</th>
                     </tr>
                     </thead>
-                    <tbody>
-                    <tr>
+                    <tbody id="tablebody">
+                    <tr id="0">
                         <td>
                             <div class="input-field col s4">
+                                <a href="#" onclick="addItem(0)">
                                 <i class="material-icons prefix">add</i>
-                                <textarea  class="materialize-textarea"></textarea>
+                                </a>
+                                <textarea name="itemsName[]" class="materialize-textarea"></textarea>
                             </div>
                         </td>
                         <td>
                             <div class="input-field col s4">
-                                <textarea  class="materialize-textarea"></textarea>
+                                <textarea name="itemsPrice[]" class="materialize-textarea"></textarea>
                             </div>
                         </td>
                         <td>
                             <div class="input-field col s4">
-                                <textarea  class="materialize-textarea"></textarea>
-                                <i class="material-icons postfix">delete</i>
+                                <textarea name="itemsQuantity[]" class="materialize-textarea"></textarea>
                             </div>
                         </td>
                     </tr>
@@ -123,6 +124,38 @@
             var elems = document.querySelectorAll('.materialboxed');
             var instances = M.Materialbox.init(elems);
         });
-
+        var itemsTable = $('#tablebody');
+        function addItem(id,) {
+            $('#addButton'+id).remove();
+            id++;
+            itemsTable.append(
+               '<tr id="'+id+'">' +
+                ' <td>' +
+                ' <div class="input-field col s4">' +
+                ' <a href="#" onclick="addItem('+id+')" id="addButton'+id+'">' +
+                '<i class="material-icons prefix">add</i>' +
+                '</a>' +
+                '<textarea name="itemsName[]" class="materialize-textarea"></textarea>' +
+                '</div>' +
+                '</td>' +
+                '<td>' +
+                '<div class="input-field col s4">' +
+                '<textarea name="itemsPrice[]" class="materialize-textarea"></textarea>' +
+                '</div>' +
+                '</td>' +
+                '<td>' +
+                '<div class="input-field col s4">' +
+                '<textarea name="itemsQuantity[]" class="materialize-textarea"></textarea>' +
+                '<a href="#" onclick="deleteItem('+id+')">' +
+                '<i class="material-icons postfix">delete</i>' +
+                '</a>' +
+                '</div>' +
+                '</td>' +
+                '</tr>'
+            );
+        }
+        function deleteItem(id) {
+            $('#'+id).remove();
+        }
     </script>
 @endpush
