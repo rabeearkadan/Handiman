@@ -16,6 +16,7 @@ class CalendarController extends Controller
     public function index (Request $request){
         $user = Auth::user();
         $userRequests = $user->employeeRequests->where('status','approved');
+        dd($userRequests);
         $jobs=array();
         $jobsArray = array();
         $counter=0;
