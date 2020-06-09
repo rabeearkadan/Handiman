@@ -1,15 +1,6 @@
 @extends('layouts.employee.app')
 @push('css')
-    <link href="{{asset('lib/font-awesome/css/font-awesome.css')}}" rel="stylesheet">
-    <link href="{{asset('css/employee/bootstrap.css')}}" rel="stylesheet">
-    <link href="{{asset('css/employee/buttons.css')}}" rel="stylesheet">
-    <link href="{{asset('css/employee/common-classes.css')}}" rel="stylesheet">
-    <link href="{{asset('css/employee/forms.css')}}" rel="stylesheet">
-    <link href="{{asset('css/employee/listing-detail.css')}}" rel="stylesheet">
-    <link href="{{asset('css/employee/color-box.css')}}" rel="stylesheet">
-    <link href="{{asset('css/employee/file-input.min.css')}}" rel="stylesheet">
-    <link href="{{asset('css/employee/bootstrap-select.min.css')}}" rel="stylesheet">
-    <link href="{{asset('css/employee/submit-button-post.css')}}" rel="stylesheet">
+
 @endpush
 @section('content')
     <ul class="collapsible popout">
@@ -64,6 +55,45 @@
             <div class="collapsible-header"><i class="material-icons">payment</i>
                 bill</div>
             <div class="collapsible-body">
+                <div class="row">
+                    <form class="col s12">
+                        <div class="row">
+
+                        </div>
+                    </form>
+                </div>
+                <span>Items</span>
+                <table class="responsive-table">
+                    <thead>
+                    <tr>
+                        <th>Item Name</th>
+                        <th>Item Price</th>
+                        <th>Quantity</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td>
+                            <div class="input-field col s4">
+                                <i class="material-icons prefix">mode_edit</i>
+                                <textarea  class="materialize-textarea"></textarea>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="input-field col s4">
+                                <i class="material-icons prefix">mode_edit</i>
+                                <textarea  class="materialize-textarea"></textarea>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="input-field col s4">
+                                <i class="material-icons prefix">mode_edit</i>
+                                <textarea  class="materialize-textarea"></textarea>
+                            </div>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
                 <span>images.</span>
                 <input type="file" name="images[]" id="input-file" accept="image/jpeg, image/png" multiple="multiple">
             </div>
@@ -77,12 +107,7 @@
     </div>
 @endsection
 @push('js')
-    <script src="/public/js/employee/collapse.js" type="text/javascript"></script>
-    <script src="/public/js/employee/dropdown.js" type="text/javascript"></script>
-    <script src="/public/js/employee/jquery.colorbox-min.js" type="text/javascript"></script>
-    <script src="/public/js/employee/bootstrap-select.min.js" type="text/javascript"></script>
-    <script src="/public/js/employee/fileinput.min.js" type="text/javascript"></script>
-    <script src="/public/js/employee/superlist.js" type="text/javascript"></script>
+
     <script src="/public/js/materialize.js" type="text/javascript"></script>
     <script>
 
