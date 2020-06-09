@@ -9,7 +9,7 @@
 @push('js')
     <script src="/public/js/employee/calendar.min.js"></script>
     <script>
-        var calendar = new Calendar("calendarContainer", "small",
+        var calendar = new Calendar("calendarContainer", "medium",
             [ "Monday", 3 ],
             [ "#469CDB", "#4179cf", "#ffffff", "#97bffe" ],
 
