@@ -286,7 +286,7 @@
                                             <div class="form-group">
                                                 <label for="date-input"> Pick a day </label>
                                                 <input id="date-input" name="date" type="text" data-dd-theme="leaf"
-                                                       data-dd-format="m/d/Y">
+                                                       data-dd-format="Y-m-d">
                                             </div><!--/.form-group-->
                                         </div><!--/.col-*-->
                                     </div><!--/.row-->
@@ -347,7 +347,7 @@
             var timepicker = @json($timepicker);
             $(document).ready(function () {
                 $('#date-input').dateDropper({
-                    format: 'd-m-Y',
+                    format: 'Y-m-d',
                     enabledDays: '{{$availableDaysString}}',
                     maxYear: 2020,
                     minYear: 2020
