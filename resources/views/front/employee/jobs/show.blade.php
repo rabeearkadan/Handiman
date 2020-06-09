@@ -1,7 +1,6 @@
 @extends('layouts.employee.app')
 @push('css')
     <link href="{{asset('lib/font-awesome/css/font-awesome.css')}}" rel="stylesheet">
-    <link href="{{asset('css/employee/bootstrap.css')}}" rel="stylesheet">
     <link href="{{asset('css/employee/buttons.css')}}" rel="stylesheet">
     <link href="{{asset('css/employee/common-classes.css')}}" rel="stylesheet">
     <link href="{{asset('css/employee/forms.css')}}" rel="stylesheet">
@@ -78,10 +77,8 @@
     </body>
 @endsection
 @push('js')
-    <script src="/public/js/employee/collapse.js" type="text/javascript"></script>
-    <script src="/public/js/employee/dropdown.js" type="text/javascript"></script>
+
     <script src="/public/js/employee/jquery.colorbox-min.js" type="text/javascript"></script>
-    <script src="/public/js/employee/bootstrap-select.min.js" type="text/javascript"></script>
     <script src="/public/js/employee/fileinput.min.js" type="text/javascript"></script>
     <script src="/public/js/employee/superlist.js" type="text/javascript"></script>
     <script src="/public/js/materialize.js" type="text/javascript"></script>
