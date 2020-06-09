@@ -41,7 +41,7 @@ Route::middleware(['auth:api', 'employee'])->prefix('employee')->group(function 
     Route::post('receipt-images/{id}', 'RequestController@addReceiptImages');
     Route::post('reschedule/{id}', 'RequestController@reschedule');
     Route::get('tags', 'UserController@employeeTags');
-
+    Route::get('employee-posts', 'UserController@employeePosts');
 });
 
 Route::middleware(['auth:api', 'client'])->prefix('client')->group(function () {
