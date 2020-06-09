@@ -6580,7 +6580,15 @@ textarea.materialize-textarea + label:after, .select-wrapper + label:after {
   transition: color .2s;
   top: 0.5rem;
 }
-
+.input-field .postfix {
+    right:-40px;
+    position: absolute;
+    width: 3rem;
+    font-size: 2rem;
+    -webkit-transition: color .2s;
+    transition: color .2s;
+    top: 0.5rem;
+}
 .input-field .prefix.active {
   color: #26a69a;
 }

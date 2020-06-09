@@ -75,7 +75,7 @@
                     <tr>
                         <td>
                             <div class="input-field col s4">
-                                <i class="material-icons prefix">delete</i>
+                                <i class="material-icons prefix">add</i>
                                 <textarea  class="materialize-textarea"></textarea>
                             </div>
                         </td>
@@ -87,6 +87,7 @@
                         <td>
                             <div class="input-field col s4">
                                 <textarea  class="materialize-textarea"></textarea>
+                                <i class="material-icons postfix">delete</i>
                             </div>
                         </td>
                     </tr>
