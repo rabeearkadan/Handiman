@@ -22,37 +22,58 @@
         var data = {
             2020: {
                 04: {
-                    02: [
+                    07: [
                         {
                             startTime: "00:00",
-                            endTime: "1-:00",
+                            endTime: "10:00",
                             text: "job1"
-                        }
-                    ]
-                }
-            },
-            2020: {
-                06: {
-                    09: [
+                        },
                         {
                             startTime: "00:00",
-                            endTime: "1-:00",
+                            endTime: "10:00",
                             text: "job1"
                         }
-                    ]
-                }
+                    ],
+                    03:[
+                        {
+                            startTime: "00:00",
+                            endTime: "10:00",
+                            text: "job1"
+                        },
+                        {
+                            startTime: "00:00",
+                            endTime: "10:00",
+                            text: "job1"
+                        }
+                    ],
+                },
+                5: {
+                    6: [
+                        {
+                            startTime: "00:00",
+                            endTime: "10:00",
+                            text: "job1"
+                        },
+                        {
+                            startTime: "00:00",
+                            endTime: "10:00",
+                            text: "job1"
+                        }
+                    ],
+                    8:[
+                        {
+                            startTime: "00:00",
+                            endTime: "10:00",
+                            text: "job1"
+                        },
+                        {
+                            startTime: "00:00",
+                            endTime: "10:00",
+                            text: "job1"
+                        }
+                    ],
+                },
             },
-        2020: {
-            04: {
-                03: [
-                    {
-                        startTime: "00:00",
-                        endTime: "1-:00",
-                        text: "job1"
-                    }
-                ]
-            }
-        },
         };
         var organizer = new Organizer("organizerContainer", calendar, data);
     </script>

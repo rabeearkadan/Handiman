@@ -157,7 +157,7 @@
                         <div class="collapsible-body">
                             <span>Street: {{$address['street']}}</span>
                             <br>
-                            <span>Building:{{$address['house']}}</span>
+                            <span>Building:{{$address['building']}}</span>
                             <br>
                             <span>Zip:{{$address['zip']}}</span>
                             <br>
