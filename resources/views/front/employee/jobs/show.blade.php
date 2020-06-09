@@ -55,7 +55,7 @@
             <div class="collapsible-header"><i class="material-icons">payment</i>
                 bill</div>
             <div class="collapsible-body">
-                <form method="post" action="" >
+                <form method="post" action="" enctype="multipart/form-data">
                     @csrf
                 <div class="row">
                     <form class="col s12">
@@ -96,8 +96,27 @@
                     </tr>
                     </tbody>
                 </table>
-                <span>images.</span>
-                <input type="file" name="images[]" id="input-file" accept="image/jpeg, image/png" multiple="multiple">
+                <label for="receiptImages">Receipt Images.</label>
+                    <div class="file-field input-field">
+                        <div class="btn">
+                            <span>File</span>
+                            <input type="file" multiple>
+                        </div>
+                        <div class="file-path-wrapper">
+                            <input class="file-path validate" id="receiptImages[]" name="receiptImages" type="text" placeholder="Receipt Images, upload at least one"  accept="image/jpeg, image/png" multiple="multiple">
+                        </div>
+                    </div>
+
+                    <label for="resultImages">Result Images.</label>
+                    <div class="file-field input-field">
+                        <div class="btn">
+                            <span>File</span>
+                            <input type="file" multiple>
+                        </div>
+                        <div class="file-path-wrapper">
+                            <input class="file-path validate" id="resultImages[]" name="receiptImages" type="text" placeholder="Result Images, upload at least one"  accept="image/jpeg, image/png" multiple="multiple">
+                        </div>
+                    </div>
             </form>
             </div>
         </li>
