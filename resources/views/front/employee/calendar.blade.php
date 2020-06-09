@@ -22,6 +22,9 @@
         var data = {
         @foreach($jobs as $year => $job)
         {{ $year }}:
+        {{print_r($jobs)}}
+        {{printf('dsdsds')}}
+        {{print_r($jobs[' 2020'])}}
         {
             @foreach($jobs[(string)' '.$year] as $month => $job)
             {{ $month }}:
