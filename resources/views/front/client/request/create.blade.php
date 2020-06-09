@@ -347,7 +347,7 @@
             var timepicker = @json($timepicker);
             $(document).ready(function () {
                 $('#date-input').dateDropper({
-                    format: 'Y-m-d',
+                    format: 'd/m/Y',
                     enabledDays: '{{$availableDaysString}}',
                     maxYear: 2020,
                     minYear: 2020
