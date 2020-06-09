@@ -65,6 +65,9 @@
                     </form>
                 </div>
                 <span>Items</span>
+                    <a href="#" id="addButton" onclick="addItem()">
+                        <i style="float: right;width: 30px" class="material-icons">add</i>
+                    </a>
                 <table>
                     <thead>
                     <tr>
@@ -93,9 +96,6 @@
                     </tr>
                     </tbody>
                 </table>
-                    <a href="#" id="addButton" onclick="addItem()">
-                        <i class="material-icons">add</i>
-                    </a>
                 <span>images.</span>
                 <input type="file" name="images[]" id="input-file" accept="image/jpeg, image/png" multiple="multiple">
             </form>
