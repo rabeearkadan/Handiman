@@ -11,37 +11,31 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 use Redirect, Response;
 use Carbon\Carbon;
+use function GuzzleHttp\Promise\all;
 
 class StatisticsController extends Controller
 {
     public function index()
     {
-        $users = User::query()->where('role', 'user_employee' || 'employee')
-            ->pluck('visits', 'created_at');
+        $users = User::all();
         $chart = new Stats();
-        $chart->labels($users->keys());
-        $chart->dataset('My dataset 2', 'line', $users->values());
+        $arr = [];
+        $arr2 = [];
+        foreach ($users as $user) {
+            if ($user->visits != null) {
+                array_push($arr2, $user->name);
+                array_push($arr, $user->visits);
+            }
+        }
+        $chart->labels($arr2);
+        $chart->dataset('My Dataset', 'line', $arr);
+
+        //$chart->dataset( $arr);
+//        $chart->color("rgb(255, 99, 132)");
+//        $chart->backgroundcolor("rgb(255, 99, 132)");
 
         return view('cms.statistics.index', compact('chart'));
     }
 
-    public function pieChart()
-    {
-        $record = User::select(DB::raw("COUNT(*) as count"), DB::raw("DAYNAME(created_at) as day_name"), DB::raw("DAY(created_at) as day"))
-            ->where('created_at', '>', Carbon::today()->subDay(6))
-            ->groupBy('day_name', 'day')
-            ->orderBy('day')
-            ->get();
 
-        $data = [];
-
-        foreach ($record as $row) {
-            $data['label'][] = $row->day_name;
-            $data['data'][] = (int)$row->count;
-        }
-
-        $data['chart_data'] = json_encode($data);
-        return view('cms.statistics.index', $data);
-
-    }
 }
