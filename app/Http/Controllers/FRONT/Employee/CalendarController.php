@@ -28,8 +28,8 @@ class CalendarController extends Controller
             ${"jobsArray".$counter}[' '.$userRequest->date->format('Y')][' '.$userRequest->date->format('m')][' '.$userRequest->date->format('d')] = array([
                 'startTime' => $userRequest->from,
                 'endTime' => $userRequest->to,
-                'text' => $userRequest->subject.' <h4> testttt </h4>',
-                'link' => '/calendar/'.$userRequest->id.'/show'
+                'text' => $userRequest->subject,
+                'link' => 'employee/calendar/'.$userRequest->id.'/show'
             ]);
             $jobs = array_merge_recursive($jobs, ${"jobsArray" . $counter});
             $counter++;
