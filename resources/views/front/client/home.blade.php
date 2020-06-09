@@ -104,7 +104,11 @@
     {{--    <script src="/public/js/jquery.waituntilexists.min.js"></script>--}}
     <script src="/public/js/list.js" type="text/javascript"></script>
     <script>
+
         $(document).ready(function () {
+            @isset($logged)
+                M.toast({html: 'Logged in as Client'})
+            @endisset
             @foreach($posts as $post)
             $('#{{$post->id}}').carousel({
                 full_width: true

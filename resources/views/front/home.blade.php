@@ -28,7 +28,7 @@
                     <li class="pricing-features-item"> Guaranteed Services quality</li>
                 </ul>
                 <span class="pricing-price"> Waiting for you </span>
-                <a href="{{route('client.home')}}" class="pricing-button"> Continue </a>
+                <a href="{{route('client.home',['logged'=>true])}}" class="pricing-button"> Continue </a>
             </div>
 
             <div class="pricing-plan">
@@ -39,7 +39,7 @@
                     <li class="pricing-features-item">Multiple clients waiting for you</li>
                 </ul>
                 <span class="pricing-price">Let's go</span>
-                <a href="{{route('employee.home')}}" class="pricing-button is-featured"> Continue </a>
+                <a href="{{route('employee.home',['logged'=>true])}}" class="pricing-button is-featured"> Continue </a>
             </div>
         </div>
     </div>
