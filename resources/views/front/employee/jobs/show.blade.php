@@ -117,7 +117,7 @@
                             <input class="file-path validate" id="resultImages[]" name="receiptImages" type="text" placeholder="Result Images, upload at least one"  accept="image/jpeg, image/png" multiple="multiple">
                         </div>
                     </div>
-                    <button class="btn waves-effect waves-light" type="submit" name="action">Submit
+                    <button class="btn waves-effect waves-light right" type="submit" name="action">Submit
                         <i class="material-icons right">send</i>
                     </button>
 
