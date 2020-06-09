@@ -75,7 +75,7 @@
                     <tr id="0">
                         <td>
                             <div class="input-field col s4">
-                                <a href="#" onclick="addItem(0)">
+                                <a href="#" id="addButton0" onclick="addItem(0)">
                                 <i class="material-icons prefix">add</i>
                                 </a>
                                 <textarea name="itemsName[]" class="materialize-textarea"></textarea>
