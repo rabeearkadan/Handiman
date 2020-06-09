@@ -28,12 +28,7 @@ class StatisticsController extends Controller
             }
         }
         $chart->labels($arr2);
-        $chart->dataset('My Dataset', 'line', $arr);
-
-        //$chart->dataset( $arr);
-//        $chart->color("rgb(255, 99, 132)");
-//        $chart->backgroundcolor("rgb(255, 99, 132)");
-
+        $chart->dataset('My Dataset', 'line', $arr)->color("rgb(255, 99, 132)")->backgroundcolor("rgb(255, 99, 132)");
         return view('cms.statistics.index', compact('chart'));
     }
 
