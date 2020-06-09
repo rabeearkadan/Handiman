@@ -1,5 +1,7 @@
 @extends('layouts.employee.app')
 @push('css')
+    <link href="{{asset('css/employee/color-box.css')}}" rel="stylesheet">
+    <link href="{{asset('css/employee/file-input.min.css')}}" rel="stylesheet">
 @endpush
 @section('content')
     <ul class="collapsible popout">
@@ -47,14 +49,15 @@
             <div class="collapsible-header"><i class="material-icons">images</i>
                 Images</div>
             <div class="collapsible-body">
-                <span>images.</span></div>
+{{--                <img class="materialboxed"  width="250" src="{{config('image.path').$image}}">--}}
+                </div>
         </li>
         <li>
             <div class="collapsible-header"><i class="material-icons">payment</i>
                 bill</div>
             <div class="collapsible-body">
                 <span>images.</span>
-                <input type="file" id="input-file">
+                <input type="file" name="images[]" id="input-file" accept="image/jpeg, image/png" multiple="multiple">
             </div>
         </li>
     </ul>
@@ -67,7 +70,8 @@
     </body>
 @endsection
 @push('js')
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="/public/js/employee/fileinput.min.js" type="text/javascript"></script>
+    <script src="/public/js/employee/superlist.js" type="text/javascript"></script>
     <script src="/public/js/materialize.js" type="text/javascript"></script>
     <script>
 
@@ -79,6 +83,9 @@
         document.addEventListener('DOMContentLoaded', function() {
             var elems = document.querySelectorAll('.fixed-action-btn');
             var instances = M.FloatingActionButton.init(elems);
+        });
+        $(document).ready(function(){
+            $('.materialboxed').materialbox();
         });
 
     </script>
