@@ -70,11 +70,15 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="/public/js/materialize.js" type="text/javascript"></script>
     <script>
-        $(document).ready(function(){
-            $('.collapsible').collapsible();
+
+        document.addEventListener('DOMContentLoaded', function() {
+            var elems = document.querySelectorAll('.collapsible');
+            var instances = M.Collapsible.init(elems, options);
         });
-        $(document).ready(function(){
-            $('.fixed-action-btn').floatingActionButton();
+
+        document.addEventListener('DOMContentLoaded', function() {
+            var elems = document.querySelectorAll('.fixed-action-btn');
+            var instances = M.FloatingActionButton.init(elems, options);
         });
 
     </script>
