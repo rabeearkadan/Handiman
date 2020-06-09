@@ -52,8 +52,8 @@ class PostController extends Controller
     {
         $user = User::query()->find(Auth::id());
         $post = Post::query()->find($id);
-        $post->users()->detach(Auth::id());
-        $user->services()->detach($id);
+        $post->users()->detach($user);
+        $user->services()->detach($post);
         try {
             Post::query()->find($id)->delete();
         } catch (\Exception $e) {
