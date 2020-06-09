@@ -22,6 +22,12 @@ class PostController extends Controller
         return response()->json(['status' => 'success', 'post' => $post]);
     }
 
+    public function employeePosts()
+    {
+        $posts = Auth::user()->posts()->get();
+        return response()->json(['status' => 'success', 'posts' => $posts]);
+    }
+
     public function getPosts()
     {
         $posts = Post::all();
@@ -30,11 +36,11 @@ class PostController extends Controller
             return $item;
         });
         $_posts = $post->map(function ($item) {
-            $services=[];
-            foreach ($item->service_ids as $service){
-              array_push($services,(Service::query()->find($service)->ServiceArray()));
+            $services = [];
+            foreach ($item->service_ids as $service) {
+                array_push($services, (Service::query()->find($service)->ServiceArray()));
             }
-            $item->services=$services;
+            $item->services = $services;
             return $item;
         });
 
