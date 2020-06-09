@@ -17,11 +17,21 @@ class HomeController extends Controller
      * filterUsers()
      */
 
+    /**
+     * @param Request $request
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
     public function index(Request $request)
     {
         $posts = Post::orderBy('created_at', 'desc')->take(3)->get();
         $services = Service::all();
-        return view('front.client.home', compact(['posts', 'services']));
+        if($request->input('logged') == true) {
+            $logged = $request->input('logged');
+            return view('front.client.home', compact(['posts', 'services','logged']));
+        }
+        else{
+            return view('front.client.home', compact(['posts', 'services']));
+        }
     }
 
     public function service(Request $request, $id = null)

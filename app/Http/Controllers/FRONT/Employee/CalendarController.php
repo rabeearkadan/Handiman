@@ -14,14 +14,28 @@ class CalendarController extends Controller
      */
 
     public function index (Request $request){
-//        $user = Auth::user();
-//        $jobs = $user->employeeRequests()->where('isApproved',true);
-//        $jobs = $jobs->map(function ($item) {
-//            $item->service_name = Service::find($item->service_id)->name;
-//            $item->client = User::find($item->client_ids[0]);
-//            return $item;
-//        });
+        $user = Auth::user();
+        $userRequests = $user->employeeRequests->where('status','approved');
+        $jobs=array();
+        $jobsArray = array();
+        $counter=0;
+        foreach ($userRequests as $userRequest) {
+            ${"jobsArray".$counter} = array();
+            ${"jobsArray".$counter}[0][$userRequest->date->format('Y').$userRequest->date->format('m').$userRequest->date->format('d')] = array([
+                'startTime' => $userRequest->from,
+                'endTime' => $userRequest->to,
+                'text' => $userRequest->subject,
+                'link' => "link"
+            ]);
+//            $jobs[$userRequest->date->format('Y')][$userRequest->date->format('m')][$userRequest->date->format('d')];
+            $counter++;
+        }
+            for ($index = 0; $index < $counter; $index++) {
+                ${"jobsArray" ."0"} = array_merge_recursive( ${"jobsArray" ."0"}, ${"jobsArray" . $index});
+            }
+            $jobs = ${"jobsArray" ."0"};
 
+        dd($jobs);
         return view('front.employee.calendar');
     }
     public function show (Request $request){

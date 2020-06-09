@@ -18,7 +18,7 @@
     <li><a class="waves-effect" href="{{route('client.profile')}}">Profile</a></li>
     <li><a class="waves-effect" href="{{route('client.invoice.index')}}">Bills</a></li>
     <li><a class="waves-effect" href="{{route('client.reviews.index')}}">Reviews</a></li>
-    <li><a class="waves-effect" href="{{route('employee.home')}}">Switch</a></li>
+    <li><a class="waves-effect" href="{{route('employee.home',['logged'=>true])}}">Switch</a></li>
     <li><a class="waves-effect" href="#" onclick="document.getElementById('logout-form').submit()">Logout</a></li>
 </ul>
 <form id="logout-form" action="{{ route('logout') }}" method="post" style="display: none;">

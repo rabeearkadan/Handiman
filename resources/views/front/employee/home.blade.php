@@ -99,6 +99,12 @@
 @push('js')
     <script src="/public/js/list.js" type="text/javascript"></script>
     <script>
+        @isset($logged)
+        $( window ).on("load",function () {
+            M.toast({html: 'Logged in as Handyman',classes: 'rounded'})
+        });
+        @endisset
+
         $(document).ready(function () {
             @foreach($posts as $post)
             $('#{{$post->id}}').carousel({

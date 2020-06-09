@@ -30,7 +30,7 @@
                 <a  href="{{route('employee.profile')}}" class="@if(request()->is('employee/profile*') || request()->is('employee/edit-profile*')) {{'active'}} @endif"> Profile </a>
             </li>
             <li class="nav-item">
-                <a  href="{{route('client.home')}}"> Switch </a>
+                <a  href="{{route('client.home',['logged'=>true])}}"> Switch </a>
             </li>
             <li class="nav-item">
                 <a  href="#" onclick="document.getElementById('logout-form').submit()" > Logout </a>

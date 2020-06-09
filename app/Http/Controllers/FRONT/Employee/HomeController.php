@@ -17,11 +17,26 @@ class HomeController extends Controller
      * reviews()
      */
 
+    /**
+     * @param Request $request
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
     public function index( Request $request ){
             $posts = Post::orderBy('created_at', 'desc')->take(3)->get();
             $services = Service::all();
-        return view ('front.employee.home',compact(['posts', 'services']));
+        if($request->input('logged') == true) {
+            $logged = $request->input('logged');
+            return view('front.employee.home', compact(['posts', 'services','logged']));
+        }
+        else{
+            return view('front.employee.home', compact(['posts', 'services']));
+        }
     }
+
+    /**
+     * @param Request $request
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
     public function requests(Request $request){
         return view('front.employee.');
     }
