@@ -63,7 +63,7 @@
                     </form>
                 </div>
                 <span>Items</span>
-                <table class="responsive-table">
+                <table>
                     <thead>
                     <tr>
                         <th>Item Name</th>
