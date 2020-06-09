@@ -21,18 +21,20 @@ class CalendarController extends Controller
         $counter=0;
         foreach ($userRequests as $userRequest) {
             ${"jobsArray".$counter} = array();
-            ${"jobsArray".$counter}[$userRequest->date->format('YY')][$userRequest->date->format('m')][$userRequest->date->format('d')] = array([
+            ${"jobsArray".$counter}[$userRequest->date->format('Y')][$userRequest->date->format('m')][$userRequest->date->format('d')] = array([
                 'startTime' => $userRequest->from,
                 'endTime' => $userRequest->to,
                 'text' => $userRequest->subject,
                 'link' => "link"
             ]);
-            $jobs[$userRequest->date->format('YY')][$userRequest->date->format('m')][$userRequest->date->format('d')];
+//            $jobs[$userRequest->date->format('Y')][$userRequest->date->format('m')][$userRequest->date->format('d')];
             $counter++;
         }
-        for($index=0;$index<$counter;$index++){
-            $jobs = array_merge_recursive($jobs,${"jobsArray".$index});
-        }
+            for ($index = 0; $index < $counter; $index++) {
+                ${"jobsArray" ."0"} = array_merge_recursive( ${"jobsArray" ."0"}, ${"jobsArray" . $index});
+            }
+            $jobs = ${"jobsArray" ."0"};
+
         dd($jobs);
         return view('front.employee.calendar');
     }
