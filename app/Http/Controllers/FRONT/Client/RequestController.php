@@ -85,42 +85,42 @@ class RequestController extends Controller
                 $day=6;
             }
             for ($hour = 0; $hour < 24; $hour++) {
-                $Days[$date->format('m/d/Y')][$hour] = $employee->timeline[$day][$hour];
-                if ($Days[$date->format('m/d/Y')][$hour] == true) {
+                $Days[$date->format('d/m/Y')][$hour] = $employee->timeline[$day][$hour];
+                if ($Days[$date->format('d/m/Y')][$hour] == true) {
                     $bool = true;
                 }
             }
             foreach ($employee->employeeRequests as $employeeRequest) {
-                if ($employeeRequest->isdone == false && $employeeRequest->date->format('m/d/Y') == $date->format('m/d/Y')) {
+                if ($employeeRequest->isdone == false && $employeeRequest->date->format('d/m/Y') == $date->format('d/m/Y')) {
                     for ($from = $employeeRequest->from; $from < $employeeRequest->to; $from++) {
-                        $Days[$date->format('m/d/Y')][$from] = false;
+                        $Days[$date->format('d/m/Y')][$from] = false;
                     }
                 }
             }
             for ($hour = 0; $hour < 24; $hour++) {
-                if ($Days[$date->format('m/d/Y')][$hour] == true) {
+                if ($Days[$date->format('d/m/Y')][$hour] == true) {
                     $bool = true;
                 }
             }
             if ($bool == false) {
-                unset($Days[$date->format('m/d/Y')]);
+                unset($Days[$date->format('d/m/Y')]);
             } else {
                 if ($availableDaysString == "") {
-                    $availableDaysString = $date->format('m/d/Y');
+                    $availableDaysString = $date->format('d/m/Y');
                 } else {
-                    $availableDaysString = $availableDaysString . ',' . $date->format('m/d/Y');
+                    $availableDaysString = $availableDaysString . ',' . $date->format('d/m/Y');
                 }
-                $timepicker[$date->format('m/d/Y')] = array();
+                $timepicker[$date->format('d/m/Y')] = array();
                 $break = false;
                 $index = 0;
                 $from = 0;
                 for ($hour = 0; $hour < 24; $hour++) {
-                    if ($Days[$date->format('m/d/Y')][$hour] == true) {
-                        if ($break == true && !empty($timepicker[$date->format('m/d/Y')])) {
+                    if ($Days[$date->format('d/m/Y')][$hour] == true) {
+                        if ($break == true && !empty($timepicker[$date->format('d/m/Y')])) {
                             $index++;
                         }
                         $break = false;
-                        $timepicker[$date->format('m/d/Y')][$index] = array(
+                        $timepicker[$date->format('d/m/Y')][$index] = array(
                             'from' => $from,
                             'to' => $hour + 1
                         );
@@ -209,6 +209,7 @@ class RequestController extends Controller
         } else {
             $handyman = User::query()->find($req->input('employee_id'));
             $requestHandyman->date = Carbon::createFromFormat('d/m/Y', $req->input('date'), $requestHandyman->timezone);
+            dd($requestHandyman->date,$req->input('date'));
             $requestHandyman->isurgent = false;
             if ($req->has('from'))
                 $requestHandyman->from = $req->input('from');
