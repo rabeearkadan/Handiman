@@ -57,6 +57,7 @@ Route::middleware(['auth:api', 'client'])->prefix('client')->group(function () {
     Route::post('remove-address/{id}', 'UserController@deleteAddress');
     Route::get('chat-requests', 'ChatController@clientRequests');
     Route::get('employee-profile/{id}', 'HandymanController@getHandymanById');
+    Route::post('reject-payment/{id}', 'RequestController@rejectPayment');
 
 });
 
@@ -74,6 +75,7 @@ Route::middleware(['auth:api'])->group(function () {
     Route::get('credit-card', 'PaymentController@getCreditCard');
     Route::post('offline', 'UserController@setOffline');
     Route::get('jobs/{id}', 'RequestController@getHandymanJobs');
+    Route::post('password', 'UserController@changePassword');
 
 
     // Route::put('profile/edit', 'UserController@editProfile');

@@ -47,6 +47,11 @@ class PostController extends Controller
     {
         Post::query()->find()->delete($id);
 
+        $user = User::query()->find(Auth::id());
+        $post = Post::query()->find($id);
+        $post->users()->detach(Auth::id());
+        $user->services()->detach($id);
+
         return response()->json(['status' => 'success']);
     }
 

@@ -28,15 +28,9 @@ class ServiceController extends Controller
     {
 
         $user = User::query()->find(Auth::id());
-
-        $services = [];
-        foreach ($user->service_ids as $s) {
-            if ($s != $id)
-                $services [] = $s;
-        }
-
-        $user->services()->sync($services);
-
+        $service = Service::query()->find($id);
+        $service->users()->detach(Auth::id());
+        $user->services()->detach($id);
         return response()->json(['status' => 'success']);
 
 

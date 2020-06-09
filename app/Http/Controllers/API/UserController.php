@@ -244,6 +244,15 @@ class UserController extends Controller
         return response()->json(['status' => 'success', 'message' => 'Password Changed']);
     }
 
+    public function changePassword(Request $request)
+    {
+        $user = User::query()->find(Auth::id());
+        $user->password = Hash::make($request->password);
+        $user->save();
+        return response()->json(['status' => 'success']);
+
+    }
+
     public function setOffline()
     {
         $user = User::query()->find(Auth::id());
