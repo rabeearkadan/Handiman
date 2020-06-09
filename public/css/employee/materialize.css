@@ -7310,7 +7310,6 @@ body.keyboard-focused .select-dropdown.dropdown-content li:focus {
 .file-field .btn, .file-field .btn-large, .file-field .btn-small {
   float: left;
   height: 3rem;
-  line-height: 1rem;
 }
 
 .file-field span {
