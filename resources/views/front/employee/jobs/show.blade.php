@@ -92,10 +92,10 @@
                         </td>
                     </tr>
                     </tbody>
+                </table>
                     <a href="#" id="addButton" onclick="addItem()">
                         <i class="material-icons">add</i>
                     </a>
-                </table>
                 <span>images.</span>
                 <input type="file" name="images[]" id="input-file" accept="image/jpeg, image/png" multiple="multiple">
             </form>
