@@ -27,6 +27,7 @@ class CalendarController extends Controller
                 'text' => $userRequest->subject,
                 'link' => "link"
             ]);
+            $jobs[$userRequest->date->format('Y')][$userRequest->date->format('m')][$userRequest->date->format('d')]=null;
             $counter++;
         }
         for($index=0;$index<$counter;$index++){
