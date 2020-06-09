@@ -24,7 +24,7 @@ class CalendarController extends Controller
         $counter=0;
         foreach ($userRequests as $userRequest) {
             ${"jobsArray".$counter} = array();
-            ${"jobsArray".$counter}[' '.$userRequest->date->format('Y')][''.$userRequest->date->format('m')][''.$userRequest->date->format('d')] = array([
+            ${"jobsArray".$counter}[''.$userRequest->date->format('Y')][''.$userRequest->date->format('m')][''.$userRequest->date->format('d')] = array([
                 'startTime' => $userRequest->from,
                 'endTime' => $userRequest->to,
                 'text' => $userRequest->subject,
