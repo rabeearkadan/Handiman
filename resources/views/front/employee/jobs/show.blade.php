@@ -57,13 +57,6 @@
             <div class="collapsible-body">
                 <form method="post" action="" enctype="multipart/form-data">
                     @csrf
-                <div class="row">
-                    <form class="col s12">
-                        <div class="row">
-
-                        </div>
-                    </form>
-                </div>
                 <span>Items</span>
                     <a href="#" id="addButton" onclick="addItem()">
                         <i style="float: right;width: 30px" class="material-icons">add</i>
