@@ -85,42 +85,42 @@ class RequestController extends Controller
                 $day=6;
             }
             for ($hour = 0; $hour < 24; $hour++) {
-                $Days[$date->format('m/d/Y')][$hour] = $employee->timeline[$day][$hour];
-                if ($Days[$date->format('m/d/Y')][$hour] == true) {
+                $Days[$date->format('Y-m-d')][$hour] = $employee->timeline[$day][$hour];
+                if ($Days[$date->format('Y-m-d')][$hour] == true) {
                     $bool = true;
                 }
             }
             foreach ($employee->employeeRequests as $employeeRequest) {
-                if ($employeeRequest->isdone == false && $employeeRequest->date->format('m/d/Y') == $date->format('m/d/Y')) {
+                if ($employeeRequest->isdone == false && $employeeRequest->date->format('Y-m-d') == $date->format('Y-m-d')) {
                     for ($from = $employeeRequest->from; $from < $employeeRequest->to; $from++) {
-                        $Days[$date->format('m/d/Y')][$from] = false;
+                        $Days[$date->format('Y-m-d')][$from] = false;
                     }
                 }
             }
             for ($hour = 0; $hour < 24; $hour++) {
-                if ($Days[$date->format('m/d/Y')][$hour] == true) {
+                if ($Days[$date->format('Y-m-d')][$hour] == true) {
                     $bool = true;
                 }
             }
             if ($bool == false) {
-                unset($Days[$date->format('m/d/Y')]);
+                unset($Days[$date->format('Y-m-d')]);
             } else {
                 if ($availableDaysString == "") {
-                    $availableDaysString = $date->format('m/d/Y');
+                    $availableDaysString = $date->format('Y-m-d');
                 } else {
-                    $availableDaysString = $availableDaysString . ',' . $date->format('m/d/Y');
+                    $availableDaysString = $availableDaysString . ',' . $date->format('Y-m-d');
                 }
-                $timepicker[$date->format('m/d/Y')] = array();
+                $timepicker[$date->format('Y-m-d')] = array();
                 $break = false;
                 $index = 0;
                 $from = 0;
                 for ($hour = 0; $hour < 24; $hour++) {
-                    if ($Days[$date->format('m/d/Y')][$hour] == true) {
-                        if ($break == true && !empty($timepicker[$date->format('m/d/Y')])) {
+                    if ($Days[$date->format('Y-m-d')][$hour] == true) {
+                        if ($break == true && !empty($timepicker[$date->format('Y-m-d')])) {
                             $index++;
                         }
                         $break = false;
-                        $timepicker[$date->format('m/d/Y')][$index] = array(
+                        $timepicker[$date->format('Y-m-d')][$index] = array(
                             'from' => $from,
                             'to' => $hour + 1
                         );
