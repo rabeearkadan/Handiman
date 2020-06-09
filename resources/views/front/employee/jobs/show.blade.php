@@ -99,7 +99,7 @@
                 <label for="receiptImages">Receipt Images.</label>
                     <div class="file-field input-field">
                         <div class="btn">
-                            <span>File</span>
+                            <span>Receipt</span>
                             <input type="file" multiple>
                         </div>
                         <div class="file-path-wrapper">
@@ -110,7 +110,7 @@
                     <label for="resultImages">Result Images.</label>
                     <div class="file-field input-field">
                         <div class="btn">
-                            <span>File</span>
+                            <span>Results</span>
                             <input type="file" multiple>
                         </div>
                         <div class="file-path-wrapper">
