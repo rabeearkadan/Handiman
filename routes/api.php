@@ -57,6 +57,7 @@ Route::middleware(['auth:api', 'client'])->prefix('client')->group(function () {
     Route::post('remove-address/{id}', 'UserController@deleteAddress');
     Route::get('chat-requests', 'ChatController@clientRequests');
     Route::get('employee-profile/{id}', 'HandymanController@getHandymanById');
+    Route::post('reject-payment/{id}', 'RequestController@rejectPayment');
 
 });
 
