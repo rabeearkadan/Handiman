@@ -280,7 +280,7 @@ class RequestController extends Controller
             }
         } elseif ($req->status == "accepted") {
 
-            $request->status ="approved";
+            $request->status = "approved";
             $request->save();
             if ($request->isurgent == true) {
                 $request->employees()->detach();
@@ -313,6 +313,16 @@ class RequestController extends Controller
             });
             return response()->json(['status' => 'success', 'requests' => $pending_request]);
         }
+    }
+
+    public function rejectPayment(Request $request, $id)
+    {
+        $req = RequestService::query()->find($id);
+        $req->rejected_payment = $request->input('report');
+        $req->save();
+        //counter
+        return response()->json(['status' => 'success']);
+
     }
 
     public function getClientOutgoingRequests()
