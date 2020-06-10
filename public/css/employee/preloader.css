@@ -4,7 +4,7 @@
     background: white;
     height: 100%;
     position: fixed;
-    z-index: 999;
+    z-index: 11000;
     width: 100%;
 }
 #loading {
@@ -14,5 +14,5 @@
     left: 0;
     height: 100%;
     width: 100%;
-    z-index: 999;
+    z-index: 11000;
 }
