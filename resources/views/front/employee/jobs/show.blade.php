@@ -67,7 +67,7 @@
                 <h5>Building: </h5>
                 <span>{{$job->client_address['building']}}</span><br>
                 <h5>Floor: </h5>
-                <span>{{$job->client_address['floor']}}</span><br>
+{{--                <span>{{$job->client_address['floor']}}</span><br>--}}
                 <h5>zip: </h5>
                 <span>{{$job->client_address['zip']}}</span><br>
             </div>
