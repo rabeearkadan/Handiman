@@ -47,7 +47,7 @@
         @endforeach
         }
         var organizer = new Organizer("organizerContainer", calendar, data);
-
+        alert('organizer');
 
         </script>
     <script>
