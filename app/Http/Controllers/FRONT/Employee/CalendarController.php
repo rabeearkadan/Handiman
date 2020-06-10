@@ -55,14 +55,18 @@ class CalendarController extends Controller
         $job->isdone = true;
         $receipt = array();
         $index = 0;
+        $total=0;
         foreach ($request->itemsName as $item) {
             $receipt[$index] = array([
                 'name' => $request->itemsName[$index],
                 'price' => $request->itemsPrice[$index],
                 'qty' => $request->itemsQuantity[$index]
             ]);
+            $total += $request->itemsPrice[$index] * $request->itemsQuantity[$index];
             $index++;
         }
+        $job->receipt = $receipt;
+        $job->total = $total;
         $requestReceiptImages = $request->file('receiptImages');
         $receipt_images = array();
         foreach ($requestReceiptImages as $image) {

@@ -40,7 +40,6 @@
                                     <ul class="menu-advanced">
                                         <li class="@if(request()->is('client/edit-profile*')) {{'active'}} @endif"><a href="{{route('client.profile')}}"><i class="fa fa-user"></i> Edit Profile </a></li>
                                         <li class="@if(request()->is('client/profile/password')) {{'active'}} @endif"><a href="{{route('client.password')}}"><i class="fa fa-key"></i> Security </a></li>
-                                        <li class="@if(request()->is('client/profile/payment')) {{'active'}} @endif"><a href="{{route('client.payment')}}"><i class="fa fa-money"></i> Payment </a></li>
                                     </ul>
                                 </div><!-- /.widget -->
                             </div><!-- /.sidebar -->

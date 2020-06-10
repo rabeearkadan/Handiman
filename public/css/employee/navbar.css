@@ -186,13 +186,13 @@
 }
 
 .navbar {
-    background: rgba(251, 250, 236, 0.8);
+    background: rgba(244, 249, 255, 0.8);
     z-index: 10;
 }
 
 .navbar-nav {
     z-index: 1;
-    background: rgba(251, 250, 236, 0.8);
+    background: rgba(244, 249, 255, 0.8);
     overflow-y: hidden;
 }
 

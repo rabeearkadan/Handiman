@@ -37,7 +37,7 @@ Route::put('/reviews/edit/{invoice_id}','ReviewsController@update')->name('clien
 //Client Profile
 Route::get('/edit-profile','ProfileController@myProfile')->name('client.profile');
 Route::get('/profile/password','ProfileController@editPassword')->name('client.password');
-Route::get('/profile/payment','ProfileController@editPayment')->name('client.payment');
+
 //Client Contact Information
 Route::put('/edit-profile/contact','ProfileController@updateContact')->name('client.contact.update');
 //Client Image

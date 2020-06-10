@@ -1,6 +1,33 @@
 @extends('layouts.employee.app')
 @push('css')
+<style>
+    .row {
+        display: flex;
+    }
 
+    .column {
+        flex: 50%;
+    }
+    .materialboxed{
+        width: 450px;
+    }
+    .btn{
+        background-color: #2688a6;
+    }
+    @media only screen and (max-width: 650px) {
+        .materialboxed {
+            width: 340px;
+        }
+        .textarea.materialize-textarea , .btn{
+            font-size: 11px;
+        }
+    }
+    @media only screen and (max-width: 450px) {
+        .materialboxed {
+            width: 200px;
+        }
+    }
+</style>
 @endpush
 @section('content')
     <ul class="collapsible popout">
@@ -23,13 +50,11 @@
                 Client Details
             </div>
             <div class="collapsible-body">
+                <i class="material-icons">name</i>
                 <span>{{$client->name}}</span>
                 <br>
+                <i class="material-icons">phone</i>
                 <span>{{$client->phone}}</span>
-                <br>
-                <span></span>
-                <br>
-                <span></span>
             </div>
         </li>
         <li>
@@ -48,7 +73,13 @@
                 Date &amp; Time
             </div>
             <div class="collapsible-body">
-                <span>{{$job->date}}  {{$job->from}} -> {{$job->to}}</span>
+                <span>
+                    <i class="material-icons">date_range</i>
+                    {{$job->date->format('d/m/Y')}} </span>
+                <br>
+                <span>
+                    <i class="material-icons">clock</i>
+                    {{$job->from}} -> {{$job->to}}</span>
             </div>
         </li>
         <li>
@@ -57,19 +88,25 @@
                 Address
             </div>
             <div class="collapsible-body">
-                <h5>Name</h5>
-                <h5>state</h5>
-                <h5>city</h5>
-                <h5>Street: </h5>
-                <span>{{$job->client_address['street']}}</span><br>
-                <h5>Property Type: </h5>
-                <span>{{$job->client_address['property_type']}}</span><br>
-                <h5>Building: </h5>
-                <span>{{$job->client_address['building']}}</span><br>
-                <h5>Floor: </h5>
-{{--                <span>{{$job->client_address['floor']}}</span><br>--}}
-                <h5>zip: </h5>
-                <span>{{$job->client_address['zip']}}</span><br>
+                <div class="row">
+                    <div class="column">
+                        <h6>Name</h6>
+                        <h6>state</h6>
+                        <h6>city</h6>
+                        <h6>Street: </h6>
+                        <span>{{$job->client_address['street']}}</span><br>
+                    </div>
+                    <div class="column">
+                        <h6>Property Type: </h6>
+                        <span>{{$job->client_address['property_type']}}</span><br>
+                        <h6>Building: </h6>
+                        <span>{{$job->client_address['building']}}</span><br>
+                        <h6>Floor: </h6>
+                        {{--                <span>{{$job->client_address['floor']}}</span><br>--}}
+                        <h6>zip: </h6>
+                        <span>{{$job->client_address['zip']}}</span><br>
+                    </div>
+                </div>
             </div>
         </li>
         <li>
@@ -77,7 +114,7 @@
                 Images</div>
             <div class="collapsible-body">
                 @foreach($job->images as $image)
-                <img class="materialboxed"  width="350" src="{{config('image.path').$image}}">
+                <img class="materialboxed"   src="{{config('image.path').$image}}">
                     @endforeach
                 </div>
         </li>
