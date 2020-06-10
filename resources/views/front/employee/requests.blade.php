@@ -206,11 +206,11 @@
         var instances = M.Slider.init(elems);
     });
     function changeIndicatorColor(type) {
-        if(type==='urgent'){#ee6e73
-            $('.row .col.l12 .tabs.tabs-fixed-width .indicator')
+        if(type==='urgent'){
+            $('.row .col.l12 .tabs.tabs-fixed-width .indicator').css("background-color", "#ee6e73");
         }
-        else{rgba(75, 86, 210, 0.7)
-
+        else{
+            $('.row .col.l12 .tabs.tabs-fixed-width .indicator').css("background-color", "rgba(75, 86, 210, 0.7);");
         }
     }
 </script>
