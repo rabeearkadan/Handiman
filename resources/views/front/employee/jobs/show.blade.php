@@ -19,7 +19,7 @@
         </li>
         <li>
             <div class="collapsible-header">
-                <i class="material-icons">details</i>
+                <i class="material-icons">perm_identity</i>
                 Client Details
             </div>
             <div class="collapsible-body">
