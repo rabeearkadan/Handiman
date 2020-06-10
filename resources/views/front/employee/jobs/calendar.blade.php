@@ -47,6 +47,10 @@
         @endforeach
         }
         var organizer = new Organizer("organizerContainer", calendar, data);
+
+
+        </script>
+    <script>
         setTimeout(
             function()
             {
