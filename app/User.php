@@ -209,8 +209,8 @@ class User extends Eloquent implements
                 ->get();
             $_feedback = [];
             foreach ($reqs as $req) {
-
                 $object = [];
+                $object['service_name']=$service->name;
                 $object['feedback'] = $req->feedback;
                 $object['rating'] = $req->rating;
                 $object['client'] = User::query()->find($req->client_ids[0])->simplifiedArray();
