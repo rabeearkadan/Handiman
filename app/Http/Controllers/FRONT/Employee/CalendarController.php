@@ -36,7 +36,7 @@ class CalendarController extends Controller
                 'link' => 'calendar/' . $userRequest->id . '/show'
             ]);
             ${"servicessArray" . $counter} = array();
-            ${"servicesArray" . $counter}[' ' .$userRequest->service_id]= Service::find($userRequest->service_id); ;
+            ${"servicesArray" . $counter}[' ' .$userRequest->service_id]= Service::find($userRequest->service_id)->indicator;
             $services = array_merge_recursive($services, ${"servicesArray" . $counter});
             $jobs = array_merge_recursive($jobs, ${"jobsArray" . $counter});
             $counter++;
