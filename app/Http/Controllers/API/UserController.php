@@ -265,6 +265,7 @@ class UserController extends Controller
     {
         $user = User::query()->find(Auth::id());
         $user->online = false;
+        $user->save();
         return response()->json(['status' => 'success', 'message' => 'logged out']);
     }
 
