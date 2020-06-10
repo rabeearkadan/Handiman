@@ -54,6 +54,7 @@
                     @foreach($services as $id => $service)
                 for(var i=0;i<links.length;i++)
                 {
+                    alert(links[i].href);
                     if(links[i].href.includes('{{$id}}'))
                     {
                         links[i].style.color = "{{$service[0]}}";
