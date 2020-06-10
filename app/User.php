@@ -16,13 +16,15 @@ use Illuminate\Foundation\Auth\Access\Authorizable;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Support\Facades\Log;
 use Jenssegers\Mongodb\Eloquent\Model as Eloquent;
+use Jenssegers\Mongodb\Eloquent\SoftDeletes;
 
 
 class User extends Eloquent implements
     AuthenticatableContract, AuthorizableContract, CanResetPasswordContract
 {
     use Authenticatable, Authorizable, Notifiable, CanResetPassword;
-
+    use SoftDeletes;
+    protected $dates = ['deleted_at'];
     /**
      * The attributes that are mass assignable.
      *
@@ -49,7 +51,7 @@ class User extends Eloquent implements
 
     protected $appends = ['rating_object', 'feedback_object'];
 
-    
+
 
 
 
