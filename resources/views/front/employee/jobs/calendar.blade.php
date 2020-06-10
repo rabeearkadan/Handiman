@@ -47,8 +47,15 @@
         @endforeach
         }
         var organizer = new Organizer("organizerContainer", calendar, data);
+        var links = document.getElementsByTagName("a");
         @foreach($services as $id => $service)
-        $('a[href^="calendar/{{$id}}/show"]').css('color','{{$service[0]}}');
+        for(var i=0;i<links.length;i++)
+        {
+            if(links[i].href === "calendar/{{$id}}/show")
+            {
+                links[i].style.color = {{$service[0]}};
+            }
+        }
         @endforeach
     </script>
 @endpush
