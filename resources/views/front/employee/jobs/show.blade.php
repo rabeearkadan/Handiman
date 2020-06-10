@@ -65,7 +65,7 @@
                 <h5>Property Type: </h5>
                 <span>{{$job->client_address['property_type']}}</span><br>
                 <h5>Building: </h5>
-                <span>{{$job->client_address['builiding']}}</span><br>
+                <span>{{$job->client_address['building']}}</span><br>
                 <h5>Floor: </h5>
                 <span>{{$job->client_address['floor']}}</span><br>
                 <h5>zip: </h5>
