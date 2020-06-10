@@ -41,6 +41,15 @@
     </div>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    @if(request()->route()->getName() == "employee.post.create" && request()->route()->getName() == "employee.home" && request()->route()->getName() == "employee.calendar.show")
+        <script>
+        $('#navbar-collapse').on('show.bs.collapse', function () {
+            $("html").one('click', function() {
+                $('#navbar-collapse').collapse('toggle')
+            })
+        });
+    </script>
+        @endif
     <script src="/public/js/materialize.js"></script>
     @stack('js')
 
