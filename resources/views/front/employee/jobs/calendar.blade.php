@@ -51,7 +51,7 @@
         @foreach($services as $id => $service)
         for(var i=0;i<links.length;i++)
         {
-            if(links[i].href === "http://handiman.club/employee/calendar/{{$id}}/show")
+            if(links[i].href.includes('{{$id}}'))
             {
                 links[i].style.color = "{{$service[0]}}";
             }
