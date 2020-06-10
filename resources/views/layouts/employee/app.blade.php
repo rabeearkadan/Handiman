@@ -10,6 +10,9 @@
     @if(request()->route()->getName() != "employee.post.create" && request()->route()->getName() != "employee.home" && request()->route()->getName() != "employee.calendar.show")
     <script src="{{ asset('js/app.js') }}" defer></script>
     @endif
+    @if(request()->route()->getName() == "employee.post.create" || request()->route()->getName() == "employee.home" || request()->route()->getName() == "employee.calendar.show")
+        <script src="{{ asset('js/bootstrap.js') }}" defer></script>
+    @endif
     <!-- Styles -->
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     @if(request()->route()->getName() != "employee.post.create" )
@@ -41,13 +44,7 @@
     </div>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-    @if(request()->route()->getName() == "employee.post.create" || request()->route()->getName() == "employee.home" || request()->route()->getName() == "employee.calendar.show")
-        <script>
-            $(".navbar-toggler").on('click', function() {
-                $('#collapsibleNavbar').collapse('toggle');
-        });
-    </script>
-        @endif
+
     <script src="/public/js/materialize.js"></script>
     @stack('js')
 
