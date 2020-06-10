@@ -1,13 +1,18 @@
 @extends('layouts.employee.app')
 @push('css')
     <link href="{{asset('css/employee/calendar.css')}}" rel="stylesheet" />
+    <style>
+        @foreach($services as $id => $service)
+        a[href*="{{$id}}"]{
+            color:{{$service[0]}};
+        }
+        @endforeach
+    </style>
 @endpush
 @section('content')
     <div id="calendarContainer"></div>
     <div id="organizerContainer"></div>
-
-
-    @endsection
+@endsection
 @push('js')
     <script src="/public/js/employee/calendar.min.js"></script>
     <script>
@@ -47,25 +52,5 @@
         @endforeach
         }
         var organizer = new Organizer("organizerContainer", calendar, data);
-        alert('organizer');
-
         </script>
-    <script>
-        setTimeout(
-            function()
-            {
-                var links = document.getElementsByTagName("a");
-                    @foreach($services as $id => $service)
-                for(var i=0;i<links.length;i++)
-                {
-                    alert(links[i].href);
-                    if(links[i].href.includes('{{$id}}'))
-                    {
-                        links[i].style.color = "{{$service[0]}}";
-                    }
-                }
-                @endforeach
-            }, 5000);
-
-    </script>
 @endpush
