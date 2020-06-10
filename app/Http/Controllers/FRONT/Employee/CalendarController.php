@@ -42,7 +42,6 @@ class CalendarController extends Controller
             $counter++;
         }
         $services = $this->array_unique_recursive($services);
-        dd($services);
         return view('front.employee.jobs.calendar', compact(['jobs','services']));
     }
 
