@@ -213,9 +213,5 @@
             $('.row .col.l12 .tabs.tabs-fixed-width .indicator').css("background-color", "rgba(75, 86, 210, 0.7)");
         }
     }
-    @foreach($services as $service)
-        href="calendar/5edfb40ce8deab51b44060f3/show"
-    $('a[href^="calendar/{{$service->id}}/show"]').css('color','{{$service->indicator}}');
-        @endforeach
 </script>
 @endpush

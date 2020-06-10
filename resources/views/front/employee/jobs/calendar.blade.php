@@ -46,7 +46,10 @@
         },
         @endforeach
         };
-
         var organizer = new Organizer("organizerContainer", calendar, data);
+        @foreach($services as $service)
+            href="calendar/5edfb40ce8deab51b44060f3/show"
+        $('a[href^="calendar/{{$service->id}}/show"]').css('color','{{$service->indicator}}');
+        @endforeach
     </script>
 @endpush
