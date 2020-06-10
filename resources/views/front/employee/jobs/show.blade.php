@@ -55,7 +55,7 @@
             <div class="collapsible-header"><i class="material-icons">payment</i>
                 bill</div>
             <div class="collapsible-body">
-                <form method="post" action="" enctype="multipart/form-data">
+                <form method="post" action="{{route('employee.calendar.add.receipt',$job->id)}}" enctype="multipart/form-data">
                     @csrf
                 <span>Items</span>
                     <a href="#" id="addButton" onclick="addItem()">

@@ -36,7 +36,7 @@
     @include('front.employee.partials.preloader')
     @include('front.employee.partials.navbar')
     @yield('outer-elements')
-    <div class="content">
+    <div class="content" style="overflow-x: hidden">
         @yield('content')
     </div>
 

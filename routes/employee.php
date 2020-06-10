@@ -11,7 +11,9 @@ Route::get('/request/{id}/reject','RequestController@reject')->name('employee.re
 
 //Calendar
 Route::get("/calendar", 'CalendarController@index')->name('employee.calendar');
-Route::get("/calendar/{id}/show", 'CalendarController@show')->name('c');
+Route::get("/calendar/{id}/show", 'CalendarController@show')->name('employee.calendar.show');
+Route::post("/calendar/{id}/receipt", 'CalendarController@addReceipt')->name('employee.calendar.add.receipt');
+
 //Reviews
 Route::get("/reviews", 'HomeController@reviews')->name('employee.reviews');
 
