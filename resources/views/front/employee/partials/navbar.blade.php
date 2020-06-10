@@ -1,13 +1,13 @@
 
 <nav class="navbar navbar-expand-lg navbar-light ">
-    <a class="navbar-brand" href="#"><img src="/public/img/logo.png" width="70px" height="35px"></a>
+    <a class="navbar-brand" href="#"><img src="/public/img/logo.png" width="70px" height="35px" alt="home"></a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
         <div class="navTrigger">
             <i></i><i></i><i></i>
         </div>
     </button>
     <div class="collapse navbar-collapse"  id="collapsibleNavbar">
-        <ul class="navbar-nav"  >
+        <ul class="navbar-nav">
             <li class="nav-item">
                 <a  href="{{route('employee.home')}}" class="@if(request()->is('employee/home')) {{'active'}} @endif"> Home </a>
             </li>
@@ -38,7 +38,6 @@
         </ul>
     </div>
 </nav>
-</ul>
 <form id="logout-form" action="{{ route('logout') }}" method="post" style="display: none;">
     @csrf
 </form>

@@ -90,7 +90,7 @@
                 <form method="post" action="{{route('employee.calendar.add.receipt',$job->id)}}" enctype="multipart/form-data">
                     @csrf
                 <span>Items</span>
-                    <a href="#" id="addButton" onclick="addItem()">
+                    <a href="#!" id="addButton" onclick="addItem()">
                         <i style="float: right;width: 30px" class="material-icons">add</i>
                     </a>
                 <table>
@@ -128,7 +128,7 @@
                             <input type="file" multiple>
                         </div>
                         <div class="file-path-wrapper">
-                            <input class="file-path validate" id="receiptImages[]" name="receiptImages" type="text" placeholder="Receipt Images, upload at least one"  accept="image/jpeg, image/png" multiple="multiple">
+                            <input class="file-path validate" id="receiptImages" name="receiptImages[]" type="text" placeholder="Receipt Images, upload at least one"  accept="image/jpeg, image/png" multiple="multiple">
                         </div>
                     </div>
 
@@ -139,7 +139,7 @@
                             <input type="file" multiple>
                         </div>
                         <div class="file-path-wrapper">
-                            <input class="file-path validate" id="resultImages[]" name="receiptImages" type="text" placeholder="Result Images, upload at least one"  accept="image/jpeg, image/png" multiple="multiple">
+                            <input class="file-path validate" id="resultImages" name="resultsImages[]" type="text" placeholder="Result Images, upload at least one"  accept="image/jpeg, image/png" multiple="multiple">
                         </div>
                     </div>
                     <button class="btn waves-effect waves-light right" type="submit" name="action" style="line-height: 3.5px;font-size: small;height: 27px;margin-right: 85px;">Submit
@@ -195,7 +195,7 @@
                 '<td>' +
                 '<div class="input-field col s4">' +
                 '<textarea name="itemsQuantity[]"  placeholder="Item quantity" class="materialize-textarea"></textarea>' +
-                '<a href="#" onclick="deleteItem('+id+')">' +
+                '<a href="#!" onclick="deleteItem('+id+')">' +
                 '<i class="material-icons postfix">delete</i>' +
                 '</a>' +
                 '</div>' +
