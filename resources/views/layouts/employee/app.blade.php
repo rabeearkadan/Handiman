@@ -16,8 +16,9 @@
     <!-- Styles -->
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     @if(request()->route()->getName() != "employee.post.create" )
-    <link href="{{asset('css/app.css')}}" rel="stylesheet">
+
     @endif
+    <link href="{{asset('css/app.css')}}" rel="stylesheet">
     <link href="{{asset('css/employee/materialize.css')}}" rel="stylesheet">
     @stack('css')
     <link href="{{asset('css/employee/navbar.css')}}" rel="stylesheet">
