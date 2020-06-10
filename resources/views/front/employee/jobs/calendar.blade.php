@@ -51,6 +51,7 @@
         @foreach($services as $id => $service)
         for(var i=0;i<links.length;i++)
         {
+            alert('dddd');
             if(links[i].href.includes('{{$id}}'))
             {
                 alert('cccc');
