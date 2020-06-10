@@ -25,7 +25,7 @@ class CalendarController extends Controller
         $user = Auth::user();
         $userRequests = $user->employeeRequests->where('status', 'approved');
         $jobs = array();
-        $jobsArray = array();
+        $services = array();
         $counter = 0;
         foreach ($userRequests as $userRequest) {
             ${"jobsArray" . $counter} = array();
@@ -35,10 +35,14 @@ class CalendarController extends Controller
                 'text' => $userRequest->subject,
                 'link' => 'calendar/' . $userRequest->id . '/show'
             ]);
+            ${"servicessArray" . $counter} = array();
+            ${"servicesArray" . $counter}[' ' .$userRequest->service_id]= Service::find($userRequest->service_id); ;
+            $services = array_merge_recursive($services, ${"servicesArray" . $counter});
             $jobs = array_merge_recursive($jobs, ${"jobsArray" . $counter});
             $counter++;
         }
-        return view('front.employee.jobs.calendar', compact('jobs'));
+        dd($services);
+        return view('front.employee.jobs.calendar', compact(['jobs','services']));
     }
 
     public function show($id, Request $request)

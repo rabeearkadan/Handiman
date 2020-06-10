@@ -5,7 +5,9 @@
 @section('content')
     <div id="calendarContainer"></div>
     <div id="organizerContainer"></div>
-@endsection
+
+
+    @endsection
 @push('js')
     <script src="/public/js/employee/calendar.min.js"></script>
     <script>
@@ -17,7 +19,7 @@
                 days: [ "Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday",  "Saturday" ],
                 months: [ "January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December" ],
                 indicator: true,
-                placeholder: "<span> No Jobs </span>"
+                placeholder: '<div class="container" style="background-size:contain;background-repeat: no-repeat; background-position: center;height: 300px;background-image:url(\'/public/images/employee/jobs-empty.jpg\');">',
             });
         var data = {
         @foreach($jobs as $year => $jobYear)
