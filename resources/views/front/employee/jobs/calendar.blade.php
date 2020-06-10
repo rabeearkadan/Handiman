@@ -51,10 +51,12 @@
         @foreach($services as $id => $service)
         for(var i=0;i<links.length;i++)
         {
-            alert('dddd');
+            alert('links['+i+'].href');
+            alert('{{$id}}');
+            alert(links[i].href.includes('{{$id}}'));
             if(links[i].href.includes('{{$id}}'))
             {
-                alert('cccc');
+                alert('in');
                 links[i].className = "calsc";
                     {{--style.color = "{{$service[0]}}";--}}
             }
