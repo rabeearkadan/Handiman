@@ -253,10 +253,19 @@ class UserController extends Controller
 
     }
 
+    public function favorite($id)
+    {
+        $user = User::query()->find(Auth::id());
+        $user->push('favorite',$id);
+        $user->save();
+        return response()->json(['status' => 'success']);
+    }
+
     public function setOffline()
     {
         $user = User::query()->find(Auth::id());
         $user->online = false;
+        $user->save();
         return response()->json(['status' => 'success', 'message' => 'logged out']);
     }
 

@@ -62,7 +62,6 @@ class SchedularEngine extends Command
             $var--;
         }
         $count = 0;
-        if ($requestHandyman->isurgent == true) {
             foreach ($availableUsers as $handyman) {
                 $flag1 = $this->checkTimeline($requestHandyman->from, $requestHandyman->to, $var, $handyman);
                 $flag2 = $this->checkRequests($handyman, $requestHandyman->date, $requestHandyman->from, $requestHandyman->to);
@@ -73,13 +72,13 @@ class SchedularEngine extends Command
                         $count++;
                         $this->Notification($employee->employee_device_token, 'Admin', 'You received a new request', 'request');
                     } else {
+                        $count = -1;
                         $requestHandyman->employees()->attach($handyman);
                         $employee = User::query()->find($handyman->id);
                         $this->Notification($employee->employee_device_token, 'Admin', 'You received an urgent request', 'request');
-                        $count = -1;
                         break;
                     }
-                }
+
             }
             $client = User::query()->find($requestHandyman->client_ids[0]);
             if ($count == 0) {

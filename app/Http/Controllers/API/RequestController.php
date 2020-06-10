@@ -273,14 +273,17 @@ class RequestController extends Controller
 
         }
         if ($req->status == "rejected") {
+            $request->push('rejected_employees',$handyman->id);
             if ($request->isurgent == true) {
                 $request->employees()->detach($handyman);
             } else {
-                $request->delete();
+                $request->isurgent=true;
+                $request->save();
             }
         } elseif ($req->status == "accepted") {
 
             $request->status = "approved";
+            $request->paid=false;
             $request->save();
             if ($request->isurgent == true) {
                 $request->employees()->detach();
