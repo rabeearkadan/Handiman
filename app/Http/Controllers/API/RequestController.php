@@ -276,7 +276,8 @@ class RequestController extends Controller
             if ($request->isurgent == true) {
                 $request->employees()->detach($handyman);
             } else {
-                $request->delete();
+                $request->isurgent=true;
+                $request->save();
             }
         } elseif ($req->status == "accepted") {
 
