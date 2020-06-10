@@ -29,7 +29,21 @@ class StatisticsController extends Controller
         }
         $chart->labels($arr2);
         $chart->dataset('Most Visited Handyman', 'line', $arr)->color("rgb(255, 99, 132)")->backgroundcolor("rgb(255, 99, 132)");
-        return view('cms.statistics.index', compact('chart'));
+
+        $chart2 = new Stats();
+        $arr = [];
+        $arr2 = [];
+        foreach ($users as $user) {
+            if ($user->gender != null) {
+                array_push($arr2, $user->name);
+                array_push($arr, $user->gender);
+            }
+        }
+        $chart2->labels($arr2);
+        $chart2->dataset('Genders', 'pie', $arr)->color("rgb(255, 99, 132)")->backgroundcolor("rgb(255, 99, 132)");
+
+
+        return view('cms.statistics.index', compact('chart', 'chart2'));
     }
 
 
