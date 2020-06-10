@@ -38,7 +38,8 @@ class CalendarController extends Controller
     }
     public function show ($id,Request $request){
         $job = RequestService::findOrFail($id);
-        return view('front.employee.jobs.show',compact('job'));
+        $client = $job->clients()->first();
+        return view('front.employee.jobs.show',compact(['job','client']));
     }
     public function addReceipt ($id,Request $request){
         $job = RequestService::findOrFail($id);
