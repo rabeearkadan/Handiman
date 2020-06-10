@@ -3,7 +3,7 @@
     <link href="{{asset('css/employee/calendar.css')}}" rel="stylesheet" />
     <style>
         @foreach($services as $id => $service)
-        a[href^="{{$id}}"]{
+        a[href*="{{$id}}"]{
             color:{{$service[0]}};
         }
         @endforeach
