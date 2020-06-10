@@ -210,7 +210,7 @@ class User extends Eloquent implements
             $_feedback = [];
             foreach ($reqs as $req) {
                 $object = [];
-                $object['service_name']=$service->name;
+                $object['service_name'] = $service->name;
                 $object['feedback'] = $req->feedback;
                 $object['rating'] = $req->rating;
                 $object['client'] = User::query()->find($req->client_ids[0])->simplifiedArray();
@@ -218,9 +218,15 @@ class User extends Eloquent implements
                 array_push($_feedback, $object);
 
             }
-            $feedback[$service->id] = $_feedback;
+            if ($_feedback==null){
+             $feedback[$service->id]=$service->name;
+            }else {
+                $feedback[$service->id] = $_feedback;
+            }
 
         }
+
+
         return $feedback;
     }
 }
