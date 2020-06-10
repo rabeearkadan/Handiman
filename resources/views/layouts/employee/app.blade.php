@@ -44,7 +44,7 @@
     @if(request()->route()->getName() == "employee.post.create" || request()->route()->getName() == "employee.home" || request()->route()->getName() == "employee.calendar.show")
         <script>
             $(".navbar-toggler").on('click', function() {
-                $('.navbar-collapse').collapse('toggle')
+                $('#collapsibleNavbar').collapse('toggle');
         });
     </script>
         @endif
