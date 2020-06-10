@@ -7,6 +7,9 @@
             color:{{$service[0]}};
         }
         @endforeach
+        a{
+            color:green;
+        }
     </style>
 @endpush
 @section('content')
