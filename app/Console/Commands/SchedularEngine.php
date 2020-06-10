@@ -34,7 +34,6 @@ class SchedularEngine extends Command
             }
         }
     }
-
     private function searchForHandyman(RequestService $requestHandyman)
     {
         $list = Service::query()->where('_id', $requestHandyman->service_id)->first();

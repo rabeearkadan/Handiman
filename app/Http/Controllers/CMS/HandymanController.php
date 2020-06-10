@@ -21,14 +21,14 @@ class HandymanController extends Controller
     {
 
         $employee = User::query()->find($id);
-        $_requests=$employee->employeeRequests()->get();
+        $_requests = $employee->employeeRequests()->get();
         $requests = $_requests->map(function ($item) {
             $item->client = User::query()->find($item->client_ids[0])->simplifiedArray();
             return $item;
         });
 
 
-        return view('cms.employees.show', compact('employee','requests'));
+        return view('cms.employees.show', compact('employee', 'requests'));
 
     }
 
@@ -55,6 +55,23 @@ class HandymanController extends Controller
 
     public function destroy($id)
     {
+        $user = User::query()->find($id);
+        $requests = $user->employeeRequests()->get();
+        $services = $user->services()->get();
+        $posts = $user->posts()->get();
+        foreach ($requests as $request) {
+            $request->employees()->detach($user);
+            $request->status = 'pending';
+            $request->isurgent = true;
+            $request->save();
+        }
+        foreach ($services as $service) {
+            $service->users()->detach($user);
+        }
+        foreach ($posts as $post) {
+            $post->tags()->detach();
+            $post->users()->detach($user);
+        }
 
         try {
             User::query()->find($id)->delete();
@@ -63,15 +80,19 @@ class HandymanController extends Controller
 
         return redirect()->route('employee.index');
     }
-    public function activate($id){
-        $user=User::query()->find($id);
-        $user->isApproved=true;
+
+    public function activate($id)
+    {
+        $user = User::query()->find($id);
+        $user->isApproved = true;
         $user->save();
         return redirect()->route('employee.index');
     }
-    public function deactivate($id){
-        $user=User::query()->find($id);
-        $user->isApproved=false;
+
+    public function deactivate($id)
+    {
+        $user = User::query()->find($id);
+        $user->isApproved = false;
         $user->save();
         return redirect()->route('employee.index');
     }
