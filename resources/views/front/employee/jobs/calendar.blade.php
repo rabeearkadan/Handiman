@@ -53,7 +53,9 @@
         {
             if(links[i].href.includes('{{$id}}'))
             {
-                links[i].style.color = "{{$service[0]}}";
+                alert('cccc');
+                links[i].className = "calsc";
+                    {{--style.color = "{{$service[0]}}";--}}
             }
         }
         @endforeach
