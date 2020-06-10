@@ -105,8 +105,7 @@
     </div><!-- /.page-wrapper -->
 @endsection
 @push('js')
-    <script src="/public/js/employee/collapse.js" type="text/javascript"></script>
-    <script src="/public/js/employee/dropdown.js" type="text/javascript"></script>
+
     <script src="/public/js/employee/jquery.colorbox-min.js" type="text/javascript"></script>
     <script src="/public/js/employee/bootstrap-select.min.js" type="text/javascript"></script>
     <script src="/public/js/employee/fileinput.min.js" type="text/javascript"></script>

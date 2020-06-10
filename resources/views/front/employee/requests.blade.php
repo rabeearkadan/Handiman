@@ -1,19 +1,26 @@
 @extends('layouts.employee.app')
 @push('css')
-{{--    <link href="{{asset('css/employee/collapsible.css')}}" rel="stylesheet" type="text/css">--}}
+    <style>
+        .requests {
+            color: rgba(75, 86, 210, 0.7) !important;
+        }
+        .requests:hover,.requests.active{
+            color: rgba(75, 86, 210, 0.7) !important;
+        }
+    </style>
 @endpush
 @section('content')
     <div class="row">
         <div class="col l12" >
             <ul class="tabs tabs-fixed-width">
-                <li class="tab col s6"><a class="active" href="#urgent">Urgent Requests</a></li>
-                <li class="tab col s6"><a  href="#normalrequests">Requests</a></li>
+                <li class="tab col s6"><a class="active" href="#urgent" onclick="changeIndicatorColor('urgent')">Urgent Requests</a></li>
+                <li class="tab col s6"><a  href="#normalrequests" class="requests" onclick="changeIndicatorColor('requests')">Requests</a></li>
             </ul>
         </div>
     </div>
 
 <div id="urgent">
-    <h4 style="color: darkred">Urgent Requests:</h4>
+    <h4 style="color: #ee6e73">Urgent Requests:</h4>
     @foreach($urgentRequests as $urgentRequest)
         <div class="row">
             <div class="col-sm-12">
@@ -87,12 +94,12 @@
         </div>
     @endforeach
         @if($urgentRequests->count() == 0)
-            <div class="container" style="background-size:contain;background-repeat: no-repeat; background-position: center;height: 300px;background-image:url('/public/images/employee/urgent-empty.png');">
+            <div class="container" style="background-size:contain;background-repeat: no-repeat; background-position: center;height: 200px;background-image:url('/public/images/employee/urgent-empty.png');">
             </div>
         @endif
 </div>
     <div id="normalrequests">
-<h4>Requests:</h4>
+<h4 style="color:cornflowerblue;">Requests:</h4>
     @foreach($requests as $request)
     <div class="row">
     <div class="col-sm-12">
@@ -198,6 +205,13 @@
         var elems = document.querySelectorAll('.slider');
         var instances = M.Slider.init(elems);
     });
-
+    function changeIndicatorColor(type) {
+        if(type==='urgent'){
+            $('.row .col.l12 .tabs.tabs-fixed-width .indicator').css("background-color", "#ee6e73");
+        }
+        else{
+            $('.row .col.l12 .tabs.tabs-fixed-width .indicator').css("background-color", "rgba(75, 86, 210, 0.7)");
+        }
+    }
 </script>
 @endpush

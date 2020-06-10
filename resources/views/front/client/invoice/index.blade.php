@@ -23,7 +23,11 @@
                                     <h2 class="widgettitle">Categories</h2>
                                     <ul class="menu">
                                         @foreach($services as $service)
-                                        <li><a href="#"> {{$service->name}} <strong class="pull-right">.</strong></a></li>
+                                        <li>
+                                            <a href="#">
+                                                {{$service->name}}
+{{--                                                <strong class="pull-right">{{$service-_ount}}</strong>--}}
+                                            </a></li>
                                         @endforeach
                                     </ul><!-- /.menu -->
                                 </div><!-- /.wifget -->
@@ -53,18 +57,12 @@
                                         </div><!-- /.post-date -->
                                     </div><!-- /.post -->
                                     @endforeach
+                                        @if($$invoices->count() == 0)
+                                            <div class="container" style="background-size:contain;background-repeat: no-repeat;background-position: center;height:150px;background-image:url('/public/images/client/invoice-empty.png');">
+                                            </div>
+                                        @endif
+
                                 </div><!-- /.posts -->
-
-
-                                <div class="pager">
-                                    <ul>
-                                        <li><a href="#">Prev</a></li>
-                                        <li><a href="#">5</a></li>
-                                        <li class="active"><a>6</a></li>
-                                        <li><a href="#">7</a></li>
-                                        <li><a href="#">Next</a></li>
-                                    </ul>
-                                </div><!-- /.pagination -->
                             </div><!-- /.content -->
                         </div><!-- /.col-* -->
                     </div><!-- /.row -->
@@ -77,4 +75,24 @@
     <script src="/public/js/client/dropdown.js" type="text/javascript"></script>
     <script src="/public/js/client/bootstrap-select.min.js" type="text/javascript"></script>
     <script src="/public/js/client/superlist.js" type="text/javascript"></script>
+    <script src="/public/js/list.js" type="text/javascript"></script>
+    <script>
+        var options = {
+            valueNames: ['categories'],
+            page: 20,
+            pagination: true
+        };
+        var billsList = new List('bills-list', options);
+
+        function filter(category) {
+            billsList.filter(function (item) {
+                return !!item.values().categories.includes(category);
+            });
+        }
+
+        function removeFilters() {
+            billsList.filter();
+        }
+    </script>
+
 @endpush

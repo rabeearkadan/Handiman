@@ -25,7 +25,7 @@ class CalendarController extends Controller
         $user = Auth::user();
         $userRequests = $user->employeeRequests->where('status', 'approved');
         $jobs = array();
-        $jobsArray = array();
+        $services = array();
         $counter = 0;
         foreach ($userRequests as $userRequest) {
             ${"jobsArray" . $counter} = array();
@@ -35,10 +35,14 @@ class CalendarController extends Controller
                 'text' => $userRequest->subject,
                 'link' => 'calendar/' . $userRequest->id . '/show'
             ]);
+            ${"servicessArray" . $counter} = array();
+            ${"servicesArray" . $counter}[$userRequest->service_id]= Service::find($userRequest->service_id)->indicator;
+            $services = array_merge_recursive($services, ${"servicesArray" . $counter});
             $jobs = array_merge_recursive($jobs, ${"jobsArray" . $counter});
             $counter++;
         }
-        return view('front.employee.jobs.calendar', compact('jobs'));
+        $services = $this->array_unique_recursive($services);
+        return view('front.employee.jobs.calendar', compact(['jobs','services']));
     }
 
     public function show($id, Request $request)
@@ -55,14 +59,18 @@ class CalendarController extends Controller
         $job->isdone = true;
         $receipt = array();
         $index = 0;
+        $total=0;
         foreach ($request->itemsName as $item) {
             $receipt[$index] = array([
                 'name' => $request->itemsName[$index],
                 'price' => $request->itemsPrice[$index],
                 'qty' => $request->itemsQuantity[$index]
             ]);
+            $total += $request->itemsPrice[$index] * $request->itemsQuantity[$index];
             $index++;
         }
+        $job->receipt = $receipt;
+        $job->total = $total;
         $requestReceiptImages = $request->file('receiptImages');
         $receipt_images = array();
         foreach ($requestReceiptImages as $image) {
@@ -93,5 +101,18 @@ class CalendarController extends Controller
         dd($job);
         $job->save();
         return redirect(route('employee.calendar.show', $job->id));
+    }
+    function array_unique_recursive(array $arr) {
+        if (array_keys($arr) === range(0, count($arr) - 1)) {
+            $arr = array_unique($arr, SORT_REGULAR);
+        }
+
+        foreach ($arr as $key => $item) {
+            if (is_array($item)) {
+                $arr[$key] = $this->array_unique_recursive($item);
+            }
+        }
+
+        return $arr;
     }
 }

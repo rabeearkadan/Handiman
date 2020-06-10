@@ -60,15 +60,9 @@
                             <div class="content">
                                 <div class="page-title">
                                     <h1>My Posts</h1>
-                                    <div class="pull-right" style="width:50px;position: absolute;top:6px;left: 75%;">
-                                        <a href="{{route('employee.post.create')}}" class="header-action-inner">
-                                            <i class="fa fa-plus" style="margin-top:15px;"></i>
+                                        <a href="{{route('employee.post.create')}}" class="btn-floating btn-large waves-effect waves-light bg-deep-blue" style="float: right;">
+                                            <i class="material-icons">add</i>
                                         </a>
-                                        <div class="tooltip fade bottom" style="margin-left:-6px;">
-                                            <div class="tooltip-arrow"></div>
-                                            <div class="tooltip-inner"> New Post</div>
-                                        </div>
-                                    </div>
                                 </div><!-- /.page-title -->
                                 <div class="posts">
                                     <div id="posts-list">
@@ -142,7 +136,7 @@
                                             @endforeach
                                         </div><!-- /.posts-lists -->
                                         @if($user->posts->count() == 0)
-                                            <div class="container" style="background-size:contain;background-repeat: no-repeat;background-position: center;height:400px;background-image:url('/public/images/employee/posts-empty.gif');">
+                                            <div class="container" style="background-size:contain;background-repeat: no-repeat;background-position: center;height:150px;background-image:url('/public/images/employee/posts-empty.gif');">
                                             </div>
                                         @endif
                                         <ul class="pagination"></ul>
