@@ -53,7 +53,7 @@
         {
             if(links[i].href === "calendar/{{$id}}/show")
             {
-                links[i].style.color = {{$service[0]}};
+                links[i].style.color = "{{$service[0]}}";
             }
         }
         @endforeach
