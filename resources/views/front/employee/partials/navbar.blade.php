@@ -43,9 +43,5 @@
 </form>
 
 @push('js')
-    <script>
-        $('.navTrigger').on( "click",function(){
-            $(this).toggleClass('active');
-        });
-    </script>
+
 @endpush
