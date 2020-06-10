@@ -2,10 +2,10 @@
 @push('css')
     <style>
         .requests {
-            color: rgba(75, 86, 210, 0.7);
+            color: rgba(75, 86, 210, 0.7) !important;
         }
         .requests:hover,.requests.active{
-            color: rgba(75, 86, 210, 0.7);
+            color: rgba(75, 86, 210, 0.7) !important;
         }
     </style>
 @endpush
@@ -210,7 +210,7 @@
             $('.row .col.l12 .tabs.tabs-fixed-width .indicator').css("background-color", "#ee6e73");
         }
         else{
-            $('.row .col.l12 .tabs.tabs-fixed-width .indicator').css("background-color", "rgba(75, 86, 210, 0.7);");
+            $('.row .col.l12 .tabs.tabs-fixed-width .indicator').css("background-color", "rgba(75, 86, 210, 0.7)");
         }
     }
 </script>
