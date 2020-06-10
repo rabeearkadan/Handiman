@@ -34,11 +34,6 @@
             margin-top: 0.25rem;
         }
     </style>
-    <script>
-        $('.navTrigger').on( "click",function(){
-            $(this).toggleClass('active');
-        });
-    </script>
 </head>
 <body>
     @include('front.employee.partials.preloader')
@@ -47,8 +42,12 @@
     <div class="content" style="overflow-x: hidden">
         @yield('content')
     </div>
-
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script>
+        $('.navTrigger').on( "click",function(){
+            $(this).toggleClass('active');
+        });
+    </script>
     <script src="/public/js/materialize.js"></script>
     @stack('js')
 
