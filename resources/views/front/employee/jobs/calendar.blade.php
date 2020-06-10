@@ -47,20 +47,20 @@
         @endforeach
         }
         var organizer = new Organizer("organizerContainer", calendar, data);
-        var links = document.getElementsByTagName("a");
-        @foreach($services as $id => $service)
-        for(var i=0;i<links.length;i++)
-        {
-            alert(links[i].href);
-            alert('{{$id}}');
-            alert(links[i].href.includes('{{$id}}'));
-            if(links[i].href.includes('{{$id}}'))
+        setTimeout(
+            function()
             {
-                alert('in');
-                links[i].className = "calsc";
-                    {{--style.color = "{{$service[0]}}";--}}
-            }
-        }
-        @endforeach
+                var links = document.getElementsByTagName("a");
+                    @foreach($services as $id => $service)
+                for(var i=0;i<links.length;i++)
+                {
+                    if(links[i].href.includes('{{$id}}'))
+                    {
+                        links[i].style.color = "{{$service[0]}}";
+                    }
+                }
+                @endforeach
+            }, 5000);
+
     </script>
 @endpush
