@@ -36,11 +36,12 @@ class CalendarController extends Controller
                 'link' => 'calendar/' . $userRequest->id . '/show'
             ]);
             ${"servicessArray" . $counter} = array();
-            ${"servicesArray" . $counter}[' ' .$userRequest->service_id]['color']= Service::find($userRequest->service_id)->indicator;
+            ${"servicesArray" . $counter}[' ' .$userRequest->service_id]= Service::find($userRequest->service_id)->indicator;
             $services = array_merge_recursive($services, ${"servicesArray" . $counter});
             $jobs = array_merge_recursive($jobs, ${"jobsArray" . $counter});
             $counter++;
         }
+        $services = $this->array_unique_recursive($services);
         dd($services);
         return view('front.employee.jobs.calendar', compact(['jobs','services']));
     }
@@ -101,5 +102,18 @@ class CalendarController extends Controller
         dd($job);
         $job->save();
         return redirect(route('employee.calendar.show', $job->id));
+    }
+    function array_unique_recursive(array $arr) {
+        if (array_keys($arr) === range(0, count($arr) - 1)) {
+            $arr = array_unique($arr, SORT_REGULAR);
+        }
+
+        foreach ($arr as $key => $item) {
+            if (is_array($item)) {
+                $arr[$key] = $this->array_unique_recursive($item);
+            }
+        }
+
+        return $arr;
     }
 }
