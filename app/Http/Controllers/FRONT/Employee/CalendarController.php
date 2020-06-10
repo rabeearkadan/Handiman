@@ -4,6 +4,7 @@ namespace App\Http\Controllers\FRONT\Employee;
 
 use App\Http\Controllers\Controller;
 use App\Models\RequestService;
+use App\Models\Service;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -39,7 +40,8 @@ class CalendarController extends Controller
     public function show ($id,Request $request){
         $job = RequestService::findOrFail($id);
         $client = $job->clients()->first();
-        return view('front.employee.jobs.show',compact(['job','client']));
+        $service = Service::find($job->service_id);
+        return view('front.employee.jobs.show',compact(['job','client','service']));
     }
     public function addReceipt ($id,Request $request){
         $job = RequestService::findOrFail($id);
