@@ -275,7 +275,7 @@
     <script src="https://js.stripe.com/v3/"></script>
     <script>
         // Create a Stripe client.
-        var stripe = Stripe('pk_test_odvgt7E927FAl1dxn4Pc4rMz003E8gLLw0');
+        var stripe = Stripe('pk_test_Yzk4eIQ2VOEGQFZ70vFBuQur00xW3XqfFv');
 
         // Create an instance of Elements.
         var elements = stripe.elements();
