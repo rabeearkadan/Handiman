@@ -49,7 +49,7 @@
                                                     <div class="post-image">
                                                         <a href="{{route('client.invoice.show',$request->id)}}">
                                                             <img
-                                                                src="{{config('image.path').$request->result_image[0]}}"
+                                                                src="{{config('image.path').$request->result_images[0]}}"
                                                                 alt="result">
                                                         </a>
                                                     </div><!-- /.post-image -->
