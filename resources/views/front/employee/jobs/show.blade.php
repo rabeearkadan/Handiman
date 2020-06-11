@@ -145,9 +145,9 @@
                         <tbody>
                         @foreach($job->receipt as $item)
                             <tr>
-                                <td>{{$item->name}}</td>
-                                <td>{{$item->price}}</td>
-                                <td>{{$item->qty}}</td>
+                                <td>{{$item['name']}}</td>
+                                <td>{{$item['price']}}</td>
+                                <td>{{$item['qty']}}</td>
                             </tr>
                         @endforeach
                         </tbody>
