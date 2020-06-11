@@ -1,6 +1,6 @@
 
 .ui-slider-horizontal .ui-slider-range {
-    background-color: #97ce00;
+    background-color: #33579f;
 }
 
 .ui-slider-control-plus, .ui-slider-control-minus {
@@ -13,7 +13,7 @@
     -moz-border-radius: 5px;
     -webkit-border-radius: 5px;
     border-radius: 5px;
-    background: #97ce00;
+    background: #33579f;
     line-height: 26px;
 }
 
@@ -74,7 +74,7 @@
     height: 24px;
     line-height: 24px;
     text-align: center;
-    background: rgba(151, 206, 0, 0.92);
+    background: #1395e0;
     color: #fff;
     font-size: 12px;
     display: block;
@@ -89,7 +89,7 @@
     position: absolute;
     width: 0;
     height: 0;
-    border-top: 10px solid rgba(151, 206, 0, 0.92);
+    border-top: 10px solid #1395e0;
     border-left: 5px solid transparent;
     border-right: 5px solid transparent;
     top: 100%;

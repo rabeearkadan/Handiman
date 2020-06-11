@@ -162,10 +162,10 @@
                     <div class="file-field input-field">
                         <div class="btn">
                             <span>Receipt</span>
-                            <input type="file" multiple>
+                            <input type="file"  id="receiptImages" name="receiptImages[]" multiple="multiple" accept="image/jpeg, image/png">
                         </div>
                         <div class="file-path-wrapper">
-                            <input class="file-path validate" id="receiptImages" name="receiptImages[]" type="text" placeholder="Receipt Images, upload at least one"  accept="image/jpeg, image/png" multiple="multiple">
+                            <input class="file-path validate"   type="text" placeholder="Receipt Images, upload at least one" >
                         </div>
                     </div>
 
@@ -173,10 +173,10 @@
                     <div class="file-field input-field">
                         <div class="btn">
                             <span>Results</span>
-                            <input type="file" multiple>
+                            <input type="file"  id="resultImages" name="resultsImages[]" accept="image/jpeg, image/png" multiple="multiple">
                         </div>
                         <div class="file-path-wrapper">
-                            <input class="file-path validate" id="resultImages" name="resultsImages[]" type="text" placeholder="Result Images, upload at least one"  accept="image/jpeg, image/png" multiple="multiple">
+                            <input class="file-path validate" type="text" placeholder="Result Images, upload at least one">
                         </div>
                     </div>
                     <button class="btn waves-effect waves-light right" type="submit" name="action" style="line-height: 3.5px;font-size: small;height: 27px;margin-right: 85px;">Submit
