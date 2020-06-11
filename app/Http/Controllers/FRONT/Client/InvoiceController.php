@@ -66,8 +66,13 @@ class InvoiceController extends Controller
     public function show($id)
     {
         //
-        $invoice = RequestService::findOrFail($id);
-        return view ('front.client.invoice.show', compact('invoice'));
+        $request = RequestService::findOrFail($id);
+        $request = $request->map(function ($item) {
+            $item->service_name = Service::find($item->service_id)->name;
+            $item->employee = User::find($item->employee_ids[0]);
+            return $item;
+        });
+        return view ('front.client.invoice.show', compact('request'));
     }
 
 }
