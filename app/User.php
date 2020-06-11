@@ -52,9 +52,6 @@ class User extends Eloquent implements
     protected $appends = ['rating_object', 'feedback_object'];
 
 
-
-
-
     public function isClient()
     {
         return $this->role == 'user' || $this->role == 'user_employee';
@@ -168,24 +165,19 @@ class User extends Eloquent implements
                     end($l) == $this->_id) {
                     $count++;
                     $sum += $req->rating;
-                    switch ($req->rating) {
-                        case 1:
-                            $counter1++;
-                            break;
-                        case 2:
-                            $counter2++;
-                            break;
-                        case 3:
-                            $counter3++;
-                            break;
-                        case 4:
-                            $counter4++;
-                            break;
-                        case 5:
-                            $counter5++;
-                            break;
-                        default:
-                            break;
+                    if ($req->rating <= 1) {
+                        $counter1++;
+                    } else if ($req->rating <= 2) {
+                        $counter2++;
+                    } else if ($req->rating <= 3) {
+                        $counter3++;
+                    } else if ($req->rating <= 4) {
+                        $counter4++;
+                    } else if ($req->rating <= 5) {
+                        $counter5++;
+                    }
+                    {
+
                     }
                 }
 
@@ -217,8 +209,8 @@ class User extends Eloquent implements
                 ->get();
             $_feedback = [];
             foreach ($reqs as $req) {
-
                 $object = [];
+                $object['service_name'] = $service->name;
                 $object['feedback'] = $req->feedback;
                 $object['rating'] = $req->rating;
                 $object['client'] = User::query()->find($req->client_ids[0])->simplifiedArray();
@@ -226,9 +218,15 @@ class User extends Eloquent implements
                 array_push($_feedback, $object);
 
             }
-            $feedback[$service->id] = $_feedback;
+            if ($_feedback==null){
+             $feedback[$service->id]=$service->name;
+            }else {
+                $feedback[$service->id] = $_feedback;
+            }
 
         }
+
+
         return $feedback;
     }
 }
