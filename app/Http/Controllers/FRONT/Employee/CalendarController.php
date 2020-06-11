@@ -15,6 +15,8 @@ class CalendarController extends Controller
     /** Functions
      * index()
      * show()
+     * requestReschedule()
+     * reschedule()
      */
 
     /**
@@ -61,11 +63,11 @@ class CalendarController extends Controller
         $index = 0;
         $total=0;
         foreach ($request->itemsName as $item) {
-            array_push($receipt, array([
+            array_push($receipt,[
                 'name' => $request->itemsName[$index],
                 'price' => $request->itemsPrice[$index],
                 'qty' => $request->itemsQuantity[$index]
-            ]));
+            ]);
             $total += $request->itemsPrice[$index] * $request->itemsQuantity[$index];
             $index++;
         }
@@ -113,5 +115,28 @@ class CalendarController extends Controller
         }
 
         return $arr;
+    }
+
+    public function requestReschedule($id){
+        $job = RequestService::findOrFail($id);
+        $client = $job->clients()->first();
+        $service = Service::find($job->service_id);
+        //run rescheduleOptions
+
+
+        return view('front.employee.jobs.show', compact(['job', 'client', 'service','reschedule','rescheduleOptions']));
+    }
+
+    public function reschedule($id){
+        //change date time
+        //notify user
+        // change status
+//        $job = RequestService::findOrFail($id);
+//        $job->status = "rescheduled";
+//        $job->date = ;
+//        $job->from = ;
+//        $job->to = ;
+//        $job->save();
+        //pending requests
     }
 }

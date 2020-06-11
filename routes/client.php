@@ -24,6 +24,8 @@ Route::post('/request/create','RequestController@store')->name('client.request.s
 Route::get('/requests/{id}/edit','RequestController@edit')->name('client.request.edit');
 Route::put('/requests/{id}/edit','RequestController@update')->name('client.request.update');
 Route::delete('/requests/{id}/destroy','RequestController@destroy')->name('client.request.destroy');
+Route::get('/requests/{id}/accept','RequestController@acceptRescheduled')->name('client.request.accept');
+
 
 //Invoices
 Route::get('/invoice','InvoiceController@index')->name('client.invoice.index');

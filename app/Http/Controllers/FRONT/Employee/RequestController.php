@@ -53,6 +53,10 @@ class RequestController extends Controller
             dd('laterzx');
         }
         $request->status = "approved";
+
+        //remove pending requests
+
+
         $request->save();
         return redirect(route('employee.requests'));
     }

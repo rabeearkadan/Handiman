@@ -21,7 +21,7 @@ class RequestController extends Controller
      * index()
      * create()
      * store()
-     * searchForHandyman()
+     * acceptRescheduled()
      * show()
      * edit()
      * update()
@@ -39,6 +39,7 @@ class RequestController extends Controller
     {
         $pendingRequests = Auth::user()->clientRequests()->where('status', 'pending')->where('isdone',false)->get();
         $approvedRequests = Auth::user()->clientRequests()->where('status', 'approved')->where('isdone',false)->get();
+        $rescheduledRequests = Auth::user()->clientRequests()->where('status', 'rescheduled')->where('isdone',false)->get();
 
         $pendingRequests = $pendingRequests->map(function ($item) {
             $item->service_name = Service::find($item->service_id)->name;
@@ -48,6 +49,11 @@ class RequestController extends Controller
             return $item;
         });
         $approvedRequests = $approvedRequests->map(function ($item) {
+            $item->service_name = Service::find($item->service_id)->name;
+            $item->employee = User::find($item->employee_ids[0]);
+            return $item;
+        });
+        $rescheduledRequests = $rescheduledRequests->map(function ($item) {
             $item->service_name = Service::find($item->service_id)->name;
             $item->employee = User::find($item->employee_ids[0]);
             return $item;
@@ -222,6 +228,10 @@ class RequestController extends Controller
                 $requestHandyman->handyman_to = 'pending';
                 $requestHandyman->to = null;
             }
+            if($req->recurring == true){
+                //loop through them reschedule if needed status== reschedule
+            }
+
             $this->notification($handyman->device_token, Auth::user()->name, 'You received a new request', 'request');
 
             $requestHandyman->save();
@@ -233,6 +243,12 @@ class RequestController extends Controller
         return redirect(route('client.request.index'));
     }
 
+    public function acceptRescheduled($id){
+        $job = RequestService::findOrFail($id);
+        $job->status = "approved";
+        $job->save();
+        return  redirect(route('client.request.index'));
+    }
 
     /**
      * Display the specified resource.
