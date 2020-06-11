@@ -10,6 +10,12 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
+use Stripe\Exception\ApiConnectionException;
+use Stripe\Exception\ApiErrorException;
+use Stripe\Exception\AuthenticationException;
+use Stripe\Exception\CardException;
+use Stripe\Stripe;
+
 
 class InvoiceController extends Controller
 {
