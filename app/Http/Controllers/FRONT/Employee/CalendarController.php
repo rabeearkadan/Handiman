@@ -77,10 +77,10 @@ class CalendarController extends Controller
         $receipt_images = array();
         foreach ($requestReceiptImages as $image) {
             $name = 'receipt_' . time() . Str::random(16). '.' . $image->getClientOriginalExtension();
-            if (!Storage::disk('public')->exists('receipt')) {
-                Storage::disk('public')->makeDirectory('receipt');
+            if (!Storage::disk('public')->exists('receipts')) {
+                Storage::disk('public')->makeDirectory('receipts');
             }
-            if (Storage::disk('public')->putFileAs('receipt', $image, $name)) {
+            if (Storage::disk('public')->putFileAs('receipts', $image, $name)) {
                 $element = 'receipts/' . $name;
                 array_push($receipt_images, $element);
             }
@@ -91,10 +91,10 @@ class CalendarController extends Controller
         $results_images = array();
         foreach ($requestResultsImages as $image) {
             $name = 'result_' . time() . Str::random(16). '.' . $image->getClientOriginalExtension();
-            if (!Storage::disk('public')->exists('result')) {
-                Storage::disk('public')->makeDirectory('result');
+            if (!Storage::disk('public')->exists('results')) {
+                Storage::disk('public')->makeDirectory('results');
             }
-            if (Storage::disk('public')->putFileAs('result', $image, $name)) {
+            if (Storage::disk('public')->putFileAs('results', $image, $name)) {
                 $element = 'results/' . $name;
                 array_push($results_images, $element);
             }
