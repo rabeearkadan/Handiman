@@ -10451,7 +10451,7 @@ a, button, .btn {
 }
 
 .app-sidebar.sidebar-text-light .app-header__logo .logo-src {
-    background: url(../images/logo.png)
+    background: url(../img/logo.png)
 }
 
 .app-sidebar.sidebar-text-light .app-header__logo .hamburger-inner, .app-sidebar.sidebar-text-light .app-header__logo .hamburger-inner::before, .app-sidebar.sidebar-text-light .app-header__logo .hamburger-inner::after {
