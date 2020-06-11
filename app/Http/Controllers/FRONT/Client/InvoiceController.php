@@ -90,10 +90,10 @@ class InvoiceController extends Controller
                 $job->save();
                 $employee->save();
                 $this->stringToPDF($file_name, $request);
-                return redirect(route('client.invoice.index'));
+                return redirect()->route('client.invoice.index');
             }
 
-            return response()->json(['status' => 'error', 'message' => __('api.something-went-wrong')]);
+
         } catch (CardException $exception) {
             return response()->json(['status' => 'error', 'message' => __('api.card-decline')]);
         } catch (ApiConnectionException $e) {
