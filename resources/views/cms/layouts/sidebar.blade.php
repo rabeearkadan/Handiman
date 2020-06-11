@@ -81,6 +81,12 @@
                         Request's Reports
                     </a>
                 </li>
+                <li>
+                    <a href="{{route('request.index')}}" class="mm">
+                        <i class="metismenu-icon pe-7s-rocket"></i>
+                       Rejected Payments
+                    </a>
+                </li>
 
 
                 <li class="app-sidebar__heading">Statistics</li>
@@ -113,19 +119,6 @@
                     </a>
                 </li>
 
-                <li class="app-sidebar__heading">Reports & Blocking</li>
-                <li>
-                    <a href="" class="mm">
-                        <i class="metismenu-icon pe-7s-rocket"></i>
-                        Reports
-                    </a>
-                </li>
-                <li>
-                    <a href="" class="mm">
-                        <i class="metismenu-icon pe-7s-rocket"></i>
-                        Blocking
-                    </a>
-                </li>
             </ul>
         </div>
     </div>
