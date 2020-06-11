@@ -67,7 +67,7 @@ class InvoiceController extends Controller
         $user = Auth::user();
         Stripe::setApiKey('sk_test_rPUYuVgziB8APOOSyd9q4zgT00rtI4Hhat');
         $job = RequestService::query()->find($id);
-        $employee = User::query()->find($request->employee_ids[0]);
+        $employee = User::query()->find($job->employee_ids[0]);
 
         $total = $job->total;
         $token = $request->stripeToken;
@@ -89,7 +89,7 @@ class InvoiceController extends Controller
                 $job->report = 'reports/pdf/' . $file_name . '.pdf';
                 $job->save();
                 $employee->save();
-                $this->stringToPDF($file_name, $request);
+                $this->stringToPDF($file_name, $job);
                 return redirect()->route('client.invoice.index');
             }
 
