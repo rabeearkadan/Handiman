@@ -55,9 +55,9 @@
                 Client Details
             </div>
             <div class="collapsible-body">
-                <i class="material-icons">name</i>
+{{--               image ? --}}
+                <i class="material-icons">user</i>
                 <span>{{$client->name}}</span>
-                <br>
                 <i class="material-icons">phone</i>
                 <span>{{$client->phone}}</span>
             </div>
@@ -81,7 +81,6 @@
                 <span>
                     <i class="material-icons">date_range</i>
                     {{$job->date->format('d/m/Y')}} </span>
-                <br>
                 <span>
                     <i class="material-icons">clock</i>
                     {{$job->from}} -> {{$job->to}}</span>
@@ -96,19 +95,20 @@
                 <div class="row">
                     <div class="column">
                         <h6>Name</h6>
+                        <span>{{$job->client_address['name']}}</span><br>
                         <h6>state</h6>
                         <h6>city</h6>
-                        <h6>Street: </h6>
+                        <h6>Street</h6>
                         <span>{{$job->client_address['street']}}</span><br>
                     </div>
                     <div class="column">
-                        <h6>Property Type: </h6>
+                        <h6>Property Type</h6>
                         <span>{{$job->client_address['property_type']}}</span><br>
                         <h6>Building: </h6>
                         <span>{{$job->client_address['building']}}</span><br>
-                        <h6>Floor: </h6>
+                        <h6>Floor</h6>
                         {{--                <span>{{$job->client_address['floor']}}</span><br>--}}
-                        <h6>zip: </h6>
+                        <h6>zip</h6>
                         <span>{{$job->client_address['zip']}}</span><br>
                     </div>
                 </div>
@@ -116,7 +116,7 @@
         </li>
         <li>
             <div class="collapsible-header"><i class="material-icons">images</i>
-                Images
+                Client Images
             </div>
             <div class="collapsible-body">
                 @foreach($job->images as $image)
@@ -131,9 +131,6 @@
             <div class="collapsible-body">
                 @isset($job->receipt)
                     <span>Items</span>
-                    <a href="#!" id="addButton" onclick="addItem()">
-                        <i style="float: right;width: 30px" class="material-icons">add</i>
-                    </a>
                     <table class="striped">
                         <thead>
                         <tr>
@@ -231,6 +228,30 @@
                 @endisset
             </div>
         </li>
+
+        @isset($job->receipt)
+        <li>
+            <div class="collapsible-header"><i class="material-icons">payment</i>
+                Receipt Images
+            </div>
+            <div class="collapsible-body">
+                @foreach($job->receipt_images as $image)
+                    <img class="materialboxed" src="{{config('image.path').$image}}">
+                @endforeach
+            </div>
+        </li>
+
+            <li>
+                <div class="collapsible-header"><i class="material-icons">payment</i>
+                    Finished Product
+                </div>
+                <div class="collapsible-body">
+                    @foreach($job->result_images as $image)
+                        <img class="materialboxed" src="{{config('image.path').$image}}">
+                    @endforeach
+                </div>
+            </li>
+        @endisset
     </ul>
     <div class="fixed-action-btn">
         <a class="btn-floating btn-large blue">
