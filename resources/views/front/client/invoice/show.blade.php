@@ -151,7 +151,17 @@
                                 @endforeach
                             </div>
                         </li>
-
+@isset($request->rating)
+                    <li>
+                        <div class="collapsible-header"><i class="material-icons">rating</i>
+                            Review
+                        </div>
+                        <div class="collapsible-body">
+                            <p>rating</p>
+                            <p>review</p>
+                        </div>
+                    </li>
+@endisset
                 </ul>
 
                 <div class="container">
@@ -228,9 +238,11 @@
                                         <dd>{{$request->total}}</dd>
                                     </dl>
                                     @if($request->ispaid == false)
-                                        <a href="" class="btn waves-effect waves-light left" style="line-height: 3.5px;font-size: small;height: 27px;margin-right: 85px;">
+                                        <a href="" class="btn waves-effect waves-light left" >
                                             Pay
                                         </a>
+                                    @else
+                                       <p>paid</p>
                                     @endif
                                 </div><!-- /.invoice-summary -->
                             </div><!-- /.invoice -->
