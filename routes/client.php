@@ -30,6 +30,8 @@ Route::get('/requests/{id}/accept','RequestController@acceptRescheduled')->name(
 //Invoices
 Route::get('/invoice','InvoiceController@index')->name('client.invoice.index');
 Route::get('/invoice/{id}','InvoiceController@show')->name('client.invoice.show');
+Route::post('/invoice/{id}/create','InvoiceController@store')->name('client.invoice.store');
+
 
 //Reviews (can be created and edited)
 Route::get('/reviews','ReviewsController@index')->name('client.reviews.index');
