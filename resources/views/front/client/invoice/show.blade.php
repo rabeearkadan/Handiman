@@ -9,6 +9,121 @@
     <div class="page-wrapper">
         <div class="main">
             <div class="main-inner">
+                <ul class="collapsible popout">
+                    <li>
+                        <div class="collapsible-header">
+                            <i class="material-icons">details</i>
+                            Request Details
+                        </div>
+                        <div class="collapsible-body">
+                            <span>Subject.</span>
+                            <span>{{$request->subject}}</span>
+                            <br>
+                            <span>Description</span>
+                            <span>{{$request->description}}</span>
+                        </div>
+                    </li>
+{{--                    <li>--}}
+{{--                        <div class="collapsible-header">--}}
+{{--                            <i class="material-icons">perm_identity</i>--}}
+{{--                            Client Details--}}
+{{--                        </div>--}}
+{{--                        <div class="collapsible-body">--}}
+{{--                            --}}{{--               image ? --}}
+{{--                            <i class="material-icons">user</i>--}}
+{{--                            <span>{{$client->name}}</span>--}}
+{{--                            <i class="material-icons">phone</i>--}}
+{{--                            <span>{{$client->phone}}</span>--}}
+{{--                        </div>--}}
+{{--                    </li>--}}
+                    <li>
+                        <div class="collapsible-header">
+                            <i class="material-icons">home_repair_service</i>
+                            Service
+                        </div>
+                        <div class="collapsible-body">
+                            <span>{{$service->name}}</span>
+
+                        </div>
+                    </li>
+                    <li>
+                        <div class="collapsible-header">
+                            <i class="material-icons">event</i>
+                            Date &amp; Time
+                        </div>
+                        <div class="collapsible-body">
+                <span>
+                    <i class="material-icons">date_range</i>
+                    {{$request->date->format('d/m/Y')}} </span>
+                            <span>
+                    <i class="material-icons">clock</i>
+                    {{$request->from}} -> {{$request->to}}</span>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="collapsible-header">
+                            <i class="material-icons">place</i>
+                            Address
+                        </div>
+                        <div class="collapsible-body">
+                            <div class="row">
+                                <div class="column">
+                                    <h6>Name</h6>
+                                    <span>{{$request->client_address['name']}}</span><br>
+                                    <h6>state</h6>
+                                    <h6>city</h6>
+                                    <h6>Street</h6>
+                                    <span>{{$request->client_address['street']}}</span><br>
+                                </div>
+                                <div class="column">
+                                    <h6>Property Type</h6>
+                                    <span>{{$request->client_address['property_type']}}</span><br>
+                                    <h6>Building: </h6>
+                                    <span>{{$request->client_address['building']}}</span><br>
+                                    <h6>Floor</h6>
+                                    {{--                <span>{{$job->client_address['floor']}}</span><br>--}}
+                                    <h6>zip</h6>
+                                    <span>{{$request->client_address['zip']}}</span><br>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="collapsible-header"><i class="material-icons">images</i>
+                            Provided Images
+                        </div>
+                        <div class="collapsible-body">
+                            @foreach($request->images as $image)
+                                <img class="materialboxed" src="{{config('image.path').$image}}">
+                            @endforeach
+                        </div>
+                    </li>
+
+
+                        <li>
+                            <div class="collapsible-header"><i class="material-icons">payment</i>
+                                Receipt Images
+                            </div>
+                            <div class="collapsible-body">
+                                @foreach($request->receipt_images as $image)
+                                    <img class="materialboxed" src="{{config('image.path').$image}}">
+                                @endforeach
+                            </div>
+                        </li>
+
+                        <li>
+                            <div class="collapsible-header"><i class="material-icons">payment</i>
+                                Finished Product
+                            </div>
+                            <div class="collapsible-body">
+                                @foreach($request->result_images as $image)
+                                    <img class="materialboxed" src="{{config('image.path').$image}}">
+                                @endforeach
+                            </div>
+                        </li>
+
+                </ul>
+
                 <div class="container">
                     <div class="content">
                         <div class="invoice-wrapper">
@@ -91,3 +206,22 @@
         </div><!-- /.main -->
     </div><!-- /.page-wrapper -->
 @endsection
+@push('js')
+    <script>
+
+        document.addEventListener('DOMContentLoaded', function () {
+            var elems = document.querySelectorAll('.collapsible');
+            var instances = M.Collapsible.init(elems);
+        });
+
+        // document.addEventListener('DOMContentLoaded', function () {
+        //     var elems = document.querySelectorAll('.fixed-action-btn');
+        //     var instances = M.FloatingActionButton.init(elems);
+        // });
+        document.addEventListener('DOMContentLoaded', function () {
+            var elems = document.querySelectorAll('.materialboxed');
+            var instances = M.Materialbox.init(elems);
+        });
+    </script>
+
+@endpush
