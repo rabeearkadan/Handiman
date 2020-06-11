@@ -1,12 +1,14 @@
 <?php
 
 namespace App\Http\Controllers\FRONT\Client;
+use App\Events\NotificationSenderEvent;
 use App\Http\Controllers\Controller;
 use App\Models\RequestService;
 use App\Models\Service;
 use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
 
 class InvoiceController extends Controller
@@ -62,8 +64,7 @@ class InvoiceController extends Controller
         $employee = User::query()->find($request->employee_ids[0]);
 
         $total = $job->total;
-        $user = User::query()->find($request->client_ids[0]);
-        $token = $request->stripe_token;
+        $token = $request->stripeToken;
 
         try {
             $charge = \Stripe\Charge::create([
@@ -116,6 +117,37 @@ class InvoiceController extends Controller
             $employee = User::find($request->employee_ids[0]);
             $service = Service::findOrFail($request->service_id);
         return view ('front.client.invoice.show', compact(['request','employee','service']));
+    }
+
+    function stringToPDF($file_name, $request)
+    {
+        $request->client = User::query()->find($request->client_ids[0])->simplifiedArray();
+        $request->handyman = User::query()->find($request->employee_ids[0])->simplifiedArray();
+        $request->service = Service::query()->find($request->service_id)->ServiceArray();
+
+        $pdf = Pdf::loadView('cms.requests.report-pdf', compact('request'));
+
+
+        if (!Storage::disk('public')->exists('reports')) {
+            Storage::disk('public')->makeDirectory('reports');
+        }
+
+
+        $pdf->save('storage/reports/pdf/' . $file_name . '.pdf');
+        return "true";
+
+    }
+
+    public function notification($to, $from, $message, $type)
+    {
+        $notification = array();
+        $notification['to'] = $to;
+        $notification['user'] = $from;
+        $notification['message'] = $message;
+        $notification['type'] = $type;// maybe "notification", "comment(message)", "request","message"
+        $notification['object'] = [];
+        event(new NotificationSenderEvent($notification));
+        return response()->json(['status' => 'success', 'notification' => $notification]);
     }
 
 }
