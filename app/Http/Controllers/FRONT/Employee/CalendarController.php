@@ -74,12 +74,12 @@ class CalendarController extends Controller
         $requestReceiptImages = $request->file('receiptImages');
         $receipt_images = array();
         foreach ($requestReceiptImages as $image) {
-            $name = 'post_' . time() . Str::random(16). '.' . $image->getClientOriginalExtension();
+            $name = 'receipt_' . time() . Str::random(16). '.' . $image->getClientOriginalExtension();
             if (!Storage::disk('public')->exists('receipt')) {
                 Storage::disk('public')->makeDirectory('receipt');
             }
             if (Storage::disk('public')->putFileAs('receipt', $image, $name)) {
-                $element = 'posts/' . $name;
+                $element = 'receipts/' . $name;
                 array_push($receipt_images, $element);
             }
         }
@@ -88,17 +88,16 @@ class CalendarController extends Controller
         $requestResultsImages = $request->file('resultsImages');
         $results_images = array();
         foreach ($requestResultsImages as $image) {
-            $name = 'post_' . time() . Str::random(16). '.' . $image->getClientOriginalExtension();
+            $name = 'result_' . time() . Str::random(16). '.' . $image->getClientOriginalExtension();
             if (!Storage::disk('public')->exists('result')) {
                 Storage::disk('public')->makeDirectory('result');
             }
             if (Storage::disk('public')->putFileAs('result', $image, $name)) {
-                $element = 'posts/' . $name;
+                $element = 'results/' . $name;
                 array_push($results_images, $element);
             }
         }
         $job->result_images = $results_images;
-        dd($job);
         $job->save();
         return redirect(route('employee.calendar.show', $job->id));
     }
