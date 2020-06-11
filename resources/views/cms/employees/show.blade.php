@@ -209,25 +209,7 @@
                                         </div>
                                     </div>
                                 </td>
-                                @if($request->status=='pending')
-
-                                    <td class="text-center">
-                                        <div class="badge badge-warning">Pending</div>
-                                    </td>
-
-                                @elseif($request->status=='approved' && $request->isdone==false)
-                                    <td class="text-center">
-                                        <div class="badge badge-danger">In Progress</div>
-
-                                    </td>
-                                @else
-                                    <td class="text-center">
-                                        <div class="badge badge-success">Completed</div>
-
-                                    </td>
-                                @endif
-
-
+                                
                                 <td class="text-center">
                                     <button type="button" id="PopoverCustomT-1" class="btn btn-primary btn-sm">
                                         Details
