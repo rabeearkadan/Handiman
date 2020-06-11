@@ -125,7 +125,7 @@ class RequestController extends Controller
     public function cancelRequest($id)
     {
         $request = RequestService::query()->find($id);
-        if ($request->employees()->count > 0) {
+        if ($request->employees()->count() > 0) {
             $handyman = User::query()->find($request->employee_ids[0]);
             $employee_request_ids = [];
             foreach ($handyman->employee_request_ids as $s) {
