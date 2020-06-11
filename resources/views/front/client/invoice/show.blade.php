@@ -4,6 +4,39 @@
     <link href="{{asset('css/app.css')}}" rel="stylesheet">
     <link href="{{asset('css/client/invoice.css')}}" rel="stylesheet">
     <link href="{{asset('css/client/colorbox.css')}}" rel="stylesheet">
+    <style>
+        .row {
+            display: flex;
+        }
+
+        .column {
+            flex: 50%;
+        }
+
+        .materialboxed {
+            width: 450px;
+        }
+
+        .btn {
+            background-color: #2688a6;
+        }
+
+        @media only screen and (max-width: 650px) {
+            .materialboxed {
+                width: 340px;
+            }
+
+            .textarea.materialize-textarea, .btn {
+                font-size: 11px;
+            }
+        }
+
+        @media only screen and (max-width: 450px) {
+            .materialboxed {
+                width: 200px;
+            }
+        }
+    </style>
 @endpush
 @section('content')
     <div class="page-wrapper">
