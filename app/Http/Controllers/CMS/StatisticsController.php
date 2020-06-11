@@ -17,7 +17,7 @@ class StatisticsController extends Controller
 {
     public function index()
     {
-        $users = User::all();
+        $users = User::query()->orderBy('visits');
         $chart = new Stats();
         $arr = [];
         $arr2 = [];
