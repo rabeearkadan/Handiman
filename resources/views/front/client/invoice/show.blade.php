@@ -239,7 +239,7 @@
                                         <dd>{{$request->total}}</dd>
                                     </dl>
                                     @if($request->ispaid == false)
-                                        <form action="{{route('client.invoice.create')}}" method="post" id="payment-form">
+                                        <form action="{{route('client.invoice.create',$request->id)}}" method="post" id="payment-form">
                                             @csrf
                                             <input type="hidden" name="total" value="{{$request->total}}">
                                             <div class="form-group">
