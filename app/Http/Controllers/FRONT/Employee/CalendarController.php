@@ -8,7 +8,7 @@ use App\Models\Service;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
-use Psy\Util\Str;
+use Illuminate\Support\Str;
 
 class CalendarController extends Controller
 {
