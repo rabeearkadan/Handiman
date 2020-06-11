@@ -308,6 +308,8 @@
                         // execution. Set up a webhook or plugin to listen for the
                         // payment_intent.succeeded event that handles any business critical
                         // post-payment actions.
+                        console.log(result);
+                        console.log(result.paymentIntent.token());
                     }
                 }
             });
