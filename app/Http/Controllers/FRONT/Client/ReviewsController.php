@@ -30,7 +30,8 @@ class ReviewsController extends Controller
             $item->employee = User::find($item->employee_ids[0]);
             return $item;
         });
-        return view('front.client.review',compact('requests'));
+        $services = Service::all();
+        return view('front.client.review',compact(['requests','services']));
     }
 
 
