@@ -4,8 +4,6 @@
     <link href="{{asset('css/app.css')}}" rel="stylesheet">
     <link href="{{asset('css/client/invoice.css')}}" rel="stylesheet">
     <link href="{{asset('css/client/colorbox.css')}}" rel="stylesheet">
-
-    <script src="https://js.stripe.com/v3/"></script>
     <style>
         .row {
             display: flex;
@@ -263,6 +261,7 @@
     </div><!-- /.page-wrapper -->
 @endsection
 @push('js')
+    <script src="https://js.stripe.com/v3/"></script>
     <script>
         var style = {
             base: {
