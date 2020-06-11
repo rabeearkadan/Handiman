@@ -42,8 +42,8 @@
 
 
                                 </td>
-                                <td>
-                                <td><a href="#"></a> view more</td>
+
+                                
                             </tr>
                         @endforeach
 
