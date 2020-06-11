@@ -28,7 +28,7 @@
                                     <div class="row">
                                         <div class="col-sm-4">
                                             <h4>Employee</h4>
-                                        <a href="{{route('client.user-profile',['employee_id' => $employee->id])}}">{{$request->employee->name}}</a>
+                                        <a href="{{route('client.user-profile',['employee_id' => $employee->id])}}">{{$employee->name}}</a>
                                             <br>
 {{--                                            Mrs Emma Downson<br>--}}
 {{--                                            RootColletions Ltd<br>--}}
