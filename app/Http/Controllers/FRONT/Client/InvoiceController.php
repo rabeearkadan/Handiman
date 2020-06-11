@@ -7,6 +7,7 @@ use App\Models\Service;
 use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Str;
 
 class InvoiceController extends Controller
 {
@@ -50,12 +51,56 @@ class InvoiceController extends Controller
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
      */
-    public function store(Request $request)
+    public function store(Request $request,$id)
     {
         //
+        $user = Auth::user();
+        Stripe::setApiKey('sk_test_rPUYuVgziB8APOOSyd9q4zgT00rtI4Hhat');
+        $job = RequestService::query()->find($id);
+        $employee = User::query()->find($request->employee_ids[0]);
+
+        $total = $job->total;
+        $user = User::query()->find($request->client_ids[0]);
+        $token = $request->stripe_token;
+
+        try {
+            $charge = \Stripe\Charge::create([
+                'amount' => (int)($total * 100),
+                'currency' => 'USD',
+                'description' => $user->name,
+                'source' => $token,
+                'capture' => true,
+                'receipt_email' => $employee->email,
+            ]);
+            if ($charge != null) {
+                $this->notification($employee->employee_device_token, 'Genie', 'check receipt', 'request');
+                $employee->balance = $employee->balance + $total;
+                $job->ispaid = true;
+                $file_name = Str::random(25);
+                $job->report = 'reports/pdf/' . $file_name . '.pdf';
+                $job->save();
+                $employee->save();
+                $this->stringToPDF($file_name, $request);
+                return redirect(route('client.invoice.index'));
+            }
+
+            return response()->json(['status' => 'error', 'message' => __('api.something-went-wrong')]);
+        } catch (CardException $exception) {
+            return response()->json(['status' => 'error', 'message' => __('api.card-decline')]);
+        } catch (ApiConnectionException $e) {
+            return response()->json(['status' => 'error', 'message' => __('api.something-went-wrong')]);
+        } catch (ApiErrorException $e) {
+            return response()->json(['status' => 'error', 'message' => __('api.something-went-wrong')]);
+        } catch (AuthenticationException $e) {
+            return response()->json(['status' => 'error', 'message' => __('api.something-went-wrong')]);
+        } catch (\Exception $e) {
+            return response()->json(['status' => 'error', 'message' => __('api.something-went-wrong')]);
+        }
+
     }
+
 
     /**
      * Display the specified resource.
