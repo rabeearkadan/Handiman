@@ -23,6 +23,11 @@ class InvoiceController extends Controller
         //
         $user = Auth::user();
         $requests = $user->clientRequests->where('isdone',true);
+        $requests = $requests->map(function ($item) {
+            $item->service_name = Service::find($item->service_id)->name;
+            $item->employee = User::find($item->employee_ids[0]);
+            return $item;
+        });
         $services = Service::all();
         return view ('front.client.invoice.index', compact(['requests','services']));
     }

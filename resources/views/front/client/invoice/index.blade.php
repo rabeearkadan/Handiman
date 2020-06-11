@@ -22,12 +22,13 @@
                                 <div class="widget">
                                     <h2 class="widgettitle">Categories</h2>
                                     <ul class="menu">
+                                        <li><a href="#" onclick="removeFilters()"> All categories </a></li>
                                         @foreach($services as $service)
-                                        <li>
-                                            <a href="#">
-                                                {{$service->name}}
-{{--                                                <strong class="pull-right">{{$service-_ount}}</strong>--}}
-                                            </a></li>
+                                            <li>
+                                                <a href="#!" onclick="filter('{{$service->name}}')">
+                                                    {{$service->name}}
+                                                    {{--                                                <strong class="pull-right">{{$service-_ount}}</strong>--}}
+                                                </a></li>
                                         @endforeach
                                     </ul><!-- /.menu -->
                                 </div><!-- /.wifget -->
@@ -36,31 +37,44 @@
                         <div class="col-sm-8 col-lg-9">
                             <div class="content">
                                 <div class="page-title">
-                                    <h1> Invoice list </h1>
+                                    <h1> Invoices List </h1>
                                 </div><!-- /.page-title -->
                                 <div class="posts posts-condensed">
-                                    @foreach($requests as $request)
-                                    <div class="post">
-                                        <div class="post-date">{{$request->date->format('d/m/Y')}}</div><!-- /.post-date -->
-                                        <div class="post-image">
-                                            <a href="">
-                                                <img src="" alt="service image">
-                                            </a>
-                                        </div><!-- /.post-image -->
-                                        <div class="post-content">
-                                            <h2><a href=""></a></h2>
-                                            <p>{{$request->description}}...</p>
-                                        </div><!-- /.post-content -->
+                                    <div id="bills-list">
+                                        <div class="list">
+                                            @foreach($requests as $request)
+                                                <div class="post">
+                                                    <div class="post-date">{{$request->date->format('d/m/Y')}}</div>
+                                                    <!-- /.post-date -->
+                                                    <div class="post-image">
+                                                        <a href="{{route('client.invoice.show',$request->id)}}">
+                                                            <img
+                                                                src="{{config('image.path').$request->result_image[0]}}"
+                                                                alt="result">
+                                                        </a>
+                                                    </div><!-- /.post-image -->
+                                                    <div class="post-content">
+                                                        <h2>
+                                                            <a href="{{route('client.invoice.show',$request->id)}}">{{$request->subject}}</a>
+                                                        </h2>
+                                                        <p>{{$request->description}}...</p>
+                                                    </div><!-- /.post-content -->
 
-                                        <div class="post-more">
-                                            <a href="{{route('client.invoice.show',$request->id)}}">Show More</a>
-                                        </div><!-- /.post-date -->
-                                    </div><!-- /.post -->
-                                    @endforeach
-                                        @if($request->count() == 0)
-                                            <div class="container" style="background-size:contain;background-repeat: no-repeat;background-position: center;height:150px;background-image:url('/public/images/client/invoice-empty.png');">
-                                            </div>
-                                        @endif
+                                                    <div class="post-more">
+                                                        <a class="service"
+                                                           href="{{route('client.invoice.show',$request->id)}}">{{$request->service_name}}</a>
+                                                        <a href="{{route('client.invoice.show',$request->id)}}">Show
+                                                            More</a>
+                                                    </div><!-- /.post-date -->
+                                                </div><!-- /.post -->
+                                            @endforeach
+                                        </div>
+                                    </div>
+                                    @if($request->count() == 0)
+                                        <div class="container"
+                                             style="background-size:contain;background-repeat: no-repeat;background-position: center;height:150px;background-image:url('/public/images/client/invoice-empty.png');">
+                                        </div>
+                                    @endif
 
                                 </div><!-- /.posts -->
                             </div><!-- /.content -->
@@ -78,7 +92,7 @@
     <script src="/public/js/list.js" type="text/javascript"></script>
     <script>
         var options = {
-            valueNames: ['categories'],
+            valueNames: ['service'],
             page: 20,
             pagination: true
         };
@@ -86,7 +100,7 @@
 
         function filter(category) {
             billsList.filter(function (item) {
-                return !!item.values().categories.includes(category);
+                return !!item.values().service.includes(category);
             });
         }
 

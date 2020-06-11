@@ -21,7 +21,6 @@ class RequestController extends Controller
      * index()
      * create()
      * store()
-     * acceptRescheduled()
      * show()
      * edit()
      * update()
@@ -243,12 +242,12 @@ class RequestController extends Controller
         return redirect(route('client.request.index'));
     }
 
-    public function acceptRescheduled($id){
-        $job = RequestService::findOrFail($id);
-        $job->status = "approved";
-        $job->save();
-        return  redirect(route('client.request.index'));
-    }
+//    public function acceptRescheduled($id){
+//        $job = RequestService::findOrFail($id);
+//        $job->status = "approved";
+//        $job->save();
+//        return  redirect(route('client.request.index'));
+//    }
 
     /**
      * Display the specified resource.
