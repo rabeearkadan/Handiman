@@ -289,7 +289,13 @@
 
         form.addEventListener('submit', function(ev) {
             ev.preventDefault();
-            stripe.confirmCardPayment(clientSecret, {
+         var secrent_token=   Stripe.createToken({
+                number: $('.card-number').val(),
+                cvc: $('.card-cvc').val(),
+                exp_month: $('.card-expiry-month').val(),
+                exp_year: $('.card-expiry-year').val()
+            });
+            stripe.confirmCardPayment(secrent_token, {
                 payment_method: {
                     card: card,
                     billing_details: {
