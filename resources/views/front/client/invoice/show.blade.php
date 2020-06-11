@@ -197,7 +197,7 @@
                                             {{$request->subject}}<br>
                                             {{$request->description}}
                                         </div>
-
+                                        @if($request->ispaid == true)
                                         <div class="col-sm-4">
                                             <h4>Payment Details</h4>
 
@@ -207,6 +207,7 @@
                                             <strong>Name:</strong>Lorem Ipsum<br>
                                             <strong>Duration:</strong> Dolor si amet<br>
                                         </div>
+                                        @endif
                                     </div>
                                 </div><!-- /.invoice-info -->
                                 <div class="table-responsive">
@@ -273,7 +274,7 @@
     <script src="https://js.stripe.com/v3/"></script>
     <script>
         // Create a Stripe client.
-        var stripe = Stripe('pk_test_odvgt7E927FAl1dxn4Pc4rMz003E8gLLw0');
+        var stripe = Stripe('pk_test_Yzk4eIQ2VOEGQFZ70vFBuQur00xW3XqfFv');
 
         // Create an instance of Elements.
         var elements = stripe.elements();
