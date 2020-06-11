@@ -72,7 +72,7 @@ class InvoiceController extends Controller
         $total = $job->total;
         $token = $request->stripeToken;
 
-        try {
+//        try {
             $charge = \Stripe\Charge::create([
                 'amount' => (int)($total * 100),
                 'currency' => 'USD',
@@ -94,17 +94,17 @@ class InvoiceController extends Controller
             }
 
 
-        } catch (CardException $exception) {
-            return response()->json(['status' => 'error', 'message' => __('api.card-decline')]);
-        } catch (ApiConnectionException $e) {
-            return response()->json(['status' => 'error', 'message' => __('api.something-went-wrong1')]);
-        } catch (ApiErrorException $e) {
-            return response()->json(['status' => 'error', 'message' => __('api.something-went-wrong2')]);
-        } catch (AuthenticationException $e) {
-            return response()->json(['status' => 'error', 'message' => __('api.something-went-wrong3')]);
-        } catch (\Exception $e) {
-            return response()->json(['status' => 'error', 'message' => __('api.something-went-wrong4')]);
-        }
+//        } catch (CardException $exception) {
+//            return response()->json(['status' => 'error', 'message' => __('api.card-decline')]);
+//        } catch (ApiConnectionException $e) {
+//            return response()->json(['status' => 'error', 'message' => __('api.something-went-wrong1')]);
+//        } catch (ApiErrorException $e) {
+//            return response()->json(['status' => 'error', 'message' => __('api.something-went-wrong2')]);
+//        } catch (AuthenticationException $e) {
+//            return response()->json(['status' => 'error', 'message' => __('api.something-went-wrong3')]);
+//        } catch (\Exception $e) {
+//            return response()->json(['status' => 'error', 'message' => __('api.something-went-wrong4')]);
+//        }
 
     }
 
