@@ -253,7 +253,10 @@
                                                     <!-- Used to display form errors. -->
                                                     <div id="card-errors" role="alert"></div>
                                                 </div>
-                                            </div>
+                                                <div class="card-footer">
+                                                    <button class="btn btn-dark" type="submit">Pay</button>
+                                                </div>
+                                        </form>
                                     @else
                                        <p>paid</p>
                                     @endif
