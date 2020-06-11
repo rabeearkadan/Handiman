@@ -22,9 +22,9 @@ class InvoiceController extends Controller
     {
         //
         $user = Auth::user();
-        $invoices = $user->clientRequests->where('isdone',true);
+        $requests = $user->clientRequests->where('isdone',true);
         $services = Service::all();
-        return view ('front.client.invoice.index', compact(['invoices','services']));
+        return view ('front.client.invoice.index', compact(['requests','services']));
     }
 
     /**

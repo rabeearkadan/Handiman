@@ -39,9 +39,9 @@
                                     <h1> Invoice list </h1>
                                 </div><!-- /.page-title -->
                                 <div class="posts posts-condensed">
-                                    @foreach($invoices as $invoice)
+                                    @foreach($requests as $request)
                                     <div class="post">
-                                        <div class="post-date">{{$invoice->date->format('d/m/Y')}}</div><!-- /.post-date -->
+                                        <div class="post-date">{{$request->date->format('d/m/Y')}}</div><!-- /.post-date -->
                                         <div class="post-image">
                                             <a href="">
                                                 <img src="" alt="service image">
@@ -49,11 +49,11 @@
                                         </div><!-- /.post-image -->
                                         <div class="post-content">
                                             <h2><a href=""></a></h2>
-                                            <p>{{$invoice->description}}...</p>
+                                            <p>{{$request->description}}...</p>
                                         </div><!-- /.post-content -->
 
                                         <div class="post-more">
-                                            <a href="{{route('client.invoice.show',$invoice->id)}}">Show More</a>
+                                            <a href="{{route('client.invoice.show',$request->id)}}">Show More</a>
                                         </div><!-- /.post-date -->
                                     </div><!-- /.post -->
                                     @endforeach
