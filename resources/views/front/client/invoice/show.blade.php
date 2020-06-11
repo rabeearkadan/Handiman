@@ -238,15 +238,23 @@
                                         <dd>{{$request->total}}</dd>
                                     </dl>
                                     @if($request->ispaid == false)
-                                        <form id="payment-form">
-                                            <div id="card-element">
-                                                <!-- Elements will create input elements here -->
+                                        <span class="payment-errors"></span>
+                                        <form action="" method="POST" id="payment-form">
+                                            <div class="form-row">
+                                                <label>Card Number</label>
+                                                <input type="text" size="20" autocomplete="off" class="card-number" />
                                             </div>
-
-                                            <!-- We'll put the error messages in this element -->
-                                            <div id="card-errors" role="alert"></div>
-
-                                            <button id="submit">Pay</button>
+                                            <div class="form-row">
+                                                <label>CVC</label>
+                                                <input type="text" size="4" autocomplete="off" class="card-cvc" />
+                                            </div>
+                                            <div class="form-row">
+                                                <label>Expiration (MM/YYYY)</label>
+                                                <input type="text" size="2" class="card-expiry-month"/>
+                                                <span> / </span>
+                                                <input type="text" size="4" class="card-expiry-year"/>
+                                            </div>
+                                            <button type="submit" class="submit-button">Submit Payment</button>
                                         </form>
                                     @else
                                        <p>paid</p>
