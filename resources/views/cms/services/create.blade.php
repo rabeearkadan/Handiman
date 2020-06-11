@@ -19,43 +19,51 @@
         <div class="tab-pane tabs-animation fade show active" id="tab-content-0" role="tabpanel">
             <div class="main-card mb-3 card">
                 <div class="card-body"><h5 class="card-title">Service</h5>
+
+
+                    <div class="col-md-6">
                     <form action="{{route('service.store')}}" method="post" enctype="multipart/form-data">
                         @csrf
-                        <div class="form-row">
-                            <div class="col-md-6">
-                                <div class="position-relative form-group">
-                                    <input
-                                        name="service_name" placeholder="Service Name.." type="text"
-                                        class="form-control">
-                                </div>
-                            </div>
+                        <div class="col-md-6">
+
+                            <input
+                                name="service_name" placeholder="Service Name.." type="text"
+                                class="form-control">
 
                         </div>
+                            <div class="card-body">
+                                <h5 class="card-title">Service Indicator</h5>
+                                <input
+                                    name="indicator" placeholder=" Indicator" type="text"
+                                    class="form-control">
+                            </div>
 
 
-                        <div class="container" >
-                            <div class="well" data-bind="fileDrag: fileData">
-                                <div class="form-group row">
-                                    <div class="col-md-6">
-                                        <img style="height: 125px;" class="img-rounded  thumb"
-                                             data-bind="attr: { src: fileData().dataURL }, visible: fileData().dataURL">
-                                        <div data-bind="ifnot: fileData().dataURL">
-                                            <label class="drag-label">Drag file here</label>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <input  name="service_picture"  type="file" data-bind="fileInput: fileData, customFileInput: {
+                            <div class="container">
+
+                                    <h5 class="card-title">Service Image</h5>
+                                    <div class="well" data-bind="fileDrag: fileData">
+                                        <div class="form-group row">
+                                            <div class="col-md-6">
+                                                <img style="height: 125px;" class="img-rounded  thumb"
+                                                     data-bind="attr: { src: fileData().dataURL }, visible: fileData().dataURL">
+                                                <div data-bind="ifnot: fileData().dataURL">
+                                                    <label class="drag-label">Drag file here</label>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <input name="service_picture" type="file" data-bind="fileInput: fileData, customFileInput: {
                                       buttonClass: 'btn btn-success',
                                       fileNameClass: 'disabled form-control',
                                       onClear: onClear,
                                     }"
-                                               accept="image/*">
+                                                       accept="image/*">
+                                            </div>
+
                                     </div>
                                 </div>
-                            </div>
-                        </div>
 
-                        <button class="mt-2 btn btn-primary">Submit Service</button>
+                                <button class="mt-2 btn btn-primary">Submit Service</button>
                     </form>
                 </div>
             </div>
@@ -70,7 +78,7 @@
 @push('js')
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/knockout/3.1.0/knockout-min.js"></script>
-    <script type="text/javascript"  src="{{asset('js/file-uploader.js')}}"></script>
+    <script type="text/javascript" src="{{asset('js/file-uploader.js')}}"></script>
 
     <script>
 

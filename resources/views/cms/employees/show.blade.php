@@ -70,45 +70,6 @@
             </div>
         </div>
 
-
-        @if(($employee->isApproved)==true )
-
-
-            <div class="col-lg-3 col-6">
-
-                <div class="small-box bg-info">
-                    <div class="inner">
-                        <p>Status:</p>
-
-                        <p style="font-size: 2.2rem"> Approved</p>
-                    </div>
-
-                    <div class="icon">
-                        <i class="ion ion-email"></i>
-                    </div>
-
-                </div>
-            </div>
-
-        @else
-
-            <div class="col-lg-3 col-6">
-
-                <div class="small-box bg-danger">
-                    <div class="inner">
-                        <p style="font-size: 2.2rem">Status:</p>
-
-                        <p> Not Approved</p>
-                    </div>
-
-                    <div class="icon">
-                        <i class="ion ion-email"></i>
-                    </div>
-
-                </div>
-            </div>
-        @endif
-
     </div>
 
 
@@ -130,35 +91,6 @@
     {{--        </div>--}}
     {{--    </div>--}}
 
-
-    <div class="row">
-
-        <div class="col-lg-6 col-12">
-            <div class="tab-content">
-                <div class="tab-pane tabs-animation fade show active" id="tab-content-0" role="tabpanel">
-                    <div class="main-card mb-3 card">
-                        <div class="card-body">
-                            <div id='calendar'></div>
-                        </div>
-                    </div>
-                </div>
-                <div class="tab-pane tabs-animation fade" id="tab-content-1" role="tabpanel">
-                    <div class="main-card mb-3 card">
-                        <div class="card-body">
-                            <div id='calendar-list'></div>
-                        </div>
-                    </div>
-                </div>
-                <div class="tab-pane tabs-animation fade" id="tab-content-2" role="tabpanel">
-                    <div class="main-card mb-3 card">
-                        <div class="card-body">
-                            <div id="calendar-bg-events"></div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
 
     <div class="row">
         <div class="col-md-12">
