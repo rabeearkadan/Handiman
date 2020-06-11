@@ -59,7 +59,7 @@
                                             @endforeach
                                         </div>
                                     </div>
-                                    @if($request->count() == 0)
+                                    @if($requests->count() == 0)
 {{--                                        <div class="container"--}}
 {{--                                             style="background-size:contain;background-repeat: no-repeat;background-position: center;height:150px;background-image:url('/public/images/client/invoice-empty.png');">--}}
 {{--                                        </div>--}}
