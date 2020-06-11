@@ -70,45 +70,6 @@
             </div>
         </div>
 
-
-        @if(($employee->isApproved)==true )
-
-
-            <div class="col-lg-3 col-6">
-
-                <div class="small-box bg-info">
-                    <div class="inner">
-                        <p>Status:</p>
-
-                        <p style="font-size: 2.2rem"> Approved</p>
-                    </div>
-
-                    <div class="icon">
-                        <i class="ion ion-email"></i>
-                    </div>
-
-                </div>
-            </div>
-
-        @else
-
-            <div class="col-lg-3 col-6">
-
-                <div class="small-box bg-danger">
-                    <div class="inner">
-                        <p style="font-size: 2.2rem">Status:</p>
-
-                        <p> Not Approved</p>
-                    </div>
-
-                    <div class="icon">
-                        <i class="ion ion-email"></i>
-                    </div>
-
-                </div>
-            </div>
-        @endif
-
     </div>
 
 
