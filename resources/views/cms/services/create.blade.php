@@ -21,19 +21,25 @@
                 <div class="card-body"><h5 class="card-title">Service</h5>
                     <form action="{{route('service.store')}}" method="post" enctype="multipart/form-data">
                         @csrf
-                        <div class="form-row">
                             <div class="col-md-6">
-                                <div class="position-relative form-group">
+
                                     <input
                                         name="service_name" placeholder="Service Name.." type="text"
                                         class="form-control">
-                                </div>
-                            </div>
 
+                            </div>
+                        <div class="col-md-6">
+
+                            <div class="card-body"><h5 class="card-title">Service Indicator</h5>
+                            <input
+                                name="indicator" placeholder=" Indicator" type="text"
+                                class="form-control">
                         </div>
 
 
                         <div class="container" >
+
+                            <div class="card-body"><h5 class="card-title">Service Image</h5>
                             <div class="well" data-bind="fileDrag: fileData">
                                 <div class="form-group row">
                                     <div class="col-md-6">
