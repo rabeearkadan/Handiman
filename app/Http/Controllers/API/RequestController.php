@@ -138,6 +138,15 @@ class RequestController extends Controller
         }
         $user = User::query()->find(Auth::id());
 
+        if ($user->cancels == null) {
+            $user->cancels = 1;
+            $user->save();
+        } else {
+            $cancels = (Integer)$user->cancels;
+            $cancels++;
+            $user->cancels = $cancels;
+            $user->save();
+        }
         $client_request_ids = [];
         foreach ($user->client_request_ids as $s) {
             if ($s != $id)
@@ -273,17 +282,28 @@ class RequestController extends Controller
 
         }
         if ($req->status == "rejected") {
-            $request->push('rejected_employees',$handyman->id);
+
+
+            if ($handyman->rejects == null) {
+                $handyman->rejects = 1;
+                $handyman->save();
+            } else {
+                $rejects = (Integer)$handyman->rejects;
+                $rejects++;
+                $handyman->rejects = $rejects;
+                $handyman->save();
+            }
+            $request->push('rejected_employees', $handyman->id);
             if ($request->isurgent == true) {
                 $request->employees()->detach($handyman);
             } else {
-                $request->isurgent=true;
+                $request->isurgent = true;
                 $request->save();
             }
         } elseif ($req->status == "accepted") {
 
             $request->status = "approved";
-            $request->paid=false;
+            $request->paid = false;
             $request->save();
             if ($request->isurgent == true) {
                 $request->employees()->detach();
