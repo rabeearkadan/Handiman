@@ -59,7 +59,7 @@
                                     }"
                                                        accept="image/*">
                                             </div>
-                                       
+
                                     </div>
                                 </div>
 

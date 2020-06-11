@@ -1,6 +1,7 @@
 <div class="app-sidebar sidebar-shadow">
     <div class="app-header__logo">
-        <div class="logo-src"></div>
+        <a href="#hero"><img src="../../../../public/img/logo.png" alt="" title=""/></a>
+
         <div class="header__pane ml-auto">
             <div>
                 <button type="button" class="hamburger close-sidebar-btn hamburger--elastic"
