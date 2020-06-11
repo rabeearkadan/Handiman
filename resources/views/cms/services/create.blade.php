@@ -41,7 +41,6 @@
 
                             <div class="container">
 
-                                <div class="card-body">
                                     <h5 class="card-title">Service Image</h5>
                                     <div class="well" data-bind="fileDrag: fileData">
                                         <div class="form-group row">
@@ -60,7 +59,7 @@
                                     }"
                                                        accept="image/*">
                                             </div>
-                                        </div>
+                                       
                                     </div>
                                 </div>
 
