@@ -61,11 +61,11 @@ class CalendarController extends Controller
         $index = 0;
         $total=0;
         foreach ($request->itemsName as $item) {
-            $receipt[$index] = array([
+            array_push($receipt, array([
                 'name' => $request->itemsName[$index],
                 'price' => $request->itemsPrice[$index],
                 'qty' => $request->itemsQuantity[$index]
-            ]);
+            ]));
             $total += $request->itemsPrice[$index] * $request->itemsQuantity[$index];
             $index++;
         }
