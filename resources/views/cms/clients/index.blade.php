@@ -17,7 +17,7 @@
                         <tr>
                             <th width="20%">#</th>
                             <th width="20%"> Name</th>
-                            <th width="20%"> # Users</th>
+                            <th width="20%"> Email</th>
                             <th width="20%">Actions</th>
                             <th width="10%">...</th>
                         </tr>
@@ -43,7 +43,7 @@
 
                                 </td>
 
-                                
+
                             </tr>
                         @endforeach
 

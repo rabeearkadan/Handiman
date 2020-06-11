@@ -82,7 +82,7 @@
                     </a>
                 </li>
                 <li>
-                    <a href="{{route('request.index')}}" class="mm">
+                    <a href="{{route('rejected-payments')}}" class="mm">
                         <i class="metismenu-icon pe-7s-rocket"></i>
                        Rejected Payments
                     </a>
