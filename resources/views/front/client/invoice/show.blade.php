@@ -228,7 +228,7 @@
                                         <dd>{{$request->total}}</dd>
                                     </dl>
                                     @if($request->ispaid == false)
-                                        <a href="" class="btn waves-effect waves-light right" style="line-height: 3.5px;font-size: small;height: 27px;margin-right: 85px;">
+                                        <a href="" class="btn waves-effect waves-light left" style="line-height: 3.5px;font-size: small;height: 27px;margin-right: 85px;">
                                             Pay
                                         </a>
                                     @endif
