@@ -75,7 +75,7 @@ $(".msg_send_btn").click(function(e){
     e.preventDefault();
 
     var message = $("input[name=message]").val();
-    if(message.val().trim().length !==0) {
+    if(message.trim().length !==0) {
         $.ajax({
             type: 'POST',
             url: "{{ route('client.chat.send',$request->id) }}",
