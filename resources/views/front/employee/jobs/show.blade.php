@@ -254,7 +254,7 @@
         @endisset
     </ul>
     <div class="fixed-action-btn">
-        <a class="btn-floating btn-large blue">
+        <a href="{{route('employee.chat.index',$job->id)}}" class="btn-floating btn-large blue">
             <i class="large material-icons">chat</i>
         </a>
 

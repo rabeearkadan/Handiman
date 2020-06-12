@@ -121,7 +121,7 @@
                     <li class="collection-item avatar">
                             <img src="{{config('image.path').$request->client->image}}" alt="" class="circle">
                             <span class="title">{{$request->client->name}}
-                            <a class="btn-floating btn-large red" style="float: right">
+                            <a href="{{route('employee.chat.index',$request->id)}}" class="btn-floating btn-large red" style="float: right">
                             <i class="large material-icons">chat</i>
                         </a>
                             </span>
