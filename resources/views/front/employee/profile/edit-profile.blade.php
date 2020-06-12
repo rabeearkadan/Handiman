@@ -186,8 +186,8 @@
             </h3>
             <div class="map-position">
                 <input id="pac-input" name="map-input" class="controls" type="text" placeholder="Search Box">
-                <input type="hidden" name="lat" value="{{$user->employee_address[1]}}" id="lat">
-                <input type="hidden" name="lng" id="lng" value="{{$user->employee_address[0]}}">
+                <input type="hidden" name="lat" value="{{$user->employee_address->location[1]}}" id="lat">
+                <input type="hidden" name="lng" id="lng" value="{{$user->employee_address->location[0]}}">
                 <div id="map"></div>
             </div><!-- /.map-property -->
             <div class="row">
