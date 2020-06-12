@@ -53,18 +53,23 @@
     <script>
         const interval = setInterval(function () {
             update();
+            console.log("update");
         }, 1000);
         clearInterval(interval);
 
         function update() {
             var numberOfMessages = document.getElementsByClassName('incoming_msg').length + document.getElementsByClassName('outgoing_msg');
+            console.log(numberOfMessages);
             $.ajax({
                 type: 'GET',
                 url: "{{ route('client.chat.new',$request->id) }}",
                 data: {numberOfMessages: numberOfMessages, _token: '{{csrf_token()}}'},
                 success: function (data) {
+                    console.log(data);
                     if (data.status === "success") {
+                        console.log("inn");
                         for (var index = 0; index < data.messages.length; index++) {
+                            console.log(index);
                             $(".msg_history").append('<div class="incoming_msg">' +
                                 '<div class="incoming_msg_img">' +
                                 '<img src="' + data.messages[index]['from']['image'] + '" alt="employee">' +
