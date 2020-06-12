@@ -129,53 +129,53 @@
             </div><!-- /.row -->
         </form>
     </div>
-    <div class="background-white p20 mb30">
-        <form method="post" action="{{route('employee.connections.update')}}">
-            @csrf
-            @method('put')
-            <h3 class="page-title">
-                Social Connections
-                <input type="submit" value="Save" class="btn btn-primary btn-xs pull-right"/>
-            </h3>
-            {{--            <div class="row" style="position:relative;">--}}
-            {{--            <div class="fixed-action-btn" style="position:absolute;">--}}
-            {{--                <a class="btn-floating btn-large red">--}}
-            {{--                    <i class="large material-icons">mode_edit</i>--}}
-            {{--                </a>--}}
-            {{--                <ul>--}}
-            {{--                    <li><a class="btn-floating red"><i class="material-icons">insert_chart</i></a></li>--}}
-            {{--                    <li><a class="btn-floating green"><i class="material-icons">facebook</i></a></li>--}}
-            {{--                    <li><a class="btn-floating blue"><i class="material-icons">twitter</i></a></li>--}}
-            {{--                    <li><a class="btn-floating yellow darken-1"><i class="material-icons">instagram</i></a></li>--}}
-            {{--                </ul>--}}
-            {{--            </div>--}}
-            {{--            </div>--}}
-            <div class="form-horizontal">
-                <div class="form-group">
-                    <label for="facebook" class="col-sm-2 control-label">Facebook</label>
-                    <div class="col-sm-9">
-                        <input type="text" class="form-control" name="facebook" id="facebook"
-                               value="@if($user->facebook){{$user->facebook}}@else http://facebook.com/@endif">
-                    </div><!-- /.col-* -->
-                </div><!-- /.form-group -->
+{{--    <div class="background-white p20 mb30">--}}
+{{--        <form method="post" action="{{route('employee.connections.update')}}">--}}
+{{--            @csrf--}}
+{{--            @method('put')--}}
+{{--            <h3 class="page-title">--}}
+{{--                Social Connections--}}
+{{--                <input type="submit" value="Save" class="btn btn-primary btn-xs pull-right"/>--}}
+{{--            </h3>--}}
+{{--            --}}{{--            <div class="row" style="position:relative;">--}}
+{{--            --}}{{--            <div class="fixed-action-btn" style="position:absolute;">--}}
+{{--            --}}{{--                <a class="btn-floating btn-large red">--}}
+{{--            --}}{{--                    <i class="large material-icons">mode_edit</i>--}}
+{{--            --}}{{--                </a>--}}
+{{--            --}}{{--                <ul>--}}
+{{--            --}}{{--                    <li><a class="btn-floating red"><i class="material-icons">insert_chart</i></a></li>--}}
+{{--            --}}{{--                    <li><a class="btn-floating green"><i class="material-icons">facebook</i></a></li>--}}
+{{--            --}}{{--                    <li><a class="btn-floating blue"><i class="material-icons">twitter</i></a></li>--}}
+{{--            --}}{{--                    <li><a class="btn-floating yellow darken-1"><i class="material-icons">instagram</i></a></li>--}}
+{{--            --}}{{--                </ul>--}}
+{{--            --}}{{--            </div>--}}
+{{--            --}}{{--            </div>--}}
+{{--            <div class="form-horizontal">--}}
+{{--                <div class="form-group">--}}
+{{--                    <label for="facebook" class="col-sm-2 control-label">Facebook</label>--}}
+{{--                    <div class="col-sm-9">--}}
+{{--                        <input type="text" class="form-control" name="facebook" id="facebook"--}}
+{{--                               value="@if($user->facebook){{$user->facebook}}@else http://facebook.com/@endif">--}}
+{{--                    </div><!-- /.col-* -->--}}
+{{--                </div><!-- /.form-group -->--}}
 
-                <div class="form-group">
-                    <label for="twitter" class="col-sm-2 control-label">Twitter</label>
-                    <div class="col-sm-9">
-                        <input type="text" id="twitter" name="twitter" class="form-control"
-                               value="@if($user->twitter){{$user->twitter}}@else http://twitter.com/@endif">
-                    </div><!-- /.col-* -->
-                </div><!-- /.form-group -->
-                <div class="form-group">
-                    <label for="instagram" class="col-sm-2 control-label">Instagram</label>
-                    <div class="col-sm-9">
-                        <input type="text" class="form-control" name="instagram" id="instagram"
-                               value="@if($user->instagram){{$user->instagram}}@else http://instagram.com/@endif">
-                    </div><!-- /.col-* -->
-                </div><!-- /.form-group -->
-            </div><!-- /.form-inline -->
-        </form>
-    </div><!-- /.background-white -->
+{{--                <div class="form-group">--}}
+{{--                    <label for="twitter" class="col-sm-2 control-label">Twitter</label>--}}
+{{--                    <div class="col-sm-9">--}}
+{{--                        <input type="text" id="twitter" name="twitter" class="form-control"--}}
+{{--                               value="@if($user->twitter){{$user->twitter}}@else http://twitter.com/@endif">--}}
+{{--                    </div><!-- /.col-* -->--}}
+{{--                </div><!-- /.form-group -->--}}
+{{--                <div class="form-group">--}}
+{{--                    <label for="instagram" class="col-sm-2 control-label">Instagram</label>--}}
+{{--                    <div class="col-sm-9">--}}
+{{--                        <input type="text" class="form-control" name="instagram" id="instagram"--}}
+{{--                               value="@if($user->instagram){{$user->instagram}}@else http://instagram.com/@endif">--}}
+{{--                    </div><!-- /.col-* -->--}}
+{{--                </div><!-- /.form-group -->--}}
+{{--            </div><!-- /.form-inline -->--}}
+{{--        </form>--}}
+{{--    </div><!-- /.background-white -->--}}
     <div class="background-white p20 mb30">
         <form method="post" action="{{route('employee.address.update')}}">
             @csrf
