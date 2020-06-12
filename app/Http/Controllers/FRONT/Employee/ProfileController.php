@@ -179,6 +179,23 @@ class ProfileController extends Controller
         return view('front.employee.profile.documents', compact('user'));
     }
 
+    public function updateCertificate(Request $request)
+    {
+        $user = Auth::user();
+        $file = $request->file('certificate');
+        $name = 'certificate_' . time() . '.' . $file->getClientOriginalExtension();
+        if (!Storage::disk('public')->exists('certificates')) {
+            Storage::disk('public')->makeDirectory('certificates');
+        }
+        if (Storage::disk('public')->putFileAs('certificates', $file, $name)) {
+            $user->criminal_record = 'certificates/' . $name;
+        } else {
+            return view('front.employee.profile.documents', compact('user'));
+        }
+        $user->save();
+        return view('front.employee.profile.documents', compact('user'));
+    }
+
     public function updateContact(Request $request)
     {
         $user = Auth::user();
@@ -205,6 +222,15 @@ class ProfileController extends Controller
     public function updateAddress(Request $request)
     {
         $user = Auth::user();
+        $data = [
+            "_id" => Str::random(24),
+            "location" => [$request->lng, $request->lat],
+            "street" => $request->street,
+            "building" => $request->house,
+            "zip" => $request->zip,
+        ];
+        $user->employee_address = $data;
+        $user->save();
         return redirect(route('employee.profile'));
     }
 
@@ -215,6 +241,7 @@ class ProfileController extends Controller
             'biography' => 'required|min:20|max:1500'
         ]);
         $user->biography = $request->biography;
+        $user->save();
         return redirect(route('employee.profile'));
     }
 

@@ -34,6 +34,7 @@ Route::put('/edit-profile/services','ProfileController@updateServices')->name('e
 Route::get('/profile/documents/edit','ProfileController@editDocuments')->name('employee.documents.edit');
 Route::put('/profile/documents/edit/cv','ProfileController@updateCV')->name('employee.cv.update');
 Route::put('/profile/documents/edit/cr','ProfileController@updateCR')->name('employee.cr.update');
+Route::put('/profile/documents/edit/certificate','ProfileController@updateCertificate')->name('employee.certificate.update');
 
 //Schedule
 Route::get('/profile/schedule/edit','ProfileController@editSchedule')->name('employee.schedule.edit');
