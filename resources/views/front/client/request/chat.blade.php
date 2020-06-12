@@ -42,8 +42,8 @@
 
                     <div class="type_msg">
                         <div class="input_msg_write">
-                            <form id="sendForm" >
-                            
+                            <form id="sendForm" method="post" action="javascript:void(0)">
+                            @csrf
                             <input type="text" id="message" name="message" class="write_msg" placeholder="Type a message" />
                             <button class="msg_send_btn" type="submit"><i class="fa fa-paper-plane-o" aria-hidden="true"></i></button>
                             </form>
@@ -67,7 +67,7 @@ function update() {
 
 $.ajaxSetup({
     headers: {
-        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        'X-CSRF-TOKEN': $('meta[name="_token"]').attr('content')
     }
 });
 
