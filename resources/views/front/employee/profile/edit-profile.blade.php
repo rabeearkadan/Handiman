@@ -76,7 +76,7 @@
             width: 345px;
         }
         .error:focus,.error{
-            color: #ff0000 ;
+            color: #d25858 !important;
             border-bottom: 1px solid red !important;
             box-shadow: 0 0 0 0 !important;
         }
@@ -86,6 +86,10 @@
         #price-error{
             top:60px !important;
             font-size:13px !important;
+        }
+        .materialert.error{
+            background-color: #c62828 !important;
+            color: #fff !important;
         }
 
     </style>

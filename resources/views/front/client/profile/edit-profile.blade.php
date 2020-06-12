@@ -80,6 +80,10 @@
         form .error {
             color: #ff0000 !important;
         }
+        .materialert.error{
+            background-color: #c62828 !important;
+            color: #fff !important;
+        }
 
     </style>
 @endpush
