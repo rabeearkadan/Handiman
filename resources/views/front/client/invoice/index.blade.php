@@ -10,6 +10,11 @@
     <link href="{{asset('css/client/post-detail.css')}}" rel="stylesheet">
     <link href="{{asset('css/client/color-box.css')}}" rel="stylesheet">
     <link href="{{asset('css/client/bootstrap-select.min.css')}}" rel="stylesheet">
+    <style>
+        body{
+            background-color: #f7f8f9;
+        }
+    </style>
 @endpush
 @section('content')
     <div class="page-wrapper">
