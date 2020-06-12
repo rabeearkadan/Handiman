@@ -65,12 +65,12 @@ class ChatController extends Controller
         $nbOfMessages = $request->numberOfMessages;
         $nbOfMessages--;
         $messages = $requestService->messages;
-        $messages = array_slice($messages,$nbOfMessages);
         for($index=0;$index<sizeof($messages);$index++){
             if($messages[$index]['from']['_id']==$user->id){
                 unset($messages[$index]);
             }
         }
+        $messages = array_slice($messages,$nbOfMessages);
         return response()->json(['status'=>'success','messages' => $messages ]);
     }
 
