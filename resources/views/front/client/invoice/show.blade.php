@@ -198,15 +198,12 @@
                                             {{$request->description}}
                                         </div>
                                         @if($request->ispaid == true)
-{{--                                        <div class="col-sm-4">--}}
-{{--                                            <h4>Payment Details</h4>--}}
+                                        <div class="col-sm-4">
+                                            <h4>Service</h4>
 
-{{--                                            <strong>VAT:</strong> 32132123<br>--}}
-{{--                                            <strong>VAT ID:</strong> 345234523<br>--}}
-{{--                                            <strong>Payment Type:</strong> Root<br>--}}
-{{--                                            <strong>Name:</strong>Lorem Ipsum<br>--}}
-{{--                                            <strong>Duration:</strong> Dolor si amet<br>--}}
-{{--                                        </div>--}}
+                                            <strong>Duration:</strong> {{$request->to - $request->from}}<br>
+                                            <strong>SubTotal:</strong> {{($request->to-$request->from)*$request->price}}<br>
+                                        </div>
                                         @endif
                                     </div>
                                 </div><!-- /.invoice-info -->
