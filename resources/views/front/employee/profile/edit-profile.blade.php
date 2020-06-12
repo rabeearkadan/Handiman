@@ -313,8 +313,11 @@
         $(function() {
             $("form[name='servicesForm']").validate({
                 rules: {
-                    price: "required",
+                    price: {
+                        required:true,
+                        min:1,
                         number:true
+                    }
                     },
                 messages: {
                     price: "Please enter a valid price (per hour)",
