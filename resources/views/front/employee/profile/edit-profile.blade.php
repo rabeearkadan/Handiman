@@ -75,14 +75,12 @@
         #target {
             width: 345px;
         }
-        .error{
-            border-bottom: 1px solid red !important;
-        }
         .error:focus,.error{
+            color: #ff0000 !important;
+            border-bottom: 1px solid red !important;
             box-shadow: 0 0 0 0 !important;
         }
-        form .error {
-            color: #ff0000 !important;
+        form label.error {
             border-bottom: 0  !important;
         }
         #price-error{
