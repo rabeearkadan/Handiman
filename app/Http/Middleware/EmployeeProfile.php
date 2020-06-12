@@ -17,7 +17,7 @@ class EmployeeProfile
     public function handle($request, Closure $next)
     {
         $user = Auth::user();
-        if( $user->cv==null || $user->certificate==null ||$user->criminal_record==null || $user->biography == null || isEmpty($user->service_ids) || $user->price==null || $user->gender == null || $user->phone == null || $user->name == null || $user->employee_address==null ) {
+        if( $user->cv==null || $user->certificate==null ||$user->criminal_record==null || $user->biography == null || $user->service_ids == null || $user->price==null || $user->gender == null || $user->phone == null || $user->name == null || $user->employee_address==null ) {
             return redirect()->route('employee.profile', ['incomplete' => true]);
         }
         return $next($request);
