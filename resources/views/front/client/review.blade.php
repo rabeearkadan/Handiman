@@ -62,6 +62,7 @@
                                                                          alt="post images">
                                                                 </a>
                                                                 <a href="{{route('client.user-profile',['employee_id' => $request->employee->id])}}"> {{$request->employee->name}} </a>
+                                                                <p>  {{$request->subject}}</p>
                                                             </div>
                                                         </div>
                                                         <div class="row">
@@ -95,7 +96,7 @@
                                                                      alt="post images">
                                                             </a>
                                                                     <a href="{{route('client.user-profile',['employee_id' => $request->employee->id])}}"> {{$request->employee->name}} </a>
-                                                                <p>{{$request->subject}}</p>
+                                                                <p>   {{$request->subject}}</p>
                                                                 </div>
                                                             </div>
                                                             <div class="row">
