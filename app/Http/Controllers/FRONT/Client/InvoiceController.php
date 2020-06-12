@@ -72,39 +72,41 @@ class InvoiceController extends Controller
         $total = $job->total;
         $token = $request->stripeToken;
 
-//        try {
-            $charge = \Stripe\Charge::create([
-                'amount' => (int)($total * 100),
-                'currency' => 'USD',
-                'description' => $user->name,
-                'source' => $token,
-                'capture' => true,
-                'receipt_email' => $employee->email,
-            ]);
-            if ($charge != null) {
-                $this->notification($employee->employee_device_token, 'Genie', 'check receipt', 'request');
-                $employee->balance = $employee->balance + $total;
-                $job->ispaid = true;
-                $file_name = Str::random(25);
-                $job->report = 'reports/pdf/' . $file_name . '.pdf';
-                $job->save();
-                $employee->save();
-                $this->stringToPDF($file_name, $job);
-                return redirect()->route('client.invoice.index');
-            }
+        try {
+        $charge = \Stripe\Charge::create([
+            'amount' => (int)($total * 100),
+            'currency' => 'USD',
+            'description' => $user->name,
+            'source' => $token,
+            'capture' => true,
+            'receipt_email' => $employee->email,
+        ]);
+        if ($charge != null) {
+            $this->notification($employee->employee_device_token, 'Genie', 'check receipt', 'request');
+            $employee->balance = $employee->balance + $total;
+            $job->ispaid = true;
+            $file_name = Str::random(25);
+            $job->report = 'reports/pdf/' . $file_name . '.pdf';
+            $job->save();
+            $employee->save();
+            $this->stringToPDF($file_name, $job);
+            return redirect()->route('client.invoice.index');
+        }
 
 
-//        } catch (CardException $exception) {
-//            return response()->json(['status' => 'error', 'message' => __('api.card-decline')]);
-//        } catch (ApiConnectionException $e) {
-//            return response()->json(['status' => 'error', 'message' => __('api.something-went-wrong1')]);
-//        } catch (ApiErrorException $e) {
-//            return response()->json(['status' => 'error', 'message' => __('api.something-went-wrong2')]);
-//        } catch (AuthenticationException $e) {
-//            return response()->json(['status' => 'error', 'message' => __('api.something-went-wrong3')]);
-//        } catch (\Exception $e) {
-//            return response()->json(['status' => 'error', 'message' => __('api.something-went-wrong4')]);
-//        }
+        } catch (CardException $exception) {
+            return redirect()->back()->withErrors($exception->getMessage());//key errors ['errors'=>'dfsdgsdfgsdfg']
+            return redirect()->back()->with(['zabri'=>'l message yali badak heye']);
+            return response()->json(['status' => 'error', 'message' => __('api.card-decline')]);
+        } catch (ApiConnectionException $e) {
+            return response()->json(['status' => 'error', 'message' => __('api.something-went-wrong1')]);
+        } catch (ApiErrorException $e) {
+            return response()->json(['status' => 'error', 'message' => __('api.something-went-wrong2')]);
+        } catch (AuthenticationException $e) {
+            return response()->json(['status' => 'error', 'message' => __('api.something-went-wrong3')]);
+        } catch (\Exception $e) {
+            return response()->json(['status' => 'error', 'message' => __('api.something-went-wrong4')]);
+        }
 
     }
 

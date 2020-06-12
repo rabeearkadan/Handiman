@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\FRONT\Employee;
+namespace App\Http\Controllers\FRONT\Client;
 
 use App\Events\NotificationSenderEvent;
 use App\Http\Controllers\Controller;
@@ -12,47 +12,18 @@ use Illuminate\Support\Facades\Auth;
 
 class ChatController extends Controller
 {
-    public function loadMessages($id)
+    public function index($id)
     {
-
-        $requestService = RequestService::query()->find($id);
-        $messages = $requestService->messages;
-        if ($messages != null)
-            return response()->json(['status' => 'success', 'messages' => $messages]);
-        return response()->json(['status' => 'success', 'messages' => "no messages yet"]);
-
-    }
-
-    public function employeeRequests()
-    {
-        $requests = Auth::user()->employeeRequests()->where('status', 'approved')->where('isdone', false)->get();
-
-        if ($requests == null)
-            return response()->json(['status' => 'success', 'message' => 'You have no requests to chat']);
-        $_requests = $requests->map(function ($item) {
-            $item->client = User::query()->find($item->client_ids[0])->simplifiedArray();
-            return $item;
-        });
-
-        return response()->json(['status' => 'success', 'requests' => $_requests]);
-    }
-
-    public function clientRequests()
-    {
-        $requests = Auth::user()->clientRequests()->where('status', 'approved')->where('isdone', false)->get();
-
-        if ($requests == null)
-            return response()->json(['status' => 'success', 'message' => 'You have no requests to chat']);
-        $_requests = $requests->map(function ($item) {
-            $item->client = User::query()->find($item->employee_ids[0])->simplifiedArray();
-            return $item;
-        });
-
-        return response()->json(['status' => 'success', 'requests' => $_requests]);
+        $user = Auth::user();
+        $request = RequestService::query()->find($id);
+        $messages = $request->messages;
+            return view('front.client.chat',compact(['messages','request','user']));
     }
 
 
-    public function sendMessage(Request $request, $id)
+
+
+    public function send(Request $request, $id)
     {
 
         $requestService = RequestService::query()->find($id);
@@ -85,8 +56,7 @@ class ChatController extends Controller
 
         event(new NotificationSenderEvent($notification));
         $requestService->save();
-
-        return response()->json(['status' => 'success', 'messages' => $message]);
+        return response()->json(['status'=>'success','message' => $request->input('message'),'date'=> Carbon::now()->toDateTimeString()]);
     }
 
     public
