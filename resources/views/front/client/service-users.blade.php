@@ -60,7 +60,7 @@
                         </div>
                         <div class="input-field col s12 m6">
                             <select name="to" id="to">
-                                @for($from=1;$from<24;$from++)
+                                @for($to=1;$to<=24;$to++)
                                     <option value="{{$to}}">{{$to}}</option>
                                 @endfor
                             </select>
