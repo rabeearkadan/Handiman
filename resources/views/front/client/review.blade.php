@@ -48,12 +48,41 @@
                                     <h1> Review Services Provided by each Employee</h1>
                                 </div><!-- /.page-title -->
                                 <div class="posts posts-condensed">
-                                    <div id="review-list">
+                                    <div id="reviews-list">
                                         <div class="list">
                                             @foreach($requests as $request)
                                                 <div class="post">
                                                     @isset($request->rating)
-
+                                                        <div class="row">
+                                                            <div class="col-sm-12">
+                                                                <a href="{{route('client.user-profile',['employee_id' => $request->employee->id])}}">
+                                                                    <img style="width:35px; height:35px"
+                                                                         class="circle responsive-img"
+                                                                         src="{{config('image.path').$request->employee->image}}"
+                                                                         alt="post images">
+                                                                </a>
+                                                                <a href="{{route('client.user-profile',['employee_id' => $request->employee->id])}}"> {{$request->employee->name}} </a>
+                                                            </div>
+                                                        </div>
+                                                        <div class="row">
+                                                            <div class="col-sm-12">
+                                                                @for($index=0;$index<$request->rating;$index++)
+                                                                <i class="fas fa-star"></i>
+                                                                    @endfor
+                                                            </div>
+                                                        </div>
+                                                        <div class="row">
+                                                            <div class="input-field col s12">
+                                                                <input disabled value="{{$request->feedback['title']}}" id="disabledTitle{{$request->id}}" type="text" class="validate">
+                                                                <label for="disabled{{$request->id}}">Title</label>
+                                                            </div>
+                                                        </div>
+                                                        <div class="row">
+                                                            <div class="input-field col s12">
+                                                                <input disabled value="{{$request->feedback['body']}}" id="disabledBody{{$request->id}}" type="text" class="validate">
+                                                                <label for="disabledBody">Disabled</label>
+                                                            </div>
+                                                        </div>
                                                     @else
                                                         <form method="post" action="{{route('client.reviews.store',$request->id)}}">
                                                             @csrf
@@ -66,6 +95,7 @@
                                                                      alt="post images">
                                                             </a>
                                                                     <a href="{{route('client.user-profile',['employee_id' => $request->employee->id])}}"> {{$request->employee->name}} </a>
+                                                                <p>{{$request->subject}}</p>
                                                                 </div>
                                                             </div>
                                                             <div class="row">
@@ -108,6 +138,7 @@
                                                             </button>
                                                         </form>
                                                     @endisset
+                                                        <div style="display: none" class="services"> {{$request->service_name}} </div>
                                                 </div><!-- /.post -->
                                             @endforeach
                                         </div>
@@ -138,7 +169,7 @@
             page: 20,
             pagination: true
         };
-        var reviewsList = new List('review-list', options);
+        var reviewsList = new List('reviews-list', options);
 
         function filter(category) {
             reviewsList.filter(function (item) {
