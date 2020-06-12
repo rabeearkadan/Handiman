@@ -64,11 +64,11 @@ function update() {
 }
 
 
-$.ajaxSetup({
-    headers: {
-        'X-CSRF-TOKEN': $('meta[name="_token"]').attr('content')
-    }
-});
+// $.ajaxSetup({
+//     headers: {
+//         'X-CSRF-TOKEN': $('meta[name="_token"]').attr('content')
+//     }
+// });
 
 $(".msg_send_btn").click(function(e){
 
@@ -79,8 +79,9 @@ $(".msg_send_btn").click(function(e){
     $.ajax({
         type:'POST',
         url:"{{ route('client.chat.send',$request->id) }}",
-        data:{message:message},
+        data:{message:message, _token: '{{csrf_token()}}' },
         success:function(data){
+            console.log(data);
             alert(data.status);
             $(".msg_history").append('<div class="incoming_msg">\n' +
                 '                            <div class="incoming_msg_img"> <img src="https://ptetutorials.com/images/user-profile.png" alt="sunil"> </div>\n' +
