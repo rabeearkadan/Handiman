@@ -14,7 +14,8 @@ Route::resource('request', 'RequestController');
 
 Route::resource('contact', 'ContactedUsController');
 Route::resource('statistics', 'StatisticsController');
-Route::get('/statistics/services', 'StatisticsController@services')->name('statistics.services');
+
+Route::get('/services', 'StatisticsController@services')->name('statistics.services');
 Route::post('/employee/activate/{id}', 'HandymanController@activate')->name('employee.activate');
 Route::post('/employee/deactivate/{id}', 'HandymanController@deactivate')->name('employee.deactivate');
 Route::get('/rejected-payments', 'RequestController@rejectedPayments')->name('rejected-payments');
