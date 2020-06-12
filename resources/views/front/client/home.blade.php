@@ -49,7 +49,7 @@
                                                 <div class="post-meta clearfix">
                                                     <div class="post-meta-author">
                                                         @foreach($post->users as $user)
-                                                            <a href="">
+                                                            <a href="{{route('client.user-profile',['employee_id' => $request->employee->id])}}">
                                                                 <img style="width:35px; height:35px"
                                                                      class="circle responsive-img"
                                                                      src="{{config('image.path').$user->image}}" alt="post images">
