@@ -26,7 +26,7 @@
                             <i class="icon ion-ios-location-outline"></i>
                             <div class="right-area">
 {{--                                <h5>3008 Sarah Drive</h5>--}}
-                                <h5>{{$user->employee_address['street']}} {{$user->employee_address['zip']}}</h5>
+                                <h5>{{$employee->employee_address['street']}} {{$employee->employee_address['zip']}}</h5>
                             </div><!-- right-area -->
                         </div><!-- info -->
                     </div><!-- col-sm-4 -->
