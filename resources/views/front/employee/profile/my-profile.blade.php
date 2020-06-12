@@ -22,7 +22,7 @@
                                     <div class="widget">
                                         <div class="user-photo">
                                             <a href="#">
-                                                <a href="#" onclick="removeImage()" style="float:right ; @if(!Auth::user()->image) display:none @endif">
+                                                <a href="#" onclick="removeImage()" style="float:right;cursor: pointer; @if(!Auth::user()->image) display:none @endif">
                                                     <i class="fa fa-remove"></i>
                                                 </a>
                                                 <img id="image" src="@if(Auth::user()->image){{config('image.path').Auth::user()->image}}@else /public/images/employee/profile-image.png @endif" alt="User Photo">
