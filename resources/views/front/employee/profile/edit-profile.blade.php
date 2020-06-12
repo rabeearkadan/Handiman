@@ -75,6 +75,9 @@
         #target {
             width: 345px;
         }
+        form .error {
+            color: #ff0000 !important;
+        }
     </style>
 @endpush
 @section('profile-content')
@@ -288,7 +291,6 @@
             });
         });
     </script>
-    <script src="/public/js/jquery.validate.min.js"></script>
     <script>
         $(function() {
             $("form[name='biographyForm']").validate({
