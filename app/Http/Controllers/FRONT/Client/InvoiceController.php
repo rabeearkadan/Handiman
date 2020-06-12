@@ -42,17 +42,19 @@ class InvoiceController extends Controller
             return $item;
         });
         $services = Service::all();
+        $all = 0;
         $serviceCount = array();
         foreach($services as $service){
             $serviceCount[$service->name]=0;
             foreach ($requests as $request){
                 if($request->service_id == $service->id){
+                    $all++;
                     $serviceCount[$service->name]++;
                 }
             }
 
         }
-        return view ('front.client.invoice.index', compact(['requests','services','serviceCount']));
+        return view ('front.client.invoice.index', compact(['requests','services','serviceCount','all']));
     }
 
     /**
