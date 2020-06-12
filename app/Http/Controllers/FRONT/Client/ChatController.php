@@ -58,21 +58,26 @@ class ChatController extends Controller
         $requestService->save();
         return response()->json(['status'=>'success','message' => $request->input('message'),'date'=> Carbon::now()->toDateTimeString()]);
     }
+    public function new(Request $request, $id)
+    {
 
-    public
-    function Notification($to, $from, $message, $type)
+        $requestService = RequestService::query()->find($id);
+        $nbOfMessages = $request->numberOfMessages;
+
+        $messages = $requestService->messages->skip($nbOfMessages);
+        dd($messages);
+        return response()->json(['status'=>'success','messages' => $messages ]);
+    }
+
+    public function Notification($to, $from, $message, $type)
     {
         $notification = array();
-
-
         $notification['to'] = $to;
         $notification['user'] = $from;
         $notification['message'] = $message;
         $notification['type'] = $type;// maybe "notification", "comment(message)", "request","message"
         $notification['object'] = [];
-
         event(new NotificationSenderEvent($notification));
-
         return response()->json(['status' => 'success', 'notification' => $notification]);
     }
 

@@ -54,5 +54,5 @@ Route::post('/reviews/create/{invoice_id}','ReviewsController@store')->name('cli
 //Chat
 Route::get('/chat/{id}/index','ChatController@index')->name('client.chat.index');
 Route::post('/chat/{id}/send','ChatController@send')->name('client.chat.send');
-
+Route::get('/chat/{id}/load','ChatController@new')->name('client.chat.new');
 

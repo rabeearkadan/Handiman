@@ -43,10 +43,13 @@ Route::put('/edit-profile/image/update','ProfileController@updateImage')->name('
 Route::delete('/edit-profile/image/destroy','ProfileController@destroyImage')->name('employee.image.destroy');
 
 //chat
-Route::get("/chat", 'ChatController@index')->name('employee.chat');
+Route::get('/chat/{id}/index','ChatController@index')->name('employee.chat.index');
+Route::post('/chat/{id}/send','ChatController@send')->name('employee.chat.send');
+Route::get('/chat/{id}/load','ChatController@new')->name('employee.chat.new');
 
 //posts
 Route::get('posts','PostController@index')->name('employee.post.index');
 Route::get('post/create','PostController@create')->name('employee.post.create');
 Route::post('post/create','PostController@store')->name('employee.post.store');
 Route::delete('post/destroy/{id}','PostController@destroy')->name('employee.post.destroy');
+
