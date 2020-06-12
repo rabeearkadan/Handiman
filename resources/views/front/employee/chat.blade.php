@@ -102,6 +102,7 @@
         function scroll() {
             var elem = document.getElementsByClassName('msg_history');
             elem.scrollTop = elem.scrollHeight;
+            document.getElementsByClassName('msg_history').scrollTop =  document.getElementsByClassName('msg_history').scrollHeight;
         }
     </script>
 @endpush
