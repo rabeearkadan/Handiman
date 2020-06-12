@@ -1,5 +1,6 @@
 @extends('layouts.client.app')
 @push('css')
+    <script src="{{ asset('js/app.js') }}" defer></script>
     <link href="{{asset('css/client/bootstrap.css')}}" rel="stylesheet">
     <link href="{{asset('css/client/buttons.css')}}" rel="stylesheet">
     <link href="{{asset('css/client/common-classes.css')}}" rel="stylesheet">
