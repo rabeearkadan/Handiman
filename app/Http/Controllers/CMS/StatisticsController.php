@@ -48,7 +48,7 @@ class StatisticsController extends Controller
 
     public function services()
     {
-        $users = User::query()->where('role', 'user_employee')->orWhere('role', 'employee');
+        $users = User::query()->where('role', 'user_employee')->orWhere('role', 'employee')->get();
         $chart = new Stats();
         $arr = [];
         $arr2 = [];
@@ -59,9 +59,9 @@ class StatisticsController extends Controller
             }
         }
         $chart->labels($arr2);
-        $chart->dataset('Most Visited Handyman', 'bar', $arr)->color("rgb(0, 0, 255)")->backgroundcolor("rgb(0, 0, 255)");
+        $chart->dataset('Services', 'bar', $arr)->color("rgb(0, 0, 255)")->backgroundcolor("rgb(0, 0, 255)");
 
-        return view('cms.statistics.services', compact('chart' ));
+        return view('cms.statistics.services', compact('chart'));
 
     }
 
