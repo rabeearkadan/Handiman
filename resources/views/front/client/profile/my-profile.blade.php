@@ -30,10 +30,10 @@
                                 <div class="widget">
                                     <div class="user-photo">
                                         <a href="#">
-                                            <img id="image" src="@if(Auth::user()->image){{config('image.path').Auth::user()->image}}@else /public/images/client/profile-image.png @endif" alt="User Photo">
-                                            <a href="#" onclick="removeImage()" style="position: absolute; @if(!Auth::user()->image) display:none @endif">
+                                            <a href="#" onclick="removeImage()" style="float: right; @if(!Auth::user()->image) display:none @endif">
                                                 <i class="fa fa-remove"></i>
                                             </a>
+                                            <img id="image" src="@if(Auth::user()->image){{config('image.path').Auth::user()->image}}@else /public/images/client/profile-image.png @endif" alt="User Photo">
                                             <label for="image-input" style="height: 25px">
                                                 <span class="user-photo-action" >Click here to change</span>
                                                 <input type="file" id="image-input" name="image-input"  onchange="readURL(this);" style="display:none" accept="image/jpeg, image/png">
