@@ -51,23 +51,22 @@
 @endsection
 @push('js')
     <script>
-        function update(){
-            console.log("update");
+        const messages = document.getElementsByClassName('msg_history');
+
+        function update() {
             var numberOfMessages = document.getElementsByClassName('incoming_msg').length;
-            console.log(numberOfMessages);
+            shouldScroll = messages.scrollTop + messages.clientHeight === messages.scrollHeight;
+
             $.ajax({
                 type: 'GET',
                 url: "{{ route('client.chat.new',$request->id) }}",
                 data: {numberOfMessages: numberOfMessages, _token: '{{csrf_token()}}'},
                 success: function (data) {
-                    console.log(data);
                     if (data.status === "success") {
-                        console.log("inn");
-                        for (var index = numberOfMessages-1; index < data.messages.length; index++) {
-                            console.log(index);
+                        for (var index = numberOfMessages; index < data.messages.length; index++) {
                             $(".msg_history").append('<div class="incoming_msg">' +
                                 '<div class="incoming_msg_img">' +
-                                '<img src="/storage/app/public/'+ data.messages[index]['from']['image'] + '" alt="employee">' +
+                                '<img src="/storage/app/public/' + data.messages[index]['from']['image'] + '" alt="employee">' +
                                 '  </div>' +
                                 '<div class="received_msg">' +
                                 '<div class="received_withd_msg">' +
@@ -79,10 +78,19 @@
                     }
                 }
             });
-            setTimeout(update, 1000);
+            if (!shouldScroll) {
+                scrollToBottom();
+            }
+            setTimeout(update, 3000);
         }
 
         update();
+
+        function scrollToBottom() {
+            messages.scrollTop = messages.scrollHeight;
+        }
+
+        scrollToBottom();
 
         $(".msg_send_btn").click(function (e) {
             e.preventDefault();
@@ -90,7 +98,7 @@
             if (message.trim().length !== 0) {
                 $.ajax({
                     type: 'POST',
-                    url: "{{ route('client.chat.send',$request->id) }}",
+                    url: "{{ route('employee.chat.send',$request->id) }}",
                     data: {message: message, _token: '{{csrf_token()}}'},
                     success: function (data) {
                         $(".msg_history").append(' <div class="outgoing_msg">' +
