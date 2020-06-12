@@ -13,13 +13,14 @@
                     {{--                    <button  class="mb-2 mr-2 btn btn-danger" onclick="location.href='{{route('service.test')}}'"> data tables</button>--}}
 
                     <table class="mb-0 table">
-                    <thead>
+                        <thead>
                         <tr>
-                            <th width="20%">#</th>
-                            <th width="20%"> Name</th>
-                            <th width="20%"> Email</th>
-                            <th width="20%">Actions</th>
-                            <th width="10%">...</th>
+                            <th>#</th>
+                            <th>Name</th>
+                            <th>Email</th>
+                            <th>Account Status</th>
+                            <th>Actions</th>
+                            <th></th>
                         </tr>
                         </thead>
                         <tbody>
