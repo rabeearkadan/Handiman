@@ -51,7 +51,7 @@ Route::group(['middleware' => 'clientProfile'], function () {
 
 //Reviews
     Route::get('/reviews', 'ReviewsController@index')->name('client.reviews.index');
-    Route::post('/reviews/create/{invoice_id}', 'ReviewsController@store')->name('client.reviews.store');
+    Route::post('/reviews/create/{id}', 'ReviewsController@store')->name('client.reviews.store');
 //Route::put('/reviews/edit/{invoice_id}','ReviewsController@update')->name('client.reviews.update');
 
 //Chat

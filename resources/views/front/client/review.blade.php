@@ -56,7 +56,7 @@
                                                     @isset($request->rating)
 
                                                     @else
-                                                        <form method="post" action="{{route('client.reviews.store')}}">
+                                                        <form method="post" action="{{route('client.reviews.store',$request->id)}}">
                                                             @csrf
                                                             <a href="{{route('client.user-profile',['employee_id' => $request->employee->id])}}">
                                                                 <img style="width:35px; height:35px"
