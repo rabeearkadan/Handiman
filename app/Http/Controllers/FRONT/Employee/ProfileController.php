@@ -34,7 +34,8 @@ class ProfileController extends Controller
         $user = Auth::user();
         $services = Service::all();
         if($request->input('incomplete')){
-            return view('front.employee.profile.edit-profile',compact(['user','services','incomplete']));
+            $logged = $request->input('logged');
+            return view('front.employee.profile.edit-profile',compact(['user','services','incomplete','logged']));
         }
         return view('front.employee.profile.edit-profile', compact(['user', 'services']));
     }

@@ -67,6 +67,11 @@
 @endsection
 @push('js')
     <script>
+        @isset($logged)
+        $( window ).on("load",function () {
+            M.toast({html: 'Logged in as Client',classes: 'rounded'})
+        });
+        @endisset
         function readURL(input) {
             if (input.files && input.files[0]) {
                 var reader = new FileReader();
