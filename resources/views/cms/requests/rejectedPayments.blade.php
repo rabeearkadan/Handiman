@@ -28,7 +28,7 @@
                                 <th scope="row">{{$loop->index +1 }}</th>
                                 <td> {{ $request->client['name'] }}</td>
                                 <td> {{ $request->service['name'] }}</td>
-                                <td>{{$request->subject}}</td>
+                                <td>{{$request->rejected_payment}}</td>
                                 <td>{{$request->date}}</td>
                                 <td>
                                     <button class="btn btn-danger waves-effect" type="button"
