@@ -33,7 +33,7 @@ class HandymanController extends Controller
         $count = 0;
         if ($service_ids != null) {
             foreach ($service_ids as $_id) {
-                $services[$count++] = Service::query()->find(_$id)->serviceArray();
+                $services[$count++] = Service::query()->find($_id)->serviceArray();
             }
         }
 
