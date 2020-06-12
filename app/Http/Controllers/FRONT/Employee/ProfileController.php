@@ -188,7 +188,7 @@ class ProfileController extends Controller
             Storage::disk('public')->makeDirectory('certificates');
         }
         if (Storage::disk('public')->putFileAs('certificates', $file, $name)) {
-            $user->criminal_record = 'certificates/' . $name;
+            $user->certificate = 'certificates/' . $name;
         } else {
             return view('front.employee.profile.documents', compact('user'));
         }
