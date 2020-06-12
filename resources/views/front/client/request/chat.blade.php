@@ -11,6 +11,7 @@
             <div class="inbox_msg">
                 <div class="mesgs">
                     <div class="msg_history">
+                        @isset($messages)
 @foreach($messages as $message)
     @if($message->from['_id'] != $user->id)
                             <div class="incoming_msg">
@@ -33,7 +34,7 @@
                         </div>
 @endif
                         @endforeach
-
+@endisset
 
 
                     </div>
