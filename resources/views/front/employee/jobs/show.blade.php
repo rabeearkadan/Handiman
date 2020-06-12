@@ -56,8 +56,8 @@
             </div>
             <div class="collapsible-body">
 {{--               image ? --}}
-                <i class="material-icons">user</i>
-                <span>{{$client->name}}</span>
+                <i class="material-icons">account_circle</i>
+                <span>{{$client->name}}</span><br>
                 <i class="material-icons">phone</i>
                 <span>{{$client->phone}}</span>
             </div>
