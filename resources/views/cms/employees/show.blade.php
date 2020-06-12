@@ -137,8 +137,6 @@
 
                                             Remove
                                         </button>
-                                        @csrf
-                                        @method('GET')
                                     </form>
 
 
