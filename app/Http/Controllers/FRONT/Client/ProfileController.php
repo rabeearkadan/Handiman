@@ -33,6 +33,7 @@ class ProfileController extends Controller
     {
         $user = Auth::user();
         if($request->input('incomplete')){
+            $incomplete = $request->input('incomplete');
             $logged = $request->input('logged');
             return view('front.client.profile.edit-profile',compact(['user','incomplete','logged']));
         }
