@@ -51,13 +51,8 @@
 @endsection
 @push('js')
     <script>
-        const interval = setInterval(function () {
-            update();
+        function update(){
             console.log("update");
-        }, 1000);
-        clearInterval(interval);
-
-        function update() {
             var numberOfMessages = document.getElementsByClassName('incoming_msg').length + document.getElementsByClassName('outgoing_msg');
             console.log(numberOfMessages);
             $.ajax({
@@ -84,7 +79,10 @@
                     }
                 }
             });
+            setTimeout(update, 3000);
         }
+
+        update();
 
         $(".msg_send_btn").click(function (e) {
             e.preventDefault();
