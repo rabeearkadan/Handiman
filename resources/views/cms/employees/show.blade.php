@@ -175,7 +175,7 @@
                                                 class="widget-subheading opacity-7"> {{$request->client['name']}}
                                              </div>
                                         </div>
-                                    </div>
+                                   
 
                                 </td>
 
@@ -215,7 +215,7 @@
                                         Details
                                     </button>
                                 </td>
-                       
+
 
                         @endforeach
                         </tbody>
