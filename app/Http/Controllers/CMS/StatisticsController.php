@@ -49,7 +49,7 @@ class StatisticsController extends Controller
     public function services()
     {
         $users = User::query()->where('role', 'user_employee')->orWhere('role', 'employee')
-            ->orderBy(sizeof('service_ids'))->get();
+            ->orderBy('created_at')->get();
         $chart = new Stats();
         $arr = [];
         $arr2 = [];
