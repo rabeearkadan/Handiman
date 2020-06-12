@@ -62,7 +62,8 @@ class ChatController extends Controller
     {
         $requestService = RequestService::query()->find($id);
         $nbOfMessages = $request->numberOfMessages;
-        $messages = $requestService->messages->skip($nbOfMessages);
+        $nbOfMessages--;
+        $messages = array_slice($requestService->messages,$nbOfMessages);
         return response()->json(['status'=>'success','messages' => $messages ]);
     }
 
