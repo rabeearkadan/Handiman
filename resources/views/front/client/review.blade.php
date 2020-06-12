@@ -57,12 +57,16 @@
                                                     @else
                                                         <form method="post" action="{{route('client.reviews.store',$request->id)}}">
                                                             @csrf
+                                                            <div class="row">
+                                                                <div class="col-sm-12">
                                                             <a href="{{route('client.user-profile',['employee_id' => $request->employee->id])}}">
                                                                 <img style="width:35px; height:35px"
                                                                      class="circle responsive-img"
                                                                      src="{{config('image.path').$request->employee->image}}"
                                                                      alt="post images">
                                                             </a>
+                                                                </div>
+                                                            </div>
                                                             <div class="row">
                                                                 <div class="rating">
                                                                     <input type="radio" id="star5" name="rating"
