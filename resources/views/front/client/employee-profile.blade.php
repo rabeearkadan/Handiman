@@ -25,8 +25,8 @@
                         <div class="info">
                             <i class="icon ion-ios-location-outline"></i>
                             <div class="right-area">
-                                <h5>3008 Sarah Drive</h5>
-                                <h5>Franklin,LA 70538</h5>
+{{--                                <h5>3008 Sarah Drive</h5>--}}
+                                <h5>{{$user->employee_address['street']}} {{$user->employee_address['zip']}}</h5>
                             </div><!-- right-area -->
                         </div><!-- info -->
                     </div><!-- col-sm-4 -->
@@ -151,7 +151,7 @@
 
     <section class="l-content-width section section--bordered">
         <div class="portfolioFilter clearfix margin-b-80" style="text-align: center;margin-bottom: 20px;">
-            <a href="#" onclick="filter('all')" @isset($service)@else class="current" @endisset><b>ALL</b></a>
+            <a href="#!" onclick="filter('all')" @isset($service)@else class="current" @endisset><b>ALL</b></a>
             @foreach($employee->services as $employee_service)
                 <a href="#" onclick="filter('{{$employee_service->name}}')"
                    @isset($service)
