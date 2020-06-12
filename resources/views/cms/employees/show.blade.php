@@ -130,9 +130,8 @@
                                 <td>
                                     <form
                                         action="{{ route('employee.removeService', [ 'id1' => $employee->id,  'id2'=> $service['id']]) }}"
-                                        method="POST"
+                                            method="GET"
                                     >
-                                        ['employee_id'=>$employee->id,'service_id'=>$service->id]
 
                                         <button class="mb-2 mr-2 btn btn-danger">
 
