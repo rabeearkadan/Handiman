@@ -133,7 +133,6 @@
                         <i class="material-icons circle">work</i>
                         <span class="title">Service</span>
                         <p>{{$request->service_name}}
-                            <br> Second Line
                         </p>
                     </li>
                     <li class="collection-item avatar">
@@ -150,9 +149,11 @@
                 <li class="collection-item avatar">
                     <i class="material-icons circle red">place</i>
                     <span class="title">Address</span>
-                    <p>
-                        <br>
-
+                    <p>name:{{$request->client_address['name']}}
+                        <br>Street:{{$request->client_address['street']}}
+                        <br>Building{{$request->client_address['building']}}
+                        <br>property type:{{$request->client_address['property_type']}}
+                        <br>zip:{{$request->client_address['zip']}}
                     </p>
                 </li>
                 </ul>
