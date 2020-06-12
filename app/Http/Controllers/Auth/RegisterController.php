@@ -70,7 +70,12 @@ class RegisterController extends Controller
             'role' => 'user_employee',
             'password' => Hash::make($data['password']),
             'timeline' => $this->initTimeline(),
-            'service_ids' => [],
+            'client_canceled_requests' => 0,
+            'employee_canceled_requests' => 0,
+            'employee_satisfied_clients' => 0,
+            'employee_requests_count' => 0,
+            'employee_score' => 0,
+            'client_score' => 0,
         ]);
 
     }

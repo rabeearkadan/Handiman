@@ -253,7 +253,7 @@
             </div>
             <div class="row">
                 <div class="input-field col s12 ">
-                    <label for="price">How much do you get paid per hour?</label>
+                    <label for="price" style="font-size: 16px">How much do you get paid per hour?</label>
                     <input type="text" class="form-control" id="price" name="price" value="{{$user->price}}">
                 </div>
             </div>

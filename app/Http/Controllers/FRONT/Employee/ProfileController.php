@@ -29,10 +29,13 @@ class ProfileController extends Controller
      * updateServices()
      */
 
-    public function myProfile()
+    public function myProfile(Request $request)
     {
         $user = Auth::user();
         $services = Service::all();
+        if($request->input('incomplete')){
+            return view('front.employee.profile.edit-profile',compact(['user','services','incomplete']));
+        }
         return view('front.employee.profile.edit-profile', compact(['user', 'services']));
     }
 
@@ -226,7 +229,7 @@ class ProfileController extends Controller
             "_id" => Str::random(24),
             "location" => [$request->lng, $request->lat],
             "street" => $request->street,
-            "building" => $request->house,
+            "building" => $request->building,
             "zip" => $request->zip,
         ];
         $user->employee_address = $data;

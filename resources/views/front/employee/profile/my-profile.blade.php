@@ -6,7 +6,12 @@
 @section('content')
     <div class="page-wrapper" id="profile">
         <div class="main">
-            <div class="main-inner">
+            @isset($incomplete)
+                <div class="materialert error">
+                    <div class="material-icons">error_outline</div>
+                    Oh! Profile Incomplete :)
+                </div>
+               @endisset
                 <div class="container">
                     <div class="row">
                         <div class="col-sm-4 col-lg-3">

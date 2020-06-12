@@ -13,6 +13,12 @@
 @section('content')
     <div class="page-wrapper" id="profile" style="background-color: #f7f8f9;">
         <div class="main">
+            @isset($incomplete)
+                <div class="materialert error">
+                    <div class="material-icons">error_outline</div>
+                    Oh! Profile Incomplete :)
+                </div>
+            @endisset
             <div class="main-inner">
                 <div class="container">
                     <div class="row">

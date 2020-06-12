@@ -58,7 +58,7 @@ class LoginController extends Controller
                 return  redirect()->route('home');
             }
         }
-        return Redirect::back();
+        return Redirect::back()->withInput()->with('message', 'Login Failed');
     }
 
 

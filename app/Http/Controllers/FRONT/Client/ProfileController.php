@@ -29,9 +29,12 @@ class ProfileController extends Controller
      * allReviews()
      */
 
-    public function myProfile()
+    public function myProfile(Request $request)
     {
         $user = Auth::user();
+        if($request->input('incomplete')){
+            return view('front.client.profile.edit-profile',compact(['user','incomplete']));
+        }
         return view('front.client.profile.edit-profile', compact('user'));
     }
 
