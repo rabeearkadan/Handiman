@@ -4,6 +4,8 @@ use Illuminate\Support\Facades\Route;
 
 Route::get("/home", 'HomeController@index')->name('employee.home');
 
+
+Route::group(['middleware' => 'employeeProfile'], function(){
 //Requests
 Route::get("/requests", 'RequestController@index')->name('employee.requests');
 Route::get("/request/{id}/accept",'RequestController@accept')->name('employee.request.accept');
@@ -17,8 +19,10 @@ Route::post("/calendar/{id}/receipt", 'CalendarController@addReceipt')->name('em
 //Reviews
 Route::get("/reviews", 'HomeController@reviews')->name('employee.reviews');
 
+//Route::get('/sss','ProfileController@clientProfile')->name('employee.client-profile');
+});
 
-Route::get('/sss','ProfileController@clientProfile')->name('employee.client-profile');
+
 //Profile
 Route::get('/edit-profile','ProfileController@myProfile')->name('employee.profile');
 Route::get('/profile/password','ProfileController@editPassword')->name('employee.password');
