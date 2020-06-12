@@ -3,7 +3,6 @@
     <link href="{{asset('css/client/bootstrap.css')}}" rel="stylesheet">
     <link href="{{asset('css/client/buttons.css')}}" rel="stylesheet">
     <link href="{{asset('css/client/common-classes.css')}}" rel="stylesheet">
-    <link href="{{asset('css/client/forms.css')}}" rel="stylesheet">
     <link href="{{asset('css/client/widgets.css')}}" rel="stylesheet">
     <link href="{{asset('css/client/pagination.css')}}" rel="stylesheet">
     <link href="{{asset('css/client/posts.css')}}" rel="stylesheet">
@@ -85,7 +84,7 @@
                                                                 </div>
                                                             </div>
                                                             <div class="row">
-                                                                <div class="col-sm-6">
+                                                                <div class="input-field col s12">
                                                                     <input type="text" class="form-control" name="title"
                                                                            id="name" placeholder="title">
                                                                 </div>
