@@ -65,6 +65,7 @@
                                                                      src="{{config('image.path').$request->employee->image}}"
                                                                      alt="post images">
                                                             </a>
+                                                                    <a href="{{route('client.user-profile',['employee_id' => $request->employee->id])}}"> {{$request->employee->name}} </a>
                                                                 </div>
                                                             </div>
                                                             <div class="row">
@@ -99,9 +100,6 @@
                                                                     <label for="body"></label>
                                                                 </div>
                                                             </div>
-                                                            <a href="{{route('client.user-profile',['employee_id' => $request->employee->id])}}"> {{$request->employee->name}} </a>
-
-
                                                             <button class="btn waves-effect waves-light right"
                                                                     type="submit" name="action"
                                                                     style="line-height: 3.5px;font-size: small;height: 27px;margin-right: 85px;">
