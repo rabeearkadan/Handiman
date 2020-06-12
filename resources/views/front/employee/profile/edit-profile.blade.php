@@ -81,10 +81,14 @@
         .error{
             border-bottom: 1px solid red !important;
         }
+        .error:focus{
+            box-shadow: 0 0px 0 0 #2688a6;
+        }
         #price-error{
             top:60px !important;
             font-size:13px !important;
         }
+
     </style>
 @endpush
 @section('profile-content')
