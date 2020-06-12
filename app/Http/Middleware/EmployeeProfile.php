@@ -18,7 +18,7 @@ class EmployeeProfile
     {
         $user = Auth::user();
         if( $user->cv==null || $user->certificate==null ||$user->criminal_record==null) {
-            dd("0")
+            dd("0");
             return redirect()->route('employee.profile', ['incomplete' => true]);
         }
 elseif ($user->gender == null || $user->phone == null ){
