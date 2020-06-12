@@ -129,7 +129,7 @@
 
                                 <td>
                                     <form
-                                        action="{{ route('employee.edit', [$employee->id,$service->id]) }}"
+                                        action="{{ route('employee.edit', [$employee->id,$service['id']]) }}"
                                         method="POST"
                                     >
 
