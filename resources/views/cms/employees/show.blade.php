@@ -138,7 +138,7 @@
                                             Remobe
                                         </button>
                                         @csrf
-                                        @method('POST')
+                                        @method('GET')
                                     </form>
 
 
