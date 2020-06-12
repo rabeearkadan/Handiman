@@ -6,6 +6,14 @@ Route::get("/home", 'HomeController@index')->name('employee.home');
 
 
 Route::group(['middleware' => 'employeeProfile'], function(){
+
+//posts
+    Route::get('posts','PostController@index')->name('employee.post.index');
+    Route::get('post/create','PostController@create')->name('employee.post.create');
+    Route::post('post/create','PostController@store')->name('employee.post.store');
+    Route::delete('post/destroy/{id}','PostController@destroy')->name('employee.post.destroy');
+
+
 //Requests
 Route::get("/requests", 'RequestController@index')->name('employee.requests');
 Route::get("/request/{id}/accept",'RequestController@accept')->name('employee.request.accept');
@@ -16,10 +24,18 @@ Route::get("/calendar", 'CalendarController@index')->name('employee.calendar');
 Route::get("/calendar/{id}/show", 'CalendarController@show')->name('employee.calendar.show');
 Route::post("/calendar/{id}/receipt", 'CalendarController@addReceipt')->name('employee.calendar.add.receipt');
 
+
+    //chat
+    Route::get('/chat/{id}/index','ChatController@index')->name('employee.chat.index');
+    Route::post('/chat/{id}/send','ChatController@send')->name('employee.chat.send');
+    Route::get('/chat/{id}/load','ChatController@new')->name('employee.chat.new');
+
+
 //Reviews
 Route::get("/reviews", 'HomeController@reviews')->name('employee.reviews');
 
 //Route::get('/sss','ProfileController@clientProfile')->name('employee.client-profile');
+
 });
 
 
@@ -47,14 +63,5 @@ Route::put('/profile/schedule/edit','ProfileController@updateSchedule')->name('e
 Route::put('/edit-profile/image/update','ProfileController@updateImage')->name('employee.image.update');
 Route::delete('/edit-profile/image/destroy','ProfileController@destroyImage')->name('employee.image.destroy');
 
-//chat
-Route::get('/chat/{id}/index','ChatController@index')->name('employee.chat.index');
-Route::post('/chat/{id}/send','ChatController@send')->name('employee.chat.send');
-Route::get('/chat/{id}/load','ChatController@new')->name('employee.chat.new');
 
-//posts
-Route::get('posts','PostController@index')->name('employee.post.index');
-Route::get('post/create','PostController@create')->name('employee.post.create');
-Route::post('post/create','PostController@store')->name('employee.post.store');
-Route::delete('post/destroy/{id}','PostController@destroy')->name('employee.post.destroy');
 
