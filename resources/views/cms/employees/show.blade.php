@@ -129,7 +129,7 @@
 
                                 <td>
                                     <form
-                                        action="{{ route('employee.removeService',   $employee->id}}"
+                                        action="{{route('employee.removeService',$employee->id)}}"
                                         method="GET"
                                     >
                                         <input value="{{$service->id}}" name="id" hidden>
