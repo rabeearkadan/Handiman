@@ -17,7 +17,7 @@ class ChatController extends Controller
         $user = Auth::user();
         $request = RequestService::query()->find($id);
         $messages = $request->messages;
-            return view('front.client.chat',compact(['messages','request','user']));
+            return view('front.client.request.chat',compact(['messages','request','user']));
     }
 
 
