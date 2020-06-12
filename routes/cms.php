@@ -20,5 +20,6 @@ Route::post('/employee/deactivate/{id}','HandymanController@deactivate')->name('
 Route::get('/rejected-payments','RequestController@rejectedPayments')->name('rejected-payments');
 Route::get('google-piechart', array('as' => 'chart.piechart', 'uses' => 'StatisticsController@pieChart'));
 
+Route::get('/employee/removeService/{id}/{id}','HandymanController@removeService')->name('employee.removeService');
 Route::get('service.test', ['uses' => 'ServiceController@test', 'as' => 'service.test']);
 Route::post('add-service', 'ServiceController@store')->name('admin.services');

@@ -62,6 +62,15 @@ class HandymanController extends Controller
 
     }
 
+    public function removeService($id1, $id2)
+    {
+        $handyman = User::query()->find($id1);
+        $service = Service::query()->find($id2);
+        $service->users()->detach($handyman->id);
+        $handyman->services()->detach($id2);
+        return redirect()->route('employee.index');
+    }
+
     public function destroy($id)
     {
         $user = User::query()->find($id);

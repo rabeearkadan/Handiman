@@ -126,6 +126,23 @@
                                         </div>
                                     </div>
                                 </td>
+
+                                <td>
+                                    <form
+                                        action="{{ route('employee.removeService', [$employee->id,$service['id']]) }}"
+                                        method="POST"
+                                    >
+
+                                        <button class="mb-2 mr-2 btn btn-danger">
+
+                                            Remove
+                                        </button>
+                                        @csrf
+                                        @method('GET')
+                                    </form>
+
+
+                                </td>
                             </tr>
                         @endforeach
                         </tbody>
@@ -171,9 +188,9 @@
                                 <td>
                                     <div class="widget-content-wrapper flex2">
                                         <div class="widget-heading">
-                                             <div
+                                            <div
                                                 class="widget-subheading opacity-7"> {{$request->client['name']}}
-                                             </div>
+                                            </div>
                                         </div>
                                     </div>
 
