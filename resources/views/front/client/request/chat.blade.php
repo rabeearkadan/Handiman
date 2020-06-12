@@ -75,22 +75,22 @@ $(".msg_send_btn").click(function(e){
     e.preventDefault();
 
     var message = $("input[name=message]").val();
+    if(message.val().trim().length !==0) {
+        $.ajax({
+            type: 'POST',
+            url: "{{ route('client.chat.send',$request->id) }}",
+            data: {message: message, _token: '{{csrf_token()}}'},
+            success: function (data) {
+                $(".msg_history").append(' <div class="outgoing_msg">' +
+                    '                            <div class="sent_msg">' +
+                    '                                <p>' + data.message + '</p>' +
+                    '                                <span class="time_date">' + data.date + '</span> </div>\n' +
+                    '                        </div>');
 
-    $.ajax({
-        type:'POST',
-        url:"{{ route('client.chat.send',$request->id) }}",
-        data:{message:message, _token: '{{csrf_token()}}' },
-        success:function(data){
-            $(".msg_history").append(' <div class="outgoing_msg">' +
-                '                            <div class="sent_msg">' +
-                '                                <p>'+data.message+'</p>' +
-                '                                <span class="time_date">'+data.date+'</span> </div>\n' +
-                '                        </div>');
-
-            $("#message").val('');
-        }
-    });
-
+                $("#message").val('');
+            }
+        });
+    }
 });
 
 </script>
