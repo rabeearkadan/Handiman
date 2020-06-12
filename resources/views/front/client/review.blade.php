@@ -27,7 +27,7 @@
                                             <li>
                                                 <a href="#!" onclick="filter('{{$service->name}}')">
                                                     {{$service->name}}
-                                                    {{--                                                <strong class="pull-right">{{$service-_ount}}</strong>--}}
+                                                     <strong class="pull-right">{{$serviceCount[$service->name]}}</strong>
                                                 </a></li>
                                         @endforeach
                                     </ul><!-- /.menu -->
@@ -40,7 +40,7 @@
                                     <h1> Review Services Provided by each Employee</h1>
                                 </div><!-- /.page-title -->
                                 <div class="posts posts-condensed">
-                                    <div id="bills-list">
+                                    <div id="review-list">
                                         <div class="list">
                                             @foreach($requests as $request)
                                                 <div class="post">
@@ -75,26 +75,26 @@
     </div><!-- /.page-wrapper -->
 @endsection
 @push('js')
-    <script src="/public/js/client/dropdown.js" type="text/javascript"></script>
-    <script src="/public/js/client/bootstrap-select.min.js" type="text/javascript"></script>
-    <script src="/public/js/client/superlist.js" type="text/javascript"></script>
+{{--    <script src="/public/js/client/dropdown.js" type="text/javascript"></script>--}}
+{{--    <script src="/public/js/client/bootstrap-select.min.js" type="text/javascript"></script>--}}
+{{--    <script src="/public/js/client/superlist.js" type="text/javascript"></script>--}}
     <script src="/public/js/list.js" type="text/javascript"></script>
     <script>
         var options = {
-            valueNames: ['service'],
+            valueNames: ['services'],
             page: 20,
             pagination: true
         };
-        var billsList = new List('bills-list', options);
+        var reviewsList = new List('review-list', options);
 
         function filter(category) {
-            billsList.filter(function (item) {
-                return !!item.values().service.includes(category);
+            reviewsList.filter(function (item) {
+                return !!item.values().services.includes(category);
             });
         }
 
         function removeFilters() {
-            billsList.filter();
+            reviewsList.filter();
         }
     </script>
 

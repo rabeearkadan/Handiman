@@ -31,7 +31,17 @@ class ReviewsController extends Controller
             return $item;
         });
         $services = Service::all();
-        return view('front.client.review',compact(['requests','services']));
+        $serviceCount = array();
+        foreach($services as $service){
+            $serviceCount[$service->name]=0;
+            foreach ($requests as $request){
+                if($request->service_id == $service->id){
+                    $serviceCount[$service->name]++;
+                }
+            }
+
+        }
+        return view('front.client.review',compact(['requests','services','serviceCount']));
     }
 
 

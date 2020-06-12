@@ -66,11 +66,9 @@
                                         </div>
                                     </div>
                                     @if($requests->count() == 0)
-                                        <div class="container"
-                                             style="background-size:contain;background-repeat: no-repeat;background-position: center;height:150px;background-image:url('/public/images/client/invoice-empty.png');">
+                                        <div class="container" style="background-size:contain;background-repeat: no-repeat;background-position: center;height:150px;background-image:url('/public/images/client/invoice-empty.png');">
                                         </div>
                                     @endif
-
                                 </div><!-- /.posts -->
                             </div><!-- /.content -->
                         </div><!-- /.col-* -->
@@ -93,10 +91,8 @@
                 return !!item.values().services.includes(category);
             });
         }
-
         function removeFilters() {
             billsList.filter();
         }
     </script>
-
 @endpush
