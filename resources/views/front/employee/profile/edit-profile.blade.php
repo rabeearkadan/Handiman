@@ -259,6 +259,12 @@
                                 @endif
                             >{{$service->name}}</option>
                         @endforeach
+                        @else
+                            @foreach($services as $service)
+                                <option value="{{$service->id}}" data-icon="{{config('image.path').$service->image}}">
+                                    {{$service->name}}
+                                </option>
+                            @endforeach
                             @endisset
                     </select>
                     <label for="services">Choose your type of services</label>
