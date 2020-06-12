@@ -1,6 +1,5 @@
 @extends('layouts.client.app')
 @push('css')
-    <script src="{{ asset('js/app.js') }}" defer></script>
     <link href="{{asset('css/client/bootstrap.css')}}" rel="stylesheet">
     <link href="{{asset('css/client/buttons.css')}}" rel="stylesheet">
     <link href="{{asset('css/client/common-classes.css')}}" rel="stylesheet">
@@ -49,9 +48,7 @@
                                                     <!-- /.post-date -->
                                                     <div class="post-image">
                                                         <a href="{{route('client.invoice.show',$request->id)}}">
-                                                            <img
-                                                                src="{{config('image.path').$request->result_images[0]}}"
-                                                                alt="result">
+                                                            <img src="{{config('image.path').$request->result_images[0]}}" alt="result">
                                                         </a>
                                                     </div><!-- /.post-image -->
                                                     <div class="post-content">
@@ -60,10 +57,9 @@
                                                         </h2>
                                                         <p>{{$request->description}}...</p>
                                                     </div><!-- /.post-content -->
-                                                    <div style="display: none" class="service"> {{$request->service_name}} </div>
+                                                    <div style="display: none" class="services"> {{$request->service_name}} </div>
                                                     <div class="post-more">
-                                                        <a href="{{route('client.invoice.show',$request->id)}}">Show
-                                                            More</a>
+                                                        <a href="{{route('client.invoice.show',$request->id)}}">Show More</a>
                                                     </div><!-- /.post-date -->
                                                 </div><!-- /.post -->
                                             @endforeach
@@ -88,15 +84,13 @@
     <script src="/public/js/list.js" type="text/javascript"></script>
     <script>
         var options = {
-            valueNames: ['service'],
-            page: 20,
-            pagination: true
+            valueNames: ['services'],
         };
         var billsList = new List('bills-list', options);
 
         function filter(category) {
             billsList.filter(function (item) {
-                return !!item.values().service.includes(category);
+                return !!item.values().services.includes(category);
             });
         }
 

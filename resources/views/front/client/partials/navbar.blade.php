@@ -40,6 +40,7 @@
             item.classList.contains('is-active') && handleIndicator(item);
         });
     </script>
+    <script src="/public/js/materialize.js"></script>
     <script>
         $(document).ready(function(){
             $('.sidenav').sidenav();
