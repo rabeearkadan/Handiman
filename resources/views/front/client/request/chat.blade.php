@@ -13,15 +13,15 @@
                     <div class="msg_history">
                         @isset($messages)
 @foreach($messages as $message)
-    @if($message->from['_id'] != $user->id)
+    @if($message['from']['_id'] != $user->id)
                             <div class="incoming_msg">
                             <div class="incoming_msg_img">
-                                <img src="{{config('image.path').$message->from['image']}}" alt="employee">
+                                <img src="{{config('image.path').$message['from']['image']}}" alt="employee">
                             </div>
                             <div class="received_msg">
                                 <div class="received_withd_msg">
-                                    <p>{{$message->message}}</p>
-                                    <span class="time_date"> {{$message->date}}</span></div>
+                                    <p>{{$message['message']}}</p>
+                                    <span class="time_date"> {{$message['date']}}</span></div>
                             </div>
                         </div>
 @else
@@ -29,8 +29,8 @@
 
                         <div class="outgoing_msg">
                             <div class="sent_msg">
-                                <p>{{$message->message}}</p>
-                                <span class="time_date">{{$message->date}}</span> </div>
+                                <p>{{$message['message']}}</p>
+                                <span class="time_date">{{$message['date']}}</span> </div>
                         </div>
 @endif
                         @endforeach
