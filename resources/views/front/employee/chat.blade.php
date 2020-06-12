@@ -63,7 +63,7 @@
                     console.log(data);
                     if (data.status === "success") {
                         console.log("inn");
-                        for (var index = 0; index < data.messages.length; index++) {
+                        for (var index = numberOfMessages-1; index < data.messages.length; index++) {
                             console.log(index);
                             $(".msg_history").append('<div class="incoming_msg">' +
                                 '<div class="incoming_msg_img">' +
