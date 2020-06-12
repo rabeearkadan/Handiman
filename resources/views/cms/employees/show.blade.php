@@ -175,14 +175,16 @@
                                                 class="widget-subheading opacity-7"> {{$request->client['name']}}
                                              </div>
                                         </div>
-                                   
+                                    </div>
+
 
                                 </td>
 
 
                                 <td>
                                     <div class="widget-content-left flex2">
-                                        <div class="widget-heading">{{$request->date}}</div>
+                                        <div class="widget-heading">{{$request->date}}
+                                        </div>
 
                                         <div class="widget-subheading opacity-7"> {{$request->from}}:00
                                             -- {{$request->to}}
@@ -190,7 +192,7 @@
                                         </div>
                                     </div>
                                 </td>
-                            </tr>
+
                                 @if($request->status=='pending')
 
                                     <td class="text-center">
@@ -215,9 +217,11 @@
                                         Details
                                     </button>
                                 </td>
+                            </tr>
 
 
                         @endforeach
+
                         </tbody>
                     </table>
                 </div>
