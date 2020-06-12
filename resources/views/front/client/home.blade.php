@@ -78,9 +78,9 @@
                                                     {{--                                                <i class="fa fa-comments"></i>--}}
                                                     {{--                                                <a href="">3 comments</a>--}}
                                                     {{--                                            </div><!-- /.post-meta-comments -->--}}
-                                                    <div class="post-meta-more">
-                                                        <a href="">View <i class="fa fa-chevron-right"></i></a>
-                                                    </div><!-- /.post-meta-more -->
+{{--                                                    <div class="post-meta-more">--}}
+{{--                                                        <a href="">View <i class="fa fa-chevron-right"></i></a>--}}
+{{--                                                    </div><!-- /.post-meta-more -->--}}
                                                 </div><!-- /.post-meta -->
                                             </div><!-- /.post -->
                                         @endforeach
