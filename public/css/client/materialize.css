@@ -52,7 +52,7 @@
 }
 .materialert.error{
     background-color: #c62828 !important;
-    color: #fff;
+    color: #fff !important;
 }
 .materialert.danger{
     background-color: #c62828;
