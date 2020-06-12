@@ -27,7 +27,7 @@ elseif ($user->gender == null || $user->phone == null ){
         elseif ($user->name == null || $user->employee_address==null ){
             dd("2");
         }
-        elseif ($user->biography || $user->service_ids == null || $user->price==null ){
+        elseif ($user->biography || $user->service_ids == [] || $user->price==null ){
             dd("3");
         }
         return $next($request);
