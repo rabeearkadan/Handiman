@@ -4,6 +4,7 @@ namespace App\Http\Controllers\CMS;
 
 use App\Http\Controllers\Controller;
 use App\Models\RequestService;
+use App\Models\Service;
 use App\User;
 use Illuminate\Http\Request;
 
@@ -27,8 +28,16 @@ class HandymanController extends Controller
             return $item;
         });
 
+        $service_ids = $employee->service_ids;
+        $services = [];
+        $count = 0;
+        if ($service_ids != null) {
+            foreach ($service_ids as $id) {
+                $services[$count++] = Service::query()->find($id)->serviceArray();
+            }
+        }
 
-        return view('cms.employees.show', compact('employee', 'requests'));
+        return view('cms.employees.show', compact('employee', 'requests', 'services'));
 
     }
 

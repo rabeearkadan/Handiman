@@ -95,6 +95,55 @@
     <div class="row">
         <div class="col-md-12">
             <div class="main-card mb-3 card">
+                <div class="card-header">Employee Services
+                    <div class="btn-actions-pane-right">
+                        <div role="group" class="btn-group-sm btn-group">
+                            <button class="active btn btn-focus">Last Week</button>
+                            <button class="btn btn-focus">All Month</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="table-responsive">
+                    <table class="align-middle mb-0 table table-borderless table-striped table-hover">
+                        <thead>
+                        <tr>
+                            <th class="text-center">#</th>
+                            <th>Service Name</th>
+                            <th class="text-center">Actions</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+
+                        @foreach($services as $service)
+                            <tr>
+                                <td class="text-center text-muted">{{$loop->index}}</td>
+
+                                <td>
+                                    <div class="widget-content-wrapper flex2">
+                                        <div class="widget-heading">
+                                            <div class="widget-subheading opacity-7"> {{$service->name}}
+                                            </div>
+                                        </div>
+                                    </div>
+                                </td>
+                            </tr>
+                        @endforeach
+                        </tbody>
+                    </table>
+                </div>
+                <div class="d-block text-center card-footer">
+                    <button class="mr-2 btn-icon btn-icon-only btn btn-outline-danger"><i
+                            class="pe-7s-trash btn-icon-wrapper"> </i></button>
+                    <button class="btn-wide btn btn-success">Save</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="row">
+        <div class="col-md-12">
+            <div class="main-card mb-3 card">
                 <div class="card-header">Employee Requests
                     <div class="btn-actions-pane-right">
                         <div role="group" class="btn-group-sm btn-group">
@@ -122,13 +171,14 @@
                                 <td>
                                     <div class="widget-content-wrapper flex2">
                                         <div class="widget-heading">
-{{--                                            <img style="width: 2%; height: 2%" src="{{config('image.path').$request->client['image']}}">--}}
+                                            {{--                                            <img style="width: 2%; height: 2%" src="{{config('image.path').$request->client['image']}}">--}}
 
                                             <div
                                                 class="widget-subheading opacity-7"> {{$request->client['name']}}</div>
                                         </div>
 
                                 </td>
+                                <
 
 
                                 <td>
@@ -250,6 +300,7 @@
                             {{--                                </button>--}}
                             {{--                            </td>--}}
                             {{--                        </tr>--}}
+
                         @endforeach
                         </tbody>
                     </table>
