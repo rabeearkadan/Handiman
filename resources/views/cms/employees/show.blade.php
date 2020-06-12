@@ -129,7 +129,7 @@
 
                                 <td>
                                     <form
-                                        action="{{ route('employee.removeService', [ 'id1' => $employee->id,  'id2'=> $service['id']]) }}"
+                                        action="{{ route('employee.removeService', [  $employee->id,  'id2'=> $service['id']]) }}"
                                             method="GET"
                                     >
 
