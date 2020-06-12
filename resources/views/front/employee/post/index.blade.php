@@ -113,7 +113,7 @@
                                                     </div><!-- /.post-content -->
                                                     <div class="post-meta clearfix">
                                                         <div class="post-meta-date">
-                                                            {{$post->created_at}}
+                                                            {{$post->created_at->format('d/m/Y')}}
                                                         </div><!-- /.post-meta-date -->
                                                         <div class="post-meta-categories categories">
                                                             <i class="fa fa-tags"></i>

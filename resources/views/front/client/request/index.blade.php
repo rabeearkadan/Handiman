@@ -108,7 +108,7 @@
                                     <i class="material-icons circle red">image</i>
 {{--                                    <span class="title">Images</span>--}}
                                     @foreach($request->images as $image)
-                                        <img class="materialboxed"  width="250" src="{{config('image.path').$image}}">
+                                        <img class="materialboxed"  width="250" style="object-fit: contain" src="{{config('image.path').$image}}">
                                     @endforeach
                                 </li>
                             </ul>
@@ -219,7 +219,7 @@
                                     <i class="material-icons circle red">image</i>
 {{--                                    <span class="title">Images</span>--}}
                                     @foreach($request->images as $image)
-                                    <img class="materialboxed"  width="250" src="{{config('image.path').$image}}">
+                                    <img class="materialboxed" style="object-fit: contain" width="250" src="{{config('image.path').$image}}">
                                     @endforeach
                                 </li>
                             </ul>

@@ -59,10 +59,8 @@
                                                         </h2>
                                                         <p>{{$request->description}}...</p>
                                                     </div><!-- /.post-content -->
-
+                                                    <div style="display: none" class="service"> {{$request->service_name}} </div>
                                                     <div class="post-more">
-                                                        <a class="service"
-                                                           href="{{route('client.invoice.show',$request->id)}}">{{$request->service_name}}</a>
                                                         <a href="{{route('client.invoice.show',$request->id)}}">Show
                                                             More</a>
                                                     </div><!-- /.post-date -->
