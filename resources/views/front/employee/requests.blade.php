@@ -150,8 +150,9 @@
                 <li class="collection-item avatar">
                     <i class="material-icons circle red">place</i>
                     <span class="title">Address</span>
-                    <p>First Line
-                        <br> Second Line
+                    <p>
+                        <br>
+
                     </p>
                 </li>
                 </ul>
@@ -161,7 +162,7 @@
                     <ul class="slides">
                         @foreach($request->images as $image)
                         <li>
-                            <img src="{{config('image.path').$image}}">
+                            <img src="{{config('image.path').$image}}" style="background-position: center;background-size: contain;background-repeat: no-repeat;">
                         </li>
                         @endforeach
                     </ul>
