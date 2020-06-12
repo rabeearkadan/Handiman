@@ -62,6 +62,7 @@ class RequestController extends Controller
     public function show($id)
     {
         $request = RequestService::query()->find($id);
+        if ($request!=null)
         if ($request->employees()->count() > 0)
             $request->handyman = User::query()->find($request->employee_ids[0])->simplifiedArray();
         else

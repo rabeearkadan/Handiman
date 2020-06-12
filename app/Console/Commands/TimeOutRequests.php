@@ -65,6 +65,16 @@ class TimeOutRequests extends Command
                     $employee = User::find($req->employee_ids[0]);
                     $req->employees()->detach($employee);
 
+                    if ($employee->rejects == null) {
+                        $employee->rejects = 1;
+                        $employee->save();
+                    } else {
+                        $rejects = (Integer)$employee->rejects;
+                        $rejects++;
+                        $employee->rejects = $rejects;
+                        $employee->save();
+                    }
+
                     foreach ($handyman->employee_request_ids as $s) {
                         if ($s != $req->id)
                             $employee_request_ids [] = $s;
