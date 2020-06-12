@@ -27,7 +27,7 @@
                                             <li>
                                                 <a href="#!" onclick="filter('{{$service->name}}')">
                                                     {{$service->name}}
-                                                    {{--                                                <strong class="pull-right">{{$service-_ount}}</strong>--}}
+                                                    <strong class="pull-right">{{$serviceCount[$service->name]}}</strong>
                                                 </a></li>
                                         @endforeach
                                     </ul><!-- /.menu -->
