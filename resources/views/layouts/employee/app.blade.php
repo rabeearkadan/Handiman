@@ -7,11 +7,11 @@
     <!-- Fonts -->
 
     <!-- Scripts -->
-    @if(request()->route()->getName() == "employee.post.create" || request()->route()->getName() == "employee.home" || request()->route()->getName() == "employee.calendar.show")
-        <script src="{{ asset('js/bootstrap.min.js') }}" defer></script>
-    @endif
-    @if(request()->route()->getName() != "employee.post.create"  && request()->route()->getName() != "employee.calendar.show")
+    @if(request()->route()->getName() != "employee.post.create" && request()->route()->getName() != "employee.home" && request()->route()->getName() != "employee.calendar.show")
     <script src="{{ asset('js/app.js') }}" defer></script>
+    @endif
+    @if(request()->route()->getName() == "employee.post.create"  || request()->route()->getName() == "employee.calendar.show")
+        <script src="{{ asset('js/bootstrap.min.js') }}" defer></script>
     @endif
     <!-- Styles -->
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
@@ -43,6 +43,11 @@
         @yield('content')
     </div>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="/public/js/client/dropdown.js" type="text/javascript"></script>
+    <script src="/public/js/client/collapse.js" type="text/javascript"></script>
+    <script src="/public/js/client/jquery.colorbox-min.js" type="text/javascript"></script>
+    <script src="/public/js/client/bootstrap-select.min.js" type="text/javascript"></script>
+    <script src="/public/js/client/superlist.js" type="text/javascript"></script>
     <script>
         $('.navTrigger').on( "click",function(){
             $(this).toggleClass('active');
