@@ -60,7 +60,7 @@ class ChatController extends Controller
     }
     public function new(Request $request, $id)
     {
-        $user=Auth::user();
+        $user = Auth::user();
         $requestService = RequestService::query()->find($id);
         $nbOfMessages = $request->numberOfMessages;
         $nbOfMessages--;
