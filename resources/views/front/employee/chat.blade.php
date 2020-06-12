@@ -59,7 +59,7 @@
 
             $.ajax({
                 type: 'GET',
-                url: "{{ route('client.chat.new',$request->id) }}",
+                url: "{{ route('employee.chat.new',$request->id) }}",
                 data: {numberOfMessages: numberOfMessages, _token: '{{csrf_token()}}'},
                 success: function (data) {
                     if (data.status === "success") {
