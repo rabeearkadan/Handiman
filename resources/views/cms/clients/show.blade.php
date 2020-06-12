@@ -14,7 +14,7 @@
                                 <div
                                     style="border-radius: 50%; height: 174px; width: 174px; background-size: cover;
                                         background-position: center center; border: 3px solid #fff;
-                                        background-image: url({{config('image.path').$employee->image}})">
+                                        background-image: url({{config('image.path').$client->image}})">
 
                                 </div>
                             @else
