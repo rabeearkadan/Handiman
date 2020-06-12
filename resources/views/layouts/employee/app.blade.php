@@ -14,6 +14,7 @@
         <script src="{{ asset('js/bootstrap.min.js') }}" defer></script>
     @endif
     <!-- Styles -->
+    <link href="{{asset('lib/font-awesome/css/font-awesome.css')}}" rel="stylesheet">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     @if(request()->route()->getName() != "employee.post.create" )
     <link href="{{asset('css/app.css')}}" rel="stylesheet">

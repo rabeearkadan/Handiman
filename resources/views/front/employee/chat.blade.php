@@ -4,7 +4,6 @@
     <link href="{{asset('css/employee/chat.css')}}" rel="stylesheet">
 @endpush
 @section('content')
-    <div class="container">
         <h3 class=" text-center">Messaging</h3>
         <div class="messaging">
             <div class="inbox_msg">
@@ -47,7 +46,7 @@
                 </div>
             </div>
         </div>
-    </div>
+
 @endsection
 @push('js')
     <script>
