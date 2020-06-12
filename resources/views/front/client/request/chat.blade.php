@@ -67,7 +67,7 @@
                             console.log(index);
                             $(".msg_history").append('<div class="incoming_msg">' +
                                 '<div class="incoming_msg_img">' +
-                                '<img src="' + data.messages[index]['from']['image'] + '" alt="employee">' +
+                                '<img src="/storage/app/public/'+ data.messages[index]['from']['image'] + '" alt="employee">' +
                                 '  </div>' +
                                 '<div class="received_msg">' +
                                 '<div class="received_withd_msg">' +

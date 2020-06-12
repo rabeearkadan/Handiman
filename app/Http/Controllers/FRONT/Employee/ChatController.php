@@ -60,10 +60,17 @@ class ChatController extends Controller
     }
     public function new(Request $request, $id)
     {
+        $user=Auth::user();
         $requestService = RequestService::query()->find($id);
         $nbOfMessages = $request->numberOfMessages;
         $nbOfMessages--;
-        $messages = array_slice($requestService->messages,$nbOfMessages);
+        $messages = $requestService->messages;
+        $messages = array_slice($messages,$nbOfMessages);
+        for($index=0;$index<sizeof($messages);$index++){
+            if($messages[$index]['from']['_id']==$user->id){
+                unset($messages[$index]);
+            }
+        }
         return response()->json(['status'=>'success','messages' => $messages ]);
     }
 
