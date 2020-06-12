@@ -68,6 +68,7 @@ class ChatController extends Controller
         for($index=0;$index<sizeof($messages);$index++){
             if($messages[$index]['from']['_id']==$user->id){
                 unset($messages[$index]);
+                return response()->json(['id'=>'id','status'=>'success','messages' => $messages ]);
             }
         }
         $messages = array_slice($messages,$nbOfMessages);
