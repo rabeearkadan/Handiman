@@ -66,7 +66,7 @@ class ChatController extends Controller
         $nbOfMessages--;
         $messages = $requestService->messages;
         for($index=0;$index<sizeof($messages);$index++){
-            if($messages[$index]['from']['_id']==$user->id){
+            if($messages[$index]['from']->_id==$user->id){
                 unset($messages[$index]);
             }
         }
