@@ -215,7 +215,7 @@
                                         Details
                                     </button>
                                 </td>
-                            </tr>
+                       
 
                         @endforeach
                         </tbody>
