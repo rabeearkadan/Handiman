@@ -141,7 +141,7 @@ class ProfileController extends Controller
         }
         $user->timeline = $timeline;
         $user->save();
-        return redirect(route('employee.schedule.edit'));
+        return redirect()->route('employee.schedule.edit');
     }
 
     public function editDocuments()
@@ -164,7 +164,7 @@ class ProfileController extends Controller
             return view('front.employee.profile.documents', compact('user'));
         }
         $user->save();
-        return view('front.employee.profile.documents', compact('user'));
+        return redirect()->route('employee.documents.edit');
     }
 
     public function updateCR(Request $request)
@@ -181,7 +181,7 @@ class ProfileController extends Controller
             return view('front.employee.profile.documents', compact('user'));
         }
         $user->save();
-        return view('front.employee.profile.documents', compact('user'));
+        return redirect()->route('employee.documents.edit');
     }
 
     public function updateCertificate(Request $request)
@@ -198,12 +198,18 @@ class ProfileController extends Controller
             return view('front.employee.profile.documents', compact('user'));
         }
         $user->save();
-        return view('front.employee.profile.documents', compact('user'));
+        return redirect()->route('employee.documents.edit');
     }
 
     public function updateContact(Request $request)
     {
         $user = Auth::user();
+        $request->validate([
+            'name' => 'required',
+            'email' => 'required|email',
+            'phone' => 'required',
+            'gender' => 'required'
+        ]);
         $user->name = $request->name;
         $user->email = $request->email;
         if ($request->gender == "male")
@@ -212,7 +218,7 @@ class ProfileController extends Controller
             $user->gender = $request->gender;
         $user->phone = $request->phone;
         $user->save();
-        return redirect(route('employee.profile'));
+        return redirect()->route('employee.profile');
     }
 
     public function updateConnections(Request $request)
@@ -236,7 +242,7 @@ class ProfileController extends Controller
         ];
         $user->employee_address = $data;
         $user->save();
-        return redirect(route('employee.profile'));
+        return redirect()->route('employee.profile');
     }
 
     public function updateBiography(Request $request)
@@ -247,7 +253,7 @@ class ProfileController extends Controller
         ]);
         $user->biography = $request->biography;
         $user->save();
-        return redirect(route('employee.profile'));
+        return redirect()->route('employee.profile');
     }
 
     public function updateServices(Request $request)
@@ -263,6 +269,6 @@ class ProfileController extends Controller
         }
         $user->price = $request->price;
         $user->save();
-        return redirect(route('employee.profile'));
+        return redirect()->route('employee.profile');
     }
 }
