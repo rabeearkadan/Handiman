@@ -78,6 +78,13 @@
         form .error {
             color: #ff0000 !important;
         }
+        .error{
+            border-bottom: 1px solid red !important;
+        }
+        #price-error{
+            top:60px !important;
+            font-size:13px !important;
+        }
     </style>
 @endpush
 @section('profile-content')
