@@ -50,6 +50,8 @@
     </script>
     <script src="/public/js/materialize.js"></script>
     @stack('js')
-
+    @if(request()->route()->getName() == "employee.home")
+        <script src="{{ asset('js/bootstrap.min.js') }}" defer></script>
+    @endif
 </body>
 </html>
