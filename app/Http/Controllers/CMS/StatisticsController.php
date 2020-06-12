@@ -66,4 +66,23 @@ class StatisticsController extends Controller
 
     }
 
+    public function requests()
+    {
+
+        $users = User::query()->where('role', 'user_employee')->orWhere('role', 'employee')
+            ->orderBy('created_at')->get();
+        $chart = new Stats();
+        $arr = [];
+        $arr2 = [];
+        foreach ($users as $user) {
+            if ($user->employee_request_ids != null) {
+                array_push($arr2, $user->name);
+                array_push($arr, sizeof($user->employee_request_ids));
+            }
+        }
+        $chart->labels($arr2);
+        $chart->dataset('Most requested Handyman', 'bar', $arr)->color("rgb(0, 0, 255)")->backgroundcolor("rgb(0, 0, 255)");
+
+        return view('cms.statistics.requests', compact('chart'));
+    }
 }
