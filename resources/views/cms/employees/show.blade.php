@@ -129,13 +129,13 @@
 
                                 <td>
                                     <form
-                                        action="{{ route('employee.edit', [$employee->id,$service['id']]) }}"
+                                        action="{{ route('employee.removeService', [$employee->id,$service['id']]) }}"
                                         method="POST"
                                     >
 
                                         <button class="mb-2 mr-2 btn btn-danger">
 
-                                            Remobe
+                                            Remove
                                         </button>
                                         @csrf
                                         @method('GET')
