@@ -121,7 +121,7 @@
                                 <td>
                                     <div class="widget-content-wrapper flex2">
                                         <div class="widget-heading">
-                                            <div class="widget-subheading opacity-7"> {{$service->name}}
+                                            <div class="widget-subheading opacity-7"> {{$service}}
                                             </div>
                                         </div>
                                     </div>
