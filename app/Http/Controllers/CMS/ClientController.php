@@ -44,7 +44,7 @@ class ClientController extends Controller
     { $client = User::query()->find($id);
         $_requests = $client->clientRequests()->get();
         $requests = $_requests->map(function ($item) {
-            if ($item->employees()->count > 0) {
+            if ($item->employee_ids[0]!=null) {
                 $item->handyman = User::query()->find($item->employee_ids[0])->simplifiedArray();
             } else {
                 $item->handyman = ['name' => 'still looking for handyman'];
