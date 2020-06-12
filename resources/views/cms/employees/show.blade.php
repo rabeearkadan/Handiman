@@ -127,7 +127,7 @@
                                     </div>
                                 </td>
 
-                                <td>
+                                <td class="text-center">
                                     <form
                                         action="{{route('employee.removeService',$employee->id)}}"
                                         method="GET"
