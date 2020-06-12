@@ -32,7 +32,7 @@ class RequestController extends Controller
 
     public function rejectedPayments()
     {
-        $requests= RequestService::query()->where('rejected_payment', '!=', null);
+        $requests= RequestService::all()->where('rejected_payment', '!=', null);
 
         return view('cms.requests.rejectedPayments', compact('requests'));
     }

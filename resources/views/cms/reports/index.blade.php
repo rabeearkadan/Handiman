@@ -4,7 +4,7 @@
     <div class="row">
         <div class="col-lg-12">
             <div class="main-card mb-3 card">
-                <div class="card-body"><h5 class="card-title">Pending Requests</h5>
+                <div class="card-body"><h5 class="card-title">Done Requests</h5>
 
                     <table class="mb-0 table">
                         <thead>
