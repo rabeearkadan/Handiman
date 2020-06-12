@@ -51,12 +51,24 @@ class ReviewsController extends Controller
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     * @return \Illuminate\Http\RedirectResponse
      */
     public function store(Request $request,$id)
     {
         //
-        return view('front.client.review');
+        $request->validate([
+            'title' => 'required',
+            'body' => 'required|email',
+            'rating' => 'required',
+        ]);
+        $requestService = RequestService::findOrFail($id);
+        $requestService->rating = $request->rating;
+        $requestService->feedback = array([
+            'title' => $request->title,
+            'body' => $request->body
+        ]);
+        $requestService->save();
+        return redirect()->route('client.reviews.index');
     }
 
 
