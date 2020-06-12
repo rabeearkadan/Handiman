@@ -40,15 +40,19 @@ class ClientController extends Controller
         //
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param int $id
-     * @return \Illuminate\Http\Response
-     */
     public function show($id)
-    {
-        //
+    { $client = User::query()->find($id);
+        $_requests = $client->clientRequests()->get();
+        $requests = $_requests->map(function ($item) {
+            if ($item->employees()->count > 0) {
+                $item->handyman = User::query()->find($item->employee_ids[0])->simplifiedArray();
+            } else {
+                $item->handyman = ['name' => 'still looking for handyman'];
+            }
+            return $item;
+        });
+
+        return view('cms.clients.show', compact('client', 'requests'));
     }
 
     /**

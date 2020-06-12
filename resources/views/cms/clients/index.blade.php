@@ -42,7 +42,12 @@
 
 
                                 </td>
+                                <td>
+                                    <button class="mb-2 mr-2 btn btn-info"
+                                            onclick="location.href='{{route('client.show',$client->id)}}'"> info..
 
+                                    </button>
+                                </td>
 
                             </tr>
                         @endforeach

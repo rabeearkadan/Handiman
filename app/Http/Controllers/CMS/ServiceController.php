@@ -144,7 +144,8 @@ class ServiceController extends Controller
     {
 
         try {
-            Service::query()->find($id)->delete();
+            $service=Service::query()->find($id)->delete();
+
         } catch (\Exception $e) {
         }
 
