@@ -1,13 +1,9 @@
 @extends('front.employee.profile.my-profile')
 @push('css')
     <style>
-        /* Always set the map height explicitly to define the size of the div
-         * element that contains the map. */
         #map {
             height: 550px;
         }
-
-        /* Optional: Makes the sample page fill the window. */
         #description {
             font-family: Roboto, serif;
             font-size: 15px;
@@ -87,7 +83,7 @@
     </div><!-- /.page-title -->
 
     <div class="background-white p20 mb30">
-        <form method="post" action="{{route('employee.contact.update')}}">
+        <form method="post" action="{{route('employee.contact.update')}}" name="contact">
             @csrf
             @method('put')
             <h3 class="page-title">
@@ -210,7 +206,7 @@
         </form>
     </div>
     <div class="background-white p20 mb30">
-        <form method="post" action="{{route('employee.biography.update')}}">
+        <form method="post" action="{{route('employee.biography.update')}}" name="biographyForm">
             @csrf
             @method('put')
             <h3 class="page-title">
@@ -227,7 +223,7 @@
         </form>
     </div>
     <div class="background-white p20 mb30">
-        <form method="post" action="{{route('employee.services.update')}}">
+        <form method="post" action="{{route('employee.services.update')}}" name="servicesForm">
             @csrf
             @method('put')
             <h3 class="page-title">
@@ -261,6 +257,72 @@
     </div>
 @endsection
 @push('js')
+    <script src="/public/js/jquery.validate.min.js"></script>
+    <script>
+        $(function() {
+            // Initialize form validation on the registration form.
+            // It has the name attribute "registration"
+            $("form[name='contact']").validate({
+                rules: {
+                    name: "required",
+                    gender : "required",
+                    email: {
+                        required: true,
+                        email: true
+                    },
+                    phone: {
+                        required: true,
+                        minlength: 7,
+                        number:true
+                    }
+                },
+                messages: {
+                    name: "Please enter your name",
+                    gender: "Please choose your gender",
+                    email: "Please enter a valid email address",
+                    phone: "Please enter a valid phone number"
+                },
+                submitHandler: function(form) {
+                    form.submit();
+                }
+            });
+        });
+    </script>
+    <script src="/public/js/jquery.validate.min.js"></script>
+    <script>
+        $(function() {
+            $("form[name='biographyForm']").validate({
+                rules: {
+                    biography: {
+                        required: true,
+                        minlength: 20,
+                    }
+                },
+                messages: {
+                    biography: "Please fill in your biography (at least 20 characters)",
+                },
+                submitHandler: function(form) {
+                    form.submit();
+                }
+            });
+        });
+    </script>
+    <script>
+        $(function() {
+            $("form[name='servicesForm']").validate({
+                rules: {
+                    price: "required",
+                        number:true
+                    },
+                messages: {
+                    price: "Please enter a valid price (per hour)",
+                },
+                submitHandler: function(form) {
+                    form.submit();
+                }
+            });
+        });
+    </script>
     <script>
         document.addEventListener('DOMContentLoaded', function () {
             var select = document.querySelector('#services');
@@ -284,14 +346,6 @@
         // });
     </script>
     <script>
-        // This example adds a search box to a map, using the Google Place Autocomplete
-        // feature. People can enter geographical searches. The search box will return a
-        // pick list containing a mix of places and predicted search terms.
-
-        // This example requires the Places library. Include the libraries=places
-        // parameter when you first load the API. For example:
-        // <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&libraries=places">
-
         function initAutocomplete() {
             var map = new google.maps.Map(document.getElementById('map'), {
                 center: {lat: -33.8688, lng: 151.2195},
@@ -307,21 +361,16 @@
                 searchBox.setBounds(map.getBounds());
             });
             var markers = [];
-            // Listen for the event fired when the user selects a prediction and retrieve
-            // more details for that place.
             searchBox.addListener('places_changed', function () {
                 var places = searchBox.getPlaces();
 
                 if (places.length == 0) {
                     return;
                 }
-                // Clear out the old markers.
                 markers.forEach(function (marker) {
                     marker.setMap(null);
                 });
                 markers = [];
-
-                // For each place, get the icon, name and location.
                 var bounds = new google.maps.LatLngBounds();
                 places.forEach(function (place) {
                     if (!place.geometry) {
@@ -343,9 +392,7 @@
                         title: place.name,
                         position: place.geometry.location
                     }));
-
                     if (place.geometry.viewport) {
-                        // Only geocodes have viewport.
                         bounds.union(place.geometry.viewport);
                     } else {
                         bounds.extend(place.geometry.location);

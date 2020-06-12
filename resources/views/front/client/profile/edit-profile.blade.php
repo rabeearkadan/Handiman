@@ -3,15 +3,9 @@
     <link href="{{asset('css/client/map.css')}}" rel="stylesheet" type="text/css">
     <link href="{{asset('css/client/new-address.css')}}" rel="stylesheet" type="text/css">
     <style>
-
-        /* Always set the map height explicitly to define the size of the div
-         * element that contains the map. */
         #map {
             height: 550px;
         }
-
-        /* Optional: Makes the sample page fill the window. */
-
         #description {
             font-family: Roboto, serif;
             font-size: 15px;
@@ -83,7 +77,9 @@
         #target {
             width: 345px;
         }
-
+        form .error {
+            color: #ff0000;
+        }
 
     </style>
 @endpush
@@ -91,7 +87,7 @@
     <div class="page-title">
         <h1>Edit Profile</h1>
     </div><!-- /.page-title -->
-    <form method="post" action="{{route('client.contact.update')}}">
+    <form method="post" action="{{route('client.contact.update')}}" name="contact">
         @csrf
         @method('put')
     <div class="background-white p20 mb30">
@@ -191,16 +187,38 @@
         </div>
         </div><!-- /.background -white -->
 
-    {{--    <div class="background-white p20 mb30">--}}
-    {{--        <h4 class="page-title">--}}
-    {{--            Biography--}}
-    {{--            <a href="#" class="btn btn-primary btn-xs pull-right">Save</a>--}}
-    {{--        </h4>--}}
-    {{--        <textarea class="form-control" rows="7"></textarea>--}}
-    {{--        <div class="textarea-resize"></div>--}}
-    {{--    </div>--}}
 @endsection
 @push('js')
+    <script src="/public/js/jquery.validate.min.js"></script>
+    <script>
+        $(function() {
+            $("form[name='contact']").validate({
+                rules: {
+                    name: "required",
+                    gender : "required",
+                    email: {
+                        required: true,
+                        email: true
+                    },
+                    phone: {
+                        required: true,
+                        minlength: 7,
+                        number:true
+                    }
+                },
+                // Specify validation error messages
+                messages: {
+                    name: "Please enter your name",
+                    gender: "Please choose your gender",
+                    email: "Please enter a valid email address",
+                    phone: "Please enter a valid phone number"
+                },
+                submitHandler: function(form) {
+                    form.submit();
+                }
+            });
+        });
+    </script>
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             var elems = document.querySelectorAll('.collapsible');
@@ -214,14 +232,6 @@
         }
     </script>
     <script>
-        // This example adds a search box to a map, using the Google Place Autocomplete
-        // feature. People can enter geographical searches. The search box will return a
-        // pick list containing a mix of places and predicted search terms.
-
-        // This example requires the Places library. Include the libraries=places
-        // parameter when you first load the API. For example:
-        // <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&libraries=places">
-
         function initAutocomplete() {
             var map = new google.maps.Map(document.getElementById('map'), {
                 center: {lat: -33.8688, lng: 151.2195},
@@ -229,20 +239,15 @@
                 mapTypeId: 'roadmap'
             });
 
-            // Create the search box and link it to the UI element.
             var input = document.getElementById('pac-input');
             var searchBox = new google.maps.places.SearchBox(input);
             map.controls[google.maps.ControlPosition.TOP_LEFT].push(input);
 
-
-            // Bias the SearchBox results towards current map's viewport.
             map.addListener('bounds_changed', function () {
                 searchBox.setBounds(map.getBounds());
             });
 
             var markers = [];
-            // Listen for the event fired when the user selects a prediction and retrieve
-            // more details for that place.
             searchBox.addListener('places_changed', function () {
                 var places = searchBox.getPlaces();
 
@@ -250,14 +255,11 @@
                     return;
                 }
 
-
-                // Clear out the old markers.
                 markers.forEach(function (marker) {
                     marker.setMap(null);
                 });
                 markers = [];
 
-                // For each place, get the icon, name and location.
                 var bounds = new google.maps.LatLngBounds();
                 places.forEach(function (place) {
                     if (!place.geometry) {
@@ -272,7 +274,6 @@
                         scaledSize: new google.maps.Size(25, 25)
                     };
 
-                    // Create a marker for each place.
                     markers.push(new google.maps.Marker({
                         map: map,
                         icon: icon,
@@ -281,7 +282,6 @@
                     }));
 
                     if (place.geometry.viewport) {
-                        // Only geocodes have viewport.
                         bounds.union(place.geometry.viewport);
                     } else {
                         bounds.extend(place.geometry.location);

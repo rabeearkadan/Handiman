@@ -82,6 +82,12 @@ class ProfileController extends Controller
     public function updateContact(Request $request)
     {
         $user = Auth::user();
+        $request->validate([
+            'name' => 'required',
+            'email' => 'required|email',
+            'phone' => 'required',
+            'gender' => 'required'
+        ]);
         $user->name = $request->name;
         $user->email = $request->email;
         $user->phone = $request->phone;
@@ -103,6 +109,12 @@ class ProfileController extends Controller
     public function storeAddress(Request $request)
     {
         $user = Auth::user();
+        $request->validate([
+            'name' => 'required',
+            'type' => 'required',
+            'building' => 'required',
+            'street' => 'required'
+        ]);
         $data = [
             "_id" => Str::random(24),
             "name" => $request->name,
