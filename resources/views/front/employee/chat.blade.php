@@ -53,7 +53,7 @@
     <script>
         function update(){
             console.log("update");
-            var numberOfMessages = document.getElementsByClassName('incoming_msg').length + document.getElementsByClassName('outgoing_msg');
+            var numberOfMessages = document.getElementsByClassName('incoming_msg').length + document.getElementsByClassName('outgoing_msg').length;
             console.log(numberOfMessages);
             $.ajax({
                 type: 'GET',
