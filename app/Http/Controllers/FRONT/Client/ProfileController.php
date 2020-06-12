@@ -29,9 +29,14 @@ class ProfileController extends Controller
      * allReviews()
      */
 
-    public function myProfile()
+    public function myProfile(Request $request)
     {
         $user = Auth::user();
+        if($request->input('incomplete')){
+            $incomplete = $request->input('incomplete');
+            $logged = $request->input('logged');
+            return view('front.client.profile.edit-profile',compact(['user','incomplete','logged']));
+        }
         return view('front.client.profile.edit-profile', compact('user'));
     }
 
@@ -111,7 +116,6 @@ class ProfileController extends Controller
         ];
         $user->push('client_addresses', $data);
         $user->save();
-        $user = Auth::user();
         return redirect()->route('client.profile');
     }
 
@@ -128,10 +132,27 @@ class ProfileController extends Controller
         return view('front.client.profile.edit-address', compact(['user', 'address']));
     }
 
-    public function updateAddress($id)
+    public function updateAddress(Request $request,$id)
     {
         $user = Auth::user();
-        // $user->push('locations', '');
+        foreach ($user->client_addresses as $address){
+            if($address['_id'] == $id){
+                $user->pull('client_addresses', $address);
+            }
+        }
+        $data = [
+            "_id" => Str::random(24),
+            "name" => $request->name,
+            "type" => $request->type,
+            "location" => [$request->lng, $request->lat],
+            "street" => $request->street,
+            "building" => $request->house,
+            "zip" => $request->zip,
+            "property_type" => $request->property,
+            "contract_type" => $request->contract,
+        ];
+        $user->push('client_addresses', $data);
+        $user->save();
         return redirect()->route('client.profile');
     }
 

@@ -135,7 +135,6 @@
     </style>
 @endpush
 @section('content')
-    <body>
     <div class="page-wrapper">
         <div class="main">
             <div class="main-inner">

@@ -13,6 +13,12 @@
 @section('content')
     <div class="page-wrapper" id="profile" style="background-color: #f7f8f9;">
         <div class="main">
+            @isset($incomplete)
+                <div class="materialert error">
+                    <div class="material-icons">error_outline</div>
+                    Oh! Profile Incomplete :)
+                </div>
+            @endisset
             <div class="main-inner">
                 <div class="container">
                     <div class="row">
@@ -61,6 +67,11 @@
 @endsection
 @push('js')
     <script>
+        @isset($logged)
+        $( window ).on("load",function () {
+            M.toast({html: 'Logged in as Client',classes: 'rounded'})
+        });
+        @endisset
         function readURL(input) {
             if (input.files && input.files[0]) {
                 var reader = new FileReader();

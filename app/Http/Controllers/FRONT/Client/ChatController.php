@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\FRONT\Employee;
+namespace App\Http\Controllers\FRONT\Client;
 
 use App\Events\NotificationSenderEvent;
 use App\Http\Controllers\Controller;
@@ -17,7 +17,7 @@ class ChatController extends Controller
         $user = Auth::user();
         $request = RequestService::query()->find($id);
         $messages = $request->messages;
-        return view('front.employee.chat',compact(['messages','request','user']));
+            return view('front.client.request.chat',compact(['messages','request','user']));
     }
 
 
@@ -68,7 +68,7 @@ class ChatController extends Controller
         $messages =array();
         for($index=0;$index<sizeof($msg);$index++){
             if($msg[$index]['from']['_id'] != $user->id){
-                array_push($messages,$msg[$index]);
+               array_push($messages,$msg[$index]);
             }
         }
 
@@ -86,6 +86,5 @@ class ChatController extends Controller
         event(new NotificationSenderEvent($notification));
         return response()->json(['status' => 'success', 'notification' => $notification]);
     }
-
 
 }

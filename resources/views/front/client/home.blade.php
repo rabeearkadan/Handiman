@@ -57,7 +57,7 @@
                                                             <a href="{{route('client.user-profile',['employee_id' => $user->id])}}"> {{$user->name}} </a>
                                                         @endforeach
                                                     </div><!-- /.post-meta-author -->
-                                                    <div class="post-meta-date"> {{$post->created_at}} </div>
+                                                    <div class="post-meta-date"> {{$post->created_at->format('d/m/Y')}} </div>
                                                     <!-- /.post-meta-date -->
                                                     <div class="post-meta-categories">
                                                         <i class="fa fa-tags"></i>
@@ -78,9 +78,9 @@
                                                     {{--                                                <i class="fa fa-comments"></i>--}}
                                                     {{--                                                <a href="">3 comments</a>--}}
                                                     {{--                                            </div><!-- /.post-meta-comments -->--}}
-                                                    <div class="post-meta-more">
-                                                        <a href="">View <i class="fa fa-chevron-right"></i></a>
-                                                    </div><!-- /.post-meta-more -->
+{{--                                                    <div class="post-meta-more">--}}
+{{--                                                        <a href="">View <i class="fa fa-chevron-right"></i></a>--}}
+{{--                                                    </div><!-- /.post-meta-more -->--}}
                                                 </div><!-- /.post-meta -->
                                             </div><!-- /.post -->
                                         @endforeach

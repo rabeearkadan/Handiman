@@ -1,7 +1,7 @@
-@extends('layouts.employee.app')
+@extends('layouts.client.app')
 @push('css')
     <link href="{{asset('css/app.css')}}" rel="stylesheet">
-    <link href="{{asset('css/employee/chat.css')}}" rel="stylesheet">
+    <link href="{{asset('css/client/chat.css')}}" rel="stylesheet">
 @endpush
 @section('content')
     <div class="container">
@@ -51,8 +51,12 @@
 @endsection
 @push('js')
     <script>
-        function update(){
+        const messages = document.getElementsByClassName('msg_history');
+
+        function update() {
             var numberOfMessages = document.getElementsByClassName('incoming_msg').length;
+            shouldScroll = messages.scrollTop + messages.clientHeight === messages.scrollHeight;
+
             $.ajax({
                 type: 'GET',
                 url: "{{ route('client.chat.new',$request->id) }}",
@@ -70,14 +74,23 @@
                                 '<span class="time_date">' + data.messages[index]['date'] + '</span></div>' +
                                 '</div>\n' +
                                 '</div>');
-                            scroll();
                         }
                     }
                 }
             });
+            if (!shouldScroll) {
+                scrollToBottom();
+            }
             setTimeout(update, 3000);
         }
+
         update();
+
+        function scrollToBottom() {
+            messages.scrollTop = messages.scrollHeight;
+        }
+
+        scrollToBottom();
 
         $(".msg_send_btn").click(function (e) {
             e.preventDefault();
@@ -94,15 +107,9 @@
                             '<span class="time_date">' + data.date + '</span> </div>\n' +
                             '</div>');
                         $("#message").val('');
-                        scroll();
                     }
                 });
             }
         });
-        function scroll() {
-            var elem = document.getElementsByClassName('msg_history');
-            elem.scrollTop = elem.scrollHeight;
-            document.getElementsByClassName('msg_history').scrollTop =  document.getElementsByClassName('msg_history').scrollHeight;
-        }
     </script>
 @endpush

@@ -40,6 +40,45 @@
         </div>
         </form>
     </div>
+
+    <div class="background-white p20 mb30">
+        <form method="post" action="{{route('employee.certificate.update')}}" enctype="multipart/form-data">
+            @csrf
+            @method('put')
+            <h3 class="page-title">
+                Certificate
+                <input type="submit" value="Save" class="btn btn-primary btn-xs pull-right"/>
+            </h3>
+            <div class="row">
+                <div class="col-sm-12">
+                    <p> This document can only be viewed by the website administrators.
+                        Uploading one is mandatory to get approved.
+                    </p>
+                </div><!-- /.col* -->
+            </div><!-- /.row -->
+            @isset($user->certificate)
+                <div class="row">
+                    <div class="col-sm-12">
+                        <iframe src="{{config('image.path').$user->certificate}}" style="width:300px; height:300px;"></iframe>
+                    </div><!-- /.col* -->
+                </div><!-- /.row -->
+            @endisset
+            <div class="row">
+                <div class="col-sm-12">
+                    <div class="file-field input-field">
+                        <div class="btn" style="position: static">
+                            <span>Select a pdf File</span>
+                            <input type="file" name="certificate" accept="application/pdf">
+                        </div>
+                        <div class="file-path-wrapper">
+                            <input class="file-path validate" type="text" >
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+
     <div class="background-white p20 mb30">
         <form method="post" action="{{route('employee.cr.update')}}" enctype="multipart/form-data">
             @csrf

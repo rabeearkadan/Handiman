@@ -58,7 +58,7 @@
                                         @csrf
                                         @method('delete')
                                     </form>
-                                        <a class="btn-floating btn-large blue" style="float:right">
+                                        <a href="{{route('client.chat.index',$request->id)}}" class="btn-floating btn-large blue" style="float:right">
                                             <i class="large material-icons">chat</i>
                                         </a>
                                     @else
@@ -165,7 +165,7 @@
                                             @csrf
                                             @method('delete')
                                         </form>
-                                        <a class="btn-floating btn-large blue" style="float:right">
+                                        <a href="{{route('client.chat.index',$request->id)}}" class="btn-floating btn-large blue" style="float:right">
                                             <i class="large material-icons">chat</i>
                                         </a>
                                     @else
@@ -173,17 +173,17 @@
                                         <span class="title">Searching for employee</span>
                                     @endisset
                                 </li>
-                                @isset($request->receipt)
-                                <li class="collection-item avatar">
-                                    <i class="material-icons circle">Bill</i>
-                                    <span class="title">Bill</span>
-                                    <p>{{$request->service_name}}
-                                    </p>
-                                    <a href="" class="btn-floating btn-large green" style="float:right">
-                                        <i class="large material-icons">pay</i>
-                                    </a>
-                                </li>
-                                @endisset
+{{--                                @isset($request->receipt)--}}
+{{--                                <li class="collection-item avatar">--}}
+{{--                                    <i class="material-icons circle">Bill</i>--}}
+{{--                                    <span class="title">Bill</span>--}}
+{{--                                    <p>{{$request->service_name}}--}}
+{{--                                    </p>--}}
+{{--                                    <a href="" class="btn-floating btn-large green" style="float:right">--}}
+{{--                                        <i class="large material-icons">pay</i>--}}
+{{--                                    </a>--}}
+{{--                                </li>--}}
+{{--                                @endisset--}}
                                 <li class="collection-item avatar">
                                     <i class="material-icons circle">work</i>
                                     <span class="title">Service</span>

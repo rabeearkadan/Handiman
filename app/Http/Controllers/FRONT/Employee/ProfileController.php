@@ -29,10 +29,15 @@ class ProfileController extends Controller
      * updateServices()
      */
 
-    public function myProfile()
+    public function myProfile(Request $request)
     {
         $user = Auth::user();
         $services = Service::all();
+        if($request->input('incomplete')){
+            $incomplete = $request->input('incomplete');
+            $logged = $request->input('logged');
+            return view('front.employee.profile.edit-profile',compact(['user','services','incomplete','logged']));
+        }
         return view('front.employee.profile.edit-profile', compact(['user', 'services']));
     }
 
@@ -179,6 +184,23 @@ class ProfileController extends Controller
         return view('front.employee.profile.documents', compact('user'));
     }
 
+    public function updateCertificate(Request $request)
+    {
+        $user = Auth::user();
+        $file = $request->file('certificate');
+        $name = 'certificate_' . time() . '.' . $file->getClientOriginalExtension();
+        if (!Storage::disk('public')->exists('certificates')) {
+            Storage::disk('public')->makeDirectory('certificates');
+        }
+        if (Storage::disk('public')->putFileAs('certificates', $file, $name)) {
+            $user->certificate = 'certificates/' . $name;
+        } else {
+            return view('front.employee.profile.documents', compact('user'));
+        }
+        $user->save();
+        return view('front.employee.profile.documents', compact('user'));
+    }
+
     public function updateContact(Request $request)
     {
         $user = Auth::user();
@@ -205,6 +227,15 @@ class ProfileController extends Controller
     public function updateAddress(Request $request)
     {
         $user = Auth::user();
+        $data = [
+            "_id" => Str::random(24),
+            "location" => [$request->lng, $request->lat],
+            "street" => $request->street,
+            "building" => $request->building,
+            "zip" => $request->zip,
+        ];
+        $user->employee_address = $data;
+        $user->save();
         return redirect(route('employee.profile'));
     }
 
@@ -215,6 +246,7 @@ class ProfileController extends Controller
             'biography' => 'required|min:20|max:1500'
         ]);
         $user->biography = $request->biography;
+        $user->save();
         return redirect(route('employee.profile'));
     }
 
