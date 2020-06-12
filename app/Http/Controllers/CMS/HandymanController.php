@@ -22,11 +22,13 @@ class HandymanController extends Controller
     {
 
         $employee = User::query()->find($id);
-        $_requests = $employee->employeeRequests()->get();
-        $requests = $_requests->map(function ($item) {
-            $item->client = User::query()->find($item->client_ids[0])->simplifiedArray();
-            return $item;
-        });
+        if ($employee->employeeRequests()->count() > 0) {
+            $_requests = $employee->employeeRequests()->get();
+            $requests = $_requests->map(function ($item) {
+                $item->client = User::query()->find($item->client_ids[0])->simplifiedArray();
+                return $item;
+            });
+        }
 
         $service_ids = $employee->service_ids;
         $services = [];
