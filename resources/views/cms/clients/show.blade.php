@@ -95,7 +95,7 @@
     <div class="row">
         <div class="col-md-12">
             <div class="main-card mb-3 card">
-                <div class="card-header">Employee Requests
+                <div class="card-header">Client Requests
                     <div class="btn-actions-pane-right">
                         <div role="group" class="btn-group-sm btn-group">
                             <button class="active btn btn-focus">Last Week</button>
@@ -108,7 +108,7 @@
                         <thead>
                         <tr>
                             <th class="text-center">#</th>
-                            <th>Client Name</th>
+                            <th>Handyman Name</th>
                             <th>Date</th>
                             <th class="text-center">Status</th>
                             <th class="text-center">Actions</th>
@@ -125,7 +125,7 @@
 {{--                                            <img style="width: 2%; height: 2%" src="{{config('image.path').$request->client['image']}}">--}}
 
                                             <div
-                                                class="widget-subheading opacity-7"> {{$request->client['name']}}</div>
+                                                class="widget-subheading opacity-7"> {{$request->handyman['name']}}</div>
                                         </div>
 
                                 </td>
