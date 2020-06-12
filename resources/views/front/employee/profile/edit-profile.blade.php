@@ -76,7 +76,7 @@
             width: 345px;
         }
         .error:focus,.error{
-            color: #ff0000 !important;
+            color: #ff0000 ;
             border-bottom: 1px solid red !important;
             box-shadow: 0 0 0 0 !important;
         }
