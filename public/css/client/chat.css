@@ -209,6 +209,6 @@ img {
 }
 
 .msg_history {
-    height: 516px;
+    height: 90vh;
     overflow-y: auto;
 }
