@@ -105,7 +105,7 @@
                 </li>
 
                 <li>
-                    <a href="{{route('statistics.index')}}" class="mm">
+                    <a href="{{route('statistics.requests')}}" class="mm">
                         <i class="metismenu-icon pe-7s-rocket"></i>
                         Requests
                     </a>
