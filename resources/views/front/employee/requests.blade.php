@@ -161,7 +161,7 @@
                     <ul class="slides">
                         @foreach($request->images as $image)
                         <li>
-                            <img src="{{config('image.path',$image)}}">
+                            <img src="{{config('image.path').$image}}">
                         </li>
                         @endforeach
                     </ul>
