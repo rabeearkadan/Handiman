@@ -78,7 +78,7 @@
             width: 345px;
         }
         form .error {
-            color: #ff0000;
+            color: #ff0000 !important;
         }
 
     </style>

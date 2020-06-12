@@ -7,7 +7,7 @@
     <!-- Fonts -->
 
     <!-- Scripts -->
-    @if(request()->route()->getName() != "employee.post.create" && request()->route()->getName() != "employee.home" && request()->route()->getName() != "employee.calendar.show")
+    @if(request()->route()->getName() != "employee.post.create" && request()->route()->getName() != "employee.home" && request()->route()->getName() != "employee.calendar.show" && request()->route()->getName() != "employee.profile")
     <script src="{{ asset('js/app.js') }}" defer></script>
     @endif
     @if(request()->route()->getName() == "employee.post.create"  || request()->route()->getName() == "employee.home" ||request()->route()->getName() == "employee.calendar.show")

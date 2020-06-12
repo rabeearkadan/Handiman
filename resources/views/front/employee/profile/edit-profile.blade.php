@@ -75,6 +75,9 @@
         #target {
             width: 345px;
         }
+        form .error {
+            color: #ff0000 !important;
+        }
     </style>
 @endpush
 @section('profile-content')
@@ -288,7 +291,6 @@
             });
         });
     </script>
-    <script src="/public/js/jquery.validate.min.js"></script>
     <script>
         $(function() {
             $("form[name='biographyForm']").validate({
@@ -311,8 +313,11 @@
         $(function() {
             $("form[name='servicesForm']").validate({
                 rules: {
-                    price: "required",
+                    price: {
+                        required:true,
+                        min:1,
                         number:true
+                    }
                     },
                 messages: {
                     price: "Please enter a valid price (per hour)",
