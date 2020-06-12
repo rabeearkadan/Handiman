@@ -127,12 +127,12 @@
                                     </div>
                                 </td>
 
-                                <td>
+                                <td class="text-center">
                                     <form
-                                        action="{{ route('employee.removeService', [  $employee->id,  'id2'=> $service['id']]) }}"
-                                            method="GET"
+                                        action="{{route('employee.removeService',$employee->id)}}"
+                                        method="GET"
                                     >
-
+                                        <input value="{{$service->id}}" name="id" hidden>
                                         <button class="mb-2 mr-2 btn btn-danger">
 
                                             Remove
