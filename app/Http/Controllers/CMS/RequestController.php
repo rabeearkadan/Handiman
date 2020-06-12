@@ -32,7 +32,18 @@ class RequestController extends Controller
 
     public function rejectedPayments()
     {
-        $requests= RequestService::all()->where('rejected_payment', '!=', null);
+        $_requests = RequestService::all()->where('rejected_payment', '!=', null);
+
+        $request = $_requests->map(function ($item) {
+            $item->service = Service::query()->find($item->service_id)->ServiceArray();
+            return $item;
+        });
+
+        $requests = $request->map(function ($item) {
+            $item->client = User::query()->find($item->client_ids[0])->simplifiedArray();
+            return $item;
+        });
+
 
         return view('cms.requests.rejectedPayments', compact('requests'));
     }
@@ -62,11 +73,11 @@ class RequestController extends Controller
     public function show($id)
     {
         $request = RequestService::query()->find($id);
-        if ($request!=null)
-        if ($request->employees()->count() > 0)
-            $request->handyman = User::query()->find($request->employee_ids[0])->simplifiedArray();
-        else
-            $request->handyman = ['name' => 'still looking for handyman'];
+        if ($request != null)
+            if ($request->employees()->count() > 0)
+                $request->handyman = User::query()->find($request->employee_ids[0])->simplifiedArray();
+            else
+                $request->handyman = ['name' => 'still looking for handyman'];
         $request->client = User::query()->find($request->client_ids[0])->simplifiedArray();
 
 
