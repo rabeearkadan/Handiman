@@ -50,7 +50,7 @@ class RequestController extends Controller
         }
         catch(ModelNotFoundException $e)
         {
-            dd('laterzx');
+            abort(404);
         }
         $request->status = "approved";
 
