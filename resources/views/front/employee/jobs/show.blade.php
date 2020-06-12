@@ -82,7 +82,7 @@
                     <i class="material-icons">date_range</i>
                     {{$job->date->format('d/m/Y')}} </span>
                 <span>
-                    <i class="material-icons">clock</i>
+                    <i class="material-icons">schedule</i>
                     {{$job->from}} -> {{$job->to}}</span>
             </div>
         </li>

@@ -215,6 +215,7 @@ class RequestController extends Controller
             return redirect(route('client.request.index'));
         } else {
             $handyman = User::query()->find($req->input('employee_id'));
+            $requestHandyman->price = $handyman->price;
             $dateArray= explode("/",$req->date);
             $requestDate = $dateArray[2].'-'.$dateArray[0].'-'.$dateArray[1];
             $requestHandyman->date = Carbon::createFromFormat('Y-m-d',$requestDate, $requestHandyman->timezone);
