@@ -238,6 +238,7 @@
                 <div class="input-field col s12 ">
                     <select class="icons" name="services[]" id="services" multiple="multiple">
                         <option value="" disabled>Choose your services</option>
+                        @isset($user->service_ids)
                         @foreach($services as $service)
                             <option value="{{$service->id}}" data-icon="{{config('image.path').$service->image}}"
                                     @if(in_array($service->id,$user->service_ids))
@@ -245,6 +246,7 @@
                                 @endif
                             >{{$service->name}}</option>
                         @endforeach
+                            @endisset
                     </select>
                     <label for="services">Choose your type of services</label>
                 </div>
