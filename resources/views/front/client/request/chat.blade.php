@@ -81,15 +81,10 @@ $(".msg_send_btn").click(function(e){
         url:"{{ route('client.chat.send',$request->id) }}",
         data:{message:message, _token: '{{csrf_token()}}' },
         success:function(data){
-            console.log(data);
-            alert(data.status);
-            $(".msg_history").append('<div class="incoming_msg">\n' +
-                '                            <div class="incoming_msg_img"> <img src="https://ptetutorials.com/images/user-profile.png" alt="sunil"> </div>\n' +
-                '                            <div class="received_msg">\n' +
-                '                                <div class="received_withd_msg">\n' +
-                '                                    <p>'+data.message+'</p>\n' +
-                '                                    <span class="time_date">'+data.date+'</span></div>\n' +
-                '                            </div>\n' +
+            $(".msg_history").append(' <div class="outgoing_msg">' +
+                '                            <div class="sent_msg">' +
+                '                                <p>'+data.message+'</p>' +
+                '                                <span class="time_date">'+data.date+'</span> </div>\n' +
                 '                        </div>');
 
             $("#message").val('');
