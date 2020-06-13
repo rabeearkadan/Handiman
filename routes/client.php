@@ -54,9 +54,9 @@ Route::group(['middleware' => 'clientProfile'], function () {
     Route::post('/reviews/create/{id}', 'ReviewsController@store')->name('client.reviews.store');
 //Route::put('/reviews/edit/{invoice_id}','ReviewsController@update')->name('client.reviews.update');
 
-//Chat
-    Route::get('/chat/{id}/index', 'ChatController@index')->name('client.chat.index');
-    Route::post('/chat/{id}/send', 'ChatController@send')->name('client.chat.send');
-    Route::get('/chat/{id}/load', 'ChatController@new')->name('client.chat.new');
-
 });
+//Chat
+
+Route::get('/chat/{id}/index', 'ChatController@index')->name('client.chat.index');
+Route::post('/chat/{id}/send', 'ChatController@send')->name('client.chat.send');
+Route::get('/chat/{id}/load', 'ChatController@new')->name('client.chat.new');

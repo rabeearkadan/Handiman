@@ -2,7 +2,6 @@
 @push('css')
     <link href="{{asset('css/app.css')}}" rel="stylesheet">
     <link href="{{asset('css/client/chat.css')}}" rel="stylesheet">
-    <script src="{{ asset('js/app.js') }}" defer></script>
 @endpush
 @section('content')
     <h3 class=" text-center">Messaging</h3>
