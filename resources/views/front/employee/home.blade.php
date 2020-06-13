@@ -121,7 +121,7 @@
 
             function autoplay() {
                 $('.carousel').carousel('next');
-                setTimeout(autoplay, 4500);
+                setTimeout(autoplay, 6500);
             }
 
             $('.chips-autocomplete').chips({
