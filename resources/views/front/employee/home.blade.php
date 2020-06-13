@@ -45,13 +45,13 @@
                                                         <div class="post-meta clearfix">
                                                             <div class="post-meta-author">
                                                                 @foreach($post->users as $user)
-                                                                    <a href="">
+                                                                    <a href="#!">
                                                                         <img style="width:35px; height:35px"
                                                                              class="circle responsive-img"
                                                                              src="{{config('image.path').$user->image}}" alt="post images">
                                                                     </a>
 {{--                                                                dscnjkddklsncmkdsnc--}}
-                                                                    <a href="{{route('client.user-profile',['employee_id' => $user->id])}}"> {{$user->name}} </a>
+                                                                    <a href="#!"> {{$user->name}} </a>
                                                                 @endforeach
                                                             </div><!-- /.post-meta-author -->
                                                             <div class="post-meta-date"> {{$post->created_at->format('d/m/Y')}} </div>
