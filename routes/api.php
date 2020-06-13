@@ -39,6 +39,8 @@ Route::middleware(['auth:api', 'employee'])->prefix('employee')->group(function 
     Route::get('chat-requests', 'ChatController@employeeRequests');
     Route::post('receipt/{id}', 'RequestController@addReceipt');
     Route::post('receipt-images/{id}', 'RequestController@addReceiptImages');
+
+    Route::post('result-images/{id}', 'RequestController@addResultImages');
     Route::post('reschedule/{id}', 'RequestController@reschedule');
     Route::get('tags', 'UserController@employeeTags');
     Route::get('employee-posts', 'UserController@employeePosts');
