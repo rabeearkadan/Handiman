@@ -25,22 +25,17 @@ class ChatController extends Controller
 
     public function send(Request $request, $id)
     {
-
         $requestService = RequestService::query()->find($id);
-
         $messages = $requestService->messages;
-
-
         $message = [
             'message' => $request->input('message'),
             'date' => Carbon::now()->toDateTimeString(),
             'from' => Auth::user()->simplifiedArray()
         ];
         if ($messages != null) {
-
             array_push($messages, $message);
         } else {
-            $messages = [];
+            $messages = array();
             array_push($messages, $message);
         }
         $requestService->messages = $messages;
@@ -53,7 +48,6 @@ class ChatController extends Controller
             $notification['to'] = User::query()->find($requestService->client_ids[0])->client_device_token;
         }
         $notification['type'] = 'message';
-
         event(new NotificationSenderEvent($notification));
         $requestService->save();
         return response()->json(['status'=>'success','message' => $request->input('message'),'date'=> Carbon::now()->toDateTimeString()]);
