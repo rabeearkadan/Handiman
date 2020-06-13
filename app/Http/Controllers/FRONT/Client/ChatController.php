@@ -59,6 +59,9 @@ class ChatController extends Controller
         $nbOfMessages = $request->numberOfMessages;
         $nbOfMessages--;
         $msg = $requestService->messages;
+        if($msg == null){
+            return response()->json(['status'=>'failed','messages' => $messages ]);
+        }
         $messages =array();
         for($index=0;$index<sizeof($msg);$index++){
             if($msg[$index]['from']['_id'] != $user->id){

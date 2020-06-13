@@ -50,11 +50,9 @@
 @push('js')
     <script>
         const messages = document.getElementsByClassName('msg_history');
-
         function update() {
             var numberOfMessages = document.getElementsByClassName('incoming_msg').length;
-            shouldScroll = messages.scrollTop + messages.clientHeight === messages.scrollHeight;
-
+            // shouldScroll = messages.scrollTop + messages.clientHeight === messages.scrollHeight;
             $.ajax({
                 type: 'GET',
                 url: "{{ route('client.chat.new',$request->id) }}",
@@ -84,11 +82,11 @@
 
         update();
 
-        function scrollToBottom() {
-            messages.scrollTop = messages.scrollHeight;
-        }
-
-        scrollToBottom();
+        // function scrollToBottom() {
+        //     messages.scrollTop = messages.scrollHeight;
+        // }
+        //
+        // scrollToBottom();
 
         $(".msg_send_btn").click(function (e) {
             e.preventDefault();
