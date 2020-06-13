@@ -58,7 +58,7 @@ class ChatController extends Controller
         $requestService = RequestService::query()->find($id);
         $nbOfMessages = $request->numberOfMessages;
         $nbOfMessages--;
-        $msg = $requestService->messages;
+        $msg = null;
         if($msg == null){
             return response()->json(['status'=>'failed' ]);
         }
