@@ -58,9 +58,6 @@
                                         @csrf
                                         @method('delete')
                                     </form>
-                                        <a href="{{route('client.chat.index',$request->id)}}" class="btn-floating btn-large blue" style="float:right">
-                                            <i class="large material-icons">chat</i>
-                                        </a>
                                     @else
                                         <img src="/public/images/employee/profile.png" alt="" class="circle">
                                         <span class="title">Searching for employee</span>
