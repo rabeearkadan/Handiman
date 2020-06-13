@@ -46,9 +46,15 @@
                                                             <div class="post-meta-author">
                                                                 @foreach($post->users as $user)
                                                                     <a href="#!">
+                                                                        @isset($user->image)
                                                                         <img style="width:35px; height:35px"
                                                                              class="circle responsive-img"
                                                                              src="{{config('image.path').$user->image}}" alt="post images">
+                                                                        @else
+                                                                            <img style="width:35px; height:35px"
+                                                                                 class="circle responsive-img"
+                                                                                 src="/public/images/employee/profile-image.png" alt="post images">
+                                                                        @endisset
                                                                     </a>
 {{--                                                                dscnjkddklsncmkdsnc--}}
                                                                     <a href="#!"> {{$user->name}} </a>
