@@ -111,14 +111,13 @@ class ProfileController extends Controller
         $user = Auth::user();
         $request->validate([
             'name' => 'required',
-            'type' => 'required',
             'house' => 'required',
             'street' => 'required'
         ]);
         $data = [
             "_id" => Str::random(24),
             "name" => $request->name,
-            "type" => $request->type,
+//            "type" => $request->type,
             "location" => [$request->lng, $request->lat],
             "street" => $request->street,
             "building" => $request->house,
