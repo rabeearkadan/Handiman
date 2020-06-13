@@ -141,7 +141,7 @@
                                                 <dd>Category</dd>
                                                 <dt> {{$service->name}}</dt>
                                                 <dd>Location</dd>
-                                                <dt>Location</dt>
+                                                <dt>{{$employee->employee_address['street']}}</dt>
                                                 <dd> Rating</dd>
                                                 <dd class="rating" style="display:none">{{$employee->rating}}</dd>
                                                 <dt>
