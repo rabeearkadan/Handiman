@@ -518,6 +518,10 @@
 
         function more(serviceId,index) {
             document.documentElement.style.overflow = 'hidden';
+            var blockquoteStyle ="";
+            if(feedbacks[serviceId][index]["rating"]>=3){
+                blockquoteStyle = 'style="border-left:border-left:2px solid #5c9a6f;"';
+            }
             document.getElementById('modal-container').innerHTML = ' <div class="we-modal  we-modal--open" role="dialog">' +
                 '<div class="we-modal__content large-10 medium-12 we-modal__content--review" >' +
                 '<div class="we-modal__content__wrapper">' +
@@ -532,15 +536,15 @@
                 '<span class="we-customer-review__separator">, </span>' +
                 '<time class="we-customer-review__date">'+feedbacks[serviceId][index]["date"]+'</time>' +
                 '</div><h3 class="we-truncate we-truncate--single-line ember-view we-customer-review__title">'+feedbacks[serviceId][index]["title"]+'</h3>' +
-                '<blockquote class="we-customer-review__body--modal">' +
+                '<blockquote class="we-customer-review__body--modal"'+blockquoteStyle+'>' +
                 '<p>'+feedbacks[serviceId][index]["body"]+'</p></blockquote></div></div>' +
                 '<button class="we-modal__close" onclick="less()" aria-label="Close" ></button>' +
                 '</div><button class="we-modal__close--overlay" id="close-div" aria-label="Close" ></button>' +
                 '</div><div class="overlay"></div>';
-            if(feedbacks[serviceId][index]["rating"]>=3){
-                $('#modal-container > blockquote').css('border-left', 'border-left:2px solid #5c9a6f');
-                $('.we-customer-review__body--modal').css('border-left', 'border-left:2px solid #5c9a6f');
-            }
+            // if(feedbacks[serviceId][index]["rating"]>=3){
+            //     $('#modal-container > blockquote').css('border-left', 'border-left:2px solid #5c9a6f');
+            //     $('.we-customer-review__body--modal').css('border-left', 'border-left:2px solid #5c9a6f');
+            // }
         }
 
         function less() {
