@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\RequestService;
 use App\Models\Service;
 use App\User;
+use Barryvdh\DomPDF\PDF;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
