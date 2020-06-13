@@ -211,8 +211,7 @@ class User extends Eloquent implements
             foreach ($reqs as $req) {
                 $object = [];
                 $object['service_name'] = $service->name;
-//               $feedback = $req->feedback[0];
-              $object['feedback'] =$req->$feedback[0]['body'];
+              $object['feedback'] =$req->feedback[0]['body'];
                 $object['rating'] = $req->rating;
                 $object['client'] = User::query()->find($req->client_ids[0])->simplifiedArray();
 
