@@ -371,6 +371,29 @@ class RequestController extends Controller
         }
     }
 
+    public function addResultImages(Request $req, $id)
+    {
+        $request = RequestService::query()->find($id);
+        if ($req->has('images')) {
+            $imagesParam = $req->input('images');
+            $images = [];
+            foreach ($imagesParam as $image) {
+                try {
+                    $images[] = $this->uploadAny($image, 'receipt', 'png');
+                } catch (\Exception $e) {
+                    return response()->json(['status' => 'error', 'message' => "error uploading image"]);
+                }
+            }
+            $request->result_images = $images;
+        }
+
+
+        $request->save();
+
+        return response()->json(['status' => 'success']);
+
+    }
+
     public function addReceiptImages(Request $req, $id)
     {
         $request = RequestService::query()->find($id);
@@ -387,18 +410,6 @@ class RequestController extends Controller
             $request->receipt_images = $images;
         }
 
-        if ($req->has('result')) {
-            $imagesParam = $req->input('result');
-            $images = [];
-            foreach ($imagesParam as $image) {
-                try {
-                    $images[] = $this->uploadAny($image, 'receipt', 'png');
-                } catch (\Exception $e) {
-                    return response()->json(['status' => 'error', 'message' => "error uploading image"]);
-                }
-            }
-            $request->result = $images;
-        }
 
         $request->save();
 
