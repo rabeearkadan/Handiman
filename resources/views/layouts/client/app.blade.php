@@ -10,6 +10,7 @@
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link href="{{asset('css/client/materialize.css')}}" rel="stylesheet">
     <link href="{{asset('lib/font-awesome/css/font-awesome.css')}}" rel="stylesheet">
+    <script src="{{ asset('js/app.js') }}" defer></script>
     @stack('css')
     @if(request()->route()->getName() != "client.user-profile")
         <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
