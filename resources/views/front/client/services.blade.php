@@ -7,6 +7,12 @@
             content: ' ';
             background-image: url();
         }
+        @media only screen and (max-width: 600px) {
+            .card img{
+                height: 250px;
+                object-fit: contain;
+            }
+        }
     </style>
 @endpush
 @section('content')
