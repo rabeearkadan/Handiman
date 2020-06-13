@@ -49,7 +49,9 @@ class RequestController extends Controller
         });
         $approvedRequests = $approvedRequests->map(function ($item) {
             $item->service_name = Service::find($item->service_id)->name;
-            $item->employee = User::find($item->employee_ids[0]);
+            if(!empty($item->employee_ids)) {
+                $item->employee = User::find($item->employee_ids[0]);
+            }
             return $item;
         });
         $rescheduledRequests = $rescheduledRequests->map(function ($item) {
