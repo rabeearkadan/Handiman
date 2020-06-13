@@ -227,7 +227,9 @@ class ProfileController extends Controller
                         $client = User::find($request->client_ids[0]);
                         $feedbacks[$employee_service->id][$index] = [
                             'rating' => $request->rating,
-                            'feedback' => $request->feedback,
+                            'title' => $request->feedback['title'],
+                            'body' => $request->feedback['body'],
+                            'date' => $request->updated_at->format('d/m/y'),
                             'client' => [
                                 'name' => $client->name,
                                 'image' => $client->image,

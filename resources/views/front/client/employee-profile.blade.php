@@ -310,20 +310,22 @@
                                                     {{$feedback['client']['name']}}
                                                 </span>
                                                 <span class="we-customer-review__separator">, </span>
-                                                <time aria-label="May 00, 2020" class="we-customer-review__date">
-                                                    00/00/2020
+                                                <time aria-label="{{$feedback['date']}}" class="we-customer-review__date">
+                                                    {{$feedback['date']}}
                                                 </time>
                                             </div>
                                             <h3 class="we-truncate we-truncate--single-line ember-view we-customer-review__title">
-                                                Title
+                                                {{$feedback['title']}}
                                             </h3>
                                             <blockquote class="we-truncate we-truncate--multi-line we-truncate--interactive we-truncate--truncated ember-view we-customer-review__body"  @if($feedback['rating']>=3)style="border-left:2px solid #5c9a6f"@endif>
                                                 <div class="we-clamp ember-view">
-                                                    <p>Review</p>
+                                                    <p>{{$feedback['body']}}</p>
                                                 </div>
+                                                @if(strlen($feedback['body'])>23)
                                                 <button onclick="more('{{$employee_service->id}}',{{$loop->index}})" class="we-truncate__button link">
                                                     more
                                                 </button>
+                                                    @endif
                                             </blockquote><!---->
                                         </div>
                                     </div>
@@ -453,26 +455,26 @@
     <section class="counter-section" id="counter">
         <div class="container">
             <div class="row">
+{{--                <div class="col-sm-6 col-md-6 col-lg-3">--}}
+{{--                    <div class="counter margin-b-30">--}}
+{{--                        <h1 class="title">--}}
+{{--                            <b><span class="counter-value" data-duration="400" data-count="3">0</span></b>--}}
+{{--                        </h1>--}}
+{{--                        <h5 class="desc"><b>Score</b></h5>--}}
+{{--                    </div><!-- counter -->--}}
+{{--                </div><!-- col-md-3-->--}}
                 <div class="col-sm-6 col-md-6 col-lg-3">
                     <div class="counter margin-b-30">
                         <h1 class="title">
-                            <b><span class="counter-value" data-duration="400" data-count="3">0</span></b>
+                            <b><span class="counter-value" data-duration="1400" data-count="{{$employee->employee_jobs_done}}">0</span></b>
                         </h1>
-                        <h5 class="desc"><b>Coder Degrees</b></h5>
+                        <h5 class="desc"><b>Jobs Done</b></h5>
                     </div><!-- counter -->
                 </div><!-- col-md-3-->
                 <div class="col-sm-6 col-md-6 col-lg-3">
                     <div class="counter margin-b-30">
                         <h1 class="title">
-                            <b><span class="counter-value" data-duration="1400" data-count="25">0</span></b>
-                        </h1>
-                        <h5 class="desc"><b>Nb of jobs</b></h5>
-                    </div><!-- counter -->
-                </div><!-- col-md-3-->
-                <div class="col-sm-6 col-md-6 col-lg-3">
-                    <div class="counter margin-b-30">
-                        <h1 class="title">
-                            <b><span class="counter-value" data-duration="700" data-count="311">0</span></b>
+                            <b><span class="counter-value" data-duration="700" data-count="{{$employee->employee_satisfied_clients}}">0</span></b>
                         </h1>
                         <h5 class="desc"><b>Satisfied Clients</b></h5>
                     </div><!-- counter -->
@@ -480,9 +482,9 @@
                 <div class="col-sm-6 col-md-6 col-lg-3">
                     <div class="counter margin-b-30">
                         <h1 class="title">
-                            <b><span class="counter-value" data-duration="2000" data-count="732">0</span></b>
+                            <b><span class="counter-value" data-duration="2000" data-count="{{$employee->employee_requests_count}}">0</span></b>
                         </h1>
-                        <h5 class="desc"><b>NNb of Requests</b></h5>
+                        <h5 class="desc"><b>Requests</b></h5>
                     </div><!-- margin-b-30 -->
                 </div><!-- col-md-3-->
             </div><!-- row-->
@@ -525,10 +527,10 @@
                 '<span class="we-truncate we-truncate--single-line ember-view we-customer-review__user"> ' +
                 'Client '+feedbacks[serviceId][index]["client"]["name"]+'</span>' +
                 '<span class="we-customer-review__separator">, </span>' +
-                '<time class="we-customer-review__date">00/00/2020</time>' +
-                '</div><h3 class="we-truncate we-truncate--single-line ember-view we-customer-review__title">  Title</h3>' +
+                '<time class="we-customer-review__date">'+feedbacks[serviceId][index]["date"]+'</time>' +
+                '</div><h3 class="we-truncate we-truncate--single-line ember-view we-customer-review__title">'+feedbacks[serviceId][index]["title"]+'</h3>' +
                 '<blockquote class="we-customer-review__body--modal">' +
-                '<p>Review</p></blockquote></div></div>' +
+                '<p>'+feedbacks[serviceId][index]["body"]+'</p></blockquote></div></div>' +
                 '<button class="we-modal__close" onclick="less()" aria-label="Close" ></button>' +
                 '</div><button class="we-modal__close--overlay" id="close-div" aria-label="Close" ></button>' +
                 '</div><div class="overlay"></div>';

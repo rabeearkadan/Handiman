@@ -215,6 +215,8 @@ class RequestController extends Controller
             return redirect(route('client.request.index'));
         } else {
             $handyman = User::query()->find($req->input('employee_id'));
+            $handyman->employee_requests_count = $handyman->employee_requests_count +1;
+            $handyman->save();
             $requestHandyman->price = $handyman->price;
             $dateArray= explode("/",$req->date);
             $requestDate = $dateArray[2].'-'.$dateArray[0].'-'.$dateArray[1];

@@ -74,6 +74,7 @@ class RegisterController extends Controller
             'employee_canceled_requests' => 0,
             'employee_satisfied_clients' => 0,
             'employee_requests_count' => 0,
+            'employee_jobs_done' => 0,
             'employee_score' => 0,
             'client_score' => 0,
         ]);
@@ -83,7 +84,6 @@ class RegisterController extends Controller
     {
         $timeline = [];
         for ($i = 0; $i <= 23; $i++) {
-
             for ($j = 0; $j <= 6; $j++) {
                 $timeline[$j][$i] = false;
             }

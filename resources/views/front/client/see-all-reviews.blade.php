@@ -96,11 +96,67 @@
                 </div>
             </div><!-- review -->
         </div><!-- all reviews -->
-        <div class="we-loading-spinner ember-view we-loading-spinner--see-all"></div>
+{{--        <div class="we-loading-spinner ember-view we-loading-spinner--see-all"></div>--}}
     </section>
 @endsection
 @push('js')
+    <script src="/public/js/list.js" type="text/javascript"></script>
+    <script>
+        $(document).ready(function () {
+            @isset($service)
+            filter('{{$service->name}}');
+            @else
+            filter('all');
+            @endisset
+        });
+        var options = {
+            valueNames: ['reviewservice']
+        };
+        var reviewsList = new List('reviews-list', options);
+        function filter(service) {
+            reviewsList.filter(function (item) {
+                return !!item.values().reviewservice.includes(service);
+            });
+        }
 
+        var feedbacks = @json($feedbacks);
+
+        function more(serviceId,index) {
+            document.documentElement.style.overflow = 'hidden';
+            document.getElementById('modal-container').innerHTML = ' <div class="we-modal  we-modal--open" role="dialog">' +
+                '<div class="we-modal__content large-10 medium-12 we-modal__content--review" >' +
+                '<div class="we-modal__content__wrapper">' +
+                '<div aria-labelledby="we-customer-review-21" class="we-customer-review lockup ember-view">' +
+                '<figure aria-label="'+feedbacks[serviceId][index]["rating"]+'out of 5" class="we-star-rating ember-view we-customer-review__rating we-star-rating--large">' +
+                '<span class="we-star-rating-stars-outlines">' +
+                '<span class="we-star-rating-stars we-star-rating-stars-'+feedbacks[serviceId][index]["rating"]+'"></span></span>' +
+                '</figure>' +
+                '<div class="we-customer-review__header we-customer-review__header--user">' +
+                '<span class="we-truncate we-truncate--single-line ember-view we-customer-review__user"> ' +
+                'Client '+feedbacks[serviceId][index]["client"]["name"]+'</span>' +
+                '<span class="we-customer-review__separator">, </span>' +
+                '<time class="we-customer-review__date">'+feedbacks[serviceId][index]["date"]+'</time>' +
+                '</div><h3 class="we-truncate we-truncate--single-line ember-view we-customer-review__title">'+feedbacks[serviceId][index]["title"]+'</h3>' +
+                '<blockquote class="we-customer-review__body--modal">' +
+                '<p>'+feedbacks[serviceId][index]["body"]+'</p></blockquote></div></div>' +
+                '<button class="we-modal__close" onclick="less()" aria-label="Close" ></button>' +
+                '</div><button class="we-modal__close--overlay" id="close-div" aria-label="Close" ></button>' +
+                '</div><div class="overlay"></div>';
+            if(feedbacks[serviceId][index]["rating"]>=3){
+                $('#modal-container > blockquote').css('border-left', 'border-left:2px solid #5c9a6f');
+            }
+        }
+
+        function less() {
+            document.documentElement.style.overflow = 'scroll';
+            const e = document.getElementById("modal-container");
+            let child = e.lastElementChild;
+            while (child) {
+                e.removeChild(child);
+                child = e.lastElementChild;
+            }
+        }
+    </script>
 @endpush
 
 
