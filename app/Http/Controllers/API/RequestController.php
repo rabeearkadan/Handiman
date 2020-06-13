@@ -442,7 +442,8 @@ class RequestController extends Controller
     function reschedule($id, Request $req)
     {
         $request = RequestService::query()->find($id);
-        $request->rescheduled_date = Carbon::createFromFormat('Y-m-d', $req->input('date'), $request->timezone);
+        $request->rescheduled_date = Carbon::create($req->input('date'));
+
         $request->rescheduled_from = $req->input('from');
         $request->rescheduled_to = $req->input('to');
         $request->rescheduled = true;
