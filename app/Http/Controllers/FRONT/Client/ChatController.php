@@ -17,7 +17,7 @@ class ChatController extends Controller
         $user = Auth::user();
         $request = RequestService::query()->find($id);
         $messages = $request->messages;
-            return view('front.client.request.chat',compact(['messages','request','user']));
+        return view('front.employee.chat',compact(['messages','request','user']));
     }
 
 
@@ -68,10 +68,12 @@ class ChatController extends Controller
         $messages =array();
         for($index=0;$index<sizeof($msg);$index++){
             if($msg[$index]['from']['_id'] != $user->id){
-               array_push($messages,$msg[$index]);
+                array_push($messages,$msg[$index]);
             }
         }
-
+        if($messages == []){
+            return response()->json(['status'=>'failed','messages' => $messages ]);
+        }
         return response()->json(['status'=>'success','messages' => $messages ]);
     }
 
@@ -86,5 +88,6 @@ class ChatController extends Controller
         event(new NotificationSenderEvent($notification));
         return response()->json(['status' => 'success', 'notification' => $notification]);
     }
+
 
 }
