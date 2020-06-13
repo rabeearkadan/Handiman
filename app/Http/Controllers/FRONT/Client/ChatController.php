@@ -60,7 +60,7 @@ class ChatController extends Controller
         $nbOfMessages--;
         $msg = $requestService->messages;
         if($msg == null){
-            return response()->json(['status'=>'failed','messages' => $messages ]);
+            return response()->json(['status'=>'failed' ]);
         }
         $messages =array();
         for($index=0;$index<sizeof($msg);$index++){
@@ -69,7 +69,7 @@ class ChatController extends Controller
             }
         }
         if($messages == []){
-            return response()->json(['status'=>'failed','messages' => $messages ]);
+            return response()->json(['status'=>'failed' ]);
         }
         return response()->json(['status'=>'success','messages' => $messages ]);
     }
