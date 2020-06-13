@@ -58,7 +58,7 @@ class ReviewsController extends Controller
         //
         $request->validate([
             'title' => 'required',
-            'body' => 'required|email',
+            'body' => 'required',
             'rating' => 'required',
         ]);
         $requestService = RequestService::findOrFail($id);
