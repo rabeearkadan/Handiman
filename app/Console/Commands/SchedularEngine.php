@@ -34,6 +34,7 @@ class SchedularEngine extends Command
             }
         }
     }
+
     private function searchForHandyman(RequestService $requestHandyman)
     {
         $list = Service::query()->where('_id', $requestHandyman->service_id)->first();
@@ -61,22 +62,22 @@ class SchedularEngine extends Command
             $var--;
         }
         $count = 0;
-            foreach ($availableUsers as $handyman) {
-                $flag1 = $this->checkTimeline($requestHandyman->from, $requestHandyman->to, $var, $handyman);
-                $flag2 = $this->checkRequests($handyman, $requestHandyman->date, $requestHandyman->from, $requestHandyman->to);
-                if ($flag1 && $flag2) {
-                    if ($requestHandyman->isurgent == true) {
-                        $employee = User::query()->find($handyman->id);
-                        $requestHandyman->employees()->attach($employee);
-                        $count++;
-                        $this->Notification($employee->employee_device_token, 'Admin', 'You received a new request', 'request');
-                    } else {
-                        $count = -1;
-                        $requestHandyman->employees()->attach($handyman);
-                        $employee = User::query()->find($handyman->id);
-                        $this->Notification($employee->employee_device_token, 'Admin', 'You received an urgent request', 'request');
-                        break;
-                    }
+        foreach ($availableUsers as $handyman) {
+            $flag1 = $this->checkTimeline($requestHandyman->from, $requestHandyman->to, $var, $handyman);
+            $flag2 = $this->checkRequests($handyman, $requestHandyman->date, $requestHandyman->from, $requestHandyman->to);
+            if ($flag1 && $flag2) {
+                if ($requestHandyman->isurgent == true) {
+                    $employee = User::query()->find($handyman->id);
+                    $requestHandyman->employees()->attach($employee);
+                    $count++;
+                    $this->Notification($employee->employee_device_token, 'Admin', 'You received a new request', 'request');
+                } else {
+                    $count = -1;
+                    $requestHandyman->employees()->attach($handyman);
+                    $employee = User::query()->find($handyman->id);
+                    $this->Notification($employee->employee_device_token, 'Admin', 'You received an urgent request', 'request');
+                    break;
+                }
 
             }
             $client = User::query()->find($requestHandyman->client_ids[0]);
@@ -123,7 +124,7 @@ class SchedularEngine extends Command
         $hours = [];
         for ($i = (Integer)$from; $i < (Integer)$to; $i++) {
             array_push($hours, $i);
-        }
+        }Client
         $handyman = User::query()->find($handyman->id);
         $requests = $handyman->employeeRequests()->where('idone', 'false')->get();
         foreach ($requests as $request) {

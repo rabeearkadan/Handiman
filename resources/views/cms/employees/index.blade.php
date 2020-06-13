@@ -5,7 +5,7 @@
     <div class="row">
         <div class="col-lg-12">
             <div class="main-card mb-3 card">
-                <div class="card-body"><h5 class="card-title">Clients Table</h5>
+                <div class="card-body"><h5 class="card-title">Handyman Table</h5>
 
                     {{--                    <button class="mb-2 mr-2 btn btn-primary" onclick="location.href='{{route('service.create')}}'">Add--}}
                     {{--                        New Service--}}

@@ -62,8 +62,6 @@ class LoginController extends Controller
         $res = $this->validateLogin($request);
         Log::info($res);
         if ($this->attemptLogin($request)) {
-
-            // check
             $user = Auth::user();
             $user->online = true;
             if (($user->role == 'user' && ($request->input('role') == 'employee'))
@@ -76,7 +74,6 @@ class LoginController extends Controller
                 $user->role = 'user_employee';
                 $user->save();
             }
-
             $token = Str::random(300);
             $request->user()->forceFill([
                 'api_token' => $token
