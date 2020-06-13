@@ -230,19 +230,21 @@
                                                 </span>
                                             <span class="we-customer-review__separator">, </span>
                                             <time aria-label="May 00, 2020" class="we-customer-review__date">
-                                                00/00/2020
+                                                {{$feedback['date']}}
                                             </time>
                                         </div>
                                         <h3 class="we-truncate we-truncate--single-line ember-view we-customer-review__title">
-                                            Title
+                                            {{$feedback['title']}}
                                         </h3>
                                         <blockquote class="we-truncate we-truncate--multi-line we-truncate--interactive we-truncate--truncated ember-view we-customer-review__body" @if($feedback['rating']>=3)style="border-left:2px solid #5c9a6f"@endif>
                                             <div class="we-clamp ember-view">
-                                                <p>Review</p>
+                                                <p>{{$feedback['body']}}</p>
                                             </div>
-{{--                                            <button onclick="more('{{$service->id}}',{{$loop->index}})" class="we-truncate__button link">--}}
-{{--                                                more--}}
-{{--                                            </button>--}}
+                                            @if(strlen($feedback['body'])>23)
+                                            <button onclick="more('{{$service->id}}',{{$loop->index}})" class="we-truncate__button link">
+                                                more
+                                            </button>
+                                                @endif
                                         </blockquote><!---->
                                     </div>
                                 </div>
@@ -536,6 +538,7 @@
                 '</div><div class="overlay"></div>';
             if(feedbacks[serviceId][index]["rating"]>=3){
                 $('#modal-container > blockquote').css('border-left', 'border-left:2px solid #5c9a6f');
+                $('.we-customer-review__body--modal').css('border-left', 'border-left:2px solid #5c9a6f');
             }
         }
 
