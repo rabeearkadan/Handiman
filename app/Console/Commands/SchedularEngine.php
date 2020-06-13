@@ -124,7 +124,7 @@ class SchedularEngine extends Command
         $hours = [];
         for ($i = (Integer)$from; $i < (Integer)$to; $i++) {
             array_push($hours, $i);
-        }Client
+        }
         $handyman = User::query()->find($handyman->id);
         $requests = $handyman->employeeRequests()->where('idone', 'false')->get();
         foreach ($requests as $request) {
