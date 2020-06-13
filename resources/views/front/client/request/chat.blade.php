@@ -62,10 +62,17 @@
                 data: {numberOfMessages: numberOfMessages, _token: '{{csrf_token()}}'},
                 success: function (data) {
                     if (data.status === "success") {
+                        var image;
                         for (var index = numberOfMessages; index < data.messages.length; index++) {
+                            if( data.messages[index]['from']['image']==null){
+                                image= "/public/images/employee/profile-image.png";
+                            }
+                            else{
+                                 image=  "/storage/app/public/"+data.messages[index]['from']['image'];
+                            }
                             $(".msg_history").append('<div class="incoming_msg">' +
                                 '<div class="incoming_msg_img">' +
-                                '<img src="/storage/app/public/' + data.messages[index]['from']['image'] + '" alt="employee">' +
+                                '<img src="' + image+ '" alt="employee">' +
                                 '  </div>' +
                                 '<div class="received_msg">' +
                                 '<div class="received_withd_msg">' +
