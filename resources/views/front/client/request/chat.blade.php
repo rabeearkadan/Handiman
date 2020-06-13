@@ -52,14 +52,18 @@
         const messages = document.getElementsByClassName('msg_history');
         function update() {
             var numberOfMessages = document.getElementsByClassName('incoming_msg').length;
+            console.log('nb');
             // shouldScroll = messages.scrollTop + messages.clientHeight === messages.scrollHeight;
             $.ajax({
                 type: 'GET',
                 url: "{{ route('client.chat.new',$request->id) }}",
                 data: {numberOfMessages: numberOfMessages, _token: '{{csrf_token()}}'},
                 success: function (data) {
+                    console.log('fn');
                     if (data.status === "success") {
+                        console.log('s');
                         for (var index = numberOfMessages; index < data.messages.length; index++) {
+                            console.log('f');
                             $(".msg_history").append('<div class="incoming_msg">' +
                                 '<div class="incoming_msg_img">' +
                                 '<img src="/storage/app/public/' + data.messages[index]['from']['image'] + '" alt="employee">' +
@@ -71,6 +75,7 @@
                                 '</div>\n' +
                                 '</div>');
                         }
+                        console.log('a');
                     }
                 }
             });
@@ -97,12 +102,14 @@
                     url: "{{ route('employee.chat.send',$request->id) }}",
                     data: {message: message, _token: '{{csrf_token()}}'},
                     success: function (data) {
+                        console.log('s');
                         $(".msg_history").append(' <div class="outgoing_msg">' +
                             '<div class="sent_msg">' +
                             '<p>' + data.message + '</p>' +
                             '<span class="time_date">' + data.date + '</span> </div>\n' +
                             '</div>');
                         $("#message").val('');
+                        console.log('s2');
                     }
                 });
             }
