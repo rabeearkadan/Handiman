@@ -202,6 +202,7 @@ class ProfileController extends Controller
                     'rating' => $request->rating,
                     'title' => $request->feedback[0]['title'],
                     'body' => $request->feedback[0]['body'],
+                    'date' => $request->updated_at->format('d/m/y'),
                     'client' => [
                         'name' => $client->name,
                         'image' => $client->image,

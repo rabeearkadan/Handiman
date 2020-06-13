@@ -259,6 +259,7 @@
                     @endif
                 </div>
 
+
                 @foreach($employee->services as $employee_service)
                     <div>
                     <div class="reviewservice" style="display: none">{{$employee_service->name}}</div>
