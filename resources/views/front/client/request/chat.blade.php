@@ -74,9 +74,9 @@
                     }
                 }
             });
-            if (!shouldScroll) {
-                scrollToBottom();
-            }
+            // if (!shouldScroll) {
+            //     scrollToBottom();
+            // }
             setTimeout(update, 3000);
         }
 
