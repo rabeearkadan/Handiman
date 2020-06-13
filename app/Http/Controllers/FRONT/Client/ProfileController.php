@@ -206,7 +206,8 @@ class ProfileController extends Controller
                     'client' => [
                         'name' => $client->name,
                         'image' => $client->image,
-                    ]
+                    ],
+                    'service_id'=> $request->service_id
                 ]);
                 $counter++;
             }

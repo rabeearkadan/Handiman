@@ -241,7 +241,7 @@
                                                 <p>{{$feedback['body']}}</p>
                                             </div>
                                             @if(strlen($feedback['body'])>23)
-                                            <button onclick="more('{{$service->id}}',{{$loop->index}})" class="we-truncate__button link">
+                                            <button onclick="more('{{$feedback['service_id']}}',{{$loop->index}})" class="we-truncate__button link">
                                                 more
                                             </button>
                                                 @endif
