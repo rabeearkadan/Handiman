@@ -520,7 +520,7 @@
             document.documentElement.style.overflow = 'hidden';
             var blockquoteStyle ="";
             if(feedbacks[serviceId][index]["rating"]>=3){
-                blockquoteStyle = 'style="border-left:border-left:2px solid #5c9a6f;"';
+                blockquoteStyle = 'style="border-left:2px solid #5c9a6f;"';
             }
             document.getElementById('modal-container').innerHTML = ' <div class="we-modal  we-modal--open" role="dialog">' +
                 '<div class="we-modal__content large-10 medium-12 we-modal__content--review" >' +
