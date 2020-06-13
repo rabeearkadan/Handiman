@@ -63,8 +63,7 @@ class ReviewsController extends Controller
         ]);
         $requestService = RequestService::findOrFail($id);
         $requestService->rating = $request->rating;
-        $requestService->feedback['title'] = $request->title;
-        $requestService->feedback['body'] = $request->body;
+        $requestService->push('feedback',['title' => $request->title, 'body' => $request->body]);
         $requestService->save();
         return redirect()->route('client.reviews.index');
     }
