@@ -196,7 +196,7 @@
                 onOpen: function () {
                     var instance = M.Datepicker.getInstance($('.datepicker'));
                     instance.options.minDate = new Date();
-                    instance.options.maxDate = new Date(year + 1);
+                    instance.options.maxDate = new Date(instance.options.minDate + 1);
 
                     instance.options.format = 'mm/dd/yyyy'
                 }
