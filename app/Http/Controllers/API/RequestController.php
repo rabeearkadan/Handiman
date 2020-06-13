@@ -445,8 +445,10 @@ class RequestController extends Controller
     {
         $request = RequestService::query()->find($id);
         $request->isdone = true;
-        $request->feedback[0]['body'] = $req->input('feedback');
-        $request->feedback[0]['title'] = 'title';
+        $feedback = [];
+        $feedback[0]['body'] = $req->input('feedback');
+        $feedback[0]['title'] = $req->input('feedback');
+        $request->feedback = $feedback;
         $request->rating = (double)$req->input('rating');
         $request->save();
 
