@@ -197,14 +197,12 @@
                                             {{$request->subject}}<br>
                                             {{$request->description}}
                                         </div>
-                                        @if($request->ispaid == true)
                                         <div class="col-sm-4">
                                             <h4>Service</h4>
 
                                             <strong>Duration:</strong> {{$request->to - $request->from}}<br>
                                             <strong>SubTotal:</strong> {{($request->to-$request->from)*$request->price}}<br>
                                         </div>
-                                        @endif
                                     </div>
                                 </div><!-- /.invoice-info -->
                                 <div class="table-responsive">
@@ -233,12 +231,12 @@
                                 <div class="invoice-summary clearfix">
                                     <dl class="dl-horizontal pull-right">
                                         <dt>Grand Total:</dt>
-                                        <dd>{{$request->total}}</dd>
+                                        <dd>{{$request->total + ($request->to-$request->from)*$request->price}}</dd>
                                     </dl>
                                     @if($request->ispaid == false)
                                         <form action="{{route('client.invoice.store',$request->id)}}" method="post" id="payment-form">
                                             @csrf
-                                            <input type="hidden" name="total" value="{{$request->total}}">
+                                            <input type="hidden" name="total" value="{{$request->total + ($request->to-$request->from)*$request->price}}">
                                             <div class="form-group">
                                                 <div class="card-header">
                                                     <label for="card-element">
