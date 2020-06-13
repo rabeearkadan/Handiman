@@ -91,7 +91,7 @@
                         <div class="form-group col-sm-6">
                             <label for="address_name">Address Name, this will be displayed when choosing your location in a
                                 request </label>
-                            <input type="text" class="form-control" name="name" id="address_name" value="{{$address['type']}}" placeholder="Home Beirut">
+                            <input type="text" class="form-control" name="name" id="address_name" value="{{$address['name']}}" placeholder="Home Beirut">
                         </div>
                     </div>
                     <div class="map-position">
