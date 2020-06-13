@@ -74,13 +74,13 @@
                                                         </div>
                                                         <div class="row">
                                                             <div class="input-field col s12">
-                                                                <input disabled value="{{$request->feedback['title']}}" id="disabledTitle{{$request->id}}" type="text" class="validate">
+                                                                <input disabled value="{{$request->feedback[0]['title']}}" id="disabledTitle{{$request->id}}" type="text" class="validate">
                                                                 <label for="disabled{{$request->id}}">Title</label>
                                                             </div>
                                                         </div>
                                                         <div class="row">
                                                             <div class="input-field col s12">
-                                                                <input disabled value="{{$request->feedback['body']}}" id="disabledBody{{$request->id}}" type="text" class="validate">
+                                                                <input disabled value="{{$request->feedback[0]['body']}}" id="disabledBody{{$request->id}}" type="text" class="validate">
                                                                 <label for="disabledBody">Disabled</label>
                                                             </div>
                                                         </div>
