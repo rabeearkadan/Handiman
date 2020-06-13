@@ -14,8 +14,12 @@
                                 @if($message['from']['_id'] != $user->id)
                                     <div class="incoming_msg">
                                         <div class="incoming_msg_img">
+                                            @isset($message['from']['image'])
                                             <img src="{{config('image.path').$message['from']['image']}}"
-                                                 alt="employee">
+                                                 alt="client">
+                                            @else
+                                                <img src="/public/images/client/profile-image.png" alt="client">
+                                            @endisset
                                         </div>
                                         <div class="received_msg">
                                             <div class="received_withd_msg">
