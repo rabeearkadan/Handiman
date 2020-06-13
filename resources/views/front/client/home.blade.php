@@ -30,7 +30,7 @@
                                 </div><!-- /.page-title -->
                                 <div class="chips chips-autocomplete"></div>
 
-                                @if(!$posts->isEmpty())
+                                @isset($posts)
                                     <div class="posts">
                                         <div id="posts-list">
                                             <div class="list">
@@ -96,7 +96,7 @@
                                 @else
                                     <h3> No posts yet</h3>
                                     <img class="img-fluid" src="/public/images/client/no-posts.png" alt="no posts">
-                                @endif
+                                @endisset
                             </div><!-- /.content -->
                         </div><!-- /.col-* -->
                     </div><!-- /.row -->
