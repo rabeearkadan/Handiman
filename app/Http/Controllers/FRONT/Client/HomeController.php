@@ -23,7 +23,7 @@ class HomeController extends Controller
      */
     public function index(Request $request)
     {
-        $posts = Post::orderBy('created_at', 'desc')->take(0)->get();
+        $posts = Post::orderBy('created_at', 'desc')->get();
         $services = Service::all();
         if($request->input('logged') == true) {
             $logged = $request->input('logged');
