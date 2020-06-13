@@ -71,7 +71,9 @@ class ChatController extends Controller
                array_push($messages,$msg[$index]);
             }
         }
-
+        if($messages == []){
+            return response()->json(['status'=>'failed','messages' => $messages ]);
+        }
         return response()->json(['status'=>'success','messages' => $messages ]);
     }
 
