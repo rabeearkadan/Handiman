@@ -235,12 +235,13 @@ class ProfileController extends Controller
         $user = Auth::user();
         $data = [
             "_id" => Str::random(24),
-            "location" => [$request->lng, $request->lat],
+            "location" => [(float)$request->lng, (float)$request->lat],
             "street" => $request->street,
             "building" => $request->building,
             "zip" => $request->zip,
         ];
         $user->employee_address = $data;
+        $user->location = [(float)$request->lng,(float) $request->lat];
         $user->save();
         return redirect()->route('employee.profile');
     }
