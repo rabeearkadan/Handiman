@@ -80,8 +80,8 @@
                                                         </div>
                                                         <div class="row">
                                                             <div class="input-field col s12">
-                                                                <input disabled value="{{$request->feedback[0]['body']}}" id="disabledBody{{$request->id}}" type="text" class="validate">
-                                                                <label for="disabledBody">Disabled</label>
+                                                                <textarea  class="materialize-textarea" id="disabledBody{{$request->id}}" disabled>{{$request->feedback[0]['body']}}</textarea>
+                                                                <label for="disabledBody">Body</label>
                                                             </div>
                                                         </div>
                                                     @else
@@ -167,8 +167,6 @@
     <script>
         var options = {
             valueNames: ['services'],
-            page: 20,
-            pagination: true
         };
         var reviewsList = new List('reviews-list', options);
 
