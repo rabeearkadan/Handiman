@@ -155,8 +155,8 @@
                                             </h2>
                                         </div>
                                         <div class="col-sm-10">
-                                            <h3>Address:</h3>
-                                            <h3>Rating:</h3>
+                                            <h3>price: ${{$employee->price}}/hr</h3>
+                                            <h3>gender: {{$employee->gender}}</h3>
                                             <input type="hidden" name="employee_id" value="{{$employee->id}}">
                                             {{--                                            <input type="hidden" name="service_id" value="{{$service->id}}">--}}
                                         </div>
