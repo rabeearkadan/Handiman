@@ -28,7 +28,7 @@ class SendNotification
     /**
      * Handle the event.
      *
-     * @param  object  $event
+     * @param object $event
      * @return void
      */
     public function handle(NotificationSenderEvent $event)
@@ -38,17 +38,15 @@ class SendNotification
     }
 
 
-
-    public function sendOneNotification( $event )
+    public function sendOneNotification($event)
     {
-
 
 
         $notificationData = $event->notification;
 
         $notification = new Notification();
-        foreach ( $notificationData as $k => $v){
-            $notification->{$k}= $v;
+        foreach ($notificationData as $k => $v) {
+            $notification->{$k} = $v;
         }
         $notification->save();
 
@@ -56,7 +54,7 @@ class SendNotification
             $optionBuiler = new OptionsBuilder();
             $optionBuiler->setTimeToLive(60 * 20);
 
-            $notificationBuilder = new PayloadNotificationBuilder('HandiMan');
+            $notificationBuilder = new PayloadNotificationBuilder('Genie');
 
             $notificationBuilder->setBody($event->notification['message'])
                 ->setSound('default');
