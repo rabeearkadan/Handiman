@@ -64,6 +64,7 @@
                         console.log('s');
                         for (var index = numberOfMessages; index < data.messages.length; index++) {
                             console.log('f');
+                            console.log(data);
                             $(".msg_history").append('<div class="incoming_msg">' +
                                 '<div class="incoming_msg_img">' +
                                 '<img src="/storage/app/public/' + data.messages[index]['from']['image'] + '" alt="employee">' +
@@ -110,6 +111,8 @@
                             '</div>');
                         $("#message").val('');
                         console.log('s2');
+                        console.log(data);
+                        console.log('s2e');
                     }
                 });
             }
