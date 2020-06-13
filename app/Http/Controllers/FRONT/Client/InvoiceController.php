@@ -101,7 +101,7 @@ class InvoiceController extends Controller
             $job->report = 'reports/pdf/' . $file_name . '.pdf';
             $job->save();
             $employee->save();
-//            $this->stringToPDF($file_name, $job);
+            $this->stringToPDF($file_name, $job);
             return redirect()->route('client.invoice.index');
         }
 
