@@ -191,7 +191,7 @@ class CalendarController extends Controller
         }
         $rescheduleOptimum =array();
 
-        $date=$startDate;
+        $date=new DateTime('now');
         $optimum =999999;
         $chosenSlot=null;
         for($searchSpan=0;$searchSpan<10;$searchSpan++){
