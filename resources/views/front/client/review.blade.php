@@ -68,7 +68,7 @@
                                                         <div class="row">
                                                             <div class="col-sm-12">
                                                                 @for($index=0;$index<$request->rating;$index++)
-                                                                    <i class="large material-icons">stars</i>
+                                                                    <i class="small material-icons">stars</i>
                                                                     @endfor
                                                             </div>
                                                         </div>
