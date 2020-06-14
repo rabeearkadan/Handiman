@@ -23,7 +23,7 @@
                                     <div class="testimonial">
                                         <div class="testimonial-image">
                                             @if($feedback['client']['image'] != null)
-                                            <img src="{{config('image.path')}}.{{$feedback['client']['image']}}" alt="client">
+                                            <img src="{{config('image.path').$feedback['client']['image']}}" alt="client">
                                                 @else
                                                 <img src="/public/images/client/profile-image.png" alt="client">
 
