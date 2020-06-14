@@ -74,7 +74,7 @@ class CalendarController extends Controller
             $index++;
         }
         $job->receipt = $receipt;
-        $job->total = $total + ($request->price *($request->to - $request->from)) ;
+        $job->total = $total + ($job->price *($job->to - $job->from)) ;
         $requestReceiptImages = $request->file('receiptImages');
         $receipt_images = array();
         foreach ($requestReceiptImages as $image) {
