@@ -80,6 +80,7 @@ class HomeController extends Controller
             ])->orderBy('dist.calculated')
             ->get();
         $availableTimes = array();
+        $timeline=array();
         if ($request->availableTimes != null) {
             foreach ($request->availableTimes as $availableTime) {
                 $elements = explode(', ', $availableTime);
@@ -112,12 +113,12 @@ class HomeController extends Controller
                     foreach ($employee->employeeRequests as $employeeRequest) {
                         if ($employeeRequest->isdone == false & $employeeRequest->date->format('m/d/Y') == $available['date']) {
                             for ($from = $employeeRequest->from; $from < $employeeRequest->to; $from++) {
-                                $employee->timeline[$day][$from] = false;
+                               $timeline[$employee->id][$day][$from] = false;
                             }
                         }
                     }
                     for ($from = $available['from']; $from < $available['to']; $from++) {
-                        if ($employee->timeline[$day][$from] == false) {
+                        if ($timeline[$employee->id][$day][$from] == false) {
                             unset($employees[$index]);
                         }
                     }
