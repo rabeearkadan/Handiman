@@ -215,10 +215,10 @@ class CalendarController extends Controller
                     foreach ($employee->employeeRequests as $employeeRequest) {
                         if ($employeeRequest->isdone == false && $employeeRequest->date->format('m/d/Y') == $date->format('m/d/Y')) {
                             if($employeeRequest->from ==  $timeSlot['to']){
-                                $travelFrom=$this->distance($employeeRequest->client_address->location[1],$employeeRequest->client_address->location[0], $job->client_address->location[1], $job->client_address->location[0]);
+                                $travelFrom=$this->distance($employeeRequest->client_address['location'][1],$employeeRequest->client_address['location'][0], $job->client_address['location'][1], $job->client_address['location'][0]);
                             }
                             if($employeeRequest->to == $timeSlot['from']){
-                                $travelTo=$this->distance($employeeRequest->client_address->location[1],$employeeRequest->client_address->location[0], $job->client_address->location[1], $job->client_address->location[0]);
+                                $travelTo=$this->distance($employeeRequest->client_address['location'][1],$employeeRequest->client_address['location'][0], $job->client_address['location'][1], $job->client_address['location'][0]);
                             }
                         }
                     }
@@ -255,10 +255,10 @@ class CalendarController extends Controller
                         foreach ($employee->employeeRequests as $employeeRequest) {
                             if ($employeeRequest->isdone == false && $employeeRequest->date->format('m/d/Y') == $date->format('m/d/Y')) {
                                 if($employeeRequest->from ==  $timeSlot['to']){
-                                  $travelFrom=$this->distance($employeeRequest->client_address->location[1],$employeeRequest->client_address->location[0], $job->client_address->location[1], $job->client_address->location[0]);
+                                  $travelFrom=$this->distance($employeeRequest->client_address['location'][1],$employeeRequest->client_address['location'][0], $job->client_address['location'][1], $job->client_address['location'][0]);
                                 }
                                 if($employeeRequest->to == $timeSlot['from']){
-                                    $travelTo=$this->distance($employeeRequest->client_address->location[1],$employeeRequest->client_address->location[0], $job->client_address->location[1], $job->client_address->location[0]);
+                                    $travelTo=$this->distance($employeeRequest->client_address['location'][1],$employeeRequest->client_address['location'][0], $job->client_address['location'][1], $job->client_address['location'][0]);
 
                                 }
                             }
