@@ -31,14 +31,14 @@
                                         </div><!-- /.testimonial-image -->
                                         <div class="testimonial-inner">
                                             <div class="testimonial-title">
-                                                <h2> Title </h2>
+                                                <h2> {{$feedback['title']}} </h2>
                                                 <div class="testimonial-rating">
                                                     @for($index=0;$index<$feedback['rating'];$index++)
                                                     <i class="fa fa-star"></i>
                                                     @endfor
                                                 </div><!-- /.testimonial-rating -->
                                             </div><!-- /.testimonial-title -->
-                                            Content
+                                            {{$feedback['body']}}
                                             <div class="testimonial-sign">- {{$feedback['client']['name']}}</div><!-- /.testimonial-sign -->
                                         </div><!-- /.testimonial-inner -->
                                     </div><!-- /.testimonial -->

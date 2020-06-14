@@ -51,7 +51,8 @@ class HomeController extends Controller
                     $client = User::find($request->client_ids[0]);
                     array_push($feedbacks, [
                         'rating' => $request->rating,
-                        'feedback' => $request->feedback,
+                        'title' => $request->feedback[0]['title'],
+                        'body' => $request->feedback[0]['body'],
                         'client' => [
                             'name' => $client->name,
                             'image' => $client->image,
