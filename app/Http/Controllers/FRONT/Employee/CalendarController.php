@@ -119,7 +119,7 @@ class CalendarController extends Controller
         return $arr;
     }
 
-    public function requestReschedule($id){
+    public function createReschedule($id){
         $employee = Auth::user();
         $job = RequestService::findOrFail($id);
         $duration = $job->to - $job->from;
@@ -281,7 +281,7 @@ class CalendarController extends Controller
             $date->modify('+1 day');
         }
 
-dd($chosenSlot);
+dd($chosenSlot,$optimum);
 
 
         return view('front.employee.jobs.show', compact(['job', 'client', 'service','reschedule','rescheduleOptions']));

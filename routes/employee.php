@@ -23,6 +23,7 @@ Route::group(['middleware' => 'employeeProfile'], function () {
     Route::get("/calendar", 'CalendarController@index')->name('employee.calendar');
     Route::get("/calendar/{id}/show", 'CalendarController@show')->name('employee.calendar.show');
     Route::post("/calendar/{id}/receipt", 'CalendarController@addReceipt')->name('employee.calendar.add.receipt');
+    Route::get("/calendar/{id}/reschedule", 'CalendarController@createReschedule')->name('employee.calendar.create.reschedule');
 
 
     //chat
