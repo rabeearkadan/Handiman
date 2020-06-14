@@ -201,6 +201,11 @@ class CalendarController extends Controller
                 }
             }
             foreach($timepicker[$date->format('m/d/Y')] as $timeSlot){
+                foreach($rejectedDates as $rejectedDate){
+                    if($rejectedDate == $date->format('m/dY')){
+                        continue;
+                    }
+                }
                 $travelFrom=0;
                 $travelTo=0;
                 $travel=0;
