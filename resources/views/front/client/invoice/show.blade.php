@@ -231,12 +231,12 @@
                                 <div class="invoice-summary clearfix">
                                     <dl class="dl-horizontal pull-right">
                                         <dt>Grand Total:</dt>
-                                        <dd>{{$request->total + ($request->to-$request->from)*$request->price}}</dd>
+                                        <dd>{{$request->total}}</dd>
                                     </dl>
                                     @if($request->ispaid == false)
                                         <form action="{{route('client.invoice.store',$request->id)}}" method="post" id="payment-form">
                                             @csrf
-                                            <input type="hidden" name="total" value="{{$request->total + ($request->to-$request->from)*$request->price}}">
+                                            <input type="hidden" name="total" value="{{$request->total }}">
                                             <div class="form-group">
                                                 <div class="card-header">
                                                     <label for="card-element">
