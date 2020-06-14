@@ -196,13 +196,13 @@ class CalendarController extends Controller
         $chosenSlot=null;
         for($searchSpan=0;$searchSpan<10;$searchSpan++){
             foreach($rejectedDates as $rejectedDate){
-                if($rejectedDate == $date->format('m/dY')){
+                if($rejectedDate == $date->format('m/d/Y')){
                     continue;
                 }
             }
             foreach($timepicker[$date->format('m/d/Y')] as $timeSlot){
                 foreach($rejectedDates as $rejectedDate){
-                    if($rejectedDate == $date->format('m/dY')){
+                    if($rejectedDate == $date->format('m/d/Y')){
                         continue;
                     }
                 }
