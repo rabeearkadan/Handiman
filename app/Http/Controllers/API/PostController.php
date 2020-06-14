@@ -30,7 +30,7 @@ class PostController extends Controller
 
     public function getPosts()
     {
-        $posts = Post::all();
+        $posts = Post::orderBy('created_at', 'desc')->get();
         $post = $posts->map(function ($item) {
             $item->handyman = User::query()->find($item->user_ids[0])->SimplifiedArray();
             return $item;

@@ -12,9 +12,10 @@ class RequestService extends Eloquent
     protected $table = 'requests';
 
     protected $casts = [
-        'date' => 'datetime',
+        'date' => 'datetime', 'rescheduled_date' => 'datetime'
 
     ];
+
     public function users()
     {
         return $this->belongsToMany(User::class);

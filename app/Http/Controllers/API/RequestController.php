@@ -442,13 +442,39 @@ class RequestController extends Controller
     function reschedule($id, Request $req)
     {
         $request = RequestService::query()->find($id);
-        $request->date = Carbon::createFromFormat('Y-m-d', $req->input('date'), $request->timezone);
-        $request->from = $req->input('from');
-        $request->to = $req->input('to');
+        $request->rescheduled_date = Carbon::createFromFormat('Y-m-d', $req->input('date'), $request->timezone);;
+        $request->rescheduled_from = $req->input('from');
+        $request->rescheduled_to = $req->input('to');
+        $request->rescheduled = true;
         $client = User::query()->find($request->client_ids[0]);
         $this->notification(($client->client_device_token), (Auth::user()->name), 'The Handyman requested a reschedule', 'request');
 
         $request->save();
+        return response()->json(['status' => 'success']);
+    }
+
+    public function replyToReschedule($id, Request $req)
+    {
+        $request = RequestService::query()->find($id);
+        if ($req->input('reschedule') == "accept") {
+            $request->from = $request->rescheduled_from;
+            $request->to = $request->rescheduled_to;
+            $request->date = $request->rescheduled_date;
+
+            $request->rescheduled = false;
+            $request->save();
+
+        } else if ($req->input('reschedule') == "rejected") {
+            $request->push('rejected_employees', $req->employee_ids[0]);
+            $request->isurgent = true;
+            $request->rescheduled = false;
+            $request->save();
+            $employee = User::find($request->employee_ids[0]);
+            $this->Notification($employee->employee_device_token, 'Admin', ' Your rescheduling request was rejected', 'request');
+            $req->employees()->detach($employee);
+
+        }
+        return response()->json(['status' => 'success']);
     }
 
     public

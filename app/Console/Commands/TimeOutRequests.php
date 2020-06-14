@@ -39,32 +39,22 @@ class TimeOutRequests extends Command
      *
      * @return mixed
      */
-    public function handle()
-    {
-
+    public function handle(){
         $requests = RequestService::query()->where('status', 'pending')->get();
-
         $nowTime = Carbon::now();
         foreach ($requests as $req) {
             $duration = $nowTime->diffInMinutes($req->updated_at);
-
-
             if ($req->employees()->count() > 0) {
                 $client = User::query()->find($req->client_ids[0]);
                 $handyman = User::query()->find($req->employee_ids[0]);
                 $client_device = $client->client_device_token;
                 $this->Notification($client_device, 'Admin', $duration, 'notification');
-
                 $handyman_device = $handyman->employee_device_token;
-
                 if ($duration > 30) {
-
-
                     $req->push('rejected_employees', $req->employee_ids[0]);
                     $this->Notification($handyman_device, 'Admin', $duration, 'notification');
                     $employee = User::find($req->employee_ids[0]);
                     $req->employees()->detach($employee);
-
                     if ($employee->rejects == null) {
                         $employee->rejects = 1;
                         $employee->save();
@@ -74,13 +64,11 @@ class TimeOutRequests extends Command
                         $employee->rejects = $rejects;
                         $employee->save();
                     }
-
                     foreach ($handyman->employee_request_ids as $s) {
                         if ($s != $req->id)
                             $employee_request_ids [] = $s;
                     }
                     $handyman->employeeRequests()->sync($employee_request_ids);
-
                 } else if ($duration >= 20 && $duration <= 30) {
                     $this->Notification($handyman_device, 'Admin', 'You have less than 10 minutes to reply for pending requests', 'notification');
 
