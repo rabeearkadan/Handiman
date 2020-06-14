@@ -130,7 +130,7 @@ class CalendarController extends Controller
         $timepicker = array();
         $span = array();
         $rejectedDates=array();
-        for ($x = 0; $x < 24; $x++) {
+        for ($x = 0; $x < 30; $x++) {
             $day = date('w', strtotime($date->format('Y-m-d')));
             $day--;
             if($day==-1){
@@ -189,7 +189,6 @@ class CalendarController extends Controller
             $bool = false;
             $date->modify('+1 day');
         }
-        dd($timepicker);
         $rescheduleOptimum =array();
 
         $date=$startDate;
