@@ -40,7 +40,11 @@
                         <div id="{{$urgentRequest->id}}client">
                             <ul class="collection" style="overflow:scroll">
                                 <li class="collection-item avatar">
+                                    @if($urgentRequest->client->image != null)
                                     <img src="{{config('image.path').$urgentRequest->client->image}}" alt="" class="circle">
+                                    @else
+                                        <img src="/public/images/client/profile-image.png" alt="" class="circle">
+                                    @endif
                                     <span class="title">{{$urgentRequest->client->name}}
                                     </span>
                                     <p> <i class="material-icons">call</i> {{$urgentRequest->client->phone}}
@@ -121,7 +125,11 @@
             <div id="{{$request->id}}client">
                 <ul class="collection" style="overflow:scroll">
                     <li class="collection-item avatar">
-                            <img src="{{config('image.path').$request->client->image}}" alt="" class="circle">
+                        @if($urgentRequest->client->image != null)
+                            <img src="{{config('image.path').$urgentRequest->client->image}}" alt="" class="circle">
+                        @else
+                            <img src="/public/images/client/profile-image.png" alt="" class="circle">
+                        @endif
                             <span class="title">{{$request->client->name}}
 
                             </span>
