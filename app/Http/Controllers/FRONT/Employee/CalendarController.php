@@ -294,6 +294,9 @@ class CalendarController extends Controller
                 break;
             }
             $date->modify('+1 day');
+            if($date->format('m/d/Y')=='06/20/2020'){
+                break;
+            }
         }
 
 dd($chosenSlot,$optimum);
