@@ -129,6 +129,7 @@ class CalendarController extends Controller
         $bool = false;
         $timepicker = array();
         $span = array();
+        $rejectedDates=array();
         for ($x = 0; $x < 24; $x++) {
             $day = date('w', strtotime($date->format('Y-m-d')));
             $day--;
@@ -162,6 +163,7 @@ class CalendarController extends Controller
                 }
             }
             if ($bool == false) {
+                array_push($rejectedDates,$date->format('m/d/Y'));
                 unset($Days[$date->format('m/d/Y')]);
             } else {
                 $timepicker[$date->format('m/d/Y')] = array();
@@ -194,6 +196,11 @@ class CalendarController extends Controller
         $optimum =999999;
         $chosenSlot=null;
         for($searchSpan=0;$searchSpan<10;$searchSpan++){
+            foreach($rejectedDates as $rejectedDate){
+                if($rejectedDate == $date->format('m/dY')){
+                    continue;
+                }
+            }
             foreach($timepicker[$date->format('m/d/Y')] as $timeSlot){
                 $travelFrom=0;
                 $travelTo=0;
