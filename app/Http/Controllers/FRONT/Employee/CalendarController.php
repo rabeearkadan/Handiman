@@ -189,7 +189,7 @@ class CalendarController extends Controller
         }
 
         $rescheduleOptimum =array();
-dd($timepicker);
+
         $date=$startDate;
         $optimum =999999;
         $chosenSlot=null;
