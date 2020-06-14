@@ -20,8 +20,8 @@
 }
 
 .testimonial-image img {
-    height: auto;
-    width: 80px;
+    height: 60px;
+    width: 60px;
 }
 
 @media (max-width: 767px) {
