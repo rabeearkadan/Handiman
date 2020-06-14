@@ -200,12 +200,6 @@ class CalendarController extends Controller
                     continue;
                 }
             }
-            foreach($timepicker[$date->format('m/d/Y')] as $timeSlot){
-                foreach($rejectedDates as $rejectedDate){
-                    if($rejectedDate == $date->format('m/d/Y')){
-                        continue;
-                    }
-                }
                 $travelFrom=0;
                 $travelTo=0;
                 $travel=0;
@@ -286,17 +280,9 @@ class CalendarController extends Controller
                 }
                     }
                 }
-                if($date->format('m/d/Y')=='06/20/2020'){
-                    break;
-                }
-            }
-            if($date->format('m/d/Y')=='06/20/2020'){
-                break;
+
             }
             $date->modify('+1 day');
-            if($date->format('m/d/Y')=='06/20/2020'){
-                break;
-            }
         }
 
 dd($chosenSlot,$optimum);
