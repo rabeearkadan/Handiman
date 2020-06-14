@@ -42,19 +42,16 @@
                                 <li class="collection-item avatar">
                                     <img src="{{config('image.path').$urgentRequest->client->image}}" alt="" class="circle">
                                     <span class="title">{{$urgentRequest->client->name}}
-                                    <a class="btn-floating btn-large blue-grey-text" style="float: right">
-                                        <i class="large material-icons">chat</i>
-                                    </a>
                                     </span>
                                     <p> <i class="material-icons">call</i> {{$urgentRequest->client->phone}}
-                                        <br> Second Line
+
                                     </p>
                                 </li>
                                 <li class="collection-item avatar">
                                     <i class="material-icons circle">work</i>
                                     <span class="title">Service</span>
                                     <p>{{$urgentRequest->service_name}}
-                                        <br> Second Line
+
                                     </p>
                                 </li>
                                 <li class="collection-item avatar">
@@ -71,8 +68,11 @@
                                 <li class="collection-item avatar">
                                     <i class="material-icons circle red">place</i>
                                     <span class="title">Address</span>
-                                    <p>First Line
-                                        <br> Second Line
+                                    <p>name:{{$request->client_address['name']}}
+                                        <br>Street:{{$request->client_address['street']}}
+                                        <br>Building{{$request->client_address['building']}}
+                                        <br>property type:{{$request->client_address['property_type']}}
+                                        <br>zip:{{$request->client_address['zip']}}
                                     </p>
                                 </li>
                             </ul>
@@ -80,9 +80,11 @@
                         <div id="{{$urgentRequest->id}}images">
                             <div class="slider">
                                 <ul class="slides">
-                                    <li>
-                                        <img src="/public/images/employee-home.png">
-                                    </li>
+                                    @foreach($request->images as $image)
+                                        <li>
+                                            <img src="{{config('image.path').$image}}" style="background-position: center;background-size: contain;background-repeat: no-repeat;">
+                                        </li>
+                                    @endforeach
                                 </ul>
                             </div>
                         </div>
@@ -121,12 +123,10 @@
                     <li class="collection-item avatar">
                             <img src="{{config('image.path').$request->client->image}}" alt="" class="circle">
                             <span class="title">{{$request->client->name}}
-                            <a href="{{route('employee.chat.index',$request->id)}}" class="btn-floating btn-large blue-grey-text" style="float: right">
-                            <i class="large material-icons">chat</i>
-                        </a>
+
                             </span>
                             <p> <i class="material-icons">call</i> {{$request->client->phone}}
-                                <br> Second Line
+
                             </p>
                     </li>
                     <li class="collection-item avatar">
