@@ -281,7 +281,9 @@ class CalendarController extends Controller
                 }
                     }
                 }
-
+                if($date->format('m/d/Y')=='07/14/2020'){
+                    $break;
+                }
             }
 
             $date->modify('+1 day');
