@@ -198,6 +198,7 @@ class CalendarController extends Controller
         for($searchSpan=0;$searchSpan<10;$searchSpan++){
             foreach($rejectedDates as $rejectedDate){
                 if($rejectedDate == $date->format('m/dY')){
+                    dd($rejectedDate);
                     continue;
                 }
             }
