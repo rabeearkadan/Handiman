@@ -120,172 +120,178 @@ class CalendarController extends Controller
     }
 
     public function createReschedule($id){
-        $employee = Auth::user();
-        $job = RequestService::findOrFail($id);
-        $duration = $job->to - $job->from;
-        $startDate = new DateTime('now');
-        $date= $startDate;
-        $Days = array();
-        $bool = false;
-        $timepicker = array();
-        $span = array();
-        $rejectedDates=array();
-        for ($x = 0; $x < 30; $x++) {
-            $day = date('w', strtotime($date->format('Y-m-d')));
-            $day--;
-            if($day==-1){
-                $day=6;
-            }
-            for ($hour = 0; $hour < 24; $hour++) {
-                $Days[$date->format('m/d/Y')][$hour] = $employee->timeline[$day][$hour];
-                if ($Days[$date->format('m/d/Y')][$hour] == true) {
-                    $bool = true;
-                }
-            }
-            $span[$date->format('m/d/Y')]['from']=24;
-            $span[$date->format('m/d/Y')]['to']=0;
-            foreach ($employee->employeeRequests as $employeeRequest) {
-                if ($employeeRequest->isdone == false && $employeeRequest->date->format('m/d/Y') == $date->format('m/d/Y')) {
-                    for ($from = $employeeRequest->from; $from < $employeeRequest->to; $from++) {
-                        $Days[$date->format('m/d/Y')][$from] = false;
-                        if ( $span[$date->format('m/d/Y')]['from']>$from){
-                            $span[$date->format('m/d/Y')]['from']=$from;
-                        }
-                        if ( $span[$date->format('m/d/Y')]['to']<$from){
-                            $span[$date->format('m/d/Y')]['to']=$from;
-                        }
-                    }
-                }
-            }
-            for ($hour = 0; $hour < 24; $hour++) {
-                if ($Days[$date->format('m/d/Y')][$hour] == true) {
-                    $bool = true;
-                }
-            }
-            if ($bool == false) {
-                array_push($rejectedDates,$date->format('m/d/Y'));
-                unset($Days[$date->format('m/d/Y')]);
-            } else {
-                $timepicker[$date->format('m/d/Y')] = array();
-                $break = false;
-                $index = 0;
-                $from = 0;
-                for ($hour = 0; $hour < 24; $hour++) {
-                    if ($Days[$date->format('m/d/Y')][$hour] == true) {
-                        if ($break == true && !empty($timepicker[$date->format('m/d/Y')])) {
-                            $index++;
-                        }
-                        $break = false;
-                        $timepicker[$date->format('m/d/Y')][$index] = array(
-                            'from' => $from,
-                            'to' => $hour + 1
-                        );
-                    } else {
-                        $break = true;
-                        $from = $hour + 1;
-                    }
-                }
-            }
-            $bool = false;
-            $date->modify('+1 day');
-        }
-        $rescheduleOptimum =array();
-
-        $date=new DateTime('now');
-        $optimum =999999;
-        $chosenSlot=null;
-        for($searchSpan=0;$searchSpan<10;$searchSpan++){
-            foreach($rejectedDates as $rejectedDate){
-                if($rejectedDate == $date->format('m/d/Y')){
-                    continue;
-                }
-            }
-                $travelFrom=0;
-                $travelTo=0;
-                $travel=0;
-                $makeSpan=0;
-                $makeGaps =0;
-                $localOptimum =999999;
-                $timeSlotLength = $timeSlot['to'] - $timeSlot['from'];
-                if($timeSlotLength < $duration){
-                    continue;
-                }
-                elseif ($timeSlotLength == $duration){
-                    foreach ($employee->employeeRequests as $employeeRequest) {
-                        if ($employeeRequest->isdone == false && $employeeRequest->date->format('m/d/Y') == $date->format('m/d/Y')) {
-                            if($employeeRequest->from ==  $timeSlot['to']){
-                                $travelFrom=$this->distance($employeeRequest->client_address['location'][1],$employeeRequest->client_address['location'][0], $job->client_address['location'][1], $job->client_address['location'][0]);
-                            }
-                            if($employeeRequest->to == $timeSlot['from']){
-                                $travelTo=$this->distance($employeeRequest->client_address['location'][1],$employeeRequest->client_address['location'][0], $job->client_address['location'][1], $job->client_address['location'][0]);
-                            }
-                        }
-                    }
-                    $travel = $travelFrom + $travelTo;
-                    if($timeSlot['from']<$span[$date->format('m/d/Y')]['from']){
-                        $makeSpan+= $span[$date->format('m/d/Y')]['from'] - $timeSlot['from'];
-                    }
-                    if($timeSlot['to']>$span[$date->format('m/d/Y')]['to']){
-                        $makeSpan+= $timeSlot['to'] - $span[$date->format('m/d/Y')]['to'] ;
-                    }
-                    //calculate optimum
-                    $localOptimum=0.6*$travel+0.2*$makeSpan+0.2*$makeGaps;
-                    if($localOptimum<$optimum){
-                        $optimum=$localOptimum;
-                        $chosenSlot = array([
-                            'date'=> $date->format('d/m/Y') ,
-                            'from' => $timeSlot['from'],
-                            'to' => $timeSlot['to']
-                        ]);
-                }
-                }
-                else{
-                    for($from=$timeSlot['from'];$from<$timeSlot['to']-$duration;$from++){
-                        $travelFrom=0;
-                        $travelTo=0;
-                        $travel=0;
-                        $makeSpan=0;
-                        if($from=$timeSlot['from'] || $from == $timeSlot['to']-$duration-1) {
-                            $makeGaps = 0;
-                        }
-                        else{
-                            $makeGaps=2;
-                        }
-                        foreach ($employee->employeeRequests as $employeeRequest) {
-                            if ($employeeRequest->isdone == false && $employeeRequest->date->format('m/d/Y') == $date->format('m/d/Y')) {
-                                if($employeeRequest->from ==  $timeSlot['to']){
-                                  $travelFrom=$this->distance($employeeRequest->client_address['location'][1],$employeeRequest->client_address['location'][0], $job->client_address['location'][1], $job->client_address['location'][0]);
-                                }
-                                if($employeeRequest->to == $timeSlot['from']){
-                                    $travelTo=$this->distance($employeeRequest->client_address['location'][1],$employeeRequest->client_address['location'][0], $job->client_address['location'][1], $job->client_address['location'][0]);
-
-                                }
-                            }
-                        }
-                        $travel = $travelFrom + $travelTo;
-                        if($from<$span[$date->format('m/d/Y')]){
-                            $makeSpanFrom = true;
-                        }
-                        if($from+$duration>$span[$date->format('m/d/Y')]){
-                            $makeSpanTo = true;
-                        }
-                        $localOptimum=0.6*$travel+0.2*$makeSpan+0.2*$makeGaps;
-                        if($localOptimum<$optimum){
-                            $optimum=$localOptimum;
-                            $chosenSlot = array([
-                                'date'=> $date->format('d/m/Y') ,
-                                'from' => $timeSlot['from'],
-                                'to' => $timeSlot['to']
-                            ]);
-                }
-                    }
-                }
-
-            }
-            $date->modify('+1 day');
-        }
-
-dd($chosenSlot,$optimum);
+//        $employee = Auth::user();
+//        $job = RequestService::findOrFail($id);
+//        $duration = $job->to - $job->from;
+//        $startDate = new DateTime('now');
+//        $date= $startDate;
+//        $Days = array();
+//        $bool = false;
+//        $timepicker = array();
+//        $span = array();
+//        $rejectedDates=array();
+//        for ($x = 0; $x < 30; $x++) {
+//            $day = date('w', strtotime($date->format('Y-m-d')));
+//            $day--;
+//            if($day==-1){
+//                $day=6;
+//            }
+//            for ($hour = 0; $hour < 24; $hour++) {
+//                $Days[$date->format('m/d/Y')][$hour] = $employee->timeline[$day][$hour];
+//                if ($Days[$date->format('m/d/Y')][$hour] == true) {
+//                    $bool = true;
+//                }
+//            }
+//            $span[$date->format('m/d/Y')]['from']=24;
+//            $span[$date->format('m/d/Y')]['to']=0;
+//            foreach ($employee->employeeRequests as $employeeRequest) {
+//                if ($employeeRequest->isdone == false && $employeeRequest->date->format('m/d/Y') == $date->format('m/d/Y')) {
+//                    for ($from = $employeeRequest->from; $from < $employeeRequest->to; $from++) {
+//                        $Days[$date->format('m/d/Y')][$from] = false;
+//                        if ( $span[$date->format('m/d/Y')]['from']>$from){
+//                            $span[$date->format('m/d/Y')]['from']=$from;
+//                        }
+//                        if ( $span[$date->format('m/d/Y')]['to']<$from){
+//                            $span[$date->format('m/d/Y')]['to']=$from;
+//                        }
+//                    }
+//                }
+//            }
+//            for ($hour = 0; $hour < 24; $hour++) {
+//                if ($Days[$date->format('m/d/Y')][$hour] == true) {
+//                    $bool = true;
+//                }
+//            }
+//            if ($bool == false) {
+//                array_push($rejectedDates,$date->format('m/d/Y'));
+//                unset($Days[$date->format('m/d/Y')]);
+//            } else {
+//                $timepicker[$date->format('m/d/Y')] = array();
+//                $break = false;
+//                $index = 0;
+//                $from = 0;
+//                for ($hour = 0; $hour < 24; $hour++) {
+//                    if ($Days[$date->format('m/d/Y')][$hour] == true) {
+//                        if ($break == true && !empty($timepicker[$date->format('m/d/Y')])) {
+//                            $index++;
+//                        }
+//                        $break = false;
+//                        $timepicker[$date->format('m/d/Y')][$index] = array(
+//                            'from' => $from,
+//                            'to' => $hour + 1
+//                        );
+//                    } else {
+//                        $break = true;
+//                        $from = $hour + 1;
+//                    }
+//                }
+//            }
+//            $bool = false;
+//            $date->modify('+1 day');
+//        }
+//        $rescheduleOptimum =array();
+//
+//        $date=new DateTime('now');
+//        $optimum =999999;
+//        $chosenSlot=null;
+//        for($searchSpan=0;$searchSpan<10;$searchSpan++){
+//            foreach($rejectedDates as $rejectedDate){
+//                if($rejectedDate == $date->format('m/d/Y')){
+//                    continue;
+//                }
+//            }
+//            foreach($timepicker[$date->format('m/d/Y')] as $timeSlot){
+//                foreach($rejectedDates as $rejectedDate){
+//                    if($rejectedDate == $date->format('m/d/Y')){
+//                        continue;
+//                    }
+//                }
+//                $travelFrom=0;
+//                $travelTo=0;
+//                $travel=0;
+//                $makeSpan=0;
+//                $makeGaps =0;
+//                $localOptimum =999999;
+//                $timeSlotLength = $timeSlot['to'] - $timeSlot['from'];
+//                if($timeSlotLength < $duration){
+//                    continue;
+//                }
+//                elseif ($timeSlotLength == $duration){
+//                    foreach ($employee->employeeRequests as $employeeRequest) {
+//                        if ($employeeRequest->isdone == false && $employeeRequest->date->format('m/d/Y') == $date->format('m/d/Y')) {
+//                            if($employeeRequest->from ==  $timeSlot['to']){
+//                                $travelFrom=$this->distance($employeeRequest->client_address['location'][1],$employeeRequest->client_address['location'][0], $job->client_address['location'][1], $job->client_address['location'][0]);
+//                            }
+//                            if($employeeRequest->to == $timeSlot['from']){
+//                                $travelTo=$this->distance($employeeRequest->client_address['location'][1],$employeeRequest->client_address['location'][0], $job->client_address['location'][1], $job->client_address['location'][0]);
+//                            }
+//                        }
+//                    }
+//                    $travel = $travelFrom + $travelTo;
+//                    if($timeSlot['from']<$span[$date->format('m/d/Y')]['from']){
+//                        $makeSpan+= $span[$date->format('m/d/Y')]['from'] - $timeSlot['from'];
+//                    }
+//                    if($timeSlot['to']>$span[$date->format('m/d/Y')]['to']){
+//                        $makeSpan+= $timeSlot['to'] - $span[$date->format('m/d/Y')]['to'] ;
+//                    }
+//                    //calculate optimum
+//                    $localOptimum=0.6*$travel+0.2*$makeSpan+0.2*$makeGaps;
+//                    if($localOptimum<$optimum){
+//                        $optimum=$localOptimum;
+//                        $chosenSlot = array([
+//                            'date'=> $date->format('d/m/Y') ,
+//                            'from' => $timeSlot['from'],
+//                            'to' => $timeSlot['to']
+//                        ]);
+//                }
+//                }
+//                else{
+//                    for($from=$timeSlot['from'];$from<$timeSlot['to']-$duration;$from++){
+//                        $travelFrom=0;
+//                        $travelTo=0;
+//                        $travel=0;
+//                        $makeSpan=0;
+//                        if($from=$timeSlot['from'] || $from == $timeSlot['to']-$duration-1) {
+//                            $makeGaps = 0;
+//                        }
+//                        else{
+//                            $makeGaps=2;
+//                        }
+//                        foreach ($employee->employeeRequests as $employeeRequest) {
+//                            if ($employeeRequest->isdone == false && $employeeRequest->date->format('m/d/Y') == $date->format('m/d/Y')) {
+//                                if($employeeRequest->from ==  $timeSlot['to']){
+//                                  $travelFrom=$this->distance($employeeRequest->client_address['location'][1],$employeeRequest->client_address['location'][0], $job->client_address['location'][1], $job->client_address['location'][0]);
+//                                }
+//                                if($employeeRequest->to == $timeSlot['from']){
+//                                    $travelTo=$this->distance($employeeRequest->client_address['location'][1],$employeeRequest->client_address['location'][0], $job->client_address['location'][1], $job->client_address['location'][0]);
+//
+//                                }
+//                            }
+//                        }
+//                        $travel = $travelFrom + $travelTo;
+//                        if($from<$span[$date->format('m/d/Y')]){
+//                            $makeSpanFrom = true;
+//                        }
+//                        if($from+$duration>$span[$date->format('m/d/Y')]){
+//                            $makeSpanTo = true;
+//                        }
+//                        $localOptimum=0.6*$travel+0.2*$makeSpan+0.2*$makeGaps;
+//                        if($localOptimum<$optimum){
+//                            $optimum=$localOptimum;
+//                            $chosenSlot = array([
+//                                'date'=> $date->format('d/m/Y') ,
+//                                'from' => $timeSlot['from'],
+//                                'to' => $timeSlot['to']
+//                            ]);
+//                }
+//                    }
+//                }
+//
+//            }
+//            $date->modify('+1 day');
+//        }
+//
+//dd($chosenSlot,$optimum);
 
 
         return view('front.employee.jobs.show', compact(['job', 'client', 'service','reschedule','rescheduleOptions']));
